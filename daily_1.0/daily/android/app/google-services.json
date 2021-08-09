@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "960022685431",
+    "project_id": "daily-32854",
+    "storage_bucket": "daily-32854.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960022685431:android:f25b77b50c30ca3eb915f2",
+        "android_client_info": {
+          "package_name": "com.phoenix.daily"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960022685431-p3cu4f51j93k53eocg3nnkvuvhkunjua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASWmdM6B6DHoGAIWAHOiEgnHlCBFgprPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960022685431-p3cu4f51j93k53eocg3nnkvuvhkunjua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
