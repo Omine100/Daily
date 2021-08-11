@@ -35,10 +35,9 @@ class FirestoreAccounts implements BaseCloud {
   Future<String> getCurrentUserId() async {
     return auth.currentUser.uid;
   }
-  
+
   Future<bool> getSignedInStatus() async {
-    if (auth.currentUser?.uid == null) 
-      return false;
+    if (auth.currentUser?.uid == null) return false;
     return true;
   }
 
@@ -62,9 +61,11 @@ class FirestoreAccounts implements BaseCloud {
     auth.sendPasswordResetEmail(email: email);
   }
 
-  Future<void> signUpEmailAndPassword(BuildContext context, String email, String password, String name) async {
+  Future<void> signUpEmailAndPassword(
+      BuildContext context, String email, String password, String name) async {
     try {
-      await auth.createUserWithEmailAndPassword(email: email, password: password);
+      await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
       await setCurrentUserDisplayName(name);
       sendEmailVerification();
     } on FirebaseAuthException catch (e) {
@@ -89,9 +90,11 @@ class FirestoreAccounts implements BaseCloud {
     }
   }
 
-  Future<void> signInEmailAndPassword(BuildContext context, String user_email, String user_password) async {
+  Future<void> signInEmailAndPassword(
+      BuildContext context, String user_email, String user_password) async {
     try {
-      await auth.signInWithEmailAndPassword(email: user_email, password: user_password);
+      await auth.signInWithEmailAndPassword(
+          email: user_email, password: user_password);
     } on FirebaseAuthException catch (e) {
       String key;
       switch (e.code) {
@@ -128,7 +131,8 @@ class FirestoreAccounts implements BaseCloud {
 
   //BEARER TOKEN: AAAAAAAAAAAAAAAAAAAAAAktOwEAAAAAnUDLMWtzIyxZLpHanZZokQruzOc%3
   //           DKBrBIFVdiw9OvaN5vcAAU4v8jCgO6dOluSp5K7smTXM9RBgMWj
-  Future<bool> signInTwitter() async { //Need to change keys
+  Future<bool> signInTwitter() async {
+    //Need to change keys
     final TwitterLogin twitterLogin = new TwitterLogin(
       consumerKey: '06tLwhwnkvJeK5smvt9gPOTe5',
       consumerSecret: 'ob0s5XtYYJTEUX4GptaruP1n5Zvvq2hGyyHDeYkPylDD4RdOAC',
@@ -160,7 +164,7 @@ class FirestoreAccounts implements BaseCloud {
       }
     });
   }
-  
+
   Future<void> deleteUser() async {
     deleteUserData();
     auth.currentUser.delete();
