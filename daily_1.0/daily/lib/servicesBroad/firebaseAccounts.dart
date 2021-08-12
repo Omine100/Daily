@@ -5,28 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 import 'dart:async';
 
-//METHOD DECLARATIONS
-abstract class BaseCloud {
-  //METHODS: Account management
-  Future<String> getCurrentUserId();
-  Future<bool> getSignedInStatus();
-  Future<void> setCurrentUserDisplayName(String displayName);
-  Future<String> getCurrentUserDisplayName();
-  Future<void> sendEmailVerification();
-  Future<bool> getEmailVerified();
-  Future<void> sendPasswordReset(String email);
-  Future<void> signUpEmailAndPassword(
-      BuildContext context, String email, String password, String name);
-  Future<void> signInEmailAndPassword(
-      BuildContext context, String user_email, String user_password);
-  Future<void> signInGoogle();
-  Future<void> signInTwitter();
-  Future<void> signOut();
-  Future<void> deleteUserData();
-  Future<void> deleteUser();
-}
-
-class FirestoreAccounts implements BaseCloud {
+class FirestoreAccounts {
   //VARIABLE INITIALIZATION
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;

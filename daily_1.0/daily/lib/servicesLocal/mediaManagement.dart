@@ -14,9 +14,7 @@ class MediaManagement {
   FirebaseCRUD firebaseCRUD = new FirebaseCRUD();
 
   //MECHANICS
-  Future saveImage() {}
-
-  Future getImage(BuildContext context, bool isCamera, State state) async {
+  Future showImagePicker(BuildContext context, bool isCamera, State state) async {
     try {
       final pickedFile = await Picker.pickImage(
           source: isCamera ? ImageSource.camera : ImageSource.gallery,
@@ -31,14 +29,26 @@ class MediaManagement {
     }
   }
 
-  Future<Null> saveAndShare(String imageURL) async {
+  Future<File> getImage(String imageURL) async {
+    File imageFile;
     if (Platform.isAndroid) {
       var response = await get(Uri.parse(imageURL));
       final documentDirectory = (await getExternalStorageDirectory()).path;
-      File imageFile = new File('$documentDirectory/flutter.png');
+      imageFile = new File('$documentDirectory/flutter.png');
       imageFile.writeAsBytesSync(response.bodyBytes);
-      Share.shareFile(imageFile,
-          subject: "Thought you might like!", text: "What do you think?");
+    }
+
+    return imageFile??imageFile;
+  }
+
+  Future<Null> shareImage(String imageURL) async {
+    File imageFile;
+    try {
+      imageFile = await getImage(imageURL);
+      Share.shareFile(imageFile, subject: "Thought you might like!", text: "What do you think?");
+    } catch (e) {
+      print(e);
+      //Show dialog for failed to save and share image
     }
   }
 }

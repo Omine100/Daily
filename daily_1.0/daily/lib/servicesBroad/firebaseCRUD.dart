@@ -6,18 +6,11 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:async';
 import 'dart:io';
 
-//METHOD DECLARATIONS
-abstract class BaseCloud {
-  //METHODS: Data management
-  Future<void> createImageData(BuildContext context, String fileName, File imageFile);
-  Future<List<DocumentSnapshot>> getImageDocuments();
-  Future<void> updateImageData(BuildContext context, String imageURL, File imageFile);
-  Future<void> deleteImageData(DocumentSnapshot doc, String imageURL);
-}
+import 'package:daily/standardMechanics/systemInformationStandards.dart';
 
-class FirebaseCRUD implements BaseCloud {
+class FirebaseCRUD {
   //CLASS INITIALIZATION
-  MethodStandards methodStandards = new MethodStandards();
+  SystemInformationStandards methodStandards = new SystemInformationStandards();
 
   //VARIABLE INITIALIZATION
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -27,7 +20,7 @@ class FirebaseCRUD implements BaseCloud {
   //MECHANICS
   Future<void> createImageData(BuildContext context, String fileName, File imageFile) async {
     var userId = auth.currentUser.uid;
-    String date = methodStandards.getCurrentDate();
+    String date = methodStandards.getDateTime();
     try {
       await storage
           .ref(fileName)
