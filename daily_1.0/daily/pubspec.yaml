@@ -31,6 +31,9 @@ dependencies:
       url: git://github.com/himanshusharma89/plugins.git
       path: packages/share
 
+  #User interface
+  page_transition: ^1.1.7+3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
