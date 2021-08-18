@@ -3,15 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:intl/intl.dart';
 import 'dart:async';
 import 'dart:io';
 
-import 'package:daily/standardMechanics/systemInformationStandards.dart';
-
 class FirebaseCRUD {
-  //CLASS INITIALIZATION
-  SystemInformationStandards methodStandards = new SystemInformationStandards();
-
   //VARIABLE INITIALIZATION
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -20,7 +16,7 @@ class FirebaseCRUD {
   //MECHANICS
   Future<void> createImageData(BuildContext context, String fileName, File imageFile) async {
     var userId = auth.currentUser.uid;
-    String date = methodStandards.getDateTime();
+    String date = DateFormat('yyyy-MM-dd-HH:mm:ss').format(DateTime.now());
     try {
       await storage
           .ref(fileName)
