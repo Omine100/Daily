@@ -23,7 +23,44 @@ class UserIStandards {
   }
 
   Widget showLanguageSelector(BuildContext context) {
-
+    return DropdownButtonHideUnderline(
+      child: DropdownButton(
+        dropdownColor:
+            themes.getColor(context, "interfaceStandardsLanguageSelectorColor"),
+        onChanged: (Languages languages) {
+          languages.changeLanguage(context, languages);
+        },
+        icon: Icon(
+          Icons.language,
+          color: themes.getColor(
+              context, "interfaceStandardsLanguageSelectorButtonColor"),
+          size: themes.getDimension(context, true,
+              "interfaceStandardsLanguageSelectorButtonDimension"),
+        ),
+        items: Languages.getLanguageList()
+            .map<DropdownMenuItem<Languages>>((lang) => DropdownMenuItem(
+                value: lang,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Text(
+                      lang.name,
+                      style: TextStyle(
+                        color: themes.getColor(context,
+                            "interfaceStandardsLanguageSelectorTextColor"),
+                      ),
+                    ),
+                    Text(
+                      lang.flag,
+                      style: TextStyle(
+                          color: themes.getColor(context,
+                              "interfaceStandardsLanguageSelectorTextColor")),
+                    ),
+                  ],
+                )))
+            .toList(),
+      ),
+    );
   }
 
   Future<void> showMediaSelectionDialog(BuildContext context, State state) {
