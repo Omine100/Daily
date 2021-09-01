@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:daily/themesLocal/colors.dart';
 
 class UserIStandards {
   //MECHANICS
@@ -11,9 +12,9 @@ class UserIStandards {
         activeThumbImage: AssetImage(
             'lib/assets/interfaceStandardsThemeSelectorSunImage.png'),
         activeColor:
-            themes.getColor(context, "interfaceStandardsThemeSelectorColor"),
+            Theme.of(context).colorScheme.userIStandardsThemeSelector(),
         inactiveThumbColor:
-            themes.getColor(context, "interfaceStandardsThemeSelectorColor"),
+            Theme.of(context).colorScheme.userIStandardsThemeSelector(),
         onChanged: (val) {
           notifier.toggleTheme();
         },
@@ -26,7 +27,7 @@ class UserIStandards {
     return DropdownButtonHideUnderline(
       child: DropdownButton(
         dropdownColor:
-            themes.getColor(context, "interfaceStandardsLanguageSelectorColor"),
+            Theme.of(context).colorScheme.userIStandardsLanguageSelector(),
         onChanged: (Languages languages) {
           languages.changeLanguage(context, languages);
         },
@@ -206,14 +207,13 @@ class UserIStandards {
 
   Widget showTitle(BuildContext context, String key) {
     return Text(
-        getTranslated(context, key),
-        style: TextStyle(
-            color: themes.getColor(context, "interfaceStandardsTitleTextColor"),
-            fontSize:
-                Theme.of(context).textTheme.interfaceStandardsTitleFontSize,
-            fontWeight:
-                Theme.of(context).typography.interfaceStandardsTitleFontWeight),
-      );
+      getTranslated(context, key),
+      style: TextStyle(
+          color: themes.getColor(context, "interfaceStandardsTitleTextColor"),
+          fontSize: Theme.of(context).textTheme.interfaceStandardsTitleFontSize,
+          fontWeight:
+              Theme.of(context).typography.interfaceStandardsTitleFontWeight),
+    );
   }
 
   Widget showTextField(BuildContext context, int keyboardType, bool isVisible,
