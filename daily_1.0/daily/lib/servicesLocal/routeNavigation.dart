@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:daily/userInterface/login.dart';
 import 'package:daily/userInterface/home.dart';
 
@@ -10,13 +9,12 @@ class RouteNavigation {
   }
 
   void routePage(BuildContext context, Widget page) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => page)
-    );
+    Navigator.push(context, MaterialPageRoute(builder: (context) => page));
   }
 
   void routeInitial(BuildContext context, bool isSignedIn) {
-    isSignedIn ? routePage(context, LoginScreen()) : routePage(context, HomeScreen());
+    isSignedIn
+        ? routePage(context, LoginScreen())
+        : routePage(context, HomeScreen());
   }
 }

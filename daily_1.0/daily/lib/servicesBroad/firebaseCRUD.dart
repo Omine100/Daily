@@ -6,7 +6,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
 import 'dart:io';
-
 import 'package:daily/standards/userIStandards.dart';
 
 class FirebaseCRUD {

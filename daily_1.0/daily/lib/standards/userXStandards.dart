@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:daily/themesLocal/colors.dart';
 
 class UserXStandards {
   //MECHANICS
   Widget showProgress(BuildContext context) {
     return CircularProgressIndicator(
       backgroundColor:
-          themes.getColor(context, "interfaceStandardsProgressIndicatorColor"),
+          Theme.of(context).colorScheme.userXStandardsProgressIndicatorColor(),
     );
   }
-
-  //Put color theme in here I think
 }

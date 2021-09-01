@@ -5,7 +5,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share/share.dart';
 import 'package:picker/picker.dart';
 import 'dart:io';
-
 import 'package:daily/servicesBroad/firebaseCRUD.dart';
 
 class MediaManagement {
@@ -14,7 +13,8 @@ class MediaManagement {
   FirebaseCRUD firebaseCRUD = new FirebaseCRUD();
 
   //MECHANICS
-  Future showImagePicker(BuildContext context, bool isCamera, State state) async {
+  Future showImagePicker(
+      BuildContext context, bool isCamera, State state) async {
     try {
       final pickedFile = await Picker.pickImage(
           source: isCamera ? ImageSource.camera : ImageSource.gallery,
@@ -38,14 +38,15 @@ class MediaManagement {
       imageFile.writeAsBytesSync(response.bodyBytes);
     }
 
-    return imageFile??imageFile;
+    return imageFile ?? imageFile;
   }
 
   Future<Null> shareImage(String imageURL) async {
     File imageFile;
     try {
       imageFile = await getImage(imageURL);
-      Share.shareFile(imageFile, subject: "Thought you might like!", text: "What do you think?");
+      Share.shareFile(imageFile,
+          subject: "Thought you might like!", text: "What do you think?");
     } catch (e) {
       print(e);
       //Show dialog for failed to save and share image

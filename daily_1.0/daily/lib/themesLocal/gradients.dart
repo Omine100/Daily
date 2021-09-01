@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
-
-import 'package:daily/schemesLocal/themes.dart';
-import 'package:daily/standardProperties/gradientStandards.dart';
+import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/standards/gradientStandards.dart';
 
 class Gradients {
   //CLASS INITIALIZATION
   GradientStandards gradientStandards = new GradientStandards();
-  Themes themes = new Themes();
 
   //MECHANICS
   Shader signUpButtonGradient(BuildContext context) {
     Shader shader = gradientStandards.textLinearGradient(
         context,
-        themes.getColor(context, "backgroundGradientTopRightColor"),
-        themes.getColor(context, "backgroundGradientBottomLeftColor"));
+        Theme.of(context).colorScheme.gradientsBackgroundTopRight(),
+        Theme.of(context).colorScheme.gradientsBackgroundBottomLeft());
     return shader;
   }
 
   LinearGradient welcomeScreenGradient(BuildContext context) {
     LinearGradient linearGradient = gradientStandards.bodyLinearGradient(
         context,
-        themes.getColor(context, "backgroundGradientTopRightColor"),
-        themes.getColor(context, "backgroundGradientBottomLeftColor"),
+        Theme.of(context).colorScheme.gradientsBackgroundTopRight(),
+        Theme.of(context).colorScheme.gradientsBackgroundBottomLeft(),
         false);
     return linearGradient;
   }
@@ -29,8 +27,8 @@ class Gradients {
   LinearGradient loginScreenGradient(BuildContext context) {
     LinearGradient linearGradient = gradientStandards.bodyLinearGradient(
         context,
-        themes.getColor(context, "backgroundGradientTopRightColor"),
-        themes.getColor(context, "backgroundGradientBottomLeftColor"),
+        Theme.of(context).colorScheme.gradientsBackgroundTopRight(),
+        Theme.of(context).colorScheme.gradientsBackgroundBottomLeft(),
         false);
     return linearGradient;
   }
@@ -38,8 +36,8 @@ class Gradients {
   LinearGradient forgotPasswordScreenGradient(BuildContext context) {
     LinearGradient linearGradient = gradientStandards.bodyLinearGradient(
         context,
-        themes.getColor(context, "backgroundGradientTopRightColor"),
-        themes.getColor(context, "backgroundGradientBottomLeftColor"),
+        Theme.of(context).colorScheme.gradientsBackgroundTopRight(),
+        Theme.of(context).colorScheme.gradientsBackgroundBottomLeft(),
         false);
     return linearGradient;
   }

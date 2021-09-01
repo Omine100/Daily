@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 import 'dart:async';
-
 import 'package:daily/standards/userIStandards.dart';
 
 class FirestoreAccounts {

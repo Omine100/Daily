@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:daily/schemesLocal/themes.dart';
-
 class GradientStandards {
-  //CLASS INITIALIZATION
-  Themes themes = new Themes();
-
   //MECHANICS
   Shader textLinearGradient(
       BuildContext context, Color topLeftColor, Color bottomRightColor) {
