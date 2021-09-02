@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:daily/servicesBroad/firebaseAccounts.dart';
+import 'package:daily/servicesLocal/mediaManagement.dart';
+import 'package:daily/servicesLocal/routeNavigation.dart';
+import 'package:daily/servicesLocal/systemLanguages.dart';
 import 'package:daily/themesLocal/colors.dart';
 
 class UserIStandards {
+  //CLASS INITIALIZATION
+  FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+  MediaManagement mediaManagement = new MediaManagement();
+  RouteNavigation routeNavigation = new RouteNavigation();
+
   //MECHANICS
   Widget showThemeSelector(BuildContext context) {
     return Consumer<ThemeNotifier>(
@@ -27,14 +36,13 @@ class UserIStandards {
     return DropdownButtonHideUnderline(
       child: DropdownButton(
         dropdownColor:
-            Theme.of(context).colorScheme.userIStandardsLanguageSelector(),
+            Theme.of(context).colorScheme.userIStandardsLanguageSelectorBackground(),
         onChanged: (Languages languages) {
-          languages.changeLanguage(context, languages);
+          languages.setLanguage(context, languages);
         },
         icon: Icon(
           Icons.language,
-          color: themes.getColor(
-              context, "interfaceStandardsLanguageSelectorButtonColor"),
+          color: Theme.of(context).colorScheme.userIStandardsLanguageSelectorIcon(),
           size: themes.getDimension(context, true,
               "interfaceStandardsLanguageSelectorButtonDimension"),
         ),
@@ -47,15 +55,13 @@ class UserIStandards {
                     Text(
                       lang.name,
                       style: TextStyle(
-                        color: themes.getColor(context,
-                            "interfaceStandardsLanguageSelectorTextColor"),
+                        color: Theme.of(context).colorScheme.userIStandardsLanguageSelectorContent(),
                       ),
                     ),
                     Text(
                       lang.flag,
                       style: TextStyle(
-                          color: themes.getColor(context,
-                              "interfaceStandardsLanguageSelectorTextColor")),
+                          color: Theme.of(context).colorScheme.userIStandardsLanguageSelectorContent()),
                     ),
                   ],
                 )))
@@ -120,17 +126,16 @@ class UserIStandards {
 
   Widget showShareButton(BuildContext context, String imageURL) {
     return new Material(
-      color: themes.getColor(context, "materialTransparentColor"),
+      color: Theme.of(context).colorScheme.materialTransparent(),
       child: IconButton(
         onPressed: () {
-          mediaManagement.saveAndShare(imageURL);
+          mediaManagement.shareImage(imageURL);
         },
         iconSize: themes.getDimension(
             context, true, "interfaceStandardsShareButtonIconDimension"),
         icon: Icon(
           Icons.share_outlined,
-          color: themes.getColor(
-              context, "interfaceStandardsShareButtonIconColor"),
+          color: Theme.of(context).colorScheme.userIStandardsShareButton(),
         ),
       ),
     );
@@ -143,14 +148,14 @@ class UserIStandards {
       },
       child: Icon(
         Icons.keyboard_backspace,
-        color: themes.getColor(context, "interfaceStandardsBackButtonColor"),
+        color: Theme.of(context).colorScheme.userIStandardsBackButton(),
         size: themes.getDimension(
             context, true, "interfaceStandardsBackButtonDimension"),
       ),
     );
   }
 
-  Widget showSocialIconButton(BuildContext context, int iconCase) {
+  Widget showSocialButton(BuildContext context, int iconCase) {
     //VARIABLE INITIALIZATION
     bool isNewUser;
 
@@ -158,8 +163,8 @@ class UserIStandards {
     return new GestureDetector(
       onTap: () {
         iconCase == 0
-            ? cloudFirestore.signInGoogle().then((_isNewUser) => isNewUser)
-            : cloudFirestore.signInTwitter().then((_isNewUser) => isNewUser);
+            ? firebaseAccounts.signInGoogle().then((_isNewUser) => isNewUser)
+            : firebaseAccounts.signInTwitter().then((_isNewUser) => isNewUser);
         if (isNewUser) {
           routeNavigation.routeHome(context);
         } else {
@@ -174,7 +179,7 @@ class UserIStandards {
             context, true, "welcomeSocialSignInButtonDimension"),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(360),
-          color: themes.getColor(context, "welcomeSocialSignInButtonColor"),
+          color: Theme.of(context).colorScheme.userIStandardsSocialButton(),
         ),
         child: Image(
           image: iconCase == 0
@@ -190,8 +195,7 @@ class UserIStandards {
       content: Text(
         getTranslated(context, key),
         style: TextStyle(
-            color: themes.getColor(
-                context, "interfaceStandardsToastMessageContentColor"),
+            color: Theme.of(context).colorScheme.userIStandardsToastMessageContent(),
             fontSize: Theme.of(context)
                 .textTheme
                 .interfaceStandardsToastMessageContentFontSize,
@@ -200,8 +204,7 @@ class UserIStandards {
                 .interfaceStandardsToastMessageContentFontWeight),
       ),
       duration: const Duration(seconds: 3),
-      backgroundColor: themes.getColor(
-          context, "interfaceStandardsToastMessageBackgroundColor"),
+      backgroundColor: Theme.of(context).colorScheme.userIStandardsToastMessageBackground(),
     ));
   }
 
@@ -209,7 +212,7 @@ class UserIStandards {
     return Text(
       getTranslated(context, key),
       style: TextStyle(
-          color: themes.getColor(context, "interfaceStandardsTitleTextColor"),
+          color: Theme.of(context).colorScheme.userIStandardsTitleContent(),
           fontSize: Theme.of(context).textTheme.interfaceStandardsTitleFontSize,
           fontWeight:
               Theme.of(context).typography.interfaceStandardsTitleFontWeight),
@@ -223,7 +226,7 @@ class UserIStandards {
       keyboardType:
           keyboardType == 0 ? TextInputType.emailAddress : TextInputType.text,
       style: TextStyle(
-        color: themes.getColor(context, "interfaceStandardsTextInputColor"),
+        color: Theme.of(context).colorScheme.userIStandardsTextInputContent(),
         fontSize:
             Theme.of(context).textTheme.interfaceStandardsTextInputFontSize,
       ),
@@ -233,25 +236,24 @@ class UserIStandards {
               ? (key == "inputPassword" ? Icons.lock : Icons.person)
               : Icons.email,
           color:
-              themes.getColor(context, "interfaceStandardsTextInputIconColor"),
+              Theme.of(context).colorScheme.userIStandardsTextInputIcon(),
         ),
         suffixIcon: iconButton != null ? iconButton : null,
         hintText: getTranslated(context, key),
         hintStyle: TextStyle(
-          color: themes.getColor(context, "interfaceStandardsTextInputColor"),
+          color: Theme.of(context).colorScheme.userIStandardsTextInputContent(),
         ),
         labelStyle: TextStyle(
-          color: themes.getColor(context, "interfaceStandardsTextInputColor"),
+          color: Theme.of(context).colorScheme.userIStandardsTextInputContent(),
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: themes.getColor(
-                context, "interfaceStandardsTextInputLineColor"),
+            color: Theme.of(context).colorScheme.userIStandardsTextInputLine(),
           ),
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: themes.getColor(context, "interfaceStandardsTextInputColor"),
+            color: Theme.of(context).colorScheme.userIStandardsTextInputContent(),
           ),
         ),
       ),

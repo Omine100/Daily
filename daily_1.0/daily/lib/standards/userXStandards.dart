@@ -6,7 +6,7 @@ class UserXStandards {
   Widget showProgress(BuildContext context) {
     return CircularProgressIndicator(
       backgroundColor:
-          Theme.of(context).colorScheme.userXStandardsProgressIndicatorColor(),
+          Theme.of(context).colorScheme.userXStandardsProgressIndicator(),
     );
   }
 }
