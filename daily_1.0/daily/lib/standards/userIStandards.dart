@@ -93,7 +93,7 @@ class UserIStandards {
                         ],
                       ),
                       onTap: () {
-                        mediaManagement.getImage(context, false, state);
+                        mediaManagement.showImagePicker(context, false, state);
                         routeNavigation.routePop(context);
                       },
                     ),
@@ -114,7 +114,7 @@ class UserIStandards {
                         ],
                       ),
                       onTap: () {
-                        mediaManagement.getImage(context, true, state);
+                        mediaManagement.showImagePicker(context, true, state);
                         routeNavigation.routePop(context);
                       },
                     )
@@ -126,7 +126,7 @@ class UserIStandards {
 
   Widget showShareButton(BuildContext context, String imageURL) {
     return new Material(
-      color: Theme.of(context).colorScheme.materialTransparent(),
+      color: Theme.of(context).colorScheme.materialTransparent,
       child: IconButton(
         onPressed: () {
           mediaManagement.shareImage(imageURL);
