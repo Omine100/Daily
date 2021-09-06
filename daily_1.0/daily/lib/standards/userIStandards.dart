@@ -5,6 +5,9 @@ import 'package:daily/servicesLocal/mediaManagement.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
 import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/themesLocal/fontProperties.dart';
+import 'package:daily/themesLocal/sizes.dart';
+import 'package:daily/themesLocal/dimensions.dart';
 
 class UserIStandards {
   //CLASS INITIALIZATION
@@ -21,9 +24,9 @@ class UserIStandards {
         activeThumbImage: AssetImage(
             'lib/assets/interfaceStandardsThemeSelectorSunImage.png'),
         activeColor:
-            Theme.of(context).colorScheme.userIStandardsThemeSelector(),
+            Theme.of(context).colorScheme.userIStandardsThemeSelector,
         inactiveThumbColor:
-            Theme.of(context).colorScheme.userIStandardsThemeSelector(),
+            Theme.of(context).colorScheme.userIStandardsThemeSelector,
         onChanged: (val) {
           notifier.toggleTheme();
         },
@@ -36,15 +39,14 @@ class UserIStandards {
     return DropdownButtonHideUnderline(
       child: DropdownButton(
         dropdownColor:
-            Theme.of(context).colorScheme.userIStandardsLanguageSelectorBackground(),
+            Theme.of(context).colorScheme.userIStandardsLanguageSelectorBackground,
         onChanged: (Languages languages) {
           languages.setLanguage(context, languages);
         },
         icon: Icon(
           Icons.language,
-          color: Theme.of(context).colorScheme.userIStandardsLanguageSelectorIcon(),
-          size: themes.getDimension(context, true,
-              "interfaceStandardsLanguageSelectorButtonDimension"),
+          color: Theme.of(context).colorScheme.userIStandardsLanguageSelectorIcon,
+          size: Theme.of(context).materialTapTargetSize.userIStandardsLanguageSelectorIcon,
         ),
         items: Languages.getLanguageList()
             .map<DropdownMenuItem<Languages>>((lang) => DropdownMenuItem(
@@ -55,13 +57,13 @@ class UserIStandards {
                     Text(
                       lang.name,
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.userIStandardsLanguageSelectorContent(),
+                        color: Theme.of(context).colorScheme.userIStandardsLanguageSelectorContent,
                       ),
                     ),
                     Text(
                       lang.flag,
                       style: TextStyle(
-                          color: Theme.of(context).colorScheme.userIStandardsLanguageSelectorContent()),
+                          color: Theme.of(context).colorScheme.userIStandardsLanguageSelectorContent),
                     ),
                   ],
                 )))
@@ -131,11 +133,10 @@ class UserIStandards {
         onPressed: () {
           mediaManagement.shareImage(imageURL);
         },
-        iconSize: themes.getDimension(
-            context, true, "interfaceStandardsShareButtonIconDimension"),
+        iconSize: Theme.of(context).materialTapTargetSize.userIStandardsShareButton,
         icon: Icon(
           Icons.share_outlined,
-          color: Theme.of(context).colorScheme.userIStandardsShareButton(),
+          color: Theme.of(context).colorScheme.userIStandardsShareButton,
         ),
       ),
     );
@@ -148,9 +149,8 @@ class UserIStandards {
       },
       child: Icon(
         Icons.keyboard_backspace,
-        color: Theme.of(context).colorScheme.userIStandardsBackButton(),
-        size: themes.getDimension(
-            context, true, "interfaceStandardsBackButtonDimension"),
+        color: Theme.of(context).colorScheme.userIStandardsBackButton,
+        size: Theme.of(context).materialTapTargetSize.userIStandardsBackButton,
       ),
     );
   }
@@ -173,13 +173,11 @@ class UserIStandards {
       },
       child: Container(
         padding: EdgeInsets.all(7.5),
-        height: themes.getDimension(
-            context, true, "welcomeSocialSignInButtonDimension"),
-        width: themes.getDimension(
-            context, true, "welcomeSocialSignInButtonDimension"),
+        height: Theme.of(context).visualDensity.userIStandardsSocialButtonHeight,
+        width: Theme.of(context).visualDensity.userIStandardsSocialButtonWidth,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(360),
-          color: Theme.of(context).colorScheme.userIStandardsSocialButton(),
+          color: Theme.of(context).colorScheme.userIStandardsSocialButton,
         ),
         child: Image(
           image: iconCase == 0
@@ -195,16 +193,16 @@ class UserIStandards {
       content: Text(
         getTranslated(context, key),
         style: TextStyle(
-            color: Theme.of(context).colorScheme.userIStandardsToastMessageContent(),
+            color: Theme.of(context).colorScheme.userIStandardsToastMessageContent,
             fontSize: Theme.of(context)
                 .textTheme
-                .interfaceStandardsToastMessageContentFontSize,
+                .userIStandardsToastMessageContent,
             fontWeight: Theme.of(context)
                 .typography
-                .interfaceStandardsToastMessageContentFontWeight),
+                .userIStandardsToastMessageContent),
       ),
       duration: const Duration(seconds: 3),
-      backgroundColor: Theme.of(context).colorScheme.userIStandardsToastMessageBackground(),
+      backgroundColor: Theme.of(context).colorScheme.userIStandardsToastMessageBackground,
     ));
   }
 
@@ -212,10 +210,9 @@ class UserIStandards {
     return Text(
       getTranslated(context, key),
       style: TextStyle(
-          color: Theme.of(context).colorScheme.userIStandardsTitleContent(),
-          fontSize: Theme.of(context).textTheme.interfaceStandardsTitleFontSize,
-          fontWeight:
-              Theme.of(context).typography.interfaceStandardsTitleFontWeight),
+          color: Theme.of(context).colorScheme.userIStandardsTitleContent,
+          fontSize: Theme.of(context).textTheme.userIStandardsTitleContent,
+          fontWeight: Theme.of(context).typography.userIStandardsTitleContent),
     );
   }
 
@@ -226,34 +223,34 @@ class UserIStandards {
       keyboardType:
           keyboardType == 0 ? TextInputType.emailAddress : TextInputType.text,
       style: TextStyle(
-        color: Theme.of(context).colorScheme.userIStandardsTextInputContent(),
+        color: Theme.of(context).colorScheme.userIStandardsTextInputContent,
         fontSize:
-            Theme.of(context).textTheme.interfaceStandardsTextInputFontSize,
+            Theme.of(context).textTheme.userIStandardsTextInputContent,
+        fontWeight: Theme.of(context).typography.userIStandardsTextInputContent,
       ),
       decoration: InputDecoration(
         prefixIcon: Icon(
           key != "inputEmail"
               ? (key == "inputPassword" ? Icons.lock : Icons.person)
               : Icons.email,
-          color:
-              Theme.of(context).colorScheme.userIStandardsTextInputIcon(),
+          color: Theme.of(context).colorScheme.userIStandardsTextInputIcon,
         ),
         suffixIcon: iconButton != null ? iconButton : null,
         hintText: getTranslated(context, key),
         hintStyle: TextStyle(
-          color: Theme.of(context).colorScheme.userIStandardsTextInputContent(),
+          color: Theme.of(context).colorScheme.userIStandardsTextInputContent,
         ),
         labelStyle: TextStyle(
-          color: Theme.of(context).colorScheme.userIStandardsTextInputContent(),
+          color: Theme.of(context).colorScheme.userIStandardsTextInputContent,
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.userIStandardsTextInputLine(),
+            color: Theme.of(context).colorScheme.userIStandardsTextInputLine,
           ),
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.userIStandardsTextInputContent(),
+            color: Theme.of(context).colorScheme.userIStandardsTextInputContent,
           ),
         ),
       ),

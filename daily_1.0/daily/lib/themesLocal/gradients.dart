@@ -10,16 +10,16 @@ class Gradients {
   Shader signUpButtonGradient(BuildContext context) {
     Shader shader = gradientStandards.textLinearGradient(
         context,
-        Theme.of(context).colorScheme.gradientsBackgroundTopRight(),
-        Theme.of(context).colorScheme.gradientsBackgroundBottomLeft());
+        Theme.of(context).colorScheme.gradientsBackgroundTopRight,
+        Theme.of(context).colorScheme.gradientsBackgroundBottomLeft);
     return shader;
   }
 
   LinearGradient welcomeScreenGradient(BuildContext context) {
     LinearGradient linearGradient = gradientStandards.bodyLinearGradient(
         context,
-        Theme.of(context).colorScheme.gradientsBackgroundTopRight(),
-        Theme.of(context).colorScheme.gradientsBackgroundBottomLeft(),
+        Theme.of(context).colorScheme.gradientsBackgroundTopRight,
+        Theme.of(context).colorScheme.gradientsBackgroundBottomLeft,
         false);
     return linearGradient;
   }
@@ -27,8 +27,8 @@ class Gradients {
   LinearGradient loginScreenGradient(BuildContext context) {
     LinearGradient linearGradient = gradientStandards.bodyLinearGradient(
         context,
-        Theme.of(context).colorScheme.gradientsBackgroundTopRight(),
-        Theme.of(context).colorScheme.gradientsBackgroundBottomLeft(),
+        Theme.of(context).colorScheme.gradientsBackgroundTopRight,
+        Theme.of(context).colorScheme.gradientsBackgroundBottomLeft,
         false);
     return linearGradient;
   }
@@ -36,8 +36,8 @@ class Gradients {
   LinearGradient forgotPasswordScreenGradient(BuildContext context) {
     LinearGradient linearGradient = gradientStandards.bodyLinearGradient(
         context,
-        Theme.of(context).colorScheme.gradientsBackgroundTopRight(),
-        Theme.of(context).colorScheme.gradientsBackgroundBottomLeft(),
+        Theme.of(context).colorScheme.gradientsBackgroundTopRight,
+        Theme.of(context).colorScheme.gradientsBackgroundBottomLeft,
         false);
     return linearGradient;
   }

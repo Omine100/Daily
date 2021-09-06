@@ -20,7 +20,7 @@ extension CustomColorScheme on ColorScheme {
   Color get userIStandardsLanguageSelectorIcon => IsDark() ? Color(0xFFFFFFFF) : Color(0xFF000000);
   Color get userIStandardsShareButton => IsDark() ? Color(0xFFFFFFFF) : Color(0xFFBDBDBD);
   Color get userIStandardsSocialButton => IsDark() ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
-  Color get userIStandardsToastMessageContent() => IsDark() ? Color(0xFFFFFFFF) : Color(0xFFBDBDBD);
+  Color get userIStandardsToastMessageContent => IsDark() ? Color(0xFFFFFFFF) : Color(0xFFBDBDBD);
   Color get userIStandardsToastMessageBackground => IsDark() ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
   Color get userIStandardsBackButton => IsDark() ? Color(0xFFFFFFFF) : Color(0xFF000000);
   Color get userIStandardsTitleContent => IsDark() ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
