@@ -24,7 +24,6 @@ class Languages {
   Future<String> getLanguage() async {
     String locale;
     getLocale().then((_locale) => locale);
-
     return locale;
   }
 
