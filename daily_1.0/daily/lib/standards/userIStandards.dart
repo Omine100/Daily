@@ -4,6 +4,7 @@ import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/mediaManagement.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
+import 'package:daily/servicesLocal/systemPreferences.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 import 'package:daily/themesLocal/sizes.dart';
@@ -17,7 +18,7 @@ class UserIStandards {
 
   //MECHANICS
   Widget showThemeSelector(BuildContext context) {
-    return Consumer<ThemeNotifier>(
+    return Consumer<SystemPreferences>(
       builder: (context, notifier, child) => SwitchListTile(
         inactiveThumbImage: AssetImage(
             'lib/assets/interfaceStandardsThemeSelectorMoonImage.png'),
@@ -28,9 +29,9 @@ class UserIStandards {
         inactiveThumbColor:
             Theme.of(context).colorScheme.userIStandardsThemeSelector,
         onChanged: (val) {
-          notifier.toggleTheme();
+          notifier.saveToPrefs('isDark', val);
         },
-        value: notifier.darkTheme,
+        value: notifier.getFromPrefs('isDark'),
       ),
     );
   }

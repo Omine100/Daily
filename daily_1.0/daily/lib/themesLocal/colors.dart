@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:daily/servicesLocal/systemPreferences.dart';
 
 //Install extension '#region folding for VS Code'
-
-bool isDark = false;
 
 extension CustomColorScheme on ColorScheme {
   // #region essential
@@ -35,32 +33,4 @@ extension CustomColorScheme on ColorScheme {
   // #region userXStandards
   Color get userXStandardsProgressIndicator => isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
   // #endregion
-}
-
-class ThemeNotifier extends ChangeNotifier {
-  SharedPreferences prefs;
-
-  bool get darkTheme => _loadFromPrefs('isDark');
-
-  toggleTheme() {
-    isDark = !isDark;
-    _saveToPrefs('isDark', isDark);
-  }
-
-  _initPrefs() async {
-    prefs = await SharedPreferences.getInstance();
-  }
-
-  _loadFromPrefs(var string) async {
-    await _initPrefs();
-    return prefs.get(string);
-  }
-
-  _saveToPrefs(var string, var value) async {
-    await _initPrefs();
-    if (value.runtimeType == int) prefs.setInt(string, value);
-    if (value.runtimeType == double) prefs.setDouble(string, value);
-    if (value.runtimeType == string) prefs.setString(string, value);
-    if (value.runtimeType == bool) prefs.setBool(string, value);
-  }
 }
