@@ -34,7 +34,7 @@ class FirebaseCRUD {
                 .doc(date)
                 .set({"imageURL": _imageURL})
           });
-    } on FirebaseException catch (e) {
+    } on FirebaseException {
       userIStandards.showToastMessage(context, "errorImageFailedToUpload");
     }
   }
@@ -58,7 +58,7 @@ class FirebaseCRUD {
       BuildContext context, String imageURL, File imageFile) async {
     try {
       await storage.refFromURL(imageURL).putFile(imageFile);
-    } on FirebaseException catch (e) {
+    } on FirebaseException {
       userIStandards.showToastMessage(context, "errorImageFailedToUpload");
     }
   }

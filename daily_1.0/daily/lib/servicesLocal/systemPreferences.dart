@@ -12,10 +12,13 @@ class SystemPreferences extends ChangeNotifier {
 
   saveToPrefs(String key, dynamic value) async {
     await initPrefs();
-    if (value.runtimeType == int) prefs.setInt(key, value);
-    if (value.runtimeType == double) prefs.setDouble(key, value);
-    if (value.runtimeType == bool) prefs.setBool(key, value);
-    if (value.runtimeType == String) prefs.setString(key, value);
+    switch (value.runtimeType) {
+      case int: prefs.setInt(key, value); break;
+      case double: prefs.setDouble(key, value); break;
+      case bool: prefs.setBool(key, value); break;
+      case String: prefs.setString(key, value); break;
+      default: prefs.setString(key, value.toString());
+    }
   }
 
   dynamic getFromPrefs(String key) async {

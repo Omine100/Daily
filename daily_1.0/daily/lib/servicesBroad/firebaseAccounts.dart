@@ -74,10 +74,10 @@ class FirebaseAccounts {
   }
 
   Future<void> signInEmailAndPassword(
-      BuildContext context, String user_email, String user_password) async {
+      BuildContext context, String email, String password) async {
     try {
       await auth.signInWithEmailAndPassword(
-          email: user_email, password: user_password);
+          email: email, password: password);
     } on FirebaseAuthException catch (e) {
       String key;
       switch (e.code) {
