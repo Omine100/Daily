@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 //VARIABLE INITIALIZATION
 SharedPreferences prefs;
-bool isDark;
+bool isDark = false;
 
 class SystemPreferences extends ChangeNotifier {
   initPrefs() async {
@@ -20,5 +20,6 @@ class SystemPreferences extends ChangeNotifier {
 
   dynamic getFromPrefs(String key) async {
     await initPrefs();
+    return prefs.get(key);
   }
 }

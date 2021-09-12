@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:daily/servicesLocal/systemLocalizations.dart';
 import 'package:daily/main.dart';
+import 'package:daily/servicesLocal/systemPreferences.dart';
+import 'package:daily/servicesLocal/systemLocalizations.dart';
 
 class Languages {
   Languages(this.id, this.name, this.flag, this.languageCode);
@@ -21,14 +21,8 @@ class Languages {
     ];
   }
 
-  Future<String> getLanguage() async {
-    String locale;
-    getLocale().then((_locale) => locale);
-    return locale;
-  }
-
   void setLanguage(BuildContext context, Languages language) async {
-    Locale _temp = await setLocale(language.languageCode);
+    Locale _temp = await SystemPreferences().saveToPrefs("LanguageCode", language.languageCode);
     Daily.setLocale(context, _temp);
   }
 }
@@ -51,18 +45,6 @@ Locale _locale(String languageCode) {
       break;
   }
   return _temp;
-}
-
-Future<Locale> setLocale(String languageCode) async {
-  SharedPreferences _prefs = await SharedPreferences.getInstance();
-  await _prefs.setString("LanguageCode", languageCode);
-  return _locale(languageCode);
-}
-
-Future<Locale> getLocale() async {
-  SharedPreferences _prefs = await SharedPreferences.getInstance();
-  String languageCode = _prefs.getString("LanguageCode") ?? "en";
-  return _locale(languageCode);
 }
 
 String getTranslated(BuildContext context, String key) {

@@ -12,9 +12,7 @@ class RouteNavigation {
     Navigator.push(context, MaterialPageRoute(builder: (context) => page));
   }
 
-  void routeInitial(BuildContext context, bool isSignedIn) {
-    isSignedIn
-        ? routePage(context, LoginScreen())
-        : routePage(context, HomeScreen());
+  Widget routeInitial(BuildContext context, bool isSignedIn) {
+    return isSignedIn ? LoginScreen() : HomeScreen();
   }
 }
