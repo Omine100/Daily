@@ -9,6 +9,8 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 import 'package:daily/themesLocal/sizes.dart';
 import 'package:daily/themesLocal/dimensions.dart';
+import 'package:daily/userInterface/home.dart';
+import 'package:daily/userInterface/intro.dart';
 
 class UserIStandards {
   //CLASS INITIALIZATION
@@ -167,9 +169,9 @@ class UserIStandards {
             ? firebaseAccounts.signInGoogle().then((_isNewUser) => isNewUser)
             : firebaseAccounts.signInTwitter().then((_isNewUser) => isNewUser);
         if (isNewUser) {
-          routeNavigation.routeHome(context);
+          routeNavigation.routePage(context, HomeScreen());
         } else {
-          routeNavigation.routeIntro(context);
+          routeNavigation.routePage(context, IntroScreen());
         }
       },
       child: Container(
