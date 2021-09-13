@@ -38,7 +38,7 @@ class _DailyState extends State<Daily> {
   //MECHANICS
   void initState() {
     super.initState();
-    firebaseAccounts.getCurrentUserId().then((_isSignedIn) => isSignedIn);
+    firebaseAccounts.getSignedInStatus().then((_isSignedIn) => isSignedIn);
     isDark = systemPreferences.getFromPrefs('isDark') ?? false;
   }
 

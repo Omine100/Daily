@@ -33,7 +33,7 @@ class UserIStandards {
         onChanged: (val) {
           notifier.saveToPrefs('isDark', val);
         },
-        value: notifier.getFromPrefs('isDark'),
+        value: isDark,
       ),
     );
   }

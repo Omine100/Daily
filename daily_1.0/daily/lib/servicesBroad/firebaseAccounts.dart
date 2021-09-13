@@ -8,7 +8,7 @@ import 'package:daily/standards/userIStandards.dart';
 
 class FirebaseAccounts {
   //CLASS INITLIALIZATION
-  UserIStandards userIStandards = new UserIStandards();
+  // UserIStandards userIStandards = new UserIStandards();
 
   //VARIABLE INITIALIZATION
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -69,7 +69,7 @@ class FirebaseAccounts {
         default:
           key = "errorDefault";
       }
-      userIStandards.showToastMessage(context, key);
+      // userIStandards.showToastMessage(context, key);
     }
   }
 
@@ -96,7 +96,7 @@ class FirebaseAccounts {
         default:
           key = "errorDefault";
       }
-      userIStandards.showToastMessage(context, key);
+      // userIStandards.showToastMessage(context, key);
     }
   }
 

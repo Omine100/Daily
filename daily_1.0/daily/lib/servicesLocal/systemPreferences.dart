@@ -21,7 +21,7 @@ class SystemPreferences extends ChangeNotifier {
     }
   }
 
-  dynamic getFromPrefs(String key) async {
+  Future<dynamic> getFromPrefs(String key) async {
     await initPrefs();
     return prefs.get(key);
   }
