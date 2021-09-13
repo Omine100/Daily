@@ -33,13 +33,13 @@ class _DailyState extends State<Daily> {
 
   //VARIABLE INITIALIZATION
   Locale locale;
-  bool isSignedIn;
+  bool isSignedIn = false;
 
   //MECHANICS
   void initState() {
     super.initState();
     firebaseAccounts.getSignedInStatus().then((_isSignedIn) => isSignedIn);
-    isDark = systemPreferences.getFromPrefs('isDark') ?? false;
+    systemPreferences.getFromPrefs('isDark').then((_isDark) => isDark);
   }
 
   void setLocale(Locale _locale) {
