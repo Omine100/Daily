@@ -1,0 +1,67 @@
+{
+    "inputName": "Name",
+    "inputEmail": "Email",
+    "inputPassword": "Password",
+    "inputValidator": "can't be empty",
+
+    "errorInvalidPassword": "Your password is too weak.",
+    "errorInvalidEmail": "Please enter a valid email.",
+    "errorWrongPassword": "User does not exist or password is wrong.",
+    "errorUserNotFound": "User does not exist or password is wrong.",
+    "errorUserDisabled": "User has been disabled.",
+    "errorEmailAlreadyExists": "Email is already in use on different account.",
+    "errorInvalidCredential": "Please enter a valid email.",
+    "errorDefault": "An undefined Error happened.",
+
+    "mediaSelectionTitle": "Where do you want a photo from?",
+    "mediaSelectionGallery": "Gallery",
+    "mediaSelectionCamera": "Camera",
+
+    "goodMorning": "Good Morning",
+    "goodAfternoon": "Good Afternoon",
+    "goodEvening": "Good Evening",
+
+    "currentDay1": "Monday",
+    "currentDay2": "Tuesday",
+    "currentDay3": "Wednesday",
+    "currentDay4": "Thursday",
+    "currentDay5": "Friday",
+    "currentDay6": "Saturday",
+    "currentDay7": "Sunday",
+
+    "currentMonth1": "January",
+    "currentMonth2": "February",
+    "currentMonth3": "March",
+    "currentMonth4": "April",
+    "currentMonth5": "May",
+    "currentMonth6": "June",
+    "currentMonth7": "July",
+    "currentMonth8": "August",
+    "currentMonth9": "September",
+    "currentMonth10": "October",
+    "currentMonth11": "November",
+    "currentMonth12": "December",
+
+    "welcomeTitle": "WELCOME TO THIRTY",
+    "welcomeSignInButton": "Already have an account? Sign in!",
+    "welcomeSignUpButton": "SIGN UP",
+
+    "loginSignInTitle": "LOGIN",
+    "loginSignUpTitle": "SIGN UP",
+    "loginForgotPassword": "Forgot Password?",
+    "loginAlternativeSignIn": "Already have an account? LOGIN!",
+    "loginAlternativeSignUp": "Don't have an account? SIGN UP!",
+
+    "forgotPasswordTitle": "FORGOT PASSWORD",
+    "forgotPasswordReset": "Reset Password",
+
+    "introExerciseTitle": "GOAL",
+    "introCalendarTitle": "TRACKING",
+    "introMedalTitle": "COMPLETION",
+    "introExerciseDescription": "Maintaining goals is hard, so we are trying to make it easier.",
+    "introCalendarDescription": "Going cold turkey is never easy, so small increments work best!",
+    "introMedalDescription": "Plus you get cool medals for sticking with your goals!!!",
+
+    "homeSettingsDropdownSignOut": "Sign Out",
+    "homeSettingsDropdownDeleteAccount": "DELETE ACCOUNT"
+}

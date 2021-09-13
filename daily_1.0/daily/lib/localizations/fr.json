@@ -1,0 +1,67 @@
+{
+    "inputName": "Nom",
+    "inputEmail": "Email",
+    "inputPassword": "Mot de passe",
+    "inputValidator": "ne peut pas être vide",
+
+    "errorInvalidPassword": "Le mot de passe est trop faible.",
+    "errorInvalidEmail": "Entrer un email valide.",
+    "errorWrongPassword": "L'utilisateur n'existe pas ou le mot de passe est incorrect.",
+    "errorUserNotFound": "L'utilisateur n'existe pas ou le mot de passe est incorrect.",
+    "errorUserDisabled": "L'utilisateur a été désactivé.",
+    "errorEmailAlreadyExists": "Cet email est déjà utilisé.",
+    "errorInvalidCredential": "Entrer un email valide.",
+    "errorDefault": "Une erreur non définie s'est produite.",
+
+    "mediaSelectionTitle": "D'où voulez-vous une photo?",
+    "mediaSelectionGallery": "Galerie",
+    "mediaSelectionCamera": "Caméra",
+
+    "goodMorning": "Bonjour",
+    "goodAfternoon": "Bonne après-midi",
+    "goodEvening": "Bonne soirée",
+
+    "currentDay1": "Lundi",
+    "currentDay2": "Mardi",
+    "currentDay3": "Mercredi",
+    "currentDay4": "Jeudi",
+    "currentDay5": "Vendredi",
+    "currentDay6": "Samedi",
+    "currentDay7": "Dimanche",
+
+    "currentMonth1": "Janvier",
+    "currentMonth2": "Février",
+    "currentMonth3": "Mars",
+    "currentMonth4": "Avril",
+    "currentMonth5": "Mai",
+    "currentMonth6": "Juin",
+    "currentMonth7": "Juillet",
+    "currentMonth8": "Août",
+    "currentMonth9": "Septembre",
+    "currentMonth10": "Octobre",
+    "currentMonth11": "Novembre",
+    "currentMonth12": "Décembre",
+
+    "welcomeTitle": "BIENVENUE À TRENTE",
+    "welcomeSignInButton": "Vous avez déjà un compte? S'identifier!",
+    "welcomeSignUpButton": "S'INSCRIRE",
+
+    "loginSignInTitle": "S'IDENTIFIER",
+    "loginSignUpTitle": "S'INSCRIRE",
+    "loginForgotPassword": "Mot de passe oublié?",
+    "loginAlternativeSignIn": "Avoir un compte? S'IDENTIFIER!",
+    "loginAlternativeSignUp": "Pas de compte? S'INSCRIRE!",
+
+    "forgotPasswordTitle": "MOT DE PASSE OUBLIÉ",
+    "forgotPasswordReset": "Mot de Passe Oublié",
+
+    "introExerciseTitle": "GOAL",
+    "introCalendarTitle": "TRACKING",
+    "introMedalTitle": "COMPLETION",
+    "introExerciseDescription": "asocdao",
+    "introCalendarDescription": "asdfcawoj",
+    "introMedalDescription": "ascojwocao",
+
+    "homeSettingsDropdownSignOut": "Se Déconnecter",
+    "homeSettingsDropdownDeleteAccount": "SUPPRIMER LE COMPTE"
+}

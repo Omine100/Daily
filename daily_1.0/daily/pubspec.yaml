@@ -22,7 +22,6 @@ dependencies:
   firebase_storage: ^8.0.5
   firebase_auth: ^1.0.1
   google_sign_in: ^5.0.2
-  flutter_twitter_login: ^1.1.0
   picker: ^1.0.6
   path_provider: ^2.0.1
   provider: ^5.0.0
@@ -41,3 +40,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+      - lib/assets/login_googleLogo.png
+      - lib/localizations/en.json
+      - lib/localizations/es.json
+      - lib/localizations/fr.json

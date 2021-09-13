@@ -165,9 +165,7 @@ class UserIStandards {
     //USER INTERFACE: Show social icon button
     return new GestureDetector(
       onTap: () {
-        iconCase == 0
-            ? firebaseAccounts.signInGoogle().then((_isNewUser) => isNewUser)
-            : firebaseAccounts.signInTwitter().then((_isNewUser) => isNewUser);
+        firebaseAccounts.signInGoogle().then((_isNewUser) => isNewUser);
         if (isNewUser) {
           routeNavigation.routePage(context, HomeScreen());
         } else {
@@ -183,9 +181,7 @@ class UserIStandards {
           color: Theme.of(context).colorScheme.userIStandardsSocialButton,
         ),
         child: Image(
-          image: iconCase == 0
-              ? AssetImage('lib/assets/googleLogo.png')
-              : AssetImage('lib/assets/twitterLogo.png'),
+          image: AssetImage('lib/assets/googleLogo.png')
         ),
       ),
     );

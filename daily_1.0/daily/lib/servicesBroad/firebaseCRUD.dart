@@ -9,9 +9,6 @@ import 'dart:io';
 import 'package:daily/standards/userIStandards.dart';
 
 class FirebaseCRUD {
-  //CLASS INITIALIZATION
-  UserIStandards userIStandards = new UserIStandards();
-
   //VARIABLE INITIALIZATION
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -35,7 +32,7 @@ class FirebaseCRUD {
                 .set({"imageURL": _imageURL})
           });
     } on FirebaseException {
-      userIStandards.showToastMessage(context, "errorImageFailedToUpload");
+      UserIStandards().showToastMessage(context, "errorImageFailedToUpload");
     }
   }
 
@@ -59,7 +56,7 @@ class FirebaseCRUD {
     try {
       await storage.refFromURL(imageURL).putFile(imageFile);
     } on FirebaseException {
-      userIStandards.showToastMessage(context, "errorImageFailedToUpload");
+      UserIStandards().showToastMessage(context, "errorImageFailedToUpload");
     }
   }
 
