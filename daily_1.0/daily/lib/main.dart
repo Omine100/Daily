@@ -39,7 +39,6 @@ class _DailyState extends State<Daily> {
   void initState() {
     super.initState();
     firebaseAccounts.getSignedInStatus().then((_isSignedIn) => isSignedIn);
-    systemPreferences.getFromPrefs('isDark').then((_isDark) => isDark);
   }
 
   void setLocale(Locale _locale) {

@@ -27,26 +27,6 @@ class Languages {
   }
 }
 
-//MECHANICS
-Locale _locale(String languageCode) {
-  Locale _temp;
-  switch (languageCode) {
-    case "en":
-      _temp = Locale(languageCode, "en");
-      break;
-    case "es":
-      _temp = Locale(languageCode, "es");
-      break;
-    case "fr":
-      _temp = Locale(languageCode, "fr");
-      break;
-    default:
-      _temp = Locale(languageCode, "en");
-      break;
-  }
-  return _temp;
-}
-
 String getTranslated(BuildContext context, String key) {
   return AppLocalizations.of(context).translate(key);
 }
