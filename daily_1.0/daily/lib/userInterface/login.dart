@@ -9,7 +9,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Testing", style: TextStyle(color: Colors.red, fontSize: 100),),
+      child: Text("LOGIN", style: TextStyle(color: Colors.red, fontSize: 100),),
     );
   }
 }

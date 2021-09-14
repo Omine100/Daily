@@ -13,6 +13,6 @@ class RouteNavigation {
   }
 
   Widget routeInitial(BuildContext context, bool isSignedIn) {
-    return isSignedIn ? LoginScreen() : HomeScreen();
+    return isSignedIn ? HomeScreen() : LoginScreen();
   }
 }

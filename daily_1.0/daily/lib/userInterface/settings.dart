@@ -9,7 +9,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Testing", style: TextStyle(color: Colors.red, fontSize: 100),),
+      child: Text("SETTINGS", style: TextStyle(color: Colors.red, fontSize: 100),),
     );
   }
 }
