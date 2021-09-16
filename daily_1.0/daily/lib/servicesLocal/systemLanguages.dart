@@ -21,9 +21,30 @@ class Languages {
     ];
   }
 
+  Locale _locale(String languageCode) {
+    Locale _temp;
+    switch (languageCode) {
+      case "en":
+        _temp = Locale(languageCode, "en");
+        break;
+      case "es":
+        _temp = Locale(languageCode, "es");
+        break;
+      case "fr":
+        _temp = Locale(languageCode, "fr");
+        break;
+      default:
+        _temp = Locale(languageCode, "en");
+        break;
+    }
+    return _temp;
+  }
+
   void setLanguage(BuildContext context, Languages language) async {
-    Locale _temp = await SystemPreferences().saveToPrefs("LanguageCode", language.languageCode);
-    Daily.setLocale(context, _temp);
+    await SystemPreferences()
+        .saveToPrefs("LanguageCode", language.languageCode);
+    Locale _temp = _locale(language.languageCode);
+    locale = _temp;
   }
 }
 

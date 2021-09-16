@@ -16,11 +16,6 @@ void main() async {
 }
 
 class Daily extends StatefulWidget {
-  static void setLocale(BuildContext context, Locale locale) {
-    _DailyState state = context.findAncestorStateOfType<_DailyState>();
-    state.setLocale(locale);
-  }
-
   @override
   _DailyState createState() => _DailyState();
 }
@@ -32,28 +27,32 @@ class _DailyState extends State<Daily> {
   SystemPreferences systemPreferences = new SystemPreferences();
 
   //VARIABLE INITIALIZATION
-  Locale locale;
   bool isSignedIn = false;
 
   //MECHANICS
   void initState() {
     super.initState();
+    firebaseAccounts.getSignedInStatus().then((_isSignedIn) => isSignedIn);
     systemSetup();
   }
 
-  void setLocale(Locale _locale) {
-    setState(() {
-      locale = _locale;
-    });
-  }
-
   void systemSetup() {
-    firebaseAccounts.getSignedInStatus().then((_isSignedIn) => isSignedIn);
     systemPreferences.saveToPrefs('isAndroid',
         Theme.of(context).platform == TargetPlatform.android ? true : false);
     systemPreferences
         .getFromPrefs('isDark')
         .then((_isDark) => _isDark == null ? isDark = false : isDark = _isDark);
+    systemPreferences.getFromPrefs('isLargeDevice').then((_isLargeDevicee) =>
+        _isLargeDevicee == null
+            ? (MediaQuery.of(context).size.width < 600
+                ? isLargeDevice = false
+                : isLargeDevice = true)
+            : isLargeDevice = _isLargeDevicee);
+    systemPreferences
+        .getFromPrefs('languageCode')
+        .then((_languageCode) => {
+          _languageCode ?? languageCode = "en";
+        });
   }
 
   @override

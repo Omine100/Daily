@@ -3,8 +3,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 //VARIABLE INITIALIZATION
 SharedPreferences prefs;
+Locale locale;
+String languageCode;
 bool isDark = false;
 bool isAndroid = true;
+bool isLargeDevice = false;
 
 class SystemPreferences extends ChangeNotifier {
   initPrefs() async {
