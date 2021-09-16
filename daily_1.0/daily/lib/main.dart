@@ -38,7 +38,7 @@ class _DailyState extends State<Daily> {
   //MECHANICS
   void initState() {
     super.initState();
-    firebaseAccounts.getSignedInStatus().then((_isSignedIn) => isSignedIn);
+    systemSetup();
   }
 
   void setLocale(Locale _locale) {
@@ -46,7 +46,16 @@ class _DailyState extends State<Daily> {
       locale = _locale;
     });
   }
-  
+
+  void systemSetup() {
+    firebaseAccounts.getSignedInStatus().then((_isSignedIn) => isSignedIn);
+    systemPreferences.saveToPrefs('isAndroid',
+        Theme.of(context).platform == TargetPlatform.android ? true : false);
+    systemPreferences
+        .getFromPrefs('isDark')
+        .then((_isDark) => _isDark == null ? isDark = false : isDark = _isDark);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
