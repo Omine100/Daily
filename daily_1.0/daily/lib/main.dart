@@ -48,10 +48,10 @@ class _DailyState extends State<Daily> {
                 ? isLargeDevice = false
                 : isLargeDevice = true)
             : isLargeDevice = _isLargeDevicee);
-    systemPreferences
-        .getFromPrefs('languageCode')
-        .then((_languageCode) => {
-          _languageCode ?? languageCode = "en";
+    systemPreferences.getFromPrefs('languageCode').then((_languageCode) => {
+          _languageCode == null
+              ? languageCode = "en"
+              : languageCode = _languageCode
         });
   }
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:daily/main.dart';
 import 'package:daily/servicesLocal/systemPreferences.dart';
 import 'package:daily/servicesLocal/systemLocalizations.dart';
 
