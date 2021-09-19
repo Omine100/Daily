@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/systemPreferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -8,26 +9,21 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey.shade600,
-      child: Column(
-        children: [
-          Text("Login"),
-          Container(
-            color: Colors.grey.shade400,
-            height: 400,
-            child: RefreshIndicator(
-                child: ListView(
-                  scrollDirection: Axis.vertical,
-                ),
-                onRefresh: _refresh),
-          ),
-        ],
-      ),
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: isLargeDevice ? loginScreenLargeLayout(context) : loginScreenSmallLayout(context),
     );
   }
 }
 
-Future<void> _refresh() {
-  return Future.delayed(Duration(seconds: 5));
-}
+loginScreenLargeLayout(BuildContext context) {
+  return Container(
+    child: Text("Large"),
+  );
+} 
+
+loginScreenSmallLayout(BuildContext context) {
+  return Container(
+    child: Text("Small"),
+  );
+} 

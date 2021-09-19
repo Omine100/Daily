@@ -43,11 +43,9 @@ class _DailyState extends State<Daily> {
         .getFromPrefs('isDark')
         .then((_isDark) => _isDark == null ? isDark = false : isDark = _isDark);
     systemPreferences.getFromPrefs('isLargeDevice').then((_isLargeDevicee) =>
-        _isLargeDevicee == null
-            ? (MediaQuery.of(context).size.width < 600
+        MediaQuery.of(context).size.width < 600
                 ? isLargeDevice = false
-                : isLargeDevice = true)
-            : isLargeDevice = _isLargeDevicee);
+                : isLargeDevice = true);
     systemPreferences.getFromPrefs('languageCode').then((_languageCode) => {
           _languageCode == null
               ? languageCode = "en"

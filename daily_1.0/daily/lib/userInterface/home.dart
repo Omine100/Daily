@@ -9,7 +9,25 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("HOME", style: TextStyle(color: Colors.red, fontSize: 100),),
+      color: Colors.grey.shade600,
+      child: Column(
+        children: [
+          Text("Home"),
+          Container(
+            color: Colors.grey.shade400,
+            height: 400,
+            child: RefreshIndicator(
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                ),
+                onRefresh: _refresh),
+          ),
+        ],
+      ),
     );
   }
+}
+
+Future<void> _refresh() {
+  return Future.delayed(Duration(seconds: 5));
 }
