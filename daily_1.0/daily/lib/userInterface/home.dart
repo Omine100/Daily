@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:daily/standards/extensions/widgetNeumorphism.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -33,10 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 50,
             ),
-            Text(
-              "Testing\nTesting\nTesting",
-              style: TextStyle(color: Colors.grey.shade500, fontSize: 50),
-            ).addNeumorphism(boxColor: Color(0xFF0000), padding: 20)
           ],
         ),
       ),
