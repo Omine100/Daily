@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:daily/standards/extensions/widgetNeumorphism.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -8,21 +9,36 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey.shade600,
-      child: Column(
-        children: [
-          Text("Home"),
-          Container(
-            color: Colors.grey.shade400,
-            height: 400,
-            child: RefreshIndicator(
-                child: ListView(
-                  scrollDirection: Axis.vertical,
-                ),
-                onRefresh: _refresh),
-          ),
-        ],
+    return Material(
+      child: Container(
+        color: Colors.grey.shade300,
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          children: [
+            Text("Home"),
+            SizedBox(
+              height: 50,
+            ),
+            Container(
+              color: Colors.blue,
+              height: 100,
+              width: 300,
+              child: RefreshIndicator(
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                  ),
+                  onRefresh: _refresh),
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            Text(
+              "Testing\nTesting\nTesting",
+              style: TextStyle(color: Colors.grey.shade500, fontSize: 50),
+            ).addNeumorphism(boxColor: Color(0xFF0000), padding: 20)
+          ],
+        ),
       ),
     );
   }

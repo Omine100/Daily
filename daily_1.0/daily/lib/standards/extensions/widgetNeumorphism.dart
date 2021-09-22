@@ -7,9 +7,13 @@ extension Neumorphism on Widget {
     double blurRadius = 10,
     Color topShadowColor = Colors.white60,
     Color bottomShadowColor = const Color(0x26234395),
+    Color boxColor = const Color(0x00000000),
+    double padding = 0.0,
   }) {
     return Container(
+      padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
+        color: boxColor,
         borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
         boxShadow: [
           BoxShadow(
