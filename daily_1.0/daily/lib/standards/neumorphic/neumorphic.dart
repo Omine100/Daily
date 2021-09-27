@@ -9,11 +9,13 @@ extension Neumorphic on Widget {
     double blurRadius = 0.0,
     double height = 0.0,
     double width = 0.0,
+    Duration duration = const Duration(milliseconds: 100),
     Offset blurOffset = const Offset(0, 0),
     Color backgroundColor = const Color(0x00FFFFFF),
     bool isEnabled = false,
   }) {
-    return Container(
+    return AnimatedContainer(
+      duration: duration,
       height: height,
       width: width,
       decoration: BoxDecoration(
