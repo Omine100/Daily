@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/colorManagement.dart';
+import 'package:daily/servicesLocal/systemPreferences.dart';
 
 extension Neumorphic on Widget {
   addWrapper({
@@ -9,22 +11,24 @@ extension Neumorphic on Widget {
     double width = 0.0,
     Offset blurOffset = const Offset(0, 0),
     Color backgroundColor = const Color(0x00FFFFFF),
-    bool isDarkEnabled = false,
     bool isEnabled = false,
   }) {
     return Container(
+      height: height,
+      width: width,
       decoration: BoxDecoration(
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(borderRadius),
         boxShadow: [
           BoxShadow(
             offset: blurOffset,
             blurRadius: blurRadius,
-            color: bottomShadowColor,
+            color: adjust(backgroundColor, isDark ? 0.2 : -0.2),
           ),
           BoxShadow(
             offset: Offset(-blurOffset.dx, -blurOffset.dx),
             blurRadius: blurRadius,
-            color: topShadowColor,
+            color: adjust(backgroundColor, isDark ? -0.2 : 0.2),
           ),
         ],
       ),
