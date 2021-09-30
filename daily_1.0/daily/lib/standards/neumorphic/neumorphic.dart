@@ -46,7 +46,6 @@ extension Neumorphic on Widget {
     NeumorphicShape shape = NeumorphicShape.convex,
     double blurRadius,
     Color backgroundColor = const Color(0x00FFFFFF),
-    bool isEnabled = false,
   }) {
     final offset = sourceToOffset(lightSource, distance);
 
