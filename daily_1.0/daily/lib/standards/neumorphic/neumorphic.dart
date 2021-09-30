@@ -43,27 +43,48 @@ extension Neumorphic on Widget {
     double width = 0.0,
     double distance = 0.0,
     NeumorphicLightSource lightSource = NeumorphicLightSource.topLeft,
-    double blurRadius = 0.0,
-    Offset blurOffset = const Offset(0, 0),
     NeumorphicShape shape = NeumorphicShape.convex,
+    double blurRadius,
     Color backgroundColor = const Color(0x00FFFFFF),
     bool isEnabled = false,
   }) {
+    final offset = sourceToOffset(lightSource, distance);
+
     return AnimatedContainer(
       duration: duration,
       height: height,
       width: width,
       decoration: BoxDecoration(
         color: backgroundColor,
+        gradient: LinearGradient(
+          begin: Alignment(
+            -offset.dx.clamp(-1, 1).toDouble(),
+            -offset.dy.clamp(-1, 1).toDouble(),
+          ),
+          end: Alignment(
+            offset.dx.clamp(-1, 1).toDouble(),
+            offset.dy.clamp(-1, 1).toDouble(),
+          ),
+          colors: [
+            shape == NeumorphicShape.flat
+                ? backgroundColor
+                : colorShadow(backgroundColor,
+                    shape == NeumorphicShape.convex ? 0.07 : -0.1),
+            shape == NeumorphicShape.flat
+                ? backgroundColor
+                : colorShadow(backgroundColor,
+                    shape == NeumorphicShape.convex ? -0.1 : 0.07),
+          ],
+        ),
         borderRadius: BorderRadius.circular(borderRadius),
         boxShadow: [
           BoxShadow(
-            offset: blurOffset,
+            offset: offset,
             blurRadius: blurRadius,
             color: colorShade(backgroundColor, isDark ? 0.2 : -0.2),
           ),
           BoxShadow(
-            offset: Offset(-blurOffset.dx, -blurOffset.dx),
+            offset: Offset(-offset.dx, -offset.dx),
             blurRadius: blurRadius,
             color: colorShade(backgroundColor, isDark ? -0.2 : 0.2),
           ),
