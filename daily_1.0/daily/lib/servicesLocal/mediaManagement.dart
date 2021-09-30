@@ -22,7 +22,6 @@ class MediaManagement {
       final String fileName = path.basename(pickedFile.path);
       File imageFile = File(pickedFile.path);
       await firebaseCRUD.createImageData(context, fileName, imageFile);
-      state.setState(() {});
     } catch (e) {
       print(e);
       //Show dialog for failed to load camera
