@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:daily/standards/neumorphic/neumorphic.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -15,13 +16,13 @@ class _HomeScreenState extends State<HomeScreen> {
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
-            Text("Home"),
+            Text("Home Slice"),
             SizedBox(
               height: 50,
             ),
             Container(
               color: Colors.blue,
-              height: 100,
+              height: 50,
               width: 300,
               child: RefreshIndicator(
                   child: ListView(
@@ -29,6 +30,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   onRefresh: _refresh),
             ),
+            SizedBox(
+              height: 50,
+            ),
+            Text("Testing").addWrapper(
+                borderRadius: 25,
+                height: 50,
+                width: 100,
+                distance: 5,
+                blurRadius: 10,
+                backgroundColor: Colors.grey.shade300),
             SizedBox(
               height: 50,
             ),

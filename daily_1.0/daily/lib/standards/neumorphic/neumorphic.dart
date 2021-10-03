@@ -89,7 +89,9 @@ extension Neumorphic on Widget {
           ),
         ],
       ),
-      child: this,
+      child: Center(
+        child: this,
+      ),
     );
   }
 }
