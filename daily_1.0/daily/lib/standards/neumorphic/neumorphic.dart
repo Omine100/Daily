@@ -12,7 +12,7 @@ enum NeumorphicLightSource {
 enum NeumorphicShape {
   concave,
   convex,
-  emboxx,
+  emboss,
   flat,
 }
 
@@ -78,14 +78,16 @@ extension Neumorphic on Widget {
         borderRadius: BorderRadius.circular(borderRadius),
         boxShadow: [
           BoxShadow(
-            offset: offset,
+            offset:
+                shape == NeumorphicShape.emboss ? offset.scale(-1, -1) : offset,
             blurRadius: blurRadius,
-            color: colorShade(backgroundColor, isDark ? 0.2 : -0.2),
+            color: colorShadow(backgroundColor, isDark ? 0.2 : -0.2),
           ),
           BoxShadow(
-            offset: Offset(-offset.dx, -offset.dx),
+            offset:
+                shape == NeumorphicShape.emboss ? offset : offset.scale(-1, -1),
             blurRadius: blurRadius,
-            color: colorShade(backgroundColor, isDark ? -0.2 : 0.2),
+            color: colorShadow(backgroundColor, isDark ? -0.2 : 0.2),
           ),
         ],
       ),

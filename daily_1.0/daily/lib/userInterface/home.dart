@@ -34,11 +34,13 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 50,
             ),
             Text("Testing").addWrapper(
-                borderRadius: 25,
-                height: 50,
+                borderRadius: 20,
+                height: 100,
                 width: 100,
                 distance: 5,
                 blurRadius: 10,
+                shape: NeumorphicShape.convex,
+                lightSource: NeumorphicLightSource.topLeft,
                 backgroundColor: Colors.grey.shade300),
             SizedBox(
               height: 50,
