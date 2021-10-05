@@ -16,24 +16,35 @@ class _HomeScreenState extends State<HomeScreen> {
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
-            Text("Home Slice"),
             SizedBox(
               height: 50,
             ),
             Text("Testing").addWrapper(
               duration: const Duration(milliseconds: 100),
-              backgroundColor: Colors.grey.shade400,
-              borderRadius: 10,
-              height: 300,
-              width: 200,
-              distance: 5,
+              borderRadius: 15,
+              height: 100,
+              width: 250,
+              distance: 7,
               intensity: 0.2,
+              blurRadius: 10,
+              backgroundColor: Colors.grey.shade300,
               lightSource: NeumorphicLightSources.topLeft,
-              shape: NeumorphicShapes.emboss,
-              blurRadius: 10
+              shape: NeumorphicShapes.convex,
             ),
             SizedBox(
               height: 50,
+            ),
+            Text("Testing").addWrapper(
+              duration: const Duration(milliseconds: 100),
+              borderRadius: 15,
+              height: 350,
+              width: 250,
+              distance: 15,
+              intensity: 0.2,
+              blurRadius: 10,
+              backgroundColor: Colors.grey.shade300,
+              lightSource: NeumorphicLightSources.topLeft,
+              shape: NeumorphicShapes.emboss,
             ),
           ],
         ),

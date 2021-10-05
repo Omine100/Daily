@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:daily/utilities/colorManagement.dart';
 import 'package:daily/servicesLocal/systemPreferences.dart';
+import 'package:daily/utilities/colorManagement.dart';
 import 'package:daily/utilities/neumorphism/neumorphicCorner.dart';
 
 enum NeumorphicLightSources {
@@ -43,39 +43,38 @@ extension Neumorphism on Widget {
     double height = 0.0,
     double width = 0.0,
     double distance = 0.0,
-    double intensity = 0.2,
+    double intensity = 0.0,
+    double blurRadius = 0.0,
+    Color backgroundColor = const Color(0x00FFFFFF),
     NeumorphicLightSources lightSource = NeumorphicLightSources.topLeft,
     NeumorphicShapes shape = NeumorphicShapes.convex,
-    double blurRadius,
-    Color backgroundColor = const Color(0x00FFFFFF),
   }) {
     final offset = sourceToOffset(lightSource, distance);
 
     final boxShadow = [
       BoxShadow(
-        blurRadius: 15,
-        offset: -Offset(5, 5),
-        color: Colors.white,
+        blurRadius: blurRadius,
+        offset: -offset,
+        color: colorShadow(backgroundColor, isDark ? -intensity : intensity),
       ),
       BoxShadow(
-        blurRadius: 15,
-        offset: Offset(4.5, 4.5),
-        color: Colors.grey.shade400,
+        blurRadius: blurRadius,
+        offset: offset,
+        color: colorShadow(backgroundColor, isDark ? intensity : -intensity),
       )
     ];
 
     final innerShadow = ConcaveDecoration(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(borderRadius),
       ),
-      colors: [Colors.grey.shade200, Colors.grey.shade400],
-      depression: 10,
+      colors: [colorShadow(backgroundColor, isDark ? intensity : -intensity), colorShadow(backgroundColor, isDark ? -intensity : intensity)],
+      depression: distance,
     );
 
     final outerShadow = BoxDecoration(
-      border: Border.all(color: Colors.grey.shade400),
-      borderRadius: BorderRadius.circular(25),
-      color: Colors.grey.shade300,
+      borderRadius: BorderRadius.circular(borderRadius),
+      color: backgroundColor,
       boxShadow: boxShadow,
     );
 
