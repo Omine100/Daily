@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:daily/standards/neumorphic/neumorphic.dart';
+import 'package:daily/utilities/neumorphism/neumorphic.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

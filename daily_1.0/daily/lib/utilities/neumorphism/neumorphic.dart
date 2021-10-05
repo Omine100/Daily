@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:daily/servicesLocal/colorManagement.dart';
+import 'package:daily/utilities/colorManagement.dart';
 import 'package:daily/servicesLocal/systemPreferences.dart';
 
 enum NeumorphicLightSources {
