@@ -42,6 +42,7 @@ extension Neumorphic on Widget {
     double height = 0.0,
     double width = 0.0,
     double distance = 0.0,
+    double intensity = 0.2,
     NeumorphicLightSource lightSource = NeumorphicLightSource.topLeft,
     NeumorphicShape shape = NeumorphicShape.convex,
     double blurRadius,
@@ -79,15 +80,17 @@ extension Neumorphic on Widget {
         boxShadow: [
           BoxShadow(
             offset:
-                shape == NeumorphicShape.emboss ? offset.scale(-1, -1) : offset,
+                shape == NeumorphicShape.emboss ? offset.scale(2.5, 2.5) : offset,
             blurRadius: blurRadius,
-            color: colorShadow(backgroundColor, isDark ? 0.2 : -0.2),
+            color: colorShadow(backgroundColor, isDark ? -intensity : intensity),
+            spreadRadius: shape == NeumorphicShape.emboss ? -15.0 : 0.0,
           ),
           BoxShadow(
             offset:
-                shape == NeumorphicShape.emboss ? offset : offset.scale(-1, -1),
+                shape == NeumorphicShape.emboss ? offset.scale(-2.5, -2.5) : offset.scale(-3, -3),
             blurRadius: blurRadius,
-            color: colorShadow(backgroundColor, isDark ? -0.2 : 0.2),
+            color: colorShadow(backgroundColor, isDark ? intensity : -intensity),
+            spreadRadius: shape == NeumorphicShape.emboss ? -15.0 : 0.0,
           ),
         ],
       ),
