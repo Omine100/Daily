@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:daily/standards/neumorphic/neumorphic.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,39 +21,39 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 50,
             ),
-            Container(
-              color: Colors.blue,
-              height: 50,
-              width: 300,
-              child: RefreshIndicator(
-                  child: ListView(
-                    scrollDirection: Axis.vertical,
-                  ),
-                  onRefresh: _refresh),
-            ),
-            SizedBox(
-              height: 50,
-            ),
             Text("Testing").addWrapper(
-                borderRadius: 0,
-                height: 150,
-                width: 150,
-                distance: 5,
-                intensity: 0.3,
-                blurRadius: 3,
-                shape: NeumorphicShape.emboss,
-                lightSource: NeumorphicLightSource.topLeft,
-                backgroundColor: Colors.grey.shade300),
+              duration: const Duration(milliseconds: 100),
+              backgroundColor: Colors.grey.shade300,
+              borderRadius: 10,
+              height: 300,
+              width: 200,
+              distance: 5,
+              intensity: 0.2,
+              lightSource: NeumorphicLightSources.topLeft,
+              shape: NeumorphicShapes.emboss,
+              blurRadius: 10
+            ),
             SizedBox(
               height: 50,
             ),
+            Neumorphic(
+              style: NeumorphicStyle(
+                shape: NeumorphicShape.convex,
+                boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)), 
+                depth: -6,
+                lightSource: LightSource.topLeft,
+                shadowLightColorEmboss: Colors.grey.shade50,
+                color: Colors.grey.shade300
+              ),
+              child: Container(
+                height: 300,
+                width: 200,
+                child: Center(child: Text("Testing"),),
+              )
+            )
           ],
         ),
       ),
     );
   }
-}
-
-Future<void> _refresh() {
-  return Future.delayed(Duration(seconds: 5));
 }
