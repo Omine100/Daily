@@ -33,7 +33,6 @@ dependencies:
 
   #User interface
   page_transition: ^1.1.7+3
-  flutter_neumorphic: ^3.0.3
 
 dev_dependencies:
   flutter_test:

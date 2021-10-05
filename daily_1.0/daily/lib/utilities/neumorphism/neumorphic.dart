@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:daily/utilities/colorManagement.dart';
 import 'package:daily/servicesLocal/systemPreferences.dart';
+import 'package:daily/utilities/neumorphism/neumorphicCorner.dart';
 
 enum NeumorphicLightSources {
   topLeft,
@@ -50,50 +51,39 @@ extension Neumorphism on Widget {
   }) {
     final offset = sourceToOffset(lightSource, distance);
 
+    final boxShadow = [
+      BoxShadow(
+        blurRadius: 15,
+        offset: -Offset(5, 5),
+        color: Colors.white,
+      ),
+      BoxShadow(
+        blurRadius: 15,
+        offset: Offset(4.5, 4.5),
+        color: Colors.grey.shade400,
+      )
+    ];
+
+    final innerShadow = ConcaveDecoration(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(25),
+      ),
+      colors: [Colors.grey.shade200, Colors.grey.shade400],
+      depression: 10,
+    );
+
+    final outerShadow = BoxDecoration(
+      border: Border.all(color: Colors.grey.shade400),
+      borderRadius: BorderRadius.circular(25),
+      color: Colors.grey.shade300,
+      boxShadow: boxShadow,
+    );
+
     return AnimatedContainer(
       duration: duration,
       height: height,
       width: width,
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        gradient: LinearGradient(
-          begin: Alignment(
-            -offset.dx.clamp(-1, 1).toDouble(),
-            -offset.dy.clamp(-1, 1).toDouble(),
-          ),
-          end: Alignment(
-            offset.dx.clamp(-1, 1).toDouble(),
-            offset.dy.clamp(-1, 1).toDouble(),
-          ),
-          colors: [
-            shape == NeumorphicShapes.flat
-                ? backgroundColor
-                : colorShadow(backgroundColor,
-                    shape == NeumorphicShapes.convex ? 0.07 : -0.1),
-            shape == NeumorphicShapes.flat
-                ? backgroundColor
-                : colorShadow(backgroundColor,
-                    shape == NeumorphicShapes.convex ? -0.1 : 0.07),
-          ],
-        ),
-        borderRadius: BorderRadius.circular(borderRadius),
-        boxShadow: [
-          BoxShadow(
-            offset:
-                shape == NeumorphicShapes.emboss ? offset.scale(1, 1) : offset,
-            blurRadius: blurRadius,
-            color: colorShadow(backgroundColor, isDark ? -intensity : intensity),
-            spreadRadius: shape == NeumorphicShapes.emboss ? -15.0 : 0.0,
-          ),
-          BoxShadow(
-            offset:
-                shape == NeumorphicShapes.emboss ? offset.scale(-1, -1) : offset.scale(-3, -3),
-            blurRadius: blurRadius,
-            color: colorShadow(backgroundColor, isDark ? intensity : -intensity),
-            spreadRadius: shape == NeumorphicShapes.emboss ? -15.0 : 0.0,
-          ),
-        ],
-      ),
+      decoration: shape == NeumorphicShapes.emboss ? innerShadow : outerShadow,
       child: Center(
         child: this,
       ),
