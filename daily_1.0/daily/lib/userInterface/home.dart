@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 50,
             ),
-            Text("Testing").addWrapper(
+            Text("Testing").addWrapperNeu(
               duration: const Duration(milliseconds: 100),
               borderRadius: 15,
               height: 100,
@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 50,
             ),
-            Text("Testing").addWrapper(
+            Text("Testing").addWrapperNeu(
               duration: const Duration(milliseconds: 100),
               borderRadius: 15,
               height: 350,
