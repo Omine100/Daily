@@ -26,43 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 250,
             ),
             Center(
-              child: Container(
-                decoration: BoxDecoration(boxShadow: [
-                  BoxShadow(
-                    blurRadius: 24,
-                    spreadRadius: 16,
-                    color: Colors.black.withOpacity(0.2),
-                  )
-                ]),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16.0),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(
-                      sigmaX: 20.0,
-                      sigmaY: 20.0,
-                    ),
-                    child: Container(
-                      height: 300,
-                      width: 300,
-                      decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(16.0),
-                          border: Border.all(
-                            width: 1.5,
-                            color: Colors.white.withOpacity(0.2),
-                          )),
-                      child: Center(
-                        child: Text("Testing",
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            )),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              child: Text("Testing").addWrapperGlass(),
             ),
             // Text("Testing").addWrapper(
             //   duration: const Duration(milliseconds: 100),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
 extension Glassmorphism on Widget {
   addWrapperGlass({
@@ -16,6 +17,35 @@ extension Glassmorphism on Widget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
         color: containerColor,
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 24,
+            spreadRadius: 16,
+            color: Colors.black.withOpacity(0.2),
+          )
+        ]
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16.0),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(
+            sigmaX: 20.0,
+            sigmaY: 20.0,
+          ),
+          child: Container(
+            height: 300,
+            width: 300,
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(16.0),
+              border: Border.all(
+                width: 1.5,
+                color: Colors.white.withOpacity(0.2),
+              )
+            ),
+            child: this
+          ),
+        ),
       ),
     );
   }
