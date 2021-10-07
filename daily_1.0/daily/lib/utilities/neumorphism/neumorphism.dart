@@ -3,33 +3,33 @@ import 'package:daily/servicesLocal/systemPreferences.dart';
 import 'package:daily/utilities/colorManagement.dart';
 import 'package:daily/utilities/neumorphism/neumorphicCorner.dart';
 
-enum NeumorphicLightSources {
+enum NeumorphicLightSource {
   topLeft,
   topRight,
   bottomLeft,
   bottomRight,
 }
 
-enum NeumorphicShapes {
+enum NeumorphicShape {
   concave,
   convex,
   emboss,
   flat,
 }
 
-Offset sourceToOffset(NeumorphicLightSources lightSource, double distance) {
+Offset sourceToOffset(NeumorphicLightSource lightSource, double distance) {
   Offset offset;
   switch (lightSource) {
-    case NeumorphicLightSources.topLeft:
+    case NeumorphicLightSource.topLeft:
       offset = Offset(distance, distance);
       break;
-    case NeumorphicLightSources.topRight:
+    case NeumorphicLightSource.topRight:
       offset = Offset(-distance, distance);
       break;
-    case NeumorphicLightSources.bottomLeft:
+    case NeumorphicLightSource.bottomLeft:
       offset = Offset(distance, -distance);
       break;
-    case NeumorphicLightSources.bottomRight:
+    case NeumorphicLightSource.bottomRight:
       offset = Offset(-distance, -distance);
       break;
   }
@@ -46,8 +46,8 @@ extension Neumorphism on Widget {
     double intensity = 0.0,
     double blurRadius = 0.0,
     Color backgroundColor = const Color(0x00FFFFFF),
-    NeumorphicLightSources lightSource = NeumorphicLightSources.topLeft,
-    NeumorphicShapes shape = NeumorphicShapes.convex,
+    NeumorphicLightSource lightSource = NeumorphicLightSource.topLeft,
+    NeumorphicShape shape = NeumorphicShape.convex,
   }) {
     final offset = sourceToOffset(lightSource, distance);
 
@@ -68,7 +68,10 @@ extension Neumorphism on Widget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius),
       ),
-      colors: [colorShadow(backgroundColor, isDark ? intensity : -intensity), colorShadow(backgroundColor, isDark ? -intensity : intensity)],
+      colors: [
+        colorShadow(backgroundColor, isDark ? intensity : -intensity),
+        colorShadow(backgroundColor, isDark ? -intensity : intensity)
+      ],
       depression: distance,
     );
 
@@ -82,7 +85,7 @@ extension Neumorphism on Widget {
       duration: duration,
       height: height,
       width: width,
-      decoration: shape == NeumorphicShapes.emboss ? innerShadow : outerShadow,
+      decoration: shape == NeumorphicShape.emboss ? innerShadow : outerShadow,
       child: Center(
         child: this,
       ),
