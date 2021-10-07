@@ -37,7 +37,7 @@ Offset sourceToOffset(NeumorphicLightSource lightSource, double distance) {
 }
 
 extension Neumorphism on Widget {
-  addWrapper({
+  addWrapperNeu({
     Duration duration = const Duration(milliseconds: 100),
     double borderRadius = 0.0,
     double height = 0.0,
