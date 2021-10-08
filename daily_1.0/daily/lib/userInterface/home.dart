@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:daily/utilities/neumorphism/neumorphism.dart';
-import 'package:daily/utilities/glassmorphism/glassmorphism.dart';
+import 'package:daily/utilities/designUtil/neumorphism/neumorphism.dart';
+import 'package:daily/utilities/designUtil/glassmorphism/glassmorphism.dart';
 import 'dart:ui';
 
 class HomeScreen extends StatefulWidget {

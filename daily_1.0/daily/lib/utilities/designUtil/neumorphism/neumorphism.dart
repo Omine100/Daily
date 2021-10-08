@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/systemPreferences.dart';
-import 'package:daily/utilities/colorManagement.dart';
-import 'package:daily/utilities/neumorphism/neumorphicCorner.dart';
+import 'package:daily/utilities/managementUtil/colorManagement.dart';
+import 'package:daily/utilities/designUtil/neumorphism/neumorphicCorner.dart';
 
 enum NeumorphicLightSource {
   topLeft,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:daily/utilities/neumorphism/neumorphism.dart';
+import 'package:daily/utilities/designUtil/neumorphism/neumorphism.dart';
 
 //Need to figure out if we need this or not
 extension neumorphic on Container {
