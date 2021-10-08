@@ -23,11 +23,20 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             SizedBox(
-              height: 250,
+              height: 300,
             ),
             Center(
-              child: Text("Testing").addWrapperGlass(),
-            ),
+                child: Text(
+              "Testing",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            )).addWrapperGlass(
+                borderRadius: 16,
+                height: 200,
+                width: 200,
+                shadowBlur: 24,
+                containerSpread: 16,
+                backdropBlur: 10,
+                colorOpacity: 0.15),
             // Text("Testing").addWrapper(
             //   duration: const Duration(milliseconds: 100),
             //   borderRadius: 15,
