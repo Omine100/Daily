@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
@@ -10,9 +9,6 @@ import 'package:daily/servicesLocal/systemPreferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((value) => {runApp(new Daily())});
 }
 
 class Daily extends StatefulWidget {
@@ -41,11 +37,7 @@ class _DailyState extends State<Daily> {
         Theme.of(context).platform == TargetPlatform.android ? true : false);
     systemPreferences
         .getFromPrefs('isDark')
-        .then((_isDark) => _isDark == null ? isDark = false : isDark = _isDark);
-    systemPreferences.getFromPrefs('isLargeDevice').then((_isLargeDevicee) =>
-        MediaQuery.of(context).size.width < 600
-                ? isLargeDevice = false
-                : isLargeDevice = true);
+        .then((_isDark) => _isDark == null ? isDark = false : isDark = _isDark); 
     systemPreferences.getFromPrefs('languageCode').then((_languageCode) => {
           _languageCode == null
               ? languageCode = "en"

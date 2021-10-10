@@ -1,3 +1,4 @@
+import 'package:daily/servicesLocal/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/servicesLocal/systemPreferences.dart';
@@ -13,16 +14,27 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      child: isLargeDevice
-          ? loginScreenLargeLayout(context)
-          : loginScreenSmallLayout(context),
+      child: Responsive(
+        desktop: loginScreenLargeLayout(context),
+        tablet: loginScreenLargeLayout(context),
+        mobile: loginScreenSmallLayout(context),
+      )
     );
   }
 }
 
 loginScreenLargeLayout(BuildContext context) {
-  return Container(
-    child: Text("Large"),
+  return Column(
+    children: [
+      GestureDetector(
+        onTap: () {
+          RouteNavigation().routePage(context, HomeScreen());
+        },
+        child: Container(
+          child: Text("Large"),
+        ),
+      ),
+    ],
   );
 }
 
