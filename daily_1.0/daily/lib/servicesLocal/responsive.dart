@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Responsive extends StatelessWidget {
   final Widget mobile;
@@ -27,12 +28,15 @@ class Responsive extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth >= 1100) {
+          SystemChrome.setPreferredOrientations(
+              [DeviceOrientation.landscapeLeft]);
           return desktop;
-        }
-        else if (constraints.maxWidth >= 650) {
+        } else if (constraints.maxWidth >= 650) {
+          SystemChrome.setPreferredOrientations(
+              [DeviceOrientation.landscapeLeft]);
           return tablet;
-        }
-        else {
+        } else {
+          SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
           return mobile;
         }
       },

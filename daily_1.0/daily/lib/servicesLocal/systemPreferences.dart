@@ -7,7 +7,6 @@ Locale locale;
 String languageCode;
 bool isDark = false;
 bool isAndroid = true;
-bool isLargeDevice = false;
 
 class SystemPreferences extends ChangeNotifier {
   initPrefs() async {
