@@ -38,7 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
             //     shadowBlur: 24,
             //     containerSpread: 16,
             //     backdropBlur: 10,
-            //     colorOpacity: 0.15),
+            //     colorOpacity: 0.13,
+            //   ),
             Text("Testing").addWrapperNeu(
               duration: const Duration(milliseconds: 100),
               borderRadius: 15,
