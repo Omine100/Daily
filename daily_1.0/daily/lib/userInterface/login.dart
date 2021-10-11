@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
+import 'package:daily/servicesLocal/systemPreferences.dart';
 import 'package:daily/userInterface/loginComponents.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("lib/assets/login_background.png"),
+            image: AssetImage(isDark ? "lib/assets/login_background.png" : "lib/assets/login_backgroundDark.jpg"),
             fit: BoxFit.cover
           )
         ),
