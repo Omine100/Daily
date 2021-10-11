@@ -44,6 +44,7 @@ flutter:
 
   assets:
       - lib/assets/login_background.png
+      - lib/assets/login_backgroundDark.jpg
       - lib/localizations/en.json
       - lib/localizations/es.json
       - lib/localizations/fr.json
