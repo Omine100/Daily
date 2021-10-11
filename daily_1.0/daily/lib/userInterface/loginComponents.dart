@@ -4,7 +4,7 @@ import 'package:daily/userInterface/home.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/utilities/designUtil/glassmorphism/glassmorphism.dart';
 
-class loginUserInput extends StatelessWidget {
+class LoginUserInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -57,7 +57,6 @@ class loginUserInput extends StatelessWidget {
                   thickness: 1.5,
                 ),
             ),
-            
           ]
         ),
       ),
@@ -66,7 +65,7 @@ class loginUserInput extends StatelessWidget {
   }
 }
 
-class loginSocialIcons extends StatelessWidget {
+class LoginSocialIcons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(

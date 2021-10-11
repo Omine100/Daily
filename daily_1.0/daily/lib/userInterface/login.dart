@@ -33,8 +33,8 @@ class _LoginScreenState extends State<LoginScreen> {
 loginScreenDesktop(BuildContext context) {
   return Column(
     children: [
-      loginUserInput(),
-      loginSocialIcons(),
+      LoginUserInput(),
+      LoginSocialIcons(),
     ],
   );
 }
@@ -42,8 +42,8 @@ loginScreenDesktop(BuildContext context) {
 loginScreenTablet(BuildContext context) {
   return Column(
     children: [
-      loginUserInput(),
-      loginSocialIcons(),
+      LoginUserInput(),
+      LoginSocialIcons(),
     ],
   );
 }
@@ -51,8 +51,8 @@ loginScreenTablet(BuildContext context) {
 loginScreenMobile(BuildContext context) {
   return Column(
     children: [
-      loginUserInput(),
-      loginSocialIcons(),
+      LoginUserInput(),
+      LoginSocialIcons(),
     ],
   );
 }
