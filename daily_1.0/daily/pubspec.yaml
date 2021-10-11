@@ -33,6 +33,7 @@ dependencies:
 
   #User interface
   page_transition: ^1.1.7+3
+  font_awesome_flutter: ^9.1.0
 
 dev_dependencies:
   flutter_test:
@@ -42,8 +43,7 @@ flutter:
   uses-material-design: true
 
   assets:
-      - lib/assets/login_googleLogo.png
-      - lib/assets/background.jpg
+      - lib/assets/login_background.png
       - lib/localizations/en.json
       - lib/localizations/es.json
       - lib/localizations/fr.json

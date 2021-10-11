@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:daily/servicesLocal/routeNavigation.dart';
-import 'package:daily/servicesLocal/systemPreferences.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/userInterface/home.dart';
+import 'package:daily/userInterface/loginComponents.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -12,27 +10,31 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Responsive(
-          desktop: loginScreenDesktop(context),
-          tablet: loginScreenTablet(context),
-          mobile: loginScreenMobile(context),
-        ));
+    return Material(
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("lib/assets/login_background.png"),
+            fit: BoxFit.cover
+          )
+        ),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Responsive(
+            desktop: loginScreenDesktop(context),
+            tablet: loginScreenTablet(context),
+            mobile: loginScreenMobile(context),
+          ))
+      ),
+    );
   }
 }
 
 loginScreenDesktop(BuildContext context) {
   return Column(
     children: [
-      GestureDetector(
-        onTap: () {
-          RouteNavigation().routePage(context, HomeScreen());
-        },
-        child: Container(
-          child: Text("Desktop"),
-        ),
-      ),
+      loginUserInput(),
+      loginSocialIcons(),
     ],
   );
 }
@@ -40,14 +42,8 @@ loginScreenDesktop(BuildContext context) {
 loginScreenTablet(BuildContext context) {
   return Column(
     children: [
-      GestureDetector(
-        onTap: () {
-          RouteNavigation().routePage(context, HomeScreen());
-        },
-        child: Container(
-          child: Text("Tablet"),
-        ),
-      ),
+      loginUserInput(),
+      loginSocialIcons(),
     ],
   );
 }
@@ -55,14 +51,8 @@ loginScreenTablet(BuildContext context) {
 loginScreenMobile(BuildContext context) {
   return Column(
     children: [
-      GestureDetector(
-        onTap: () {
-          RouteNavigation().routePage(context, HomeScreen());
-        },
-        child: Container(
-          child: Text("Mobile"),
-        ),
-      ),
+      loginUserInput(),
+      loginSocialIcons(),
     ],
   );
 }
