@@ -13,20 +13,19 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(isDark ? "lib/assets/login_background.png" : "lib/assets/login_backgroundDark.jpg"),
-            fit: BoxFit.cover
-          )
-        ),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Responsive(
-            desktop: loginScreenDesktop(context),
-            tablet: loginScreenTablet(context),
-            mobile: loginScreenMobile(context),
-          ))
-      ),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(isDark
+                      ? "lib/assets/login_backgroundDark.jpg"
+                      : "lib/assets/login_background.png"),
+                  fit: BoxFit.cover)),
+          child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Responsive(
+                desktop: loginScreenDesktop(context),
+                tablet: loginScreenTablet(context),
+                mobile: loginScreenMobile(context),
+              ))),
     );
   }
 }
@@ -50,10 +49,24 @@ loginScreenTablet(BuildContext context) {
 }
 
 loginScreenMobile(BuildContext context) {
-  return Column(
-    children: [
-      LoginUserInput(),
-      LoginSocialIcons(),
-    ],
+  return Container(
+    height: MediaQuery.of(context).size.height,
+    width: MediaQuery.of(context).size.width,
+    child: Stack(
+      children: [
+        Positioned.fill(
+            top: MediaQuery.of(context).size.height * 0.4,
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: LoginUserInput(),
+            )),
+        Positioned.fill(
+            top: MediaQuery.of(context).size.height * 0.9,
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: LoginSocialIcons(),
+            )),
+      ],
+    ),
   );
 }
