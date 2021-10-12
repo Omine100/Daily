@@ -13,22 +13,24 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(isDark
-                      ? "lib/assets/login_backgroundDark.jpg"
-                      : "lib/assets/login_background.png"),
-                  fit: BoxFit.cover)),
-          child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Container(
-                constraints: BoxConstraints.expand(height: double.maxFinite),
-                child: Responsive(
-                desktop: loginScreenDesktop(context),
-                tablet: loginScreenTablet(context),
-                mobile: loginScreenMobile(context),
-              )
-              ))),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(isDark
+              ? "lib/assets/login_backgroundDark.jpg"
+              : "lib/assets/login_background.png"),
+            fit: BoxFit.cover)),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Container(
+            constraints: BoxConstraints.expand(height: double.maxFinite),
+            child: Responsive(
+              desktop: loginScreenDesktop(context),
+              tablet: loginScreenTablet(context),
+              mobile: loginScreenMobile(context),
+            )
+          )
+        )
+      ),
     );
   }
 }
