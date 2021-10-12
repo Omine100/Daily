@@ -50,22 +50,18 @@ loginScreenTablet(BuildContext context) {
 
 loginScreenMobile(BuildContext context) {
   return Container(
-    height: MediaQuery.of(context).size.height,
-    width: MediaQuery.of(context).size.width,
+    constraints: BoxConstraints.expand(height: double.maxFinite),
     child: Stack(
+      alignment: Alignment.topCenter,
       children: [
-        Positioned.fill(
-            top: MediaQuery.of(context).size.height * 0.4,
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: LoginUserInput(),
-            )),
-        Positioned.fill(
-            top: MediaQuery.of(context).size.height * 0.9,
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: LoginSocialIcons(),
-            )),
+        Positioned(
+          top: MediaQuery.of(context).size.height * 0.4,
+          child: LoginUserInput(),
+        ),
+        Positioned(
+          top: MediaQuery.of(context).size.height * 0.9,
+          child: LoginSocialIcons(),
+        ),
       ],
     ),
   );
