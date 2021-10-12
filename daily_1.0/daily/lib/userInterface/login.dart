@@ -21,10 +21,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   fit: BoxFit.cover)),
           child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
-              child: Responsive(
+              child: Container(
+                constraints: BoxConstraints.expand(height: double.maxFinite),
+                child: Responsive(
                 desktop: loginScreenDesktop(context),
                 tablet: loginScreenTablet(context),
                 mobile: loginScreenMobile(context),
+              )
               ))),
     );
   }
@@ -49,9 +52,7 @@ loginScreenTablet(BuildContext context) {
 }
 
 loginScreenMobile(BuildContext context) {
-  return Container(
-    constraints: BoxConstraints.expand(height: double.maxFinite),
-    child: Stack(
+  return Stack(
       children: [
         Positioned(
           top: MediaQuery.of(context).size.height * 0.05,
@@ -67,6 +68,5 @@ loginScreenMobile(BuildContext context) {
           child: LoginSocialIcons(),
         ),
       ],
-    ),
-  );
+    );
 }
