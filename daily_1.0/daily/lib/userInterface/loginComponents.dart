@@ -4,6 +4,30 @@ import 'package:daily/userInterface/home.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/utilities/designUtil/glassmorphism/glassmorphism.dart';
 
+class LoginTitle extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text(
+          "Hello",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 48,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Text(
+          "Easy Manage.",
+          style: TextStyle(
+              color: Colors.white, fontSize: 32, fontWeight: FontWeight.w300),
+        ),
+      ],
+    );
+  }
+}
+
 class LoginUserInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

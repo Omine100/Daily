@@ -52,8 +52,12 @@ loginScreenMobile(BuildContext context) {
   return Container(
     constraints: BoxConstraints.expand(height: double.maxFinite),
     child: Stack(
-      alignment: Alignment.topCenter,
       children: [
+        Positioned(
+          top: MediaQuery.of(context).size.height * 0.05,
+          right: MediaQuery.of(context).size.width * 0.5,
+          child: LoginTitle(),
+        ),
         Positioned(
           top: MediaQuery.of(context).size.height * 0.4,
           child: LoginUserInput(),
