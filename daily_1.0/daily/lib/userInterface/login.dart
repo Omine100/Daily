@@ -60,7 +60,7 @@ loginScreenMobile(BuildContext context) {
         child: LoginTitle(),
       ),
       Positioned(
-        top: MediaQuery.of(context).size.height * 0.675,
+        top: MediaQuery.of(context).size.height * 0.75,
         child: LoginUserInput(),
       ),
       Positioned(

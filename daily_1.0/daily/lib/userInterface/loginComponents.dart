@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:daily/userInterface/home.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/utilities/designUtil/glassmorphism/glassmorphism.dart';
+import 'package:daily/utilities/managementUtil/imageManagement.dart';
 
 class LoginTitle extends StatelessWidget {
   @override
@@ -50,18 +51,18 @@ class LoginUserInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        "LOGIN",
-        style: TextStyle(color: Colors.white, fontSize: 20),
+        "SIGN UP!",
+        style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w400),
       ),
     ).addWrapperGlass(
       borderRadius: 50,
-      height: MediaQuery.of(context).size.height * 0.065,
-      width: MediaQuery.of(context).size.width * 0.75,
+      height: MediaQuery.of(context).size.height * 0.07,
+      width: MediaQuery.of(context).size.width * 0.55,
       shadowBlur: 80,
       shadowColor: Colors.grey.shade600,
       containerSpread: 16,
       backdropBlur: 8,
-      colorOpacity: 0.20,
+      colorOpacity: 0.3,
     );
   }
 }

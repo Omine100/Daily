@@ -31,6 +31,9 @@ dependencies:
       url: git://github.com/himanshusharma89/plugins.git
       path: packages/share
 
+  #Utilities
+  image: ^3.0.8
+
   #User interface
   page_transition: ^1.1.7+3
   font_awesome_flutter: ^9.1.0
