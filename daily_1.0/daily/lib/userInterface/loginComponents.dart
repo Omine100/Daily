@@ -61,7 +61,7 @@ class LoginUserInput extends StatelessWidget {
       shadowColor: Colors.grey.shade600,
       containerSpread: 16,
       backdropBlur: 8,
-      colorOpacity: 0.3,
+      colorOpacity: 0.20,
     );
   }
 }
