@@ -29,20 +29,39 @@ class LoginTitle extends StatelessWidget {
   }
 }
 
+class LoginAccountAlready extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        "Already Have an Account? Sign In!",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+    );
+  }
+}
+
 class LoginUserInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Text(
-      "Testing",
-      style: TextStyle(color: Colors.white, fontSize: 20),
+    return Center(
+      child: Text(
+        "LOGIN",
+        style: TextStyle(color: Colors.white, fontSize: 20),
+      ),
     ).addWrapperGlass(
-      borderRadius: 16,
-      height: MediaQuery.of(context).size.height * 0.35,
-      width: MediaQuery.of(context).size.width * 0.8,
-      shadowBlur: 24,
+      borderRadius: 50,
+      height: MediaQuery.of(context).size.height * 0.065,
+      width: MediaQuery.of(context).size.width * 0.75,
+      shadowBlur: 80,
+      shadowColor: Colors.grey.shade600,
       containerSpread: 16,
-      backdropBlur: 10,
-      colorOpacity: 0.13,
+      backdropBlur: 8,
+      colorOpacity: 0.3,
     );
   }
 }
