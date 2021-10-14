@@ -13,24 +13,21 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(isDark
-              ? "lib/assets/login_backgroundDark.jpg"
-              : "lib/assets/login_background.png"),
-            fit: BoxFit.cover)),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Container(
-            constraints: BoxConstraints.expand(height: double.maxFinite),
-            child: Responsive(
-              desktop: loginScreenDesktop(context),
-              tablet: loginScreenTablet(context),
-              mobile: loginScreenMobile(context),
-            )
-          )
-        )
-      ),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(isDark
+                      ? "lib/assets/login_backgroundDark.jpg"
+                      : "lib/assets/login_background.png"),
+                  fit: BoxFit.cover)),
+          child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+                  constraints: BoxConstraints.expand(height: double.maxFinite),
+                  child: Responsive(
+                    desktop: loginScreenDesktop(context),
+                    tablet: loginScreenTablet(context),
+                    mobile: loginScreenMobile(context),
+                  )))),
     );
   }
 }
@@ -55,20 +52,21 @@ loginScreenTablet(BuildContext context) {
 
 loginScreenMobile(BuildContext context) {
   return Stack(
-      children: [
-        Positioned(
-          top: MediaQuery.of(context).size.height * 0.05,
-          right: MediaQuery.of(context).size.width * 0.5,
-          child: LoginTitle(),
-        ),
-        Positioned(
-          top: MediaQuery.of(context).size.height * 0.4,
-          child: LoginUserInput(),
-        ),
-        Positioned(
-          top: MediaQuery.of(context).size.height * 0.9,
-          child: LoginSocialIcons(),
-        ),
-      ],
-    );
+    alignment: Alignment.center,
+    children: [
+      Positioned(
+        top: MediaQuery.of(context).size.height * 0.065,
+        right: MediaQuery.of(context).size.width * 0.475,
+        child: LoginTitle(),
+      ),
+      Positioned(
+        top: MediaQuery.of(context).size.height * 0.4,
+        child: LoginUserInput(),
+      ),
+      Positioned(
+        top: MediaQuery.of(context).size.height * 0.88,
+        child: LoginSocialIcons(),
+      ),
+    ],
+  );
 }

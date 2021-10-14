@@ -9,6 +9,7 @@ class LoginTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           "Hello",
@@ -64,7 +65,7 @@ class LoginSocialIcons extends StatelessWidget {
             IconButton(
                 icon: FaIcon(
                   FontAwesomeIcons.google,
-                  size: 40,
+                  size: 35,
                   color: Colors.white,
                 ),
                 onPressed: () {}),
@@ -74,7 +75,7 @@ class LoginSocialIcons extends StatelessWidget {
             IconButton(
                 icon: FaIcon(
                   FontAwesomeIcons.twitter,
-                  size: 40,
+                  size: 35,
                   color: Colors.white,
                 ),
                 onPressed: () {}),
@@ -84,7 +85,7 @@ class LoginSocialIcons extends StatelessWidget {
             IconButton(
                 icon: FaIcon(
                   FontAwesomeIcons.facebook,
-                  size: 40,
+                  size: 35,
                   color: Colors.white,
                 ),
                 onPressed: () {}),
