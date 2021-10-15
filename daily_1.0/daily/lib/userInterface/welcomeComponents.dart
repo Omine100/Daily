@@ -5,7 +5,7 @@ import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/utilities/designUtil/glassmorphism/glassmorphism.dart';
 import 'package:daily/utilities/managementUtil/imageManagement.dart';
 
-class LoginTitle extends StatelessWidget {
+class WelcomeTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,7 +30,7 @@ class LoginTitle extends StatelessWidget {
   }
 }
 
-class LoginAccountAlready extends StatelessWidget {
+class WelcomeAccountAlready extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -46,7 +46,7 @@ class LoginAccountAlready extends StatelessWidget {
   }
 }
 
-class LoginUserInput extends StatelessWidget {
+class WelcomeUserInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -67,7 +67,7 @@ class LoginUserInput extends StatelessWidget {
   }
 }
 
-class LoginSocialIcons extends StatelessWidget {
+class WelcomeSocialIcons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(

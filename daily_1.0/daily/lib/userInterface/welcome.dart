@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/servicesLocal/systemPreferences.dart';
-import 'package:daily/userInterface/loginComponents.dart';
+import 'package:daily/userInterface/welcomeComponents.dart';
 
-class LoginScreen extends StatefulWidget {
+class WelcomeScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -16,56 +16,56 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(isDark
-                      ? "lib/assets/login_backgroundDark.jpg"
-                      : "lib/assets/login_background.png"),
+                      ? "lib/assets/Welcome_backgroundDark.jpg"
+                      : "lib/assets/Welcome_background.png"),
                   fit: BoxFit.cover)),
           child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Container(
                   constraints: BoxConstraints.expand(height: double.maxFinite),
                   child: Responsive(
-                    desktop: loginScreenDesktop(context),
-                    tablet: loginScreenTablet(context),
-                    mobile: loginScreenMobile(context),
+                    desktop: WelcomeScreenDesktop(context),
+                    tablet: WelcomeScreenTablet(context),
+                    mobile: WelcomeScreenMobile(context),
                   )))),
     );
   }
 }
 
-loginScreenDesktop(BuildContext context) {
+WelcomeScreenDesktop(BuildContext context) {
   return Column(
     children: [
-      LoginUserInput(),
-      LoginSocialIcons(),
+      WelcomeUserInput(),
+      WelcomeSocialIcons(),
     ],
   );
 }
 
-loginScreenTablet(BuildContext context) {
+WelcomeScreenTablet(BuildContext context) {
   return Column(
     children: [
-      LoginUserInput(),
-      LoginSocialIcons(),
+      WelcomeUserInput(),
+      WelcomeSocialIcons(),
     ],
   );
 }
 
-loginScreenMobile(BuildContext context) {
+WelcomeScreenMobile(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
       Positioned(
         top: MediaQuery.of(context).size.height * 0.065,
         right: MediaQuery.of(context).size.width * 0.475,
-        child: LoginTitle(),
+        child: WelcomeTitle(),
       ),
       Positioned(
         top: MediaQuery.of(context).size.height * 0.75,
-        child: LoginUserInput(),
+        child: WelcomeUserInput(),
       ),
       Positioned(
         top: MediaQuery.of(context).size.height * 0.925,
-        child: LoginAccountAlready(),
+        child: WelcomeAccountAlready(),
       ),
     ],
   );

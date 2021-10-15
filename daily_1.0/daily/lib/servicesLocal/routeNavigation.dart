@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:daily/userInterface/login.dart';
+import 'package:daily/userInterface/welcome.dart';
 import 'package:daily/userInterface/home.dart';
 
 class RouteNavigation {
@@ -13,6 +13,6 @@ class RouteNavigation {
   }
 
   Widget routeInitial(BuildContext context, bool isSignedIn) {
-    return isSignedIn ? HomeScreen() : LoginScreen();
+    return isSignedIn ? HomeScreen() : WelcomeScreen();
   }
 }
