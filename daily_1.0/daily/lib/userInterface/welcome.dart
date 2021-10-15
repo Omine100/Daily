@@ -16,8 +16,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(isDark
-                      ? "lib/assets/Welcome_backgroundDark.jpg"
-                      : "lib/assets/Welcome_background.png"),
+                      ? "lib/assets/welcome_backgroundDark.jpg"
+                      : "lib/assets/welcome_background.png"),
                   fit: BoxFit.cover)),
           child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
