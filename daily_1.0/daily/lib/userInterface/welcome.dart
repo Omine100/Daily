@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/servicesLocal/systemPreferences.dart';
 import 'package:daily/userInterface/welcomeComponents.dart';
+import 'package:daily/themesLocal/positions.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -33,19 +34,43 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 }
 
 WelcomeScreenDesktop(BuildContext context) {
-  return Column(
+  return Stack(
+    alignment: Alignment.center,
     children: [
-      WelcomeUserInput(),
-      WelcomeSocialIcons(),
+      Positioned(
+        top: MediaQuery.of(context).size.height * 0.065,
+        right: MediaQuery.of(context).size.width * 0.475,
+        child: WelcomeTitle(),
+      ),
+      Positioned(
+        top: MediaQuery.of(context).size.height * 0.75,
+        child: WelcomeUserInput(),
+      ),
+      Positioned(
+        top: MediaQuery.of(context).size.height * 0.925,
+        child: WelcomeAccountAlready(),
+      ),
     ],
   );
 }
 
 WelcomeScreenTablet(BuildContext context) {
-  return Column(
+  return Stack(
+    alignment: Alignment.center,
     children: [
-      WelcomeUserInput(),
-      WelcomeSocialIcons(),
+      Positioned(
+        top: MediaQuery.of(context).size.height * 0.065,
+        right: MediaQuery.of(context).size.width * 0.475,
+        child: WelcomeTitle(),
+      ),
+      Positioned(
+        top: MediaQuery.of(context).size.height * 0.75,
+        child: WelcomeUserInput(),
+      ),
+      Positioned(
+        top: MediaQuery.of(context).size.height * 0.925,
+        child: WelcomeAccountAlready(),
+      ),
     ],
   );
 }
