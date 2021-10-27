@@ -38,16 +38,15 @@ WelcomeScreenDesktop(BuildContext context) {
     alignment: Alignment.center,
     children: [
       Positioned(
-        top: MediaQuery.of(context).size.height * 0.065,
-        right: MediaQuery.of(context).size.width * 0.475,
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
         child: WelcomeTitle(),
       ),
       Positioned(
-        top: MediaQuery.of(context).size.height * 0.75,
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
         child: WelcomeUserInput(),
       ),
       Positioned(
-        top: MediaQuery.of(context).size.height * 0.925,
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
         child: WelcomeAccountAlready(),
       ),
     ],
@@ -59,16 +58,15 @@ WelcomeScreenTablet(BuildContext context) {
     alignment: Alignment.center,
     children: [
       Positioned(
-        top: MediaQuery.of(context).size.height * 0.065,
-        right: MediaQuery.of(context).size.width * 0.475,
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
         child: WelcomeTitle(),
       ),
       Positioned(
-        top: MediaQuery.of(context).size.height * 0.75,
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
         child: WelcomeUserInput(),
       ),
       Positioned(
-        top: MediaQuery.of(context).size.height * 0.925,
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
         child: WelcomeAccountAlready(),
       ),
     ],
@@ -80,16 +78,15 @@ WelcomeScreenMobile(BuildContext context) {
     alignment: Alignment.center,
     children: [
       Positioned(
-        top: MediaQuery.of(context).size.height * 0.065,
-        right: MediaQuery.of(context).size.width * 0.475,
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
         child: WelcomeTitle(),
       ),
       Positioned(
-        top: MediaQuery.of(context).size.height * 0.75,
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileUserInputTop),
         child: WelcomeUserInput(),
       ),
       Positioned(
-        top: MediaQuery.of(context).size.height * 0.925,
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileAccountAlreadyTop),
         child: WelcomeAccountAlready(),
       ),
     ],

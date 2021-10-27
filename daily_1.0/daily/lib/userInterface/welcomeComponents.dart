@@ -8,12 +8,15 @@ import 'package:daily/utilities/managementUtil/imageManagement.dart';
 class WelcomeTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Container(
+      padding: EdgeInsets.only(left: 20),
+      width: MediaQuery.of(context).size.width,
+      child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Hello",
+          "Daily",
           style: TextStyle(
             color: Colors.white,
             fontSize: 48,
@@ -21,11 +24,12 @@ class WelcomeTitle extends StatelessWidget {
           ),
         ),
         Text(
-          "Easy Manage.",
+          "Get Ready!",
           style: TextStyle(
               color: Colors.white, fontSize: 32, fontWeight: FontWeight.w300),
         ),
       ],
+    ),
     );
   }
 }

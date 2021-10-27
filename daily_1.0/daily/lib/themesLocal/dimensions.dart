@@ -8,3 +8,9 @@ extension CustomDimensions on VisualDensity {
   double get userIStandardsSocialButtonWidth => 0.05;
   // #endregion
 }
+
+double getDimension(BuildContext context, bool isHeight, double value) {
+  return isHeight ? 
+    MediaQuery.of(context).size.height * value :
+    MediaQuery.of(context).size.width * value;
+}
