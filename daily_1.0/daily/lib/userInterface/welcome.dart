@@ -25,15 +25,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               child: Container(
                   constraints: BoxConstraints.expand(height: double.maxFinite),
                   child: Responsive(
-                    desktop: WelcomeScreenDesktop(context),
-                    tablet: WelcomeScreenTablet(context),
-                    mobile: WelcomeScreenMobile(context),
+                    desktop: welcomeScreenDesktop(context),
+                    tablet: welcomeScreenTablet(context),
+                    mobile: welcomeScreenMobile(context),
                   )))),
     );
   }
 }
 
-WelcomeScreenDesktop(BuildContext context) {
+welcomeScreenDesktop(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -53,7 +53,7 @@ WelcomeScreenDesktop(BuildContext context) {
   );
 }
 
-WelcomeScreenTablet(BuildContext context) {
+welcomeScreenTablet(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -73,7 +73,7 @@ WelcomeScreenTablet(BuildContext context) {
   );
 }
 
-WelcomeScreenMobile(BuildContext context) {
+welcomeScreenMobile(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [

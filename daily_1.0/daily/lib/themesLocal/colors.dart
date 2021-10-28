@@ -51,6 +51,19 @@ extension CustomColorScheme on ColorScheme {
   Color get userXStandardsProgressIndicator =>
       isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
   // #endregion
+
+  // #region welcome
+  Color get welcomeTitle =>
+      isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+  Color get welcomeSubtitle =>
+      isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+  Color get welcomeAccountAlready =>
+      isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+  Color get welcomeUserInput =>
+      isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+  Color get welcomeUserInputGlass =>
+      isDark ? Color(0xFF666666) : Color(0xFF666666);
+  // #endregion
 }
 
 extension ColorUtils on Color {

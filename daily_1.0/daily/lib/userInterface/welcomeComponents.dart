@@ -1,32 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:daily/userInterface/home.dart';
-import 'package:daily/servicesLocal/routeNavigation.dart';
+import 'package:daily/servicesLocal/systemLanguages.dart';
+import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/themesLocal/dimensions.dart';
+import 'package:daily/themesLocal/fontProperties.dart';
 import 'package:daily/utilities/designUtil/glassmorphism/glassmorphism.dart';
-import 'package:daily/utilities/managementUtil/imageManagement.dart';
 
 class WelcomeTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 20),
-      width: MediaQuery.of(context).size.width,
+      width: getDimension(context, false, Theme.of(context).visualDensity.welcomeTitleWidth),
       child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Daily",
+          getTranslated(context, "welcomeTitle"),
           style: TextStyle(
-            color: Colors.white,
-            fontSize: 48,
-            fontWeight: FontWeight.w500,
+            color: Theme.of(context).colorScheme.welcomeTitle,
+            fontSize: Theme.of(context).textTheme.welcomeTitle,
+            fontWeight: Theme.of(context).typography.welcomeTitle,
           ),
         ),
         Text(
-          "Get Ready!",
+          getTranslated(context, "welcomeSubtitle"),
           style: TextStyle(
-              color: Colors.white, fontSize: 32, fontWeight: FontWeight.w300),
+              color: Theme.of(context).colorScheme.welcomeSubtitle,
+              fontSize: Theme.of(context).textTheme.welcomeSubtitle,
+              fontWeight: Theme.of(context).typography.welcomeSubtitle,
+            ),
         ),
       ],
     ),
@@ -39,11 +42,11 @@ class WelcomeAccountAlready extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        "Already Have an Account? Sign In!",
+        getTranslated(context, "welcomeAccountAlready"),
         style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-          fontWeight: FontWeight.w400,
+          color: Theme.of(context).colorScheme.welcomeAccountAlready,
+          fontSize: Theme.of(context).textTheme.welcomeAccounAlready,
+          fontWeight: Theme.of(context).typography.welcomeAccountAlready,
         ),
       ),
     );
@@ -56,66 +59,21 @@ class WelcomeUserInput extends StatelessWidget {
     return Center(
       child: Text(
         "SIGN UP!",
-        style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w400),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.welcomeUserInput,
+          fontSize: Theme.of(context).textTheme.welcomeUserInput,
+          fontWeight: Theme.of(context).typography.welcomeUserInput,
+        ),
       ),
     ).addWrapperGlass(
       borderRadius: 50,
-      height: MediaQuery.of(context).size.height * 0.07,
-      width: MediaQuery.of(context).size.width * 0.55,
+      height: getDimension(context, true, Theme.of(context).visualDensity.welcomeUserInputGlassHeight),
+      width: getDimension(context, false, Theme.of(context).visualDensity.welcomeUserInputGlassWidth),
       shadowBlur: 80,
-      shadowColor: Colors.grey.shade600,
+      shadowColor: Theme.of(context).colorScheme.welcomeUserInputGlass,
       containerSpread: 16,
       backdropBlur: 8,
       colorOpacity: 0.3,
-    );
-  }
-}
-
-class WelcomeSocialIcons extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(left: 400, right: 400),
-          child: Divider(
-            color: Colors.white,
-            thickness: 1.5,
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-                icon: FaIcon(
-                  FontAwesomeIcons.google,
-                  size: 35,
-                  color: Colors.white,
-                ),
-                onPressed: () {}),
-            SizedBox(
-              width: 10,
-            ),
-            IconButton(
-                icon: FaIcon(
-                  FontAwesomeIcons.twitter,
-                  size: 35,
-                  color: Colors.white,
-                ),
-                onPressed: () {}),
-            SizedBox(
-              width: 10,
-            ),
-            IconButton(
-                icon: FaIcon(
-                  FontAwesomeIcons.facebook,
-                  size: 35,
-                  color: Colors.white,
-                ),
-                onPressed: () {}),
-          ],
-        ),
-      ],
     );
   }
 }

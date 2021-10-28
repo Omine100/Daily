@@ -8,6 +8,13 @@ extension CustomFontSize on TextTheme {
   double get userIStandardsTitleContent => 30.0;
   double get userIStandardsTextInputContent => 22.0;
   // #endregion
+
+  // #region welcome
+  double get welcomeTitle => 48;
+  double get welcomeSubtitle => 32;
+  double get welcomeAccounAlready => 16;
+  double get welcomeUserInput => 20;
+  // #endregion
 }
 
 extension CustomFontWeight on Typography {
@@ -15,5 +22,12 @@ extension CustomFontWeight on Typography {
   FontWeight get userIStandardsToastMessageContent => FontWeight.w400;
   FontWeight get userIStandardsTitleContent => FontWeight.w600;
   FontWeight get userIStandardsTextInputContent => FontWeight.w300;
+  // #endregion
+
+  // #region welcome
+  FontWeight get welcomeTitle => FontWeight.w500;
+  FontWeight get welcomeSubtitle => FontWeight.w300;
+  FontWeight get welcomeAccountAlready => FontWeight.w400;
+  FontWeight get welcomeUserInput => FontWeight.w400;
   // #endregion
 }

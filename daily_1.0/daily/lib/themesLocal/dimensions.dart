@@ -8,22 +8,10 @@ extension CustomDimensions on VisualDensity {
   double get userIStandardsSocialButtonWidth => 0.05;
   // #endregion
 
-  // #region welcomeDesktop
-  double get welcomeDesktopTitleWidth => 1.0;
-  double get welcomeDesktopUserInputTop => 0.75;
-  double get welcomeDesktopAccountAlreadyTop => 0.925;
-  // #endregion
-
-  // #region welcomeTablet
-  double get welcomeTabletTitleWidth => 1.0;
-  double get welcomeTabletUserInputTop => 0.75;
-  double get welcomeTabletAccountAlreadyTop => 0.925;
-  // #endregion
-
-  // #region welcomeMobile
-  double get welcomeMobileTitleWidth => 1.0;
-  double get welcomeMobileUserInputTop => 0.75;
-  double get welcomeMobileAccountAlreadyTop => 0.925;
+  // #region welcome
+  double get welcomeTitleWidth => 1.0;
+  double get welcomeUserInputGlassHeight => 0.07;
+  double get welcomeUserInputGlassWidth => 0.55; 
   // #endregion
 }
 

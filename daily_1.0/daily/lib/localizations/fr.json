@@ -42,9 +42,10 @@
     "currentMonth11": "Novembre",
     "currentMonth12": "Décembre",
 
-    "welcomeTitle": "BIENVENUE À TRENTE",
-    "welcomeSignInButton": "Vous avez déjà un compte? S'identifier!",
-    "welcomeSignUpButton": "S'INSCRIRE",
+    "welcomeTitle": "Du Quotidien",
+    "welcomeSubtitle": "Sois prêt!",
+    "welcomeAccountAlready": "Vous avez déjà un compte? S'identifier!",
+    "welcomeUserInput": "S'INSCRIRE",
 
     "loginSignInTitle": "S'IDENTIFIER",
     "loginSignUpTitle": "S'INSCRIRE",
