@@ -37,6 +37,31 @@ class WelcomeTitle extends StatelessWidget {
   }
 }
 
+class WelcomeGetStarted extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        getTranslated(context, "welcomeGetStarted"),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.welcomeGetStarted,
+          fontSize: Theme.of(context).textTheme.welcomeGetStarted,
+          fontWeight: Theme.of(context).typography.welcomeGetStarted,
+        ),
+      ),
+    ).addWrapperGlass(
+      borderRadius: 50,
+      height: getDimension(context, true, Theme.of(context).visualDensity.welcomeGetStartedGlassHeight),
+      width: getDimension(context, false, Theme.of(context).visualDensity.welcomeGetStartedGlassWidth),
+      shadowBlur: 80,
+      shadowColor: Theme.of(context).colorScheme.welcomeGetStartedGlass,
+      containerSpread: 16,
+      backdropBlur: 8,
+      colorOpacity: 0.3,
+    );
+  }
+}
+
 class WelcomeAccountAlready extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -49,31 +74,6 @@ class WelcomeAccountAlready extends StatelessWidget {
           fontWeight: Theme.of(context).typography.welcomeAccountAlready,
         ),
       ),
-    );
-  }
-}
-
-class WelcomeUserInput extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        "SIGN UP!",
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.welcomeUserInput,
-          fontSize: Theme.of(context).textTheme.welcomeUserInput,
-          fontWeight: Theme.of(context).typography.welcomeUserInput,
-        ),
-      ),
-    ).addWrapperGlass(
-      borderRadius: 50,
-      height: getDimension(context, true, Theme.of(context).visualDensity.welcomeUserInputGlassHeight),
-      width: getDimension(context, false, Theme.of(context).visualDensity.welcomeUserInputGlassWidth),
-      shadowBlur: 80,
-      shadowColor: Theme.of(context).colorScheme.welcomeUserInputGlass,
-      containerSpread: 16,
-      backdropBlur: 8,
-      colorOpacity: 0.3,
     );
   }
 }

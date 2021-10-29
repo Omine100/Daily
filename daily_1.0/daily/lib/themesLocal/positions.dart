@@ -5,19 +5,19 @@ import 'package:flutter/material.dart';
 extension CustomPositions on MaterialTapTargetSize {
   // #region welcomeDesktop
   double get welcomeDesktopTitleTop => 0.065;
-  double get welcomeDesktopUserInputTop => 0.75;
+  double get welcomeDesktopGetStartedTop => 0.75;
   double get welcomeDesktopAccountAlreadyTop => 0.925;
   // #endregion
 
   // #region welcomeTablet
   double get welcomeTabletTitleTop => 0.065;
-  double get welcomeTabletUserInputTop => 0.75;
+  double get welcomeTabletGetStartedTop => 0.75;
   double get welcomeTabletAccountAlreadyTop => 0.925;
   // #endregion
 
   // #region welcomeMobile
   double get welcomeMobileTitleTop => 0.065;
-  double get welcomeMobileUserInputTop => 0.75;
+  double get welcomeMobileGetStartedTop => 0.75;
   double get welcomeMobileAccountAlreadyTop => 0.925;
   // #endregion
 }

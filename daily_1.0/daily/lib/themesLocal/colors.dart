@@ -59,9 +59,9 @@ extension CustomColorScheme on ColorScheme {
       isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
   Color get welcomeAccountAlready =>
       isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
-  Color get welcomeUserInput =>
+  Color get welcomeGetStarted =>
       isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
-  Color get welcomeUserInputGlass =>
+  Color get welcomeGetStartedGlass =>
       isDark ? Color(0xFF666666) : Color(0xFF666666);
   // #endregion
 }

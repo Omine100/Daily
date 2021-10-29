@@ -42,11 +42,11 @@ welcomeScreenDesktop(BuildContext context) {
         child: WelcomeTitle(),
       ),
       Positioned(
-        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
-        child: WelcomeUserInput(),
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileGetStartedTop),
+        child: WelcomeGetStarted(),
       ),
       Positioned(
-        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileAccountAlreadyTop),
         child: WelcomeAccountAlready(),
       ),
     ],
@@ -62,11 +62,11 @@ welcomeScreenTablet(BuildContext context) {
         child: WelcomeTitle(),
       ),
       Positioned(
-        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
-        child: WelcomeUserInput(),
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileGetStartedTop),
+        child: WelcomeGetStarted(),
       ),
       Positioned(
-        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileAccountAlreadyTop),
         child: WelcomeAccountAlready(),
       ),
     ],
@@ -82,8 +82,8 @@ welcomeScreenMobile(BuildContext context) {
         child: WelcomeTitle(),
       ),
       Positioned(
-        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileUserInputTop),
-        child: WelcomeUserInput(),
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileGetStartedTop),
+        child: WelcomeGetStarted(),
       ),
       Positioned(
         top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileAccountAlreadyTop),
