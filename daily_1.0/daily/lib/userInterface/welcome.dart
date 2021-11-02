@@ -20,15 +20,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ? "lib/assets/welcome_backgroundDark.jpg"
                       : "lib/assets/welcome_background.png"),
                   fit: BoxFit.cover)),
-          child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Container(
+          child: Container(
                   constraints: BoxConstraints.expand(height: double.maxFinite),
                   child: Responsive(
                     desktop: welcomeScreenDesktop(context),
                     tablet: welcomeScreenTablet(context),
                     mobile: welcomeScreenMobile(context),
-                  )))),
+                  ))),
     );
   }
 }
