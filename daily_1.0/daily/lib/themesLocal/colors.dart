@@ -53,16 +53,18 @@ extension CustomColorScheme on ColorScheme {
   // #endregion
 
   // #region welcome
+  Color get welcomeBackground => 
+      isDark ? Color(0xFFFBFAF5) : Color(0xFFFBFAF5);
   Color get welcomeTitle =>
-      isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+      isDark ? Color(0xFF333333) : Color(0xFF333333);
   Color get welcomeSubtitle =>
-      isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+      isDark ? Color(0xFF333333) : Color(0xFF333333);
   Color get welcomeAccountAlready =>
-      isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+      isDark ? Color(0xFF333333) : Color(0xFF333333);
   Color get welcomeGetStarted =>
       isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
   Color get welcomeGetStartedGlass =>
-      isDark ? Color(0xFF666666) : Color(0xFF666666);
+      isDark ? Color(0xFFEF5350) : Color(0xFFEF5350);
   // #endregion
 }
 

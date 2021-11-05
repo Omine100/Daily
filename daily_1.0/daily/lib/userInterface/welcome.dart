@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/servicesLocal/systemPreferences.dart';
 import 'package:daily/userInterface/welcomeComponents.dart';
+import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -15,11 +16,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Material(
       child: Container(
           decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(isDark
-                      ? "lib/assets/welcome_backgroundDark.jpg"
-                      : "lib/assets/welcome_background.png"),
-                  fit: BoxFit.cover)),
+              color: Theme.of(context).colorScheme.welcomeBackground,),
           child: Container(
                   constraints: BoxConstraints.expand(height: double.maxFinite),
                   child: Responsive(

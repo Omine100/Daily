@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/servicesLocal/systemPreferences.dart';
 import 'package:daily/userInterface/loginComponents.dart';
+import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -19,11 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Material(
       child: Container(
           decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(isDark
-                      ? "lib/assets/welcome_backgroundDark.jpg"
-                      : "lib/assets/welcome_background.png"),
-                  fit: BoxFit.cover)),
+              color: Theme.of(context).colorScheme.welcomeBackground,),
           child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Container(
