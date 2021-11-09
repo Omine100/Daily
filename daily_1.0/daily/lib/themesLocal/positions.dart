@@ -6,6 +6,8 @@ extension CustomPositions on MaterialTapTargetSize {
   // #region welcomeDesktop
   double get welcomeDesktopTitleTop => 0.065;
   double get welcomeDesktopCarouselTop => 0.22;
+  double get welcomeDesktopCornerTop => 0;
+  double get welcomeDesktopCornerRight => -0.01;
   double get welcomeDesktopGetStartedTop => 0.815;
   double get welcomeDesktopAccountAlreadyTop => 0.93;
   // #endregion
@@ -13,6 +15,8 @@ extension CustomPositions on MaterialTapTargetSize {
   // #region welcomeTablet
   double get welcomeTabletTitleTop => 0.065;
   double get welcomeTabletCarouselTop => 0.22;
+  double get welcomeTabletCornerTop => 0;
+  double get welcomeTabletCornerRight => -0.01;
   double get welcomeTabletGetStartedTop => 0.815;
   double get welcomeTabletAccountAlreadyTop => 0.93;
   // #endregion
@@ -20,6 +24,8 @@ extension CustomPositions on MaterialTapTargetSize {
   // #region welcomeMobile
   double get welcomeMobileTitleTop => 0.065;
   double get welcomeMobileCarouselTop => 0.22;
+  double get welcomeMobileCornerTop => 0;
+  double get welcomeMobileCornerRight => -0.01;
   double get welcomeMobileGetStartedTop => 0.815;
   double get welcomeMobileAccountAlreadyTop => 0.93;
   // #endregion

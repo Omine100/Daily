@@ -86,17 +86,14 @@ Widget welcomeCarousel(State state, BuildContext context) {
   );
 }
 
-class WelcomeCorner extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 175,
-      width: 175,
+Widget welcomeCorner(BuildContext context) {
+  return Container(
+      height: getDimension(context, true, Theme.of(context).visualDensity.welcomeCornerHeight),
+      width: getDimension(context, true, Theme.of(context).visualDensity.welcomeCornerHeight),
       child: Image(
         image: AssetImage("lib/assets/welcome_corner.png"),
       ),
     );
-  }
 }
 
 class WelcomeGetStarted extends StatelessWidget {

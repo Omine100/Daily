@@ -36,6 +36,11 @@ welcomeScreenDesktop(State state, BuildContext context) {
         child: WelcomeTitle(),
       ),
       Positioned(
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeDesktopCornerTop),
+        right: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeDesktopCornerRight),
+        child: welcomeCorner(context),
+      ),
+      Positioned(
         top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeDesktopCarouselTop),
         child: welcomeCarousel(state, context),
       ),
@@ -58,6 +63,11 @@ welcomeScreenTablet(State state, BuildContext context) {
       Positioned(
         top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeTabletTitleTop),
         child: WelcomeTitle(),
+      ),
+      Positioned(
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeTabletCornerTop),
+        right: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeTabletCornerRight),
+        child: welcomeCorner(context),
       ),
       Positioned(
         top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeTabletCarouselTop),
@@ -84,9 +94,9 @@ welcomeScreenMobile(State state, BuildContext context) {
         child: WelcomeTitle(),
       ),
       Positioned(
-        top: 0,
-        right: -5,
-        child: WelcomeCorner(),
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileCornerTop),
+        right: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileCornerRight),
+        child: welcomeCorner(context),
       ),
       Positioned(
         top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileCarouselTop),
