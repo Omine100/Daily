@@ -52,6 +52,7 @@ flutter:
       - lib/assets/welcome_carouselOne.png
       - lib/assets/welcome_carouselTwo.png
       - lib/assets/welcome_carouselThree.png
+      - lib/assets/welcome_corner.png
       - lib/localizations/en.json
       - lib/localizations/es.json
       - lib/localizations/fr.json

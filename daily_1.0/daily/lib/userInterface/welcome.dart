@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/servicesLocal/systemPreferences.dart';
 import 'package:daily/userInterface/welcomeComponents.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';
@@ -38,7 +37,7 @@ welcomeScreenDesktop(State state, BuildContext context) {
       ),
       Positioned(
         top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeDesktopCarouselTop),
-        child: WelcomeCarousel(state, context),
+        child: welcomeCarousel(state, context),
       ),
       Positioned(
         top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeDesktopGetStartedTop),
@@ -62,7 +61,7 @@ welcomeScreenTablet(State state, BuildContext context) {
       ),
       Positioned(
         top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeTabletCarouselTop),
-        child: WelcomeCarousel(state, context),
+        child: welcomeCarousel(state, context),
       ),
       Positioned(
         top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeTabletGetStartedTop),
@@ -85,8 +84,13 @@ welcomeScreenMobile(State state, BuildContext context) {
         child: WelcomeTitle(),
       ),
       Positioned(
+        top: 0,
+        right: -5,
+        child: WelcomeCorner(),
+      ),
+      Positioned(
         top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileCarouselTop),
-        child: WelcomeCarousel(state, context),
+        child: welcomeCarousel(state, context),
       ),
       Positioned(
         top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileGetStartedTop),

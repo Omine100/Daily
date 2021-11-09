@@ -44,12 +44,12 @@ List<Image> _images = [
     Image(image: AssetImage("lib/assets/welcome_carouselThree.png")),
 ];
 int _current = 0;
-Widget WelcomeCarousel(State state, BuildContext context) {
+Widget welcomeCarousel(State state, BuildContext context) {
   return Column(
       children: [
         Container(
-          height: 400,
-          width: 400,
+          height: getDimension(context, true, Theme.of(context).visualDensity.welcomeCarouselHeight),
+          width: getDimension(context, false, Theme.of(context).visualDensity.welcomeCarouselWidth),
           child: CarouselSlider(
             items: _images,
             options: CarouselOptions(
@@ -64,27 +64,39 @@ Widget WelcomeCarousel(State state, BuildContext context) {
             ),
           ),
         ),
-        SizedBox(height: 20,),
         Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: _images.map((image) {     
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: _images.map((image) {     
             int index=_images.indexOf(image);
             return Container(
-              width: 10,
-              height: _current == index ? 30.0 : 20.0,
-              margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 3.5),
+              width: 8,
+              height: _current == index ? 30.0 : 15.0,
+              margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 3.5),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: _current == index
-                      ? Colors.red
-                      : Colors.grey.shade300
+                      ? Theme.of(context).colorScheme.welcomeCarouselCurrent
+                      : Theme.of(context).colorScheme.welcomeCarouselNotCurrent
               ),
             );
           },
         ).toList(), // this was the part the I had to add
       ),
-      ],
+    ],
+  );
+}
+
+class WelcomeCorner extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 175,
+      width: 175,
+      child: Image(
+        image: AssetImage("lib/assets/welcome_corner.png"),
+      ),
     );
+  }
 }
 
 class WelcomeGetStarted extends StatelessWidget {
