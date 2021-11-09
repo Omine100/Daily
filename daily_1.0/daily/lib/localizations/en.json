@@ -44,7 +44,8 @@
 
     "welcomeTitle": "Daily",
     "welcomeSubtitle": "Get Ready!",
-    "welcomeAccountAlready": "Already have an account? Sign in!",
+    "welcomeAccountAlready": "Already have an account? ",
+    "welcomeAccountAlreadyLogin": "LOGIN!",
     "welcomeGetStarted": "GET STARTED",
 
     "loginSignInTitle": "LOGIN",

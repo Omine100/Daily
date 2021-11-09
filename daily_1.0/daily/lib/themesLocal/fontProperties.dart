@@ -13,7 +13,8 @@ extension CustomFontSize on TextTheme {
   double get welcomeTitle => 48;
   double get welcomeSubtitle => 32;
   double get welcomeAccounAlready => 16;
-  double get welcomeGetStarted => 20;
+  double get welcomeAccounAlreadyLogin=> 16;
+  double get welcomeGetStartedText => 20;
   // #endregion
 }
 
@@ -28,6 +29,7 @@ extension CustomFontWeight on Typography {
   FontWeight get welcomeTitle => FontWeight.w500;
   FontWeight get welcomeSubtitle => FontWeight.w300;
   FontWeight get welcomeAccountAlready => FontWeight.w400;
-  FontWeight get welcomeGetStarted => FontWeight.w400;
+  FontWeight get welcomeAccountAlreadyLogin => FontWeight.w500;
+  FontWeight get welcomeGetStartedText => FontWeight.w500;
   // #endregion
 }

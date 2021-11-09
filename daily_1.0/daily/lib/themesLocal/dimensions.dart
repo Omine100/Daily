@@ -10,8 +10,8 @@ extension CustomDimensions on VisualDensity {
 
   // #region welcome
   double get welcomeTitleWidth => 1.0;
-  double get welcomeGetStartedGlassHeight => 0.07;
-  double get welcomeGetStartedGlassWidth => 0.55; 
+  double get welcomeGetStartedHeight => 0.07;
+  double get welcomeGetStartedWidth => 0.45; 
   // #endregion
 }
 

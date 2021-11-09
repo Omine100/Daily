@@ -61,10 +61,12 @@ extension CustomColorScheme on ColorScheme {
       isDark ? Color(0xFF333333) : Color(0xFF333333);
   Color get welcomeAccountAlready =>
       isDark ? Color(0xFF333333) : Color(0xFF333333);
-  Color get welcomeGetStarted =>
+  Color get welcomeAccountAlreadyLogin =>
+      isDark ? Color(0xFFEF5350) : Color(0xFFFF4350);
+  Color get welcomeGetStartedText =>
       isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
-  Color get welcomeGetStartedGlass =>
-      isDark ? Color(0xFFEF5350) : Color(0xFFEF5350);
+  Color get welcomeGetStarted =>
+      isDark ? Color(0xFFEF5350) : Color(0xFFFF4350);
   // #endregion
 }
 

@@ -44,7 +44,8 @@
 
     "welcomeTitle": "Du Quotidien",
     "welcomeSubtitle": "Sois prêt!",
-    "welcomeAccountAlready": "Vous avez déjà un compte? S'identifier!",
+    "welcomeAccountAlready": "Vous avez déjà un compte? ",
+    "welcomeAccountAlreadyLogin": "S'INSCRIRE!",
     "welcomeGetStarted": "COMMENCER",
 
     "loginSignInTitle": "S'IDENTIFIER",

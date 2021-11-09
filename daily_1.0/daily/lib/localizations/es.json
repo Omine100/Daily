@@ -44,7 +44,8 @@
 
     "welcomeTitle": "Diario",
     "welcomeSubtitle": "¡Prepararse!",
-    "welcomeAccountAlready": "¿Tienes una cuenta? ¡Iniciar sesión!",
+    "welcomeAccountAlready": "¿Tienes una cuenta? ",
+    "welcomeAccountAlreadyLogin": "¡INICIAR SESIÓN!",
     "welcomeGetStarted": "EMPEZAR",
 
     "loginSignInTitle": "INICIAR SESIÓN",

@@ -20,61 +20,73 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           child: Container(
                   constraints: BoxConstraints.expand(height: double.maxFinite),
                   child: Responsive(
-                    desktop: welcomeScreenDesktop(context),
-                    tablet: welcomeScreenTablet(context),
-                    mobile: welcomeScreenMobile(context),
+                    desktop: welcomeScreenDesktop(this, context),
+                    tablet: welcomeScreenTablet(this, context),
+                    mobile: welcomeScreenMobile(this, context),
                   ))),
     );
   }
 }
 
-welcomeScreenDesktop(BuildContext context) {
+welcomeScreenDesktop(State state, BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
       Positioned(
-        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeDesktopTitleTop),
         child: WelcomeTitle(),
       ),
       Positioned(
-        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileGetStartedTop),
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeDesktopCarouselTop),
+        child: WelcomeCarousel(state, context),
+      ),
+      Positioned(
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeDesktopGetStartedTop),
         child: WelcomeGetStarted(),
       ),
       Positioned(
-        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileAccountAlreadyTop),
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeDesktopAccountAlreadyTop),
         child: WelcomeAccountAlready(),
       ),
     ],
   );
 }
 
-welcomeScreenTablet(BuildContext context) {
+welcomeScreenTablet(State state, BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
       Positioned(
-        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeTabletTitleTop),
         child: WelcomeTitle(),
       ),
       Positioned(
-        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileGetStartedTop),
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeTabletCarouselTop),
+        child: WelcomeCarousel(state, context),
+      ),
+      Positioned(
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeTabletGetStartedTop),
         child: WelcomeGetStarted(),
       ),
       Positioned(
-        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileAccountAlreadyTop),
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeTabletAccountAlreadyTop),
         child: WelcomeAccountAlready(),
       ),
     ],
   );
 }
 
-welcomeScreenMobile(BuildContext context) {
+welcomeScreenMobile(State state, BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
       Positioned(
         top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
         child: WelcomeTitle(),
+      ),
+      Positioned(
+        top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileCarouselTop),
+        child: WelcomeCarousel(state, context),
       ),
       Positioned(
         top: getPosition(context, true, Theme.of(context).materialTapTargetSize.welcomeMobileGetStartedTop),
