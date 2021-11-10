@@ -41,7 +41,7 @@ class FirebaseAccounts {
   }
 
   Future<String> getCurrentUserProfilePic() async {
-    return storage
+    return await storage
         .ref(auth.currentUser.uid + '/profilePicture')
         .getDownloadURL();
   }
