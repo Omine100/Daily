@@ -28,6 +28,18 @@ class FirebaseAccounts {
     return auth.currentUser.displayName;
   }
 
+  Future<void> setCurrentUserProfilePic(Image image, String photoURL) async {
+    // var storageRef =
+    //     firebase.storage().ref(user + '/profilePicture/' + file.name);
+    // Need to put profile pic in both regular and google so we can get the file
+  }
+
+  Future<Image> getCurrentUserProfilePic() async {
+    // var storageRef =
+    //     firebase.storage().ref(user + '/profilePicture/' + file.name);
+    // Need catch if one is not present
+  }
+
   Future<void> sendEmailVerification() async {
     auth.currentUser.sendEmailVerification();
   }
@@ -72,8 +84,7 @@ class FirebaseAccounts {
   Future<void> signInEmailAndPassword(
       BuildContext context, String email, String password) async {
     try {
-      await auth.signInWithEmailAndPassword(
-          email: email, password: password);
+      await auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       String key;
       switch (e.code) {
@@ -103,8 +114,10 @@ class FirebaseAccounts {
         accessToken: result.accessToken, idToken: result.idToken);
     final UserCredential userCredential =
         await auth.signInWithCredential(googleCredential);
-    if (userCredential.additionalUserInfo.isNewUser)
+    if (userCredential.additionalUserInfo.isNewUser) {
       await setCurrentUserDisplayName(googleUser.displayName);
+      await setCurrentUserProfilePic(googleUser.photoUrl);
+    }
     return userCredential.additionalUserInfo.isNewUser;
   }
 
