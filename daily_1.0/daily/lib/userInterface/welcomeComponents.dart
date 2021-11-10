@@ -5,7 +5,7 @@ import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
-import 'package:daily/userInterface/login.dart';
+import 'package:daily/userInterface/auth.dart';
 
 class WelcomeTitle extends StatelessWidget {
   @override
@@ -125,7 +125,7 @@ class WelcomeGetStarted extends StatelessWidget {
             onTap: () {
               RouteNavigation().routePage(
                   context,
-                  LoginScreen(
+                  AuthScreen(
                     isSignIn: false,
                   ));
             },
@@ -156,7 +156,7 @@ class WelcomeAccountAlready extends StatelessWidget {
       onTap: () {
         RouteNavigation().routePage(
             context,
-            LoginScreen(
+            AuthScreen(
               isSignIn: true,
             ));
       },

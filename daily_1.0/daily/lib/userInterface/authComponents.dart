@@ -5,7 +5,7 @@ import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 import 'package:daily/utilities/designUtil/glassmorphism/glassmorphism.dart';
 
-class LoginTitle extends StatelessWidget {
+class AuthTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,7 +38,7 @@ class LoginTitle extends StatelessWidget {
   }
 }
 
-class LoginUserInput extends StatelessWidget {
+class AuthUserInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {}
 }
