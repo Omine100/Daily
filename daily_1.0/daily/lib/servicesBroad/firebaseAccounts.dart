@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
+import 'dart:io';
 import 'package:daily/standards/userIStandards.dart';
 
 class FirebaseAccounts {
   //VARIABLE INITIALIZATION
   FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseStorage storage = FirebaseStorage.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   //MECHANICS
@@ -28,10 +31,14 @@ class FirebaseAccounts {
     return auth.currentUser.displayName;
   }
 
-  Future<void> setCurrentUserProfilePic(Image image, String photoURL) async {
-    // var storageRef =
-    //     firebase.storage().ref(user + '/profilePicture/' + file.name);
-    // Need to put profile pic in both regular and google so we can get the file
+  Future<void> setCurrentUserProfilePicImage(File image) async {
+    var storageRef =
+        storage.ref(auth.currentUser.uid + '/profilePicture/picture');
+    await storageRef.putFile(image);
+  }
+
+  Future<void> setCurrentUserProfilePicURL(String photoURL) async {
+    storage.ref(auth.currentUser.uid + '/profilePicture/$photoURL');
   }
 
   Future<Image> getCurrentUserProfilePic() async {
@@ -52,12 +59,13 @@ class FirebaseAccounts {
     auth.sendPasswordResetEmail(email: email);
   }
 
-  Future<void> signUpEmailAndPassword(
-      BuildContext context, String email, String password, String name) async {
+  Future<void> signUpEmailAndPassword(BuildContext context, String email,
+      String password, String name, File image) async {
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
       await setCurrentUserDisplayName(name);
+      await setCurrentUserProfilePicImage(image);
       sendEmailVerification();
     } on FirebaseAuthException catch (e) {
       String key;
@@ -116,7 +124,7 @@ class FirebaseAccounts {
         await auth.signInWithCredential(googleCredential);
     if (userCredential.additionalUserInfo.isNewUser) {
       await setCurrentUserDisplayName(googleUser.displayName);
-      await setCurrentUserProfilePic(googleUser.photoUrl);
+      await setCurrentUserProfilePicURL(googleUser.photoUrl);
     }
     return userCredential.additionalUserInfo.isNewUser;
   }
