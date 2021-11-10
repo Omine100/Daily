@@ -32,8 +32,7 @@ class FirebaseAccounts {
   }
 
   Future<void> setCurrentUserProfilePicImage(File image) async {
-    var storageRef =
-        storage.ref(auth.currentUser.uid + '/profilePicture/picture');
+    var storageRef = storage.ref(auth.currentUser.uid + '/profilePicture');
     await storageRef.putFile(image);
   }
 
@@ -41,10 +40,10 @@ class FirebaseAccounts {
     storage.ref(auth.currentUser.uid + '/profilePicture/$photoURL');
   }
 
-  Future<Image> getCurrentUserProfilePic() async {
-    // var storageRef =
-    //     firebase.storage().ref(user + '/profilePicture/' + file.name);
-    // Need catch if one is not present
+  Future<String> getCurrentUserProfilePic() async {
+    return storage
+        .ref(auth.currentUser.uid + '/profilePicture')
+        .getDownloadURL();
   }
 
   Future<void> sendEmailVerification() async {
