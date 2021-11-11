@@ -10,7 +10,7 @@ extension CustomDimensions on VisualDensity {
 
   // #region welcome
   double get welcomeTitleWidth => 1.0;
-  double get welcomeCarouselHeight => 0.55;
+  double get welcomeCarouselHeight => 0.50;
   double get welcomeCarouselWidth => 1.0;
   double get welcomeCornerHeight => 0.22;
   double get welcomeGetStartedHeight => 0.07;
