@@ -18,63 +18,6 @@ class UserIStandards {
   MediaManagement mediaManagement = new MediaManagement();
   RouteNavigation routeNavigation = new RouteNavigation();
 
-  //MECHANICS
-  Widget showThemeSelector(BuildContext context) {
-    return Consumer<SystemPreferences>(
-      builder: (context, notifier, child) => SwitchListTile(
-        inactiveThumbImage: AssetImage(
-            'lib/assets/interfaceStandardsThemeSelectorMoonImage.png'),
-        activeThumbImage: AssetImage(
-            'lib/assets/interfaceStandardsThemeSelectorSunImage.png'),
-        activeColor:
-            Theme.of(context).colorScheme.userIStandardsThemeSelector,
-        inactiveThumbColor:
-            Theme.of(context).colorScheme.userIStandardsThemeSelector,
-        onChanged: (val) {
-          notifier.saveToPrefs('isDark', val);
-        },
-        value: isDark,
-      ),
-    );
-  }
-
-  Widget showLanguageSelector(BuildContext context) {
-    return DropdownButtonHideUnderline(
-      child: DropdownButton(
-        dropdownColor:
-            Theme.of(context).colorScheme.userIStandardsLanguageSelectorBackground,
-        onChanged: (Languages languages) {
-          languages.setLanguage(context, languages);
-        },
-        icon: Icon(
-          Icons.language,
-          color: Theme.of(context).colorScheme.userIStandardsLanguageSelectorIcon,
-          size: Theme.of(context).materialTapTargetSize.userIStandardsLanguageSelectorIcon,
-        ),
-        items: Languages.getLanguageList()
-            .map<DropdownMenuItem<Languages>>((lang) => DropdownMenuItem(
-                value: lang,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Text(
-                      lang.name,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.userIStandardsLanguageSelectorContent,
-                      ),
-                    ),
-                    Text(
-                      lang.flag,
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.userIStandardsLanguageSelectorContent),
-                    ),
-                  ],
-                )))
-            .toList(),
-      ),
-    );
-  }
-
   Future<void> showMediaSelectionDialog(BuildContext context, State state) {
     return showDialog(
         context: context,
@@ -136,24 +79,12 @@ class UserIStandards {
         onPressed: () {
           mediaManagement.shareImage(imageURL);
         },
-        iconSize: Theme.of(context).materialTapTargetSize.userIStandardsShareButton,
+        iconSize:
+            Theme.of(context).materialTapTargetSize.userIStandardsShareButton,
         icon: Icon(
           Icons.share_outlined,
           color: Theme.of(context).colorScheme.userIStandardsShareButton,
         ),
-      ),
-    );
-  }
-
-  Widget showBackButton(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        routeNavigation.routePop(context);
-      },
-      child: Icon(
-        Icons.keyboard_backspace,
-        color: Theme.of(context).colorScheme.userIStandardsBackButton,
-        size: Theme.of(context).materialTapTargetSize.userIStandardsBackButton,
       ),
     );
   }
@@ -174,15 +105,14 @@ class UserIStandards {
       },
       child: Container(
         padding: EdgeInsets.all(7.5),
-        height: Theme.of(context).visualDensity.userIStandardsSocialButtonHeight,
+        height:
+            Theme.of(context).visualDensity.userIStandardsSocialButtonHeight,
         width: Theme.of(context).visualDensity.userIStandardsSocialButtonWidth,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(360),
           color: Theme.of(context).colorScheme.userIStandardsSocialButton,
         ),
-        child: Image(
-          image: AssetImage('lib/assets/googleLogo.png')
-        ),
+        child: Image(image: AssetImage('lib/assets/googleLogo.png')),
       ),
     );
   }
@@ -192,27 +122,17 @@ class UserIStandards {
       content: Text(
         getTranslated(context, key),
         style: TextStyle(
-            color: Theme.of(context).colorScheme.userIStandardsToastMessageContent,
-            fontSize: Theme.of(context)
-                .textTheme
-                .userIStandardsToastMessageContent,
-            fontWeight: Theme.of(context)
-                .typography
-                .userIStandardsToastMessageContent),
+            color:
+                Theme.of(context).colorScheme.userIStandardsToastMessageContent,
+            fontSize:
+                Theme.of(context).textTheme.userIStandardsToastMessageContent,
+            fontWeight:
+                Theme.of(context).typography.userIStandardsToastMessageContent),
       ),
       duration: const Duration(seconds: 3),
-      backgroundColor: Theme.of(context).colorScheme.userIStandardsToastMessageBackground,
+      backgroundColor:
+          Theme.of(context).colorScheme.userIStandardsToastMessageBackground,
     ));
-  }
-
-  Widget showTitle(BuildContext context, String key) {
-    return Text(
-      getTranslated(context, key),
-      style: TextStyle(
-          color: Theme.of(context).colorScheme.userIStandardsTitleContent,
-          fontSize: Theme.of(context).textTheme.userIStandardsTitleContent,
-          fontWeight: Theme.of(context).typography.userIStandardsTitleContent),
-    );
   }
 
   Widget showTextField(BuildContext context, int keyboardType, bool isVisible,
@@ -223,8 +143,7 @@ class UserIStandards {
           keyboardType == 0 ? TextInputType.emailAddress : TextInputType.text,
       style: TextStyle(
         color: Theme.of(context).colorScheme.userIStandardsTextInputContent,
-        fontSize:
-            Theme.of(context).textTheme.userIStandardsTextInputContent,
+        fontSize: Theme.of(context).textTheme.userIStandardsTextInputContent,
         fontWeight: Theme.of(context).typography.userIStandardsTextInputContent,
       ),
       decoration: InputDecoration(

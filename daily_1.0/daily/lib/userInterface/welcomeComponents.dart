@@ -7,37 +7,34 @@ import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 import 'package:daily/userInterface/auth.dart';
 
-class WelcomeTitle extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: 20),
-      width: getDimension(
-          context, false, Theme.of(context).visualDensity.welcomeTitleWidth),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            getTranslated(context, "welcomeTitle"),
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.welcomeTitle,
-              fontSize: Theme.of(context).textTheme.welcomeTitle,
-              fontWeight: Theme.of(context).typography.welcomeTitle,
-            ),
+Widget welcomeTitle(BuildContext context) {
+  return Container(
+    padding: EdgeInsets.only(left: 20),
+    width: getDimension(
+        context, false, Theme.of(context).visualDensity.welcomeTitleWidth),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          getTranslated(context, "welcomeTitle"),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.welcomeTitle,
+            fontSize: Theme.of(context).textTheme.welcomeTitle,
+            fontWeight: Theme.of(context).typography.welcomeTitle,
           ),
-          Text(
-            getTranslated(context, "welcomeSubtitle"),
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.welcomeSubtitle,
-              fontSize: Theme.of(context).textTheme.welcomeSubtitle,
-              fontWeight: Theme.of(context).typography.welcomeSubtitle,
-            ),
+        ),
+        Text(
+          getTranslated(context, "welcomeSubtitle"),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.welcomeSubtitle,
+            fontSize: Theme.of(context).textTheme.welcomeSubtitle,
+            fontWeight: Theme.of(context).typography.welcomeSubtitle,
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
 }
 
 List<Image> _images = [
@@ -104,87 +101,79 @@ Widget welcomeCorner(BuildContext context) {
   );
 }
 
-class WelcomeGetStarted extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        height: getDimension(context, true,
-            Theme.of(context).visualDensity.welcomeGetStartedHeight),
-        width: getDimension(context, false,
-            Theme.of(context).visualDensity.welcomeGetStartedWidth),
-        decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.welcomeGetStarted,
-            borderRadius: BorderRadius.circular(30)),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            splashColor: Theme.of(context).colorScheme.welcomeGetStartedInkWell,
-            customBorder:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-            onTap: () {
-              RouteNavigation().routePage(
-                  context,
-                  AuthScreen(
-                    isSignIn: false,
-                  ));
-            },
-            child: Container(
-              child: Center(
-                child: Text(
-                  getTranslated(context, "welcomeGetStarted"),
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.welcomeGetStartedText,
-                    fontSize: Theme.of(context).textTheme.welcomeGetStartedText,
-                    fontWeight:
-                        Theme.of(context).typography.welcomeGetStartedText,
-                  ),
+Widget welcomeGetStarted(BuildContext context) {
+  return Center(
+    child: Container(
+      height: getDimension(context, true,
+          Theme.of(context).visualDensity.welcomeGetStartedHeight),
+      width: getDimension(context, false,
+          Theme.of(context).visualDensity.welcomeGetStartedWidth),
+      decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.welcomeGetStarted,
+          borderRadius: BorderRadius.circular(30)),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          splashColor: Theme.of(context).colorScheme.welcomeGetStartedInkWell,
+          customBorder:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+          onTap: () {
+            RouteNavigation().routePage(
+                context,
+                AuthScreen(
+                  isSignIn: false,
+                ));
+          },
+          child: Container(
+            child: Center(
+              child: Text(
+                getTranslated(context, "welcomeGetStarted"),
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.welcomeGetStartedText,
+                  fontSize: Theme.of(context).textTheme.welcomeGetStartedText,
+                  fontWeight:
+                      Theme.of(context).typography.welcomeGetStartedText,
                 ),
               ),
             ),
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }
 
-class WelcomeAccountAlready extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        RouteNavigation().routePage(
-            context,
-            AuthScreen(
-              isSignIn: true,
-            ));
-      },
-      child: Center(
-        child: RichText(
-          text: TextSpan(
-            text: getTranslated(context, "welcomeAccountAlready"),
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.welcomeAccountAlready,
-              fontSize: Theme.of(context).textTheme.welcomeAccounAlready,
-              fontWeight: Theme.of(context).typography.welcomeAccountAlready,
-            ),
-            children: <TextSpan>[
-              TextSpan(
-                text: getTranslated(context, "welcomeAccountAlreadyLogin"),
-                style: TextStyle(
-                  color:
-                      Theme.of(context).colorScheme.welcomeAccountAlreadyLogin,
-                  fontSize:
-                      Theme.of(context).textTheme.welcomeAccounAlreadyLogin,
-                  fontWeight:
-                      Theme.of(context).typography.welcomeAccountAlreadyLogin,
-                ),
-              ),
-            ],
+Widget welcomeAccountAlready(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      RouteNavigation().routePage(
+          context,
+          AuthScreen(
+            isSignIn: true,
+          ));
+    },
+    child: Center(
+      child: RichText(
+        text: TextSpan(
+          text: getTranslated(context, "welcomeAccountAlready"),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.welcomeAccountAlready,
+            fontSize: Theme.of(context).textTheme.welcomeAccounAlready,
+            fontWeight: Theme.of(context).typography.welcomeAccountAlready,
           ),
+          children: <TextSpan>[
+            TextSpan(
+              text: getTranslated(context, "welcomeAccountAlreadyLogin"),
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.welcomeAccountAlreadyLogin,
+                fontSize: Theme.of(context).textTheme.welcomeAccounAlreadyLogin,
+                fontWeight:
+                    Theme.of(context).typography.welcomeAccountAlreadyLogin,
+              ),
+            ),
+          ],
         ),
       ),
-    );
-  }
+    ),
+  );
 }

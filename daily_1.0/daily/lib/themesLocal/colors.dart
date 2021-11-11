@@ -19,14 +19,6 @@ extension CustomColorScheme on ColorScheme {
   // #region userIStandards
   Color get userIStandardsCameraButton =>
       isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
-  Color get userIStandardsThemeSelector =>
-      isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
-  Color get userIStandardsLanguageSelectorBackground =>
-      isDark ? Color(0xFF102457) : Color(0xFFFFFFFF);
-  Color get userIStandardsLanguageSelectorContent =>
-      isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
-  Color get userIStandardsLanguageSelectorIcon =>
-      isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
   Color get userIStandardsShareButton =>
       isDark ? Color(0xFFFFFFFF) : Color(0xFFBDBDBD);
   Color get userIStandardsSocialButton =>
@@ -34,10 +26,6 @@ extension CustomColorScheme on ColorScheme {
   Color get userIStandardsToastMessageContent =>
       isDark ? Color(0xFFFFFFFF) : Color(0xFFBDBDBD);
   Color get userIStandardsToastMessageBackground =>
-      isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
-  Color get userIStandardsBackButton =>
-      isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
-  Color get userIStandardsTitleContent =>
       isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
   Color get userIStandardsTextInputContent =>
       isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
