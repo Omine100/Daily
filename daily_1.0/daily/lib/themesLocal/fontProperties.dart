@@ -13,8 +13,14 @@ extension CustomFontSize on TextTheme {
   double get welcomeTitle => 48;
   double get welcomeSubtitle => 32;
   double get welcomeAccounAlready => 16;
-  double get welcomeAccounAlreadyLogin=> 16;
+  double get welcomeAccounAlreadyLogin => 16;
   double get welcomeGetStartedText => 20;
+  // #endregion
+
+  // #region auth
+  double get authTitle => 48;
+  double get authSubtitle => 32;
+  double get authGetStartedText => 20;
   // #endregion
 }
 
@@ -31,5 +37,11 @@ extension CustomFontWeight on Typography {
   FontWeight get welcomeAccountAlready => FontWeight.w400;
   FontWeight get welcomeAccountAlreadyLogin => FontWeight.w500;
   FontWeight get welcomeGetStartedText => FontWeight.w500;
+  // #endregion
+
+  // #region auth
+  FontWeight get authTitle => FontWeight.w500;
+  FontWeight get authSubtitle => FontWeight.w300;
+  FontWeight get authGetStartedText => FontWeight.w500;
   // #endregion
 }

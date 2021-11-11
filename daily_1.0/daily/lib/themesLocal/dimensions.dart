@@ -14,12 +14,18 @@ extension CustomDimensions on VisualDensity {
   double get welcomeCarouselWidth => 1.0;
   double get welcomeCornerHeight => 0.22;
   double get welcomeGetStartedHeight => 0.07;
-  double get welcomeGetStartedWidth => 0.45; 
+  double get welcomeGetStartedWidth => 0.45;
+  // #endregion
+
+  // #region auth
+  double get authTitleWidth => 1.0;
+  double get authGetStartedHeight => 0.07;
+  double get authGetStartedWidth => 0.45;
   // #endregion
 }
 
 double getDimension(BuildContext context, bool isHeight, double value) {
-  return isHeight ? 
-    MediaQuery.of(context).size.height * value :
-    MediaQuery.of(context).size.width * value;
+  return isHeight
+      ? MediaQuery.of(context).size.height * value
+      : MediaQuery.of(context).size.width * value;
 }

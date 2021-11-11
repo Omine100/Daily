@@ -70,6 +70,17 @@ extension CustomColorScheme on ColorScheme {
       isDark ? Color(0xFFFF5350) : Color(0xFFFF9999);
   Color get welcomeGetStarted => isDark ? Color(0xFFEF5350) : Color(0xFFFF4350);
   // #endregion
+
+  // #region auth
+  Color get authBackground => isDark ? Color(0xFFFBFAF5) : Color(0xFFFBFAF5);
+  Color get authTitle => isDark ? Color(0xFF333333) : Color(0xFF333333);
+  Color get authSubtitle => isDark ? Color(0xFF333333) : Color(0xFF333333);
+  Color get authGetStartedText =>
+      isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+  Color get authGetStartedInkWell =>
+      isDark ? Color(0xFFFF5350) : Color(0xFFFF9999);
+  Color get authGetStarted => isDark ? Color(0xFFEF5350) : Color(0xFFFF4350);
+  // #endregion
 }
 
 extension ColorUtils on Color {

@@ -48,17 +48,17 @@ class AuthUserInput extends StatelessWidget {
 Widget authProgress(BuildContext context, bool isSignIn) {
   return Center(
     child: Container(
-      height: getDimension(context, true,
-          Theme.of(context).visualDensity.welcomeGetStartedHeight),
-      width: getDimension(context, false,
-          Theme.of(context).visualDensity.welcomeGetStartedWidth),
+      height: getDimension(
+          context, true, Theme.of(context).visualDensity.authGetStartedHeight),
+      width: getDimension(
+          context, false, Theme.of(context).visualDensity.authGetStartedWidth),
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.welcomeGetStarted,
+          color: Theme.of(context).colorScheme.authGetStarted,
           borderRadius: BorderRadius.circular(30)),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          splashColor: Theme.of(context).colorScheme.welcomeGetStartedInkWell,
+          splashColor: Theme.of(context).colorScheme.authGetStartedInkWell,
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
@@ -69,10 +69,9 @@ Widget authProgress(BuildContext context, bool isSignIn) {
               child: Text(
                 getTranslated(context, isSignIn ? "authSignIn" : "authSignUp"),
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.welcomeGetStartedText,
-                  fontSize: Theme.of(context).textTheme.welcomeGetStartedText,
-                  fontWeight:
-                      Theme.of(context).typography.welcomeGetStartedText,
+                  color: Theme.of(context).colorScheme.authGetStartedText,
+                  fontSize: Theme.of(context).textTheme.authGetStartedText,
+                  fontWeight: Theme.of(context).typography.authGetStartedText,
                 ),
               ),
             ),
