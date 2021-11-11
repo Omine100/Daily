@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
+import 'package:daily/servicesLocal/mediaManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
@@ -41,4 +42,19 @@ class AuthTitle extends StatelessWidget {
 class AuthUserInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {}
+}
+
+Widget AuthProfilePicker(BuildContext context, State state) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(15),
+      color: Colors.red,
+    ),
+    child: IconButton(
+      onPressed: () {
+        MediaManagement().showImagePicker(context, true, state);
+      },
+      icon: Icon(Icons.person),
+    ),
+  );
 }
