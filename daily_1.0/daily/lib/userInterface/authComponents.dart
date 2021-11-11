@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
-import 'package:daily/servicesLocal/mediaManagement.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
+import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
@@ -110,20 +111,26 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
   );
 }
 
+List<Image> _images = [
+  Image(image: AssetImage("lib/assets/auth_carouselOne.png")),
+  Image(image: AssetImage("lib/assets/auth_carouselTwo.png")),
+  Image(image: AssetImage("lib/assets/auth_carouselThree.png")),
+  Image(image: AssetImage("lib/assets/auth_carouselFour.png")),
+  Image(image: AssetImage("lib/assets/auth_carouselFive.png")),
+  Image(image: AssetImage("lib/assets/auth_carouselSix.png")),
+];
 Widget authProfilePicker(BuildContext context, State state) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(12),
       color: Colors.red,
     ),
-    child: IconButton(
-      onPressed: () {
-        MediaManagement().showImagePicker(context, true, state);
-      },
-      icon: Icon(
-        Icons.person,
-        color: Colors.white,
-        size: 30,
+    child: CarouselSlider(
+      items: _images,
+      options: CarouselOptions(
+        autoPlay: true,
+        enlargeCenterPage: true,
+        aspectRatio: 1.0,
       ),
     ),
   );
