@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
 import 'package:daily/servicesLocal/mediaManagement.dart';
+import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
-import 'package:daily/utilities/designUtil/glassmorphism/glassmorphism.dart';
+import 'package:daily/userInterface/home.dart';
 
 class AuthTitle extends StatelessWidget {
   @override
@@ -18,7 +19,7 @@ class AuthTitle extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            getTranslated(context, "welcomeTitle"),
+            getTranslated(context, "loginTitle"),
             style: TextStyle(
               color: Theme.of(context).colorScheme.welcomeTitle,
               fontSize: Theme.of(context).textTheme.welcomeTitle,
@@ -26,7 +27,7 @@ class AuthTitle extends StatelessWidget {
             ),
           ),
           Text(
-            getTranslated(context, "welcomeSubtitle"),
+            getTranslated(context, "LoginSubtitle"),
             style: TextStyle(
               color: Theme.of(context).colorScheme.welcomeSubtitle,
               fontSize: Theme.of(context).textTheme.welcomeSubtitle,
@@ -44,17 +45,90 @@ class AuthUserInput extends StatelessWidget {
   Widget build(BuildContext context) {}
 }
 
-Widget AuthProfilePicker(BuildContext context, State state) {
+Widget authProgress(BuildContext context, bool isSignIn) {
+  return Center(
+    child: Container(
+      height: getDimension(context, true,
+          Theme.of(context).visualDensity.welcomeGetStartedHeight),
+      width: getDimension(context, false,
+          Theme.of(context).visualDensity.welcomeGetStartedWidth),
+      decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.welcomeGetStarted,
+          borderRadius: BorderRadius.circular(30)),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          splashColor: Theme.of(context).colorScheme.welcomeGetStartedInkWell,
+          customBorder:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+          onTap: () {
+            RouteNavigation().routePage(context, HomeScreen());
+          },
+          child: Container(
+            child: Center(
+              child: Text(
+                getTranslated(context, isSignIn ? "authSignIn" : "authSignUp"),
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.welcomeGetStartedText,
+                  fontSize: Theme.of(context).textTheme.welcomeGetStartedText,
+                  fontWeight:
+                      Theme.of(context).typography.welcomeGetStartedText,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget authSwitch(BuildContext context, bool isSignIn) {
+  return GestureDetector(
+    onTap: () {
+      RouteNavigation().routePage(context, HomeScreen());
+    },
+    child: Center(
+      child: RichText(
+        text: TextSpan(
+          text: getTranslated(context, "welcomeAccountAlready"),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.welcomeAccountAlready,
+            fontSize: Theme.of(context).textTheme.welcomeAccounAlready,
+            fontWeight: Theme.of(context).typography.welcomeAccountAlready,
+          ),
+          children: <TextSpan>[
+            TextSpan(
+              text: getTranslated(context, "welcomeAccountAlreadyLogin"),
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.welcomeAccountAlreadyLogin,
+                fontSize: Theme.of(context).textTheme.welcomeAccounAlreadyLogin,
+                fontWeight:
+                    Theme.of(context).typography.welcomeAccountAlreadyLogin,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget authProfilePicker(BuildContext context, State state) {
   return Container(
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(15),
+      borderRadius: BorderRadius.circular(12),
       color: Colors.red,
     ),
     child: IconButton(
       onPressed: () {
         MediaManagement().showImagePicker(context, true, state);
       },
-      icon: Icon(Icons.person),
+      icon: Icon(
+        Icons.person,
+        color: Colors.white,
+        size: 30,
+      ),
     ),
   );
 }

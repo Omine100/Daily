@@ -27,31 +27,28 @@ class _AuthScreenState extends State<AuthScreen> {
               child: Container(
                   constraints: BoxConstraints.expand(height: double.maxFinite),
                   child: Responsive(
-                    desktop: AuthScreenDesktop(context),
-                    tablet: AuthScreenTablet(context),
-                    mobile: AuthScreenMobile(context),
+                    desktop: AuthScreenDesktop(context, this),
+                    tablet: AuthScreenTablet(context, this),
+                    mobile: AuthScreenMobile(context, this),
                   )))),
     );
   }
 }
 
-AuthScreenDesktop(BuildContext context) {
+AuthScreenDesktop(BuildContext context, State state) {
   return Stack(
-    alignment: Alignment.center,
-    children: [],
+    children: [Positioned(child: authProfilePicker(context, state))],
   );
 }
 
-AuthScreenTablet(BuildContext context) {
+AuthScreenTablet(BuildContext context, State state) {
   return Stack(
-    alignment: Alignment.center,
-    children: [],
+    children: [Positioned(child: authProfilePicker(context, state))],
   );
 }
 
-AuthScreenMobile(BuildContext context) {
+AuthScreenMobile(BuildContext context, State state) {
   return Stack(
-    alignment: Alignment.center,
-    children: [],
+    children: [Positioned(child: authProfilePicker(context, state))],
   );
 }
