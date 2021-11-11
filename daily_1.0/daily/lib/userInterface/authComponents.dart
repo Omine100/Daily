@@ -119,20 +119,26 @@ List<Image> _images = [
   Image(image: AssetImage("lib/assets/auth_carouselFive.png")),
 ];
 Widget authProfilePicker(BuildContext context, State state) {
-  return Container(
-    height: 200,
-    width: 200,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(60),
-      color: Colors.red.shade200,
-    ),
-    child: CarouselSlider(
-      items: _images,
-      options: CarouselOptions(
-        autoPlay: true,
-        viewportFraction: 1.5,
-        enlargeCenterPage: true,
-        aspectRatio: 1.0,
+  return GestureDetector(
+    onTap: () {
+      //Need this to return an image file so we can send it to firebaseAccounts
+      UserIStandards().showMediaSelectionDialog(context, state);
+    },
+    child: Container(
+      height: 200,
+      width: 200,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(60),
+        color: Colors.red.shade200,
+      ),
+      child: CarouselSlider(
+        items: _images,
+        options: CarouselOptions(
+          autoPlay: true,
+          viewportFraction: 1.5,
+          enlargeCenterPage: true,
+          aspectRatio: 1.0,
+        ),
       ),
     ),
   );
