@@ -117,18 +117,20 @@ List<Image> _images = [
   Image(image: AssetImage("lib/assets/auth_carouselThree.png")),
   Image(image: AssetImage("lib/assets/auth_carouselFour.png")),
   Image(image: AssetImage("lib/assets/auth_carouselFive.png")),
-  Image(image: AssetImage("lib/assets/auth_carouselSix.png")),
 ];
 Widget authProfilePicker(BuildContext context, State state) {
   return Container(
+    height: 200,
+    width: 200,
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(12),
-      color: Colors.red,
+      borderRadius: BorderRadius.circular(60),
+      color: Colors.red.shade200,
     ),
     child: CarouselSlider(
       items: _images,
       options: CarouselOptions(
         autoPlay: true,
+        viewportFraction: 1.5,
         enlargeCenterPage: true,
         aspectRatio: 1.0,
       ),

@@ -49,6 +49,8 @@ AuthScreenTablet(BuildContext context, State state) {
 
 AuthScreenMobile(BuildContext context, State state) {
   return Stack(
-    children: [Positioned(child: authProfilePicker(context, state))],
+    children: [
+      Positioned(top: 100, left: 100, child: authProfilePicker(context, state))
+    ],
   );
 }
