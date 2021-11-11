@@ -135,6 +135,7 @@ Widget authProfilePicker(BuildContext context, State state) {
         items: _images,
         options: CarouselOptions(
           autoPlay: true,
+          autoPlayAnimationDuration: Duration(seconds: 3),
           viewportFraction: 1.5,
           enlargeCenterPage: true,
           aspectRatio: 1.0,
