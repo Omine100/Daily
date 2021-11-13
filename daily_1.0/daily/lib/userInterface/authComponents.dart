@@ -39,8 +39,13 @@ Widget authTitle(BuildContext context) {
 }
 
 class AuthUserInput extends StatelessWidget {
+  bool isSignIn;
+  AuthUserInput(this.isSignIn);
+
   @override
-  Widget build(BuildContext context) {}
+  Widget build(BuildContext context) {
+    return Container();
+  }
 }
 
 Widget authProgress(BuildContext context, bool isSignIn) {

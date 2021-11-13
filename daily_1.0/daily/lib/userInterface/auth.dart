@@ -6,9 +6,8 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';
 
 class AuthScreen extends StatefulWidget {
-  AuthScreen({this.isSignIn});
-
   final bool isSignIn;
+  AuthScreen({this.isSignIn});
 
   @override
   _AuthScreenState createState() => _AuthScreenState();
@@ -27,30 +26,35 @@ class _AuthScreenState extends State<AuthScreen> {
               child: Container(
                   constraints: BoxConstraints.expand(height: double.maxFinite),
                   child: Responsive(
-                    desktop: AuthScreenDesktop(context, this),
-                    tablet: AuthScreenTablet(context, this),
-                    mobile: AuthScreenMobile(context, this),
+                    desktop: AuthScreenDesktop(context, this, widget.isSignIn),
+                    tablet: AuthScreenTablet(context, this, widget.isSignIn),
+                    mobile: AuthScreenMobile(context, this, widget.isSignIn),
                   )))),
     );
   }
 }
 
-AuthScreenDesktop(BuildContext context, State state) {
+AuthScreenDesktop(BuildContext context, State state, bool isSignIn) {
   return Stack(
     children: [Positioned(child: authProfilePicker(context, state))],
   );
 }
 
-AuthScreenTablet(BuildContext context, State state) {
+AuthScreenTablet(BuildContext context, State state, bool isSignIn) {
   return Stack(
     children: [Positioned(child: authProfilePicker(context, state))],
   );
 }
 
-AuthScreenMobile(BuildContext context, State state) {
+AuthScreenMobile(BuildContext context, State state, bool isSignIn) {
   return Stack(
     children: [
-      Positioned(top: 100, left: 100, child: authProfilePicker(context, state))
+      Positioned(top: 100, left: 100, child: authProfilePicker(context, state)),
+      Positioned(
+        top: 200,
+        left: 400,
+        child: AuthUserInput(isSignIn),
+      )
     ],
   );
 }
