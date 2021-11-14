@@ -39,12 +39,27 @@ Widget authTitle(BuildContext context) {
 }
 
 class AuthUserInput extends StatelessWidget {
-  bool isSignIn;
+  final bool isSignIn;
   AuthUserInput(this.isSignIn);
 
+  final formKey = new GlobalKey<FormState>();
+  String userName, userEmail, userPass;
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Form(
+      key: formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            validator: ,
+            onSaved: (name) => userName,
+            decoration: InputDecoration(
+              hintText: getTranslated(context, "authFormName")
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
