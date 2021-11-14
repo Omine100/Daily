@@ -55,10 +55,9 @@ class AuthUserInput extends StatelessWidget {
         children: [
           TextFormField(
             validator: (name) {
-              if (isName(name))
-                return null;
-              else
+              if (!isName(name))
                 return getTranslated(context, 'validatorNameFormat');
+              return null;
             },
             onSaved: (name) => userName,
             decoration: InputDecoration(
