@@ -45,7 +45,7 @@ class AuthUserInput extends StatelessWidget {
   AuthUserInput(this.isSignIn);
 
   final formKey = new GlobalKey<FormState>();
-  String userName, userEmail, userPass;
+  final String userName = "", userEmail = "", userPass = "";
 
   @override
   Widget build(BuildContext context) {
@@ -53,20 +53,43 @@ class AuthUserInput extends StatelessWidget {
       key: formKey,
       child: Column(
         children: [
+          isSignIn
+              ? TextFormField(
+                  validator: (name) {
+                    if (!isName(name))
+                      return getTranslated(context, 'validatorNameFormat');
+                    return null;
+                  },
+                  onSaved: (name) => userName,
+                  decoration: authUserInputDecoration(context, "authFormName"),
+                )
+              : null,
           TextFormField(
-            validator: (name) {
-              if (!isName(name))
-                return getTranslated(context, 'validatorNameFormat');
+            validator: (email) {
+              if (!isEmail(email))
+                return getTranslated(context, 'validatorEmailFormat');
               return null;
             },
-            onSaved: (name) => userName,
-            decoration: InputDecoration(
-                hintText: getTranslated(context, "authFormName")),
+            onSaved: (email) => userEmail,
+            decoration: authUserInputDecoration(context, "authFormEmail"),
           ),
+          TextFormField(
+            validator: (pass) {
+              if (!isPassword(pass))
+                return getTranslated(context, 'validatorPassFormat');
+              return null;
+            },
+            onSaved: (pass) => userPass,
+            decoration: authUserInputDecoration(context, "authFormPass"),
+          )
         ],
       ),
     );
   }
+}
+
+InputDecoration authUserInputDecoration(BuildContext context, String key) {
+  return InputDecoration();
 }
 
 Widget authProgress(BuildContext context, bool isSignIn) {
