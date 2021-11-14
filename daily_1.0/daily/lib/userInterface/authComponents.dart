@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/standards/userIStandards.dart';
@@ -45,6 +46,7 @@ class AuthUserInput extends StatelessWidget {
 
   final formKey = new GlobalKey<FormState>();
   String userName, userEmail, userPass;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -53,9 +55,6 @@ class AuthUserInput extends StatelessWidget {
         children: [
           TextFormField(
             validator: (name) {
-              if (name == null || name.isEmpty) {
-                return getTranslated(context, 'validatorNameEmpty');
-              }
               if (isName(name))
                 return null;
               else
@@ -140,17 +139,17 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
 }
 
 List<Image> _images = [
-  Image(image: AssetImage("lib/assets/auth_carouselOne.png")),
-  Image(image: AssetImage("lib/assets/auth_carouselTwo.png")),
-  Image(image: AssetImage("lib/assets/auth_carouselThree.png")),
-  Image(image: AssetImage("lib/assets/auth_carouselFour.png")),
-  Image(image: AssetImage("lib/assets/auth_carouselFive.png")),
+  Image(image: AssetImage("lib/assets/auth/auth_carouselOne.png")),
+  Image(image: AssetImage("lib/assets/auth/auth_carouselTwo.png")),
+  Image(image: AssetImage("lib/assets/auth/auth_carouselThree.png")),
+  Image(image: AssetImage("lib/assets/auth/auth_carouselFour.png")),
+  Image(image: AssetImage("lib/assets/auth/auth_carouselFive.png")),
 ];
 Widget authProfilePicker(BuildContext context, State state) {
   return GestureDetector(
     onTap: () {
-      //Need this to return an image file so we can send it to firebaseAccounts
-      UserIStandards().showMediaSelectionDialog(context, state);
+      UserIStandards().mediaSelectionDialog(context, state).then(
+          (file) => FirebaseAccounts().setCurrentUserProfilePicImage(file));
     },
     child: Container(
       height: 200,

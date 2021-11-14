@@ -38,9 +38,9 @@ Widget welcomeTitle(BuildContext context) {
 }
 
 List<Image> _images = [
-  Image(image: AssetImage("lib/assets/welcome_carouselOne.png")),
-  Image(image: AssetImage("lib/assets/welcome_carouselTwo.png")),
-  Image(image: AssetImage("lib/assets/welcome_carouselThree.png")),
+  Image(image: AssetImage("lib/assets/welcome/welcome_carouselOne.png")),
+  Image(image: AssetImage("lib/assets/welcome/welcome_carouselTwo.png")),
+  Image(image: AssetImage("lib/assets/welcome/welcome_carouselThree.png")),
 ];
 int _current = 0;
 Widget welcomeCarousel(State state, BuildContext context) {

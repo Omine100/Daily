@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:io';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/mediaManagement.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
@@ -18,7 +19,7 @@ class UserIStandards {
   MediaManagement mediaManagement = new MediaManagement();
   RouteNavigation routeNavigation = new RouteNavigation();
 
-  Future<void> showMediaSelectionDialog(BuildContext context, State state) {
+  Future<File> mediaSelectionDialog(BuildContext context, State state) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -41,8 +42,9 @@ class UserIStandards {
                         ],
                       ),
                       onTap: () {
-                        mediaManagement.showImagePicker(context, false, state);
                         routeNavigation.routePop(context);
+                        return mediaManagement.imagePicker(
+                            context, false, state);
                       },
                     ),
                     Padding(padding: EdgeInsets.all(8.0)),
@@ -62,8 +64,9 @@ class UserIStandards {
                         ],
                       ),
                       onTap: () {
-                        mediaManagement.showImagePicker(context, true, state);
                         routeNavigation.routePop(context);
+                        return mediaManagement.imagePicker(
+                            context, true, state);
                       },
                     )
                   ],

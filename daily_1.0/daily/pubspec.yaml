@@ -47,17 +47,17 @@ flutter:
   uses-material-design: true
 
   assets:
-      - lib/assets/welcome_background.png
-      - lib/assets/welcome_backgroundDark.jpg
-      - lib/assets/welcome_carouselOne.png
-      - lib/assets/welcome_carouselTwo.png
-      - lib/assets/welcome_carouselThree.png
-      - lib/assets/welcome_corner.png
-      - lib/assets/auth_carouselOne.png
-      - lib/assets/auth_carouselTwo.png
-      - lib/assets/auth_carouselThree.png
-      - lib/assets/auth_carouselFour.png
-      - lib/assets/auth_carouselFive.png
+      - lib/assets/welcome/welcome_background.png
+      - lib/assets/welcome/welcome_backgroundDark.jpg
+      - lib/assets/welcome/welcome_carouselOne.png
+      - lib/assets/welcome/welcome_carouselTwo.png
+      - lib/assets/welcome/welcome_carouselThree.png
+      - lib/assets/welcome/welcome_corner.png
+      - lib/assets/auth/auth_carouselOne.png
+      - lib/assets/auth/auth_carouselTwo.png
+      - lib/assets/auth/auth_carouselThree.png
+      - lib/assets/auth/auth_carouselFour.png
+      - lib/assets/auth/auth_carouselFive.png
       - lib/localizations/en.json
       - lib/localizations/es.json
       - lib/localizations/fr.json
