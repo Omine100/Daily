@@ -7,6 +7,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 import 'package:daily/userInterface/home.dart';
+import 'package:daily/utilities/managementUtil/validation.dart';
 
 Widget authTitle(BuildContext context) {
   return Container(
@@ -51,11 +52,18 @@ class AuthUserInput extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
-            validator: ,
+            validator: (name) {
+              if (name == null || name.isEmpty) {
+                return getTranslated(context, 'validatorNameEmpty');
+              }
+              if (isName(name))
+                return null;
+              else
+                return getTranslated(context, 'validatorNameFormat');
+            },
             onSaved: (name) => userName,
             decoration: InputDecoration(
-              hintText: getTranslated(context, "authFormName")
-            ),
+                hintText: getTranslated(context, "authFormName")),
           ),
         ],
       ),
