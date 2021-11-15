@@ -36,13 +36,27 @@ class _AuthScreenState extends State<AuthScreen> {
 
 AuthScreenDesktop(BuildContext context, State state, bool isSignIn) {
   return Stack(
-    children: [Positioned(child: authProfilePicker(context, state))],
+    children: [
+      Positioned(top: 100, left: 100, child: authProfilePicker(context, state)),
+      Positioned(
+        top: 200,
+        left: 400,
+        child: AuthUserInput(isSignIn),
+      )
+    ],
   );
 }
 
 AuthScreenTablet(BuildContext context, State state, bool isSignIn) {
   return Stack(
-    children: [Positioned(child: authProfilePicker(context, state))],
+    children: [
+      Positioned(top: 100, left: 100, child: authProfilePicker(context, state)),
+      Positioned(
+        top: 200,
+        left: 400,
+        child: AuthUserInput(isSignIn),
+      )
+    ],
   );
 }
 
