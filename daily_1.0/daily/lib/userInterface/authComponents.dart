@@ -51,7 +51,7 @@ class AuthUserInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 400,
-      width: 400,
+      width: 300,
       child: Form(
         key: formKey,
         child: Column(
@@ -60,16 +60,22 @@ class AuthUserInput extends StatelessWidget {
                 ? Container(
                     height: 0,
                   )
-                : TextFormField(
-                    validator: (name) {
-                      if (!isName(name))
-                        return getTranslated(
-                            context, 'authValidatorNameFormat');
-                      return null;
-                    },
-                    onSaved: (name) => userName,
-                    decoration:
-                        authUserInputDecoration(context, "authFormName"),
+                : Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Colors.grey.shade200,
+                    ),
+                    child: TextFormField(
+                      validator: (name) {
+                        if (!isName(name))
+                          return getTranslated(
+                              context, 'authValidatorNameFormat');
+                        return null;
+                      },
+                      onSaved: (name) => userName,
+                      decoration:
+                          authUserInputDecoration(context, "authFormName"),
+                    ),
                   ),
             TextFormField(
               validator: (email) {
@@ -98,6 +104,7 @@ class AuthUserInput extends StatelessWidget {
 
 InputDecoration authUserInputDecoration(BuildContext context, String key) {
   return InputDecoration(
+    border: InputBorder.none,
     hintText: getTranslated(context, key),
     hintStyle: TextStyle(
       color: Theme.of(context).colorScheme.authUserInputDecoration,
