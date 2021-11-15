@@ -89,7 +89,14 @@ class AuthUserInput extends StatelessWidget {
 }
 
 InputDecoration authUserInputDecoration(BuildContext context, String key) {
-  return InputDecoration();
+  return InputDecoration(
+    hintText: getTranslated(context, key),
+    hintStyle: TextStyle(
+      color: Theme.of(context).colorScheme.authUserInputDecoration,
+      fontSize: Theme.of(context).textTheme.authUserInputDecoration,
+      fontWeight: Theme.of(context).typography.authUserInputDecoration,
+    ),
+  );
 }
 
 Widget authProgress(BuildContext context, bool isSignIn) {

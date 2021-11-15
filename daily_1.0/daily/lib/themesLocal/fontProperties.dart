@@ -19,6 +19,7 @@ extension CustomFontSize on TextTheme {
   // #region auth
   double get authTitle => 48;
   double get authSubtitle => 32;
+  double get authUserInputDecoration => 20;
   double get authGetStartedText => 20;
   // #endregion
 }
@@ -40,6 +41,7 @@ extension CustomFontWeight on Typography {
   // #region auth
   FontWeight get authTitle => FontWeight.w500;
   FontWeight get authSubtitle => FontWeight.w300;
+  FontWeight get authUserInputDecoration => FontWeight.w300;
   FontWeight get authGetStartedText => FontWeight.w500;
   // #endregion
 }

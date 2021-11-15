@@ -5,69 +5,63 @@ import 'package:daily/servicesLocal/systemPreferences.dart';
 
 extension CustomColorScheme on ColorScheme {
   // #region essential
-  Color get materialTransparent =>
-      isDark ? Color(0x00FFFFFF) : Color(0x00FFFFFF);
+  Color get materialTransparent => Color(isDark ? 0x00FFFFFF : 0x00FFFFFF);
   // #endregion
 
   // #region gradients
   Color get gradientsBackgroundTopRight =>
-      isDark ? Color(0xFF102449) : Color(0xFFFF99D1);
+      Color(isDark ? 0xFF102449 : 0xFFFF99D1);
   Color get gradientsBackgroundBottomLeft =>
-      isDark ? Color(0xFF1B1B2D) : Color(0xFFFFAB5F);
+      Color(isDark ? 0xFF1B1B2D : 0xFFFFAB5F);
   // #endregion
 
   // #region userIStandards
   Color get userIStandardsCameraButton =>
-      isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+      Color(isDark ? 0xFFFFAB58 : 0xFFFFFFFF);
   Color get userIStandardsShareButton =>
-      isDark ? Color(0xFFFFFFFF) : Color(0xFFBDBDBD);
+      Color(isDark ? 0xFFFFFFFF : 0xFFBDBDBD);
   Color get userIStandardsSocialButton =>
-      isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+      Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get userIStandardsToastMessageContent =>
-      isDark ? Color(0xFFFFFFFF) : Color(0xFFBDBDBD);
+      Color(isDark ? 0xFFFFFFFF : 0xFFBDBDBD);
   Color get userIStandardsToastMessageBackground =>
-      isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+      Color(isDark ? 0xFFFFAB58 : 0xFFFFFFFF);
   Color get userIStandardsTextInputContent =>
-      isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+      Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get userIStandardsTextInputLine =>
-      isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+      Color(isDark ? 0xFFFFAB58 : 0xFFFFFFFF);
   Color get userIStandardsTextInputIcon =>
-      isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+      Color(isDark ? 0xFFFFAB58 : 0xFFFFFFFF);
   // #endregion
 
   // #region userXStandards
   Color get userXStandardsProgressIndicator =>
-      isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+      Color(isDark ? 0xFFFFAB58 : 0xFFFFFFFF);
   // #endregion
 
   // #region welcome
-  Color get welcomeBackground => isDark ? Color(0xFFFBFAF5) : Color(0xFFFBFAF5);
-  Color get welcomeTitle => isDark ? Color(0xFF333333) : Color(0xFF333333);
-  Color get welcomeSubtitle => isDark ? Color(0xFF333333) : Color(0xFF333333);
-  Color get welcomeCarouselCurrent =>
-      isDark ? Color(0xFFEF5350) : Color(0xFFEF5350);
+  Color get welcomeBackground => Color(isDark ? 0xFFFBFAF5 : 0xFFFBFAF5);
+  Color get welcomeTitle => Color(isDark ? 0xFF333333 : 0xFF333333);
+  Color get welcomeSubtitle => Color(isDark ? 0xFF333333 : 0xFF333333);
+  Color get welcomeCarouselCurrent => Color(isDark ? 0xFFEF5350 : 0xFFEF5350);
   Color get welcomeCarouselNotCurrent =>
-      isDark ? Color(0xFFDDDDDD) : Color(0xFFDDDDDD);
-  Color get welcomeAccountAlready =>
-      isDark ? Color(0xFF333333) : Color(0xFF333333);
+      Color(isDark ? 0xFFDDDDDD : 0xFFDDDDDD);
+  Color get welcomeAccountAlready => Color(isDark ? 0xFF333333 : 0xFF333333);
   Color get welcomeAccountAlreadyLogin =>
-      isDark ? Color(0xFFEF5350) : Color(0xFFFF4350);
-  Color get welcomeGetStartedText =>
-      isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
-  Color get welcomeGetStartedInkWell =>
-      isDark ? Color(0xFFFF5350) : Color(0xFFFF9999);
-  Color get welcomeGetStarted => isDark ? Color(0xFFEF5350) : Color(0xFFFF4350);
+      Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
+  Color get welcomeGetStartedText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
+  Color get welcomeGetStartedInkWell => Color(isDark ? 0xFFFF5350 : 0xFFFF9999);
+  Color get welcomeGetStarted => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
   // #endregion
 
   // #region auth
-  Color get authBackground => isDark ? Color(0xFFFBFAF5) : Color(0xFFFBFAF5);
-  Color get authTitle => isDark ? Color(0xFF333333) : Color(0xFF333333);
-  Color get authSubtitle => isDark ? Color(0xFF333333) : Color(0xFF333333);
-  Color get authGetStartedText =>
-      isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
-  Color get authGetStartedInkWell =>
-      isDark ? Color(0xFFFF5350) : Color(0xFFFF9999);
-  Color get authGetStarted => isDark ? Color(0xFFEF5350) : Color(0xFFFF4350);
+  Color get authBackground => Color(isDark ? 0xFFFBFAF5 : 0xFFFBFAF5);
+  Color get authTitle => Color(isDark ? 0xFF333333 : 0xFF333333);
+  Color get authSubtitle => Color(isDark ? 0xFF333333 : 0xFF333333);
+  Color get authUserInputDecoration => Color(isDark ? 0xFF000000 : 0xFF000000);
+  Color get authGetStartedText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
+  Color get authGetStartedInkWell => Color(isDark ? 0xFFFF5350 : 0xFFFF9999);
+  Color get authGetStarted => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
   // #endregion
 }
 
