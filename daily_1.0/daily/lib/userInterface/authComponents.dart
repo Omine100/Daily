@@ -95,6 +95,7 @@ class AuthUserInput extends StatelessWidget {
                       return getTranslated(context, 'authValidatorPassFormat');
                     return null;
                   },
+                  obscureText: true, //need to change
                   onSaved: (pass) => userPass,
                   decoration: authUserInputDecoration(context, "authFormPass"),
                 ))
@@ -122,10 +123,21 @@ InputDecoration authUserInputDecoration(BuildContext context, String key) {
   return InputDecoration(
     border: InputBorder.none,
     hintText: getTranslated(context, key),
+    labelStyle: TextStyle(
+      color: Theme.of(context).colorScheme.authUserInputDecoration,
+      fontSize: Theme.of(context).textTheme.authUserInputDecoration,
+      fontWeight: Theme.of(context).typography.authUserInputDecoration,
+    ),
     hintStyle: TextStyle(
       color: Theme.of(context).colorScheme.authUserInputDecoration,
       fontSize: Theme.of(context).textTheme.authUserInputDecoration,
       fontWeight: Theme.of(context).typography.authUserInputDecoration,
+    ),
+    prefixIcon: Icon(
+      key != "authFormEmail"
+          ? (key == "authFormPass" ? Icons.lock : Icons.person)
+          : Icons.email,
+      color: Theme.of(context).colorScheme.userIStandardsTextInputIcon,
     ),
   );
 }
