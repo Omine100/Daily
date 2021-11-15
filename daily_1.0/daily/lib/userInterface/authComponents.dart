@@ -61,44 +61,27 @@ class AuthUserInput extends StatelessWidget {
                 ? Container(
                     height: 0,
                   )
-                : authUserInputContainer(
-                    context,
-                    TextFormField(
-                      validator: (name) {
-                        if (!isName(name))
-                          return getTranslated(
-                              context, 'authValidatorNameFormat');
-                        return null;
-                      },
-                      onSaved: (name) => userName,
-                      decoration:
-                          authUserInputDecoration(context, "authFormName"),
-                    ),
-                  ),
-            authUserInputContainer(
-              context,
-              TextFormField(
-                validator: (email) {
-                  if (!isEmail(email))
-                    return getTranslated(context, 'authValidatorEmailFormat');
-                  return null;
-                },
-                onSaved: (email) => userEmail,
-                decoration: authUserInputDecoration(context, "authFormEmail"),
-              ),
-            ),
-            authUserInputContainer(
-                context,
-                TextFormField(
-                  validator: (pass) {
-                    if (!isPassword(pass))
-                      return getTranslated(context, 'authValidatorPassFormat');
+                : authUserInputField(context, (email) {
+                    if (!isEmail(email))
+                      return getTranslated(context, 'authValidatorEmailFormat');
                     return null;
-                  },
-                  obscureText: true, //need to change
-                  onSaved: (pass) => userPass,
-                  decoration: authUserInputDecoration(context, "authFormPass"),
-                ))
+                  }, (email) => userEmail, "authFormName", false),
+            authUserInputField(context, (email) {
+              if (!isEmail(email))
+                return getTranslated(context, 'authValidatorEmailFormat');
+              return null;
+            }, (email) => userEmail, "authFormEmail", false),
+            authUserInputField(
+              context,
+              (pass) {
+                if (!isPassword(pass))
+                  return getTranslated(context, 'authValidatorPassFormat');
+                return null;
+              },
+              (pass) => userPass,
+              "authFormPass",
+              true,
+            )
           ],
         ),
       ),
@@ -106,7 +89,9 @@ class AuthUserInput extends StatelessWidget {
   }
 }
 
-Container authUserInputContainer(BuildContext context, Widget child) {
+bool isVisible = false;
+Container authUserInputField(BuildContext context, Function validator,
+    Function onSaved, String authForm, bool isVariable) {
   return Container(
     height: 60,
     width: 275,
@@ -115,29 +100,38 @@ Container authUserInputContainer(BuildContext context, Widget child) {
       borderRadius: BorderRadius.circular(30),
       color: Colors.grey.shade200,
     ),
-    child: child,
-  );
-}
-
-InputDecoration authUserInputDecoration(BuildContext context, String key) {
-  return InputDecoration(
-    border: InputBorder.none,
-    hintText: getTranslated(context, key),
-    labelStyle: TextStyle(
-      color: Theme.of(context).colorScheme.authUserInputDecoration,
-      fontSize: Theme.of(context).textTheme.authUserInputDecoration,
-      fontWeight: Theme.of(context).typography.authUserInputDecoration,
-    ),
-    hintStyle: TextStyle(
-      color: Theme.of(context).colorScheme.authUserInputDecoration,
-      fontSize: Theme.of(context).textTheme.authUserInputDecoration,
-      fontWeight: Theme.of(context).typography.authUserInputDecoration,
-    ),
-    prefixIcon: Icon(
-      key != "authFormEmail"
-          ? (key == "authFormPass" ? Icons.lock : Icons.person)
-          : Icons.email,
-      color: Theme.of(context).colorScheme.userIStandardsTextInputIcon,
+    child: TextFormField(
+      obscureText: isVisible,
+      validator: validator,
+      onSaved: onSaved,
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        hintText: getTranslated(context, authForm),
+        labelStyle: TextStyle(
+          color: Theme.of(context).colorScheme.authUserInputDecoration,
+          fontSize: Theme.of(context).textTheme.authUserInputDecoration,
+          fontWeight: Theme.of(context).typography.authUserInputDecoration,
+        ),
+        hintStyle: TextStyle(
+          color: Theme.of(context).colorScheme.authUserInputDecoration,
+          fontSize: Theme.of(context).textTheme.authUserInputDecoration,
+          fontWeight: Theme.of(context).typography.authUserInputDecoration,
+        ),
+        prefixIcon: Icon(
+          authForm != "authFormEmail"
+              ? (authForm == "authFormPass" ? Icons.lock : Icons.person)
+              : Icons.email,
+          color: Theme.of(context).colorScheme.userIStandardsTextInputIcon,
+        ),
+        suffixIcon: isVariable
+            ? IconButton(
+                onPressed: () {
+                  isVisible = !isVisible;
+                },
+                icon: Icon(Icons.lock),
+              )
+            : null,
+      ),
     ),
   );
 }
