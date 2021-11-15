@@ -51,21 +51,19 @@ class AuthUserInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 400,
-      width: 300,
+      width: MediaQuery.of(context).size.width,
       child: Form(
         key: formKey,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             isSignIn
                 ? Container(
                     height: 0,
                   )
-                : Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.grey.shade200,
-                    ),
-                    child: TextFormField(
+                : authUserInputContainer(
+                    context,
+                    TextFormField(
                       validator: (name) {
                         if (!isName(name))
                           return getTranslated(
@@ -77,29 +75,47 @@ class AuthUserInput extends StatelessWidget {
                           authUserInputDecoration(context, "authFormName"),
                     ),
                   ),
-            TextFormField(
-              validator: (email) {
-                if (!isEmail(email))
-                  return getTranslated(context, 'authValidatorEmailFormat');
-                return null;
-              },
-              onSaved: (email) => userEmail,
-              decoration: authUserInputDecoration(context, "authFormEmail"),
+            authUserInputContainer(
+              context,
+              TextFormField(
+                validator: (email) {
+                  if (!isEmail(email))
+                    return getTranslated(context, 'authValidatorEmailFormat');
+                  return null;
+                },
+                onSaved: (email) => userEmail,
+                decoration: authUserInputDecoration(context, "authFormEmail"),
+              ),
             ),
-            TextFormField(
-              validator: (pass) {
-                if (!isPassword(pass))
-                  return getTranslated(context, 'authValidatorPassFormat');
-                return null;
-              },
-              onSaved: (pass) => userPass,
-              decoration: authUserInputDecoration(context, "authFormPass"),
-            )
+            authUserInputContainer(
+                context,
+                TextFormField(
+                  validator: (pass) {
+                    if (!isPassword(pass))
+                      return getTranslated(context, 'authValidatorPassFormat');
+                    return null;
+                  },
+                  onSaved: (pass) => userPass,
+                  decoration: authUserInputDecoration(context, "authFormPass"),
+                ))
           ],
         ),
       ),
     );
   }
+}
+
+Container authUserInputContainer(BuildContext context, Widget child) {
+  return Container(
+    height: 60,
+    width: 275,
+    padding: EdgeInsets.only(top: 10, bottom: 10),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(30),
+      color: Colors.grey.shade200,
+    ),
+    child: child,
+  );
 }
 
 InputDecoration authUserInputDecoration(BuildContext context, String key) {
