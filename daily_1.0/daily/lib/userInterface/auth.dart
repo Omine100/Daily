@@ -65,8 +65,7 @@ AuthScreenMobile(BuildContext context, State state, bool isSignIn) {
     children: [
       Positioned(top: 100, left: 100, child: authProfilePicker(context, state)),
       Positioned(
-        top: 200,
-        left: 400,
+        top: 400,
         child: AuthUserInput(isSignIn),
       )
     ],

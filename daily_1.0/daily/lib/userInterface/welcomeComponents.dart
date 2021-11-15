@@ -96,7 +96,7 @@ Widget welcomeCorner(BuildContext context) {
     width: getDimension(
         context, true, Theme.of(context).visualDensity.welcomeCornerHeight),
     child: Image(
-      image: AssetImage("lib/assets/welcome_corner.png"),
+      image: AssetImage("lib/assets/welcome/welcome_corner.png"),
     ),
   );
 }

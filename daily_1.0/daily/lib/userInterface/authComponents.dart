@@ -49,40 +49,48 @@ class AuthUserInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Column(
-        children: [
-          isSignIn
-              ? TextFormField(
-                  validator: (name) {
-                    if (!isName(name))
-                      return getTranslated(context, 'authValidatorNameFormat');
-                    return null;
-                  },
-                  onSaved: (name) => userName,
-                  decoration: authUserInputDecoration(context, "authFormName"),
-                )
-              : null,
-          TextFormField(
-            validator: (email) {
-              if (!isEmail(email))
-                return getTranslated(context, 'authValidatorEmailFormat');
-              return null;
-            },
-            onSaved: (email) => userEmail,
-            decoration: authUserInputDecoration(context, "authFormEmail"),
-          ),
-          TextFormField(
-            validator: (pass) {
-              if (!isPassword(pass))
-                return getTranslated(context, 'authValidatorPassFormat');
-              return null;
-            },
-            onSaved: (pass) => userPass,
-            decoration: authUserInputDecoration(context, "authFormPass"),
-          )
-        ],
+    return Container(
+      height: 400,
+      width: 400,
+      child: Form(
+        key: formKey,
+        child: Column(
+          children: [
+            isSignIn
+                ? Container(
+                    height: 0,
+                  )
+                : TextFormField(
+                    validator: (name) {
+                      if (!isName(name))
+                        return getTranslated(
+                            context, 'authValidatorNameFormat');
+                      return null;
+                    },
+                    onSaved: (name) => userName,
+                    decoration:
+                        authUserInputDecoration(context, "authFormName"),
+                  ),
+            TextFormField(
+              validator: (email) {
+                if (!isEmail(email))
+                  return getTranslated(context, 'authValidatorEmailFormat');
+                return null;
+              },
+              onSaved: (email) => userEmail,
+              decoration: authUserInputDecoration(context, "authFormEmail"),
+            ),
+            TextFormField(
+              validator: (pass) {
+                if (!isPassword(pass))
+                  return getTranslated(context, 'authValidatorPassFormat');
+                return null;
+              },
+              onSaved: (pass) => userPass,
+              decoration: authUserInputDecoration(context, "authFormPass"),
+            )
+          ],
+        ),
       ),
     );
   }
