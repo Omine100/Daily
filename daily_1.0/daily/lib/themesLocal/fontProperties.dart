@@ -11,9 +11,9 @@ extension CustomFontSize on TextTheme {
   // #region welcome
   double get welcomeTitle => 48;
   double get welcomeSubtitle => 32;
-  double get welcomeAccounAlready => 16;
-  double get welcomeAccounAlreadyLogin => 16;
   double get welcomeGetStartedText => 20;
+  double get welcomeAccountAlready => 16;
+  double get welcomeAccountAlreadyLogin => 16;
   // #endregion
 
   // #region auth
@@ -21,6 +21,8 @@ extension CustomFontSize on TextTheme {
   double get authSubtitle => 32;
   double get authUserInputDecoration => 20;
   double get authGetStartedText => 20;
+  double get authSwitchPrimary => 16;
+  double get authSwitchSecondary => 16;
   // #endregion
 }
 
@@ -33,9 +35,9 @@ extension CustomFontWeight on Typography {
   // #region welcome
   FontWeight get welcomeTitle => FontWeight.w500;
   FontWeight get welcomeSubtitle => FontWeight.w300;
+  FontWeight get welcomeGetStartedText => FontWeight.w500;
   FontWeight get welcomeAccountAlready => FontWeight.w400;
   FontWeight get welcomeAccountAlreadyLogin => FontWeight.w500;
-  FontWeight get welcomeGetStartedText => FontWeight.w500;
   // #endregion
 
   // #region auth
@@ -43,5 +45,7 @@ extension CustomFontWeight on Typography {
   FontWeight get authSubtitle => FontWeight.w300;
   FontWeight get authUserInputDecoration => FontWeight.w300;
   FontWeight get authGetStartedText => FontWeight.w500;
+  FontWeight get authSwitchPrimary => FontWeight.w400;
+  FontWeight get authSwitchSecondary => FontWeight.w500;
   // #endregion
 }

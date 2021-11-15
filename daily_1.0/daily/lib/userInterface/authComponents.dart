@@ -14,25 +14,25 @@ Widget authTitle(BuildContext context) {
   return Container(
     padding: EdgeInsets.only(left: 20),
     width: getDimension(
-        context, false, Theme.of(context).visualDensity.welcomeTitleWidth),
+        context, false, Theme.of(context).visualDensity.authTitleWidth),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          getTranslated(context, "loginTitle"),
+          getTranslated(context, "authTitle"),
           style: TextStyle(
-            color: Theme.of(context).colorScheme.welcomeTitle,
-            fontSize: Theme.of(context).textTheme.welcomeTitle,
-            fontWeight: Theme.of(context).typography.welcomeTitle,
+            color: Theme.of(context).colorScheme.authTitle,
+            fontSize: Theme.of(context).textTheme.authTitle,
+            fontWeight: Theme.of(context).typography.authTitle,
           ),
         ),
         Text(
-          getTranslated(context, "loginSubtitle"),
+          getTranslated(context, "authSubtitle"),
           style: TextStyle(
-            color: Theme.of(context).colorScheme.welcomeSubtitle,
-            fontSize: Theme.of(context).textTheme.welcomeSubtitle,
-            fontWeight: Theme.of(context).typography.welcomeSubtitle,
+            color: Theme.of(context).colorScheme.authSubtitle,
+            fontSize: Theme.of(context).textTheme.authSubtitle,
+            fontWeight: Theme.of(context).typography.authSubtitle,
           ),
         ),
       ],
@@ -99,7 +99,7 @@ InputDecoration authUserInputDecoration(BuildContext context, String key) {
   );
 }
 
-Widget authProgress(BuildContext context, bool isSignIn) {
+Widget authGetStarted(BuildContext context, bool isSignIn) {
   return Center(
     child: Container(
       height: getDimension(
@@ -146,18 +146,17 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
         text: TextSpan(
           text: getTranslated(context, "welcomeAccountAlready"),
           style: TextStyle(
-            color: Theme.of(context).colorScheme.welcomeAccountAlready,
-            fontSize: Theme.of(context).textTheme.welcomeAccounAlready,
-            fontWeight: Theme.of(context).typography.welcomeAccountAlready,
+            color: Theme.of(context).colorScheme.authSwitchPrimary,
+            fontSize: Theme.of(context).textTheme.authSwitchPrimary,
+            fontWeight: Theme.of(context).typography.authSwitchPrimary,
           ),
           children: <TextSpan>[
             TextSpan(
               text: getTranslated(context, "welcomeAccountAlreadyLogin"),
               style: TextStyle(
-                color: Theme.of(context).colorScheme.welcomeAccountAlreadyLogin,
-                fontSize: Theme.of(context).textTheme.welcomeAccounAlreadyLogin,
-                fontWeight:
-                    Theme.of(context).typography.welcomeAccountAlreadyLogin,
+                color: Theme.of(context).colorScheme.authSwitchSecondary,
+                fontSize: Theme.of(context).textTheme.authSwitchSecondary,
+                fontWeight: Theme.of(context).typography.authSwitchSecondary,
               ),
             ),
           ],

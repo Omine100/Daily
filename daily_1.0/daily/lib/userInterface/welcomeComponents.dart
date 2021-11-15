@@ -158,7 +158,7 @@ Widget welcomeAccountAlready(BuildContext context) {
           text: getTranslated(context, "welcomeAccountAlready"),
           style: TextStyle(
             color: Theme.of(context).colorScheme.welcomeAccountAlready,
-            fontSize: Theme.of(context).textTheme.welcomeAccounAlready,
+            fontSize: Theme.of(context).textTheme.welcomeAccountAlready,
             fontWeight: Theme.of(context).typography.welcomeAccountAlready,
           ),
           children: <TextSpan>[
@@ -166,7 +166,8 @@ Widget welcomeAccountAlready(BuildContext context) {
               text: getTranslated(context, "welcomeAccountAlreadyLogin"),
               style: TextStyle(
                 color: Theme.of(context).colorScheme.welcomeAccountAlreadyLogin,
-                fontSize: Theme.of(context).textTheme.welcomeAccounAlreadyLogin,
+                fontSize:
+                    Theme.of(context).textTheme.welcomeAccountAlreadyLogin,
                 fontWeight:
                     Theme.of(context).typography.welcomeAccountAlreadyLogin,
               ),
