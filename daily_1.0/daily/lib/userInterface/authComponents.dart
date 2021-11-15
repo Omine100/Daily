@@ -57,7 +57,7 @@ class AuthUserInput extends StatelessWidget {
               ? TextFormField(
                   validator: (name) {
                     if (!isName(name))
-                      return getTranslated(context, 'validatorNameFormat');
+                      return getTranslated(context, 'authValidatorNameFormat');
                     return null;
                   },
                   onSaved: (name) => userName,
@@ -67,7 +67,7 @@ class AuthUserInput extends StatelessWidget {
           TextFormField(
             validator: (email) {
               if (!isEmail(email))
-                return getTranslated(context, 'validatorEmailFormat');
+                return getTranslated(context, 'authValidatorEmailFormat');
               return null;
             },
             onSaved: (email) => userEmail,
@@ -76,7 +76,7 @@ class AuthUserInput extends StatelessWidget {
           TextFormField(
             validator: (pass) {
               if (!isPassword(pass))
-                return getTranslated(context, 'validatorPassFormat');
+                return getTranslated(context, 'authValidatorPassFormat');
               return null;
             },
             onSaved: (pass) => userPass,

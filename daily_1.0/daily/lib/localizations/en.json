@@ -1,8 +1,4 @@
 {
-    "inputName": "Name",
-    "inputEmail": "Email",
-    "inputPassword": "Password",
-    "inputValidator": "can't be empty",
     "errorInvalidPassword": "Your password is too weak.",
     "errorInvalidEmail": "Please enter a valid email.",
     "errorWrongPassword": "User does not exist or password is wrong.",
@@ -21,17 +17,15 @@
     "welcomeGetStarted": "GET STARTED",
     "authSignInTitle": "LOGIN",
     "authSignUpTitle": "SIGN UP",
+    "authFormName": "Name",
+    "authFormEmail": "Email",
+    "authFormPassword": "Password",
+    "authValidatorNameFormat": "Name can't be empty",
+    "authValidatorEmailFormat": "Email can't be empty",
+    "authValidatorPasswordFormat": "Password can't be empty",
     "authForgotPassword": "Forgot Password?",
     "authAlternativeSignIn": "Already have an account? LOGIN!",
     "authAlternativeSignUp": "Don't have an account? SIGN UP!",
     "forgotPasswordTitle": "FORGOT PASSWORD",
-    "forgotPasswordReset": "Reset Password",
-    "introExerciseTitle": "GOAL",
-    "introCalendarTitle": "TRACKING",
-    "introMedalTitle": "COMPLETION",
-    "introExerciseDescription": "Maintaining goals is hard, so we are trying to make it easier.",
-    "introCalendarDescription": "Going cold turkey is never easy, so small increments work best!",
-    "introMedalDescription": "Plus you get cool medals for sticking with your goals!!!",
-    "homeSettingsDropdownSignOut": "Sign Out",
-    "homeSettingsDropdownDeleteAccount": "DELETE ACCOUNT"
+    "forgotPasswordReset": "Reset Password"
 }

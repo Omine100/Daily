@@ -1,8 +1,4 @@
 {
-    "inputName": "Nom",
-    "inputEmail": "Email",
-    "inputPassword": "Mot de passe",
-    "inputValidator": "ne peut pas être vide",
     "errorInvalidPassword": "Le mot de passe est trop faible.",
     "errorInvalidEmail": "Entrer un email valide.",
     "errorWrongPassword": "L'utilisateur n'existe pas ou le mot de passe est incorrect.",
@@ -21,17 +17,15 @@
     "welcomeGetStarted": "COMMENCER",
     "authSignInTitle": "S'IDENTIFIER",
     "authSignUpTitle": "S'INSCRIRE",
+    "authFormName": "Nom",
+    "authFormEmail": "Email",
+    "authFormPassword": "Mot de passe",
+    "authValidatorNameFormat": "Nom ne peut pas être vide",
+    "authValidatorEmailFormat": "Email ne peut pas être vide",
+    "authValidatorPasswordFormat": "Mot ne peut pas être vide",
     "authForgotPassword": "Mot de passe oublié?",
     "authAlternativeSignIn": "Avoir un compte? S'IDENTIFIER!",
     "authAlternativeSignUp": "Pas de compte? S'INSCRIRE!",
     "forgotPasswordTitle": "MOT DE PASSE OUBLIÉ",
-    "forgotPasswordReset": "Mot de Passe Oublié",
-    "introExerciseTitle": "GOAL",
-    "introCalendarTitle": "TRACKING",
-    "introMedalTitle": "COMPLETION",
-    "introExerciseDescription": "asocdao",
-    "introCalendarDescription": "asdfcawoj",
-    "introMedalDescription": "ascojwocao",
-    "homeSettingsDropdownSignOut": "Se Déconnecter",
-    "homeSettingsDropdownDeleteAccount": "SUPPRIMER LE COMPTE"
+    "forgotPasswordReset": "Mot de Passe Oublié"
 }
