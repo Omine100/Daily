@@ -24,8 +24,10 @@
     "authValidatorEmailFormat": "Correo electrónico no puede estar vacía",
     "authValidatorPasswordFormat": "Contraseña no puede estar vacía",
     "authForgotPassword": "¿Restablecer contraseñ?",
-    "authAlternativeSignIn": "¿Tener una cuenta? ¡INICIAR SESIÓN!",
-    "authAlternativeSignUp": "¿No tienes cuenta? ¡REGÍSTRATE!",
+	"authSwitchSignInPrimary": "¿Tener una cuenta? ",
+	"authSwitchSignUpPrimary": "¡INICIAR SESIÓN!",
+	"authSwitchSignInSecondary": "¿No tienes cuenta? ",
+	"authSwitchSignUpSecondary": "¡REGÍSTRATE!",
     "forgotPasswordTitle": "RESTABLECER",
     "forgotPasswordReset": "Restablecer Contraseña"
 }

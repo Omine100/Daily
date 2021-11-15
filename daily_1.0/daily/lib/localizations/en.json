@@ -24,8 +24,10 @@
     "authValidatorEmailFormat": "Email can't be empty",
     "authValidatorPasswordFormat": "Password can't be empty",
     "authForgotPassword": "Forgot Password?",
-    "authAlternativeSignIn": "Already have an account? LOGIN!",
-    "authAlternativeSignUp": "Don't have an account? SIGN UP!",
+	"authSwitchSignInPrimary": "Already have an account? ",
+	"authSwitchSignUpPrimary": "LOGIN!",
+	"authSwitchSignInSecondary": "Don't have an account? ",
+	"authSwitchSignUpSecondary": "SIGN UP!",
     "forgotPasswordTitle": "FORGOT PASSWORD",
     "forgotPasswordReset": "Reset Password"
 }

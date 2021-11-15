@@ -144,7 +144,8 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
     child: Center(
       child: RichText(
         text: TextSpan(
-          text: getTranslated(context, "welcomeAccountAlready"),
+          text: getTranslated(context,
+              isSignIn ? "authSwitchSignInPrimary" : "authSwitchSignUpPrimary"),
           style: TextStyle(
             color: Theme.of(context).colorScheme.authSwitchPrimary,
             fontSize: Theme.of(context).textTheme.authSwitchPrimary,
@@ -152,7 +153,11 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
           ),
           children: <TextSpan>[
             TextSpan(
-              text: getTranslated(context, "welcomeAccountAlreadyLogin"),
+              text: getTranslated(
+                  context,
+                  isSignIn
+                      ? "authSwitchSignInSecondary"
+                      : "authSwitchSignUpSecondary"),
               style: TextStyle(
                 color: Theme.of(context).colorScheme.authSwitchSecondary,
                 fontSize: Theme.of(context).textTheme.authSwitchSecondary,

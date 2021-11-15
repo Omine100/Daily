@@ -24,8 +24,10 @@
     "authValidatorEmailFormat": "Email ne peut pas être vide",
     "authValidatorPasswordFormat": "Mot ne peut pas être vide",
     "authForgotPassword": "Mot de passe oublié?",
-    "authAlternativeSignIn": "Avoir un compte? S'IDENTIFIER!",
-    "authAlternativeSignUp": "Pas de compte? S'INSCRIRE!",
+	"authSwitchSignInPrimary": "Avoir un compte? ",
+	"authSwitchSignUpPrimary": "S'IDENTIFIER!",
+	"authSwitchSignInSecondary": "Pas de compte? ",
+	"authSwitchSignUpSecondary": "S'INSCRIRE!",
     "forgotPasswordTitle": "MOT DE PASSE OUBLIÉ",
     "forgotPasswordReset": "Mot de Passe Oublié"
 }
