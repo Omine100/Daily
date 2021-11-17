@@ -40,55 +40,6 @@ Widget authTitle(BuildContext context) {
   );
 }
 
-class AuthUserInput extends StatelessWidget {
-  final bool isSignIn;
-  AuthUserInput(this.isSignIn);
-
-  final formKey = new GlobalKey<FormState>();
-  final String userName = "", userEmail = "", userPass = "";
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 400,
-      width: MediaQuery.of(context).size.width,
-      child: Form(
-        key: formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            isSignIn
-                ? Container(
-                    height: 0,
-                  )
-                : authUserInputField(context, (email) {
-                    if (!isEmail(email))
-                      return getTranslated(context, 'authValidatorEmailFormat');
-                    return null;
-                  }, (email) => userEmail, "authFormName", false),
-            authUserInputField(context, (email) {
-              if (!isEmail(email))
-                return getTranslated(context, 'authValidatorEmailFormat');
-              return null;
-            }, (email) => userEmail, "authFormEmail", false),
-            authUserInputField(
-              context,
-              (pass) {
-                if (!isPassword(pass))
-                  return getTranslated(context, 'authValidatorPassFormat');
-                return null;
-              },
-              (pass) => userPass,
-              "authFormPass",
-              true,
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 bool isVisible = false;
 Container authUserInputField(BuildContext context, Function validator,
     Function onSaved, String authForm, bool isVariable) {
