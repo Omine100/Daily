@@ -40,6 +40,40 @@ Widget authTitle(BuildContext context) {
   );
 }
 
+String userName = "", userEmail = "", userPass = "";
+Column authUserInput(BuildContext context, bool isSignIn) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      isSignIn
+          ? Container(
+              height: 0,
+            )
+          : authUserInputField(context, (name) {
+              if (!isEmail(name))
+                return getTranslated(context, 'authValidatorNameFormat');
+              return null;
+            }, (name) => userName, "authFormName", false),
+      authUserInputField(context, (email) {
+        if (!isEmail(email))
+          return getTranslated(context, 'authValidatorEmailFormat');
+        return null;
+      }, (email) => userEmail, "authFormEmail", false),
+      authUserInputField(
+        context,
+        (pass) {
+          if (!isPassword(pass))
+            return getTranslated(context, 'authValidatorPassFormat');
+          return null;
+        },
+        (pass) => userPass,
+        "authFormPass",
+        true,
+      )
+    ],
+  );
+}
+
 bool isVisible = false;
 Container authUserInputField(BuildContext context, Function validator,
     Function onSaved, String authForm, bool isVariable) {
@@ -133,7 +167,7 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
       child: RichText(
         text: TextSpan(
           text: getTranslated(context,
-              isSignIn ? "authSwitchSignInPrimary" : "authSwitchSignUpPrimary"),
+              isSignIn ? "authSwitchSignUpPrimary" : "authSwitchSignInPrimary"),
           style: TextStyle(
             color: Theme.of(context).colorScheme.authSwitchPrimary,
             fontSize: Theme.of(context).textTheme.authSwitchPrimary,
@@ -144,8 +178,8 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
               text: getTranslated(
                   context,
                   isSignIn
-                      ? "authSwitchSignInSecondary"
-                      : "authSwitchSignUpSecondary"),
+                      ? "authSwitchSignUpSecondary"
+                      : "authSwitchSignInSecondary"),
               style: TextStyle(
                 color: Theme.of(context).colorScheme.authSwitchSecondary,
                 fontSize: Theme.of(context).textTheme.authSwitchSecondary,

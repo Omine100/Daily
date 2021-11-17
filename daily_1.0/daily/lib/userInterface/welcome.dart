@@ -13,18 +13,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.welcomeBackground,
-          ),
-          child: Container(
-              constraints: BoxConstraints.expand(height: double.maxFinite),
-              child: Responsive(
-                desktop: welcomeScreenDesktop(this, context),
-                tablet: welcomeScreenTablet(this, context),
-                mobile: welcomeScreenMobile(this, context),
-              ))),
-    );
+        color: Theme.of(context).colorScheme.welcomeBackground,
+        child: Container(
+            constraints: BoxConstraints.expand(height: double.maxFinite),
+            child: Responsive(
+              desktop: welcomeScreenDesktop(this, context),
+              tablet: welcomeScreenTablet(this, context),
+              mobile: welcomeScreenMobile(this, context),
+            )));
   }
 }
 

@@ -25,7 +25,7 @@ class _AuthScreenState extends State<AuthScreen> {
             color: Theme.of(context).colorScheme.welcomeBackground,
           ),
           constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * 1.5),
+              maxHeight: MediaQuery.of(context).size.height * 1.2),
           child: Responsive(
             desktop: AuthScreenDesktop(context, this, widget.isSignIn),
             tablet: AuthScreenTablet(context, this, widget.isSignIn),
@@ -51,44 +51,14 @@ AuthScreenTablet(BuildContext context, State state, bool isSignIn) {
   );
 }
 
-String userName = "", userEmail = "", userPass = "";
 AuthScreenMobile(BuildContext context, State state, bool isSignIn) {
   return Stack(
     children: [
       Positioned(top: 100, left: 100, child: authProfilePicker(context, state)),
+      Positioned(top: 400, child: authUserInput(context, isSignIn)),
       Positioned(
-        top: 400,
-        child: isSignIn
-            ? Container(
-                height: 0,
-              )
-            : authUserInputField(context, (name) {
-                if (!isEmail(name))
-                  return getTranslated(context, 'authValidatorNameFormat');
-                return null;
-              }, (name) => userName, "authFormName", false),
-      ),
-      Positioned(
-        top: 475,
-        child: authUserInputField(context, (email) {
-          if (!isEmail(email))
-            return getTranslated(context, 'authValidatorEmailFormat');
-          return null;
-        }, (email) => userEmail, "authFormEmail", false),
-      ),
-      Positioned(
-          top: 550,
-          child: authUserInputField(
-            context,
-            (pass) {
-              if (!isPassword(pass))
-                return getTranslated(context, 'authValidatorPassFormat');
-              return null;
-            },
-            (pass) => userPass,
-            "authFormPass",
-            true,
-          ))
+          top: isSignIn ? 550 : 600, child: authGetStarted(context, isSignIn)),
+      Positioned(top: 700, child: authSwitch(context, isSignIn))
     ],
   );
 }
