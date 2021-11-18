@@ -54,6 +54,7 @@ AuthScreenTablet(BuildContext context, State state, bool isSignIn) {
 AuthScreenMobile(BuildContext context, State state, bool isSignIn) {
   return Stack(
     children: [
+      Positioned(top: 50, left: 100, child: authTitle(context)),
       Positioned(top: 100, left: 100, child: authProfilePicker(context, state)),
       Positioned(top: 400, child: authUserInput(context, isSignIn)),
       Positioned(

@@ -20,7 +20,7 @@ Widget authTitle(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          getTranslated(context, "authTitle"),
+          getTranslated(context, "authSignInTitle"),
           style: TextStyle(
             color: Theme.of(context).colorScheme.authTitle,
             fontSize: Theme.of(context).textTheme.authTitle,
@@ -28,7 +28,7 @@ Widget authTitle(BuildContext context) {
           ),
         ),
         Text(
-          getTranslated(context, "authSubtitle"),
+          getTranslated(context, "authSignInSubtitle"),
           style: TextStyle(
             color: Theme.of(context).colorScheme.authSubtitle,
             fontSize: Theme.of(context).textTheme.authSubtitle,
