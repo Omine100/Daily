@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/servicesLocal/systemLanguages.dart';
-import 'package:daily/servicesLocal/systemPreferences.dart';
 import 'package:daily/userInterface/authComponents.dart';
 import 'package:daily/themesLocal/colors.dart';
-import 'package:daily/themesLocal/positions.dart';
-import 'package:daily/utilities/managementUtil/validation.dart';
 
 class AuthScreen extends StatefulWidget {
   final bool isSignIn;
@@ -24,16 +20,50 @@ class _AuthScreenState extends State<AuthScreen> {
 
   authScreenDesktop() {
     return Stack(
+      alignment: Alignment.center,
       children: [
-        Positioned(top: 100, left: 100, child: authCenterPiece(context, this)),
+        Positioned(top: 50, child: authCenterPiece(context, this)),
+        Positioned(top: 400, child: authUserInput(context, isSignIn)),
+        Positioned(
+          top: 560,
+          left: 50,
+          child: isSignIn ? authForgotPassword(context) : Container(),
+        ),
+        Positioned(top: 650, child: authGetStarted(context, isSignIn)),
+        Positioned(
+            top: 750,
+            child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isSignIn = !isSignIn;
+                  });
+                },
+                child: authSwitch(context, isSignIn)))
       ],
     );
   }
 
   authScreenTablet() {
     return Stack(
+      alignment: Alignment.center,
       children: [
-        Positioned(top: 100, left: 100, child: authCenterPiece(context, this)),
+        Positioned(top: 50, child: authCenterPiece(context, this)),
+        Positioned(top: 400, child: authUserInput(context, isSignIn)),
+        Positioned(
+          top: 560,
+          left: 50,
+          child: isSignIn ? authForgotPassword(context) : Container(),
+        ),
+        Positioned(top: 650, child: authGetStarted(context, isSignIn)),
+        Positioned(
+            top: 750,
+            child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isSignIn = !isSignIn;
+                  });
+                },
+                child: authSwitch(context, isSignIn)))
       ],
     );
   }

@@ -47,8 +47,6 @@ flutter:
   uses-material-design: true
 
   assets:
-      - lib/assets/welcome/welcome_background.png
-      - lib/assets/welcome/welcome_backgroundDark.jpg
       - lib/assets/welcome/welcome_carouselOne.png
       - lib/assets/welcome/welcome_carouselTwo.png
       - lib/assets/welcome/welcome_carouselThree.png

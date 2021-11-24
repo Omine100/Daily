@@ -32,7 +32,7 @@ extension CustomPositions on MaterialTapTargetSize {
 }
 
 double getPosition(BuildContext context, bool isHeight, double value) {
-  return isHeight ? 
-    MediaQuery.of(context).size.height * value :
-    MediaQuery.of(context).size.width * value;
+  return isHeight
+      ? MediaQuery.of(context).size.height * value
+      : MediaQuery.of(context).size.width * value;
 }
