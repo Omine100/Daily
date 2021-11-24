@@ -38,18 +38,6 @@ Widget authTitle(BuildContext context) {
   );
 }
 
-Widget authCorner(BuildContext context) {
-  return Container(
-    height: getDimension(
-        context, true, Theme.of(context).visualDensity.welcomeCornerHeight),
-    width: getDimension(
-        context, true, Theme.of(context).visualDensity.welcomeCornerHeight),
-    child: Image(
-      image: AssetImage("lib/assets/welcome/welcome_corner.png"),
-    ),
-  );
-}
-
 String userName = "", userEmail = "", userPass = "";
 Column authUserInput(BuildContext context, bool isSignIn) {
   return Column(
