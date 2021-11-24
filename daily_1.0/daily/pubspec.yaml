@@ -51,9 +51,7 @@ flutter:
       - lib/assets/welcome/welcome_carouselTwo.png
       - lib/assets/welcome/welcome_carouselThree.png
       - lib/assets/welcome/welcome_corner.png
-      - lib/assets/auth/auth_carouselOne.png
-      - lib/assets/auth/auth_carouselTwo.png
-      - lib/assets/auth/auth_carouselThree.png
+      - lib/assets/auth/auth_centerPiece.png
       - lib/assets/home/home_carouselOne.png
       - lib/assets/home/home_carouselTwo.png
       - lib/assets/home/home_carouselThree.png

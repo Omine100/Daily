@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 import 'package:daily/servicesLocal/systemLanguages.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
@@ -40,7 +39,7 @@ Widget authTitle(BuildContext context) {
 }
 
 String userName = "", userEmail = "", userPass = "";
-Column authUserInput(BuildContext context, bool isSignIn) {
+Widget authUserInput(BuildContext context, bool isSignIn) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
@@ -225,14 +224,9 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
   );
 }
 
-List<Image> _images = [
-  Image(image: AssetImage("lib/assets/auth/auth_carouselOne.png")),
-  Image(image: AssetImage("lib/assets/auth/auth_carouselTwo.png")),
-  Image(image: AssetImage("lib/assets/auth/auth_carouselThree.png")),
-];
-Container authCenterPiece(BuildContext context, State state) {
+Widget authCenterPiece(BuildContext context, State state) {
   return Container(
       height: getDimension(
           context, true, Theme.of(context).visualDensity.authCenterPieceHeight),
-      child: _images[Random().nextInt(_images.length)]);
+      child: Image(image: AssetImage("lib/assets/auth/auth_centerPiece.png")));
 }
