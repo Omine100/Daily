@@ -16,50 +16,71 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+  bool isSignIn = false;
+  void initState() {
+    super.initState();
+    isSignIn = widget.isSignIn;
+  }
+
+  authScreenDesktop() {
+    return Stack(
+      children: [
+        Positioned(
+            top: 100, left: 100, child: authProfilePicker(context, this)),
+      ],
+    );
+  }
+
+  authScreenTablet() {
+    return Stack(
+      children: [
+        Positioned(
+            top: 100, left: 100, child: authProfilePicker(context, this)),
+      ],
+    );
+  }
+
+  authScreenMobile() {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Positioned(top: 50, left: 100, child: authTitle(context)),
+        Positioned(
+            top: 100, left: 100, child: authProfilePicker(context, this)),
+        Positioned(top: 400, child: authUserInput(context, isSignIn)),
+        Positioned(
+          top: 560,
+          left: 50,
+          child: isSignIn ? authForgotPassword(context) : Container(),
+        ),
+        Positioned(top: 650, child: authGetStarted(context, isSignIn)),
+        Positioned(
+            top: 750,
+            child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    print("Testing");
+                    isSignIn = !isSignIn;
+                  });
+                },
+                child: authSwitch(context, isSignIn)))
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
+        color: Theme.of(context).colorScheme.welcomeBackground,
         child: SingleChildScrollView(
-      child: Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.welcomeBackground,
-          ),
-          constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * 1.2),
-          child: Responsive(
-            desktop: AuthScreenDesktop(context, this, widget.isSignIn),
-            tablet: AuthScreenTablet(context, this, widget.isSignIn),
-            mobile: AuthScreenMobile(context, this, widget.isSignIn),
-          )),
-    ));
+          child: Container(
+              constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height * 1.2),
+              child: Responsive(
+                desktop: authScreenDesktop(),
+                tablet: authScreenTablet(),
+                mobile: authScreenMobile(),
+              )),
+        ));
   }
-}
-
-AuthScreenDesktop(BuildContext context, State state, bool isSignIn) {
-  return Stack(
-    children: [
-      Positioned(top: 100, left: 100, child: authProfilePicker(context, state)),
-    ],
-  );
-}
-
-AuthScreenTablet(BuildContext context, State state, bool isSignIn) {
-  return Stack(
-    children: [
-      Positioned(top: 100, left: 100, child: authProfilePicker(context, state)),
-    ],
-  );
-}
-
-AuthScreenMobile(BuildContext context, State state, bool isSignIn) {
-  return Stack(
-    children: [
-      Positioned(top: 50, left: 100, child: authTitle(context)),
-      Positioned(top: 100, left: 100, child: authProfilePicker(context, state)),
-      Positioned(top: 400, child: authUserInput(context, isSignIn)),
-      Positioned(
-          top: isSignIn ? 550 : 600, child: authGetStarted(context, isSignIn)),
-      Positioned(top: 700, child: authSwitch(context, isSignIn))
-    ],
-  );
 }

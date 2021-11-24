@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
@@ -7,6 +8,7 @@ import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
+import 'package:daily/userInterface/auth.dart';
 import 'package:daily/userInterface/home.dart';
 import 'package:daily/utilities/managementUtil/validation.dart';
 
@@ -75,47 +77,66 @@ Column authUserInput(BuildContext context, bool isSignIn) {
 }
 
 bool isVisible = false;
-Container authUserInputField(BuildContext context, Function validator,
+Widget authUserInputField(BuildContext context, Function validator,
     Function onSaved, String authForm, bool isVariable) {
-  return Container(
-    height: 60,
-    width: 275,
-    padding: EdgeInsets.only(top: 10, bottom: 10),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(30),
-      color: Colors.grey.shade200,
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Container(
+      height: 60,
+      width: 350,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        color: Colors.grey.shade200,
+      ),
+      child: TextFormField(
+        obscureText: isVisible,
+        validator: validator,
+        onSaved: onSaved,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: getTranslated(context, authForm),
+          labelStyle: TextStyle(
+            color: Theme.of(context).colorScheme.authUserInputDecoration,
+            fontSize: Theme.of(context).textTheme.authUserInputDecoration,
+            fontWeight: Theme.of(context).typography.authUserInputDecoration,
+          ),
+          hintStyle: TextStyle(
+            color: Theme.of(context).colorScheme.authUserInputDecoration,
+            fontSize: Theme.of(context).textTheme.authUserInputDecoration,
+            fontWeight: Theme.of(context).typography.authUserInputDecoration,
+          ),
+          prefixIcon: Icon(
+            authForm != "authFormEmail"
+                ? (authForm == "authFormPass" ? Icons.lock : Icons.person)
+                : Icons.email,
+            color: Theme.of(context).colorScheme.userIStandardsTextInputIcon,
+          ),
+          suffixIcon: isVariable
+              ? IconButton(
+                  onPressed: () {
+                    isVisible = !isVisible;
+                  },
+                  icon: Icon(Icons.lock),
+                )
+              : null,
+        ),
+      ),
     ),
-    child: TextFormField(
-      obscureText: isVisible,
-      validator: validator,
-      onSaved: onSaved,
-      decoration: InputDecoration(
-        border: InputBorder.none,
-        hintText: getTranslated(context, authForm),
-        labelStyle: TextStyle(
-          color: Theme.of(context).colorScheme.authUserInputDecoration,
-          fontSize: Theme.of(context).textTheme.authUserInputDecoration,
-          fontWeight: Theme.of(context).typography.authUserInputDecoration,
-        ),
-        hintStyle: TextStyle(
-          color: Theme.of(context).colorScheme.authUserInputDecoration,
-          fontSize: Theme.of(context).textTheme.authUserInputDecoration,
-          fontWeight: Theme.of(context).typography.authUserInputDecoration,
-        ),
-        prefixIcon: Icon(
-          authForm != "authFormEmail"
-              ? (authForm == "authFormPass" ? Icons.lock : Icons.person)
-              : Icons.email,
-          color: Theme.of(context).colorScheme.userIStandardsTextInputIcon,
-        ),
-        suffixIcon: isVariable
-            ? IconButton(
-                onPressed: () {
-                  isVisible = !isVisible;
-                },
-                icon: Icon(Icons.lock),
-              )
-            : null,
+  );
+}
+
+Widget authForgotPassword(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      RouteNavigation().routePage(context, HomeScreen());
+    },
+    child: Text(
+      getTranslated(context, "authForgotPassword"),
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
       ),
     ),
   );
@@ -159,36 +180,29 @@ Widget authGetStarted(BuildContext context, bool isSignIn) {
 }
 
 Widget authSwitch(BuildContext context, bool isSignIn) {
-  return GestureDetector(
-    onTap: () {
-      RouteNavigation().routePage(context, HomeScreen());
-    },
-    child: Center(
-      child: RichText(
-        text: TextSpan(
-          text: getTranslated(context,
-              isSignIn ? "authSwitchSignUpPrimary" : "authSwitchSignInPrimary"),
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.authSwitchPrimary,
-            fontSize: Theme.of(context).textTheme.authSwitchPrimary,
-            fontWeight: Theme.of(context).typography.authSwitchPrimary,
-          ),
-          children: <TextSpan>[
-            TextSpan(
-              text: getTranslated(
-                  context,
-                  isSignIn
-                      ? "authSwitchSignUpSecondary"
-                      : "authSwitchSignInSecondary"),
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.authSwitchSecondary,
-                fontSize: Theme.of(context).textTheme.authSwitchSecondary,
-                fontWeight: Theme.of(context).typography.authSwitchSecondary,
-              ),
-            ),
-          ],
-        ),
+  return RichText(
+    text: TextSpan(
+      text: getTranslated(context,
+          isSignIn ? "authSwitchSignUpPrimary" : "authSwitchSignInPrimary"),
+      style: TextStyle(
+        color: Theme.of(context).colorScheme.authSwitchPrimary,
+        fontSize: Theme.of(context).textTheme.authSwitchPrimary,
+        fontWeight: Theme.of(context).typography.authSwitchPrimary,
       ),
+      children: <TextSpan>[
+        TextSpan(
+          text: getTranslated(
+              context,
+              isSignIn
+                  ? "authSwitchSignUpSecondary"
+                  : "authSwitchSignInSecondary"),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.authSwitchSecondary,
+            fontSize: Theme.of(context).textTheme.authSwitchSecondary,
+            fontWeight: Theme.of(context).typography.authSwitchSecondary,
+          ),
+        ),
+      ],
     ),
   );
 }
@@ -213,16 +227,7 @@ Widget authProfilePicker(BuildContext context, State state) {
         borderRadius: BorderRadius.circular(60),
         color: Colors.red.shade200,
       ),
-      child: CarouselSlider(
-        items: _images,
-        options: CarouselOptions(
-          autoPlay: true,
-          autoPlayAnimationDuration: Duration(seconds: 3),
-          viewportFraction: 1.5,
-          enlargeCenterPage: true,
-          aspectRatio: 1.0,
-        ),
-      ),
+      child: _images[Random().nextInt(_images.length)],
     ),
   );
 }
