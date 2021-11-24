@@ -46,6 +46,17 @@ class _AuthScreenState extends State<AuthScreen> {
       children: [
         Positioned(top: 50, left: 100, child: authTitle(context)),
         Positioned(
+          top: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.welcomeDesktopCornerTop),
+          right: getPosition(
+              context,
+              true,
+              Theme.of(context)
+                  .materialTapTargetSize
+                  .welcomeDesktopCornerRight),
+          child: authCorner(context),
+        ),
+        Positioned(
             top: 100, left: 100, child: authProfilePicker(context, this)),
         Positioned(top: 400, child: authUserInput(context, isSignIn)),
         Positioned(
@@ -59,7 +70,6 @@ class _AuthScreenState extends State<AuthScreen> {
             child: GestureDetector(
                 onTap: () {
                   setState(() {
-                    print("Testing");
                     isSignIn = !isSignIn;
                   });
                 },
