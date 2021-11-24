@@ -112,7 +112,7 @@ Widget welcomeGetStarted(BuildContext context) {
           color: Theme.of(context).colorScheme.welcomeGetStarted,
           borderRadius: BorderRadius.circular(30)),
       child: Material(
-        color: Colors.transparent,
+        color: Theme.of(context).colorScheme.materialTransparent,
         child: InkWell(
           splashColor: Theme.of(context).colorScheme.welcomeGetStartedInkWell,
           customBorder:

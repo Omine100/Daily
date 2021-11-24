@@ -149,7 +149,7 @@ Widget authGetStarted(BuildContext context, bool isSignIn) {
           color: Theme.of(context).colorScheme.authGetStarted,
           borderRadius: BorderRadius.circular(30)),
       child: Material(
-        color: Colors.transparent,
+        color: Theme.of(context).colorScheme.materialTransparent,
         child: InkWell(
           splashColor: Theme.of(context).colorScheme.authGetStartedInkWell,
           customBorder:
@@ -208,7 +208,9 @@ List<Image> _images = [
   Image(image: AssetImage("lib/assets/auth/auth_carouselTwo.png")),
   Image(image: AssetImage("lib/assets/auth/auth_carouselThree.png")),
 ];
-Widget authCenterPiece(BuildContext context, State state) {
+Container authCenterPiece(BuildContext context, State state) {
   return Container(
-      height: 330, child: _images[Random().nextInt(_images.length)]);
+      height: getDimension(
+          context, true, Theme.of(context).visualDensity.authCenterPieceHeight),
+      child: _images[Random().nextInt(_images.length)]);
 }

@@ -19,6 +19,7 @@ extension CustomDimensions on VisualDensity {
 
   // #region auth
   double get authTitleWidth => 1.0;
+  double get authCenterPieceHeight => 0.42;
   double get authGetStartedHeight => 0.07;
   double get authGetStartedWidth => 0.45;
   // #endregion
