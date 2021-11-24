@@ -6,6 +6,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 import 'package:daily/userInterface/home.dart';
+import 'package:daily/userInterface/forgotPassword.dart';
 import 'package:daily/utilities/managementUtil/validation.dart';
 
 Widget authTitle(BuildContext context) {
@@ -78,12 +79,14 @@ Widget authUserInputField(BuildContext context, Function validator,
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
-      height: 60,
-      width: 350,
+      height: getDimension(context, true,
+          Theme.of(context).visualDensity.authUserInputFieldHeight),
+      width: getDimension(context, false,
+          Theme.of(context).visualDensity.authUserInputFieldWidth),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: Colors.grey.shade200,
+        color: Theme.of(context).colorScheme.authUserInputField,
       ),
       child: TextFormField(
         obscureText: isVisible,
@@ -93,14 +96,16 @@ Widget authUserInputField(BuildContext context, Function validator,
           border: InputBorder.none,
           hintText: getTranslated(context, authForm),
           labelStyle: TextStyle(
-            color: Theme.of(context).colorScheme.authUserInputDecoration,
-            fontSize: Theme.of(context).textTheme.authUserInputDecoration,
-            fontWeight: Theme.of(context).typography.authUserInputDecoration,
+            color: Theme.of(context).colorScheme.authUserInputFieldDecoration,
+            fontSize: Theme.of(context).textTheme.authUserInputFieldDecoration,
+            fontWeight:
+                Theme.of(context).typography.authUserInputFieldDecoration,
           ),
           hintStyle: TextStyle(
-            color: Theme.of(context).colorScheme.authUserInputDecoration,
-            fontSize: Theme.of(context).textTheme.authUserInputDecoration,
-            fontWeight: Theme.of(context).typography.authUserInputDecoration,
+            color: Theme.of(context).colorScheme.authUserInputFieldDecoration,
+            fontSize: Theme.of(context).textTheme.authUserInputFieldDecoration,
+            fontWeight:
+                Theme.of(context).typography.authUserInputFieldDecoration,
           ),
           prefixIcon: Icon(
             authForm != "authFormEmail"
@@ -125,14 +130,14 @@ Widget authUserInputField(BuildContext context, Function validator,
 Widget authForgotPassword(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      RouteNavigation().routePage(context, HomeScreen());
+      RouteNavigation().routePage(context, ForgotPasswordScreen());
     },
     child: Text(
       getTranslated(context, "authForgotPassword"),
       style: TextStyle(
-        color: Colors.black,
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
+        color: Theme.of(context).colorScheme.authForgotPassword,
+        fontSize: Theme.of(context).textTheme.authForgotPassword,
+        fontWeight: Theme.of(context).typography.authForgotPassword,
       ),
     ),
   );

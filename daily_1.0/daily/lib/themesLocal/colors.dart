@@ -58,7 +58,10 @@ extension CustomColorScheme on ColorScheme {
   Color get authBackground => Color(isDark ? 0xFFFBFAF5 : 0xFFFBFAF5);
   Color get authTitle => Color(isDark ? 0xFF333333 : 0xFF333333);
   Color get authSubtitle => Color(isDark ? 0xFF333333 : 0xFF333333);
-  Color get authUserInputDecoration => Color(isDark ? 0xFF000000 : 0xFF000000);
+  Color get authUserInputField => Color(isDark ? 0xFFEEEEEE : 0xFFEEEEEE);
+  Color get authUserInputFieldDecoration =>
+      Color(isDark ? 0xFF000000 : 0xFF000000);
+  Color get authForgotPassword => Color(isDark ? 0xFF333333 : 0xFF333333);
   Color get authGetStartedText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get authGetStartedInkWell => Color(isDark ? 0xFFFF5350 : 0xFFFF9999);
   Color get authGetStarted => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
