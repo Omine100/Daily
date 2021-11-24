@@ -73,7 +73,7 @@ Column authUserInput(BuildContext context, bool isSignIn) {
   );
 }
 
-bool isVisible = false;
+bool isVisible = true;
 Widget authUserInputField(BuildContext context, Function validator,
     Function onSaved, String authForm, bool isVariable) {
   return Padding(
@@ -89,9 +89,10 @@ Widget authUserInputField(BuildContext context, Function validator,
         color: Theme.of(context).colorScheme.authUserInputField,
       ),
       child: TextFormField(
-        obscureText: isVisible,
+        obscureText: isVariable ? !isVisible : false,
         validator: validator,
         onSaved: onSaved,
+        autofocus: false,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: getTranslated(context, authForm),
@@ -111,14 +112,30 @@ Widget authUserInputField(BuildContext context, Function validator,
             authForm != "authFormEmail"
                 ? (authForm == "authFormPass" ? Icons.lock : Icons.person)
                 : Icons.email,
-            color: Theme.of(context).colorScheme.userIStandardsTextInputIcon,
+            color:
+                Theme.of(context).colorScheme.authUserInputFieldIconDecoration,
           ),
           suffixIcon: isVariable
               ? IconButton(
+                  splashColor:
+                      Theme.of(context).colorScheme.materialTransparent,
                   onPressed: () {
+                    FocusScopeNode currentFocus = FocusScope.of(context);
+                    currentFocus.unfocus();
+                    currentFocus.canRequestFocus = false;
                     isVisible = !isVisible;
+                    Future.delayed(Duration(milliseconds: 100), () {
+                      currentFocus.canRequestFocus = true;
+                    });
                   },
-                  icon: Icon(Icons.lock),
+                  icon: Icon(
+                    isVisible
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                    color: Theme.of(context)
+                        .colorScheme
+                        .authUserInputFieldIconDecoration,
+                  ),
                 )
               : null,
         ),

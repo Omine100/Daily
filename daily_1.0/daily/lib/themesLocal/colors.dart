@@ -61,6 +61,8 @@ extension CustomColorScheme on ColorScheme {
   Color get authUserInputField => Color(isDark ? 0xFFEEEEEE : 0xFFEEEEEE);
   Color get authUserInputFieldDecoration =>
       Color(isDark ? 0xFF000000 : 0xFF000000);
+  Color get authUserInputFieldIconDecoration =>
+      Color(isDark ? 0xFF888888 : 0xFF888888);
   Color get authForgotPassword => Color(isDark ? 0xFF333333 : 0xFF333333);
   Color get authGetStartedText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get authGetStartedInkWell => Color(isDark ? 0xFFFF5350 : 0xFFFF9999);
