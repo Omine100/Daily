@@ -44,7 +44,7 @@ class _AuthScreenState extends State<AuthScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Positioned(top: 50, left: 100, child: authTitle(context)),
+        Positioned(top: 50, child: authTitle(context)),
         Positioned(
           top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.welcomeDesktopCornerTop),
@@ -57,10 +57,13 @@ class _AuthScreenState extends State<AuthScreen> {
           child: authCorner(context),
         ),
         Positioned(
-            top: 100, left: 100, child: authProfilePicker(context, this)),
-        Positioned(top: 400, child: authUserInput(context, isSignIn)),
+            top: 170,
+            left: 100,
+            child: !isSignIn ? authProfilePicker(context, this) : Container()),
         Positioned(
-          top: 560,
+            top: isSignIn ? 350 : 400, child: authUserInput(context, isSignIn)),
+        Positioned(
+          top: 510,
           left: 50,
           child: isSignIn ? authForgotPassword(context) : Container(),
         ),
