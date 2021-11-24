@@ -56,8 +56,11 @@ flutter:
       - lib/assets/auth/auth_carouselOne.png
       - lib/assets/auth/auth_carouselTwo.png
       - lib/assets/auth/auth_carouselThree.png
-      - lib/assets/auth/auth_carouselFour.png
-      - lib/assets/auth/auth_carouselFive.png
+      - lib/assets/home/home_carouselOne.png
+      - lib/assets/home/home_carouselTwo.png
+      - lib/assets/home/home_carouselThree.png
+      - lib/assets/home/home_carouselFour.png
+      - lib/assets/home/home_carouselFive.png
       - lib/localizations/en.json
       - lib/localizations/es.json
       - lib/localizations/fr.json

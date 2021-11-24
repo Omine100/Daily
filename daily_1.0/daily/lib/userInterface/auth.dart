@@ -25,8 +25,7 @@ class _AuthScreenState extends State<AuthScreen> {
   authScreenDesktop() {
     return Stack(
       children: [
-        Positioned(
-            top: 100, left: 100, child: authProfilePicker(context, this)),
+        Positioned(top: 100, left: 100, child: authCenterPiece(context, this)),
       ],
     );
   }
@@ -34,8 +33,7 @@ class _AuthScreenState extends State<AuthScreen> {
   authScreenTablet() {
     return Stack(
       children: [
-        Positioned(
-            top: 100, left: 100, child: authProfilePicker(context, this)),
+        Positioned(top: 100, left: 100, child: authCenterPiece(context, this)),
       ],
     );
   }
@@ -44,26 +42,10 @@ class _AuthScreenState extends State<AuthScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Positioned(top: 50, child: authTitle(context)),
+        Positioned(top: 50, child: authCenterPiece(context, this)),
+        Positioned(top: 400, child: authUserInput(context, isSignIn)),
         Positioned(
-          top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeDesktopCornerTop),
-          right: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .welcomeDesktopCornerRight),
-          child: authCorner(context),
-        ),
-        Positioned(
-            top: 170,
-            left: 100,
-            child: !isSignIn ? authProfilePicker(context, this) : Container()),
-        Positioned(
-            top: isSignIn ? 350 : 400, child: authUserInput(context, isSignIn)),
-        Positioned(
-          top: 510,
+          top: 560,
           left: 50,
           child: isSignIn ? authForgotPassword(context) : Container(),
         ),

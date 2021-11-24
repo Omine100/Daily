@@ -223,23 +223,8 @@ List<Image> _images = [
   Image(image: AssetImage("lib/assets/auth/auth_carouselOne.png")),
   Image(image: AssetImage("lib/assets/auth/auth_carouselTwo.png")),
   Image(image: AssetImage("lib/assets/auth/auth_carouselThree.png")),
-  Image(image: AssetImage("lib/assets/auth/auth_carouselFour.png")),
-  Image(image: AssetImage("lib/assets/auth/auth_carouselFive.png")),
 ];
-Widget authProfilePicker(BuildContext context, State state) {
-  return GestureDetector(
-    onTap: () {
-      UserIStandards().mediaSelectionDialog(context, state).then(
-          (file) => FirebaseAccounts().setCurrentUserProfilePicImage(file));
-    },
-    child: Container(
-      height: 200,
-      width: 200,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(60),
-        color: Colors.red.shade200,
-      ),
-      child: _images[Random().nextInt(_images.length)],
-    ),
-  );
+Widget authCenterPiece(BuildContext context, State state) {
+  return Container(
+      height: 330, child: _images[Random().nextInt(_images.length)]);
 }
