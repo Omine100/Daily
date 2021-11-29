@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/responsive.dart';
+import 'package:daily/userInterface/settingsComponents.dart';
+import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/themesLocal/positions.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -6,10 +10,22 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  settingsScreenDesktop() {}
+
+  settingsScreenTablet() {}
+
+  settingsScreenMobile() {}
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("SETTINGS", style: TextStyle(color: Colors.red, fontSize: 100),),
-    );
+    return Material(
+        color: Theme.of(context).colorScheme.settingsBackground,
+        child: Container(
+            constraints: BoxConstraints.expand(height: double.maxFinite),
+            child: Responsive(
+              desktop: settingsScreenDesktop(),
+              tablet: settingsScreenTablet(),
+              mobile: settingsScreenMobile(),
+            )));
   }
 }
