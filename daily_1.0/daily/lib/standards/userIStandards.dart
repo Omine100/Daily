@@ -11,7 +11,6 @@ import 'package:daily/themesLocal/fontProperties.dart';
 import 'package:daily/themesLocal/sizes.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/userInterface/home.dart';
-import 'package:daily/userInterface/intro.dart';
 
 class UserIStandards {
   //CLASS INITIALIZATION
@@ -100,11 +99,7 @@ class UserIStandards {
     return new GestureDetector(
       onTap: () {
         firebaseAccounts.signInGoogle().then((_isNewUser) => isNewUser);
-        if (isNewUser) {
-          routeNavigation.routePage(context, HomeScreen());
-        } else {
-          routeNavigation.routePage(context, IntroScreen());
-        }
+        routeNavigation.routePage(context, HomeScreen());
       },
       child: Container(
         padding: EdgeInsets.all(7.5),

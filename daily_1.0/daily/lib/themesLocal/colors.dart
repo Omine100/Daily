@@ -70,6 +70,10 @@ extension CustomColorScheme on ColorScheme {
   Color get authSwitchPrimary => Color(isDark ? 0xFF333333 : 0xFF333333);
   Color get authSwitchSecondary => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
   // #endregion
+
+  // #region settings
+  Color get settingsBackground => Color(isDark ? 0xFFBFAF5 : 0xFFFBFAF5);
+  // #endregion
 }
 
 extension ColorUtils on Color {
