@@ -71,6 +71,10 @@ extension CustomColorScheme on ColorScheme {
   Color get authSwitchSecondary => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
   // #endregion
 
+  // #region forgotPass
+  Color get forgotPasswordBackground => Color(isDark ? 0xFFBFAF5 : 0xFFFBFAF5);
+  // #endregion
+
   // #region settings
   Color get settingsBackground => Color(isDark ? 0xFFBFAF5 : 0xFFFBFAF5);
   // #endregion
