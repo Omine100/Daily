@@ -20,22 +20,43 @@ Widget forgotPasswordCenterPiece(BuildContext context) {
   );
 }
 
-Widget forgotPasswordInputField(BuildContext context) {
+Widget forgotPasswordUserInputField(BuildContext context) {
   return TextFormField();
 }
 
 Widget forgotPasswordSend(BuildContext context) {
-  return Container(
-    decoration: BoxDecoration(
-      color: Theme.of(context).colorScheme.forgotPasswordSend,
-      borderRadius: BorderRadius.circular(30),
-    ),
-    child: Text(
-      getTranslated(context, "forgotPasswordSend"),
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.forgotPasswordSendText,
-        fontSize: Theme.of(context).textTheme.forgotPasswordSendText,
-        fontWeight: Theme.of(context).typography.forgotPasswordSendText,
+  return Center(
+    child: Container(
+      height: getDimension(context, true,
+          Theme.of(context).visualDensity.forgotPasswordSendHeight),
+      width: getDimension(context, false,
+          Theme.of(context).visualDensity.forgotPasswordSendWidth),
+      decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.forgotPasswordSend,
+          borderRadius: BorderRadius.circular(30)),
+      child: Material(
+        color: Theme.of(context).colorScheme.materialTransparent,
+        child: InkWell(
+          splashColor: Theme.of(context).colorScheme.forgotPasswordSendInkWell,
+          customBorder:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+          onTap: () {
+            //Event
+          },
+          child: Container(
+            child: Center(
+              child: Text(
+                getTranslated(context, "forgotPasswordSend"),
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.forgotPasswordSendText,
+                  fontSize: Theme.of(context).textTheme.forgotPasswordSendText,
+                  fontWeight:
+                      Theme.of(context).typography.forgotPasswordSendText,
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     ),
   );
@@ -48,19 +69,22 @@ Widget forgotPasswordResend(BuildContext context, String email) {
     },
     child: RichText(
       text: TextSpan(
-        text: getTranslated(context, "forgotPasswordResend"),
+        text: getTranslated(context, "forgotPasswordResendPrimary"),
         style: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordResend,
-          fontSize: Theme.of(context).textTheme.forgotPasswordResend,
-          fontWeight: Theme.of(context).typography.forgotPasswordResend,
+          color: Theme.of(context).colorScheme.forgotPasswordResendPrimary,
+          fontSize: Theme.of(context).textTheme.forgotPasswordResendPrimary,
+          fontWeight: Theme.of(context).typography.forgotPasswordResendPrimary,
         ),
         children: <TextSpan>[
           TextSpan(
-            text: getTranslated(context, "forgotPasswordResendSend"),
+            text: getTranslated(context, "forgotPasswordResendSecondary"),
             style: TextStyle(
-              color: Theme.of(context).colorScheme.forgotPasswordResendSend,
-              fontSize: Theme.of(context).textTheme.forgotPasswordResendSend,
-              fontWeight: Theme.of(context).typography.forgotPasswordResendSend,
+              color:
+                  Theme.of(context).colorScheme.forgotPasswordResendSecondary,
+              fontSize:
+                  Theme.of(context).textTheme.forgotPasswordResendSecondary,
+              fontWeight:
+                  Theme.of(context).typography.forgotPasswordResendSecondary,
             ),
           ),
         ],

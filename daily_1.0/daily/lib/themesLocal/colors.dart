@@ -73,6 +73,22 @@ extension CustomColorScheme on ColorScheme {
 
   // #region forgotPass
   Color get forgotPasswordBackground => Color(isDark ? 0xFFBFAF5 : 0xFFFBFAF5);
+  Color get forgotPasswordTitle => Color(isDark ? 0xFF333333 : 0xFF333333);
+  Color get forgotPasswordSubtitle => Color(isDark ? 0xFF333333 : 0xFF333333);
+  Color get forgotPasswordUserInputField =>
+      Color(isDark ? 0xFFEEEEEE : 0xFFEEEEEE);
+  Color get forgotPasswordUserInputFieldDecoration =>
+      Color(isDark ? 0xFF000000 : 0xFF000000);
+  Color get forgotPasswordUserInputFieldIconDecoration =>
+      Color(isDark ? 0xFF888888 : 0xFF888888);
+  Color get forgotPasswordSendText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
+  Color get forgotPasswordSendInkWell =>
+      Color(isDark ? 0xFFFF5350 : 0xFFFF9999);
+  Color get forgotPasswordSend => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
+  Color get forgotPasswordResendPrimary =>
+      Color(isDark ? 0xFF333333 : 0xFF333333);
+  Color get forgotPasswordResendSecondary =>
+      Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
   // #endregion
 
   // #region settings

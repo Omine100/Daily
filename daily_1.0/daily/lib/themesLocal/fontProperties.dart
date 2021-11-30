@@ -25,6 +25,15 @@ extension CustomFontSize on TextTheme {
   double get authSwitchPrimary => 16;
   double get authSwitchSecondary => 16;
   // #endregion
+
+  // #region forgotPassword
+  double get forgotPasswordTitle => 48;
+  double get forgotPasswordSubtitle => 22;
+  double get forgotPasswordUserInputFieldDecoration => 20;
+  double get forgotPasswordSendText => 20;
+  double get forgotPasswordResendPrimary => 16;
+  double get forgotPasswordResendSecondary => 16;
+  // #endregion
 }
 
 extension CustomFontWeight on Typography {
@@ -49,5 +58,14 @@ extension CustomFontWeight on Typography {
   FontWeight get authGetStartedText => FontWeight.w500;
   FontWeight get authSwitchPrimary => FontWeight.w400;
   FontWeight get authSwitchSecondary => FontWeight.w500;
+  // #endregion
+
+  // #region forgotPassword
+  FontWeight get forgotPasswordTitle => FontWeight.w500;
+  FontWeight get forgotPasswordSubtitle => FontWeight.w300;
+  FontWeight get forgotPasswordUserInputFieldDecoration => FontWeight.w300;
+  FontWeight get forgotPasswordSendText => FontWeight.w500;
+  FontWeight get forgotPasswordResendPrimary => FontWeight.w400;
+  FontWeight get forgotPasswordResendSecondary => FontWeight.w500;
   // #endregion
 }
