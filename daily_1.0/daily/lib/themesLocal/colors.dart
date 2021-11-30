@@ -46,9 +46,9 @@ extension CustomColorScheme on ColorScheme {
   Color get welcomeCarouselCurrent => Color(isDark ? 0xFFEF5350 : 0xFFEF5350);
   Color get welcomeCarouselNotCurrent =>
       Color(isDark ? 0xFFDDDDDD : 0xFFDDDDDD);
-  Color get welcomeGetStartedText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
-  Color get welcomeGetStartedInkWell => Color(isDark ? 0xFFFF5350 : 0xFFFF9999);
   Color get welcomeGetStarted => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
+  Color get welcomeGetStartedInkWell => Color(isDark ? 0xFFFF5350 : 0xFFFF9999);
+  Color get welcomeGetStartedText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get welcomeAccountAlready => Color(isDark ? 0xFF333333 : 0xFF333333);
   Color get welcomeAccountAlreadyLogin =>
       Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
@@ -64,9 +64,9 @@ extension CustomColorScheme on ColorScheme {
   Color get authUserInputFieldIconDecoration =>
       Color(isDark ? 0xFF888888 : 0xFF888888);
   Color get authForgotPassword => Color(isDark ? 0xFF333333 : 0xFF333333);
-  Color get authGetStartedText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
-  Color get authGetStartedInkWell => Color(isDark ? 0xFFFF5350 : 0xFFFF9999);
   Color get authGetStarted => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
+  Color get authGetStartedInkWell => Color(isDark ? 0xFFFF5350 : 0xFFFF9999);
+  Color get authGetStartedText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get authSwitchPrimary => Color(isDark ? 0xFF333333 : 0xFF333333);
   Color get authSwitchSecondary => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
   // #endregion
@@ -81,10 +81,10 @@ extension CustomColorScheme on ColorScheme {
       Color(isDark ? 0xFF000000 : 0xFF000000);
   Color get forgotPasswordUserInputFieldIconDecoration =>
       Color(isDark ? 0xFF888888 : 0xFF888888);
-  Color get forgotPasswordSendText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
+  Color get forgotPasswordSend => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
   Color get forgotPasswordSendInkWell =>
       Color(isDark ? 0xFFFF5350 : 0xFFFF9999);
-  Color get forgotPasswordSend => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
+  Color get forgotPasswordSendText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get forgotPasswordResendPrimary =>
       Color(isDark ? 0xFF333333 : 0xFF333333);
   Color get forgotPasswordResendSecondary =>

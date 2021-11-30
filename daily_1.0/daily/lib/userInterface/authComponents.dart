@@ -38,6 +38,13 @@ Widget authTitle(BuildContext context) {
   );
 }
 
+Widget authCenterPiece(BuildContext context, State state) {
+  return Container(
+      height: getDimension(
+          context, true, Theme.of(context).visualDensity.authCenterPieceHeight),
+      child: Image(image: AssetImage("lib/assets/auth/auth_centerPiece.png")));
+}
+
 String userName = "", userEmail = "", userPass = "";
 Widget authUserInput(BuildContext context, bool isSignIn) {
   return Column(
@@ -222,11 +229,4 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
       ],
     ),
   );
-}
-
-Widget authCenterPiece(BuildContext context, State state) {
-  return Container(
-      height: getDimension(
-          context, true, Theme.of(context).visualDensity.authCenterPieceHeight),
-      child: Image(image: AssetImage("lib/assets/auth/auth_centerPiece.png")));
 }

@@ -6,18 +6,41 @@ import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 
 Widget forgotPasswordTitle(BuildContext context) {
-  return Column(
-    children: [
-      Text("Forgot Password?"),
-      Text("Enter your email below to recieve password reset instructions"),
-    ],
+  return Container(
+    width: getDimension(context, false,
+        Theme.of(context).visualDensity.forgotPasswordTitleWidth),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          getTranslated(context, "forgotPasswordTitle"),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.forgotPasswordTitle,
+            fontSize: Theme.of(context).textTheme.forgotPasswordTitle,
+            fontWeight: Theme.of(context).typography.forgotPasswordTitle,
+          ),
+        ),
+        Text(
+          getTranslated(context, "forgotPasswordSubtitle"),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.forgotPasswordSubtitle,
+            fontSize: Theme.of(context).textTheme.forgotPasswordSubtitle,
+            fontWeight: Theme.of(context).typography.forgotPasswordSubtitle,
+          ),
+        ),
+      ],
+    ),
   );
 }
 
 Widget forgotPasswordCenterPiece(BuildContext context) {
-  return Image(
-    image: AssetImage(""),
-  );
+  return Container(
+      height: getDimension(context, true,
+          Theme.of(context).visualDensity.forgotPasswordCenterPieceHeight),
+      child: Image(
+          image: AssetImage(
+              "lib/assets/forgotPassword/forgotPassword_centerPiece.png")));
 }
 
 Widget forgotPasswordUserInputField(BuildContext context) {
