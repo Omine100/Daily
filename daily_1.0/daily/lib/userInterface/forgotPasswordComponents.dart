@@ -142,7 +142,7 @@ Widget forgotPasswordSend(BuildContext context) {
 Widget forgotPasswordResend(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      FirebaseAccounts().sendPasswordReset(email);
+      FirebaseAccounts().sendPasswordReset(userEmail);
     },
     child: RichText(
       text: TextSpan(
