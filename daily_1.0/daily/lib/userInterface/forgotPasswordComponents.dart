@@ -1,3 +1,4 @@
+import 'package:daily/utilities/managementUtil/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
@@ -43,8 +44,61 @@ Widget forgotPasswordCenterPiece(BuildContext context) {
               "lib/assets/forgotPassword/forgotPassword_centerPiece.png")));
 }
 
+String userEmail;
 Widget forgotPasswordUserInputField(BuildContext context) {
-  return TextFormField();
+  return Container(
+    height: getDimension(context, true,
+        Theme.of(context).visualDensity.forgotPasswordUserInputFieldHeight),
+    width: getDimension(context, false,
+        Theme.of(context).visualDensity.forgotPasswordUserInputFieldWidth),
+    alignment: Alignment.center,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(30),
+      color: Theme.of(context).colorScheme.forgotPasswordUserInputField,
+    ),
+    child: TextFormField(
+      obscureText: false,
+      validator: (email) {
+        if (!isEmail(email))
+          return getTranslated(context, 'forgotPasswordValidatorEmailFormat');
+        return null;
+      },
+      onSaved: (email) => userEmail,
+      autofocus: false,
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        hintText: getTranslated(context, "forgotPasswordFormEmail"),
+        labelStyle: TextStyle(
+          color: Theme.of(context)
+              .colorScheme
+              .forgotPasswordUserInputFieldDecoration,
+          fontSize: Theme.of(context)
+              .textTheme
+              .forgotPasswordUserInputFieldDecoration,
+          fontWeight: Theme.of(context)
+              .typography
+              .forgotPasswordUserInputFieldDecoration,
+        ),
+        hintStyle: TextStyle(
+          color: Theme.of(context)
+              .colorScheme
+              .forgotPasswordUserInputFieldDecoration,
+          fontSize: Theme.of(context)
+              .textTheme
+              .forgotPasswordUserInputFieldDecoration,
+          fontWeight: Theme.of(context)
+              .typography
+              .forgotPasswordUserInputFieldDecoration,
+        ),
+        prefixIcon: Icon(
+          Icons.email,
+          color: Theme.of(context)
+              .colorScheme
+              .forgotPasswordUserInputFieldIconDecoration,
+        ),
+      ),
+    ),
+  );
 }
 
 Widget forgotPasswordSend(BuildContext context) {
@@ -85,7 +139,7 @@ Widget forgotPasswordSend(BuildContext context) {
   );
 }
 
-Widget forgotPasswordResend(BuildContext context, String email) {
+Widget forgotPasswordResend(BuildContext context) {
   return GestureDetector(
     onTap: () {
       FirebaseAccounts().sendPasswordReset(email);
