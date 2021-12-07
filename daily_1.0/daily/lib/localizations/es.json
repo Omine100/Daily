@@ -30,6 +30,11 @@
     "authSwitchSignUpPrimary": "¿No tienes cuenta? ",
     "authSwitchSignInSecondary": "¡INICIAR SESIÓN!",
     "authSwitchSignUpSecondary": "¡REGÍSTRATE!",
-    "forgotPasswordTitle": "RESTABLECER",
-    "forgotPasswordReset": "Restablecer Contraseña"
+    "forgotPasswordTitle": "OLVIDADO TU CONTRASEÑA",
+    "forgotPasswordSubtitle": "Ingrese su correo electrónico a continuación para\nrecibir un mensaje de restablecimiento de contraseña.",
+    "forgotPasswordValidatorEmailFormat": "Correo electrónico no puede estar vacía",
+    "forgotPasswordFormEmail": "Correo electrónico",
+    "forgotPasswordSend": "Enviar",
+    "forgotPasswordResendPrimary": "¿No recibiste el enlace? ",
+    "forgotPasswordResendSecondary": "¡Reenviar!"
 }
