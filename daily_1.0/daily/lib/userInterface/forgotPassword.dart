@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/userInterface/forgotPasswordComponents.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';
 
@@ -11,15 +10,138 @@ class ForgotPasswordScreen extends StatefulWidget {
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   forgotPasswordScreenDesktop() {
-    return Container();
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Positioned(
+          top: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.forgotPasswordDesktopTitleTop),
+          child: forgotPasswordTitle(context),
+        ),
+        Positioned(
+            top: getPosition(
+                context,
+                true,
+                Theme.of(context)
+                    .materialTapTargetSize
+                    .authDesktopCenterPieceTop),
+            child: forgotPassword_centerPiece(context, this)),
+            Positioned(
+            top: getPosition(
+                context,
+                true,
+                Theme.of(context)
+                    .materialTapTargetSize
+                    .authDesktopUserInputTop),
+            child: forgotPasswordUserInputField(context)),
+        Positioned(
+          top: getPosition(
+            context, 
+            true,
+            Theme.of(context).materialTapTargetSize.authDesktopSend
+          ),
+          child: forgotPasswordSend(context),
+        ),
+        Positioned(
+          top: getPosition(
+            context,
+            true,
+            Theme.of(context).materialTapTargetSize.forgotPasswordDesktopResend,
+          ),
+          child: forgotPasswordResend(context),
+        )
+      ]
+    );
   }
 
   forgotPasswordScreenTablet() {
-    return Container();
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Positioned(
+          top: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.forgotPasswordTabletTitleTop),
+          child: forgotPasswordTitle(context),
+        ),
+        Positioned(
+            top: getPosition(
+                context,
+                true,
+                Theme.of(context)
+                    .materialTapTargetSize
+                    .authTabletCenterPieceTop),
+            child: forgotPassword_centerPiece(context, this)),
+            Positioned(
+            top: getPosition(
+                context,
+                true,
+                Theme.of(context)
+                    .materialTapTargetSize
+                    .authTabletUserInputTop),
+            child: forgotPasswordUserInputField(context)),
+        Positioned(
+          top: getPosition(
+            context, 
+            true,
+            Theme.of(context).materialTapTargetSize.authTabletSend
+          ),
+          child: forgotPasswordSend(context),
+        ),
+        Positioned(
+          top: getPosition(
+            context,
+            true,
+            Theme.of(context).materialTapTargetSize.forgotPasswordTabletResend,
+          ),
+          child: forgotPasswordResend(context),
+        )
+      ]
+    );
   }
 
   forgotPasswordScreenMobile() {
-    return Container();
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Positioned(
+          top: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.forgotPasswordMobileTitleTop),
+          child: forgotPasswordTitle(context),
+        ),
+        Positioned(
+            top: getPosition(
+                context,
+                true,
+                Theme.of(context)
+                    .materialTapTargetSize
+                    .authMobileCenterPieceTop),
+            child: forgotPassword_centerPiece(context, this)),
+            Positioned(
+            top: getPosition(
+                context,
+                true,
+                Theme.of(context)
+                    .materialTapTargetSize
+                    .authMobileUserInputTop),
+            child: forgotPasswordUserInputField(context)),
+        Positioned(
+          top: getPosition(
+            context, 
+            true,
+            Theme.of(context).materialTapTargetSize.authMobileSend
+          ),
+          child: forgotPasswordSend(context),
+        ),
+        Positioned(
+          top: getPosition(
+            context,
+            true,
+            Theme.of(context).materialTapTargetSize.forgotPasswordMobileResend,
+          ),
+          child: forgotPasswordResend(context),
+        )
+      ]
+    );
   }
 
   @override
