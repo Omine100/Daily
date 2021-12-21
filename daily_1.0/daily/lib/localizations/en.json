@@ -31,5 +31,10 @@
     "authSwitchSignInSecondary": "LOGIN!",
     "authSwitchSignUpSecondary": "SIGN UP!",
     "forgotPasswordTitle": "FORGOT PASSWORD",
-    "forgotPasswordReset": "Reset Password"
+    "forgotPasswordSubtitle": "Enter your email below to\nreceive a password reset message.",
+    "forgotPasswordValidatorEmailFormat": "Email can't be empty",
+    "forgotPasswordFormEmail": "Email",
+    "forgotPasswordSend": "Send",
+    "forgotPasswordResendPrimary": "Vous n'avez pas reçu le message ? ",
+    "forgotPasswordResendSecondary": "Resend !"
 }

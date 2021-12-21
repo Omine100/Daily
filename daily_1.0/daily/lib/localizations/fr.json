@@ -30,6 +30,11 @@
     "authSwitchSignUpPrimary": "Pas de compte? ",
     "authSwitchSignInSecondary": "S'IDENTIFIER!",
     "authSwitchSignUpSecondary": "S'INSCRIRE!",
-    "forgotPasswordTitle": "MOT DE PASSE OUBLIÉ",
-    "forgotPasswordReset": "Mot de Passe Oublié"
+    "forgotPasswordTitle": "PASSE OUBLIÉ",
+    "forgotPasswordSubtitle": "Ingrese su correo electrónico a continuación para\nrecibir un mensaje de restablecimiento de contraseña.",
+    "forgotPasswordValidatorEmailFormat": "Email ne peut pas être vide",
+    "forgotPasswordFormEmail": "Email",
+    "forgotPasswordSend": "Envoyer",
+    "forgotPasswordResendPrimary": "FORGOT PASSWORD",
+    "forgotPasswordResendSecondary": "Renvoyer!"
 }
