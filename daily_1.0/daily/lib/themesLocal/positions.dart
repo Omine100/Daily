@@ -56,6 +56,33 @@ extension CustomPositions on MaterialTapTargetSize {
   double get authMobileGetStartedTop => 0.815;
   double get authMobileSwitchTop => 0.93;
   // #endregion
+
+  // #region forgotPasswordDesktop
+  double get forgotPasswordDesktopCenterPieceTop => 0.06;
+  double get forgotPasswordDesktopUserInputTop => 0.5;
+  double get forgotPasswordDesktopForgotPasswordTop => 0.685;
+  double get forgotPasswordDesktopForgotPasswordLeft => 0.1;
+  double get forgotPasswordDesktopGetStartedTop => 0.8;
+  double get forgotPasswordDesktopSwitchTop => 0.93;
+  // #endregion
+
+  // #region forgotPasswordTablet
+  double get forgotPasswordTabletCenterPieceTop => 0.06;
+  double get forgotPasswordTabletUserInputTop => 0.5;
+  double get forgotPasswordTabletForgotPasswordTop => 0.685;
+  double get forgotPasswordTabletForgotPasswordLeft => 0.1;
+  double get forgotPasswordTabletGetStartedTop => 0.815;
+  double get forgotPasswordTabletSwitchTop => 0.93;
+  // #endregion
+
+  // #region forgotPasswordMobile
+  double get forgotPasswordMobileCenterPieceTop => 0.06;
+  double get forgotPasswordMobileUserInputTop => 0.5;
+  double get forgotPasswordMobileForgotPasswordTop => 0.685;
+  double get forgotPasswordMobileForgotPasswordLeft => 0.1;
+  double get forgotPasswordMobileGetStartedTop => 0.815;
+  double get forgotPasswordMobileSwitchTop => 0.93;
+  // #endregion
 }
 
 double getPosition(BuildContext context, bool isHeight, double value) {

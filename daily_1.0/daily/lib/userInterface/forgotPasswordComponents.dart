@@ -119,7 +119,7 @@ Widget forgotPasswordSend(BuildContext context) {
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            FirebaseAccounts().sendPasswordReset(userEmail)
+            FirebaseAccounts().sendPasswordReset(userEmail);
           },
           child: Container(
             child: Center(
