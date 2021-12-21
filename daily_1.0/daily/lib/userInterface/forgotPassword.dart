@@ -28,23 +28,32 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               true,
               Theme.of(context)
                   .materialTapTargetSize
-                  .authDesktopCenterPieceTop),
-          child: forgotPassword_centerPiece(context, this)),
+                  .forgotPasswordDesktopCenterPieceTop),
+          child: forgotPasswordCenterPiece(context)),
       Positioned(
-          top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.authDesktopUserInputTop),
+          top: getPosition(
+              context,
+              true,
+              Theme.of(context)
+                  .materialTapTargetSize
+                  .forgotPasswordDesktopUserInputTop),
           child: forgotPasswordUserInputField(context)),
       Positioned(
-        top: getPosition(context, true,
-            Theme.of(context).materialTapTargetSize.authDesktopSend),
+        top: getPosition(
+            context,
+            true,
+            Theme.of(context)
+                .materialTapTargetSize
+                .forgotPasswordDesktopSendTop),
         child: forgotPasswordSend(context),
       ),
       Positioned(
         top: getPosition(
-          context,
-          true,
-          Theme.of(context).materialTapTargetSize.forgotPasswordDesktopResend,
-        ),
+            context,
+            true,
+            Theme.of(context)
+                .materialTapTargetSize
+                .forgotPasswordDesktopResendTop),
         child: forgotPasswordResend(context),
       )
     ]);
@@ -62,24 +71,37 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         child: forgotPasswordTitle(context),
       ),
       Positioned(
-          top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.authTabletCenterPieceTop),
-          child: forgotPassword_centerPiece(context, this)),
+          top: getPosition(
+              context,
+              true,
+              Theme.of(context)
+                  .materialTapTargetSize
+                  .forgotPasswordTabletCenterPieceTop),
+          child: forgotPasswordCenterPiece(context)),
       Positioned(
-          top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.authTabletUserInputTop),
+          top: getPosition(
+              context,
+              true,
+              Theme.of(context)
+                  .materialTapTargetSize
+                  .forgotPasswordTabletUserInputTop),
           child: forgotPasswordUserInputField(context)),
       Positioned(
-        top: getPosition(context, true,
-            Theme.of(context).materialTapTargetSize.authTabletSend),
+        top: getPosition(
+            context,
+            true,
+            Theme.of(context)
+                .materialTapTargetSize
+                .forgotPasswordTabletSendTop),
         child: forgotPasswordSend(context),
       ),
       Positioned(
         top: getPosition(
-          context,
-          true,
-          Theme.of(context).materialTapTargetSize.forgotPasswordTabletResend,
-        ),
+            context,
+            true,
+            Theme.of(context)
+                .materialTapTargetSize
+                .forgotPasswordTabletResendTop),
         child: forgotPasswordResend(context),
       )
     ]);
@@ -97,24 +119,37 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         child: forgotPasswordTitle(context),
       ),
       Positioned(
-          top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.authMobileCenterPieceTop),
-          child: forgotPassword_centerPiece(context, this)),
+          top: getPosition(
+              context,
+              true,
+              Theme.of(context)
+                  .materialTapTargetSize
+                  .forgotPasswordMobileCenterPieceTop),
+          child: forgotPasswordCenterPiece(context)),
       Positioned(
-          top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.authMobileUserInputTop),
+          top: getPosition(
+              context,
+              true,
+              Theme.of(context)
+                  .materialTapTargetSize
+                  .forgotPasswordMobileUserInputTop),
           child: forgotPasswordUserInputField(context)),
       Positioned(
-        top: getPosition(context, true,
-            Theme.of(context).materialTapTargetSize.authMobileSend),
+        top: getPosition(
+            context,
+            true,
+            Theme.of(context)
+                .materialTapTargetSize
+                .forgotPasswordMobileSendTop),
         child: forgotPasswordSend(context),
       ),
       Positioned(
         top: getPosition(
-          context,
-          true,
-          Theme.of(context).materialTapTargetSize.forgotPasswordMobileResend,
-        ),
+            context,
+            true,
+            Theme.of(context)
+                .materialTapTargetSize
+                .forgotPasswordMobileResendTop),
         child: forgotPasswordResend(context),
       )
     ]);
