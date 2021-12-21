@@ -25,6 +25,15 @@ extension CustomDimensions on VisualDensity {
   double get authGetStartedHeight => 0.07;
   double get authGetStartedWidth => 0.45;
   // #endregion
+
+  // #region forgotPassword
+  double get forgotPasswordTitleWidth => 1.0;
+  double get forgotPasswordCenterPieceHeight => 0.42;
+  double get forgotPasswordUserInputFieldHeight => 0.07;
+  double get forgotPasswordUserInputFieldWidth => 0.875;
+  double get forgotPasswordSendHeight => 0.07;
+  double get forgotPasswordSendWidth => 0.45;
+  // #endregion
 }
 
 double getDimension(BuildContext context, bool isHeight, double value) {

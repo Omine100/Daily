@@ -4,6 +4,7 @@ import 'package:daily/servicesLocal/systemLanguages.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
+import 'package:daily/utilities/managementUtil/validation.dart';
 
 Widget forgotPasswordTitle(BuildContext context) {
   return Container(
@@ -43,8 +44,65 @@ Widget forgotPasswordCenterPiece(BuildContext context) {
               "lib/assets/forgotPassword/forgotPassword_centerPiece.png")));
 }
 
+String userEmail = "";
 Widget forgotPasswordUserInputField(BuildContext context) {
-  return TextFormField();
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Container(
+      height: getDimension(context, true,
+          Theme.of(context).visualDensity.forgotPasswordUserInputFieldHeight),
+      width: getDimension(context, false,
+          Theme.of(context).visualDensity.forgotPasswordUserInputFieldWidth),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        color: Theme.of(context).colorScheme.forgotPasswordUserInputField,
+      ),
+      child: TextFormField(
+        obscureText: false,
+        validator: (email) {
+          if (!isEmail(email))
+            return getTranslated(context, 'authValidatorEmailFormat');
+          return null;
+        },
+        onSaved: (email) => userEmail,
+        autofocus: false,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText:
+              getTranslated(context, 'forgotPasswordValidatorEmailFormat'),
+          labelStyle: TextStyle(
+            color: Theme.of(context)
+                .colorScheme
+                .forgotPasswordUserInputFieldDecoration,
+            fontSize: Theme.of(context)
+                .textTheme
+                .forgotPasswordUserInputFieldDecoration,
+            fontWeight: Theme.of(context)
+                .typography
+                .forgotPasswordUserInputFieldDecoration,
+          ),
+          hintStyle: TextStyle(
+            color: Theme.of(context)
+                .colorScheme
+                .forgotPasswordUserInputFieldDecoration,
+            fontSize: Theme.of(context)
+                .textTheme
+                .forgotPasswordUserInputFieldDecoration,
+            fontWeight: Theme.of(context)
+                .typography
+                .forgotPasswordUserInputFieldDecoration,
+          ),
+          prefixIcon: Icon(
+            Icons.email,
+            color: Theme.of(context)
+                .colorScheme
+                .forgotPasswordUserInputFieldIconDecoration,
+          ),
+        ),
+      ),
+    ),
+  );
 }
 
 Widget forgotPasswordSend(BuildContext context) {

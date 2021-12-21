@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/userInterface/welcomeComponents.dart';
+import 'package:daily/userInterface/forgotPasswordComponents.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';
 
