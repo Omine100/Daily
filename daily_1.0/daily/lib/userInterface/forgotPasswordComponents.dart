@@ -1,4 +1,3 @@
-import 'package:daily/utilities/managementUtil/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
