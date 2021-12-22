@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -130,6 +132,14 @@ class FirebaseAccounts {
 
   Future<void> signOut() async {
     return auth.signOut();
+  }
+
+  Future<void> setUserSettings(Map<String, dynamic> jsonSettings) async {
+    firestore.doc(auth.currentUser.tenantId).set(jsonSettings);
+  }
+
+  Future<DocumentSnapshot> getUserSettings() async {
+    return firestore.doc(auth.currentUser.tenantId).get();
   }
 
   Future<void> deleteUserData() async {
