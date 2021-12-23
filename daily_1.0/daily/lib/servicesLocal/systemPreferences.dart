@@ -1,32 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:daily/datastructures/settingState.dart';
 
 //VARIABLE INITIALIZATION
 SharedPreferences prefs;
-Locale locale;
-
-enum Format { DropDown, List, Switch, DateSelector }
-
-class Setting {
-  String name;
-  dynamic value;
-  dynamic type;
-  Format format;
-
-  Setting(
-      {@required this.name,
-      @required this.value,
-      @required this.type,
-      @required this.format});
-}
-
-//Need to do getTranslated for the names
-Setting languageCode = new Setting(
-    name: "languageCode", value: "en", type: String, format: Format.List);
-Setting isDark = new Setting(
-    name: "isDark", value: false, type: bool, format: Format.Switch);
-Setting isAndroid = new Setting(
-    name: "isAndroid", value: true, type: bool, format: Format.Switch);
 
 class SystemPreferences extends ChangeNotifier {
   initPrefs() async {
