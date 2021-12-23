@@ -11,3 +11,11 @@ Setting isAndroid = new Setting(
     key: "isAndroid", value: true, type: bool, format: Format.Switch);
 Setting profileURL =
     new Setting(key: "profileURL", value: "", type: String, format: Format.URL);
+
+List<Setting> settingsList() {
+  return [locale, languageCode, isDark, isAndroid, profileURL];
+}
+
+void saveToPrefs(List<Setting> settingsList) {
+  settingsList.forEach((setting) {});
+}
