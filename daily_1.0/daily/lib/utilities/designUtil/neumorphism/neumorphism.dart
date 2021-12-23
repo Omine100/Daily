@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:daily/servicesLocal/systemSettings.dart';
+import 'package:daily/servicesLocal/settings.dart';
 import 'package:daily/utilities/managementUtil/colorManagement.dart';
 import 'package:daily/utilities/designUtil/neumorphism/neumorphicCorner.dart';
 
