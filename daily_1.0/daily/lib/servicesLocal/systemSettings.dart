@@ -50,7 +50,6 @@ prefsInstance() async {
 
 void settingsToPrefs(List<Setting> settingsList) async {
   await prefsInstance();
-
   settingsList.forEach((setting) {
     saveToPrefs(setting.key, setting.value);
   });
@@ -64,7 +63,7 @@ void prefsToSettings() async {
     });
   }
   prefs.getKeys().forEach((key) {
-    if (settingsList.contains(key))
+    if (settingsList.contains(key)) //Might need to change this
       settingsList.where((element) => element.key == key).first.value =
           prefs.get(key);
   });
