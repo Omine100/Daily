@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/servicesLocal/systemLocalizations.dart';
-import 'package:daily/servicesLocal/systemPreferences.dart';
+import 'package:daily/servicesLocal/systemSettings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +21,6 @@ class _DailyState extends State<Daily> {
   //CLASS INITIALIZATION
   FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
   RouteNavigation routeNavigation = new RouteNavigation();
-  SystemPreferences systemPreferences = new SystemPreferences();
 
   //VARIABLE INITIALIZATION
   bool isSignedIn = false;
@@ -34,15 +33,12 @@ class _DailyState extends State<Daily> {
   }
 
   void systemSetup() {
-    systemPreferences.saveToPrefs('isAndroid',
-        Theme.of(context).platform == TargetPlatform.android ? true : false);
-    systemPreferences.getFromPrefs('isDark').then((_isDark) =>
-        _isDark == null ? isDark.value = false : isDark.value = _isDark);
-    systemPreferences.getFromPrefs('languageCode').then((_languageCode) => {
-          _languageCode == null
-              ? languageCode.value = "en"
-              : languageCode.value = _languageCode
-        });
+    isAndroid.value =
+        Theme.of(context).platform == TargetPlatform.android ? true : false;
+    isDark.value == null ? isDark.value = false : isDark.value = isDark.value;
+    languageCode.value == null
+        ? languageCode.value = "en"
+        : languageCode.value = languageCode.value;
   }
 
   @override
@@ -52,7 +48,7 @@ class _DailyState extends State<Daily> {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       home: routeNavigation.routeInitial(context, isSignedIn),
-      locale: locale,
+      locale: locale.value,
       supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
       localizationsDelegates: [
         AppLocalizations.delegate,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:daily/servicesLocal/systemPreferences.dart';
+import 'package:daily/servicesLocal/systemSettings.dart';
 
 //Install extension '#region folding for VS Code'
 

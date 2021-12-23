@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:daily/servicesLocal/systemPreferences.dart';
 import 'package:daily/servicesLocal/systemLocalizations.dart';
+import 'package:daily/servicesLocal/systemSettings.dart';
 
 class Languages {
-  Languages(this.id, this.name, this.flag, this.languageCode);
+  Languages(this.id, this.name, this.flag, this.language);
 
   //VARIABLE REFERENCE
   final int id;
   final String name;
   final String flag;
-  final String languageCode;
+  final String language;
 
   //MECHANICS
   static List<Languages> getLanguageList() {
@@ -39,11 +39,9 @@ class Languages {
     return _temp;
   }
 
-  void setLanguage(BuildContext context, Languages language) async {
-    await SystemPreferences()
-        .saveToPrefs("LanguageCode", language.languageCode);
-    Locale _temp = _locale(language.languageCode);
-    locale = _temp;
+  void setLanguage(BuildContext context, Languages newLanguage) async {
+    languageCode.value = newLanguage.language;
+    locale.value = _locale(newLanguage.language);
   }
 }
 
