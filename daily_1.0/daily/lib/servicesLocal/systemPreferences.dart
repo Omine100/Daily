@@ -4,15 +4,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 //VARIABLE INITIALIZATION
 SharedPreferences prefs;
 Locale locale;
-String languageCode;
-bool isDark = false;
-bool isAndroid = true;
+
+enum Format { DropDown, List, Switch, DateSelector }
 
 class Setting {
   String name;
   dynamic value;
   dynamic type;
-  int format;
+  Format format;
 
   Setting(
       {@required this.name,
@@ -21,7 +20,13 @@ class Setting {
       @required this.format});
 }
 
-Setting test = new Setting(name: "isDark", value: false, type: bool, format: 0);
+//Need to do getTranslated for the names
+Setting languageCode = new Setting(
+    name: "languageCode", value: "en", type: String, format: Format.List);
+Setting isDark = new Setting(
+    name: "isDark", value: false, type: bool, format: Format.Switch);
+Setting isAndroid = new Setting(
+    name: "isAndroid", value: true, type: bool, format: Format.Switch);
 
 class SystemPreferences extends ChangeNotifier {
   initPrefs() async {
