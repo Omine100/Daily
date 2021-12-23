@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum Format { DropDown, List, Switch, DateSelector }
+enum Format { DropDown, List, Switch, DateSelector, URL }
 
 class Setting {
   String key;
