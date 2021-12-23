@@ -8,6 +8,21 @@ String languageCode;
 bool isDark = false;
 bool isAndroid = true;
 
+class Setting {
+  String name;
+  dynamic value;
+  dynamic type;
+  int format;
+
+  Setting(
+      {@required this.name,
+      @required this.value,
+      @required this.type,
+      @required this.format});
+}
+
+Setting test = new Setting(name: "isDark", value: false, type: bool, format: 0);
+
 class SystemPreferences extends ChangeNotifier {
   initPrefs() async {
     prefs ??= await SharedPreferences.getInstance();

@@ -27,4 +27,24 @@ class SettingsState {
       SystemPreferences().saveToPrefs(key, value);
     });
   }
+
+  prefsToJson(Map<String, dynamic> prefss) async {
+    prefs.getKeys().forEach((key) {});
+  }
+}
+
+class Setting {
+  String id;
+  bool value;
+
+  Setting(String id, bool value, int type) {
+    this.id = id;
+    this.value = value;
+  }
+}
+
+class SettingType {
+  DropDown()
+  Switch()
+
 }
