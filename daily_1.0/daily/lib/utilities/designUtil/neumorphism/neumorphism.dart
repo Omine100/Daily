@@ -55,12 +55,14 @@ extension Neumorphism on Widget {
       BoxShadow(
         blurRadius: blurRadius,
         offset: -offset,
-        color: colorShadow(backgroundColor, isDark ? -intensity : intensity),
+        color:
+            colorShadow(backgroundColor, isDark.value ? -intensity : intensity),
       ),
       BoxShadow(
         blurRadius: blurRadius,
         offset: offset,
-        color: colorShadow(backgroundColor, isDark ? intensity : -intensity),
+        color:
+            colorShadow(backgroundColor, isDark.value ? intensity : -intensity),
       )
     ];
 
@@ -69,8 +71,8 @@ extension Neumorphism on Widget {
         borderRadius: BorderRadius.circular(borderRadius),
       ),
       colors: [
-        colorShadow(backgroundColor, isDark ? intensity : -intensity),
-        colorShadow(backgroundColor, isDark ? -intensity : intensity)
+        colorShadow(backgroundColor, isDark.value ? intensity : -intensity),
+        colorShadow(backgroundColor, isDark.value ? -intensity : intensity)
       ],
       depression: distance,
     );

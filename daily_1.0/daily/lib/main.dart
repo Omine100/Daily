@@ -36,13 +36,12 @@ class _DailyState extends State<Daily> {
   void systemSetup() {
     systemPreferences.saveToPrefs('isAndroid',
         Theme.of(context).platform == TargetPlatform.android ? true : false);
-    systemPreferences
-        .getFromPrefs('isDark')
-        .then((_isDark) => _isDark == null ? isDark = false : isDark = _isDark);
+    systemPreferences.getFromPrefs('isDark').then((_isDark) =>
+        _isDark == null ? isDark.value = false : isDark.value = _isDark);
     systemPreferences.getFromPrefs('languageCode').then((_languageCode) => {
           _languageCode == null
-              ? languageCode = "en"
-              : languageCode = _languageCode
+              ? languageCode.value = "en"
+              : languageCode.value = _languageCode
         });
   }
 

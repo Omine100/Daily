@@ -27,3 +27,7 @@ Widget settingsCard(BuildContext context) {}
 Widget settingsCardSystem(BuildContext context) {}
 
 Widget settingsCardGeneral(BuildContext context) {}
+
+Widget settingDropDown(BuildContext context) {}
+
+Widget settingSwitch(BuildContext context) {}

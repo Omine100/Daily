@@ -5,94 +5,105 @@ import 'package:daily/servicesLocal/systemPreferences.dart';
 
 extension CustomColorScheme on ColorScheme {
   // #region essential
-  Color get materialTransparent => Color(isDark ? 0x00FFFFFF : 0x00FFFFFF);
+  Color get materialTransparent =>
+      Color(isDark.value ? 0x00FFFFFF : 0x00FFFFFF);
   // #endregion
 
   // #region gradients
   Color get gradientsBackgroundTopRight =>
-      Color(isDark ? 0xFF102449 : 0xFFFF99D1);
+      Color(isDark.value ? 0xFF102449 : 0xFFFF99D1);
   Color get gradientsBackgroundBottomLeft =>
-      Color(isDark ? 0xFF1B1B2D : 0xFFFFAB5F);
+      Color(isDark.value ? 0xFF1B1B2D : 0xFFFFAB5F);
   // #endregion
 
   // #region userIStandards
   Color get userIStandardsCameraButton =>
-      Color(isDark ? 0xFFFFAB58 : 0xFFFFFFFF);
+      Color(isDark.value ? 0xFFFFAB58 : 0xFFFFFFFF);
   Color get userIStandardsShareButton =>
-      Color(isDark ? 0xFFFFFFFF : 0xFFBDBDBD);
+      Color(isDark.value ? 0xFFFFFFFF : 0xFFBDBDBD);
   Color get userIStandardsSocialButton =>
-      Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
+      Color(isDark.value ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get userIStandardsToastMessageContent =>
-      Color(isDark ? 0xFFFFFFFF : 0xFFBDBDBD);
+      Color(isDark.value ? 0xFFFFFFFF : 0xFFBDBDBD);
   Color get userIStandardsToastMessageBackground =>
-      Color(isDark ? 0xFFFFAB58 : 0xFFFFFFFF);
+      Color(isDark.value ? 0xFFFFAB58 : 0xFFFFFFFF);
   Color get userIStandardsTextInputContent =>
-      Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
+      Color(isDark.value ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get userIStandardsTextInputLine =>
-      Color(isDark ? 0xFFFFAB58 : 0xFFFFFFFF);
+      Color(isDark.value ? 0xFFFFAB58 : 0xFFFFFFFF);
   Color get userIStandardsTextInputIcon =>
-      Color(isDark ? 0xFFFFAB58 : 0xFFFFFFFF);
+      Color(isDark.value ? 0xFFFFAB58 : 0xFFFFFFFF);
   // #endregion
 
   // #region userXStandards
   Color get userXStandardsProgressIndicator =>
-      Color(isDark ? 0xFFFFAB58 : 0xFFFFFFFF);
+      Color(isDark.value ? 0xFFFFAB58 : 0xFFFFFFFF);
   // #endregion
 
   // #region welcome
-  Color get welcomeBackground => Color(isDark ? 0xFFFBFAF5 : 0xFFFBFAF5);
-  Color get welcomeTitle => Color(isDark ? 0xFF333333 : 0xFF333333);
-  Color get welcomeSubtitle => Color(isDark ? 0xFF333333 : 0xFF333333);
-  Color get welcomeCarouselCurrent => Color(isDark ? 0xFFEF5350 : 0xFFEF5350);
+  Color get welcomeBackground => Color(isDark.value ? 0xFFFBFAF5 : 0xFFFBFAF5);
+  Color get welcomeTitle => Color(isDark.value ? 0xFF333333 : 0xFF333333);
+  Color get welcomeSubtitle => Color(isDark.value ? 0xFF333333 : 0xFF333333);
+  Color get welcomeCarouselCurrent =>
+      Color(isDark.value ? 0xFFEF5350 : 0xFFEF5350);
   Color get welcomeCarouselNotCurrent =>
-      Color(isDark ? 0xFFDDDDDD : 0xFFDDDDDD);
-  Color get welcomeGetStarted => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
-  Color get welcomeGetStartedInkWell => Color(isDark ? 0xFFFF5350 : 0xFFFF9999);
-  Color get welcomeGetStartedText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
-  Color get welcomeAccountAlready => Color(isDark ? 0xFF333333 : 0xFF333333);
+      Color(isDark.value ? 0xFFDDDDDD : 0xFFDDDDDD);
+  Color get welcomeGetStarted => Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+  Color get welcomeGetStartedInkWell =>
+      Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
+  Color get welcomeGetStartedText =>
+      Color(isDark.value ? 0xFFFFFFFF : 0xFFFFFFFF);
+  Color get welcomeAccountAlready =>
+      Color(isDark.value ? 0xFF333333 : 0xFF333333);
   Color get welcomeAccountAlreadyLogin =>
-      Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
+      Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
   // #endregion
 
   // #region auth
-  Color get authBackground => Color(isDark ? 0xFFFBFAF5 : 0xFFFBFAF5);
-  Color get authTitle => Color(isDark ? 0xFF333333 : 0xFF333333);
-  Color get authSubtitle => Color(isDark ? 0xFF333333 : 0xFF333333);
-  Color get authUserInputField => Color(isDark ? 0xFFEEEEEE : 0xFFEEEEEE);
+  Color get authBackground => Color(isDark.value ? 0xFFFBFAF5 : 0xFFFBFAF5);
+  Color get authTitle => Color(isDark.value ? 0xFF333333 : 0xFF333333);
+  Color get authSubtitle => Color(isDark.value ? 0xFF333333 : 0xFF333333);
+  Color get authUserInputField => Color(isDark.value ? 0xFFEEEEEE : 0xFFEEEEEE);
   Color get authUserInputFieldDecoration =>
-      Color(isDark ? 0xFF000000 : 0xFF000000);
+      Color(isDark.value ? 0xFF000000 : 0xFF000000);
   Color get authUserInputFieldIconDecoration =>
-      Color(isDark ? 0xFF888888 : 0xFF888888);
-  Color get authForgotPassword => Color(isDark ? 0xFF333333 : 0xFF333333);
-  Color get authGetStarted => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
-  Color get authGetStartedInkWell => Color(isDark ? 0xFFFF5350 : 0xFFFF9999);
-  Color get authGetStartedText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
-  Color get authSwitchPrimary => Color(isDark ? 0xFF333333 : 0xFF333333);
-  Color get authSwitchSecondary => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
+      Color(isDark.value ? 0xFF888888 : 0xFF888888);
+  Color get authForgotPassword => Color(isDark.value ? 0xFF333333 : 0xFF333333);
+  Color get authGetStarted => Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+  Color get authGetStartedInkWell =>
+      Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
+  Color get authGetStartedText => Color(isDark.value ? 0xFFFFFFFF : 0xFFFFFFFF);
+  Color get authSwitchPrimary => Color(isDark.value ? 0xFF333333 : 0xFF333333);
+  Color get authSwitchSecondary =>
+      Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
   // #endregion
 
   // #region forgotPass
-  Color get forgotPasswordBackground => Color(isDark ? 0xFFBFAF5 : 0xFFFBFAF5);
-  Color get forgotPasswordTitle => Color(isDark ? 0xFF333333 : 0xFF333333);
-  Color get forgotPasswordSubtitle => Color(isDark ? 0xFF333333 : 0xFF333333);
+  Color get forgotPasswordBackground =>
+      Color(isDark.value ? 0xFFBFAF5 : 0xFFFBFAF5);
+  Color get forgotPasswordTitle =>
+      Color(isDark.value ? 0xFF333333 : 0xFF333333);
+  Color get forgotPasswordSubtitle =>
+      Color(isDark.value ? 0xFF333333 : 0xFF333333);
   Color get forgotPasswordUserInputField =>
-      Color(isDark ? 0xFFEEEEEE : 0xFFEEEEEE);
+      Color(isDark.value ? 0xFFEEEEEE : 0xFFEEEEEE);
   Color get forgotPasswordUserInputFieldDecoration =>
-      Color(isDark ? 0xFF000000 : 0xFF000000);
+      Color(isDark.value ? 0xFF000000 : 0xFF000000);
   Color get forgotPasswordUserInputFieldIconDecoration =>
-      Color(isDark ? 0xFF888888 : 0xFF888888);
-  Color get forgotPasswordSend => Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
+      Color(isDark.value ? 0xFF888888 : 0xFF888888);
+  Color get forgotPasswordSend => Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
   Color get forgotPasswordSendInkWell =>
-      Color(isDark ? 0xFFFF5350 : 0xFFFF9999);
-  Color get forgotPasswordSendText => Color(isDark ? 0xFFFFFFFF : 0xFFFFFFFF);
+      Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
+  Color get forgotPasswordSendText =>
+      Color(isDark.value ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get forgotPasswordResendPrimary =>
-      Color(isDark ? 0xFF333333 : 0xFF333333);
+      Color(isDark.value ? 0xFF333333 : 0xFF333333);
   Color get forgotPasswordResendSecondary =>
-      Color(isDark ? 0xFFEF5350 : 0xFFFF4350);
+      Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
   // #endregion
 
   // #region settings
-  Color get settingsBackground => Color(isDark ? 0xFFBFAF5 : 0xFFFBFAF5);
+  Color get settingsBackground => Color(isDark.value ? 0xFFBFAF5 : 0xFFFBFAF5);
   // #endregion
 }
 
