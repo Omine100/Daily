@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/servicesLocal/systemLocalizations.dart';
-import 'package:daily/servicesLocal/settings.dart';
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
 
 void main() async {

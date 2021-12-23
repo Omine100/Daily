@@ -5,7 +5,7 @@ Setting locale = new Setting(
     key: "locale",
     value: "en",
     type: Locale,
-    group: Group.General,
+    group: Group.Hidden,
     format: Format.DropDown,
     defaultValue: "en");
 Setting languageCode = new Setting(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/systemLocalizations.dart';
-import 'package:daily/servicesLocal/settings.dart';
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
 
 class Languages {
   Languages(this.id, this.name, this.flag, this.language);

@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:daily/datastructures/settingState.dart';
-import 'package:daily/servicesLocal/settings.dart';
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
 
 SharedPreferences prefs;
 prefsInstance() async {
