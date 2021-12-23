@@ -25,20 +25,10 @@ class _DailyState extends State<Daily> {
   //VARIABLE INITIALIZATION
   bool isSignedIn = false;
 
-  //MECHANICS
   void initState() {
     super.initState();
     firebaseAccounts.getSignedInStatus().then((_isSignedIn) => isSignedIn);
-    systemSetup();
-  }
-
-  void systemSetup() {
-    isAndroid.value =
-        Theme.of(context).platform == TargetPlatform.android ? true : false;
-    isDark.value == null ? isDark.value = false : isDark.value = isDark.value;
-    languageCode.value == null
-        ? languageCode.value = "en"
-        : languageCode.value = languageCode.value;
+    prefsToSettings();
   }
 
   @override

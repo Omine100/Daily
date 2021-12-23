@@ -2,63 +2,75 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:daily/datastructures/settingState.dart';
 
+// #region Settings
 Setting locale = new Setting(
-    key: "locale", value: "en", type: Locale, format: Format.DropDown);
+    key: "locale",
+    value: "en",
+    type: Locale,
+    format: Format.DropDown,
+    defaultValue: "en");
 Setting languageCode = new Setting(
-    key: "languageCode", value: "en", type: String, format: Format.List);
-Setting isDark =
-    new Setting(key: "isDark", value: false, type: bool, format: Format.Switch);
+    key: "languageCode",
+    value: "en",
+    type: String,
+    format: Format.List,
+    defaultValue: "en");
+Setting isDark = new Setting(
+    key: "isDark",
+    value: false,
+    type: bool,
+    format: Format.Switch,
+    defaultValue: false);
 Setting isAndroid = new Setting(
-    key: "isAndroid", value: true, type: bool, format: Format.Switch);
-Setting profileURL =
-    new Setting(key: "profileURL", value: "", type: String, format: Format.URL);
+    key: "isAndroid",
+    value: true,
+    type: bool,
+    format: Format.Switch,
+    defaultValue: true);
+Setting profileURL = new Setting(
+    key: "profileURL",
+    value: "",
+    type: String,
+    format: Format.URL,
+    defaultValue: "");
 
-List<Setting> settingsList() {
-  return [locale, languageCode, isDark, isAndroid, profileURL];
-}
+List<Setting> settingsList = [
+  locale,
+  languageCode,
+  isDark,
+  isAndroid,
+  profileURL
+];
+// #endregion
 
 SharedPreferences prefs;
-
 prefsInstance() async {
   prefs ??= await SharedPreferences.getInstance();
 }
 
-void prefsToSettings() async {
+void settingsToPrefs(List<Setting> settingsList) async {
   await prefsInstance();
-  if (prefs.getKeys() == null) {
-    initializePrefs();
-  }
-  prefs.getKeys().forEach((key) {
-    switch (prefs.get(key)) {
-      case "locale":
-        locale.value = prefs.get(key);
-        break;
-      case "languageCode":
-        languageCode.value = prefs.get(key);
-        break;
-      case "isDark":
-        isDark.value = prefs.get(key);
-        break;
-      case "isAndroid":
-        isAndroid.value = prefs.get(key);
-        break;
-      case "profileURL":
-        profileURL.value = prefs.get(key);
-        break;
-      default:
-        return;
-    }
-  });
-}
 
-void settingsToPrefs(List<Setting> settingsList) {
   settingsList.forEach((setting) {
     saveToPrefs(setting.key, setting.value);
   });
 }
 
-saveToPrefs(String key, dynamic value) async {
+void prefsToSettings() async {
   await prefsInstance();
+  if (prefs.getKeys() == null) {
+    settingsList.forEach((setting) {
+      saveToPrefs(setting.key, setting.defaultValue);
+    });
+  }
+  prefs.getKeys().forEach((key) {
+    if (settingsList.contains(key))
+      settingsList.where((element) => element.key == key).first.value =
+          prefs.get(key);
+  });
+}
+
+saveToPrefs(String key, dynamic value) {
   switch (value.runtimeType) {
     case int:
       prefs.setInt(key, value);
@@ -75,12 +87,4 @@ saveToPrefs(String key, dynamic value) async {
     default:
       prefs.setString(key, value.toString());
   }
-}
-
-initializePrefs() {
-  saveToPrefs("locale", "en");
-  saveToPrefs("languageCode", "en");
-  saveToPrefs("isDark", false);
-  saveToPrefs("isAndroid", true);
-  saveToPrefs("profileURL", "");
 }
