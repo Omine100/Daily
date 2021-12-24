@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/systemLocalizations.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 
+List<Languages> getLanguageList() {
+  return <Languages>[
+    Languages(1, "🇺🇸", "English", "en"),
+    Languages(2, "🇪🇸", "Español", "es"),
+    Languages(3, "🇫🇷", "Français", "fr"),
+  ];
+}
+
 class Languages {
   Languages(this.id, this.name, this.flag, this.language);
 
@@ -10,15 +18,6 @@ class Languages {
   final String name;
   final String flag;
   final String language;
-
-  //MECHANICS
-  static List<Languages> getLanguageList() {
-    return <Languages>[
-      Languages(1, "🇺🇸", "English", "en"),
-      Languages(2, "🇪🇸", "Español", "es"),
-      Languages(3, "🇫🇷", "Français", "fr"),
-    ];
-  }
 
   Locale _locale(String languageCode) {
     Locale _temp;

@@ -22,32 +22,90 @@ Widget settingsTitle(BuildContext context) {
   );
 }
 
-Widget settingsBreakdown(BuildContext context) {
-  settingsList.forEach((setting) {
-    if (setting.group == Group.General) print("Testing");
-  });
-}
-
-Widget settingGroup(BuildContext context) {
-  return Column(
-    children: [],
-  );
-}
-
-Widget settingGroupTitle(BuildContext context) {
+Widget settingsProfile(BuildContext context) {
   return Row(
     children: [
-      Text(""),
+      GestureDetector(
+        onTap: () {
+          //Profile image change
+        },
+        child: Container(
+          height: 50,
+          width: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(90),
+            color: Colors.red,
+          ),
+          child: profileURL.value == null
+              ? Container()
+              : Image(
+                  image: AssetImage(profileURL.value),
+                ),
+        ),
+      ),
+      Column(
+        children: [
+          Text("DisplayName"), //DisplayName
+          Text("Email"), //Email
+        ],
+      ),
     ],
   );
 }
 
-Widget settingRow(BuildContext context) {
-  return Row(
-    children: [],
+Widget settingsCard(BuildContext context) {
+  return Container(
+    height: 400,
+    width: MediaQuery.of(context).size.width,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(50), topRight: Radius.circular(50)),
+      color: Colors.white,
+    ),
+    child: settingsBreakdown(context),
   );
 }
 
-Widget settingGroup(BuildContext context) {}
+Widget settingsBreakdown(BuildContext context) {
+  settingsList.forEach((setting) {});
+}
 
-Widget settingsProfile(BuildContext context) {}
+Widget settingsGroupTitle(BuildContext context, String key) {
+  return Text(
+    getTranslated(context, key),
+    style: TextStyle(
+      color: Theme.of(context).colorScheme.settingsGroupTitle,
+      fontSize: Theme.of(context).textTheme.settingsGroupTitle,
+      fontWeight: Theme.of(context).typography.settingsGroupTitle,
+    ),
+  );
+}
+
+Widget settingRow(BuildContext context, Setting setting) {
+  Map<Format, dynamic> settingForm = {
+    Format.Switch: settingSwitch(setting.value),
+    //Format.DropDown: settingDropDown(value),
+    //Format.List: settingList(value),
+    //Format.URL: settingURL(value),
+    //Format.DateSelector: settingDateSelector(value),
+  };
+
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(setting.key),
+      settingForm[setting.format],
+    ],
+  );
+}
+
+Widget settingSwitch(bool value) {
+  return Switch(
+    value: value,
+    onChanged: (_value) => value,
+    activeColor: Colors.red,
+    activeTrackColor: Colors.red.shade300,
+    inactiveThumbColor: Colors.blue,
+    inactiveTrackColor: Colors.blue.shade300,
+  );
+}

@@ -10,6 +10,7 @@ class Setting {
   Group group;
   Format format;
   dynamic defaultValue;
+  List<dynamic> items;
 
   Setting(
       {@required this.key,
@@ -17,5 +18,6 @@ class Setting {
       @required this.type,
       @required this.group,
       @required this.format,
-      @required this.defaultValue});
+      @required this.defaultValue,
+      this.items});
 }

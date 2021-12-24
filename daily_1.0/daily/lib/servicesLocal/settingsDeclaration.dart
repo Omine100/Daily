@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:daily/datastructures/settingState.dart';
+import 'package:daily/servicesLocal/systemLanguages.dart';
 
 Setting locale = new Setting(
     key: "locale",
-    value: "en",
+    value: "",
     type: Locale,
     group: Group.Hidden,
     format: Format.DropDown,
     defaultValue: "en");
 Setting languageCode = new Setting(
     key: "languageCode",
-    value: "en",
+    value: "",
     type: String,
     group: Group.General,
     format: Format.List,
-    defaultValue: "en");
+    defaultValue: "en",
+    items: getLanguageList());
 Setting isDark = new Setting(
     key: "isDark",
     value: false,
