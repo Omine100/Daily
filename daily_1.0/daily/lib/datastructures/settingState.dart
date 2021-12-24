@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
+enum Group { Account, General, Privacy, Hidden }
 enum Format { DropDown, List, Switch, DateSelector, URL }
-
-enum Group { User, General, Privacy, Hidden }
 
 class Setting {
   String key;

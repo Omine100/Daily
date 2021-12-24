@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
@@ -20,14 +22,32 @@ Widget settingsTitle(BuildContext context) {
   );
 }
 
+Widget settingsBreakdown(BuildContext context) {
+  settingsList.forEach((setting) {
+    if (setting.group == Group.General) print("Testing");
+  });
+}
+
+Widget settingGroup(BuildContext context) {
+  return Column(
+    children: [],
+  );
+}
+
+Widget settingGroupTitle(BuildContext context) {
+  return Row(
+    children: [
+      Text(""),
+    ],
+  );
+}
+
+Widget settingRow(BuildContext context) {
+  return Row(
+    children: [],
+  );
+}
+
+Widget settingGroup(BuildContext context) {}
+
 Widget settingsProfile(BuildContext context) {}
-
-Widget settingsCard(BuildContext context) {}
-
-Widget settingsCardSystem(BuildContext context) {}
-
-Widget settingsCardGeneral(BuildContext context) {}
-
-Widget settingDropDown(BuildContext context) {}
-
-Widget settingSwitch(BuildContext context) {}

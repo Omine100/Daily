@@ -33,7 +33,7 @@ Setting profileURL = new Setting(
     key: "profileURL",
     value: "",
     type: String,
-    group: Group.User,
+    group: Group.Hidden,
     format: Format.URL,
     defaultValue: "");
 
