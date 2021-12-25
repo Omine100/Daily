@@ -55,19 +55,29 @@ Widget settingsProfile(BuildContext context) {
 
 Widget settingsCard(BuildContext context) {
   return Container(
-    height: 400,
-    width: MediaQuery.of(context).size.width,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(50), topRight: Radius.circular(50)),
-      color: Colors.white,
-    ),
-    child: settingsBreakdown(context),
-  );
+      height: 400,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(50), topRight: Radius.circular(50)),
+        color: Colors.white,
+      ),
+      child: settingsBreakdown(context));
 }
 
-Widget settingsBreakdown(BuildContext context) {
-  settingsList.forEach((setting) {});
+Column settingsBreakdown(BuildContext context) {
+  Map<Group, List<Row>> settings;
+  settingsList.forEach((setting) {
+    try {
+      settings[setting.group].add(settingRow(context, setting));
+    } catch (exception) {}
+  });
+
+  Column column = new Column();
+  settings.entries.forEach((element) {
+    column.children.add(element.value[0]);
+  });
+  return column;
 }
 
 Widget settingsGroupTitle(BuildContext context, String key) {
