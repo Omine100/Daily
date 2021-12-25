@@ -6,7 +6,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 
-Widget settingsTitle(BuildContext context) {
+/*Widget settingsTitle(BuildContext context) {
   return Container(
     alignment: Alignment.center,
     width: getDimension(
@@ -20,7 +20,7 @@ Widget settingsTitle(BuildContext context) {
       ),
     ),
   );
-}
+}*/
 
 Widget settingsProfile(BuildContext context) {
   return Row(
@@ -86,10 +86,10 @@ Widget settingsGroupTitle(BuildContext context, String key) {
   return Text(
     getTranslated(context, key),
     style: TextStyle(
-      color: Theme.of(context).colorScheme.settingsGroupTitle,
-      fontSize: Theme.of(context).textTheme.settingsGroupTitle,
-      fontWeight: Theme.of(context).typography.settingsGroupTitle,
-    ),
+        //color: Theme.of(context).colorScheme.settingsGroupTitle,
+        //fontSize: Theme.of(context).textTheme.settingsGroupTitle,
+        //fontWeight: Theme.of(context).typography.settingsGroupTitle,
+        ),
   );
 }
 
