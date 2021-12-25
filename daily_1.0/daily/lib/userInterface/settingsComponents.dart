@@ -69,6 +69,8 @@ Column settingsBreakdown(BuildContext context) {
   Map<Group, List<Row>> settings;
   settingsList.forEach((setting) {
     try {
+      if (settings[setting.group] == null)
+        settings[setting.group].add(settingsGroupTitle(context, setting.key));
       settings[setting.group].add(settingRow(context, setting));
     } catch (exception) {}
   });
@@ -94,10 +96,7 @@ Widget settingsGroupTitle(BuildContext context, String key) {
 Widget settingRow(BuildContext context, Setting setting) {
   Map<Format, dynamic> settingForm = {
     Format.Switch: settingSwitch(setting.value),
-    //Format.DropDown: settingDropDown(value),
-    //Format.List: settingList(value),
-    //Format.URL: settingURL(value),
-    //Format.DateSelector: settingDateSelector(value),
+    Format.DropDown: settingDropDown(setting.value, setting.items),
   };
 
   return Row(
@@ -117,5 +116,13 @@ Widget settingSwitch(bool value) {
     activeTrackColor: Colors.red.shade300,
     inactiveThumbColor: Colors.blue,
     inactiveTrackColor: Colors.blue.shade300,
+  );
+}
+
+Widget settingDropDown(dynamic value, List<dynamic> items) {
+  return DropdownButton(
+    items: items,
+    value: value,
+    onChanged: (_value) => value,
   );
 }

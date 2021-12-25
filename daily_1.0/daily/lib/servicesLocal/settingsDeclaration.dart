@@ -14,7 +14,7 @@ Setting languageCode = new Setting(
     value: "",
     type: String,
     group: Group.General,
-    format: Format.List,
+    format: Format.DropDown,
     defaultValue: "en",
     items: getLanguageList());
 Setting isDark = new Setting(
