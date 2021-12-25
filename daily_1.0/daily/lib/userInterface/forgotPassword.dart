@@ -10,9 +10,9 @@ class ForgotPasswordScreen extends StatefulWidget {
   _ForgotPasswordScreenState createState() => _ForgotPasswordScreenState();
 }
 
-bool isSent = false;
-
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  bool isSent = false;
+
   forgotPasswordScreenDesktop() {
     return Stack(alignment: Alignment.center, children: [
       Positioned(
