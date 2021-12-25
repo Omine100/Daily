@@ -16,15 +16,14 @@ void settingsToPrefs(List<Setting> settingsList) async {
 
 Future<void> prefsToSettings() async {
   await prefsInstance();
-  if (prefs == null) {
+  if (prefs.getKeys().length == 0) {
     settingsList.forEach((setting) {
       saveToPrefs(setting.key, setting.defaultValue);
     });
   }
   prefs.getKeys().forEach((key) {
-    if (settingsList.contains(key)) //Might need to change this
-      settingsList.where((element) => element.key == key).first.value =
-          prefs.get(key);
+    settingsList.where((setting) => setting.key == key).first.value =
+        prefs.get(key);
   });
 }
 

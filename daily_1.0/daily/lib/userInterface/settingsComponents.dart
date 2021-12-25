@@ -60,13 +60,13 @@ Widget settingsCard(BuildContext context) {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(50), topRight: Radius.circular(50)),
-        color: Colors.white,
+        color: Colors.black,
       ),
       child: settingsBreakdown(context));
 }
 
 Column settingsBreakdown(BuildContext context) {
-  Map<Group, List<Row>> settings;
+  Map<Group, List<Row>> settings = new Map<Group, List<Row>>();
   settingsList.forEach((setting) {
     try {
       if (settings[setting.group] == null)
@@ -83,13 +83,17 @@ Column settingsBreakdown(BuildContext context) {
 }
 
 Widget settingsGroupTitle(BuildContext context, String key) {
-  return Text(
-    getTranslated(context, key),
-    style: TextStyle(
+  return Row(
+    children: [
+      Text(
+        key,
+        //style: TextStyle(
         //color: Theme.of(context).colorScheme.settingsGroupTitle,
         //fontSize: Theme.of(context).textTheme.settingsGroupTitle,
         //fontWeight: Theme.of(context).typography.settingsGroupTitle,
-        ),
+        //),
+      )
+    ],
   );
 }
 
