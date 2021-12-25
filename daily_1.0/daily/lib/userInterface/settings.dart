@@ -10,11 +10,19 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  settingsScreenDesktop() {}
+  settingsScreenDesktop() {
+    return Container();
+  }
 
-  settingsScreenTablet() {}
+  settingsScreenTablet() {
+    return Container();
+  }
 
-  settingsScreenMobile() {}
+  settingsScreenMobile() {
+    return Container(
+      child: settingsCard(context),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

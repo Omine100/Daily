@@ -4,7 +4,7 @@ import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
-import 'package:daily/userInterface/home.dart';
+import 'package:daily/userInterface/settings.dart';
 import 'package:daily/userInterface/forgotPassword.dart';
 import 'package:daily/utilities/managementUtil/validation.dart';
 
@@ -183,7 +183,7 @@ Widget authGetStarted(BuildContext context, bool isSignIn) {
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            RouteNavigation().routePage(context, HomeScreen());
+            RouteNavigation().routePage(context, SettingsScreen());
           },
           child: Container(
             child: Center(
