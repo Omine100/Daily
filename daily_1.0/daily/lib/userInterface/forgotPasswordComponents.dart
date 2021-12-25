@@ -22,8 +22,12 @@ Widget forgotPasswordTitle(BuildContext context) {
             fontWeight: Theme.of(context).typography.forgotPasswordTitle,
           ),
         ),
+        Padding(
+          padding: EdgeInsets.all(15),
+        ),
         Text(
           getTranslated(context, "forgotPasswordSubtitle"),
+          textAlign: TextAlign.center,
           style: TextStyle(
             color: Theme.of(context).colorScheme.forgotPasswordSubtitle,
             fontSize: Theme.of(context).textTheme.forgotPasswordSubtitle,
@@ -39,6 +43,8 @@ Widget forgotPasswordCenterPiece(BuildContext context) {
   return Container(
       height: getDimension(context, true,
           Theme.of(context).visualDensity.forgotPasswordCenterPieceHeight),
+      width: getDimension(context, false,
+          Theme.of(context).visualDensity.forgotPasswordCenterPieceWidth),
       child: Image(
           image: AssetImage(
               "lib/assets/forgotPassword/forgotPassword_centerPiece.png")));

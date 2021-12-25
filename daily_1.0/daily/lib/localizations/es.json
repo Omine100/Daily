@@ -30,7 +30,7 @@
     "authSwitchSignUpPrimary": "¿No tienes cuenta? ",
     "authSwitchSignInSecondary": "¡INICIAR SESIÓN!",
     "authSwitchSignUpSecondary": "¡REGÍSTRATE!",
-    "forgotPasswordTitle": "OLVIDADO TU CONTRASEÑA",
+    "forgotPasswordTitle": "Olvidado tu Contrasena",
     "forgotPasswordSubtitle": "Ingrese su correo electrónico a continuación para\nrecibir un mensaje de restablecimiento de contraseña.",
     "forgotPasswordValidatorEmailFormat": "Correo electrónico no puede estar vacía",
     "forgotPasswordFormEmail": "Correo electrónico",

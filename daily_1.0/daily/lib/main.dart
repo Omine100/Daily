@@ -28,8 +28,8 @@ class _DailyState extends State<Daily> {
 
   void initState() {
     super.initState();
-    firebaseAccounts.getSignedInStatus().then((_isSignedIn) => isSignedIn);
     prefsToSettings();
+    firebaseAccounts.getSignedInStatus().then((_isSignedIn) => isSignedIn);
   }
 
   @override
@@ -39,7 +39,7 @@ class _DailyState extends State<Daily> {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       home: routeNavigation.routeInitial(context, isSignedIn),
-      locale: locale.value,
+      locale: locale.value ?? locale.defaultValue,
       supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
       localizationsDelegates: [
         AppLocalizations.delegate,

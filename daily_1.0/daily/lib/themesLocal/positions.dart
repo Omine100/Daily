@@ -58,7 +58,7 @@ extension CustomPositions on MaterialTapTargetSize {
   // #endregion
 
   // #region forgotPasswordDesktop
-  double get forgotPasswordDesktopTitleTop => 0.065;
+  double get forgotPasswordDesktopTitleTop => 0.1;
   double get forgotPasswordDesktopCenterPieceTop => 0.06;
   double get forgotPasswordDesktopUserInputTop => 0.5;
   double get forgotPasswordDesktopSendTop => 0.8;
@@ -66,7 +66,7 @@ extension CustomPositions on MaterialTapTargetSize {
   // #endregion
 
   // #region forgotPasswordTablet
-  double get forgotPasswordTabletTitleTop => 0.065;
+  double get forgotPasswordTabletTitleTop => 0.1;
   double get forgotPasswordTabletCenterPieceTop => 0.06;
   double get forgotPasswordTabletUserInputTop => 0.5;
   double get forgotPasswordTabletSendTop => 0.815;
@@ -74,9 +74,9 @@ extension CustomPositions on MaterialTapTargetSize {
   // #endregion
 
   // #region forgotPasswordMobile
-  double get forgotPasswordMobileTitleTop => 0.065;
-  double get forgotPasswordMobileCenterPieceTop => 0.06;
-  double get forgotPasswordMobileUserInputTop => 0.5;
+  double get forgotPasswordMobileTitleTop => 0.1;
+  double get forgotPasswordMobileCenterPieceTop => 0.15;
+  double get forgotPasswordMobileUserInputTop => 0.65;
   double get forgotPasswordMobileSendTop => 0.815;
   double get forgotPasswordMobileResendTop => 0.93;
   // #endregion

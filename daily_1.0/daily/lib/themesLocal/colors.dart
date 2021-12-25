@@ -84,7 +84,7 @@ extension CustomColorScheme on ColorScheme {
   Color get forgotPasswordTitle =>
       Color(isDark.value ? 0xFF333333 : 0xFF333333);
   Color get forgotPasswordSubtitle =>
-      Color(isDark.value ? 0xFF333333 : 0xFF333333);
+      Color(isDark.value ? 0xFF999999 : 0xFF999999);
   Color get forgotPasswordUserInputField =>
       Color(isDark.value ? 0xFFEEEEEE : 0xFFEEEEEE);
   Color get forgotPasswordUserInputFieldDecoration =>

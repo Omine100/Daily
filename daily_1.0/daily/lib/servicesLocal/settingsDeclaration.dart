@@ -4,14 +4,14 @@ import 'package:daily/servicesLocal/systemLanguages.dart';
 
 Setting locale = new Setting(
     key: "locale",
-    value: "",
+    value: null,
     type: Locale,
     group: Group.Hidden,
     format: Format.DropDown,
-    defaultValue: "en");
+    defaultValue: Locale("en", "en"));
 Setting languageCode = new Setting(
     key: "languageCode",
-    value: "",
+    value: null,
     type: String,
     group: Group.General,
     format: Format.DropDown,

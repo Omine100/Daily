@@ -10,6 +10,8 @@ class ForgotPasswordScreen extends StatefulWidget {
   _ForgotPasswordScreenState createState() => _ForgotPasswordScreenState();
 }
 
+bool isSent = false;
+
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   forgotPasswordScreenDesktop() {
     return Stack(alignment: Alignment.center, children: [
@@ -45,7 +47,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordDesktopSendTop),
-        child: forgotPasswordSend(context),
+        child: GestureDetector(
+          onTap: () {
+            isSent = true;
+          },
+          child: forgotPasswordSend(context),
+        ),
       ),
       Positioned(
         top: getPosition(
@@ -54,7 +61,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordDesktopResendTop),
-        child: forgotPasswordResend(context),
+        child: isSent ? forgotPasswordResend(context) : Container(),
       )
     ]);
   }
@@ -93,7 +100,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordTabletSendTop),
-        child: forgotPasswordSend(context),
+        child: GestureDetector(
+          onTap: () {
+            isSent = true;
+          },
+          child: forgotPasswordSend(context),
+        ),
       ),
       Positioned(
         top: getPosition(
@@ -102,7 +114,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordTabletResendTop),
-        child: forgotPasswordResend(context),
+        child: isSent ? forgotPasswordResend(context) : Container(),
       )
     ]);
   }
@@ -141,7 +153,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordMobileSendTop),
-        child: forgotPasswordSend(context),
+        child: GestureDetector(
+          onTap: () {
+            isSent = true;
+          },
+          child: forgotPasswordSend(context),
+        ),
       ),
       Positioned(
         top: getPosition(
@@ -150,7 +167,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordMobileResendTop),
-        child: forgotPasswordResend(context),
+        child: isSent ? forgotPasswordResend(context) : Container(),
       )
     ]);
   }

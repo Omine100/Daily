@@ -27,8 +27,8 @@ extension CustomFontSize on TextTheme {
   // #endregion
 
   // #region forgotPassword
-  double get forgotPasswordTitle => 48;
-  double get forgotPasswordSubtitle => 22;
+  double get forgotPasswordTitle => 30;
+  double get forgotPasswordSubtitle => 18;
   double get forgotPasswordUserInputFieldDecoration => 20;
   double get forgotPasswordSendText => 20;
   double get forgotPasswordResendPrimary => 16;

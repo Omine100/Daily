@@ -28,7 +28,8 @@ extension CustomDimensions on VisualDensity {
 
   // #region forgotPassword
   double get forgotPasswordTitleWidth => 1.0;
-  double get forgotPasswordCenterPieceHeight => 0.42;
+  double get forgotPasswordCenterPieceHeight => 0.6;
+  double get forgotPasswordCenterPieceWidth => 0.6;
   double get forgotPasswordUserInputFieldHeight => 0.07;
   double get forgotPasswordUserInputFieldWidth => 0.875;
   double get forgotPasswordSendHeight => 0.07;
