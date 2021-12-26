@@ -66,23 +66,26 @@ Widget settingsCard(BuildContext context) {
 }
 
 Column settingsBreakdown(BuildContext context) {
-  Map<Group, List<Row>> settings = new Map<Group, List<Row>>();
+  Map<Group, Column> settings = new Map<Group, Column>();
+
   settingsList.forEach((setting) {
+    if (setting.group == Group.Hidden) return;
     try {
-      if (settings[setting.group] == null)
-        settings[setting.group].add(settingsGroupTitle(context, setting.key));
-      settings[setting.group].add(settingRow(context, setting));
+      if (settings[setting.group] == null) {
+        settingsGroupTitle(context, setting.key);
+      }
+      settings[setting.group].children.add(settingRow(context, setting));
     } catch (exception) {}
   });
 
   Column column = new Column();
   settings.entries.forEach((element) {
-    column.children.add(element.value[0]);
+    column.children.add(element.value);
   });
   return column;
 }
 
-Widget settingsGroupTitle(BuildContext context, String key) {
+Row settingsGroupTitle(BuildContext context, String key) {
   return Row(
     children: [
       Text(
@@ -97,7 +100,7 @@ Widget settingsGroupTitle(BuildContext context, String key) {
   );
 }
 
-Widget settingRow(BuildContext context, Setting setting) {
+Row settingRow(BuildContext context, Setting setting) {
   Map<Format, dynamic> settingForm = {
     Format.Switch: settingSwitch(setting.value),
     Format.DropDown: settingDropDown(setting.value, setting.items),
