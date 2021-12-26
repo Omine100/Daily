@@ -42,6 +42,9 @@ saveToPrefs(String key, dynamic value) {
     case String:
       prefs.setString(key, value);
       break;
+    case Locale:
+      prefs.setString(key, value.languageCode + "_" + value.countryCode);
+      break;
     default:
       prefs.setString(key, value.toString());
   }
