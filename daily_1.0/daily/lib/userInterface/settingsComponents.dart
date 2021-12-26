@@ -60,28 +60,34 @@ Widget settingsCard(BuildContext context) {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(50), topRight: Radius.circular(50)),
-        color: Colors.black,
+        color: Colors.blue,
       ),
       child: settingsBreakdown(context));
 }
 
 Column settingsBreakdown(BuildContext context) {
-  Map<Group, Column> settings = new Map<Group, Column>();
-
-  settingsList.forEach((setting) {
-    if (setting.group == Group.Hidden) return;
-    try {
-      if (settings[setting.group] == null) {
-        settingsGroupTitle(context, setting.key);
-      }
-      settings[setting.group].children.add(settingRow(context, setting));
-    } catch (exception) {}
+  Column column = new Column(
+    children: [],
+  );
+  Group.values.forEach((element) {
+    column.children.add(settingsGroupTitle(context, element.toString()));
   });
 
-  Column column = new Column();
-  settings.entries.forEach((element) {
-    column.children.add(element.value);
-  });
+  // Map<Group, List<Widget>> settings = new Map<Group, List<Widget>>();
+
+  // settingsList.forEach((setting) {
+  //   if (setting.group == Group.Hidden) return;
+  //   if (settings[setting.group] == null) {
+  //     List<Widget> testing = new List<Widget>();
+  //     testing.add(settingsGroupTitle(context, setting.key));
+  //     settings[setting.group] = testing;
+  //   }
+  // });
+
+  // Column column = new Column();
+  // settings.entries.forEach((element) {
+  //   column.children.add(element.value[0]);
+  // });
   return column;
 }
 
