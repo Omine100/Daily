@@ -66,28 +66,27 @@ Widget settingsCard(BuildContext context) {
 }
 
 Column settingsBreakdown(BuildContext context) {
-  Column column = new Column(
-    children: [],
-  );
-  Group.values.forEach((element) {
-    column.children.add(settingsGroupTitle(context, element.toString()));
+  Map<Group, Column> settings = new Map<Group, Column>();
+
+  settingsList.forEach((setting) {
+    if (setting.group == Group.Hidden) return;
+    if (settings[setting.group] == null) {
+      settings[setting.group] = new Column(
+        children: [],
+      );
+      settings[setting.group]
+          .children
+          .add(settingsGroupTitle(context, setting.group.toString()));
+    }
+    settings[setting.group]
+        .children
+        .add(settingsGroupTitle(context, setting.group.toString()));
   });
 
-  // Map<Group, List<Widget>> settings = new Map<Group, List<Widget>>();
-
-  // settingsList.forEach((setting) {
-  //   if (setting.group == Group.Hidden) return;
-  //   if (settings[setting.group] == null) {
-  //     List<Widget> testing = new List<Widget>();
-  //     testing.add(settingsGroupTitle(context, setting.key));
-  //     settings[setting.group] = testing;
-  //   }
-  // });
-
-  // Column column = new Column();
-  // settings.entries.forEach((element) {
-  //   column.children.add(element.value[0]);
-  // });
+  Column column = new Column(children: []);
+  settings.entries.forEach((element) {
+    column.children.add(element.value);
+  });
   return column;
 }
 
