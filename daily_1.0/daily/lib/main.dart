@@ -39,7 +39,10 @@ class _DailyState extends State<Daily> {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       home: routeNavigation.routeInitial(context, isSignedIn),
-      locale: locale.value ?? locale.defaultValue,
+      locale: locale.value != null
+          ? Locale(locale.value.toString().split("_").first,
+              locale.value.toString().split("_").last)
+          : locale.defaultValue,
       supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
       localizationsDelegates: [
         AppLocalizations.delegate,

@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
