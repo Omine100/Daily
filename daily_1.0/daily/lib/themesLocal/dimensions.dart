@@ -35,6 +35,10 @@ extension CustomDimensions on VisualDensity {
   double get forgotPasswordSendHeight => 0.07;
   double get forgotPasswordSendWidth => 0.45;
   // #endregion
+
+  // #region settings
+  double get settingsTitleWidth => 1.0;
+  // #endregion
 }
 
 double getDimension(BuildContext context, bool isHeight, double value) {

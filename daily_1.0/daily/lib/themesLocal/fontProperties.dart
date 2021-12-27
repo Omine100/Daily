@@ -34,6 +34,10 @@ extension CustomFontSize on TextTheme {
   double get forgotPasswordResendPrimary => 16;
   double get forgotPasswordResendSecondary => 16;
   // #endregion
+
+  // #region settings
+  double get settingsTitle => 30;
+  // #endregion
 }
 
 extension CustomFontWeight on Typography {
@@ -67,5 +71,9 @@ extension CustomFontWeight on Typography {
   FontWeight get forgotPasswordSendText => FontWeight.w500;
   FontWeight get forgotPasswordResendPrimary => FontWeight.w400;
   FontWeight get forgotPasswordResendSecondary => FontWeight.w500;
+  // #endregion
+
+  // #region settings
+  FontWeight get settingsTitle => FontWeight.w500;
   // #endregion
 }

@@ -6,7 +6,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 
-/*Widget settingsTitle(BuildContext context) {
+Widget settingsTitle(BuildContext context) {
   return Container(
     alignment: Alignment.center,
     width: getDimension(
@@ -20,47 +20,57 @@ import 'package:daily/themesLocal/fontProperties.dart';
       ),
     ),
   );
-}*/
+}
 
 Widget settingsProfile(BuildContext context) {
-  return Row(
-    children: [
-      GestureDetector(
-        onTap: () {
-          //Profile image change
-        },
-        child: Container(
-          height: 50,
-          width: 50,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(90),
-            color: Colors.red,
-          ),
-          child: profileURL.value == null
-              ? Container()
-              : Image(
-                  image: AssetImage(profileURL.value),
-                ),
+  return Container(
+    width: MediaQuery.of(context).size.width,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: 15,
         ),
-      ),
-      Column(
-        children: [
-          Text("DisplayName"), //DisplayName
-          Text("Email"), //Email
-        ],
-      ),
-    ],
+        GestureDetector(
+          onTap: () {
+            //Profile image change
+          },
+          child: Container(
+            height: 75,
+            width: 75,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(90),
+              color: Colors.grey.shade400,
+            ),
+            child: profileURL.value == ""
+                ? Container()
+                : Image(
+                    image: AssetImage(profileURL.value),
+                  ),
+          ),
+        ),
+        SizedBox(
+          width: 35,
+        ),
+        Column(
+          children: [
+            Text("DisplayName"), //DisplayName
+            Text("Email"), //Email
+          ],
+        ),
+      ],
+    ),
   );
 }
 
 Widget settingsCard(BuildContext context) {
   return Container(
-      height: 400,
-      width: MediaQuery.of(context).size.width,
+      height: 800,
+      width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(50), topRight: Radius.circular(50)),
-        color: Colors.blue,
+            topLeft: Radius.circular(35), topRight: Radius.circular(35)),
+        color: Colors.white,
       ),
       child: settingsBreakdown(context));
 }
@@ -78,9 +88,7 @@ Column settingsBreakdown(BuildContext context) {
           .children
           .add(settingsGroupTitle(context, setting.group.toString()));
     }
-    settings[setting.group]
-        .children
-        .add(settingsGroupTitle(context, setting.group.toString()));
+    settings[setting.group].children.add(settingRow(context, setting));
   });
 
   Column column = new Column(children: []);
@@ -106,16 +114,21 @@ Row settingsGroupTitle(BuildContext context, String key) {
 }
 
 Row settingRow(BuildContext context, Setting setting) {
-  Map<Format, dynamic> settingForm = {
-    Format.Switch: settingSwitch(setting.value),
-    Format.DropDown: settingDropDown(setting.value, setting.items),
-  };
+  Widget formPick() {
+    switch (setting.format) {
+      case Format.Switch:
+        return settingSwitch(setting.value);
+        break;
+      default:
+        return Row();
+    }
+  }
 
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Text(setting.key),
-      settingForm[setting.format],
+      formPick(),
     ],
   );
 }

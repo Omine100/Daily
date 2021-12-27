@@ -11,17 +11,63 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   settingsScreenDesktop() {
-    return Container();
+    return Stack(alignment: Alignment.center, children: [
+      Positioned(
+        top: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.settingsDesktopTitleTop),
+        child: settingsTitle(context),
+      ),
+      Positioned(
+        top: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.settingsDesktopProfileTop),
+        child: settingsProfile(context),
+      ),
+      Positioned(
+        top: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.settingsDesktopCardTop),
+        child: settingsCard(context),
+      ),
+    ]);
   }
 
   settingsScreenTablet() {
-    return Container();
+    return Stack(alignment: Alignment.center, children: [
+      Positioned(
+        top: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.settingsTabletTitleTop),
+        child: settingsTitle(context),
+      ),
+      Positioned(
+        top: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.settingsTabletProfileTop),
+        child: settingsProfile(context),
+      ),
+      Positioned(
+        top: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.settingsTabletCardTop),
+        child: settingsCard(context),
+      ),
+    ]);
   }
 
   settingsScreenMobile() {
-    return Container(
-      child: settingsCard(context),
-    );
+    return Stack(alignment: Alignment.center, children: [
+      Positioned(
+        top: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.settingsMobileTitleTop),
+        child: settingsTitle(context),
+      ),
+      Positioned(
+        top: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.settingsMobileProfileTop),
+        child: settingsProfile(context),
+      ),
+      Positioned(
+        top: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.settingsMobileCardTop),
+        child: settingsCard(context),
+      ),
+    ]);
   }
 
   @override
@@ -29,7 +75,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Material(
         color: Theme.of(context).colorScheme.settingsBackground,
         child: Container(
-            constraints: BoxConstraints.expand(height: double.maxFinite),
+            constraints: BoxConstraints.expand(
+              height: double.maxFinite,
+            ),
             child: Responsive(
               desktop: settingsScreenDesktop(),
               tablet: settingsScreenTablet(),

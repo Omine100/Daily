@@ -36,5 +36,6 @@
     "forgotPasswordFormEmail": "Correo electrónico",
     "forgotPasswordSend": "Enviar",
     "forgotPasswordResendPrimary": "¿No recibiste el enlace? ",
-    "forgotPasswordResendSecondary": "¡Reenviar!"
+    "forgotPasswordResendSecondary": "¡Reenviar!",
+    "settings": "Ajustes"
 }
