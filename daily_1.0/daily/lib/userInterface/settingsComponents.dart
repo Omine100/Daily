@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daily/datastructures/settingState.dart';
+import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/themesLocal/colors.dart';
@@ -29,7 +30,7 @@ Widget settingsProfile(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(
-          width: 15,
+          width: 25,
         ),
         GestureDetector(
           onTap: () {
@@ -121,7 +122,7 @@ Row settingRow(BuildContext context, Setting setting) {
   Widget formPick() {
     switch (setting.format) {
       case Format.Switch:
-        return settingSwitch(setting.value);
+        return settingSwitch(context, setting.value);
         break;
       default:
         return Row();
@@ -137,14 +138,16 @@ Row settingRow(BuildContext context, Setting setting) {
   );
 }
 
-Widget settingSwitch(bool value) {
+Widget settingSwitch(BuildContext context, bool value) {
   return Switch(
     value: value,
     onChanged: (_value) => value,
-    activeColor: Colors.red,
-    activeTrackColor: Colors.red.shade300,
-    inactiveThumbColor: Colors.blue,
-    inactiveTrackColor: Colors.blue.shade300,
+    activeColor: Theme.of(context).colorScheme.settingSwitchActiveThumb,
+    activeTrackColor: Theme.of(context).colorScheme.settingSwtichActiveTrack,
+    inactiveThumbColor:
+        Theme.of(context).colorScheme.settingSwitchInactiveThumb,
+    inactiveTrackColor:
+        Theme.of(context).colorScheme.settingSwtichInactiveTrack,
   );
 }
 
@@ -153,5 +156,21 @@ Widget settingDropDown(dynamic value, List<dynamic> items) {
     items: items,
     value: value,
     onChanged: (_value) => value,
+  );
+}
+
+Widget settingsSignOut(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      FirebaseAccounts().signOut();
+    },
+    child: Text(
+      getTranslated(context, "settingsSignOut"),
+      style: TextStyle(
+        color: Theme.of(context).colorScheme.settingsSignOut,
+        fontSize: Theme.of(context).textTheme.settingsSignOut,
+        fontWeight: Theme.of(context).typography.settingsSignOut,
+      ),
+    ),
   );
 }
