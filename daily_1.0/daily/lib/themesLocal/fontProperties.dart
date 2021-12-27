@@ -37,6 +37,7 @@ extension CustomFontSize on TextTheme {
 
   // #region settings
   double get settingsTitle => 30;
+  double get settingsGroupTitle => 22;
   // #endregion
 }
 
@@ -75,5 +76,6 @@ extension CustomFontWeight on Typography {
 
   // #region settings
   FontWeight get settingsTitle => FontWeight.w500;
+  FontWeight get settingsGroupTitle => FontWeight.w500;
   // #endregion
 }

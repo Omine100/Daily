@@ -43,7 +43,11 @@ Widget settingsProfile(BuildContext context) {
               color: Colors.grey.shade400,
             ),
             child: profileURL.value == ""
-                ? Container()
+                ? Icon(
+                    Icons.person_outline_rounded,
+                    size: 45,
+                    color: Colors.white,
+                  )
                 : Image(
                     image: AssetImage(profileURL.value),
                   ),
@@ -54,8 +58,8 @@ Widget settingsProfile(BuildContext context) {
         ),
         Column(
           children: [
-            Text("DisplayName"), //DisplayName
-            Text("Email"), //Email
+            Text("DisplayName"),
+            Text("Email"),
           ],
         ),
       ],
@@ -72,7 +76,8 @@ Widget settingsCard(BuildContext context) {
             topLeft: Radius.circular(35), topRight: Radius.circular(35)),
         color: Colors.white,
       ),
-      child: settingsBreakdown(context));
+      child: Padding(
+          padding: EdgeInsets.all(15), child: settingsBreakdown(context)));
 }
 
 Column settingsBreakdown(BuildContext context) {
@@ -84,9 +89,8 @@ Column settingsBreakdown(BuildContext context) {
       settings[setting.group] = new Column(
         children: [],
       );
-      settings[setting.group]
-          .children
-          .add(settingsGroupTitle(context, setting.group.toString()));
+      settings[setting.group].children.add(settingsGroupTitle(
+          context, setting.group.toString().split("Group.").last));
     }
     settings[setting.group].children.add(settingRow(context, setting));
   });
@@ -103,11 +107,11 @@ Row settingsGroupTitle(BuildContext context, String key) {
     children: [
       Text(
         key,
-        //style: TextStyle(
-        //color: Theme.of(context).colorScheme.settingsGroupTitle,
-        //fontSize: Theme.of(context).textTheme.settingsGroupTitle,
-        //fontWeight: Theme.of(context).typography.settingsGroupTitle,
-        //),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.settingsGroupTitle,
+          fontSize: Theme.of(context).textTheme.settingsGroupTitle,
+          fontWeight: Theme.of(context).typography.settingsGroupTitle,
+        ),
       )
     ],
   );

@@ -105,6 +105,7 @@ extension CustomColorScheme on ColorScheme {
   // #region settings
   Color get settingsBackground => Color(isDark.value ? 0xFFF5F5F5 : 0xFFEEEEEE);
   Color get settingsTitle => Color(isDark.value ? 0xFF333333 : 0xFF333333);
+  Color get settingsGroupTitle => Color(isDark.value ? 0xFF333333 : 0xFF333333);
   // #endregion
 }
 
