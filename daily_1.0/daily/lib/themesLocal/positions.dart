@@ -84,19 +84,19 @@ extension CustomPositions on MaterialTapTargetSize {
   // #region settingsDesktop
   double get settingsDesktopTitleTop => 0.1;
   double get settingsDesktopProfileTop => 0.125;
-  double get settingsDesktopCardTop => 0.3;
+  double get settingsDesktopCardTop => 0.125;
   // #endregion
 
   // #region settingsTablet
   double get settingsTabletTitleTop => 0.1;
   double get settingsTabletProfileTop => 0.125;
-  double get settingsTabletCardTop => 0.3;
+  double get settingsTabletCardTop => 0.125;
   // #endregion
 
   // #region settingsMobile
   double get settingsMobileTitleTop => 0.075;
   double get settingsMobileProfileTop => 0.15;
-  double get settingsMobileCardTop => 0.3;
+  double get settingsMobileCardTop => 0.15;
   // #endregion
 }
 

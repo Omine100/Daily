@@ -176,12 +176,15 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Widget build(BuildContext context) {
     return Material(
         color: Theme.of(context).colorScheme.forgotPasswordBackground,
-        child: Container(
-            constraints: BoxConstraints.expand(height: double.maxFinite),
-            child: Responsive(
-              desktop: forgotPasswordScreenDesktop(),
-              tablet: forgotPasswordScreenTablet(),
-              mobile: forgotPasswordScreenMobile(),
-            )));
+        child: SingleChildScrollView(
+          child: Container(
+              constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height * 1.1),
+              child: Responsive(
+                desktop: forgotPasswordScreenDesktop(),
+                tablet: forgotPasswordScreenTablet(),
+                mobile: forgotPasswordScreenMobile(),
+              )),
+        ));
   }
 }

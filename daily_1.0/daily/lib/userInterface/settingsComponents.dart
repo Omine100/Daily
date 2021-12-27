@@ -68,17 +68,32 @@ Widget settingsProfile(BuildContext context) {
   );
 }
 
-Widget settingsCard(BuildContext context) {
+Container settingsCard(BuildContext context) {
   return Container(
-      height: 800,
-      width: MediaQuery.of(context).size.width * 0.9,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(35), topRight: Radius.circular(35)),
-        color: Colors.white,
-      ),
-      child: Padding(
-          padding: EdgeInsets.all(15), child: settingsBreakdown(context)));
+    padding: EdgeInsets.only(left: 15, right: 15),
+    height: MediaQuery.of(context).size.height,
+    width: MediaQuery.of(context).size.width,
+    child: DraggableScrollableSheet(
+        initialChildSize: 0.875,
+        minChildSize: 0.875,
+        builder: (context, scrollController) {
+          return SingleChildScrollView(
+            controller: scrollController,
+            child: Container(
+                height: 800,
+                width: MediaQuery.of(context).size.width * 0.9,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(35),
+                      topRight: Radius.circular(35)),
+                  color: Theme.of(context).colorScheme.settingsCard,
+                ),
+                child: Padding(
+                    padding: EdgeInsets.all(15),
+                    child: settingsBreakdown(context))),
+          );
+        }),
+  );
 }
 
 Column settingsBreakdown(BuildContext context) {
@@ -100,6 +115,7 @@ Column settingsBreakdown(BuildContext context) {
   settings.entries.forEach((element) {
     column.children.add(element.value);
   });
+  column.children.add(settingsSignOut(context));
   return column;
 }
 

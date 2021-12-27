@@ -103,9 +103,10 @@ extension CustomColorScheme on ColorScheme {
   // #endregion
 
   // #region settings
-  Color get settingsBackground => Color(isDark.value ? 0xFFF5F5F5 : 0xFFEEEEEE);
+  Color get settingsBackground => Color(isDark.value ? 0xFFFBFAF5 : 0xFFFBFAF5);
   Color get settingsTitle => Color(isDark.value ? 0xFF333333 : 0xFF333333);
-  Color get settingsGroupTitle => Color(isDark.value ? 0xFF333333 : 0xFF333333);
+  Color get settingsCard => Color(isDark.value ? 0xFFEEEEEE : 0xFFEEEEEE);
+  Color get settingsGroupTitle => Color(isDark.value ? 0xFF000000 : 0xFF000000);
   Color get settingSwitchActiveThumb =>
       Color(isDark.value ? 0xFFFF4350 : 0xFFFF4350);
   Color get settingSwtichActiveTrack =>
@@ -114,6 +115,7 @@ extension CustomColorScheme on ColorScheme {
       Color(isDark.value ? 0xFF939393 : 0xFF939393);
   Color get settingSwtichInactiveTrack =>
       Color(isDark.value ? 0xFFD3D3D3 : 0xFFD3D3D3);
+  Color get settingsSignOut => Color(isDark.value ? 0xFFFF4350 : 0xFFFF4350);
   // #endregion
 }
 
