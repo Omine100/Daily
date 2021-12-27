@@ -66,7 +66,7 @@ class FirebaseAccounts {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
       await setCurrentUserDisplayName(name);
-      await setCurrentUserProfilePicImage(image);
+      image ?? await setCurrentUserProfilePicImage(image);
       sendEmailVerification();
     } on FirebaseAuthException catch (e) {
       String key;
