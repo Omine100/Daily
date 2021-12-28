@@ -47,40 +47,44 @@ Widget authCenterPiece(BuildContext context, State state) {
 }
 
 String userName = "", userEmail = "", userPass = "";
+final formKey = GlobalKey<FormState>();
 Widget authUserInput(BuildContext context, bool isSignIn) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      isSignIn
-          ? Container(
-              height: 0,
-            )
-          : authUserInputField(context, (name) {
-              if (!isEmail(name))
-                return getTranslated(context, 'authValidatorNameFormat');
-              return null;
-            }, (name) => userName, "authFormName", false),
-      authUserInputField(context, (email) {
-        if (!isEmail(email))
-          return getTranslated(context, 'authValidatorEmailFormat');
-        return null;
-      }, (email) => userEmail, "authFormEmail", false),
-      authUserInputField(
-        context,
-        (pass) {
-          if (!isPassword(pass))
-            return getTranslated(context, 'authValidatorPassFormat');
+  return Form(
+    key: formKey,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        isSignIn
+            ? Container(
+                height: 0,
+              )
+            : authUserInputField(context, (name) {
+                if (!isEmail(name))
+                  return getTranslated(context, 'authValidatorNameFormat');
+                return null;
+              }, (name) => {userName = name}, "authFormName", false),
+        authUserInputField(context, (email) {
+          if (!isEmail(email))
+            return getTranslated(context, 'authValidatorEmailFormat');
           return null;
-        },
-        (pass) => userPass,
-        "authFormPass",
-        true,
-      )
-    ],
+        }, (email) => {userEmail = email}, "authFormEmail", false),
+        authUserInputField(
+          context,
+          (pass) {
+            if (!isPassword(pass))
+              return getTranslated(context, 'authValidatorPassFormat');
+            return null;
+          },
+          (pass) => {userPass = pass},
+          "authFormPass",
+          true,
+        )
+      ],
+    ),
   );
 }
 
-bool isVisible = true;
+bool isVisible = false;
 Widget authUserInputField(BuildContext context, Function validator,
     Function onSaved, String authForm, bool isVariable) {
   return Padding(
@@ -184,6 +188,7 @@ Widget authGetStarted(BuildContext context, bool isSignIn) {
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
+            formKey.currentState.save();
             isSignIn
                 ? FirebaseAccounts()
                     .signInEmailAndPassword(context, userEmail, userPass)

@@ -36,16 +36,21 @@ class FirebaseAccounts {
   Future<void> setCurrentUserProfilePicImage(File image) async {
     var storageRef = storage.ref(auth.currentUser.uid + '/profilePicture');
     await storageRef.putFile(image);
+    setCurrentUserProfilePicURL(await storageRef.getDownloadURL());
   }
 
   Future<void> setCurrentUserProfilePicURL(String photoURL) async {
     storage.ref(auth.currentUser.uid + '/profilePicture/$photoURL');
   }
 
-  Future<String> getCurrentUserProfilePic() async {
-    return await storage
+  Future<void> updateProfilePic() async {
+    auth.currentUser.updatePhotoURL(await storage
         .ref(auth.currentUser.uid + '/profilePicture')
-        .getDownloadURL();
+        .getDownloadURL());
+  }
+
+  Future<String> getCurrentUserProfilePic() async {
+    return auth.currentUser.photoURL;
   }
 
   Future<void> sendEmailVerification() async {
