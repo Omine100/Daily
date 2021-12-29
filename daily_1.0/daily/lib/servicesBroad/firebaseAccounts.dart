@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:daily/standards/userIStandards.dart';
+import 'package:daily/utilities/managementUtil/validation.dart';
 
 class FirebaseAccounts {
   //VARIABLE INITIALIZATION
@@ -63,12 +64,37 @@ class FirebaseAccounts {
     return auth.currentUser.emailVerified;
   }
 
-  Future<void> sendPasswordReset(String email) async {
+  Future<void> sendPasswordReset(BuildContext context, String email) async {
+    if (email == "" || email == null || !isEmail(email)) {
+      UserIStandards().showToastMessage(context, "errorInvalidEmail");
+      return;
+    }
     auth.sendPasswordResetEmail(email: email);
   }
 
   Future<void> signUpEmailAndPassword(
       BuildContext context, String email, String password, String name) async {
+    if (email == null ||
+        email == "" ||
+        password == null ||
+        password == "" ||
+        name == null ||
+        name == "") {
+      UserIStandards().showToastMessage(context, "errorBlankField");
+      return;
+    }
+    if (!isName(name)) {
+      UserIStandards().showToastMessage(context, "errorInvalidName");
+      return;
+    }
+    if (!isEmail(email)) {
+      UserIStandards().showToastMessage(context, "errorInvalidEmail");
+      return;
+    }
+    if (!isPassword(password)) {
+      UserIStandards().showToastMessage(context, "errorPasswordRequirements");
+      return;
+    }
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -98,6 +124,10 @@ class FirebaseAccounts {
 
   Future<void> signInEmailAndPassword(
       BuildContext context, String email, String password) async {
+    if (email == "" || password == "") {
+      UserIStandards().showToastMessage(context, "errorBlankField");
+      return;
+    }
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
@@ -114,6 +144,9 @@ class FirebaseAccounts {
           break;
         case "user-disabled":
           key = "errorUserDisabled";
+          break;
+        case "unknown":
+          key = "errorUserNotFound";
           break;
         default:
           key = "errorDefault";

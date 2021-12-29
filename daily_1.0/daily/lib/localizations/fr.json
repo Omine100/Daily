@@ -1,4 +1,7 @@
 {
+    "errorBlankField": "Pas de champ vide.",
+    "errorInvalidName": "Le nom doit comporter entre 3 et 10 caractères.",
+    "errorPasswordRequirements": "Le mot de passe doit être composé de 8 à 16 caractères et d'un nombre/symbole.",
     "errorInvalidPassword": "Le mot de passe est trop faible.",
     "errorInvalidEmail": "Entrer un email valide.",
     "errorWrongPassword": "L'utilisateur n'existe pas ou le mot de passe est incorrect.",
@@ -22,9 +25,6 @@
     "authFormName": "Nom",
     "authFormEmail": "Email",
     "authFormPass": "Mot de passe",
-    "authValidatorNameFormat": "Nom ne peut pas être vide",
-    "authValidatorEmailFormat": "Email ne peut pas être vide",
-    "authValidatorPasswordFormat": "Mot ne peut pas être vide",
     "authForgotPassword": "Mot de passe oublié?",
     "authSwitchSignInPrimary": "Avoir un compte? ",
     "authSwitchSignUpPrimary": "Pas de compte? ",

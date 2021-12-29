@@ -151,12 +151,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Material(
         color: Theme.of(context).colorScheme.welcomeBackground,
-        child: Container(
-            constraints: BoxConstraints.expand(height: double.maxFinite),
-            child: Responsive(
-              desktop: welcomeScreenDesktop(),
-              tablet: welcomeScreenTablet(),
-              mobile: welcomeScreenMobile(),
-            )));
+        child: Scaffold(
+          body: Container(
+              constraints: BoxConstraints.expand(height: double.maxFinite),
+              child: Responsive(
+                desktop: welcomeScreenDesktop(),
+                tablet: welcomeScreenTablet(),
+                mobile: welcomeScreenMobile(),
+              )),
+        ));
   }
 }

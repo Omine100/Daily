@@ -7,7 +7,6 @@ import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 import 'package:daily/userInterface/home.dart';
 import 'package:daily/userInterface/forgotPassword.dart';
-import 'package:daily/utilities/managementUtil/validation.dart';
 
 Widget authTitle(BuildContext context) {
   return Container(
@@ -58,35 +57,20 @@ Widget authUserInput(BuildContext context, bool isSignIn) {
             ? Container(
                 height: 0,
               )
-            : authUserInputField(context, (name) {
-                if (!isEmail(name))
-                  return getTranslated(context, 'authValidatorNameFormat');
-                return null;
-              }, (name) => {userName = name}, "authFormName", false),
-        authUserInputField(context, (email) {
-          if (!isEmail(email))
-            return getTranslated(context, 'authValidatorEmailFormat');
-          return null;
-        }, (email) => {userEmail = email}, "authFormEmail", false),
+            : authUserInputField(
+                context, (name) => {userName = name}, "authFormName", false),
         authUserInputField(
-          context,
-          (pass) {
-            if (!isPassword(pass))
-              return getTranslated(context, 'authValidatorPassFormat');
-            return null;
-          },
-          (pass) => {userPass = pass},
-          "authFormPass",
-          true,
-        )
+            context, (email) => {userEmail = email}, "authFormEmail", false),
+        authUserInputField(
+            context, (pass) => {userPass = pass}, "authFormPass", true)
       ],
     ),
   );
 }
 
 bool isVisible = false;
-Widget authUserInputField(BuildContext context, Function validator,
-    Function onSaved, String authForm, bool isVariable) {
+Widget authUserInputField(
+    BuildContext context, Function onSaved, String authForm, bool isVariable) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
@@ -101,7 +85,6 @@ Widget authUserInputField(BuildContext context, Function validator,
       ),
       child: TextFormField(
         obscureText: isVariable ? !isVisible : false,
-        validator: validator,
         onSaved: onSaved,
         autofocus: false,
         decoration: InputDecoration(
@@ -244,7 +227,7 @@ void authValidateSubmit(BuildContext context, bool isSignIn) async {
   else
     await FirebaseAccounts()
         .signUpEmailAndPassword(context, userEmail, userPass, userName);
-  if (await FirebaseAccounts().getSignedInStatus())
+  if (FirebaseAccounts().getSignedInStatus())
     RouteNavigation().routeBase(context, HomeScreen());
   else
     formKey.currentState.reset();

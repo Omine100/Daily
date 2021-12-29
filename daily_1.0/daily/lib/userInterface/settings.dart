@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/settingsComponents.dart';
+import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';
 
@@ -53,10 +54,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   settingsScreenMobile() {
     return Stack(alignment: Alignment.center, children: [
       Positioned(
-        top: getPosition(context, true,
-            Theme.of(context).materialTapTargetSize.settingsMobileTitleTop),
-        child: settingsTitle(context),
-      ),
+          top: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.settingsMobileTitleTop),
+          child: settingsTitle(context)),
       Positioned(
         top: getPosition(context, true,
             Theme.of(context).materialTapTargetSize.settingsMobileProfileTop),
@@ -73,8 +73,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Theme.of(context).colorScheme.settingsBackground,
-        child: Container(
+      color: Theme.of(context).colorScheme.settingsBackground,
+      child: Scaffold(
+        body: Container(
             constraints: BoxConstraints.expand(
               height: double.maxFinite,
             ),
@@ -82,6 +83,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               desktop: settingsScreenDesktop(),
               tablet: settingsScreenTablet(),
               mobile: settingsScreenMobile(),
-            )));
+            )),
+      ),
+    );
   }
 }

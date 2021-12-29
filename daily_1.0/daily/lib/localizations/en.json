@@ -1,4 +1,7 @@
 {
+    "errorBlankField": "Can't have a blank field.",
+    "errorInvalidName": "Name must be 3-10 characters.",
+    "errorPasswordRequirements": "Password must be 8-16 characters and a number/symbol.",
     "errorInvalidPassword": "Your password is too weak.",
     "errorInvalidEmail": "Please enter a valid email.",
     "errorWrongPassword": "User does not exist or password is wrong.",
@@ -22,9 +25,6 @@
     "authFormName": "Name",
     "authFormEmail": "Email",
     "authFormPass": "Password",
-    "authValidatorNameFormat": "Name can't be empty",
-    "authValidatorEmailFormat": "Email can't be empty",
-    "authValidatorPasswordFormat": "Password can't be empty",
     "authForgotPassword": "Forgot Password?",
     "authSwitchSignInPrimary": "Already have an account? ",
     "authSwitchSignUpPrimary": "Don't have an account? ",

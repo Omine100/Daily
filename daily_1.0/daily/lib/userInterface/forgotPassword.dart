@@ -174,17 +174,22 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    FocusNode textFieldFocus = new FocusNode();
     return Material(
         color: Theme.of(context).colorScheme.forgotPasswordBackground,
-        child: SingleChildScrollView(
-          child: Container(
-              constraints: BoxConstraints(
-                  maxHeight: MediaQuery.of(context).size.height * 1.1),
-              child: Responsive(
-                desktop: forgotPasswordScreenDesktop(),
-                tablet: forgotPasswordScreenTablet(),
-                mobile: forgotPasswordScreenMobile(),
-              )),
+        child: Scaffold(
+          body: SingleChildScrollView(
+            child: Container(
+                constraints: BoxConstraints(
+                    maxHeight: textFieldFocus.hasFocus
+                        ? MediaQuery.of(context).size.height * 1.1
+                        : MediaQuery.of(context).size.height),
+                child: Responsive(
+                  desktop: forgotPasswordScreenDesktop(),
+                  tablet: forgotPasswordScreenTablet(),
+                  mobile: forgotPasswordScreenMobile(),
+                )),
+          ),
         ));
   }
 }

@@ -3,9 +3,11 @@ import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
+import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
+import 'package:daily/userInterface/welcome.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 
@@ -216,8 +218,8 @@ Widget settingDropDown(dynamic value, List<dynamic> items) {
 Widget settingsResetPassword(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      firebaseAccounts
-          .sendPasswordReset(firebaseAccounts.getCurrentUserEmail());
+      firebaseAccounts.sendPasswordReset(
+          context, firebaseAccounts.getCurrentUserEmail());
     },
     child: Row(
       mainAxisSize: MainAxisSize.max,
@@ -240,6 +242,7 @@ Widget settingsSignOut(BuildContext context) {
   return GestureDetector(
     onTap: () {
       firebaseAccounts.signOut();
+      RouteNavigation().routeBase(context, WelcomeScreen());
     },
     child: Text(
       getTranslated(context, "settingsSignOut"),

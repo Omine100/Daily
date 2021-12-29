@@ -49,12 +49,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.white,
-      child: Container(
-        constraints: BoxConstraints.expand(height: double.maxFinite),
-        child: Responsive(
-          desktop: homeScreenDesktop(),
-          tablet: homeScreenTablet(),
-          mobile: homeScreenMobile(),
+      child: Scaffold(
+        body: Container(
+          constraints: BoxConstraints.expand(height: double.maxFinite),
+          child: Responsive(
+            desktop: homeScreenDesktop(),
+            tablet: homeScreenTablet(),
+            mobile: homeScreenMobile(),
+          ),
         ),
       ),
     );

@@ -184,17 +184,22 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
+    FocusNode textFieldFocus = new FocusNode();
     return Material(
         color: Theme.of(context).colorScheme.welcomeBackground,
-        child: SingleChildScrollView(
-          child: Container(
-              constraints: BoxConstraints(
-                  maxHeight: MediaQuery.of(context).size.height * 1.2),
-              child: Responsive(
-                desktop: authScreenDesktop(),
-                tablet: authScreenTablet(),
-                mobile: authScreenMobile(),
-              )),
+        child: Scaffold(
+          body: SingleChildScrollView(
+            child: Container(
+                constraints: BoxConstraints(
+                    maxHeight: textFieldFocus.hasFocus
+                        ? MediaQuery.of(context).size.height * 1.2
+                        : MediaQuery.of(context).size.height),
+                child: Responsive(
+                  desktop: authScreenDesktop(),
+                  tablet: authScreenTablet(),
+                  mobile: authScreenMobile(),
+                )),
+          ),
         ));
   }
 }
