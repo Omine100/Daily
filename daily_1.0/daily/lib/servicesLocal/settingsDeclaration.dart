@@ -14,11 +14,20 @@ Setting languageCode = new Setting(
     key: "languageCode",
     value: null,
     type: String,
-    group: Group.General,
+    group: Group.Account,
     format: Format.DropDown,
     isSignInRequired: false,
     defaultValue: "en",
     items: getLanguageList());
+Setting notifications = new Setting(
+  key: "notification",
+  value: false,
+  type: bool,
+  group: Group.General,
+  format: Format.Switch,
+  isSignInRequired: false,
+  defaultValue: false,
+);
 Setting isDark = new Setting(
     key: "isDark",
     value: false,
@@ -47,6 +56,7 @@ Setting profileURL = new Setting(
 List<Setting> settingsList = [
   locale,
   languageCode,
+  notifications,
   isDark,
   isAndroid,
   profileURL

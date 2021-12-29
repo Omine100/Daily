@@ -116,7 +116,7 @@ Container settingsCard(BuildContext context) {
                   color: Theme.of(context).colorScheme.settingsCard,
                 ),
                 child: Padding(
-                    padding: EdgeInsets.all(15),
+                    padding: EdgeInsets.only(left: 15, right: 15, top: 25),
                     child: settingsBreakdown(context))),
           );
         }),
@@ -139,10 +139,14 @@ Column settingsBreakdown(BuildContext context) {
     }
     settings[setting.group].children.add(settingRow(context, setting));
   });
+  settings[Group.Account].children.add(settingsResetPassword(context));
 
   Column column = new Column(children: []);
   settings.entries.forEach((element) {
     column.children.add(element.value);
+    column.children.add(SizedBox(
+      height: 30,
+    ));
   });
   column.children.add(settingsSignOut(context));
   return column;
@@ -177,7 +181,12 @@ Row settingRow(BuildContext context, Setting setting) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      Text(setting.key),
+      Text(setting.key,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.settingsRowText,
+            fontSize: Theme.of(context).textTheme.settingsRowText,
+            fontWeight: Theme.of(context).typography.settingsRowText,
+          )),
       formPick(),
     ],
   );
@@ -204,10 +213,33 @@ Widget settingDropDown(dynamic value, List<dynamic> items) {
   );
 }
 
+Widget settingsResetPassword(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      firebaseAccounts
+          .sendPasswordReset(firebaseAccounts.getCurrentUserEmail());
+    },
+    child: Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          getTranslated(context, "settingsResetPassword"),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.settingsRowText,
+            fontSize: Theme.of(context).textTheme.settingsRowText,
+            fontWeight: Theme.of(context).typography.settingsRowText,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 Widget settingsSignOut(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      FirebaseAccounts().signOut();
+      firebaseAccounts.signOut();
     },
     child: Text(
       getTranslated(context, "settingsSignOut"),

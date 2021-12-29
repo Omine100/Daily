@@ -38,5 +38,6 @@
     "forgotPasswordResendPrimary": "Vous n'avez pas reçu le message ? ",
     "forgotPasswordResendSecondary": "Renvoyer!",
     "settingsTitle": "Réglages",
+    "settingsResetPassword": "Réinitialiser le mot de passe",
     "settingsSignOut": "SE DECONNECTER"
 }

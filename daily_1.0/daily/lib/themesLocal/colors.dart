@@ -111,6 +111,7 @@ extension CustomColorScheme on ColorScheme {
       Color(isDark.value ? 0xFF555555 : 0xFF555555);
   Color get settingsCard => Color(isDark.value ? 0xFFEEEEEE : 0xFFEEEEEE);
   Color get settingsGroupTitle => Color(isDark.value ? 0xFF000000 : 0xFF000000);
+  Color get settingsRowText => Color(isDark.value ? 0xFF555555 : 0xFF555555);
   Color get settingSwitchActiveThumb =>
       Color(isDark.value ? 0xFFFF4350 : 0xFFFF4350);
   Color get settingSwtichActiveTrack =>

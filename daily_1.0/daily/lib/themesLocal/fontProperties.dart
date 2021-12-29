@@ -40,6 +40,7 @@ extension CustomFontSize on TextTheme {
   double get settingsProfileName => 22;
   double get settingsProfileEmail => 18;
   double get settingsGroupTitle => 22;
+  double get settingsRowText => 16;
   double get settingsSignOut => 16;
   // #endregion
 }
@@ -82,6 +83,7 @@ extension CustomFontWeight on Typography {
   FontWeight get settingsProfileName => FontWeight.w500;
   FontWeight get settingsProfileEmail => FontWeight.w300;
   FontWeight get settingsGroupTitle => FontWeight.w500;
+  FontWeight get settingsRowText => FontWeight.w400;
   FontWeight get settingsSignOut => FontWeight.w400;
   // #endregion
 }
