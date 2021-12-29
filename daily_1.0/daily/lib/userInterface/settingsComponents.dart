@@ -7,6 +7,8 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 
+FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+
 Widget settingsTitle(BuildContext context) {
   return Container(
     alignment: Alignment.center,
@@ -24,48 +26,73 @@ Widget settingsTitle(BuildContext context) {
 }
 
 Widget settingsProfile(BuildContext context) {
-  return Container(
-    width: MediaQuery.of(context).size.width,
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 25,
-        ),
-        GestureDetector(
-          onTap: () {
-            //Profile image change
-          },
-          child: Container(
-            height: 75,
-            width: 75,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(90),
-              color: Colors.grey.shade400,
-            ),
-            child: profileURL.value == ""
-                ? Icon(
-                    Icons.person_outline_rounded,
-                    size: 45,
-                    color: Colors.white,
-                  )
-                : Image(
-                    image: AssetImage(profileURL.value),
+  return firebaseAccounts.getSignedInStatus()
+      ? Container(
+          width: MediaQuery.of(context).size.width,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 25,
+              ),
+              GestureDetector(
+                onTap: () {
+                  //Profile image change
+                },
+                child: Container(
+                  height: 75,
+                  width: 75,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(90),
+                    color: Colors.grey.shade400,
                   ),
+                  child: profileURL.value == ""
+                      ? Icon(
+                          Icons.person_outline_rounded,
+                          size: 45,
+                          color: Colors.white,
+                        )
+                      : Image(
+                          image: AssetImage(profileURL.value),
+                        ),
+                ),
+              ),
+              SizedBox(
+                width: 35,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    firebaseAccounts.getCurrentUserDisplayName() ??
+                        getTranslated(context, "settingsNullName"),
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.settingsProfileName,
+                      fontSize: Theme.of(context).textTheme.settingsProfileName,
+                      fontWeight:
+                          Theme.of(context).typography.settingsProfileName,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    firebaseAccounts.getCurrentUserEmail() ??
+                        getTranslated(context, "settingsNullEmail"),
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.settingsProfileEmail,
+                      fontSize:
+                          Theme.of(context).textTheme.settingsProfileEmail,
+                      fontWeight:
+                          Theme.of(context).typography.settingsProfileEmail,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ),
-        SizedBox(
-          width: 35,
-        ),
-        Column(
-          children: [
-            Text("DisplayName"),
-            Text("Email"),
-          ],
-        ),
-      ],
-    ),
-  );
+        )
+      : Container();
 }
 
 Container settingsCard(BuildContext context) {
@@ -74,7 +101,7 @@ Container settingsCard(BuildContext context) {
     height: MediaQuery.of(context).size.height,
     width: MediaQuery.of(context).size.width,
     child: DraggableScrollableSheet(
-        initialChildSize: 0.875,
+        initialChildSize: firebaseAccounts.getSignedInStatus() ? 0.875 : 1.0,
         minChildSize: 0.875,
         builder: (context, scrollController) {
           return SingleChildScrollView(
@@ -101,6 +128,8 @@ Column settingsBreakdown(BuildContext context) {
 
   settingsList.forEach((setting) {
     if (setting.group == Group.Hidden) return;
+    if (setting.isSignInRequired && firebaseAccounts.getSignedInStatus())
+      return;
     if (settings[setting.group] == null) {
       settings[setting.group] = new Column(
         children: [],

@@ -9,6 +9,7 @@ class Setting {
   dynamic type;
   Group group;
   Format format;
+  bool isSignInRequired;
   dynamic defaultValue;
   List<dynamic> items;
 
@@ -18,6 +19,7 @@ class Setting {
       @required this.type,
       @required this.group,
       @required this.format,
+      @required this.isSignInRequired,
       @required this.defaultValue,
       this.items});
 }

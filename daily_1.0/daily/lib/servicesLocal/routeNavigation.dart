@@ -8,6 +8,11 @@ class RouteNavigation {
     Navigator.pop(context);
   }
 
+  void routeBase(BuildContext context, Widget page) {
+    Navigator.pushAndRemoveUntil(context,
+        MaterialPageRoute(builder: (context) => page), (route) => false);
+  }
+
   void routePage(BuildContext context, Widget page) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => page));
   }

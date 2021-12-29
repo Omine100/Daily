@@ -8,6 +8,7 @@ Setting locale = new Setting(
     type: Locale,
     group: Group.Hidden,
     format: Format.DropDown,
+    isSignInRequired: false,
     defaultValue: Locale("en", "en"));
 Setting languageCode = new Setting(
     key: "languageCode",
@@ -15,6 +16,7 @@ Setting languageCode = new Setting(
     type: String,
     group: Group.General,
     format: Format.DropDown,
+    isSignInRequired: false,
     defaultValue: "en",
     items: getLanguageList());
 Setting isDark = new Setting(
@@ -23,6 +25,7 @@ Setting isDark = new Setting(
     type: bool,
     group: Group.General,
     format: Format.Switch,
+    isSignInRequired: false,
     defaultValue: false);
 Setting isAndroid = new Setting(
     key: "isAndroid",
@@ -30,6 +33,7 @@ Setting isAndroid = new Setting(
     type: bool,
     group: Group.Hidden,
     format: Format.Switch,
+    isSignInRequired: false,
     defaultValue: true);
 Setting profileURL = new Setting(
     key: "profileURL",
@@ -37,6 +41,7 @@ Setting profileURL = new Setting(
     type: String,
     group: Group.Hidden,
     format: Format.URL,
+    isSignInRequired: true,
     defaultValue: "");
 
 List<Setting> settingsList = [

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -16,11 +14,11 @@ class FirebaseAccounts {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   //MECHANICS
-  Future<String> getCurrentUserId() async {
+  String getCurrentUserId() {
     return auth.currentUser.uid;
   }
 
-  Future<bool> getSignedInStatus() async {
+  bool getSignedInStatus() {
     if (auth.currentUser?.uid == null) return false;
     return true;
   }
@@ -29,8 +27,12 @@ class FirebaseAccounts {
     auth.currentUser.updateDisplayName(displayName);
   }
 
-  Future<String> getCurrentUserDisplayName() async {
+  String getCurrentUserDisplayName() {
     return auth.currentUser.displayName;
+  }
+
+  String getCurrentUserEmail() {
+    return auth.currentUser.email;
   }
 
   Future<void> setCurrentUserProfilePicImage(File image) async {
@@ -136,14 +138,6 @@ class FirebaseAccounts {
 
   Future<void> signOut() async {
     return auth.signOut();
-  }
-
-  Future<void> setUserSettings(Map<String, dynamic> jsonSettings) async {
-    firestore.doc(auth.currentUser.tenantId).set(jsonSettings);
-  }
-
-  Future<DocumentSnapshot> getUserSettings() async {
-    return firestore.doc(auth.currentUser.tenantId).get();
   }
 
   Future<void> deleteUserData() async {

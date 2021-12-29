@@ -105,6 +105,10 @@ extension CustomColorScheme on ColorScheme {
   // #region settings
   Color get settingsBackground => Color(isDark.value ? 0xFFFBFAF5 : 0xFFFBFAF5);
   Color get settingsTitle => Color(isDark.value ? 0xFF333333 : 0xFF333333);
+  Color get settingsProfileName =>
+      Color(isDark.value ? 0xFF444444 : 0xFF444444);
+  Color get settingsProfileEmail =>
+      Color(isDark.value ? 0xFF555555 : 0xFF555555);
   Color get settingsCard => Color(isDark.value ? 0xFFEEEEEE : 0xFFEEEEEE);
   Color get settingsGroupTitle => Color(isDark.value ? 0xFF000000 : 0xFF000000);
   Color get settingSwitchActiveThumb =>

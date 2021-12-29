@@ -245,7 +245,7 @@ void authValidateSubmit(BuildContext context, bool isSignIn) async {
     await FirebaseAccounts()
         .signUpEmailAndPassword(context, userEmail, userPass, userName);
   if (await FirebaseAccounts().getSignedInStatus())
-    RouteNavigation().routePage(context, HomeScreen());
+    RouteNavigation().routeBase(context, HomeScreen());
   else
     formKey.currentState.reset();
 }

@@ -11,7 +11,7 @@ Widget homeTitle(BuildContext context) {
       alignment: Alignment.center,
       width: MediaQuery.of(context).size.width,
       child: Text(
-        "Home",
+        "Home -> Settings",
         style: TextStyle(
             color: Colors.red, fontSize: 30, fontWeight: FontWeight.w300),
       ),

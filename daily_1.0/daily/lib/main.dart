@@ -29,7 +29,7 @@ class _DailyState extends State<Daily> {
   void initState() {
     super.initState();
     prefsToSettings();
-    firebaseAccounts.getSignedInStatus().then((_isSignedIn) => isSignedIn);
+    isSignedIn = firebaseAccounts.getSignedInStatus();
   }
 
   @override
