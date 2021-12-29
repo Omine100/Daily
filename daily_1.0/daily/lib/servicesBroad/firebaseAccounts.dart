@@ -65,13 +65,12 @@ class FirebaseAccounts {
     auth.sendPasswordResetEmail(email: email);
   }
 
-  Future<void> signUpEmailAndPassword(BuildContext context, String email,
-      String password, String name, File image) async {
+  Future<void> signUpEmailAndPassword(
+      BuildContext context, String email, String password, String name) async {
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
       await setCurrentUserDisplayName(name);
-      image ?? await setCurrentUserProfilePicImage(image);
       sendEmailVerification();
     } on FirebaseAuthException catch (e) {
       String key;
@@ -82,7 +81,7 @@ class FirebaseAccounts {
         case "invalid-email":
           key = "errorInvalidEmail";
           break;
-        case "email-already-exists":
+        case "email-already-in-use":
           key = "errorEmailAlreadyExists";
           break;
         case "invalid-credential":

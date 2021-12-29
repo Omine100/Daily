@@ -188,21 +188,7 @@ Widget authGetStarted(BuildContext context, bool isSignIn) {
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            formKey.currentState.save();
-            isSignIn
-                ? FirebaseAccounts()
-                    .signInEmailAndPassword(context, userEmail, userPass)
-                : FirebaseAccounts().signUpEmailAndPassword(
-                    context,
-                    userEmail,
-                    userPass,
-                    userName,
-                    null,
-                  );
-            FirebaseAccounts().getSignedInStatus().then((isSignedIn) => {
-                  if (isSignedIn)
-                    RouteNavigation().routePage(context, HomeScreen())
-                });
+            authValidateSubmit(context, isSignIn);
           },
           child: Container(
             child: Center(
@@ -248,4 +234,18 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
       ],
     ),
   );
+}
+
+void authValidateSubmit(BuildContext context, bool isSignIn) async {
+  formKey.currentState.save();
+  if (isSignIn)
+    await FirebaseAccounts()
+        .signInEmailAndPassword(context, userEmail, userPass);
+  else
+    await FirebaseAccounts()
+        .signUpEmailAndPassword(context, userEmail, userPass, userName);
+  if (await FirebaseAccounts().getSignedInStatus())
+    RouteNavigation().routePage(context, HomeScreen());
+  else
+    formKey.currentState.reset();
 }
