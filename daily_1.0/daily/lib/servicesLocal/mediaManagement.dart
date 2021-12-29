@@ -25,6 +25,7 @@ class MediaManagement {
       print(e);
       //Show dialog for failed to load camera
     }
+    return null;
   }
 
   Future<File> getImage(String imageURL) async {
@@ -35,11 +36,10 @@ class MediaManagement {
       imageFile = new File('$documentDirectory/flutter.png');
       imageFile.writeAsBytesSync(response.bodyBytes);
     }
-
-    return imageFile ?? imageFile;
+    return imageFile;
   }
 
-  Future<Null> shareImage(String imageURL) async {
+  Future<void> shareImage(String imageURL) async {
     File imageFile;
     try {
       imageFile = await getImage(imageURL);

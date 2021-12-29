@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class GradientStandards {
+class Gradients {
   //MECHANICS
   Shader textLinearGradient(
       BuildContext context, Color topLeftColor, Color bottomRightColor) {

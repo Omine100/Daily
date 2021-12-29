@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
-class AnimationStandards {
+class Animations {
   //MECHANICS
   PageTransition pageTransitionEase(BuildContext context, Widget newPage) {
     return PageTransition(
