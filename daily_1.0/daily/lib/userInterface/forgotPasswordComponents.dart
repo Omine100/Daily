@@ -196,3 +196,7 @@ Widget forgotPasswordResend(BuildContext context) {
         )
       : Container();
 }
+
+void forgotPasswordDispose() {
+  isSent = false;
+}

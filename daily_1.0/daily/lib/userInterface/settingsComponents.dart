@@ -206,6 +206,8 @@ Widget settingSwitch(BuildContext context, Setting setting, State state) {
     onChanged: (value) {
       state.setState(() {
         setting.value = value;
+        if (setting.onChanged != null)
+          setting.onChanged.call(context, setting.value);
       });
     },
     activeColor: Theme.of(context).colorScheme.settingSwitchActiveThumb,
@@ -224,7 +226,8 @@ Widget settingDropDown(BuildContext context, Setting setting, State state) {
     onChanged: (value) {
       state.setState(() {
         setting.value = value;
-        setLanguage(context, value);
+        if (setting.onChanged != null)
+          setting.onChanged.call(context, setting.value);
       });
     },
   );

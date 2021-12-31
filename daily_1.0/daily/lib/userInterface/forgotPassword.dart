@@ -12,6 +12,12 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  @override
+  void dispose() {
+    super.dispose();
+    forgotPasswordDispose();
+  }
+
   forgotPasswordScreenDesktop() {
     return Stack(alignment: Alignment.center, children: [
       Positioned(

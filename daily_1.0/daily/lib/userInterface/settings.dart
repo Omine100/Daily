@@ -1,9 +1,11 @@
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/userInterface/settingsComponents.dart';
+import 'package:daily/servicesLocal/settingsManagement.dart';
 import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';
+import 'package:daily/userInterface/settingsComponents.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -11,6 +13,12 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  @override
+  void dispose() {
+    super.dispose();
+    settingsToPrefs(settingsList);
+  }
+
   settingsScreenDesktop() {
     return Stack(alignment: Alignment.center, children: [
       Positioned(

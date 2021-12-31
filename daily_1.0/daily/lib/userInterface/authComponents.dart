@@ -222,17 +222,22 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
 
 void authValidateSubmit(BuildContext context, bool isSignIn) async {
   formKey.currentState.save();
-  bool complete = false;
   if (isSignIn)
     firebaseAccounts
         .signInEmailAndPassword(context, userEmail, userPass)
-        .then((isSignedIn) => complete = isSignedIn);
+        .then((value) {
+      if (value)
+        routeNavigation.routeBase(context, HomeScreen());
+      else
+        formKey.currentState.reset();
+    });
   else
     firebaseAccounts
         .signUpEmailAndPassword(context, userEmail, userPass, userName)
-        .then((isSignedUp) => complete = isSignedUp);
-  if (complete)
-    routeNavigation.routeBase(context, HomeScreen());
-  else
-    formKey.currentState.reset();
+        .then((value) {
+      if (value)
+        routeNavigation.routeBase(context, HomeScreen());
+      else
+        formKey.currentState.reset();
+    });
 }
