@@ -9,6 +9,8 @@
     "errorUserDisabled": "El usuario ha sido deshabilitado.",
     "errorEmailAlreadyExists": "Correo electrónico ya está en uso.",
     "errorInvalidCredential": "Introduzca un correo electrónico válido.",
+    "errorImage": "No se pudo obtener la imagen.",
+    "errorShare": "No se pudo compartir.",
     "errorDefault": "Ocurrió un error indefinido.",
     "mediaSelectionTitle": "¿De dónde quieres una foto?",
     "mediaSelectionGallery": "Galería",

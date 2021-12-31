@@ -9,19 +9,17 @@ import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/utilities/managementUtil/validation.dart';
 
 class FirebaseAccounts {
-  //VARIABLE INITIALIZATION
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseStorage storage = FirebaseStorage.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  //MECHANICS
-  String getCurrentUserId() {
-    return auth.currentUser.uid;
-  }
-
   bool getSignedInStatus() {
     if (auth.currentUser?.uid == null) return false;
     return true;
+  }
+
+  String getCurrentUserId() {
+    return auth.currentUser.uid;
   }
 
   Future<void> setCurrentUserDisplayName(String displayName) async {
@@ -43,13 +41,7 @@ class FirebaseAccounts {
   }
 
   Future<void> setCurrentUserProfilePicURL(String photoURL) async {
-    storage.ref(auth.currentUser.uid + '/profilePicture/$photoURL');
-  }
-
-  Future<void> updateProfilePic() async {
-    auth.currentUser.updatePhotoURL(await storage
-        .ref(auth.currentUser.uid + '/profilePicture')
-        .getDownloadURL());
+    auth.currentUser.updatePhotoURL(photoURL);
   }
 
   Future<String> getCurrentUserProfilePic() async {
@@ -64,15 +56,17 @@ class FirebaseAccounts {
     return auth.currentUser.emailVerified;
   }
 
-  Future<void> sendPasswordReset(BuildContext context, String email) async {
+  Future<bool> sendPasswordReset(BuildContext context, String email) async {
     if (email == "" || email == null || !isEmail(email)) {
       UserIStandards().showToastMessage(context, "errorInvalidEmail");
-      return;
+      return false;
     }
     auth.sendPasswordResetEmail(email: email);
+    UserIStandards().showToastMessage(context, "settingsResetPasswordSent");
+    return true;
   }
 
-  Future<void> signUpEmailAndPassword(
+  Future<bool> signUpEmailAndPassword(
       BuildContext context, String email, String password, String name) async {
     if (email == null ||
         email == "" ||
@@ -81,25 +75,26 @@ class FirebaseAccounts {
         name == null ||
         name == "") {
       UserIStandards().showToastMessage(context, "errorBlankField");
-      return;
+      return false;
     }
     if (!isName(name)) {
       UserIStandards().showToastMessage(context, "errorInvalidName");
-      return;
+      return false;
     }
     if (!isEmail(email)) {
       UserIStandards().showToastMessage(context, "errorInvalidEmail");
-      return;
+      return false;
     }
     if (!isPassword(password)) {
       UserIStandards().showToastMessage(context, "errorPasswordRequirements");
-      return;
+      return false;
     }
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
       await setCurrentUserDisplayName(name);
       sendEmailVerification();
+      return true;
     } on FirebaseAuthException catch (e) {
       String key;
       switch (e.code) {
@@ -120,16 +115,18 @@ class FirebaseAccounts {
       }
       UserIStandards().showToastMessage(context, key);
     }
+    return false;
   }
 
-  Future<void> signInEmailAndPassword(
+  Future<bool> signInEmailAndPassword(
       BuildContext context, String email, String password) async {
     if (email == "" || password == "") {
       UserIStandards().showToastMessage(context, "errorBlankField");
-      return;
+      return false;
     }
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
+      return true;
     } on FirebaseAuthException catch (e) {
       String key;
       switch (e.code) {
@@ -152,6 +149,7 @@ class FirebaseAccounts {
           key = "errorDefault";
       }
       UserIStandards().showToastMessage(context, key);
+      return false;
     }
   }
 

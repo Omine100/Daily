@@ -3,7 +3,6 @@ import 'package:daily/userInterface/welcome.dart';
 import 'package:daily/userInterface/home.dart';
 
 class RouteNavigation {
-  //MECHANICS
   void routePop(BuildContext context) {
     Navigator.pop(context);
   }

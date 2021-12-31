@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
+import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
-import 'package:daily/utilities/managementUtil/validation.dart';
+
+FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+UserIStandards userIStandards = new UserIStandards();
 
 Widget forgotPasswordTitle(BuildContext context) {
   return Container(
@@ -51,6 +54,7 @@ Widget forgotPasswordCenterPiece(BuildContext context) {
 }
 
 String userEmail;
+final GlobalKey<FormFieldState> formKey = GlobalKey<FormFieldState>();
 Widget forgotPasswordUserInputField(BuildContext context) {
   return Container(
     height: getDimension(context, true,
@@ -63,13 +67,9 @@ Widget forgotPasswordUserInputField(BuildContext context) {
       color: Theme.of(context).colorScheme.forgotPasswordUserInputField,
     ),
     child: TextFormField(
+      key: formKey,
       obscureText: false,
-      validator: (email) {
-        if (!isEmail(email))
-          return getTranslated(context, 'forgotPasswordValidatorEmailFormat');
-        return null;
-      },
-      onSaved: (email) => userEmail,
+      onSaved: (email) => userEmail = email,
       autofocus: false,
       decoration: InputDecoration(
         border: InputBorder.none,
@@ -107,7 +107,8 @@ Widget forgotPasswordUserInputField(BuildContext context) {
   );
 }
 
-Widget forgotPasswordSend(BuildContext context) {
+bool isSent = false;
+Widget forgotPasswordSend(BuildContext context, State state) {
   return Center(
     child: Container(
       height: getDimension(context, true,
@@ -124,7 +125,18 @@ Widget forgotPasswordSend(BuildContext context) {
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            FirebaseAccounts().sendPasswordReset(context, userEmail);
+            formKey.currentState.save();
+            firebaseAccounts
+                .sendPasswordReset(context, userEmail)
+                .then((_isSent) => {
+                      if (_isSent)
+                        {
+                          state.setState(() {
+                            isSent = true;
+                          })
+                        }
+                    });
+            formKey.currentState.reset();
           },
           child: Container(
             child: Center(
@@ -146,32 +158,41 @@ Widget forgotPasswordSend(BuildContext context) {
 }
 
 Widget forgotPasswordResend(BuildContext context) {
-  return GestureDetector(
-    onTap: () {
-      FirebaseAccounts().sendPasswordReset(context, userEmail);
-    },
-    child: RichText(
-      text: TextSpan(
-        text: getTranslated(context, "forgotPasswordResendPrimary"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordResendPrimary,
-          fontSize: Theme.of(context).textTheme.forgotPasswordResendPrimary,
-          fontWeight: Theme.of(context).typography.forgotPasswordResendPrimary,
-        ),
-        children: <TextSpan>[
-          TextSpan(
-            text: getTranslated(context, "forgotPasswordResendSecondary"),
-            style: TextStyle(
-              color:
-                  Theme.of(context).colorScheme.forgotPasswordResendSecondary,
-              fontSize:
-                  Theme.of(context).textTheme.forgotPasswordResendSecondary,
-              fontWeight:
-                  Theme.of(context).typography.forgotPasswordResendSecondary,
+  return isSent
+      ? GestureDetector(
+          onTap: () {
+            formKey.currentState.save();
+            firebaseAccounts.sendPasswordReset(context, userEmail);
+          },
+          child: RichText(
+            text: TextSpan(
+              text: getTranslated(context, "forgotPasswordResendPrimary"),
+              style: TextStyle(
+                color:
+                    Theme.of(context).colorScheme.forgotPasswordResendPrimary,
+                fontSize:
+                    Theme.of(context).textTheme.forgotPasswordResendPrimary,
+                fontWeight:
+                    Theme.of(context).typography.forgotPasswordResendPrimary,
+              ),
+              children: <TextSpan>[
+                TextSpan(
+                  text: getTranslated(context, "forgotPasswordResendSecondary"),
+                  style: TextStyle(
+                    color: Theme.of(context)
+                        .colorScheme
+                        .forgotPasswordResendSecondary,
+                    fontSize: Theme.of(context)
+                        .textTheme
+                        .forgotPasswordResendSecondary,
+                    fontWeight: Theme.of(context)
+                        .typography
+                        .forgotPasswordResendSecondary,
+                  ),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
-    ),
-  );
+        )
+      : Container();
 }

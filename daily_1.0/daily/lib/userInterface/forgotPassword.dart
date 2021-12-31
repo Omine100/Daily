@@ -4,6 +4,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/userInterface/forgotPasswordComponents.dart';
+import 'package:provider/provider.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   @override
@@ -11,8 +12,6 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
-  bool isSent = false;
-
   forgotPasswordScreenDesktop() {
     return Stack(alignment: Alignment.center, children: [
       Positioned(
@@ -47,12 +46,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordDesktopSendTop),
-        child: GestureDetector(
-          onTap: () {
-            isSent = true;
-          },
-          child: forgotPasswordSend(context),
-        ),
+        child: forgotPasswordSend(context, this),
       ),
       Positioned(
         top: getPosition(
@@ -61,7 +55,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordDesktopResendTop),
-        child: isSent ? forgotPasswordResend(context) : Container(),
+        child: forgotPasswordResend(context),
       )
     ]);
   }
@@ -100,12 +94,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordTabletSendTop),
-        child: GestureDetector(
-          onTap: () {
-            isSent = true;
-          },
-          child: forgotPasswordSend(context),
-        ),
+        child: forgotPasswordSend(context, this),
       ),
       Positioned(
         top: getPosition(
@@ -114,7 +103,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordTabletResendTop),
-        child: isSent ? forgotPasswordResend(context) : Container(),
+        child: forgotPasswordResend(context),
       )
     ]);
   }
@@ -153,12 +142,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordMobileSendTop),
-        child: GestureDetector(
-          onTap: () {
-            isSent = true;
-          },
-          child: forgotPasswordSend(context),
-        ),
+        child: forgotPasswordSend(context, this),
       ),
       Positioned(
         top: getPosition(
@@ -167,7 +151,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordMobileResendTop),
-        child: isSent ? forgotPasswordResend(context) : Container(),
+        child: forgotPasswordResend(context),
       )
     ]);
   }
@@ -182,8 +166,18 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             child: Container(
                 constraints: BoxConstraints(
                     maxHeight: textFieldFocus.hasFocus
-                        ? MediaQuery.of(context).size.height * 1.1
-                        : MediaQuery.of(context).size.height),
+                        ? getDimension(
+                            context,
+                            true,
+                            Theme.of(context)
+                                .visualDensity
+                                .forgotPasswordBoxConstraintFocused)
+                        : getDimension(
+                            context,
+                            true,
+                            Theme.of(context)
+                                .visualDensity
+                                .forgotPasswordBoxConstraintUnfocused)),
                 child: Responsive(
                   desktop: forgotPasswordScreenDesktop(),
                   tablet: forgotPasswordScreenTablet(),

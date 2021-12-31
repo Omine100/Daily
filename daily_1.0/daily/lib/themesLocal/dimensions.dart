@@ -19,6 +19,8 @@ extension CustomDimensions on VisualDensity {
 
   // #region auth
   double get authTitleWidth => 1.0;
+  double get authBoxConstraintFocused => 1.2;
+  double get authBoxConstraintUnfocused => 1.0;
   double get authCenterPieceHeight => 0.42;
   double get authUserInputFieldHeight => 0.07;
   double get authUserInputFieldWidth => 0.875;
@@ -28,6 +30,8 @@ extension CustomDimensions on VisualDensity {
 
   // #region forgotPassword
   double get forgotPasswordTitleWidth => 1.0;
+  double get forgotPasswordBoxConstraintFocused => 1.1;
+  double get forgotPasswordBoxConstraintUnfocused => 1.0;
   double get forgotPasswordCenterPieceHeight => 0.6;
   double get forgotPasswordCenterPieceWidth => 0.6;
   double get forgotPasswordUserInputFieldHeight => 0.07;

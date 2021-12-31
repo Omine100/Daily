@@ -16,7 +16,7 @@ class UserIStandards {
   MediaManagement mediaManagement = new MediaManagement();
   RouteNavigation routeNavigation = new RouteNavigation();
 
-  Future<File> mediaSelectionDialog(BuildContext context, State state) {
+  Future<File> showMediaSelection(BuildContext context, State state) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -77,7 +77,7 @@ class UserIStandards {
       color: Theme.of(context).colorScheme.materialTransparent,
       child: IconButton(
         onPressed: () {
-          mediaManagement.shareImage(imageURL);
+          mediaManagement.shareImage(context, imageURL);
         },
         iconSize:
             Theme.of(context).materialTapTargetSize.userIStandardsShareButton,
@@ -90,10 +90,8 @@ class UserIStandards {
   }
 
   Widget showSocialButton(BuildContext context, int iconCase) {
-    //VARIABLE INITIALIZATION
     bool isNewUser;
 
-    //USER INTERFACE: Show social icon button
     return new GestureDetector(
       onTap: () {
         firebaseAccounts.signInGoogle().then((_isNewUser) => isNewUser);
@@ -129,51 +127,5 @@ class UserIStandards {
       backgroundColor:
           Theme.of(context).colorScheme.userIStandardsToastMessageBackground,
     ));
-  }
-
-  Widget showTextField(BuildContext context, int keyboardType, bool isVisible,
-      String key, Function onSaved, IconButton iconButton) {
-    return TextFormField(
-      autofocus: false,
-      keyboardType:
-          keyboardType == 0 ? TextInputType.emailAddress : TextInputType.text,
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.userIStandardsTextInputContent,
-        fontSize: Theme.of(context).textTheme.userIStandardsTextInputContent,
-        fontWeight: Theme.of(context).typography.userIStandardsTextInputContent,
-      ),
-      decoration: InputDecoration(
-        prefixIcon: Icon(
-          key != "inputEmail"
-              ? (key == "inputPassword" ? Icons.lock : Icons.person)
-              : Icons.email,
-          color: Theme.of(context).colorScheme.userIStandardsTextInputIcon,
-        ),
-        suffixIcon: iconButton != null ? iconButton : null,
-        hintText: getTranslated(context, key),
-        hintStyle: TextStyle(
-          color: Theme.of(context).colorScheme.userIStandardsTextInputContent,
-        ),
-        labelStyle: TextStyle(
-          color: Theme.of(context).colorScheme.userIStandardsTextInputContent,
-        ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.userIStandardsTextInputLine,
-          ),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.userIStandardsTextInputContent,
-          ),
-        ),
-      ),
-      obscureText: !isVisible,
-      maxLines: 1,
-      validator: (value) => value.isEmpty
-          ? ("$key " + getTranslated(context, "inputValidator"))
-          : null,
-      onSaved: onSaved,
-    );
   }
 }

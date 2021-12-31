@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/authComponents.dart';
 import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/positions.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -192,8 +193,18 @@ class _AuthScreenState extends State<AuthScreen> {
             child: Container(
                 constraints: BoxConstraints(
                     maxHeight: textFieldFocus.hasFocus
-                        ? MediaQuery.of(context).size.height * 1.2
-                        : MediaQuery.of(context).size.height),
+                        ? getDimension(
+                            context,
+                            true,
+                            Theme.of(context)
+                                .visualDensity
+                                .authBoxConstraintFocused)
+                        : getDimension(
+                            context,
+                            true,
+                            Theme.of(context)
+                                .visualDensity
+                                .authBoxConstraintUnfocused)),
                 child: Responsive(
                   desktop: authScreenDesktop(),
                   tablet: authScreenTablet(),

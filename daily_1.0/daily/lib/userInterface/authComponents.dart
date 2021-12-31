@@ -8,6 +8,9 @@ import 'package:daily/themesLocal/fontProperties.dart';
 import 'package:daily/userInterface/home.dart';
 import 'package:daily/userInterface/forgotPassword.dart';
 
+FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+RouteNavigation routeNavigation = new RouteNavigation();
+
 Widget authTitle(BuildContext context) {
   return Container(
     padding: EdgeInsets.only(left: 20),
@@ -54,9 +57,7 @@ Widget authUserInput(BuildContext context, bool isSignIn) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         isSignIn
-            ? Container(
-                height: 0,
-              )
+            ? Container()
             : authUserInputField(
                 context, (name) => {userName = name}, "authFormName", false),
         authUserInputField(
@@ -221,14 +222,17 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
 
 void authValidateSubmit(BuildContext context, bool isSignIn) async {
   formKey.currentState.save();
+  bool complete = false;
   if (isSignIn)
-    await FirebaseAccounts()
-        .signInEmailAndPassword(context, userEmail, userPass);
+    firebaseAccounts
+        .signInEmailAndPassword(context, userEmail, userPass)
+        .then((isSignedIn) => complete = isSignedIn);
   else
-    await FirebaseAccounts()
-        .signUpEmailAndPassword(context, userEmail, userPass, userName);
-  if (FirebaseAccounts().getSignedInStatus())
-    RouteNavigation().routeBase(context, HomeScreen());
+    firebaseAccounts
+        .signUpEmailAndPassword(context, userEmail, userPass, userName)
+        .then((isSignedUp) => complete = isSignedUp);
+  if (complete)
+    routeNavigation.routeBase(context, HomeScreen());
   else
     formKey.currentState.reset();
 }

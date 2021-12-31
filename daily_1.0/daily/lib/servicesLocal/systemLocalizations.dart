@@ -10,15 +10,11 @@ class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  //VARIABLE REFERENCE
   final Locale locale;
-
-  //VARIABLE INITIALIZATION
   static const LocalizationsDelegate<AppLocalizations> delegate =
       _AppLocalizationsDelegate();
   Map<String, String> _localizedStrings;
 
-  //MECHANICS
   Future load() async {
     String jsonString = await rootBundle
         .loadString('lib/localizations/${locale.languageCode}.json');
@@ -35,10 +31,8 @@ class AppLocalizations {
 
 class _AppLocalizationsDelegate
     extends LocalizationsDelegate<AppLocalizations> {
-  //VARIABLE INITIALIZATION
   const _AppLocalizationsDelegate();
 
-  //MECHANICS
   @override
   bool isSupported(Locale locale) {
     return ['en', 'es', 'fr'].contains(locale.languageCode);

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:path/path.dart' as path;
 import 'package:http/http.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share/share.dart';
 import 'package:picker/picker.dart';
 import 'dart:io';
 import 'package:daily/servicesBroad/firebaseCRUD.dart';
+import 'package:daily/standards/userIStandards.dart';
 
 class MediaManagement {
   //CLASS INITIALIZATION
@@ -19,11 +19,9 @@ class MediaManagement {
       final pickedFile = await Picker.pickImage(
           source: isCamera ? ImageSource.camera : ImageSource.gallery,
           imageQuality: 100);
-      final String fileName = path.basename(pickedFile.path);
       return File(pickedFile.path);
     } catch (e) {
-      print(e);
-      //Show dialog for failed to load camera
+      UserIStandards().showToastMessage(context, "errorImage");
     }
     return null;
   }
@@ -39,15 +37,14 @@ class MediaManagement {
     return imageFile;
   }
 
-  Future<void> shareImage(String imageURL) async {
+  Future<void> shareImage(BuildContext context, String imageURL) async {
     File imageFile;
     try {
       imageFile = await getImage(imageURL);
       Share.shareFile(imageFile,
           subject: "Thought you might like!", text: "What do you think?");
     } catch (e) {
-      print(e);
-      //Show dialog for failed to save and share image
+      UserIStandards().showToastMessage(context, "errorShare");
     }
   }
 }

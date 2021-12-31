@@ -1,17 +1,17 @@
-import 'package:daily/servicesLocal/mediaManagement.dart';
-import 'package:daily/standards/userIStandards.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
+import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 import 'package:daily/userInterface/welcome.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+UserIStandards userIStandards = new UserIStandards();
 
 Widget settingsTitle(BuildContext context) {
   return Container(
@@ -42,7 +42,7 @@ Widget settingsProfile(BuildContext context, State state) {
               GestureDetector(
                 onTap: () {
                   // Need to figure out how we want to get the image to save/display
-                  MediaManagement().imagePicker(context, true, state);
+                  userIStandards.showMediaSelection(context, state);
                 },
                 child: Container(
                   height: 75,
@@ -235,7 +235,7 @@ Widget settingsResetPassword(BuildContext context) {
     onTap: () {
       firebaseAccounts.sendPasswordReset(
           context, firebaseAccounts.getCurrentUserEmail());
-      UserIStandards().showToastMessage(context, "settingsResetPasswordSent");
+      userIStandards.showToastMessage(context, "settingsResetPasswordSent");
     },
     child: Row(
       mainAxisSize: MainAxisSize.max,
