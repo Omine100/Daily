@@ -48,9 +48,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
       child: Scaffold(
         body: Container(
+          color: Colors.white,
           constraints: BoxConstraints.expand(height: double.maxFinite),
           child: Responsive(
             desktop: homeScreenDesktop(),

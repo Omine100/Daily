@@ -81,12 +81,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Theme.of(context).colorScheme.settingsBackground,
       child: Scaffold(
         body: Container(
             constraints: BoxConstraints.expand(
               height: double.maxFinite,
             ),
+            color: Theme.of(context).colorScheme.settingsBackground,
             child: Responsive(
               desktop: settingsScreenDesktop(),
               tablet: settingsScreenTablet(),

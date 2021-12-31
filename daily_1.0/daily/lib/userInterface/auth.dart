@@ -187,30 +187,30 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     FocusNode textFieldFocus = new FocusNode();
     return Material(
-        color: Theme.of(context).colorScheme.welcomeBackground,
         child: Scaffold(
-          body: SingleChildScrollView(
-            child: Container(
-                constraints: BoxConstraints(
-                    maxHeight: textFieldFocus.hasFocus
-                        ? getDimension(
-                            context,
-                            true,
-                            Theme.of(context)
-                                .visualDensity
-                                .authBoxConstraintFocused)
-                        : getDimension(
-                            context,
-                            true,
-                            Theme.of(context)
-                                .visualDensity
-                                .authBoxConstraintUnfocused)),
-                child: Responsive(
-                  desktop: authScreenDesktop(),
-                  tablet: authScreenTablet(),
-                  mobile: authScreenMobile(),
-                )),
-          ),
-        ));
+      body: SingleChildScrollView(
+        child: Container(
+            color: Theme.of(context).colorScheme.authBackground,
+            constraints: BoxConstraints(
+                maxHeight: textFieldFocus.hasFocus
+                    ? getDimension(
+                        context,
+                        true,
+                        Theme.of(context)
+                            .visualDensity
+                            .authBoxConstraintFocused)
+                    : getDimension(
+                        context,
+                        true,
+                        Theme.of(context)
+                            .visualDensity
+                            .authBoxConstraintUnfocused)),
+            child: Responsive(
+              desktop: authScreenDesktop(),
+              tablet: authScreenTablet(),
+              mobile: authScreenMobile(),
+            )),
+      ),
+    ));
   }
 }

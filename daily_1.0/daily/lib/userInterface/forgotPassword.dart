@@ -166,30 +166,30 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Widget build(BuildContext context) {
     FocusNode textFieldFocus = new FocusNode();
     return Material(
-        color: Theme.of(context).colorScheme.forgotPasswordBackground,
         child: Scaffold(
-          body: SingleChildScrollView(
-            child: Container(
-                constraints: BoxConstraints(
-                    maxHeight: textFieldFocus.hasFocus
-                        ? getDimension(
-                            context,
-                            true,
-                            Theme.of(context)
-                                .visualDensity
-                                .forgotPasswordBoxConstraintFocused)
-                        : getDimension(
-                            context,
-                            true,
-                            Theme.of(context)
-                                .visualDensity
-                                .forgotPasswordBoxConstraintUnfocused)),
-                child: Responsive(
-                  desktop: forgotPasswordScreenDesktop(),
-                  tablet: forgotPasswordScreenTablet(),
-                  mobile: forgotPasswordScreenMobile(),
-                )),
-          ),
-        ));
+      body: SingleChildScrollView(
+        child: Container(
+            color: Theme.of(context).colorScheme.forgotPasswordBackground,
+            constraints: BoxConstraints(
+                maxHeight: textFieldFocus.hasFocus
+                    ? getDimension(
+                        context,
+                        true,
+                        Theme.of(context)
+                            .visualDensity
+                            .forgotPasswordBoxConstraintFocused)
+                    : getDimension(
+                        context,
+                        true,
+                        Theme.of(context)
+                            .visualDensity
+                            .forgotPasswordBoxConstraintUnfocused)),
+            child: Responsive(
+              desktop: forgotPasswordScreenDesktop(),
+              tablet: forgotPasswordScreenTablet(),
+              mobile: forgotPasswordScreenMobile(),
+            )),
+      ),
+    ));
   }
 }

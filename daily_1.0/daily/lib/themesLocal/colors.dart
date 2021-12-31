@@ -103,7 +103,7 @@ extension CustomColorScheme on ColorScheme {
   // #endregion
 
   // #region settings
-  Color get settingsBackground => Color(isDark.value ? 0xFFFBFAF5 : 0xFFFBFAF5);
+  Color get settingsBackground => Color(isDark.value ? 0xFF000000 : 0xFFFBFAF5);
   Color get settingsTitle => Color(isDark.value ? 0xFF333333 : 0xFF333333);
   Color get settingsProfileName =>
       Color(isDark.value ? 0xFF444444 : 0xFF444444);
