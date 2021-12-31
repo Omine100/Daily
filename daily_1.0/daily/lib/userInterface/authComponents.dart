@@ -11,36 +11,6 @@ import 'package:daily/userInterface/forgotPassword.dart';
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();
 
-Widget authTitle(BuildContext context) {
-  return Container(
-    padding: EdgeInsets.only(left: 20),
-    width: getDimension(
-        context, false, Theme.of(context).visualDensity.authTitleWidth),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          getTranslated(context, "authTitle"),
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.authTitle,
-            fontSize: Theme.of(context).textTheme.authTitle,
-            fontWeight: Theme.of(context).typography.authTitle,
-          ),
-        ),
-        Text(
-          getTranslated(context, "authSubtitle"),
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.authSubtitle,
-            fontSize: Theme.of(context).textTheme.authSubtitle,
-            fontWeight: Theme.of(context).typography.authSubtitle,
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
 Widget authCenterPiece(BuildContext context, State state) {
   return Container(
       height: getDimension(
