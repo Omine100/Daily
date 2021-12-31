@@ -46,18 +46,23 @@ class _DailyState extends State<Daily> {
   }
 
   @override
+  void didChangeDependencies() {
+    getLocale().then((_locale) {
+      setState(() {
+        this.stateLocale = _locale;
+      });
+    });
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Daily",
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       home: routeNavigation.routeInitial(context, isSignedIn),
-      locale: locale.value != null
-          ? locale.value.runtimeType == Locale
-              ? locale.value
-              : Locale(
-                  locale.value.split("_").first, locale.value.split("_").last)
-          : locale.defaultValue,
+      locale: stateLocale,
       supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
       localizationsDelegates: [
         AppLocalizations.delegate,

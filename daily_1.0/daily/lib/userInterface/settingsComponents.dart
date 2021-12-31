@@ -224,6 +224,7 @@ Widget settingDropDown(BuildContext context, Setting setting, State state) {
     onChanged: (value) {
       state.setState(() {
         setting.value = value;
+        setLanguage(context, value);
       });
     },
   );
