@@ -3,7 +3,7 @@ import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
 
 Setting locale = new Setting(
-    key: "locale",
+    key: "settingLocale",
     value: null,
     group: Group.Account,
     format: Format.DropDown,
@@ -12,29 +12,28 @@ Setting locale = new Setting(
     items: getDropdownMenuList(),
     onChanged: setLanguage);
 Setting notifications = new Setting(
-  key: "notification",
-  value: false,
-  group: Group.General,
-  format: Format.Switch,
-  isSignInRequired: false,
-  defaultValue: false,
-);
+    key: "settingNotifications",
+    value: false,
+    group: Group.General,
+    format: Format.Switch,
+    isSignInRequired: false,
+    defaultValue: false);
 Setting isDark = new Setting(
-    key: "isDark",
+    key: "settingIsDark",
     value: false,
     group: Group.General,
     format: Format.Switch,
     isSignInRequired: false,
     defaultValue: false);
 Setting isAndroid = new Setting(
-    key: "isAndroid",
+    key: "settingIsAndroid",
     value: true,
     group: Group.Hidden,
     format: Format.Switch,
     isSignInRequired: false,
     defaultValue: true);
 Setting profileURL = new Setting(
-    key: "profileURL",
+    key: "settingProfileURL",
     value: "",
     group: Group.Hidden,
     format: Format.NoUserInput,

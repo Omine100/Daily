@@ -189,7 +189,7 @@ Row settingRow(BuildContext context, Setting setting, State state) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      Text(setting.key,
+      Text(getTranslated(context, setting.key),
           style: TextStyle(
             color: Theme.of(context).colorScheme.settingsRowText,
             fontSize: Theme.of(context).textTheme.settingsRowText,

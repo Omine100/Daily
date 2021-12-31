@@ -40,8 +40,8 @@ extension CustomFontSize on TextTheme {
   double get settingsProfileName => 22;
   double get settingsProfileEmail => 18;
   double get settingsGroupTitle => 22;
-  double get settingsRowText => 16;
-  double get settingsSignOut => 16;
+  double get settingsRowText => 18;
+  double get settingsSignOut => 18;
   // #endregion
 }
 
