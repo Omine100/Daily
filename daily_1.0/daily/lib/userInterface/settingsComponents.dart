@@ -49,7 +49,8 @@ Widget settingsProfile(BuildContext context, State state) {
                   width: 75,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(90),
-                    color: Colors.grey.shade400,
+                    color:
+                        Theme.of(context).colorScheme.settingsProfileBackground,
                   ),
                   child: profileURL.value == ""
                       ? Icon(
@@ -179,7 +180,7 @@ Row settingRow(BuildContext context, Setting setting, State state) {
         return settingSwitch(context, setting, state);
         break;
       case Format.DropDown:
-        return settingDropDown(context, setting, state);
+        return settingDropdown(context, setting, state);
         break;
       default:
         return Row();
@@ -211,18 +212,19 @@ Widget settingSwitch(BuildContext context, Setting setting, State state) {
       });
     },
     activeColor: Theme.of(context).colorScheme.settingSwitchActiveThumb,
-    activeTrackColor: Theme.of(context).colorScheme.settingSwtichActiveTrack,
+    activeTrackColor: Theme.of(context).colorScheme.settingSwitchActiveTrack,
     inactiveThumbColor:
         Theme.of(context).colorScheme.settingSwitchInactiveThumb,
     inactiveTrackColor:
-        Theme.of(context).colorScheme.settingSwtichInactiveTrack,
+        Theme.of(context).colorScheme.settingSwitchInactiveTrack,
   );
 }
 
-Widget settingDropDown(BuildContext context, Setting setting, State state) {
+Widget settingDropdown(BuildContext context, Setting setting, State state) {
   return DropdownButton(
     items: setting.items,
     value: setting.value,
+    style: TextStyle(color: Theme.of(context).colorScheme.settingDropdownText),
     onChanged: (value) {
       state.setState(() {
         setting.value = value;

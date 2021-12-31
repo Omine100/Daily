@@ -103,6 +103,8 @@ extension CustomColorScheme on ColorScheme {
   // #region settings
   Color get settingsBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get settingsTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get settingsProfileBackground =>
+      Color(isDark.value ? 0xFF666666 : 0xFF999999);
   Color get settingsProfileName =>
       Color(isDark.value ? 0xFFAAAAAA : 0xFF444444);
   Color get settingsProfileEmail =>
@@ -112,12 +114,14 @@ extension CustomColorScheme on ColorScheme {
   Color get settingsRowText => Color(isDark.value ? 0xFF888888 : 0xFF555555);
   Color get settingSwitchActiveThumb =>
       Color(isDark.value ? 0xFFFF4350 : 0xFFFF4350);
-  Color get settingSwtichActiveTrack =>
+  Color get settingSwitchActiveTrack =>
       Color(isDark.value ? 0xFFFF4350 : 0xFFFF8390);
   Color get settingSwitchInactiveThumb =>
       Color(isDark.value ? 0xFF939393 : 0xFF939393);
-  Color get settingSwtichInactiveTrack =>
+  Color get settingSwitchInactiveTrack =>
       Color(isDark.value ? 0xFFD3D3D3 : 0xFFD3D3D3);
+  Color get settingDropdownText =>
+      Color(isDark.value ? 0xFFBBBBBB : 0xFF555555);
   Color get settingsSignOut => Color(isDark.value ? 0xFFFF4350 : 0xFFFF4350);
   // #endregion
 }
