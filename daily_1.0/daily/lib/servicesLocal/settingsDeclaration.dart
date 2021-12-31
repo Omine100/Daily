@@ -18,7 +18,7 @@ Setting languageCode = new Setting(
     format: Format.DropDown,
     isSignInRequired: false,
     defaultValue: "en",
-    items: getLanguageList());
+    items: getDropdownMenuList());
 Setting notifications = new Setting(
   key: "notification",
   value: false,

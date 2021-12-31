@@ -21,12 +21,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
       Positioned(
         top: getPosition(context, true,
             Theme.of(context).materialTapTargetSize.settingsDesktopProfileTop),
-        child: settingsProfile(context),
+        child: settingsProfile(context, this),
       ),
       Positioned(
         top: getPosition(context, true,
             Theme.of(context).materialTapTargetSize.settingsDesktopCardTop),
-        child: settingsCard(context),
+        child: settingsCard(context, this),
       ),
     ]);
   }
@@ -41,12 +41,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
       Positioned(
         top: getPosition(context, true,
             Theme.of(context).materialTapTargetSize.settingsTabletProfileTop),
-        child: settingsProfile(context),
+        child: settingsProfile(context, this),
       ),
       Positioned(
         top: getPosition(context, true,
             Theme.of(context).materialTapTargetSize.settingsTabletCardTop),
-        child: settingsCard(context),
+        child: settingsCard(context, this),
       ),
     ]);
   }
@@ -60,12 +60,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
       Positioned(
         top: getPosition(context, true,
             Theme.of(context).materialTapTargetSize.settingsMobileProfileTop),
-        child: settingsProfile(context),
+        child: settingsProfile(context, this),
       ),
       Positioned(
         top: getPosition(context, true,
             Theme.of(context).materialTapTargetSize.settingsMobileCardTop),
-        child: settingsCard(context),
+        child: settingsCard(context, this),
       ),
     ]);
   }

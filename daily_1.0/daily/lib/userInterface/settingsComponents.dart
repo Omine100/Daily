@@ -1,3 +1,5 @@
+import 'package:daily/servicesLocal/mediaManagement.dart';
+import 'package:daily/standards/userIStandards.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
@@ -27,7 +29,7 @@ Widget settingsTitle(BuildContext context) {
   );
 }
 
-Widget settingsProfile(BuildContext context) {
+Widget settingsProfile(BuildContext context, State state) {
   return firebaseAccounts.getSignedInStatus()
       ? Container(
           width: MediaQuery.of(context).size.width,
@@ -39,7 +41,8 @@ Widget settingsProfile(BuildContext context) {
               ),
               GestureDetector(
                 onTap: () {
-                  //Profile image change
+                  // Need to figure out how we want to get the image to save/display
+                  MediaManagement().imagePicker(context, true, state);
                 },
                 child: Container(
                   height: 75,
@@ -97,7 +100,7 @@ Widget settingsProfile(BuildContext context) {
       : Container();
 }
 
-Container settingsCard(BuildContext context) {
+Container settingsCard(BuildContext context, State state) {
   return Container(
     padding: EdgeInsets.only(left: 15, right: 15),
     height: MediaQuery.of(context).size.height,
@@ -119,13 +122,13 @@ Container settingsCard(BuildContext context) {
                 ),
                 child: Padding(
                     padding: EdgeInsets.only(left: 15, right: 15, top: 25),
-                    child: settingsBreakdown(context))),
+                    child: settingsBreakdown(context, state))),
           );
         }),
   );
 }
 
-Column settingsBreakdown(BuildContext context) {
+Column settingsBreakdown(BuildContext context, State state) {
   Map<Group, Column> settings = new Map<Group, Column>();
 
   settingsList.forEach((setting) {
@@ -139,7 +142,7 @@ Column settingsBreakdown(BuildContext context) {
       settings[setting.group].children.add(settingsGroupTitle(
           context, setting.group.toString().split("Group.").last));
     }
-    settings[setting.group].children.add(settingRow(context, setting));
+    settings[setting.group].children.add(settingRow(context, setting, state));
   });
   settings[Group.Account].children.add(settingsResetPassword(context));
 
@@ -169,11 +172,14 @@ Row settingsGroupTitle(BuildContext context, String key) {
   );
 }
 
-Row settingRow(BuildContext context, Setting setting) {
+Row settingRow(BuildContext context, Setting setting, State state) {
   Widget formPick() {
     switch (setting.format) {
       case Format.Switch:
-        return settingSwitch(context, setting.value);
+        return settingSwitch(context, setting, state);
+        break;
+      case Format.DropDown:
+        return settingDropDown(context, setting, state);
         break;
       default:
         return Row();
@@ -194,10 +200,14 @@ Row settingRow(BuildContext context, Setting setting) {
   );
 }
 
-Widget settingSwitch(BuildContext context, bool value) {
+Widget settingSwitch(BuildContext context, Setting setting, State state) {
   return Switch(
-    value: value,
-    onChanged: (_value) => value,
+    value: setting.value,
+    onChanged: (value) {
+      state.setState(() {
+        setting.value = value;
+      });
+    },
     activeColor: Theme.of(context).colorScheme.settingSwitchActiveThumb,
     activeTrackColor: Theme.of(context).colorScheme.settingSwtichActiveTrack,
     inactiveThumbColor:
@@ -207,11 +217,15 @@ Widget settingSwitch(BuildContext context, bool value) {
   );
 }
 
-Widget settingDropDown(dynamic value, List<dynamic> items) {
+Widget settingDropDown(BuildContext context, Setting setting, State state) {
   return DropdownButton(
-    items: items,
-    value: value,
-    onChanged: (_value) => value,
+    items: setting.items,
+    value: setting.value,
+    onChanged: (value) {
+      state.setState(() {
+        setting.value = value;
+      });
+    },
   );
 }
 
@@ -220,6 +234,7 @@ Widget settingsResetPassword(BuildContext context) {
     onTap: () {
       firebaseAccounts.sendPasswordReset(
           context, firebaseAccounts.getCurrentUserEmail());
+      UserIStandards().showToastMessage(context, "settingsResetPasswordSent");
     },
     child: Row(
       mainAxisSize: MainAxisSize.max,

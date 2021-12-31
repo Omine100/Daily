@@ -39,5 +39,6 @@
     "forgotPasswordResendSecondary": "Resend!",
     "settingsTitle": "Settings",
     "settingsResetPassword": "Reset password",
+    "settingsResetPasswordSent": "Email has been sent",
     "settingsSignOut": "SIGN OUT"
 }

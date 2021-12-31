@@ -39,5 +39,6 @@
     "forgotPasswordResendSecondary": "¡Reenviar!",
     "settingsTitle": "Ajustes",
     "settingsResetPassword": "Restablecer la contraseña",
+    "settingsResetPasswordSent": "E-mail ha sido enviado",
     "settingsSignOut": "DESCONECTAR"
 }
