@@ -34,7 +34,7 @@ Setting isAndroid = new Setting(
     defaultValue: true);
 Setting profileURL = new Setting(
     key: "settingProfileURL",
-    value: "",
+    value: null,
     group: Group.Hidden,
     format: Format.NoUserInput,
     isSignInRequired: true,
