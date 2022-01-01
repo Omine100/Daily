@@ -225,6 +225,7 @@ Widget settingDropdown(BuildContext context, Setting setting, State state) {
     items: setting.items,
     value: setting.value,
     style: TextStyle(color: Theme.of(context).colorScheme.settingDropdownText),
+    dropdownColor: Theme.of(context).colorScheme.settingDropdownBackground,
     onChanged: (value) {
       state.setState(() {
         setting.value = value;

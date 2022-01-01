@@ -62,6 +62,8 @@ extension CustomColorScheme on ColorScheme {
   // #region auth
   Color get authBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get authUserInputField => Color(isDark.value ? 0xFF333333 : 0xFFEEEEEE);
+  Color get authUserInputFieldText =>
+      Color(isDark.value ? 0xFFFFFFFF : 0xFF000000);
   Color get authUserInputFieldDecoration =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
   Color get authUserInputFieldIconDecoration =>
@@ -85,6 +87,8 @@ extension CustomColorScheme on ColorScheme {
       Color(isDark.value ? 0xFF999999 : 0xFF999999);
   Color get forgotPasswordUserInputField =>
       Color(isDark.value ? 0xFF333333 : 0xFFEEEEEE);
+  Color get forgotPasswordUserInputFieldText =>
+      Color(isDark.value ? 0xFFFFFFFF : 0xFF000000);
   Color get forgotPasswordUserInputFieldDecoration =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
   Color get forgotPasswordUserInputFieldIconDecoration =>
@@ -120,6 +124,8 @@ extension CustomColorScheme on ColorScheme {
       Color(isDark.value ? 0xFF939393 : 0xFF939393);
   Color get settingSwitchInactiveTrack =>
       Color(isDark.value ? 0xFFD3D3D3 : 0xFFD3D3D3);
+  Color get settingDropdownBackground =>
+      Color(isDark.value ? 0xFF666666 : 0xFFFFFFFF);
   Color get settingDropdownText =>
       Color(isDark.value ? 0xFFBBBBBB : 0xFF555555);
   Color get settingsSignOut => Color(isDark.value ? 0xFFFF4350 : 0xFFFF4350);

@@ -71,6 +71,9 @@ Widget forgotPasswordUserInputField(BuildContext context) {
       obscureText: false,
       onSaved: (email) => userEmail = email,
       autofocus: false,
+      style: TextStyle(
+          color:
+              Theme.of(context).colorScheme.forgotPasswordUserInputFieldText),
       decoration: InputDecoration(
         border: InputBorder.none,
         hintText: getTranslated(context, "forgotPasswordFormEmail"),
