@@ -2,7 +2,6 @@ import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
-import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/userInterface/settingsComponents.dart';

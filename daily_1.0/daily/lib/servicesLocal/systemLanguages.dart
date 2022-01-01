@@ -4,9 +4,15 @@ import 'package:daily/main.dart';
 
 List<Languages> getLanguageList() {
   return <Languages>[
-    Languages("🇺🇸", "English", "en"),
-    Languages("🇪🇸", "Español", "es"),
-    Languages("🇫🇷", "Français", "fr"),
+    Languages("Chinese", "zh"),
+    Languages("English", "en"),
+    Languages("Español", "es"),
+    Languages("Finnish", "fi"),
+    Languages("Français", "fr"),
+    Languages("German", "de"),
+    Languages("Italian", "it"),
+    Languages("Polish", "nl"),
+    Languages("Russian", "ru"),
   ];
 }
 
@@ -30,9 +36,8 @@ List<DropdownMenuItem> getDropdownMenuList() {
 }
 
 class Languages {
-  Languages(this.name, this.flag, this.language);
+  Languages(this.flag, this.language);
 
-  final String name;
   final String flag;
   final String language;
 }

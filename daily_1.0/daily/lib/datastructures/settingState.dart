@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-enum Group { Account, General, Privacy, Hidden }
+enum Group {
+  settingGroupAccount,
+  settingGroupGeneral,
+  settingGroupPrivacy,
+  settingGroupHidden
+}
 enum Format { DropDown, Switch, DateSelector, NoUserInput }
 
 class Setting {

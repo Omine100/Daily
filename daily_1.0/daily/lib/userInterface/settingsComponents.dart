@@ -133,7 +133,7 @@ Column settingsBreakdown(BuildContext context, State state) {
   Map<Group, Column> settings = new Map<Group, Column>();
 
   settingsList.forEach((setting) {
-    if (setting.group == Group.Hidden) return;
+    if (setting.group == Group.settingGroupHidden) return;
     if (setting.isSignInRequired && firebaseAccounts.getSignedInStatus())
       return;
     if (settings[setting.group] == null) {
@@ -145,7 +145,9 @@ Column settingsBreakdown(BuildContext context, State state) {
     }
     settings[setting.group].children.add(settingRow(context, setting, state));
   });
-  settings[Group.Account].children.add(settingsResetPassword(context));
+  settings[Group.settingGroupAccount]
+      .children
+      .add(settingsResetPassword(context));
 
   Column column = new Column(children: []);
   settings.entries.forEach((element) {
@@ -162,7 +164,7 @@ Row settingsGroupTitle(BuildContext context, String key) {
   return Row(
     children: [
       Text(
-        key,
+        getTranslated(context, key),
         style: TextStyle(
           color: Theme.of(context).colorScheme.settingsGroupTitle,
           fontSize: Theme.of(context).textTheme.settingsGroupTitle,

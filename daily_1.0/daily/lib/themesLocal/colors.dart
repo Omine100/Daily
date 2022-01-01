@@ -47,12 +47,12 @@ extension CustomColorScheme on ColorScheme {
   Color get welcomeCarouselCurrent =>
       Color(isDark.value ? 0xFFEF5350 : 0xFFEF5350);
   Color get welcomeCarouselNotCurrent =>
-      Color(isDark.value ? 0xFFAAAAAA : 0xFF111111);
+      Color(isDark.value ? 0xFFAAAAAA : 0xFFDDDDDD);
   Color get welcomeGetStarted => Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
   Color get welcomeGetStartedInkWell =>
       Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
   Color get welcomeGetStartedText =>
-      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+      Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get welcomeAccountAlready =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get welcomeAccountAlreadyLogin =>
@@ -63,7 +63,7 @@ extension CustomColorScheme on ColorScheme {
   Color get authBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get authUserInputField => Color(isDark.value ? 0xFF333333 : 0xFFEEEEEE);
   Color get authUserInputFieldText =>
-      Color(isDark.value ? 0xFFFFFFFF : 0xFF000000);
+      Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get authUserInputFieldDecoration =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
   Color get authUserInputFieldIconDecoration =>
@@ -88,7 +88,7 @@ extension CustomColorScheme on ColorScheme {
   Color get forgotPasswordUserInputField =>
       Color(isDark.value ? 0xFF333333 : 0xFFEEEEEE);
   Color get forgotPasswordUserInputFieldText =>
-      Color(isDark.value ? 0xFFFFFFFF : 0xFF000000);
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get forgotPasswordUserInputFieldDecoration =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
   Color get forgotPasswordUserInputFieldIconDecoration =>

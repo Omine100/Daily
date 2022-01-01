@@ -59,7 +59,7 @@ Widget authUserInputField(
         onSaved: onSaved,
         autofocus: false,
         style: TextStyle(
-            color: Theme.of(context).colorScheme.authUserInputFieldText),
+            color: Theme.of(context).colorScheme.authUserInputFieldText), 
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: getTranslated(context, authForm),

@@ -29,12 +29,6 @@ class _DailyState extends State<Daily> {
   RouteNavigation routeNavigation = new RouteNavigation();
 
   Locale stateLocale;
-  bool isSignedIn = false;
-
-  void initState() {
-    super.initState();
-    isSignedIn = firebaseAccounts.getSignedInStatus();
-  }
 
   void setLocale(String languageCode) {
     setState(() {
@@ -48,11 +42,22 @@ class _DailyState extends State<Daily> {
       title: "Daily",
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
-      home: routeNavigation.routeInitial(context, isSignedIn),
+      home: routeNavigation.routeInitial(
+          context, firebaseAccounts.getSignedInStatus()),
       locale: locale.value != null
           ? Locale(locale.value.split("_").first, locale.value.split("_").last)
           : locale.defaultValue,
-      supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
+      supportedLocales: [
+        Locale('zh'),
+        Locale('en'),
+        Locale('es'),
+        Locale('fi'),
+        Locale('fr'),
+        Locale('de'),
+        Locale('it'),
+        Locale('nl'),
+        Locale('ru'),
+      ],
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

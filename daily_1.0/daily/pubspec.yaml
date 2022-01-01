@@ -58,6 +58,12 @@ flutter:
       - lib/assets/home/home_carouselThree.png
       - lib/assets/home/home_carouselFour.png
       - lib/assets/home/home_carouselFive.png
+      - lib/localizations/zh.json
+      - lib/localizations/de.json
       - lib/localizations/en.json
       - lib/localizations/es.json
+      - lib/localizations/fi.json
       - lib/localizations/fr.json
+      - lib/localizations/it.json
+      - lib/localizations/nl.json
+      - lib/localizations/ru.json

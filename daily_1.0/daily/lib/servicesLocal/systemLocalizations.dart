@@ -1,3 +1,4 @@
+import 'package:daily/servicesLocal/systemLanguages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
@@ -35,7 +36,11 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) {
-    return ['en', 'es', 'fr'].contains(locale.languageCode);
+    List<String> languageCodes = new List<String>();
+    getLanguageList().forEach((language) {
+      languageCodes.add(language.language);
+    });
+    return languageCodes.contains(locale.languageCode);
   }
 
   @override
