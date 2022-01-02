@@ -153,20 +153,6 @@ class FirebaseAccounts {
     }
   }
 
-  Future<bool> signInGoogle() async {
-    final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
-    final GoogleSignInAuthentication result = await googleUser.authentication;
-    final GoogleAuthCredential googleCredential = GoogleAuthProvider.credential(
-        accessToken: result.accessToken, idToken: result.idToken);
-    final UserCredential userCredential =
-        await auth.signInWithCredential(googleCredential);
-    if (userCredential.additionalUserInfo.isNewUser) {
-      await setCurrentUserDisplayName(googleUser.displayName);
-      await setCurrentUserProfilePicURL(googleUser.photoUrl);
-    }
-    return userCredential.additionalUserInfo.isNewUser;
-  }
-
   Future<void> signOut() async {
     return auth.signOut();
   }

@@ -41,6 +41,7 @@ extension CustomFontSize on TextTheme {
   double get settingsProfileEmail => 18;
   double get settingsGroupTitle => 22;
   double get settingsRowText => 18;
+  double get settingDropdownText => 18;
   double get settingsSignOut => 18;
   // #endregion
 }

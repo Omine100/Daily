@@ -90,11 +90,8 @@ class UserIStandards {
   }
 
   Widget showSocialButton(BuildContext context, int iconCase) {
-    bool isNewUser;
-
     return new GestureDetector(
       onTap: () {
-        firebaseAccounts.signInGoogle().then((_isNewUser) => isNewUser);
         routeNavigation.routePage(context, HomeScreen());
       },
       child: Container(

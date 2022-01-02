@@ -11,6 +11,7 @@ List<Languages> getLanguageList() {
     Languages("Français", "fr"),
     Languages("German", "de"),
     Languages("Italian", "it"),
+    Languages("Japanese", "ja"),
     Languages("Polish", "nl"),
     Languages("Russian", "ru"),
   ];

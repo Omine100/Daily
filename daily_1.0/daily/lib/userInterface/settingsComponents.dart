@@ -224,9 +224,13 @@ Widget settingSwitch(BuildContext context, Setting setting, State state) {
 
 Widget settingDropdown(BuildContext context, Setting setting, State state) {
   return DropdownButton(
+    menuMaxHeight: getDimension(
+        context, true, Theme.of(context).visualDensity.settingDropdownHeight),
     items: setting.items,
     value: setting.value,
-    style: TextStyle(color: Theme.of(context).colorScheme.settingDropdownText),
+    style: TextStyle(
+        color: Theme.of(context).colorScheme.settingDropdownText,
+        fontSize: Theme.of(context).textTheme.settingDropdownText),
     dropdownColor: Theme.of(context).colorScheme.settingDropdownBackground,
     onChanged: (value) {
       state.setState(() {

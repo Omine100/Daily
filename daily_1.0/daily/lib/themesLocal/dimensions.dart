@@ -42,6 +42,7 @@ extension CustomDimensions on VisualDensity {
 
   // #region settings
   double get settingsTitleWidth => 1.0;
+  double get settingDropdownHeight => 0.4;
   // #endregion
 }
 
