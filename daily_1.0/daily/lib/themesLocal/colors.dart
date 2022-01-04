@@ -17,6 +17,12 @@ extension CustomColorScheme on ColorScheme {
   // #endregion
 
   // #region userIStandards
+  Color get userIStandardsDialogBackground =>
+      Color(isDark.value ? 0xFF424242 : 0xFFFBFAF5);
+  Color get userIStandardsDialogText =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get userIStandardsDialogIcon =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get userIStandardsCameraButton =>
       Color(isDark.value ? 0xFFFFAB58 : 0xFFFFFFFF);
   Color get userIStandardsShareButton =>

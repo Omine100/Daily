@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
-import 'package:daily/servicesLocal/mediaManagement.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
@@ -42,17 +41,8 @@ Widget settingsProfile(BuildContext context, State state) {
               ),
               GestureDetector(
                 onTap: () {
-                  MediaManagement()
-                      .imagePicker(context, true, state)
-                      .then((imageFile) {
-                    firebaseAccounts
-                        .setCurrentUserProfilePicImage(imageFile)
-                        .then((value) {
-                      profileURL.value =
-                          firebaseAccounts.getCurrentUserProfilePic();
-                      state.setState(() {});
-                    });
-                  });
+                  userIStandards.showMediaSelection(context, state,
+                      firebaseAccounts.setCurrentUserProfilePicImage);
                 },
                 child: Container(
                     height: 90,

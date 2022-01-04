@@ -35,15 +35,17 @@ class FirebaseAccounts {
     return auth.currentUser.email;
   }
 
-  Future<void> setCurrentUserProfilePicImage(File image) async {
+  Future<void> setCurrentUserProfilePicImage(File image, State state) async {
     var storageRef = storage.ref(auth.currentUser.uid + '/profilePicture');
     await storageRef.putFile(image);
-    setCurrentUserProfilePicURL(await storageRef.getDownloadURL());
+    setCurrentUserProfilePicURL(await storageRef.getDownloadURL(), state);
   }
 
-  Future<void> setCurrentUserProfilePicURL(String photoURL) async {
+  Future<void> setCurrentUserProfilePicURL(String photoURL, State state) async {
     auth.currentUser.updatePhotoURL(photoURL);
+    profileURL.value = photoURL;
     settingsToPrefs(settingsList);
+    state.setState(() {});
   }
 
   String getCurrentUserProfilePic() {

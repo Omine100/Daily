@@ -11,12 +11,15 @@ class MediaManagement {
   Picker picker = new Picker();
   FirebaseCRUD firebaseCRUD = new FirebaseCRUD();
 
-  Future<File> imagePicker(
-      BuildContext context, bool isCamera, State state) async {
+  Future<File> imagePicker(BuildContext context, bool isCamera, State state,
+      Function function) async {
     try {
-      return await Picker.pickImage(
-          source: isCamera ? ImageSource.camera : ImageSource.gallery,
-          imageQuality: 100);
+      Picker.pickImage(
+              source: isCamera ? ImageSource.camera : ImageSource.gallery,
+              imageQuality: 100)
+          .then((image) {
+        function(image, state);
+      });
     } catch (e) {
       UserIStandards().showToastMessage(context, "errorImage");
     }

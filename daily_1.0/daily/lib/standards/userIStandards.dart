@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/mediaManagement.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
@@ -15,12 +14,20 @@ class UserIStandards {
   MediaManagement mediaManagement = new MediaManagement();
   RouteNavigation routeNavigation = new RouteNavigation();
 
-  Future<File> showMediaSelection(BuildContext context, State state) async {
+  Future<Widget> showMediaSelection(
+      BuildContext context, State state, Function saveFunction) async {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-              title: Text(getTranslated(context, "mediaSelectionTitle")),
+              title: Text(
+                getTranslated(context, "mediaSelectionTitle"),
+                style: TextStyle(
+                    color:
+                        Theme.of(context).colorScheme.userIStandardsDialogText),
+              ),
+              backgroundColor:
+                  Theme.of(context).colorScheme.userIStandardsDialogBackground,
               content: SingleChildScrollView(
                 child: ListBody(
                   children: <Widget>[
@@ -30,17 +37,26 @@ class UserIStandards {
                         children: [
                           Icon(
                             Icons.image,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .userIStandardsDialogIcon,
                           ),
                           Padding(
                             padding: EdgeInsets.only(left: 8),
                           ),
-                          Text(getTranslated(context, "mediaSelectionGallery")),
+                          Text(
+                            getTranslated(context, "mediaSelectionGallery"),
+                            style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .userIStandardsDialogText),
+                          ),
                         ],
                       ),
                       onTap: () async {
                         routeNavigation.routePop(context);
-                        return await mediaManagement.imagePicker(
-                            context, false, state);
+                        mediaManagement.imagePicker(
+                            context, false, state, saveFunction);
                       },
                     ),
                     Padding(padding: EdgeInsets.all(8.0)),
@@ -50,19 +66,26 @@ class UserIStandards {
                         children: [
                           Icon(
                             Icons.camera_alt_rounded,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .userIStandardsDialogIcon,
                           ),
                           Padding(
                             padding: EdgeInsets.only(left: 8),
                           ),
                           Text(
                             getTranslated(context, "mediaSelectionCamera"),
+                            style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .userIStandardsDialogText),
                           ),
                         ],
                       ),
                       onTap: () async {
                         routeNavigation.routePop(context);
                         return await mediaManagement.imagePicker(
-                            context, true, state);
+                            context, true, state, saveFunction);
                       },
                     )
                   ],
