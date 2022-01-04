@@ -8,18 +8,15 @@ import 'package:daily/servicesBroad/firebaseCRUD.dart';
 import 'package:daily/standards/userIStandards.dart';
 
 class MediaManagement {
-  //CLASS INITIALIZATION
   Picker picker = new Picker();
   FirebaseCRUD firebaseCRUD = new FirebaseCRUD();
 
-  //MECHANICS
   Future<File> imagePicker(
       BuildContext context, bool isCamera, State state) async {
     try {
-      final pickedFile = await Picker.pickImage(
+      return await Picker.pickImage(
           source: isCamera ? ImageSource.camera : ImageSource.gallery,
           imageQuality: 100);
-      return File(pickedFile.path);
     } catch (e) {
       UserIStandards().showToastMessage(context, "errorImage");
     }

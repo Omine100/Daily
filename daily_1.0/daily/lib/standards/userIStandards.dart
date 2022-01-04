@@ -11,12 +11,11 @@ import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/userInterface/home.dart';
 
 class UserIStandards {
-  //CLASS INITIALIZATION
   FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
   MediaManagement mediaManagement = new MediaManagement();
   RouteNavigation routeNavigation = new RouteNavigation();
 
-  Future<File> showMediaSelection(BuildContext context, State state) {
+  Future<File> showMediaSelection(BuildContext context, State state) async {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -38,9 +37,9 @@ class UserIStandards {
                           Text(getTranslated(context, "mediaSelectionGallery")),
                         ],
                       ),
-                      onTap: () {
+                      onTap: () async {
                         routeNavigation.routePop(context);
-                        return mediaManagement.imagePicker(
+                        return await mediaManagement.imagePicker(
                             context, false, state);
                       },
                     ),
@@ -60,9 +59,9 @@ class UserIStandards {
                           ),
                         ],
                       ),
-                      onTap: () {
+                      onTap: () async {
                         routeNavigation.routePop(context);
-                        return mediaManagement.imagePicker(
+                        return await mediaManagement.imagePicker(
                             context, true, state);
                       },
                     )

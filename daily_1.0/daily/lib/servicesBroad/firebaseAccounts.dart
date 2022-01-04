@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
 import 'dart:io';
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
+import 'package:daily/servicesLocal/settingsManagement.dart';
 import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/utilities/managementUtil/validation.dart';
 
@@ -42,9 +43,10 @@ class FirebaseAccounts {
 
   Future<void> setCurrentUserProfilePicURL(String photoURL) async {
     auth.currentUser.updatePhotoURL(photoURL);
+    settingsToPrefs(settingsList);
   }
 
-  Future<String> getCurrentUserProfilePic() async {
+  String getCurrentUserProfilePic() {
     return auth.currentUser.photoURL;
   }
 

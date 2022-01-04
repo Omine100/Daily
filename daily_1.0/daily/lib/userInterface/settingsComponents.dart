@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
+import 'package:daily/servicesLocal/mediaManagement.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
@@ -41,27 +42,38 @@ Widget settingsProfile(BuildContext context, State state) {
               ),
               GestureDetector(
                 onTap: () {
-                  // Need to figure out how we want to get the image to save/display
-                  userIStandards.showMediaSelection(context, state);
+                  MediaManagement()
+                      .imagePicker(context, true, state)
+                      .then((imageFile) {
+                    firebaseAccounts
+                        .setCurrentUserProfilePicImage(imageFile)
+                        .then((value) {
+                      profileURL.value =
+                          firebaseAccounts.getCurrentUserProfilePic();
+                      state.setState(() {});
+                    });
+                  });
                 },
                 child: Container(
-                  height: 75,
-                  width: 75,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(90),
-                    color:
-                        Theme.of(context).colorScheme.settingsProfileBackground,
-                  ),
-                  child: profileURL.value == ""
-                      ? Icon(
-                          Icons.person_outline_rounded,
-                          size: 45,
-                          color: Colors.white,
-                        )
-                      : Image(
-                          image: AssetImage(profileURL.value),
-                        ),
-                ),
+                    height: 90,
+                    width: 90,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .settingsProfileBackground,
+                        image: profileURL.value == ""
+                            ? null
+                            : DecorationImage(
+                                image: NetworkImage(profileURL.value),
+                                fit: BoxFit.cover)),
+                    child: profileURL.value == ""
+                        ? Icon(
+                            Icons.person_outline_rounded,
+                            size: 45,
+                            color: Colors.white,
+                          )
+                        : Container()),
               ),
               SizedBox(
                 width: 35,
@@ -247,7 +259,6 @@ Widget settingsResetPassword(BuildContext context) {
     onTap: () {
       firebaseAccounts.sendPasswordReset(
           context, firebaseAccounts.getCurrentUserEmail());
-      userIStandards.showToastMessage(context, "settingsResetPasswordSent");
     },
     child: Row(
       mainAxisSize: MainAxisSize.max,

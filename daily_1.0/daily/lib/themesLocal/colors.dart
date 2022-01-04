@@ -24,7 +24,7 @@ extension CustomColorScheme on ColorScheme {
   Color get userIStandardsSocialButton =>
       Color(isDark.value ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get userIStandardsToastMessageBackground =>
-      Color(isDark.value ? 0xFFFFAB58 : 0xFFFF4350);
+      Color(isDark.value ? 0xFFFF4350 : 0xFFFF4350);
   Color get userIStandardsToastMessageContent =>
       Color(isDark.value ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get userIStandardsTextInputContent =>
@@ -63,7 +63,7 @@ extension CustomColorScheme on ColorScheme {
   Color get authBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get authUserInputField => Color(isDark.value ? 0xFF333333 : 0xFFEEEEEE);
   Color get authUserInputFieldText =>
-      Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
   Color get authUserInputFieldDecoration =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
   Color get authUserInputFieldIconDecoration =>
@@ -72,7 +72,7 @@ extension CustomColorScheme on ColorScheme {
   Color get authGetStarted => Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
   Color get authGetStartedInkWell =>
       Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
-  Color get authGetStartedText => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get authGetStartedText => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get authSwitchPrimary => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get authSwitchSecondary =>
       Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
