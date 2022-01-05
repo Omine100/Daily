@@ -6,7 +6,7 @@ enum Group {
   settingGroupPrivacy,
   settingGroupHidden
 }
-enum Format { DropDown, Switch, DateSelector, NoUserInput }
+enum Format { DropDown, Switch, DateSelector, Click, NoUserInput }
 
 class Setting {
   String key;
@@ -17,6 +17,7 @@ class Setting {
   dynamic defaultValue;
   List<dynamic> items;
   Function onChanged;
+  Function onClicked;
 
   Setting(
       {@required this.key,
@@ -26,5 +27,6 @@ class Setting {
       @required this.isSignInRequired,
       @required this.defaultValue,
       this.items,
-      this.onChanged});
+      this.onChanged,
+      this.onClicked});
 }

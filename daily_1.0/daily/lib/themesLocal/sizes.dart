@@ -8,6 +8,7 @@ extension CustomSizes on MaterialTapTargetSize {
   // #endregion
 
   // #region settings
-  double get settingsProfile => 0.065;
+  double get settingsSheetMinSize => 0.875;
+  double get settingsSheetSize => 1.0;
   // #endregion
 }

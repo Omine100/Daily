@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daily/datastructures/settingState.dart';
+import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemLanguages.dart';
 
 Setting locale = new Setting(
@@ -39,6 +40,14 @@ Setting profileURL = new Setting(
     format: Format.NoUserInput,
     isSignInRequired: true,
     defaultValue: "");
+Setting resetPassword = new Setting(
+    key: "settingResetPassword",
+    value: null,
+    group: Group.settingGroupAccount,
+    format: Format.Click,
+    isSignInRequired: false,
+    defaultValue: null,
+    onClicked: FirebaseAccounts().sendPasswordReset);
 
 List<Setting> settingsList = [
   locale,

@@ -8,6 +8,7 @@ import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
+import 'package:daily/themesLocal/sizes.dart';
 import 'package:daily/userInterface/welcome.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
@@ -124,14 +125,27 @@ Container settingsCard(BuildContext context, State state) {
     width: getDimension(
         context, false, Theme.of(context).visualDensity.settingsCardWidth),
     child: DraggableScrollableSheet(
-        initialChildSize: firebaseAccounts.getSignedInStatus() ? 0.875 : 1.0,
-        minChildSize: 0.875,
+        initialChildSize: firebaseAccounts.getSignedInStatus()
+            ? Theme.of(context).materialTapTargetSize.settingsSheetMinSize
+            : Theme.of(context).materialTapTargetSize.settingsSheetSize,
+        minChildSize:
+            Theme.of(context).materialTapTargetSize.settingsSheetMinSize,
         builder: (context, scrollController) {
           return SingleChildScrollView(
             controller: scrollController,
             child: Container(
-                height: 800,
-                width: MediaQuery.of(context).size.width * 0.9,
+                height: getDimension(
+                    context,
+                    true,
+                    Theme.of(context)
+                        .visualDensity
+                        .settingsCardSheetContainerHeight),
+                width: getDimension(
+                    context,
+                    false,
+                    Theme.of(context)
+                        .visualDensity
+                        .settingsCardSheetContainerWidth),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(35),
@@ -201,6 +215,9 @@ Row settingRow(BuildContext context, Setting setting, State state) {
       case Format.DropDown:
         return settingDropdown(context, setting, state);
         break;
+      case Format.Click:
+        return settingClick(context, setting, state);
+        break;
       default:
         return Row();
     }
@@ -257,6 +274,10 @@ Widget settingDropdown(BuildContext context, Setting setting, State state) {
       });
     },
   );
+}
+
+Widget settingClick(BuildContext context, Setting setting, State state) {
+  return Container();
 }
 
 Widget settingsResetPassword(BuildContext context) {
