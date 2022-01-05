@@ -32,7 +32,8 @@ Widget settingsTitle(BuildContext context) {
 Widget settingsProfile(BuildContext context, State state) {
   return firebaseAccounts.getSignedInStatus()
       ? Container(
-          width: MediaQuery.of(context).size.width,
+          width: getDimension(context, false,
+              Theme.of(context).visualDensity.settingsProfileWidth),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -45,8 +46,18 @@ Widget settingsProfile(BuildContext context, State state) {
                       firebaseAccounts.setCurrentUserProfilePicImage);
                 },
                 child: Container(
-                    height: 90,
-                    width: 90,
+                    height: getDimension(
+                        context,
+                        true,
+                        Theme.of(context)
+                            .visualDensity
+                            .settingsProfileIconHeight),
+                    width: getDimension(
+                        context,
+                        true,
+                        Theme.of(context)
+                            .visualDensity
+                            .settingsProfileIconWidth),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Theme.of(context)
@@ -61,7 +72,9 @@ Widget settingsProfile(BuildContext context, State state) {
                         ? Icon(
                             Icons.person_outline_rounded,
                             size: 45,
-                            color: Colors.white,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .settingsProfileIcon,
                           )
                         : Container()),
               ),
@@ -106,8 +119,10 @@ Widget settingsProfile(BuildContext context, State state) {
 Container settingsCard(BuildContext context, State state) {
   return Container(
     padding: EdgeInsets.only(left: 15, right: 15),
-    height: MediaQuery.of(context).size.height,
-    width: MediaQuery.of(context).size.width,
+    height: getDimension(
+        context, true, Theme.of(context).visualDensity.settingsCardHeight),
+    width: getDimension(
+        context, false, Theme.of(context).visualDensity.settingsCardWidth),
     child: DraggableScrollableSheet(
         initialChildSize: firebaseAccounts.getSignedInStatus() ? 0.875 : 1.0,
         minChildSize: 0.875,
