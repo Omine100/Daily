@@ -176,13 +176,10 @@ Column settingsBreakdown(BuildContext context, State state) {
     }
     settings[setting.group].children.add(settingRow(context, setting, state));
   });
-  settings[Group.settingGroupAccount]
-      .children
-      .add(settingsResetPassword(context));
 
   Column column = new Column(children: []);
-  settings.entries.forEach((element) {
-    column.children.add(element.value);
+  settings.entries.forEach((setting) {
+    column.children.add(setting.value);
     column.children.add(SizedBox(
       height: 30,
     ));
@@ -206,7 +203,7 @@ Row settingsGroupTitle(BuildContext context, String key) {
   );
 }
 
-Row settingRow(BuildContext context, Setting setting, State state) {
+Widget settingRow(BuildContext context, Setting setting, State state) {
   Widget formPick() {
     switch (setting.format) {
       case Format.Switch:
@@ -225,15 +222,17 @@ Row settingRow(BuildContext context, Setting setting, State state) {
 
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Text(getTranslated(context, setting.key),
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.settingsRowText,
-            fontSize: Theme.of(context).textTheme.settingsRowText,
-            fontWeight: Theme.of(context).typography.settingsRowText,
-          )),
-      formPick(),
-    ],
+    children: setting.format == Format.Click
+        ? [settingClick(context, setting, state)]
+        : [
+            Text(getTranslated(context, setting.key),
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.settingsRowText,
+                  fontSize: Theme.of(context).textTheme.settingsRowText,
+                  fontWeight: Theme.of(context).typography.settingsRowText,
+                )),
+            formPick(),
+          ],
   );
 }
 
@@ -277,29 +276,16 @@ Widget settingDropdown(BuildContext context, Setting setting, State state) {
 }
 
 Widget settingClick(BuildContext context, Setting setting, State state) {
-  return Container();
-}
-
-Widget settingsResetPassword(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      firebaseAccounts.sendPasswordReset(
-          context, firebaseAccounts.getCurrentUserEmail());
+      setting.onClicked(setting.value);
     },
-    child: Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          getTranslated(context, "settingsResetPassword"),
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.settingsRowText,
-            fontSize: Theme.of(context).textTheme.settingsRowText,
-            fontWeight: Theme.of(context).typography.settingsRowText,
-          ),
-        ),
-      ],
-    ),
+    child: Text(getTranslated(context, setting.key),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.settingsRowText,
+          fontSize: Theme.of(context).textTheme.settingsRowText,
+          fontWeight: Theme.of(context).typography.settingsRowText,
+        )),
   );
 }
 

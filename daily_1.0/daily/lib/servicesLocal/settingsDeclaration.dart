@@ -42,7 +42,7 @@ Setting profileURL = new Setting(
     defaultValue: "");
 Setting resetPassword = new Setting(
     key: "settingResetPassword",
-    value: null,
+    value: FirebaseAccounts().getCurrentUserEmail,
     group: Group.settingGroupAccount,
     format: Format.Click,
     isSignInRequired: false,
