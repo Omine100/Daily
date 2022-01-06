@@ -54,5 +54,6 @@ List<Setting> settingsList = [
   notifications,
   isDark,
   isAndroid,
-  profileURL
+  profileURL,
+  resetPassword
 ];

@@ -178,8 +178,8 @@ Column settingsBreakdown(BuildContext context, State state) {
   });
 
   Column column = new Column(children: []);
-  settings.entries.forEach((setting) {
-    column.children.add(setting.value);
+  settings.entries.forEach((element) {
+    column.children.add(element.value);
     column.children.add(SizedBox(
       height: 30,
     ));
