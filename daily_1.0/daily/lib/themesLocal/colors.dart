@@ -114,9 +114,9 @@ extension CustomColorScheme on ColorScheme {
   Color get settingsBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get settingsTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get settingsProfileBackground =>
-      Color(isDark.value ? 0xFF666666 : 0xFF999999);
+      Color(isDark.value ? 0xFF666666 : 0xFFCCCCCC);
   Color get settingsProfileIcon =>
-      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+      Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get settingsProfileName =>
       Color(isDark.value ? 0xFFAAAAAA : 0xFF444444);
   Color get settingsProfileEmail =>
