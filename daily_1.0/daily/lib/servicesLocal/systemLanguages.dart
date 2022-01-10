@@ -17,7 +17,7 @@ List<Languages> getLanguageList() {
   ];
 }
 
-List<DropdownMenuItem> getDropdownMenuList() {
+List<DropdownMenuItem> getLocaleDropdownMenuList() {
   Map<String, String> languagesMap = new Map<String, String>();
   getLanguageList().forEach((element) {
     languagesMap[element.language] = element.flag;

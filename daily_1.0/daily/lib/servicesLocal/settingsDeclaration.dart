@@ -19,7 +19,7 @@ Setting locale = new Setting(
     isSignInRequired: false,
     value: null,
     defaultValue: Locale("en", "en"),
-    items: getDropdownMenuList(),
+    items: getLocaleDropdownMenuList(),
     onChanged: setLanguage);
 Setting notifications = new Setting(
     key: "settingNotifications",
