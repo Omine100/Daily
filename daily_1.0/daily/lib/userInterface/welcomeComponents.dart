@@ -71,8 +71,21 @@ Widget welcomeCarousel(State state, BuildContext context) {
           (image) {
             int index = _images.indexOf(image);
             return Container(
-              width: 8,
-              height: _current == index ? 30.0 : 15.0,
+              width: getDimension(context, false,
+                  Theme.of(context).visualDensity.welcomeCarouselSelectorWidth),
+              height: _current == index
+                  ? getDimension(
+                      context,
+                      true,
+                      Theme.of(context)
+                          .visualDensity
+                          .welcomeCarouselSelectorHeightCurrent)
+                  : getDimension(
+                      context,
+                      true,
+                      Theme.of(context)
+                          .visualDensity
+                          .welcomeCarouselSelectorHeightNotCurrent),
               margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 3.5),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),

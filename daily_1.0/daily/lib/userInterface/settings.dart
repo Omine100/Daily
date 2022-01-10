@@ -82,9 +82,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Material(
       child: Scaffold(
         body: Container(
-            constraints: BoxConstraints.expand(
-              height: double.maxFinite,
-            ),
+            constraints: BoxConstraints.expand(height: double.maxFinite),
             color: Theme.of(context).colorScheme.settingsBackground,
             child: Responsive(
               desktop: settingsScreenDesktop(),

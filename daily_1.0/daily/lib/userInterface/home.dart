@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
+import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/userInterface/homeComponents.dart';
-import 'package:daily/utilities/designUtil/neumorphism/neumorphism.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -50,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Material(
       child: Scaffold(
         body: Container(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.homeBackground,
           constraints: BoxConstraints.expand(height: double.maxFinite),
           child: Responsive(
             desktop: homeScreenDesktop(),

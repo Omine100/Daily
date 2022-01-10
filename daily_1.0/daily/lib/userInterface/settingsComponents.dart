@@ -38,65 +38,64 @@ Widget settingsProfile(BuildContext context, State state) {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 25,
-              ),
-              GestureDetector(
-                onTap: () {
-                  userIStandards.showMediaSelection(context, state,
-                      firebaseAccounts.setCurrentUserProfilePicImage);
-                },
-                child: Container(
-                    height: getDimension(
-                        context,
-                        true,
-                        Theme.of(context)
-                            .visualDensity
-                            .settingsProfileIconHeight),
-                    width: getDimension(
-                        context,
-                        true,
-                        Theme.of(context)
-                            .visualDensity
-                            .settingsProfileIconWidth),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .settingsProfileBackground,
-                        image: profileURL.value == ""
-                            ? null
-                            : DecorationImage(
-                                image: NetworkImage(profileURL.value),
-                                fit: BoxFit.cover)),
-                    child: profileURL.value == ""
-                        ? Icon(
-                            Icons.person_outline_rounded,
-                            size: 45,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .settingsProfileIcon,
-                          )
-                        : Container()),
-              ),
-              SizedBox(
-                width: 35,
+              Padding(
+                padding: const EdgeInsets.only(left: 25.0, right: 35.0),
+                child: GestureDetector(
+                  onTap: () {
+                    userIStandards.showMediaSelection(context, state,
+                        firebaseAccounts.setCurrentUserProfilePicImage);
+                  },
+                  child: Container(
+                      height: getDimension(
+                          context,
+                          true,
+                          Theme.of(context)
+                              .visualDensity
+                              .settingsProfileIconHeight),
+                      width: getDimension(
+                          context,
+                          true,
+                          Theme.of(context)
+                              .visualDensity
+                              .settingsProfileIconWidth),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .settingsProfileBackground,
+                          image: profileURL.value == ""
+                              ? null
+                              : DecorationImage(
+                                  image: NetworkImage(profileURL.value),
+                                  fit: BoxFit.cover)),
+                      child: profileURL.value == ""
+                          ? Icon(
+                              Icons.person_outline_rounded,
+                              size: 45,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .settingsProfileIcon,
+                            )
+                          : Container()),
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    firebaseAccounts.getCurrentUserDisplayName() ??
-                        getTranslated(context, "settingsNullName"),
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.settingsProfileName,
-                      fontSize: Theme.of(context).textTheme.settingsProfileName,
-                      fontWeight:
-                          Theme.of(context).typography.settingsProfileName,
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5.0),
+                    child: Text(
+                      firebaseAccounts.getCurrentUserDisplayName() ??
+                          getTranslated(context, "settingsNullName"),
+                      style: TextStyle(
+                        color:
+                            Theme.of(context).colorScheme.settingsProfileName,
+                        fontSize:
+                            Theme.of(context).textTheme.settingsProfileName,
+                        fontWeight:
+                            Theme.of(context).typography.settingsProfileName,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 5,
                   ),
                   Text(
                     firebaseAccounts.getCurrentUserEmail() ??
@@ -168,9 +167,7 @@ Column settingsBreakdown(BuildContext context, State state) {
     if (setting.isSignInRequired && !firebaseAccounts.getSignedInStatus())
       return;
     if (settings[setting.group] == null) {
-      settings[setting.group] = new Column(
-        children: [],
-      );
+      settings[setting.group] = new Column(children: []);
       settings[setting.group].children.add(settingsGroupTitle(
           context, setting.group.toString().split("Group.").last));
     }
@@ -179,12 +176,14 @@ Column settingsBreakdown(BuildContext context, State state) {
 
   Column column = new Column(children: []);
   settings.entries.forEach((element) {
-    column.children.add(element.value);
-    column.children.add(SizedBox(
-      height: 30,
+    column.children.add(Padding(
+      padding: EdgeInsets.only(bottom: 30),
+      child: element.value,
     ));
   });
-  column.children.add(settingsSignOut(context));
+  firebaseAccounts.getSignedInStatus() == true
+      ? column.children.add(settingsSignOut(context))
+      : null;
   return column;
 }
 
@@ -231,7 +230,7 @@ Widget settingRow(BuildContext context, Setting setting, State state) {
                   fontSize: Theme.of(context).textTheme.settingsRowText,
                   fontWeight: Theme.of(context).typography.settingsRowText,
                 )),
-            formPick(),
+            formPick()
           ],
   );
 }
