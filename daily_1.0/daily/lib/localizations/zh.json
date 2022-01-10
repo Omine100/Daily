@@ -19,11 +19,11 @@
     "settingLocale": "语",
     "settingNotifications": "通知",
     "settingIsDark": "夜间模式",
-    "settingsIsAndroid": "Isandroid.",
     "settingProfileURL": "个人资料网址",
+    "settingResetPassword": "重设密码",
     "mediaSelectionTitle": "你想要一张照片吗？",
     "mediaSelectionGallery": "画廊",
-    "medfiaSelectionCamera": "相机",
+    "mediaSelectionCamera": "相机",
     "welcomeTitle": "日常",
     "welcomeSubtitle": "做好准备！",
     "welcomeAccountAlready": "已经有一个帐户？",
@@ -47,7 +47,6 @@
     "forgotPasswordResendPrimary": "没有得到它？",
     "forgotPasswordResendSecondary": "重发！",
     "settingsTitle": "设置",
-    "settingsResetPassword": "重设密码",
     "settingsResetPasswordSent": "邮件已发送",
     "settingsSignOut": "登出"
 }

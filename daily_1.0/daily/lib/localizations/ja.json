@@ -19,11 +19,11 @@
     "settingLocale": "言語",
     "settingNotifications": "通知",
     "settingIsDark": "ナイトモード",
-    "settingsIsAndroid": "ISANDROID",
     "settingProfileURL": "プロフィールURL",
+    "settingResetPassword": "パスワードを再設定する",
     "mediaSelectionTitle": "あなたはどこから写真を望みますか？",
     "mediaSelectionGallery": "ギャラリー",
-    "medfiaSelectionCamera": "カメラ",
+    "mediaSelectionCamera": "カメラ",
     "welcomeTitle": "毎日",
     "welcomeSubtitle": "準備をしなさい！",
     "welcomeAccountAlready": "すでにアカウントをお持ちですか？",
@@ -47,7 +47,6 @@
     "forgotPasswordResendPrimary": "手に入れなかった？",
     "forgotPasswordResendSecondary": "res！",
     "settingsTitle": "設定",
-    "settingsResetPassword": "パスワードを再設定する",
     "settingsResetPasswordSent": "メールが送信されました",
     "settingsSignOut": "サインアウト"
 }

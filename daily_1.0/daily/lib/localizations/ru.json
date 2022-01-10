@@ -19,11 +19,11 @@
     "settingLocale": "Язык",
     "settingNotifications": "Уверенность",
     "settingIsDark": "Ночной режим",
-    "settingsIsAndroid": "isandroid",
     "settingProfileURL": "URL профиля",
+    "settingResetPassword": "Сброс пароля",
     "mediaSelectionTitle": "Откуда вы хотите фотографию?",
     "mediaSelectionGallery": "Галерея",
-    "medfiaSelectionCamera": "Камера",
+    "mediaSelectionCamera": "Камера",
     "welcomeTitle": "Ежедневно",
     "welcomeSubtitle": "Приготовься!",
     "welcomeAccountAlready": "Уже есть аккаунт?",
@@ -47,7 +47,6 @@
     "forgotPasswordResendPrimary": "Не понял?",
     "forgotPasswordResendSecondary": "Отправить!",
     "settingsTitle": "Настройки",
-    "settingsResetPassword": "Сброс пароля",
     "settingsResetPasswordSent": "Письмо было отправлено",
     "settingsSignOut": "ВЫХОД"
 }

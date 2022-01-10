@@ -10,23 +10,25 @@ enum Format { DropDown, Switch, DateSelector, Click, NoUserInput }
 
 class Setting {
   String key;
-  dynamic value;
   Group group;
   Format format;
   bool isSignInRequired;
+  dynamic value;
   dynamic defaultValue;
   List<dynamic> items;
   Function onChanged;
   Function onClicked;
+  Function call;
 
   Setting(
       {@required this.key,
-      @required this.value,
       @required this.group,
       @required this.format,
       @required this.isSignInRequired,
-      @required this.defaultValue,
+      this.value,
+      this.defaultValue,
       this.items,
       this.onChanged,
-      this.onClicked});
+      this.onClicked,
+      this.call});
 }

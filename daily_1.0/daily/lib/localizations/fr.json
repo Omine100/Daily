@@ -19,11 +19,11 @@
     "settingLocale": "Langue",
     "settingNotifications": "Notifications",
     "settingIsDark": "Mode nuit",
-    "settingsIsAndroid": "isandroid",
     "settingProfileURL": "Profil URL",
+    "settingResetPassword": "Réinitialiser le mot de passe",
     "mediaSelectionTitle": "Où voulez-vous une photo?",
     "mediaSelectionGallery": "Galerie",
-    "medfiaSelectionCamera": "Caméra",
+    "mediaSelectionCamera": "Caméra",
     "welcomeTitle": "du quotidien",
     "welcomeSubtitle": "Sois prêt!",
     "welcomeAccountAlready": "Vous avez déjà un compte?",
@@ -47,7 +47,6 @@
     "forgotPasswordResendPrimary": "Ne l'a pas eu?",
     "forgotPasswordResendSecondary": "Renvoyez!",
     "settingsTitle": "Réglages",
-    "settingsResetPassword": "Réinitialiser le mot de passe",
     "settingsResetPasswordSent": "L'email a été envoyé",
     "settingsSignOut": "SE DÉCONNECTER"
 }

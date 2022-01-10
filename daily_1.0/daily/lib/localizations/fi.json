@@ -19,11 +19,11 @@
     "settingLocale": "Kieli",
     "settingNotifications": "Ilmoitukset",
     "settingIsDark": "Yötila",
-    "settingsIsAndroid": "Isandroid",
     "settingProfileURL": "profiili-URL",
+    "settingResetPassword": "Nollaa salasana",
     "mediaSelectionTitle": "Mistä haluat valokuvan?",
     "mediaSelectionGallery": "Galleria",
-    "medfiaSelectionCamera": "Kamera",
+    "mediaSelectionCamera": "Kamera",
     "welcomeTitle": "Päivittäin",
     "welcomeSubtitle": "Valmistaudu!",
     "welcomeAccountAlready": "Onko sinulla jo tili?",
@@ -47,7 +47,6 @@
     "forgotPasswordResendPrimary": "Ei saanut sitä?",
     "forgotPasswordResendSecondary": "Uudelleen lähettää!",
     "settingsTitle": "asetukset",
-    "settingsResetPassword": "Nollaa salasana",
     "settingsResetPasswordSent": "Sähköposti on lähetetty",
     "settingsSignOut": "KIRJAUDU ULOS"
 }

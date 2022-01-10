@@ -47,7 +47,7 @@ extension CustomDimensions on VisualDensity {
   double get settingsProfileIconWidth => 0.1;
   double get settingsCardHeight => 1.0;
   double get settingsCardWidth => 1.0;
-  double get settingsCardSheetContainerHeight => 0.8;
+  double get settingsCardSheetContainerHeight => 1.0;
   double get settingsCardSheetContainerWidth => 0.9;
   double get settingDropdownHeight => 0.4;
   // #endregion

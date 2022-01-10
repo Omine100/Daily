@@ -11,7 +11,7 @@ prefsInstance() async {
 void settingsToPrefs(List<Setting> settingsList) async {
   await prefsInstance();
   settingsList.forEach((setting) {
-    saveToPrefs(setting.key, setting.value);
+    if (setting.value != null) saveToPrefs(setting.key, setting.value);
   });
 }
 
@@ -19,7 +19,8 @@ Future<void> prefsToSettings() async {
   await prefsInstance();
   if (prefs.getKeys().length == 0) {
     settingsList.forEach((setting) {
-      saveToPrefs(setting.key, setting.defaultValue);
+      if (setting.defaultValue != null)
+        saveToPrefs(setting.key, setting.defaultValue);
     });
   }
   prefs.getKeys().forEach((key) {

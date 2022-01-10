@@ -165,7 +165,7 @@ Column settingsBreakdown(BuildContext context, State state) {
 
   settingsList.forEach((setting) {
     if (setting.group == Group.settingGroupHidden) return;
-    if (setting.isSignInRequired && firebaseAccounts.getSignedInStatus())
+    if (setting.isSignInRequired && !firebaseAccounts.getSignedInStatus())
       return;
     if (settings[setting.group] == null) {
       settings[setting.group] = new Column(
@@ -198,7 +198,7 @@ Row settingsGroupTitle(BuildContext context, String key) {
           fontSize: Theme.of(context).textTheme.settingsGroupTitle,
           fontWeight: Theme.of(context).typography.settingsGroupTitle,
         ),
-      )
+      ),
     ],
   );
 }
@@ -278,14 +278,17 @@ Widget settingDropdown(BuildContext context, Setting setting, State state) {
 Widget settingClick(BuildContext context, Setting setting, State state) {
   return GestureDetector(
     onTap: () {
-      setting.onClicked(setting.value);
+      setting.onClicked.call(context, setting.call.call());
     },
-    child: Text(getTranslated(context, setting.key),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.settingsRowText,
-          fontSize: Theme.of(context).textTheme.settingsRowText,
-          fontWeight: Theme.of(context).typography.settingsRowText,
-        )),
+    child: Padding(
+      padding: const EdgeInsets.only(top: 8.0),
+      child: Text(getTranslated(context, setting.key),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.settingsRowText,
+            fontSize: Theme.of(context).textTheme.settingsRowText,
+            fontWeight: Theme.of(context).typography.settingsRowText,
+          )),
+    ),
   );
 }
 

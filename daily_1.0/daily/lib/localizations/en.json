@@ -19,8 +19,8 @@
     "settingLocale": "Language",
     "settingNotifications": "Notifications",
     "settingIsDark": "Night mode",
-    "settingIsAndroid": "isAndroid",
     "settingProfileURL": "profileURL",
+    "settingResetPassword": "Reset password",
     "mediaSelectionTitle": "Where do you want a photo from?",
     "mediaSelectionGallery": "Gallery",
     "mediaSelectionCamera": "Camera",
@@ -47,7 +47,6 @@
     "forgotPasswordResendPrimary": "Didn't get it? ",
     "forgotPasswordResendSecondary": "Resend!",
     "settingsTitle": "Settings",
-    "settingsResetPassword": "Reset password",
     "settingsResetPasswordSent": "Email has been sent",
     "settingsSignOut": "SIGN OUT"
 }
