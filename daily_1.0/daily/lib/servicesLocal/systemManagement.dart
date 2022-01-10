@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/systemLanguages.dart';
 
 List<DropdownMenuItem> getIsDarkDropdownMenuList() {
   Map<String, String> languagesMap = new Map<String, String>();
-  getLanguageList().forEach((element) {
-    languagesMap[element.language] = element.flag;
-  });
+
+  List<DropdownMenuItem> isDarkList = new List<DropdownMenuItem>();
+  isDarkList.add(new DropdownMenuItem(child: Text(getTranslated(context, key))))
+
   return languagesMap
       .map((language, flag) {
         return MapEntry(
