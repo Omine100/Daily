@@ -65,5 +65,5 @@ flutter:
       - lib/localizations/fr.json
       - lib/localizations/it.json
       - lib/localizations/ja.json
-      - lib/localizations/nl.json
+      - lib/localizations/pl.json
       - lib/localizations/ru.json

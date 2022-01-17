@@ -15,7 +15,7 @@ class Setting {
   bool isSignInRequired;
   dynamic value;
   dynamic defaultValue;
-  List<dynamic> items;
+  Function items;
   Function onChanged;
   Function onClicked;
   Function call;

@@ -4,20 +4,20 @@ import 'package:daily/main.dart';
 
 List<Languages> getLanguageList() {
   return <Languages>[
-    Languages("Chinese", "zh"),
-    Languages("English", "en"),
-    Languages("Español", "es"),
-    Languages("Finnish", "fi"),
-    Languages("Français", "fr"),
-    Languages("German", "de"),
-    Languages("Italian", "it"),
-    Languages("Japanese", "ja"),
-    Languages("Polish", "pl"),
-    Languages("Russian", "ru"),
+    Languages("settingLocaleChinese", "zh"),
+    Languages("settingLocaleEnglish", "en"),
+    Languages("settingLocaleSpanish", "es"),
+    Languages("settingLocaleFinnish", "fi"),
+    Languages("settingLocaleFrench", "fr"),
+    Languages("settingLocaleGerman", "de"),
+    Languages("settingLocaleItalian", "it"),
+    Languages("settingLocaleJapanese", "ja"),
+    Languages("settingLocalePolish", "pl"),
+    Languages("settingLocaleRussian", "ru"),
   ];
 }
 
-List<DropdownMenuItem> getLocaleDropdownMenuList() {
+List<DropdownMenuItem> getLocaleDropdownMenuList(BuildContext context) {
   Map<String, String> languagesMap = new Map<String, String>();
   getLanguageList().forEach((element) {
     languagesMap[element.language] = element.flag;
@@ -29,7 +29,7 @@ List<DropdownMenuItem> getLocaleDropdownMenuList() {
             DropdownMenuItem<String>(
               value: "$language" + "_$language",
               key: Key(flag),
-              child: Text(flag),
+              child: Text(getTranslated(context, flag)),
             ));
       })
       .values

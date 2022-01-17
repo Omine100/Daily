@@ -19,7 +19,7 @@ Setting locale = new Setting(
     isSignInRequired: false,
     value: null,
     defaultValue: Locale("en", "en"),
-    items: getLocaleDropdownMenuList(),
+    items: getLocaleDropdownMenuList,
     onChanged: setLanguage);
 Setting notifications = new Setting(
     key: "settingNotifications",
@@ -29,7 +29,7 @@ Setting notifications = new Setting(
     value: false,
     defaultValue: false);
 Setting isDark = new Setting(
-    key: "settingIsDark",
+    key: "settingTheme",
     group: Group.settingGroupGeneral,
     format: Format.Switch,
     isSignInRequired: false,

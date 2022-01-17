@@ -258,7 +258,7 @@ Widget settingDropdown(BuildContext context, Setting setting, State state) {
   return DropdownButton(
     menuMaxHeight: getDimension(
         context, true, Theme.of(context).visualDensity.settingDropdownHeight),
-    items: setting.items,
+    items: setting.items(context),
     value: setting.value, //Maybe change to getTranslated?
     style: TextStyle(
         color: Theme.of(context).colorScheme.settingDropdownText,
