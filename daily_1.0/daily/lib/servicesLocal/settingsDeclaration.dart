@@ -40,7 +40,7 @@ Setting theme = new Setting(
 Setting isDark = new Setting(
     key: "settingIsDark",
     group: Group.settingGroupHidden,
-    format: Format.Switch,
+    format: Format.NoUserInput,
     isSignInRequired: false,
     value: false,
     defaultValue: false);

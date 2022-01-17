@@ -6,7 +6,7 @@ enum Group {
   settingGroupPrivacy,
   settingGroupHidden
 }
-enum Format { DropDown, Switch, DateSelector, Click, NoUserInput }
+enum Format { DropDown, Switch, Click, NoUserInput }
 
 class Setting {
   String key;
