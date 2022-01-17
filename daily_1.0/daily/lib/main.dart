@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -27,6 +28,18 @@ class Daily extends StatefulWidget {
 class _DailyState extends State<Daily> {
   FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
   RouteNavigation routeNavigation = new RouteNavigation();
+
+  @override
+  void initState() {
+    super.initState();
+    var window = WidgetsBinding.instance.window;
+    window.onPlatformBrightnessChanged = () {
+      WidgetsBinding.instance?.handlePlatformBrightnessChanged();
+      window.platformBrightness == Brightness.dark
+          ? isDark.value = true
+          : isDark.value = false;
+    };
+  }
 
   void setLocale(String languageCode) {
     setState(() {
