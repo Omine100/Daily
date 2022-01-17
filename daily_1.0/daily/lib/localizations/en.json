@@ -32,6 +32,7 @@
     "settingThemeLight": "Light",
     "settingThemeDark": "Dark",
     "settingThemeDefault": "Default",
+    "settingIsDark": "isDark",
     "settingProfileURL": "profileURL",
     "mediaSelectionTitle": "Where do you want a photo from?",
     "mediaSelectionGallery": "Gallery",

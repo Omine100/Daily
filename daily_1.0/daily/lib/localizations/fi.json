@@ -32,6 +32,7 @@
     "settingThemeLight": "Kevyt",
     "settingThemeDark": "Tumma",
     "settingThemeDefault": "Oletusarvo",
+    "settingIsDark": "isdark",
     "settingProfileURL": "profiili-URL",
     "mediaSelectionTitle": "Mistä haluat valokuvan?",
     "mediaSelectionGallery": "Galleria",
