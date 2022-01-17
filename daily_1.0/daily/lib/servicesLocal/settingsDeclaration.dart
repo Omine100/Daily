@@ -56,7 +56,7 @@ Setting licenses = new Setting(
     group: Group.settingGroupLegal,
     format: Format.Click,
     isSignInRequired: true,
-    onClicked: null);
+    onClicked: showAboutDialog);
 
 List<Setting> settingsList = [
   resetPassword,

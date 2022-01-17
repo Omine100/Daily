@@ -130,6 +130,19 @@ class UserIStandards {
     );
   }
 
+  Future<void> showAboutDialog(BuildContext context) async {
+    return showDialog<void>(
+        barrierDismissible: true,
+        context: context,
+        builder: (BuildContext context) {
+          return AboutDialog(
+            applicationName: "Daily",
+            applicationVersion: '1.0',
+            applicationLegalese: 'Copyright (c) 2022 Phoenix',
+          );
+        });
+  }
+
   void showToastMessage(BuildContext context, String key) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(

@@ -277,7 +277,10 @@ Widget settingDropdown(BuildContext context, Setting setting, State state) {
 Widget settingClick(BuildContext context, Setting setting, State state) {
   return GestureDetector(
     onTap: () {
-      setting.onClicked.call(context, setting.call.call());
+      if (setting.call != null)
+        setting.onClicked.call(context, setting.call.call());
+      else
+        setting.onClicked.call(context);
     },
     child: Padding(
       padding: const EdgeInsets.only(top: 8.0),
