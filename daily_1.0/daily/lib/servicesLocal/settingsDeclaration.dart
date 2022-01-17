@@ -39,9 +39,6 @@ Setting theme = new Setting(
     onChanged: setTheme);
 Setting isDark = new Setting(
   key: "settingIsDark",
-  group: Group.settingGroupHidden,
-  format: Format.Switch,
-  isSignInRequired: false,
   value: false,
   defaultValue: false,
 );

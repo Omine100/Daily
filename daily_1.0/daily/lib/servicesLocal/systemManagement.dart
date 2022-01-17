@@ -4,6 +4,9 @@ import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/systemLocalizations.dart';
 import 'package:daily/main.dart';
 
+//Install extension '#region folding for VS Code'
+
+// #region themes
 List<String> getThemeList() {
   return ["settingThemeLight", "settingThemeDark", "settingThemeDefault"];
 }
@@ -25,6 +28,15 @@ void setTheme() {
           SchedulerBinding.instance.window.platformBrightness ==
               Brightness.dark)) isDark.value = true;
   isDark.value = false;
+}
+// #endregion
+
+// #region languages
+class Languages {
+  Languages(this.flag, this.language);
+
+  final String flag;
+  final String language;
 }
 
 List<Languages> getLanguageList() {
@@ -61,13 +73,6 @@ List<DropdownMenuItem> getLocaleDropdownMenuList(BuildContext context) {
       .toList();
 }
 
-class Languages {
-  Languages(this.flag, this.language);
-
-  final String flag;
-  final String language;
-}
-
 void setLanguage(BuildContext context, String languageCode) async {
   Daily.setLocale(context, languageCode);
 }
@@ -75,3 +80,4 @@ void setLanguage(BuildContext context, String languageCode) async {
 String getTranslated(BuildContext context, String key) {
   return AppLocalizations.of(context).translate(key);
 }
+// #endregion
