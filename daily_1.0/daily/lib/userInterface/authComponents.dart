@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
-import 'package:daily/servicesLocal/systemLanguages.dart';
+import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
@@ -59,7 +59,7 @@ Widget authUserInputField(
         onSaved: onSaved,
         autofocus: false,
         style: TextStyle(
-            color: Theme.of(context).colorScheme.authUserInputFieldText), 
+            color: Theme.of(context).colorScheme.authUserInputFieldText),
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: getTranslated(context, authForm),

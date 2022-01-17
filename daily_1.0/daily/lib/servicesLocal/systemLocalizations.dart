@@ -1,8 +1,8 @@
-import 'package:daily/servicesLocal/systemLanguages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 import 'dart:convert';
+import 'package:daily/servicesLocal/systemManagement.dart';
 
 class AppLocalizations {
   AppLocalizations(this.locale);

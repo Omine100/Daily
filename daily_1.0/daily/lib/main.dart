@@ -28,8 +28,6 @@ class _DailyState extends State<Daily> {
   FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
   RouteNavigation routeNavigation = new RouteNavigation();
 
-  Locale stateLocale;
-
   void setLocale(String languageCode) {
     setState(() {
       locale.value = languageCode;

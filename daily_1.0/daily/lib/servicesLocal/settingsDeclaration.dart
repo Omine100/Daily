@@ -1,8 +1,7 @@
-import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
-import 'package:daily/servicesLocal/systemLanguages.dart';
+import 'package:daily/servicesLocal/systemManagement.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 
