@@ -1,3 +1,4 @@
+import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
@@ -28,13 +29,23 @@ Setting notifications = new Setting(
     isSignInRequired: false,
     value: false,
     defaultValue: false);
-Setting isDark = new Setting(
+Setting theme = new Setting(
     key: "settingTheme",
     group: Group.settingGroupGeneral,
-    format: Format.Switch,
+    format: Format.DropDown,
     isSignInRequired: false,
-    value: false,
-    defaultValue: false);
+    value: null,
+    defaultValue: "settingThemeDefault",
+    items: getThemeDropdownMenuList,
+    onChanged: setTheme);
+Setting isDark = new Setting(
+  key: "settingIsDark",
+  group: Group.settingGroupHidden,
+  format: Format.Switch,
+  isSignInRequired: false,
+  value: false,
+  defaultValue: false,
+);
 Setting profileURL = new Setting(
     key: "settingProfileURL",
     group: Group.settingGroupHidden,
@@ -47,6 +58,6 @@ List<Setting> settingsList = [
   resetPassword,
   locale,
   notifications,
-  isDark,
+  theme,
   profileURL,
 ];
