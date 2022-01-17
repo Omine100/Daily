@@ -4,6 +4,7 @@ enum Group {
   settingGroupAccount,
   settingGroupGeneral,
   settingGroupPrivacy,
+  settingGroupLegal,
   settingGroupHidden
 }
 enum Format { DropDown, Switch, Click, NoUserInput }
