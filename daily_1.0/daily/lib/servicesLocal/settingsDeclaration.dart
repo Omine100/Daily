@@ -57,5 +57,6 @@ List<Setting> settingsList = [
   locale,
   notifications,
   theme,
+  isDark,
   profileURL,
 ];
