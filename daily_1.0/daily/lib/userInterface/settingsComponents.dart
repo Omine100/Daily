@@ -63,11 +63,12 @@ Widget settingsProfile(BuildContext context, State state) {
                           color: Theme.of(context)
                               .colorScheme
                               .settingsProfileBackground,
-                          image: profileURL.value == ""
-                              ? null
-                              : DecorationImage(
-                                  image: NetworkImage(profileURL.value),
-                                  fit: BoxFit.cover)),
+                          image:
+                              profileURL.value == "" || profileURL.value == null
+                                  ? null
+                                  : DecorationImage(
+                                      image: NetworkImage(profileURL.value),
+                                      fit: BoxFit.cover)),
                       child: profileURL.value == ""
                           ? Icon(
                               Icons.person_outline_rounded,
