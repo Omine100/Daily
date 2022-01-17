@@ -51,14 +51,8 @@ Setting profileURL = new Setting(
     isSignInRequired: true,
     value: null,
     defaultValue: "");
-Setting privacyPolicy = new Setting(
-    key: "settingPrivacyPolicy",
-    group: Group.settingGroupLegal,
-    format: Format.Click,
-    isSignInRequired: true,
-    onClicked: null);
-Setting userAgreementPolicy = new Setting(
-    key: "settingUserAgreementPolicy",
+Setting licenses = new Setting(
+    key: "settingLicenses",
     group: Group.settingGroupLegal,
     format: Format.Click,
     isSignInRequired: true,
@@ -71,6 +65,5 @@ List<Setting> settingsList = [
   theme,
   isDark,
   profileURL,
-  privacyPolicy,
-  userAgreementPolicy,
+  licenses,
 ];
