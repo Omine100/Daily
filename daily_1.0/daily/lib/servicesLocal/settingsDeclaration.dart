@@ -38,10 +38,12 @@ Setting theme = new Setting(
     items: getThemeDropdownMenuList,
     onChanged: setTheme);
 Setting isDark = new Setting(
-  key: "settingIsDark",
-  value: false,
-  defaultValue: false,
-);
+    key: "settingIsDark",
+    group: Group.settingGroupHidden,
+    format: Format.Switch,
+    isSignInRequired: false,
+    value: false,
+    defaultValue: false);
 Setting profileURL = new Setting(
     key: "settingProfileURL",
     group: Group.settingGroupHidden,

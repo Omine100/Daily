@@ -22,9 +22,9 @@ class Setting {
 
   Setting(
       {@required this.key,
-      this.group,
-      this.format,
-      this.isSignInRequired,
+      @required this.group,
+      @required this.format,
+      @required this.isSignInRequired,
       this.value,
       this.defaultValue,
       this.items,
