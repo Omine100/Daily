@@ -12,7 +12,7 @@ List<Languages> getLanguageList() {
     Languages("German", "de"),
     Languages("Italian", "it"),
     Languages("Japanese", "ja"),
-    Languages("Polish", "nl"),
+    Languages("Polish", "pl"),
     Languages("Russian", "ru"),
   ];
 }

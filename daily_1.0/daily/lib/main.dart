@@ -56,7 +56,7 @@ class _DailyState extends State<Daily> {
         Locale('de'),
         Locale('it'),
         Locale('ja'),
-        Locale('nl'),
+        Locale('pl'),
         Locale('ru'),
       ],
       localizationsDelegates: [
