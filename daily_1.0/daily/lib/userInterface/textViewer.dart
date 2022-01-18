@@ -3,15 +3,15 @@ import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/textViewerComponents.dart';
 
-class textViewerScreen extends StatefulWidget {
+class TextViewerScreen extends StatefulWidget {
   final String filePath;
-  textViewerScreen({this.filePath});
+  TextViewerScreen({this.filePath});
 
   @override
-  _textViewerScreenState createState() => _textViewerScreenState();
+  _TextViewerScreenState createState() => _TextViewerScreenState();
 }
 
-class _textViewerScreenState extends State<textViewerScreen> {
+class _TextViewerScreenState extends State<TextViewerScreen> {
   textViewerScreenDesktop() {
     return textViewerText(context, widget.filePath);
   }

@@ -17,14 +17,14 @@ class RouteNavigation {
     Navigator.push(context, MaterialPageRoute(builder: (context) => page));
   }
 
-  Widget routeInitial(BuildContext context, bool isSignedIn) {
-    return isSignedIn ? HomeScreen() : WelcomeScreen();
-  }
-
-  Widget routeTextViewer(BuildContext context, String filePath) {
+  void routeTextViewer(BuildContext context, String filePath) {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => textViewerScreen(filePath: filePath)));
+            builder: (context) => TextViewerScreen(filePath: filePath)));
+  }
+
+  Widget routeInitial(BuildContext context, bool isSignedIn) {
+    return isSignedIn ? HomeScreen() : WelcomeScreen();
   }
 }
