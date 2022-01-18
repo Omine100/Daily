@@ -37,7 +37,7 @@ extension CustomFontSize on TextTheme {
 
   // #region settings
   double get settingsTitle => 30;
-  double get settingsProfileName => 22;
+  double get settingsProfileName => 26;
   double get settingsProfileEmail => 18;
   double get settingsGroupTitle => 22;
   double get settingsRowText => 18;
