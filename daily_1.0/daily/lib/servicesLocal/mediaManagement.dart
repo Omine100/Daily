@@ -21,7 +21,7 @@ class MediaManagement {
         function(image, state);
       });
     } catch (e) {
-      UserIStandards().showToastMessage(context, "errorImage");
+      showToastMessage(context, "errorImage");
     }
     return null;
   }
@@ -44,7 +44,7 @@ class MediaManagement {
       Share.shareFile(imageFile,
           subject: "Thought you might like!", text: "What do you think?");
     } catch (e) {
-      UserIStandards().showToastMessage(context, "errorShare");
+      showToastMessage(context, "errorShare");
     }
   }
 }

@@ -12,7 +12,6 @@ import 'package:daily/themesLocal/sizes.dart';
 import 'package:daily/userInterface/welcome.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
-UserIStandards userIStandards = new UserIStandards();
 
 Widget settingsTitle(BuildContext context) {
   return Container(
@@ -42,7 +41,7 @@ Widget settingsProfile(BuildContext context, State state) {
                 padding: const EdgeInsets.only(left: 25.0, right: 35.0),
                 child: GestureDetector(
                   onTap: () {
-                    userIStandards.showMediaSelection(context, state,
+                    showMediaSelection(context, state,
                         firebaseAccounts.setCurrentUserProfilePicImage);
                   },
                   child: Container(

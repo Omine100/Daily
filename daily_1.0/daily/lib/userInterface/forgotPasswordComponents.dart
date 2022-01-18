@@ -7,7 +7,6 @@ import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
-UserIStandards userIStandards = new UserIStandards();
 
 Widget forgotPasswordTitle(BuildContext context) {
   return Container(

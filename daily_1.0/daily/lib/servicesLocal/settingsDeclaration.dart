@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
+import 'package:daily/standards/userIStandards.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 
@@ -56,13 +57,13 @@ Setting helpSupport = new Setting(
     group: Group.settingGroupGeneral,
     format: Format.Click,
     isSignInRequired: true,
-    onClicked: showAboutDialog);
+    onClicked: showAboutBox);
 Setting licenses = new Setting(
     key: "settingLicenses",
     group: Group.settingGroupLegal,
     format: Format.Click,
     isSignInRequired: true,
-    onClicked: showAboutDialog);
+    onClicked: showAboutBox);
 
 List<Setting> settingsList = [
   resetPassword,

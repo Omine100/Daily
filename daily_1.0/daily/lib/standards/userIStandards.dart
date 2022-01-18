@@ -9,154 +9,148 @@ import 'package:daily/themesLocal/sizes.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/userInterface/home.dart';
 
-class UserIStandards {
-  FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
-  MediaManagement mediaManagement = new MediaManagement();
-  RouteNavigation routeNavigation = new RouteNavigation();
+FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+MediaManagement mediaManagement = new MediaManagement();
+RouteNavigation routeNavigation = new RouteNavigation();
 
-  Future<Widget> showMediaSelection(
-      BuildContext context, State state, Function saveFunction) async {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-              title: Text(
-                getTranslated(context, "mediaSelectionTitle"),
-                style: TextStyle(
-                    color:
-                        Theme.of(context).colorScheme.userIStandardsDialogText),
-              ),
-              backgroundColor:
-                  Theme.of(context).colorScheme.userIStandardsDialogBackground,
-              content: SingleChildScrollView(
-                child: ListBody(
-                  children: <Widget>[
-                    GestureDetector(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.image,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .userIStandardsDialogIcon,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 8),
-                          ),
-                          Text(
-                            getTranslated(context, "mediaSelectionGallery"),
-                            style: TextStyle(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .userIStandardsDialogText),
-                          ),
-                        ],
-                      ),
-                      onTap: () async {
-                        routeNavigation.routePop(context);
-                        mediaManagement.imagePicker(
-                            context, false, state, saveFunction);
-                      },
+Future<Widget> showMediaSelection(
+    BuildContext context, State state, Function saveFunction) async {
+  return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+            title: Text(
+              getTranslated(context, "mediaSelectionTitle"),
+              style: TextStyle(
+                  color:
+                      Theme.of(context).colorScheme.userIStandardsDialogText),
+            ),
+            backgroundColor:
+                Theme.of(context).colorScheme.userIStandardsDialogBackground,
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  GestureDetector(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.image,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .userIStandardsDialogIcon,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 8),
+                        ),
+                        Text(
+                          getTranslated(context, "mediaSelectionGallery"),
+                          style: TextStyle(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .userIStandardsDialogText),
+                        ),
+                      ],
                     ),
-                    Padding(padding: EdgeInsets.all(8.0)),
-                    GestureDetector(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.camera_alt_rounded,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .userIStandardsDialogIcon,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 8),
-                          ),
-                          Text(
-                            getTranslated(context, "mediaSelectionCamera"),
-                            style: TextStyle(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .userIStandardsDialogText),
-                          ),
-                        ],
-                      ),
-                      onTap: () async {
-                        routeNavigation.routePop(context);
-                        return await mediaManagement.imagePicker(
-                            context, true, state, saveFunction);
-                      },
-                    )
-                  ],
-                ),
-              ));
-        });
-  }
+                    onTap: () async {
+                      routeNavigation.routePop(context);
+                      mediaManagement.imagePicker(
+                          context, false, state, saveFunction);
+                    },
+                  ),
+                  Padding(padding: EdgeInsets.all(8.0)),
+                  GestureDetector(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.camera_alt_rounded,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .userIStandardsDialogIcon,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 8),
+                        ),
+                        Text(
+                          getTranslated(context, "mediaSelectionCamera"),
+                          style: TextStyle(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .userIStandardsDialogText),
+                        ),
+                      ],
+                    ),
+                    onTap: () async {
+                      routeNavigation.routePop(context);
+                      return await mediaManagement.imagePicker(
+                          context, true, state, saveFunction);
+                    },
+                  )
+                ],
+              ),
+            ));
+      });
+}
 
-  Widget showShareButton(BuildContext context, String imageURL) {
-    return new Material(
-      color: Theme.of(context).colorScheme.materialTransparent,
-      child: IconButton(
-        onPressed: () {
-          mediaManagement.shareImage(context, imageURL);
-        },
-        iconSize:
-            Theme.of(context).materialTapTargetSize.userIStandardsShareButton,
-        icon: Icon(
-          Icons.share_outlined,
-          color: Theme.of(context).colorScheme.userIStandardsShareButton,
-        ),
-      ),
-    );
-  }
-
-  Widget showSocialButton(BuildContext context, int iconCase) {
-    return new GestureDetector(
-      onTap: () {
-        routeNavigation.routePage(context, HomeScreen());
+Widget showShareButton(BuildContext context, String imageURL) {
+  return new Material(
+    color: Theme.of(context).colorScheme.materialTransparent,
+    child: IconButton(
+      onPressed: () {
+        mediaManagement.shareImage(context, imageURL);
       },
-      child: Container(
-        padding: EdgeInsets.all(7.5),
-        height:
-            Theme.of(context).visualDensity.userIStandardsSocialButtonHeight,
-        width: Theme.of(context).visualDensity.userIStandardsSocialButtonWidth,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(360),
-          color: Theme.of(context).colorScheme.userIStandardsSocialButton,
-        ),
-        child: Image(image: AssetImage('lib/assets/googleLogo.png')),
+      iconSize:
+          Theme.of(context).materialTapTargetSize.userIStandardsShareButton,
+      icon: Icon(
+        Icons.share_outlined,
+        color: Theme.of(context).colorScheme.userIStandardsShareButton,
       ),
-    );
-  }
+    ),
+  );
+}
 
-  Future<void> showAboutDialog(BuildContext context) async {
-    return showDialog<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return AboutDialog(
-            applicationName: "Daily",
-            applicationVersion: '1.0',
-            applicationLegalese: 'Copyright (c) 2022 Phoenix',
-          );
-        });
-  }
-
-  void showToastMessage(BuildContext context, String key) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(
-        getTranslated(context, key),
-        style: TextStyle(
-            color:
-                Theme.of(context).colorScheme.userIStandardsToastMessageContent,
-            fontSize:
-                Theme.of(context).textTheme.userIStandardsToastMessageContent,
-            fontWeight:
-                Theme.of(context).typography.userIStandardsToastMessageContent),
+Widget showSocialButton(BuildContext context, int iconCase) {
+  return new GestureDetector(
+    onTap: () {
+      routeNavigation.routePage(context, HomeScreen());
+    },
+    child: Container(
+      padding: EdgeInsets.all(7.5),
+      height: Theme.of(context).visualDensity.userIStandardsSocialButtonHeight,
+      width: Theme.of(context).visualDensity.userIStandardsSocialButtonWidth,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(360),
+        color: Theme.of(context).colorScheme.userIStandardsSocialButton,
       ),
-      duration: const Duration(seconds: 3),
-      backgroundColor:
-          Theme.of(context).colorScheme.userIStandardsToastMessageBackground,
-    ));
-  }
+      child: Image(image: AssetImage('lib/assets/googleLogo.png')),
+    ),
+  );
+}
+
+void showToastMessage(BuildContext context, String key) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    content: Text(
+      getTranslated(context, key),
+      style: TextStyle(
+          color:
+              Theme.of(context).colorScheme.userIStandardsToastMessageContent,
+          fontSize:
+              Theme.of(context).textTheme.userIStandardsToastMessageContent,
+          fontWeight:
+              Theme.of(context).typography.userIStandardsToastMessageContent),
+    ),
+    duration: const Duration(seconds: 3),
+    backgroundColor:
+        Theme.of(context).colorScheme.userIStandardsToastMessageBackground,
+  ));
+}
+
+void showAboutBox(BuildContext context) {
+  showAboutDialog(
+    context: context,
+    applicationName: 'Daily',
+    applicationVersion: '0.1',
+    applicationLegalese: '©2022 Phoenix',
+  );
 }

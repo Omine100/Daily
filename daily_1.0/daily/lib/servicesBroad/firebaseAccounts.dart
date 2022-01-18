@@ -62,11 +62,11 @@ class FirebaseAccounts {
 
   Future<bool> sendPasswordReset(BuildContext context, String email) async {
     if (email == "" || email == null || !isEmail(email)) {
-      UserIStandards().showToastMessage(context, "errorInvalidEmail");
+      showToastMessage(context, "errorInvalidEmail");
       return false;
     }
     auth.sendPasswordResetEmail(email: email);
-    UserIStandards().showToastMessage(context, "settingsResetPasswordSent");
+    showToastMessage(context, "settingsResetPasswordSent");
     return true;
   }
 
@@ -78,19 +78,19 @@ class FirebaseAccounts {
         password == "" ||
         name == null ||
         name == "") {
-      UserIStandards().showToastMessage(context, "errorBlankField");
+      showToastMessage(context, "errorBlankField");
       return false;
     }
     if (!isName(name)) {
-      UserIStandards().showToastMessage(context, "errorInvalidName");
+      showToastMessage(context, "errorInvalidName");
       return false;
     }
     if (!isEmail(email)) {
-      UserIStandards().showToastMessage(context, "errorInvalidEmail");
+      showToastMessage(context, "errorInvalidEmail");
       return false;
     }
     if (!isPassword(password)) {
-      UserIStandards().showToastMessage(context, "errorPasswordRequirements");
+      showToastMessage(context, "errorPasswordRequirements");
       return false;
     }
     try {
@@ -117,7 +117,7 @@ class FirebaseAccounts {
         default:
           key = "errorDefault";
       }
-      UserIStandards().showToastMessage(context, key);
+      showToastMessage(context, key);
     }
     return false;
   }
@@ -125,7 +125,7 @@ class FirebaseAccounts {
   Future<bool> signInEmailAndPassword(
       BuildContext context, String email, String password) async {
     if (email == "" || password == "") {
-      UserIStandards().showToastMessage(context, "errorBlankField");
+      showToastMessage(context, "errorBlankField");
       return false;
     }
     try {
@@ -152,7 +152,7 @@ class FirebaseAccounts {
         default:
           key = "errorDefault";
       }
-      UserIStandards().showToastMessage(context, key);
+      showToastMessage(context, key);
       return false;
     }
   }
