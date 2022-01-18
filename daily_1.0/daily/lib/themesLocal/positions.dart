@@ -8,7 +8,7 @@ extension CustomPositions on MaterialTapTargetSize {
   double get welcomeDesktopCarouselTop => 0.22;
   double get welcomeDesktopCornerTop => 0;
   double get welcomeDesktopCornerRight => -0.01;
-  double get welcomeDesktopGetStartedTop => 0.815;
+  double get welcomeDesktopGetStartedTop => 0.825;
   double get welcomeDesktopAccountAlreadyTop => 0.93;
   // #endregion
 
@@ -17,7 +17,7 @@ extension CustomPositions on MaterialTapTargetSize {
   double get welcomeTabletCarouselTop => 0.22;
   double get welcomeTabletCornerTop => 0;
   double get welcomeTabletCornerRight => -0.01;
-  double get welcomeTabletGetStartedTop => 0.815;
+  double get welcomeTabletGetStartedTop => 0.825;
   double get welcomeTabletAccountAlreadyTop => 0.93;
   // #endregion
 
@@ -26,40 +26,40 @@ extension CustomPositions on MaterialTapTargetSize {
   double get welcomeMobileCarouselTop => 0.22;
   double get welcomeMobileCornerTop => 0;
   double get welcomeMobileCornerRight => -0.01;
-  double get welcomeMobileGetStartedTop => 0.815;
+  double get welcomeMobileGetStartedTop => 0.825;
   double get welcomeMobileAccountAlreadyTop => 0.93;
   // #endregion
 
   // #region authDesktop
   double get authDesktopCenterPieceTop => 0.06;
-  double get authDesktopUserInputTop => 0.5;
-  double get authDesktopForgotPasswordTop => 0.685;
+  double get authDesktopUserInputTop => 0.45;
+  double get authDesktopForgotPasswordTop => 0.63;
   double get authDesktopForgotPasswordLeft => 0.1;
-  double get authDesktopGetStartedTop => 0.8;
+  double get authDesktopGetStartedTop => 0.825;
   double get authDesktopSwitchTop => 0.93;
   // #endregion
 
   // #region authTablet
-  double get authTabletCenterPieceTop => 0.06;
-  double get authTabletUserInputTop => 0.5;
-  double get authTabletForgotPasswordTop => 0.685;
+  double get authTabletCenterPieceTop => 0.063;
+  double get authTabletUserInputTop => 0.45;
+  double get authTabletForgotPasswordTop => 0.63;
   double get authTabletForgotPasswordLeft => 0.1;
-  double get authTabletGetStartedTop => 0.815;
+  double get authTabletGetStartedTop => 0.825;
   double get authTabletSwitchTop => 0.93;
   // #endregion
 
   // #region authMobile
-  double get authMobileCenterPieceTop => 0.06;
-  double get authMobileUserInputTop => 0.5;
-  double get authMobileForgotPasswordTop => 0.685;
+  double get authMobileCenterPieceTop => 0.063;
+  double get authMobileUserInputTop => 0.45;
+  double get authMobileForgotPasswordTop => 0.63;
   double get authMobileForgotPasswordLeft => 0.1;
-  double get authMobileGetStartedTop => 0.815;
+  double get authMobileGetStartedTop => 0.825;
   double get authMobileSwitchTop => 0.93;
   // #endregion
 
   // #region forgotPasswordDesktop
   double get forgotPasswordDesktopTitleTop => 0.1;
-  double get forgotPasswordDesktopCenterPieceTop => 0.06;
+  double get forgotPasswordDesktopCenterPieceTop => 0.063;
   double get forgotPasswordDesktopUserInputTop => 0.5;
   double get forgotPasswordDesktopSendTop => 0.8;
   double get forgotPasswordDesktopResendTop => 0.93;
@@ -69,7 +69,7 @@ extension CustomPositions on MaterialTapTargetSize {
   double get forgotPasswordTabletTitleTop => 0.1;
   double get forgotPasswordTabletCenterPieceTop => 0.06;
   double get forgotPasswordTabletUserInputTop => 0.5;
-  double get forgotPasswordTabletSendTop => 0.815;
+  double get forgotPasswordTabletSendTop => 0.825;
   double get forgotPasswordTabletResendTop => 0.93;
   // #endregion
 
@@ -77,7 +77,7 @@ extension CustomPositions on MaterialTapTargetSize {
   double get forgotPasswordMobileTitleTop => 0.1;
   double get forgotPasswordMobileCenterPieceTop => 0.15;
   double get forgotPasswordMobileUserInputTop => 0.65;
-  double get forgotPasswordMobileSendTop => 0.815;
+  double get forgotPasswordMobileSendTop => 0.825;
   double get forgotPasswordMobileResendTop => 0.93;
   // #endregion
 

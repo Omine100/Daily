@@ -12,11 +12,11 @@ extension CustomDimensions on VisualDensity {
   double get welcomeTitleWidth => 1.0;
   double get welcomeCarouselHeight => 0.50;
   double get welcomeCarouselWidth => 1.0;
-  double get welcomeCarouselSelectorHeightCurrent => 0.05;
+  double get welcomeCarouselSelectorHeightCurrent => 0.045;
   double get welcomeCarouselSelectorHeightNotCurrent => 0.03;
-  double get welcomeCarouselSelectorWidth => 0.05;
+  double get welcomeCarouselSelectorWidth => 0.025;
   double get welcomeCornerHeight => 0.22;
-  double get welcomeGetStartedHeight => 0.07;
+  double get welcomeGetStartedHeight => 0.065;
   double get welcomeGetStartedWidth => 0.45;
   // #endregion
 
@@ -24,10 +24,10 @@ extension CustomDimensions on VisualDensity {
   double get authTitleWidth => 1.0;
   double get authBoxConstraintFocused => 1.2;
   double get authBoxConstraintUnfocused => 1.0;
-  double get authCenterPieceHeight => 0.42;
-  double get authUserInputFieldHeight => 0.07;
+  double get authCenterPieceHeight => 0.35;
+  double get authUserInputFieldHeight => 0.06;
   double get authUserInputFieldWidth => 0.875;
-  double get authGetStartedHeight => 0.07;
+  double get authGetStartedHeight => 0.065;
   double get authGetStartedWidth => 0.45;
   // #endregion
 
@@ -37,9 +37,9 @@ extension CustomDimensions on VisualDensity {
   double get forgotPasswordBoxConstraintUnfocused => 1.0;
   double get forgotPasswordCenterPieceHeight => 0.6;
   double get forgotPasswordCenterPieceWidth => 0.6;
-  double get forgotPasswordUserInputFieldHeight => 0.07;
+  double get forgotPasswordUserInputFieldHeight => 0.065;
   double get forgotPasswordUserInputFieldWidth => 0.875;
-  double get forgotPasswordSendHeight => 0.07;
+  double get forgotPasswordSendHeight => 0.065;
   double get forgotPasswordSendWidth => 0.45;
   // #endregion
 

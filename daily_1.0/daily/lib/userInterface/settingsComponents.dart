@@ -71,7 +71,7 @@ Widget settingsProfile(BuildContext context, State state) {
                       child: profileURL.value == ""
                           ? Icon(
                               Icons.person_outline_rounded,
-                              size: 45,
+                              size: 55,
                               color: Theme.of(context)
                                   .colorScheme
                                   .settingsProfileIcon,
