@@ -49,7 +49,7 @@ extension CustomColorScheme on ColorScheme {
   // #region textViewer
   Color get textViewerBackground =>
       Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
-  Color get textViewerBody => Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
+  Color get textViewerText => Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
   // #endregion
 
   // #region welcome

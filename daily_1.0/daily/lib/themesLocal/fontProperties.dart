@@ -9,7 +9,7 @@ extension CustomFontSize on TextTheme {
   // #endregion
 
   // #region textViewer
-  double get textViewerBody => 14.0;
+  double get textViewerText => 14.0;
   // #endregion
 
   // #region welcome
@@ -58,7 +58,7 @@ extension CustomFontWeight on Typography {
   // #endregion
 
   // #region textViewer
-  FontWeight get textViewerBody => FontWeight.w300;
+  FontWeight get textViewerText => FontWeight.w300;
   // #endregion
 
   // #region welcome
