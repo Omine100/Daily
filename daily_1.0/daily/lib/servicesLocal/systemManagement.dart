@@ -34,6 +34,16 @@ void setTheme(BuildContext context, String value) {
 }
 // #endregion
 
+// #region legal
+String getPolicyFilePath() {
+  return "legal/documents/privacyPolicy_01182022.txt";
+}
+
+String getTaCFilePath() {
+  return "legal/documents/privacyPolicy_01182022.txt";
+}
+// #endregion
+
 // #region languages
 class Languages {
   Languages(this.flag, this.language);

@@ -1,9 +1,9 @@
-import 'package:daily/standards/userIStandards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
+import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
@@ -150,8 +150,7 @@ Widget authPolicyAndTaC(BuildContext context) {
                   decoration: TextDecoration.underline),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  showTextViewer(
-                      context, "legal/documents/privacyPolicy_01182021.txt");
+                  showTextViewer(context, getPolicyFilePath());
                 }),
           TextSpan(
               text: "\n" +
@@ -173,8 +172,7 @@ Widget authPolicyAndTaC(BuildContext context) {
                         decoration: TextDecoration.underline),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        showTextViewer(context,
-                            "legal/documents/termsAndConditions_01182021.txt");
+                        showTextViewer(context, getTaCFilePath());
                       })
               ])
         ]))),

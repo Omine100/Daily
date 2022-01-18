@@ -64,13 +64,15 @@ Setting privacyPolicy = new Setting(
     group: Group.settingGroupLegal,
     format: Format.Click,
     isSignInRequired: false,
-    onClicked: showTextViewer);
+    onClicked: showTextViewer,
+    call: getPolicyFilePath);
 Setting termsAndConditions = new Setting(
     key: "settingTermsAndConditions",
     group: Group.settingGroupLegal,
     format: Format.Click,
     isSignInRequired: false,
-    onClicked: showTextViewer);
+    onClicked: showTextViewer,
+    call: getTaCFilePath);
 Setting licenses = new Setting(
     key: "settingLicenses",
     group: Group.settingGroupLegal,

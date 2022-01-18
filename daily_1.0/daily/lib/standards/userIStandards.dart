@@ -147,8 +147,7 @@ void showToastMessage(BuildContext context, String key) {
 }
 
 Widget showTextViewer(BuildContext context, String filePath) {
-  return Material(
-      child: Scaffold(
+  return Scaffold(
     body: SingleChildScrollView(
       child: Container(
         color: Colors.blue,
@@ -160,7 +159,7 @@ Widget showTextViewer(BuildContext context, String filePath) {
             }),
       ),
     ),
-  ));
+  );
 }
 
 void showAboutBox(BuildContext context) {
