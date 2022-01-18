@@ -3,8 +3,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 
 Widget textViewerText(BuildContext context, String filePath) {
-  return Padding(
-    padding: const EdgeInsets.only(top: 50.0, left: 10, right: 10),
+  return SafeArea(
     child: FutureBuilder(
         future: DefaultAssetBundle.of(context).loadString(filePath),
         builder: (context, snapshot) {
