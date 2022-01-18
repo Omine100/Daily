@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:daily/userInterface/welcome.dart';
 import 'package:daily/userInterface/home.dart';
+import 'package:daily/userInterface/textViewer.dart';
 
 class RouteNavigation {
   void routePop(BuildContext context) {
@@ -18,5 +19,12 @@ class RouteNavigation {
 
   Widget routeInitial(BuildContext context, bool isSignedIn) {
     return isSignedIn ? HomeScreen() : WelcomeScreen();
+  }
+
+  Widget routeTextViewer(BuildContext context, String filePath) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => textViewerScreen(filePath: filePath)));
   }
 }

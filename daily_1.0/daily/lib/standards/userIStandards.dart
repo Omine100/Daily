@@ -146,22 +146,6 @@ void showToastMessage(BuildContext context, String key) {
   ));
 }
 
-Widget showTextViewer(BuildContext context, String filePath) {
-  return Scaffold(
-    body: SingleChildScrollView(
-      child: Container(
-        color: Colors.blue,
-        // color: Theme.of(context).colorScheme.userIStandardsTextViewerBackground,
-        child: FutureBuilder(
-            future: DefaultAssetBundle.of(context).loadString(filePath),
-            builder: (context, snapshot) {
-              return new Text(snapshot.data ?? '', softWrap: true);
-            }),
-      ),
-    ),
-  );
-}
-
 void showAboutBox(BuildContext context) {
   showDialog<void>(
     context: context,

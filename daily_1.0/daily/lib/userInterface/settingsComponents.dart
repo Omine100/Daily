@@ -275,21 +275,24 @@ Widget settingDropdown(BuildContext context, Setting setting, State state) {
 }
 
 Widget settingClick(BuildContext context, Setting setting, State state) {
-  return GestureDetector(
-    onTap: () {
-      if (setting.call != null)
-        setting.onClicked.call(context, setting.call.call());
-      else
-        setting.onClicked.call(context);
-    },
-    child: Padding(
-      padding: const EdgeInsets.only(top: 8.0),
-      child: Text(getTranslated(context, setting.key),
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.settingsRowText,
-            fontSize: Theme.of(context).textTheme.settingsRowText,
-            fontWeight: Theme.of(context).typography.settingsRowText,
-          )),
+  return Padding(
+    padding: const EdgeInsets.only(top: 2.0, bottom: 2.0),
+    child: GestureDetector(
+      onTap: () {
+        if (setting.call != null)
+          setting.onClicked.call(context, setting.call.call());
+        else
+          setting.onClicked.call(context);
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: Text(getTranslated(context, setting.key),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.settingsRowText,
+              fontSize: Theme.of(context).textTheme.settingsRowText,
+              fontWeight: Theme.of(context).typography.settingsRowText,
+            )),
+      ),
     ),
   );
 }

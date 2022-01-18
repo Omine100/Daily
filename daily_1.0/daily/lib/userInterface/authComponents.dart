@@ -150,7 +150,7 @@ Widget authPolicyAndTaC(BuildContext context) {
                   decoration: TextDecoration.underline),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  showTextViewer(context, getPolicyFilePath());
+                  routeNavigation.routeTextViewer(context, getPolicyFilePath());
                 }),
           TextSpan(
               text: "\n" +
@@ -172,7 +172,8 @@ Widget authPolicyAndTaC(BuildContext context) {
                         decoration: TextDecoration.underline),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        showTextViewer(context, getTaCFilePath());
+                        routeNavigation.routeTextViewer(
+                            context, getTaCFilePath());
                       })
               ])
         ]))),
