@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
@@ -124,6 +125,45 @@ Widget authForgotPassword(BuildContext context) {
         fontWeight: Theme.of(context).typography.authForgotPassword,
       ),
     ),
+  );
+}
+
+Widget authPolicyLinkAndTermsOfService(BuildContext context) {
+  return Container(
+    alignment: Alignment.center,
+    padding: EdgeInsets.all(10),
+    child: Center(
+        child: Text.rich(TextSpan(
+            text: 'By continuing, you agree to our ',
+            style: TextStyle(fontSize: 16, color: Colors.black),
+            children: <TextSpan>[
+          TextSpan(
+              text: 'Terms of Service',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+                decoration: TextDecoration.underline,
+              ),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  // code to open / launch terms of service link here
+                }),
+          TextSpan(
+              text: ' and ',
+              style: TextStyle(fontSize: 18, color: Colors.black),
+              children: <TextSpan>[
+                TextSpan(
+                    text: 'Privacy Policy',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        decoration: TextDecoration.underline),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        // code to open / launch privacy policy link here
+                      })
+              ])
+        ]))),
   );
 }
 

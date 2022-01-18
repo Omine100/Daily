@@ -46,6 +46,8 @@ flutter:
   uses-material-design: true
 
   assets:
+      - lib/legal/documents/privacyPolicy_01182021.txt
+      - lib/legal/documents/termsAndConditions_01182021.txt
       - lib/assets/welcome/welcome_carouselOne.png
       - lib/assets/welcome/welcome_carouselTwo.png
       - lib/assets/welcome/welcome_carouselThree.png
