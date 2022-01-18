@@ -141,7 +141,7 @@ Widget authPolicyAndTaC(BuildContext context) {
             ),
             children: <TextSpan>[
           TextSpan(
-              text: getTranslated(context, "authPolicyAndTaCPrivacy") + " ",
+              text: getTranslated(context, "authPolicyAndTaCPrivacy"),
               style: TextStyle(
                   color: Theme.of(context).colorScheme.authPolicyAndTaC,
                   fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
