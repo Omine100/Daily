@@ -21,6 +21,7 @@ extension CustomFontSize on TextTheme {
   double get authSubtitle => 32;
   double get authUserInputFieldDecoration => 20;
   double get authForgotPassword => 16;
+  double get authPolicyAndTaC => 16;
   double get authGetStartedText => 20;
   double get authSwitchPrimary => 16;
   double get authSwitchSecondary => 16;
@@ -65,6 +66,7 @@ extension CustomFontWeight on Typography {
   FontWeight get authSubtitle => FontWeight.w300;
   FontWeight get authUserInputFieldDecoration => FontWeight.w300;
   FontWeight get authForgotPassword => FontWeight.w400;
+  FontWeight get authPolicyAndTaC => FontWeight.w400;
   FontWeight get authGetStartedText => FontWeight.w500;
   FontWeight get authSwitchPrimary => FontWeight.w400;
   FontWeight get authSwitchSecondary => FontWeight.w500;

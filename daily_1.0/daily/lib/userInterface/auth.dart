@@ -41,19 +41,28 @@ class _AuthScreenState extends State<AuthScreen> {
                     .authDesktopUserInputTop),
             child: authUserInput(context, isSignIn)),
         Positioned(
-          top: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .authDesktopForgotPasswordTop),
+          top: isSignIn
+              ? getPosition(
+                  context,
+                  true,
+                  Theme.of(context)
+                      .materialTapTargetSize
+                      .authDesktopForgotPasswordTop)
+              : getPosition(
+                  context,
+                  true,
+                  Theme.of(context)
+                      .materialTapTargetSize
+                      .authDesktopPolicyAndTaCTop),
           left: getPosition(
               context,
               false,
               Theme.of(context)
                   .materialTapTargetSize
-                  .authDesktopForgotPasswordLeft),
-          child: isSignIn ? authForgotPassword(context) : Container(),
+                  .authDesktopForgotPasswordPolicyAndTaCLeft),
+          child: isSignIn
+              ? authForgotPassword(context)
+              : authPolicyAndTaC(context),
         ),
         Positioned(
             top: getPosition(
@@ -94,19 +103,28 @@ class _AuthScreenState extends State<AuthScreen> {
                 Theme.of(context).materialTapTargetSize.authTabletUserInputTop),
             child: authUserInput(context, isSignIn)),
         Positioned(
-          top: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .authTabletForgotPasswordTop),
+          top: isSignIn
+              ? getPosition(
+                  context,
+                  true,
+                  Theme.of(context)
+                      .materialTapTargetSize
+                      .authTabletForgotPasswordTop)
+              : getPosition(
+                  context,
+                  true,
+                  Theme.of(context)
+                      .materialTapTargetSize
+                      .authTabletPolicyAndTaCTop),
           left: getPosition(
               context,
               false,
               Theme.of(context)
                   .materialTapTargetSize
-                  .authTabletForgotPasswordLeft),
-          child: isSignIn ? authForgotPassword(context) : Container(),
+                  .authTabletForgotPasswordPolicyAndTaCLeft),
+          child: isSignIn
+              ? authForgotPassword(context)
+              : authPolicyAndTaC(context),
         ),
         Positioned(
             top: getPosition(
@@ -147,19 +165,28 @@ class _AuthScreenState extends State<AuthScreen> {
                 Theme.of(context).materialTapTargetSize.authMobileUserInputTop),
             child: authUserInput(context, isSignIn)),
         Positioned(
-          top: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .authMobileForgotPasswordTop),
+          top: isSignIn
+              ? getPosition(
+                  context,
+                  true,
+                  Theme.of(context)
+                      .materialTapTargetSize
+                      .authMobileForgotPasswordTop)
+              : getPosition(
+                  context,
+                  true,
+                  Theme.of(context)
+                      .materialTapTargetSize
+                      .authMobilePolicyAndTaCTop),
           left: getPosition(
               context,
               false,
               Theme.of(context)
                   .materialTapTargetSize
-                  .authMobileForgotPasswordLeft),
-          child: isSignIn ? authForgotPassword(context) : Container(),
+                  .authMobileForgotPasswordPolicyAndTaCLeft),
+          child: isSignIn
+              ? authForgotPassword(context)
+              : authPolicyAndTaC(context),
         ),
         Positioned(
             top: getPosition(

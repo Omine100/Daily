@@ -33,8 +33,9 @@ extension CustomPositions on MaterialTapTargetSize {
   // #region authDesktop
   double get authDesktopCenterPieceTop => 0.06;
   double get authDesktopUserInputTop => 0.45;
-  double get authDesktopForgotPasswordTop => 0.63;
-  double get authDesktopForgotPasswordLeft => 0.1;
+  double get authDesktopForgotPasswordTop => 0.62;
+  double get authDesktopPolicyAndTaCTop => 0.7;
+  double get authDesktopForgotPasswordPolicyAndTaCLeft => 0.1;
   double get authDesktopGetStartedTop => 0.825;
   double get authDesktopSwitchTop => 0.93;
   // #endregion
@@ -42,8 +43,9 @@ extension CustomPositions on MaterialTapTargetSize {
   // #region authTablet
   double get authTabletCenterPieceTop => 0.063;
   double get authTabletUserInputTop => 0.45;
-  double get authTabletForgotPasswordTop => 0.63;
-  double get authTabletForgotPasswordLeft => 0.1;
+  double get authTabletForgotPasswordTop => 0.62;
+  double get authTabletPolicyAndTaCTop => 0.7;
+  double get authTabletForgotPasswordPolicyAndTaCLeft => 0.1;
   double get authTabletGetStartedTop => 0.825;
   double get authTabletSwitchTop => 0.93;
   // #endregion
@@ -51,8 +53,9 @@ extension CustomPositions on MaterialTapTargetSize {
   // #region authMobile
   double get authMobileCenterPieceTop => 0.063;
   double get authMobileUserInputTop => 0.45;
-  double get authMobileForgotPasswordTop => 0.63;
-  double get authMobileForgotPasswordLeft => 0.1;
+  double get authMobileForgotPasswordTop => 0.62;
+  double get authMobilePolicyAndTaCTop => 0.7;
+  double get authMobileForgotPasswordPolicyAndTaCLeft => 0.1;
   double get authMobileGetStartedTop => 0.825;
   double get authMobileSwitchTop => 0.93;
   // #endregion

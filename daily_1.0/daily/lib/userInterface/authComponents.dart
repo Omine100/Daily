@@ -128,35 +128,49 @@ Widget authForgotPassword(BuildContext context) {
   );
 }
 
-Widget authPolicyLinkAndTermsOfService(BuildContext context) {
+Widget authPolicyAndTaC(BuildContext context) {
   return Container(
     alignment: Alignment.center,
-    padding: EdgeInsets.all(10),
     child: Center(
         child: Text.rich(TextSpan(
-            text: 'By continuing, you agree to our ',
-            style: TextStyle(fontSize: 16, color: Colors.black),
+            text: getTranslated(context, "authPolicyAndTaCPrimary") + " ",
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.authPolicyAndTaC,
+              fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
+              fontWeight: Theme.of(context).typography.authPolicyAndTaC,
+            ),
             children: <TextSpan>[
           TextSpan(
-              text: 'Terms of Service',
+              text:
+                  getTranslated(context, "authPolicyAndTaCPrivacy").trimLeft(),
               style: TextStyle(
-                fontSize: 16,
-                color: Colors.black,
-                decoration: TextDecoration.underline,
-              ),
+                  color: Theme.of(context).colorScheme.authPolicyAndTaC,
+                  fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
+                  fontWeight: Theme.of(context).typography.authPolicyAndTaC,
+                  decoration: TextDecoration.underline),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  // code to open / launch terms of service link here
+                  // code to open / launch TaC of service link here
                 }),
           TextSpan(
-              text: ' and ',
-              style: TextStyle(fontSize: 18, color: Colors.black),
+              text: "\n" +
+                  getTranslated(context, "authPolicyAndTaCSeconday")
+                      .trimLeft() +
+                  " ",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.authPolicyAndTaC,
+                fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
+                fontWeight: Theme.of(context).typography.authPolicyAndTaC,
+              ),
               children: <TextSpan>[
                 TextSpan(
-                    text: 'Privacy Policy',
+                    text: getTranslated(context, "authPolicyAndTaCConditions")
+                        .trimLeft(),
                     style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
+                        color: Theme.of(context).colorScheme.authPolicyAndTaC,
+                        fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
+                        fontWeight:
+                            Theme.of(context).typography.authPolicyAndTaC,
                         decoration: TextDecoration.underline),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
