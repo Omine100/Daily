@@ -46,6 +46,12 @@ extension CustomColorScheme on ColorScheme {
       Color(isDark.value ? 0xFFFFAB58 : 0xFFFFFFFF);
   // #endregion
 
+  // #region textViewer
+  Color get textViewerBackground =>
+      Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
+  Color get textViewerBody => Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
+  // #endregion
+
   // #region welcome
   Color get welcomeBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get welcomeTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);

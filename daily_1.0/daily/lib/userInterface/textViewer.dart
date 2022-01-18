@@ -15,7 +15,6 @@ class textViewerScreen extends StatefulWidget {
 class _textViewerScreenState extends State<textViewerScreen> {
   textViewerScreenDesktop() {
     return Stack(
-      alignment: Alignment.center,
       children: [
         Positioned(
           top: 50,
@@ -27,7 +26,6 @@ class _textViewerScreenState extends State<textViewerScreen> {
 
   textViewerScreenTablet() {
     return Stack(
-      alignment: Alignment.center,
       children: [
         Positioned(
           top: 50,
@@ -39,7 +37,6 @@ class _textViewerScreenState extends State<textViewerScreen> {
 
   textViewerScreenMobile() {
     return Stack(
-      alignment: Alignment.center,
       children: [
         Positioned(
           top: 50,
@@ -52,14 +49,19 @@ class _textViewerScreenState extends State<textViewerScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Theme.of(context).colorScheme.textViewerBackground,
       child: Scaffold(
-        body: Container(
-          color: Colors.grey.shade200,
-          constraints: BoxConstraints.expand(height: double.maxFinite),
-          child: Responsive(
-            desktop: textViewerScreenDesktop(),
-            tablet: textViewerScreenTablet(),
-            mobile: textViewerScreenMobile(),
+        backgroundColor: Theme.of(context).colorScheme.textViewerBackground,
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            height: 3500,
+            width: MediaQuery.of(context).size.width,
+            child: Responsive(
+              desktop: textViewerScreenDesktop(),
+              tablet: textViewerScreenTablet(),
+              mobile: textViewerScreenMobile(),
+            ),
           ),
         ),
       ),

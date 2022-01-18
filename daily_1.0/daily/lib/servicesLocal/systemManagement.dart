@@ -36,11 +36,11 @@ void setTheme(BuildContext context, String value) {
 
 // #region legal
 String getPolicyFilePath() {
-  return "legal/documents/privacyPolicy_01182022.txt";
+  return "lib/legal/documents/privacyPolicy_01182022.txt";
 }
 
 String getTaCFilePath() {
-  return "legal/documents/privacyPolicy_01182022.txt";
+  return "lib/legal/documents/termsAndConditions_01182022.txt";
 }
 // #endregion
 
