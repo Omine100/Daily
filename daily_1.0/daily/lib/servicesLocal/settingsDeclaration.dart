@@ -51,6 +51,12 @@ Setting profileURL = new Setting(
     isSignInRequired: true,
     value: null,
     defaultValue: "");
+Setting helpSupport = new Setting(
+    key: "settingHelpSupport",
+    group: Group.settingGroupGeneral,
+    format: Format.Click,
+    isSignInRequired: true,
+    onClicked: showAboutDialog);
 Setting licenses = new Setting(
     key: "settingLicenses",
     group: Group.settingGroupLegal,
@@ -60,9 +66,10 @@ Setting licenses = new Setting(
 
 List<Setting> settingsList = [
   resetPassword,
+  theme,
   locale,
   notifications,
-  theme,
+  helpSupport,
   isDark,
   profileURL,
   licenses,

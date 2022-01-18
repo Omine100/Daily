@@ -132,7 +132,6 @@ class UserIStandards {
 
   Future<void> showAboutDialog(BuildContext context) async {
     return showDialog<void>(
-        barrierDismissible: true,
         context: context,
         builder: (BuildContext context) {
           return AboutDialog(

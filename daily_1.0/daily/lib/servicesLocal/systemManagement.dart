@@ -22,11 +22,14 @@ List<DropdownMenuItem> getThemeDropdownMenuList(BuildContext context) {
   return themeList;
 }
 
-void setTheme() {
-  if (theme.value == "settingThemeDark" ||
-      (theme.value == "settingThemeDefault" &&
+void setTheme(BuildContext context, String value) {
+  if (value == "settingThemeDark" ||
+      (value == "settingThemeDefault" &&
           SchedulerBinding.instance.window.platformBrightness ==
-              Brightness.dark)) isDark.value = true;
+              Brightness.dark)) {
+    isDark.value = true;
+    return;
+  }
   isDark.value = false;
 }
 // #endregion
