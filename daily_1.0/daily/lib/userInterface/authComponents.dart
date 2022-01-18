@@ -1,3 +1,4 @@
+import 'package:daily/standards/userIStandards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
@@ -141,8 +142,7 @@ Widget authPolicyAndTaC(BuildContext context) {
             ),
             children: <TextSpan>[
           TextSpan(
-              text:
-                  getTranslated(context, "authPolicyAndTaCPrivacy").trimLeft(),
+              text: getTranslated(context, "authPolicyAndTaCPrivacy") + " ",
               style: TextStyle(
                   color: Theme.of(context).colorScheme.authPolicyAndTaC,
                   fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
@@ -150,12 +150,12 @@ Widget authPolicyAndTaC(BuildContext context) {
                   decoration: TextDecoration.underline),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  // code to open / launch TaC of service link here
+                  showTextViewer(
+                      context, "legal/documents/privacyPolicy_01182021.txt");
                 }),
           TextSpan(
               text: "\n" +
-                  getTranslated(context, "authPolicyAndTaCSeconday")
-                      .trimLeft() +
+                  getTranslated(context, "authPolicyAndTaCSeconday") +
                   " ",
               style: TextStyle(
                 color: Theme.of(context).colorScheme.authPolicyAndTaC,
@@ -164,8 +164,7 @@ Widget authPolicyAndTaC(BuildContext context) {
               ),
               children: <TextSpan>[
                 TextSpan(
-                    text: getTranslated(context, "authPolicyAndTaCConditions")
-                        .trimLeft(),
+                    text: getTranslated(context, "authPolicyAndTaCConditions"),
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.authPolicyAndTaC,
                         fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
@@ -174,7 +173,8 @@ Widget authPolicyAndTaC(BuildContext context) {
                         decoration: TextDecoration.underline),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        // code to open / launch privacy policy link here
+                        showTextViewer(context,
+                            "legal/documents/termsAndConditions_01182021.txt");
                       })
               ])
         ]))),

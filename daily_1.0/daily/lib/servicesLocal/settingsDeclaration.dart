@@ -3,6 +3,7 @@ import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/standards/userIStandards.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 
@@ -58,6 +59,18 @@ Setting helpSupport = new Setting(
     format: Format.Click,
     isSignInRequired: true,
     onClicked: showAboutBox);
+Setting privacyPolicy = new Setting(
+    key: "settingPrivacyPolicy",
+    group: Group.settingGroupLegal,
+    format: Format.Click,
+    isSignInRequired: false,
+    onClicked: showTextViewer);
+Setting termsAndConditions = new Setting(
+    key: "settingTermsAndConditions",
+    group: Group.settingGroupLegal,
+    format: Format.Click,
+    isSignInRequired: false,
+    onClicked: showTextViewer);
 Setting licenses = new Setting(
     key: "settingLicenses",
     group: Group.settingGroupLegal,
@@ -73,5 +86,7 @@ List<Setting> settingsList = [
   helpSupport,
   isDark,
   profileURL,
+  privacyPolicy,
+  termsAndConditions,
   licenses,
 ];
