@@ -48,6 +48,8 @@ extension CustomFontSize on TextTheme {
   double get settingsRowText => 18;
   double get settingDropdownText => 18;
   double get settingsSignOut => 18;
+  double get settingsBoxTextTitle => 20;
+  double get settingsBoxText => 16;
   // #endregion
 }
 
@@ -96,5 +98,7 @@ extension CustomFontWeight on Typography {
   FontWeight get settingsGroupTitle => FontWeight.w500;
   FontWeight get settingsRowText => FontWeight.w400;
   FontWeight get settingsSignOut => FontWeight.w400;
+  FontWeight get settingsBoxTextTitle => FontWeight.w600;
+  FontWeight get settingsBoxText => FontWeight.w300;
   // #endregion
 }

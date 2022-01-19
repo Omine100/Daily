@@ -72,7 +72,7 @@
     "forgotPasswordResendPrimary": "手に入れなかった？",
     "forgotPasswordResendSecondary": "res！",
     "settingsTitle": "設定",
-    "settingsResetPassword": "パスワードを再設定する",
     "settingsResetPasswordSent": "メールが送信されました",
+    "settingsHelpSupportBox": "ヘルプ/サポートの場合は、電子メールでお願いします。",
     "settingsSignOut": "サインアウト"
 }

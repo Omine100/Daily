@@ -72,7 +72,7 @@
     "forgotPasswordResendPrimary": "Не понял?",
     "forgotPasswordResendSecondary": "Отправить!",
     "settingsTitle": "Настройки",
-    "settingsResetPassword": "Сброс пароля",
     "settingsResetPasswordSent": "Письмо было отправлено",
+    "settingsHelpSupportBox": "Для справки / поддержки, пожалуйста, напишите:",
     "settingsSignOut": "ВЫХОД"
 }

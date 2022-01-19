@@ -72,7 +72,7 @@
     "forgotPasswordResendPrimary": "Ei saanut sitä?",
     "forgotPasswordResendSecondary": "Uudelleen lähettää!",
     "settingsTitle": "asetukset",
-    "settingsResetPassword": "Nollaa salasana",
     "settingsResetPasswordSent": "Sähköposti on lähetetty",
+    "settingsHelpSupportBox": "Apua / tukea saat sähköpostitse:",
     "settingsSignOut": "KIRJAUDU ULOS"
 }

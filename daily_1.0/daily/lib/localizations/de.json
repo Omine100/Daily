@@ -72,7 +72,7 @@
     "forgotPasswordResendPrimary": "Hast es nicht bekommen?",
     "forgotPasswordResendSecondary": "Erneut senden!",
     "settingsTitle": "Einstellungen",
-    "settingsResetPassword": "Passwort zurücksetzen",
     "settingsResetPasswordSent": "Die Email wurde verschickt",
+    "settingsHelpSupportBox": "Für die Hilfe / Unterstützung bitte E-Mail:",
     "settingsSignOut": "AUSTRAGEN"
 }

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
-import 'package:daily/standards/userIStandards.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:daily/servicesLocal/routeNavigation.dart';
+import 'package:daily/userInterface/settingsComponents.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+RouteNavigation routeNavigation = new RouteNavigation();
 
 Setting resetPassword = new Setting(
     key: "settingResetPassword",
@@ -58,7 +59,7 @@ Setting helpSupport = new Setting(
     group: Group.settingGroupGeneral,
     format: Format.Click,
     isSignInRequired: true,
-    onClicked: showAboutBox);
+    onClicked: showHelpSupportBox);
 Setting privacyPolicy = new Setting(
     key: "settingPrivacyPolicy",
     group: Group.settingGroupLegal,
@@ -83,10 +84,10 @@ Setting licenses = new Setting(
 List<Setting> settingsList = [
   resetPassword,
   theme,
+  isDark,
   locale,
   notifications,
   helpSupport,
-  isDark,
   profileURL,
   privacyPolicy,
   termsAndConditions,

@@ -1,3 +1,4 @@
+import 'package:daily/servicesBroad/contact.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
@@ -319,5 +320,61 @@ Widget settingsSignOut(BuildContext context) {
         fontWeight: Theme.of(context).typography.settingsSignOut,
       ),
     ),
+  );
+}
+
+void showHelpSupportBox(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Theme.of(context).colorScheme.settingsBoxBackground,
+          title: Text(getTranslated(context, "settingsHelpSupportBox"),
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.settingsBoxText,
+                fontSize: Theme.of(context).textTheme.settingsBoxTextTitle,
+                fontWeight: Theme.of(context).typography.settingsBoxTextTitle,
+              )),
+          content: Text(getServiceEmail(),
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.settingsBoxText,
+                fontSize: Theme.of(context).textTheme.settingsBoxText,
+                fontWeight: Theme.of(context).typography.settingsBoxText,
+              )),
+        );
+      });
+}
+
+void showAboutBox(BuildContext context) {
+  showDialog<void>(
+    context: context,
+    builder: (BuildContext context) {
+      return Theme(
+        data: ThemeData(
+          dialogBackgroundColor:
+              Theme.of(context).colorScheme.settingsBoxBackground,
+          textTheme: TextTheme(
+              headline5: TextStyle(
+                  color: Theme.of(context).colorScheme.settingsBoxText),
+              bodyText2: TextStyle(
+                  color: Theme.of(context).colorScheme.settingsBoxText),
+              caption: TextStyle(
+                  color: Theme.of(context).colorScheme.settingsBoxText)),
+          textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(
+                primary: Theme.of(context).colorScheme.settingsBoxText),
+          ),
+        ),
+        child: AboutDialog(
+          applicationIcon: Icon(
+            Icons.local_play,
+            size: 65,
+          ),
+          applicationName: 'Daily',
+          applicationVersion: 'v0.1',
+          applicationLegalese: '©2022 Phoenix',
+        ),
+      );
+    },
   );
 }

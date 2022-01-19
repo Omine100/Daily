@@ -72,7 +72,7 @@
     "forgotPasswordResendPrimary": "没有得到它？",
     "forgotPasswordResendSecondary": "重发！",
     "settingsTitle": "设置",
-    "settingsResetPassword": "重设密码",
     "settingsResetPasswordSent": "邮件已发送",
+    "settingsHelpSupportBox": "有关帮助/支持请发送电子邮件：",
     "settingsSignOut": "登出"
 }

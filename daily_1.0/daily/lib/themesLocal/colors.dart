@@ -150,6 +150,9 @@ extension CustomColorScheme on ColorScheme {
   Color get settingDropdownText =>
       Color(isDark.value ? 0xFFBBBBBB : 0xFF555555);
   Color get settingsSignOut => Color(isDark.value ? 0xFFFF4350 : 0xFFFF4350);
+  Color get settingsBoxBackground =>
+      Color(isDark.value ? 0xFF424242 : 0xFFFBFAF5);
+  Color get settingsBoxText => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   // #endregion
 }
 
