@@ -335,7 +335,7 @@ void showHelpSupportBox(BuildContext context) {
                 fontSize: Theme.of(context).textTheme.settingsBoxTextTitle,
                 fontWeight: Theme.of(context).typography.settingsBoxTextTitle,
               )),
-          content: Text(getServiceEmail(),
+          content: Text(getContactEmail(),
               style: TextStyle(
                 color: Theme.of(context).colorScheme.settingsBoxText,
                 fontSize: Theme.of(context).textTheme.settingsBoxText,
