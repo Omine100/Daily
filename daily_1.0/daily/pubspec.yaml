@@ -30,9 +30,6 @@ dependencies:
       url: git://github.com/himanshusharma89/plugins.git
       path: packages/share
 
-  #Utilities
-  image: ^3.0.8
-
   #User interface
   page_transition: ^1.1.7+3
   font_awesome_flutter: ^9.1.0
@@ -41,6 +38,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.7.3
+
+flutter_icons:
+  android: "icon" 
+  ios: true
+  image_path: "lib/assets/launcher/icon.png"
 
 flutter:
   uses-material-design: true
@@ -48,6 +51,8 @@ flutter:
   assets:
       - lib/legal/documents/privacyPolicy_01182022.txt
       - lib/legal/documents/termsAndConditions_01182022.txt
+      - lib/assets/launcher/icon.png
+      - lib/assets/launcher/icon_noBackground.png
       - lib/assets/welcome/welcome_carouselOne.png
       - lib/assets/welcome/welcome_carouselTwo.png
       - lib/assets/welcome/welcome_carouselThree.png
