@@ -255,22 +255,30 @@ Widget settingSwitch(BuildContext context, Setting setting, State state) {
 }
 
 Widget settingDropdown(BuildContext context, Setting setting, State state) {
-  return DropdownButton(
-    menuMaxHeight: getDimension(
-        context, true, Theme.of(context).visualDensity.settingDropdownHeight),
-    items: setting.items(context),
-    value: setting.value,
-    style: TextStyle(
-        color: Theme.of(context).colorScheme.settingDropdownText,
-        fontSize: Theme.of(context).textTheme.settingDropdownText),
-    dropdownColor: Theme.of(context).colorScheme.settingDropdownBackground,
-    onChanged: (value) {
-      state.setState(() {
-        setting.value = value;
-        if (setting.onChanged != null)
-          setting.onChanged.call(context, setting.value);
-      });
-    },
+  return Padding(
+    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+    child: DropdownButtonHideUnderline(
+      child: DropdownButton(
+        alignment: Alignment.centerRight,
+        isExpanded: false,
+        isDense: true,
+        menuMaxHeight: getDimension(context, true,
+            Theme.of(context).visualDensity.settingDropdownHeight),
+        items: setting.items(context),
+        value: setting.value,
+        style: TextStyle(
+            color: Theme.of(context).colorScheme.settingDropdownText,
+            fontSize: Theme.of(context).textTheme.settingDropdownText),
+        dropdownColor: Theme.of(context).colorScheme.settingDropdownBackground,
+        onChanged: (value) {
+          state.setState(() {
+            setting.value = value;
+            if (setting.onChanged != null)
+              setting.onChanged.call(context, setting.value);
+          });
+        },
+      ),
+    ),
   );
 }
 
