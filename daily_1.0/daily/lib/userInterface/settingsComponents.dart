@@ -256,7 +256,7 @@ Widget settingSwitch(BuildContext context, Setting setting, State state) {
 
 Widget settingDropdown(BuildContext context, Setting setting, State state) {
   return Padding(
-    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+    padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
     child: DropdownButtonHideUnderline(
       child: DropdownButton(
         alignment: Alignment.centerRight,
