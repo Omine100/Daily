@@ -368,7 +368,6 @@ void showAboutBox(BuildContext context) {
         child: AboutDialog(
           applicationIcon: Image.asset(
             "lib/assets/launcher/icon_noBackground.png",
-            width: 75,
             height: 75,
           ),
           applicationName: 'Daily',
