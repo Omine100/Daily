@@ -4,18 +4,21 @@ import 'package:daily/themesLocal/fontProperties.dart';
 
 Widget textViewerText(BuildContext context, String filePath) {
   return SafeArea(
-    child: FutureBuilder(
-        future: DefaultAssetBundle.of(context).loadString(filePath),
-        builder: (context, snapshot) {
-          return Text(
-            snapshot.data ?? '',
-            softWrap: true,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.textViewerText,
-              fontSize: Theme.of(context).textTheme.textViewerText,
-              fontWeight: Theme.of(context).typography.textViewerText,
-            ),
-          );
-        }),
+    child: Padding(
+      padding: const EdgeInsets.only(top: 30.0, left: 15, right: 15),
+      child: FutureBuilder(
+          future: DefaultAssetBundle.of(context).loadString(filePath),
+          builder: (context, snapshot) {
+            return Text(
+              snapshot.data ?? '',
+              softWrap: true,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.textViewerText,
+                fontSize: Theme.of(context).textTheme.textViewerText,
+                fontWeight: Theme.of(context).typography.textViewerText,
+              ),
+            );
+          }),
+    ),
   );
 }
