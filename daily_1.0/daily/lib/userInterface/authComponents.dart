@@ -19,7 +19,7 @@ Widget authCenterPiece(BuildContext context, State state) {
       child: Image(image: AssetImage("lib/assets/auth/auth_centerPiece.png")));
 }
 
-String userName = "", userEmail = "", userPass = "";
+String userName = "", userEmail = "", userPass = "", userPassVerify = "";
 final formKey = GlobalKey<FormState>();
 Widget authUserInput(BuildContext context, bool isSignIn) {
   return Form(
@@ -34,7 +34,14 @@ Widget authUserInput(BuildContext context, bool isSignIn) {
         authUserInputField(
             context, (email) => {userEmail = email}, "authFormEmail", false),
         authUserInputField(
-            context, (pass) => {userPass = pass}, "authFormPass", true)
+            context, (pass) => {userPass = pass}, "authFormPass", true),
+        isSignIn
+            ? Container()
+            : authUserInputField(
+                context,
+                (passVerify) => {userPassVerify = passVerify},
+                "authFormPassVerify",
+                false),
       ],
     ),
   );
@@ -78,7 +85,10 @@ Widget authUserInputField(
           ),
           prefixIcon: Icon(
             authForm != "authFormEmail"
-                ? (authForm == "authFormPass" ? Icons.lock : Icons.person)
+                ? (authForm == "authFormPass" ||
+                        authForm == "authFormPassVerify"
+                    ? Icons.lock
+                    : Icons.person)
                 : Icons.email,
             color:
                 Theme.of(context).colorScheme.authUserInputFieldIconDecoration,
@@ -254,7 +264,8 @@ void authValidateSubmit(BuildContext context, bool isSignIn) async {
     });
   else
     firebaseAccounts
-        .signUpEmailAndPassword(context, userEmail, userPass, userName)
+        .signUpEmailAndPassword(
+            context, userEmail, userPass, userPassVerify, userName)
         .then((value) {
       if (value) routeNavigation.routeBase(context, HomeScreen());
     });

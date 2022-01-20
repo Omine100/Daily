@@ -110,7 +110,7 @@ extension CustomColorScheme on ColorScheme {
   Color get forgotPasswordSendInkWell =>
       Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
   Color get forgotPasswordSendText =>
-      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+      Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get forgotPasswordResendPrimary =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get forgotPasswordResendSecondary =>

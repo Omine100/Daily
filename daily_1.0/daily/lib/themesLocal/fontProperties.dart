@@ -25,7 +25,7 @@ extension CustomFontSize on TextTheme {
   double get authSubtitle => 32;
   double get authUserInputFieldDecoration => 20;
   double get authForgotPassword => 16;
-  double get authPolicyAndTaC => 16;
+  double get authPolicyAndTaC => 14;
   double get authGetStartedText => 20;
   double get authSwitchPrimary => 16;
   double get authSwitchSecondary => 16;

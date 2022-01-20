@@ -70,12 +70,14 @@ class FirebaseAccounts {
     return true;
   }
 
-  Future<bool> signUpEmailAndPassword(
-      BuildContext context, String email, String password, String name) async {
+  Future<bool> signUpEmailAndPassword(BuildContext context, String email,
+      String password, String passwordVerify, String name) async {
     if (email == null ||
         email == "" ||
         password == null ||
         password == "" ||
+        passwordVerify == null ||
+        passwordVerify == "" ||
         name == null ||
         name == "") {
       showToastMessage(context, "errorBlankField");
@@ -91,6 +93,10 @@ class FirebaseAccounts {
     }
     if (!isPassword(password)) {
       showToastMessage(context, "errorPasswordRequirements");
+      return false;
+    }
+    if (password != passwordVerify) {
+      showToastMessage(context, "errorPasswordMatch");
       return false;
     }
     try {

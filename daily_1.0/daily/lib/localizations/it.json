@@ -2,6 +2,7 @@
     "errorBlankField": "Non può avere un campo vuoto.",
     "errorInvalidName": "Il nome deve essere di 3-10 caratteri.",
     "errorPasswordRequirements": "La password deve essere di 8-16 caratteri e un numero / simbolo.",
+    "errorPasswordMatch": "Le password non corrispondono.",
     "errorInvalidPassword": "La tua password è troppo debole.",
     "errorInvalidEmail": "Inserisci una email valida.",
     "errorWrongPassword": "L'utente non esiste o la password è sbagliata.",
@@ -54,6 +55,7 @@
     "authFormName": "Nome",
     "authFormEmail": "E-mail",
     "authFormPass": "Parola d'ordine",
+    "authFormPassVerify": "conferma password",
     "authForgotPassword": "Ha dimenticato la password?",
     "authPolicyAndTaCPrimary": "Continuando, accetti il ​​nostro",
     "authPolicyAndTaCPrivacy": "politica sulla riservatezza",
@@ -73,6 +75,6 @@
     "forgotPasswordResendSecondary": "Resenda!",
     "settingsTitle": "Impostazioni",
     "settingsResetPasswordSent": "L'email è stata inviata",
-    "settingsHelpSupportBox": "Per aiuto / supporto per favore e-mail:",
+    "settingsHelpSupportBox": "Per assistenza / supporto per favore e-mail:",
     "settingsSignOut": "DISCONNESSIONE"
 }
