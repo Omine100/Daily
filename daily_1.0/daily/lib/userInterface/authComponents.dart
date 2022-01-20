@@ -250,18 +250,12 @@ void authValidateSubmit(BuildContext context, bool isSignIn) async {
     firebaseAccounts
         .signInEmailAndPassword(context, userEmail, userPass)
         .then((value) {
-      if (value)
-        routeNavigation.routeBase(context, HomeScreen());
-      else
-        formKey.currentState.reset();
+      if (value) routeNavigation.routeBase(context, HomeScreen());
     });
   else
     firebaseAccounts
         .signUpEmailAndPassword(context, userEmail, userPass, userName)
         .then((value) {
-      if (value)
-        routeNavigation.routeBase(context, HomeScreen());
-      else
-        formKey.currentState.reset();
+      if (value) routeNavigation.routeBase(context, HomeScreen());
     });
 }
