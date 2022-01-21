@@ -38,12 +38,15 @@ class FirebaseAccounts {
   Future<void> setCurrentUserProfilePicImage(File image, State state) async {
     var storageRef = storage.ref(auth.currentUser.uid + '/profilePicture');
     await storageRef.putFile(image);
-    setCurrentUserProfilePicURL(await storageRef.getDownloadURL(), state);
+    auth.currentUser
+        .updatePhotoURL(await storageRef.getDownloadURL())
+        .then((value) {
+      setCurrentUserProfilePicURL(state);
+    });
   }
 
-  Future<void> setCurrentUserProfilePicURL(String photoURL, State state) async {
-    auth.currentUser.updatePhotoURL(photoURL);
-    profileURL.value = photoURL;
+  void setCurrentUserProfilePicURL(State state) async {
+    profileURL.value = auth.currentUser.photoURL;
     settingsToPrefs(settingsList);
     state.setState(() {});
   }
@@ -62,11 +65,11 @@ class FirebaseAccounts {
 
   Future<bool> sendPasswordReset(BuildContext context, String email) async {
     if (email == "" || email == null || !isEmail(email)) {
-      showToastMessage(context, "errorInvalidEmail");
+      showToastMessage(context, "errorInvalidEmail", true);
       return false;
     }
     auth.sendPasswordResetEmail(email: email);
-    showToastMessage(context, "settingsResetPasswordSent");
+    showToastMessage(context, "settingsResetPasswordSent", false);
     return true;
   }
 
@@ -80,23 +83,23 @@ class FirebaseAccounts {
         passwordVerify == "" ||
         name == null ||
         name == "") {
-      showToastMessage(context, "errorBlankField");
+      showToastMessage(context, "errorBlankField", true);
       return false;
     }
     if (!isName(name)) {
-      showToastMessage(context, "errorInvalidName");
+      showToastMessage(context, "errorInvalidName", true);
       return false;
     }
     if (!isEmail(email)) {
-      showToastMessage(context, "errorInvalidEmail");
+      showToastMessage(context, "errorInvalidEmail", true);
       return false;
     }
     if (!isPassword(password)) {
-      showToastMessage(context, "errorPasswordRequirements");
+      showToastMessage(context, "errorPasswordRequirements", true);
       return false;
     }
     if (password != passwordVerify) {
-      showToastMessage(context, "errorPasswordMatch");
+      showToastMessage(context, "errorPasswordMatch", true);
       return false;
     }
     try {
@@ -123,7 +126,7 @@ class FirebaseAccounts {
         default:
           key = "errorDefault";
       }
-      showToastMessage(context, key);
+      showToastMessage(context, key, false);
     }
     return false;
   }
@@ -131,7 +134,7 @@ class FirebaseAccounts {
   Future<bool> signInEmailAndPassword(
       BuildContext context, String email, String password) async {
     if (email == "" || password == "") {
-      showToastMessage(context, "errorBlankField");
+      showToastMessage(context, "errorBlankField", true);
       return false;
     }
     try {
@@ -158,7 +161,7 @@ class FirebaseAccounts {
         default:
           key = "errorDefault";
       }
-      showToastMessage(context, key);
+      showToastMessage(context, key, false);
       return false;
     }
   }

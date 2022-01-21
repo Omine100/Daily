@@ -32,7 +32,7 @@ class FirebaseCRUD {
                 .set({"imageURL": _imageURL})
           });
     } on FirebaseException {
-      showToastMessage(context, "errorImageFailedToUpload");
+      showToastMessage(context, "errorImageFailedToUpload", true);
     }
   }
 
@@ -56,7 +56,7 @@ class FirebaseCRUD {
     try {
       await storage.refFromURL(imageURL).putFile(imageFile);
     } on FirebaseException {
-      showToastMessage(context, "errorImageFailedToUpload");
+      showToastMessage(context, "errorImageFailedToUpload", true);
     }
   }
 

@@ -29,8 +29,10 @@ extension CustomColorScheme on ColorScheme {
       Color(isDark.value ? 0xFFFFFFFF : 0xFFBDBDBD);
   Color get userIStandardsSocialButton =>
       Color(isDark.value ? 0xFFFFFFFF : 0xFFFFFFFF);
-  Color get userIStandardsToastMessageBackground =>
+  Color get userIStandardsToastMessageBackgroundError =>
       Color(isDark.value ? 0xFFFF4350 : 0xFFFF4350);
+  Color get userIStandardsToastMessageBackground =>
+      Color(isDark.value ? 0xFF85FF7A : 0xFF85FF7A);
   Color get userIStandardsToastMessageContent =>
       Color(isDark.value ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get userIStandardsTextInputContent =>

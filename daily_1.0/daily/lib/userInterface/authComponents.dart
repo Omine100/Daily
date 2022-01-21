@@ -41,7 +41,7 @@ Widget authUserInput(BuildContext context, bool isSignIn) {
                 context,
                 (passVerify) => {userPassVerify = passVerify},
                 "authFormPassVerify",
-                false),
+                true),
       ],
     ),
   );
@@ -189,7 +189,7 @@ Widget authPolicyAndTaC(BuildContext context) {
   );
 }
 
-Widget authGetStarted(BuildContext context, bool isSignIn) {
+Widget authGetStarted(BuildContext context, bool isSignIn, State state) {
   return Center(
     child: Container(
       height: getDimension(
@@ -206,7 +206,7 @@ Widget authGetStarted(BuildContext context, bool isSignIn) {
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            authValidateSubmit(context, isSignIn);
+            authValidateSubmit(context, isSignIn, state);
           },
           child: Container(
             child: Center(
@@ -254,13 +254,15 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
   );
 }
 
-void authValidateSubmit(BuildContext context, bool isSignIn) async {
+void authValidateSubmit(
+    BuildContext context, bool isSignIn, State state) async {
   formKey.currentState.save();
   if (isSignIn)
     firebaseAccounts
         .signInEmailAndPassword(context, userEmail, userPass)
         .then((value) {
       if (value) routeNavigation.routeBase(context, HomeScreen());
+      firebaseAccounts.setCurrentUserProfilePicURL(state);
     });
   else
     firebaseAccounts
@@ -268,5 +270,6 @@ void authValidateSubmit(BuildContext context, bool isSignIn) async {
             context, userEmail, userPass, userPassVerify, userName)
         .then((value) {
       if (value) routeNavigation.routeBase(context, HomeScreen());
+      firebaseAccounts.setCurrentUserProfilePicURL(state);
     });
 }

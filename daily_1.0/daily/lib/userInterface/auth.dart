@@ -71,7 +71,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 Theme.of(context)
                     .materialTapTargetSize
                     .authDesktopGetStartedTop),
-            child: authGetStarted(context, isSignIn)),
+            child: authGetStarted(context, isSignIn, this)),
         Positioned(
             top: getPosition(context, true,
                 Theme.of(context).materialTapTargetSize.authDesktopSwitchTop),
@@ -133,7 +133,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 Theme.of(context)
                     .materialTapTargetSize
                     .authTabletGetStartedTop),
-            child: authGetStarted(context, isSignIn)),
+            child: authGetStarted(context, isSignIn, this)),
         Positioned(
             top: getPosition(context, true,
                 Theme.of(context).materialTapTargetSize.authTabletSwitchTop),
@@ -195,7 +195,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 Theme.of(context)
                     .materialTapTargetSize
                     .authMobileGetStartedTop),
-            child: authGetStarted(context, isSignIn)),
+            child: authGetStarted(context, isSignIn, this)),
         Positioned(
             top: getPosition(context, true,
                 Theme.of(context).materialTapTargetSize.authMobileSwitchTop),

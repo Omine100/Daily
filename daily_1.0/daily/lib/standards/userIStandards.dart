@@ -128,7 +128,7 @@ Widget showSocialButton(BuildContext context, int iconCase) {
   );
 }
 
-void showToastMessage(BuildContext context, String key) {
+void showToastMessage(BuildContext context, String key, bool isError) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     content: Text(
       getTranslated(context, key),
@@ -141,7 +141,10 @@ void showToastMessage(BuildContext context, String key) {
               Theme.of(context).typography.userIStandardsToastMessageContent),
     ),
     duration: const Duration(seconds: 3),
-    backgroundColor:
-        Theme.of(context).colorScheme.userIStandardsToastMessageBackground,
+    backgroundColor: isError
+        ? Theme.of(context)
+            .colorScheme
+            .userIStandardsToastMessageBackgroundError
+        : Theme.of(context).colorScheme.userIStandardsToastMessageBackground,
   ));
 }
