@@ -32,7 +32,7 @@ extension CustomColorScheme on ColorScheme {
   Color get userIStandardsToastMessageBackgroundError =>
       Color(isDark.value ? 0xFFFF4350 : 0xFFFF4350);
   Color get userIStandardsToastMessageBackground =>
-      Color(isDark.value ? 0xFF85FF7A : 0xFF85FF7A);
+      Color(isDark.value ? 0xFF66BB6A : 0xFF66BB6A);
   Color get userIStandardsToastMessageContent =>
       Color(isDark.value ? 0xFFFFFFFF : 0xFFFFFFFF);
   Color get userIStandardsTextInputContent =>

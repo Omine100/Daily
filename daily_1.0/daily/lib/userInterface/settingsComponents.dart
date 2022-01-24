@@ -69,7 +69,7 @@ Widget settingsProfile(BuildContext context, State state) {
                                   : DecorationImage(
                                       image: NetworkImage(profileURL.value),
                                       fit: BoxFit.cover)),
-                      child: profileURL.value == ""
+                      child: profileURL.value == "" || profileURL == null
                           ? Icon(
                               Icons.person_outline_rounded,
                               size: 55,
@@ -101,6 +101,7 @@ Widget settingsProfile(BuildContext context, State state) {
                   Text(
                     firebaseAccounts.getCurrentUserEmail() ??
                         getTranslated(context, "settingsNullEmail"),
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.settingsProfileEmail,
                       fontSize:
