@@ -46,8 +46,7 @@ Setting isDark = new Setting(
     group: Group.settingGroupHidden,
     format: Format.NoUserInput,
     isSignInRequired: false,
-    value: false,
-    defaultValue: false);
+    value: false);
 Setting profileURL = new Setting(
     key: "settingProfileURL",
     group: Group.settingGroupHidden,
