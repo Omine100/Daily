@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/servicesLocal/systemLocalizations.dart';
+import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
 
@@ -35,9 +36,7 @@ class _DailyState extends State<Daily> {
     var window = WidgetsBinding.instance.window;
     window.onPlatformBrightnessChanged = () {
       WidgetsBinding.instance?.handlePlatformBrightnessChanged();
-      window.platformBrightness == Brightness.dark
-          ? isDark.value = true
-          : isDark.value = false;
+      setTheme(context);
     };
   }
 
