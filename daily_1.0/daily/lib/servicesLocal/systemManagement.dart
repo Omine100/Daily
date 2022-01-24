@@ -90,6 +90,10 @@ void setLanguage(BuildContext context, String languageCode) async {
   Daily.setLocale(context, languageCode);
 }
 
+String getSettingLanguage() {
+  return locale.value;
+}
+
 String getTranslated(BuildContext context, String key) {
   return AppLocalizations.of(context).translate(key);
 }

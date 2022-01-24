@@ -74,6 +74,7 @@
     "forgotPasswordResendPrimary": "Didn't get it? ",
     "forgotPasswordResendSecondary": "Resend!",
     "settingsTitle": "Settings",
+    "settingsNullName": "Null name.",
     "settingsResetPasswordSent": "Email has been sent",
     "settingsHelpSupportBox": "For help/support please email:",
     "settingsSignOut": "SIGN OUT"

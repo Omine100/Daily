@@ -69,7 +69,7 @@ Widget settingsProfile(BuildContext context, State state) {
                                   : DecorationImage(
                                       image: NetworkImage(profileURL.value),
                                       fit: BoxFit.cover)),
-                      child: profileURL.value == "" || profileURL == null
+                      child: profileURL.value == "" || profileURL.value == null
                           ? Icon(
                               Icons.person_outline_rounded,
                               size: 55,
@@ -80,37 +80,42 @@ Widget settingsProfile(BuildContext context, State state) {
                           : Container()),
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5.0),
-                    child: Text(
-                      firebaseAccounts.getCurrentUserDisplayName() ??
-                          getTranslated(context, "settingsNullName"),
-                      style: TextStyle(
-                        color:
-                            Theme.of(context).colorScheme.settingsProfileName,
-                        fontSize:
-                            Theme.of(context).textTheme.settingsProfileName,
-                        fontWeight:
-                            Theme.of(context).typography.settingsProfileName,
+              Container(
+                width: getDimension(context, false,
+                    Theme.of(context).visualDensity.settingsProfileInfoWidth),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 5.0),
+                      child: Text(
+                        firebaseAccounts.getCurrentUserDisplayName() ??
+                            getTranslated(context, "settingsNullName"),
+                        style: TextStyle(
+                          color:
+                              Theme.of(context).colorScheme.settingsProfileName,
+                          fontSize:
+                              Theme.of(context).textTheme.settingsProfileName,
+                          fontWeight:
+                              Theme.of(context).typography.settingsProfileName,
+                        ),
                       ),
                     ),
-                  ),
-                  Text(
-                    firebaseAccounts.getCurrentUserEmail() ??
-                        getTranslated(context, "settingsNullEmail"),
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.settingsProfileEmail,
-                      fontSize:
-                          Theme.of(context).textTheme.settingsProfileEmail,
-                      fontWeight:
-                          Theme.of(context).typography.settingsProfileEmail,
+                    Text(
+                      firebaseAccounts.getCurrentUserEmail() ??
+                          getTranslated(context, "settingsNullEmail"),
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color:
+                            Theme.of(context).colorScheme.settingsProfileEmail,
+                        fontSize:
+                            Theme.of(context).textTheme.settingsProfileEmail,
+                        fontWeight:
+                            Theme.of(context).typography.settingsProfileEmail,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
@@ -275,8 +280,12 @@ Widget settingDropdown(BuildContext context, Setting setting, State state) {
         onChanged: (value) {
           state.setState(() {
             setting.value = value;
-            if (setting.onChanged != null)
-              setting.onChanged.call(context, setting.value);
+            if (setting.onChanged != null) {
+              if (setting.call != null)
+                setting.onChanged.call(context, setting.call.call());
+              else
+                setting.onChanged.call(context);
+            }
           });
         },
       ),

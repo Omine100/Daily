@@ -11,7 +11,7 @@
     "errorEmailAlreadyExists": "E-mail jest już używany na różnych kontach.",
     "errorInvalidCredential": "Proszę wpisać prawidłowy email.",
     "errorImage": "Nie udało się uzyskać obrazu.",
-    "errorShare": "Nie udało się udostępniać.",
+    "errorShare": "Nie udało się udostępnić.",
     "errorDefault": "Zdarzyło się niezdefiniowany błąd.",
     "settingGroupAccount": "Rachunek",
     "settingGroupGeneral": "Ogólny",
@@ -74,6 +74,7 @@
     "forgotPasswordResendPrimary": "Nie zrozumiałeś?",
     "forgotPasswordResendSecondary": "Wysłać ponownie!",
     "settingsTitle": "Ustawienia",
+    "settingsNullName": "Nazwa NULL.",
     "settingsResetPasswordSent": "Email został wysłany",
     "settingsHelpSupportBox": "Aby uzyskać pomoc / wsparcie, e-mail:",
     "settingsSignOut": "WYLOGUJ SIĘ"

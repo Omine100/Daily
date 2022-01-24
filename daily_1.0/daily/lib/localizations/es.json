@@ -74,6 +74,7 @@
     "forgotPasswordResendPrimary": "No lo entendí?",
     "forgotPasswordResendSecondary": "¡Resolver!",
     "settingsTitle": "Ajustes",
+    "settingsNullName": "Nombre null.",
     "settingsResetPasswordSent": "E-mail ha sido enviado",
     "settingsHelpSupportBox": "Para ayuda / soporte por favor correo electrónico:",
     "settingsSignOut": "DESCONECTAR"

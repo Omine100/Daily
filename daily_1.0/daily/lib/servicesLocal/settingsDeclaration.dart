@@ -23,7 +23,8 @@ Setting locale = new Setting(
     value: null,
     defaultValue: Locale("en", "en"),
     items: getLocaleDropdownMenuList,
-    onChanged: setLanguage);
+    onChanged: setLanguage,
+    call: getSettingLanguage);
 Setting notifications = new Setting(
     key: "settingNotifications",
     group: Group.settingGroupGeneral,

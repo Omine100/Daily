@@ -33,6 +33,7 @@ class _DailyState extends State<Daily> {
   @override
   void initState() {
     super.initState();
+    setTheme(context);
     var window = WidgetsBinding.instance.window;
     window.onPlatformBrightnessChanged = () {
       WidgetsBinding.instance?.handlePlatformBrightnessChanged();

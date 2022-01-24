@@ -74,6 +74,7 @@
     "forgotPasswordResendPrimary": "Не понял?",
     "forgotPasswordResendSecondary": "Отправить!",
     "settingsTitle": "Настройки",
+    "settingsNullName": "NULL имя.",
     "settingsResetPasswordSent": "Письмо было отправлено",
     "settingsHelpSupportBox": "Для справки / поддержки, пожалуйста, напишите:",
     "settingsSignOut": "ВЫХОД"
