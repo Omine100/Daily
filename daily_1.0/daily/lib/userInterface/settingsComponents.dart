@@ -7,6 +7,7 @@ import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/standards/userIStandards.dart';
+import 'package:daily/standards/userXStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
@@ -46,32 +47,41 @@ Widget settingsProfile(BuildContext context, State state) {
                     showMediaSelection(context, state,
                         firebaseAccounts.setCurrentUserProfilePicImage);
                   },
-                  child: CachedNetworkImage(
-                    imageUrl: profileURL.value,
-                    imageBuilder: (context, imageProvider) => Container(
-                      height: getDimension(
-                          context,
-                          true,
-                          Theme.of(context)
-                              .visualDensity
-                              .settingsProfileIconHeight),
-                      width: getDimension(
-                          context,
-                          true,
-                          Theme.of(context)
-                              .visualDensity
-                              .settingsProfileIconWidth),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            image: imageProvider, fit: BoxFit.fill),
-                      ),
+                  child: Container(
+                    height: getDimension(
+                        context,
+                        true,
+                        Theme.of(context)
+                            .visualDensity
+                            .settingsProfileIconHeight),
+                    width: getDimension(
+                        context,
+                        true,
+                        Theme.of(context)
+                            .visualDensity
+                            .settingsProfileIconWidth),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context)
+                          .colorScheme
+                          .settingsProfileBackground,
                     ),
-                    placeholder: (context, url) => CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => Icon(
-                      Icons.person_outline_rounded,
-                      size: 55,
-                      color: Theme.of(context).colorScheme.settingsProfileIcon,
+                    child: CachedNetworkImage(
+                      imageUrl: profileURL.value,
+                      imageBuilder: (context, imageProvider) => Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: imageProvider, fit: BoxFit.cover),
+                        ),
+                      ),
+                      placeholder: (context, url) => showProgress(context),
+                      errorWidget: (context, url, error) => Icon(
+                        Icons.person_outline_rounded,
+                        size: 55,
+                        color:
+                            Theme.of(context).colorScheme.settingsProfileIcon,
+                      ),
                     ),
                   ),
                 ),

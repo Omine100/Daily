@@ -45,7 +45,7 @@ extension CustomColorScheme on ColorScheme {
 
   // #region userXStandards
   Color get userXStandardsProgressIndicator =>
-      Color(isDark.value ? 0xFFFFAB58 : 0xFFFFFFFF);
+      Color(isDark.value ? 0xFFFF4350 : 0xFFFF4350);
   // #endregion
 
   // #region textViewer
