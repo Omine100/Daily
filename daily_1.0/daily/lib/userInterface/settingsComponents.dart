@@ -1,6 +1,7 @@
-import 'package:daily/servicesBroad/contact.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daily/datastructures/settingState.dart';
+import 'package:daily/servicesBroad/contact.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
@@ -45,7 +46,9 @@ Widget settingsProfile(BuildContext context, State state) {
                     showMediaSelection(context, state,
                         firebaseAccounts.setCurrentUserProfilePicImage);
                   },
-                  child: Container(
+                  child: CachedNetworkImage(
+                    imageUrl: profileURL.value,
+                    imageBuilder: (context, imageProvider) => Container(
                       height: getDimension(
                           context,
                           true,
@@ -59,25 +62,18 @@ Widget settingsProfile(BuildContext context, State state) {
                               .visualDensity
                               .settingsProfileIconWidth),
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .settingsProfileBackground,
-                          image:
-                              profileURL.value == "" || profileURL.value == null
-                                  ? null
-                                  : DecorationImage(
-                                      image: NetworkImage(profileURL.value),
-                                      fit: BoxFit.cover)),
-                      child: profileURL.value == "" || profileURL.value == null
-                          ? Icon(
-                              Icons.person_outline_rounded,
-                              size: 55,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .settingsProfileIcon,
-                            )
-                          : Container()),
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: imageProvider, fit: BoxFit.fill),
+                      ),
+                    ),
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Icon(
+                      Icons.person_outline_rounded,
+                      size: 55,
+                      color: Theme.of(context).colorScheme.settingsProfileIcon,
+                    ),
+                  ),
                 ),
               ),
               Container(
@@ -188,9 +184,8 @@ Column settingsBreakdown(BuildContext context, State state) {
       child: element.value,
     ));
   });
-  firebaseAccounts.getSignedInStatus() == true
-      ? column.children.add(settingsSignOut(context))
-      : null;
+  if (firebaseAccounts.getSignedInStatus() == true)
+    column.children.add(settingsSignOut(context));
   return column;
 }
 
@@ -209,7 +204,7 @@ Row settingsGroupTitle(BuildContext context, String key) {
   );
 }
 
-Widget settingRow(BuildContext context, Setting setting, State state) {
+Row settingRow(BuildContext context, Setting setting, State state) {
   Widget formPick() {
     switch (setting.format) {
       case Format.Switch:
