@@ -77,5 +77,8 @@
     "settingsNullName": "Nolla nimi.",
     "settingsResetPasswordSent": "Sähköposti on lähetetty",
     "settingsHelpSupportBox": "Apua / tukea saat sähköpostitse:",
+    "settingsAboutBoxName": "Daily",
+    "settingsAboutBoxVersion": "v0.7",
+    "settingsAboutBoxLegalese": "©2022 Phoenix",
     "settingsSignOut": "KIRJAUDU ULOS"
 }

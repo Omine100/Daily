@@ -77,5 +77,8 @@
     "settingsNullName": "NULL имя.",
     "settingsResetPasswordSent": "Письмо было отправлено",
     "settingsHelpSupportBox": "Для справки / поддержки, пожалуйста, напишите:",
+    "settingsAboutBoxName": "Daily",
+    "settingsAboutBoxVersion": "v0.6",
+    "settingsAboutBoxLegalese": "©2022 Phoenix",
     "settingsSignOut": "ВЫХОД"
 }

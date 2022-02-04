@@ -77,5 +77,8 @@
     "settingsNullName": "NULL名。",
     "settingsResetPasswordSent": "メールが送信されました",
     "settingsHelpSupportBox": "ヘルプ/サポートの場合は、電子メールでお願いします。",
+    "settingsAboutBoxName": "Daily",
+    "settingsAboutBoxVersion": "v0.10",
+    "settingsAboutBoxLegalese": "©2022 Phoenix",
     "settingsSignOut": "サインアウト"
 }
