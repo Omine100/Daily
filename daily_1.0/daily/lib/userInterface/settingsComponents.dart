@@ -321,23 +321,6 @@ Widget settingClick(BuildContext context, Setting setting, State state) {
   );
 }
 
-Widget settingsSignOut(BuildContext context) {
-  return GestureDetector(
-    onTap: () {
-      firebaseAccounts.signOut();
-      RouteNavigation().routeBase(context, WelcomeScreen());
-    },
-    child: Text(
-      getTranslated(context, "settingsSignOut"),
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.settingsSignOut,
-        fontSize: Theme.of(context).textTheme.settingsSignOut,
-        fontWeight: Theme.of(context).typography.settingsSignOut,
-      ),
-    ),
-  );
-}
-
 void showHelpSupportBox(BuildContext context) {
   showDialog(
       context: context,
@@ -385,11 +368,29 @@ void showAboutBox(BuildContext context) {
             "lib/assets/launcher/icon_noBackground.png",
             height: 75,
           ),
-          applicationName: 'Daily',
-          applicationVersion: 'v0.1',
-          applicationLegalese: '©2022 Phoenix',
+          applicationName: getTranslated(context, "settingsAboutBoxName"),
+          applicationVersion: getTranslated(context, "settingsAboutBoxVersion"),
+          applicationLegalese:
+              getTranslated(context, "settingsAboutBoxLegalese"),
         ),
       );
     },
+  );
+}
+
+Widget settingsSignOut(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      firebaseAccounts.signOut();
+      RouteNavigation().routeBase(context, WelcomeScreen());
+    },
+    child: Text(
+      getTranslated(context, "settingsSignOut"),
+      style: TextStyle(
+        color: Theme.of(context).colorScheme.settingsSignOut,
+        fontSize: Theme.of(context).textTheme.settingsSignOut,
+        fontWeight: Theme.of(context).typography.settingsSignOut,
+      ),
+    ),
   );
 }
