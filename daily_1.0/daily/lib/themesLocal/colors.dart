@@ -128,7 +128,7 @@ extension CustomColorScheme on ColorScheme {
   Color get homeNavigationBarSelectedIcon =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get homeNavigationBarUnselectedIcon =>
-      Color(isDark.value ? 0xFF323232 : 0xFFEDEDED);
+      Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
   Color get homeTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get homeSubtitle => Color(isDark.value ? 0xFF999999 : 0xFF999999);
   Color get homeSettingsIcon => Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
