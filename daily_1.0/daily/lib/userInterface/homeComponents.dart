@@ -28,7 +28,8 @@ Widget homeSettings(BuildContext context) {
           size: 45, color: Theme.of(context).colorScheme.homeSettingsIcon));
 }
 
-BottomNavigationBar homeNavigationBar(BuildContext context) {
+int index = 0;
+BottomNavigationBar homeNavigationBar(BuildContext context, State state) {
   return BottomNavigationBar(
       backgroundColor:
           Theme.of(context).colorScheme.homeNavigationBarBackground,
@@ -39,6 +40,12 @@ BottomNavigationBar homeNavigationBar(BuildContext context) {
       iconSize: 35,
       showSelectedLabels: false,
       showUnselectedLabels: false,
+      currentIndex: index,
+      onTap: (value) {
+        state.setState(() {
+          index = value;
+        });
+      },
       items: [
         BottomNavigationBarItem(
             icon: Icon(Icons.photo_album_outlined), label: ""),
