@@ -17,6 +17,11 @@ class _HomeScreenState extends State<HomeScreen> {
           top: 50,
           child: homeTitle(context),
         ),
+        Positioned(
+          left: 330,
+          top: 37,
+          child: homeSettings(context),
+        ),
       ],
     );
   }
@@ -29,6 +34,11 @@ class _HomeScreenState extends State<HomeScreen> {
           top: 50,
           child: homeTitle(context),
         ),
+        Positioned(
+          left: 330,
+          top: 37,
+          child: homeSettings(context),
+        ),
       ],
     );
   }
@@ -40,6 +50,11 @@ class _HomeScreenState extends State<HomeScreen> {
         Positioned(
           top: 50,
           child: homeTitle(context),
+        ),
+        Positioned(
+          left: 330,
+          top: 37,
+          child: homeSettings(context),
         ),
       ],
     );

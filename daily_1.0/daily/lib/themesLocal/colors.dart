@@ -125,6 +125,7 @@ extension CustomColorScheme on ColorScheme {
   Color get homeBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get homeTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get homeSubtitle => Color(isDark.value ? 0xFF999999 : 0xFF999999);
+  Color get homeSettingsIcon => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   // #endregion
 
   // #region settings
