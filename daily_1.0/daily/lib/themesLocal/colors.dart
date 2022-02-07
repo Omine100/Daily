@@ -44,8 +44,10 @@ extension CustomColorScheme on ColorScheme {
   // #endregion
 
   // #region userXStandards
-  Color get userXStandardsProgressIndicator =>
+  Color get userXStandardsProgressValue =>
       Color(isDark.value ? 0xFFFF4350 : 0xFFFF4350);
+  Color get userXStandardsProgressBackground =>
+      Color(isDark.value ? 0x00FFFFFF : 0x00FFFFFF);
   // #endregion
 
   // #region textViewer
