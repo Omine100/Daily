@@ -11,7 +11,7 @@ import 'package:daily/servicesLocal/settingsManagement.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  prefsToSettings();
+  await prefsToSettings();
   runApp(new Daily());
 }
 
