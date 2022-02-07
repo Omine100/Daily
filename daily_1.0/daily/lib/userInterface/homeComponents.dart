@@ -49,7 +49,8 @@ BottomNavigationBar homeNavigationBar(BuildContext context, State state) {
       items: [
         BottomNavigationBarItem(
             icon: Icon(Icons.photo_album_outlined), label: ""),
-        BottomNavigationBarItem(icon: Icon(Icons.search), label: ""),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: "")
+        BottomNavigationBarItem(icon: Icon(Icons.search_outlined), label: ""),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline_rounded), label: "")
       ]);
 }
