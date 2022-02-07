@@ -27,3 +27,22 @@ Widget homeSettings(BuildContext context) {
       icon: Icon(Icons.settings_outlined,
           size: 45, color: Theme.of(context).colorScheme.homeSettingsIcon));
 }
+
+BottomNavigationBar homeNavigationBar(BuildContext context) {
+  return BottomNavigationBar(
+      backgroundColor:
+          Theme.of(context).colorScheme.homeNavigationBarBackground,
+      selectedItemColor:
+          Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
+      unselectedItemColor:
+          Theme.of(context).colorScheme.homeNavigationBarUnselectedIcon,
+      iconSize: 35,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      items: [
+        BottomNavigationBarItem(
+            icon: Icon(Icons.photo_album_outlined), label: ""),
+        BottomNavigationBarItem(icon: Icon(Icons.search), label: ""),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: "")
+      ]);
+}

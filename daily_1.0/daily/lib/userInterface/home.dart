@@ -73,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mobile: homeScreenMobile(),
           ),
         ),
+        bottomNavigationBar: homeNavigationBar(context),
       ),
     );
   }
