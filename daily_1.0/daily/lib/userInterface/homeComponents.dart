@@ -7,8 +7,8 @@ import 'package:daily/userInterface/homeGlobal.dart';
 import 'package:daily/userInterface/homeProfile.dart';
 
 Widget homeBody(BuildContext context) {
-  switch (_selectedTab) {
-    case _SelectedTab.person:
+  switch (index) {
+    case 3:
       return homeProfileBody(context);
       break;
     default:
@@ -16,17 +16,16 @@ Widget homeBody(BuildContext context) {
   }
 }
 
-var _selectedTab = _SelectedTab.main;
-enum _SelectedTab { main, search, favorite, person }
+int index = 0;
 DotNavigationBar homeNavigationBar(BuildContext context, State state) {
   void _handleIndexChanged(int i) {
     state.setState(() {
-      _selectedTab = _SelectedTab.values[i];
+      index = i;
     });
   }
 
   return DotNavigationBar(
-    currentIndex: _SelectedTab.values.indexOf(_selectedTab),
+    currentIndex: index,
     backgroundColor: Theme.of(context).colorScheme.homeNavigationBarBackground,
     dotIndicatorColor: Theme.of(context).colorScheme.homeNavigationBarDot,
     duration: Duration(milliseconds: 1250),
@@ -35,6 +34,7 @@ DotNavigationBar homeNavigationBar(BuildContext context, State state) {
     selectedItemColor:
         Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
     enableFloatingNavBar: true,
+    curve: Curves.easeOutQuint,
     onTap: _handleIndexChanged,
     items: [
       DotNavigationBarItem(
@@ -50,5 +50,6 @@ DotNavigationBar homeNavigationBar(BuildContext context, State state) {
         icon: Icon(Icons.person),
       ),
     ],
+    marginR: EdgeInsets.symmetric(horizontal: 45, vertical: 20),
   );
 }
