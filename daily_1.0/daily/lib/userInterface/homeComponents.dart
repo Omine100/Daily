@@ -29,9 +29,8 @@ Widget homeSettings(BuildContext context) {
           size: 40, color: Theme.of(context).colorScheme.homeSettingsIcon));
 }
 
-var _selectedTab = _SelectedTab.home;
-enum _SelectedTab { home, favorite, search, person }
-
+var _selectedTab = _SelectedTab.main;
+enum _SelectedTab { main, favorite, search, person }
 DotNavigationBar homeNavigationBar(BuildContext context, State state) {
   void _handleIndexChanged(int i) {
     state.setState(() {
@@ -55,10 +54,10 @@ DotNavigationBar homeNavigationBar(BuildContext context, State state) {
         icon: Icon(Icons.home),
       ),
       DotNavigationBarItem(
-        icon: Icon(Icons.favorite),
+        icon: Icon(Icons.search),
       ),
       DotNavigationBarItem(
-        icon: Icon(Icons.search),
+        icon: Icon(Icons.cloud_circle_outlined),
       ),
       DotNavigationBarItem(
         icon: Icon(Icons.person),
