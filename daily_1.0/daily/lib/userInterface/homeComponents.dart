@@ -26,7 +26,7 @@ Widget homeSettings(BuildContext context) {
         routeNavigation.routePage(context, SettingsScreen());
       },
       icon: Icon(Icons.settings_outlined,
-          size: 45, color: Theme.of(context).colorScheme.homeSettingsIcon));
+          size: 40, color: Theme.of(context).colorScheme.homeSettingsIcon));
 }
 
 var _selectedTab = _SelectedTab.home;
@@ -43,6 +43,7 @@ DotNavigationBar homeNavigationBar(BuildContext context, State state) {
     currentIndex: _SelectedTab.values.indexOf(_selectedTab),
     backgroundColor: Theme.of(context).colorScheme.homeNavigationBarBackground,
     dotIndicatorColor: Theme.of(context).colorScheme.homeNavigationBarDot,
+    duration: Duration(milliseconds: 1000),
     unselectedItemColor:
         Theme.of(context).colorScheme.homeNavigationBarUnselectedIcon,
     selectedItemColor:
