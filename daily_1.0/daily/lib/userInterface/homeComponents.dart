@@ -8,18 +8,11 @@ import 'package:daily/userInterface/homeProfile.dart';
 
 Widget homeBody(BuildContext context) {
   switch (_selectedTab) {
-    case (_SelectedTab.main):
-      return homeMain.Container();
+    case _SelectedTab.person:
+      return homeProfileBody(context);
       break;
-    case (_SelectedTab.search):
-      return homeSearch.Container();
-      break;
-    case (_SelectedTab.favorite):
-      return homeFavorite.Container();
-      break;
-    case (_SelectedTab.person):
-      return homePerson.Container();
-      break;
+    default:
+      return Container();
   }
 }
 
@@ -51,7 +44,7 @@ DotNavigationBar homeNavigationBar(BuildContext context, State state) {
         icon: Icon(Icons.search),
       ),
       DotNavigationBarItem(
-        icon: Icon(Icons.cloud_circle_outlined),
+        icon: Icon(Icons.favorite),
       ),
       DotNavigationBarItem(
         icon: Icon(Icons.person),

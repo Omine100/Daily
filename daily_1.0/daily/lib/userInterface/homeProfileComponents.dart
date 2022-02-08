@@ -5,7 +5,7 @@ import 'package:daily/userInterface/settings.dart';
 
 RouteNavigation routeNavigation = new RouteNavigation();
 
-Widget homeSettings(BuildContext context) {
+Widget homeProfileSettings(BuildContext context) {
   return IconButton(
       onPressed: () {
         routeNavigation.routePage(context, SettingsScreen());

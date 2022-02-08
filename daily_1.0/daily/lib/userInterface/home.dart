@@ -10,42 +10,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   homeScreenDesktop() {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Positioned(
-          left: 340,
-          top: 37,
-          child: homeBody(context),
-        ),
-      ],
-    );
+    return homeBody(context);
   }
 
   homeScreenTablet() {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Positioned(
-          left: 340,
-          top: 37,
-          child: homeBody(context),
-        ),
-      ],
-    );
+    return homeBody(context);
   }
 
   homeScreenMobile() {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Positioned(
-          left: 340,
-          top: 37,
-          child: homeBody(context),
-        ),
-      ],
-    );
+    return homeBody(context);
   }
 
   @override
