@@ -29,7 +29,7 @@ DotNavigationBar homeNavigationBar(BuildContext context, State state) {
     currentIndex: _SelectedTab.values.indexOf(_selectedTab),
     backgroundColor: Theme.of(context).colorScheme.homeNavigationBarBackground,
     dotIndicatorColor: Theme.of(context).colorScheme.homeNavigationBarDot,
-    duration: Duration(milliseconds: 1000),
+    duration: Duration(milliseconds: 1250),
     unselectedItemColor:
         Theme.of(context).colorScheme.homeNavigationBarUnselectedIcon,
     selectedItemColor:
