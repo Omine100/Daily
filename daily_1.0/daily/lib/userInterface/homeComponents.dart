@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/settings.dart';
@@ -28,29 +29,39 @@ Widget homeSettings(BuildContext context) {
           size: 45, color: Theme.of(context).colorScheme.homeSettingsIcon));
 }
 
-int index = 0;
-BottomNavigationBar homeNavigationBar(BuildContext context, State state) {
-  return BottomNavigationBar(
-      backgroundColor:
-          Theme.of(context).colorScheme.homeNavigationBarBackground,
-      selectedItemColor:
-          Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
-      unselectedItemColor:
-          Theme.of(context).colorScheme.homeNavigationBarUnselectedIcon,
-      iconSize: 35,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      currentIndex: index,
-      onTap: (value) {
-        state.setState(() {
-          index = value;
-        });
-      },
-      items: [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.photo_album_outlined), label: ""),
-        BottomNavigationBarItem(icon: Icon(Icons.search_outlined), label: ""),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline_rounded), label: "")
-      ]);
+var _selectedTab = _SelectedTab.home;
+enum _SelectedTab { home, favorite, search, person }
+
+DotNavigationBar homeNavigationBar(BuildContext context, State state) {
+  void _handleIndexChanged(int i) {
+    state.setState(() {
+      _selectedTab = _SelectedTab.values[i];
+    });
+  }
+
+  return DotNavigationBar(
+    currentIndex: _SelectedTab.values.indexOf(_selectedTab),
+    backgroundColor: Theme.of(context).colorScheme.homeNavigationBarBackground,
+    dotIndicatorColor: Theme.of(context).colorScheme.homeNavigationBarDot,
+    unselectedItemColor:
+        Theme.of(context).colorScheme.homeNavigationBarUnselectedIcon,
+    selectedItemColor:
+        Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
+    enableFloatingNavBar: true,
+    onTap: _handleIndexChanged,
+    items: [
+      DotNavigationBarItem(
+        icon: Icon(Icons.home),
+      ),
+      DotNavigationBarItem(
+        icon: Icon(Icons.favorite),
+      ),
+      DotNavigationBarItem(
+        icon: Icon(Icons.search),
+      ),
+      DotNavigationBarItem(
+        icon: Icon(Icons.person),
+      ),
+    ],
+  );
 }

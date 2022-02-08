@@ -82,13 +82,13 @@ Setting licenses = new Setting(
     onClicked: showAboutBox);
 
 List<Setting> settingsList = [
+  profileURL,
   resetPassword,
   theme,
   isDark,
   locale,
   notifications,
   helpSupport,
-  profileURL,
   privacyPolicy,
   termsAndConditions,
   licenses,

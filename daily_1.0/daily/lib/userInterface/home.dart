@@ -64,6 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: Scaffold(
+        extendBody: true,
         body: Container(
           color: Theme.of(context).colorScheme.homeBackground,
           constraints: BoxConstraints.expand(height: double.maxFinite),

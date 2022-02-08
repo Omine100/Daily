@@ -124,7 +124,9 @@ extension CustomColorScheme on ColorScheme {
   // #region home
   Color get homeBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get homeNavigationBarBackground =>
-      Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
+      Color(isDark.value ? 0xFF323232 : 0xFFEDEDED);
+  Color get homeNavigationBarDot =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get homeNavigationBarSelectedIcon =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get homeNavigationBarUnselectedIcon =>
