@@ -13,14 +13,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // Positioned(
-        //   top: 50,
-        //   child: homeTitle(context),
-        // ),
         Positioned(
           left: 340,
           top: 37,
-          child: homeSettings(context),
+          child: homeBody(context),
         ),
       ],
     );
@@ -30,14 +26,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // Positioned(
-        //   top: 50,
-        //   child: homeTitle(context),
-        // ),
         Positioned(
           left: 340,
           top: 37,
-          child: homeSettings(context),
+          child: homeBody(context),
         ),
       ],
     );
@@ -47,14 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // Positioned(
-        //   top: 50,
-        //   child: homeTitle(context),
-        // ),
         Positioned(
           left: 340,
           top: 37,
-          child: homeSettings(context),
+          child: homeBody(context),
         ),
       ],
     );
