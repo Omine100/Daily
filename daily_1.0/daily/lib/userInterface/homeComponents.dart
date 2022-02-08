@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/userInterface/homeMain.dart';
+import 'package:daily/userInterface/homeSearch.dart';
+import 'package:daily/userInterface/homeGlobal.dart';
+import 'package:daily/userInterface/homeProfile.dart';
 
 Widget homeTitle(BuildContext context) {
   return Container(
@@ -17,11 +21,24 @@ Widget homeTitle(BuildContext context) {
 }
 
 Widget homeBody(BuildContext context) {
-  return Container();
+  switch (_selectedTab) {
+    case (_SelectedTab.main):
+      return homeMain.Container();
+      break;
+    case (_SelectedTab.search):
+      return homeSearch.Container();
+      break;
+    case (_SelectedTab.favorite):
+      return homeFavorite.Container();
+      break;
+    case (_SelectedTab.person):
+      return homePerson.Container();
+      break;
+  }
 }
 
 var _selectedTab = _SelectedTab.main;
-enum _SelectedTab { main, favorite, search, person }
+enum _SelectedTab { main, search, favorite, person }
 DotNavigationBar homeNavigationBar(BuildContext context, State state) {
   void _handleIndexChanged(int i) {
     state.setState(() {
