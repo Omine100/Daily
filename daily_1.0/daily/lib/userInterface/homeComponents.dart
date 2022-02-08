@@ -18,7 +18,7 @@ Widget homeBody(BuildContext context) {
 
 int index = 0;
 DotNavigationBar homeNavigationBar(BuildContext context, State state) {
-  void _handleIndexChanged(int i) {
+  void indexChanged(int i) {
     state.setState(() {
       index = i;
     });
@@ -35,7 +35,7 @@ DotNavigationBar homeNavigationBar(BuildContext context, State state) {
         Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
     enableFloatingNavBar: true,
     curve: Curves.easeOutQuint,
-    onTap: _handleIndexChanged,
+    onTap: indexChanged,
     items: [
       DotNavigationBarItem(
         icon: Icon(Icons.home),
