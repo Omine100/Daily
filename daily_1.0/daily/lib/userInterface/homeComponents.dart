@@ -6,20 +6,6 @@ import 'package:daily/userInterface/homeSearch.dart';
 import 'package:daily/userInterface/homeGlobal.dart';
 import 'package:daily/userInterface/homeProfile.dart';
 
-Widget homeTitle(BuildContext context) {
-  return Container(
-    alignment: Alignment.center,
-    width: MediaQuery.of(context).size.width,
-    child: Text(
-      "Home",
-      style: TextStyle(
-          color: Theme.of(context).colorScheme.homeTitle,
-          fontSize: 30,
-          fontWeight: FontWeight.w300),
-    ),
-  );
-}
-
 Widget homeBody(BuildContext context) {
   switch (_selectedTab) {
     case (_SelectedTab.main):
