@@ -26,13 +26,20 @@ void disposeCamera() {
   _controller.dispose();
 }
 
+void switchCamera() {
+  CameraController(
+    _cameras[1],
+    ResolutionPreset.medium,
+  );
+}
+
 Widget cameraPreview(BuildContext context) {
   return AspectRatio(
       aspectRatio: _controller.value.aspectRatio,
       child: CameraPreview(_controller));
 }
 
-Widget homeMainBody(BuildContext context) {
+Widget homeMainCamera(BuildContext context) {
   var size = MediaQuery.of(context).size;
   if (_isReady == false ||
       _controller == null ||
@@ -59,4 +66,9 @@ Widget homeMainBody(BuildContext context) {
             bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
         child: cameraPreview(context)),
   );
+}
+
+Widget homeSwitchCamera(BuildContext context) {
+  return IconButton(
+      onPressed: switchCamera, icon: Icon(Icons.flip_camera_android));
 }

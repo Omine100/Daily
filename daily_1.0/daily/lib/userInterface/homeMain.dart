@@ -3,15 +3,21 @@ import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/homeMainComponents.dart';
 
 homeMainDesktop(BuildContext context) {
-  return cameraPreview(context);
+  return homeMainCamera(context);
 }
 
 homeMainTablet(BuildContext context) {
-  return cameraPreview(context);
+  return homeMainCamera(context);
 }
 
 homeMainMobile(BuildContext context) {
-  return cameraPreview(context);
+  return Stack(
+    alignment: Alignment.center,
+    children: [
+      Positioned(child: homeMainCamera(context)),
+      Positioned(top: 50, left: 100, child: homeSwitchCamera(context)),
+    ],
+  );
 }
 
 Widget homeMainBody(BuildContext context) {
