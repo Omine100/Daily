@@ -8,6 +8,9 @@ import 'package:daily/userInterface/homeProfile.dart';
 
 Widget homeBody(BuildContext context) {
   switch (index) {
+    case 0:
+      return homeMainBody(context);
+      break;
     case 3:
       return homeProfileBody(context);
       break;
