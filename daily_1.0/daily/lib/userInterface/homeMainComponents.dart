@@ -101,7 +101,6 @@ Widget mainSwitchCamera(BuildContext context, State state) {
 
 Widget mainPictureButton(BuildContext context) {
   XFile imageFile;
-
   return Container(
     height: 75,
     width: 75,
@@ -109,24 +108,11 @@ Widget mainPictureButton(BuildContext context) {
         borderRadius: BorderRadius.circular(100),
         color: Colors.transparent,
         border: Border.all(width: 6, color: Colors.white)),
-    child: IconButton(
-        onPressed: () async {
-          imageFile = await _controller.takePicture();
-
-          //Need to change to routeNavigation
-          await Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => ImageViewerScreen(
-                filePath: imageFile.path,
-                aspectRatio: _controller.value.aspectRatio,
-              ),
-            ),
-          );
-        },
-        icon: Icon(
-          Icons.camera_alt_outlined,
-          size: 45,
-          color: Colors.white,
-        )),
+    child: GestureDetector(
+      onTap: () async {
+        imageFile = await _controller.takePicture();
+      },
+      child: Container(),
+    ),
   );
 }
