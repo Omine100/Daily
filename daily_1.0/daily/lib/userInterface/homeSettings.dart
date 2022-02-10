@@ -4,7 +4,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/userInterface/homeSettingsComponents.dart';
 
-settingsScreenDesktop(BuildContext context, State state) {
+settingsDesktop(BuildContext context, State state) {
   return Stack(alignment: Alignment.center, children: [
     Positioned(
       top: getPosition(context, true,
@@ -24,7 +24,7 @@ settingsScreenDesktop(BuildContext context, State state) {
   ]);
 }
 
-settingsScreenTablet(BuildContext context, State state) {
+settingsTablet(BuildContext context, State state) {
   return Stack(alignment: Alignment.center, children: [
     Positioned(
       top: getPosition(context, true,
@@ -44,7 +44,7 @@ settingsScreenTablet(BuildContext context, State state) {
   ]);
 }
 
-settingsScreenMobile(BuildContext context, State state) {
+settingsMobile(BuildContext context, State state) {
   return Stack(alignment: Alignment.center, children: [
     Positioned(
         top: getPosition(context, true,
@@ -63,13 +63,13 @@ settingsScreenMobile(BuildContext context, State state) {
   ]);
 }
 
-Widget homeSettingsBody(BuildContext context, State state) {
+Widget settingsBody(BuildContext context, State state) {
   return Container(
       constraints: BoxConstraints.expand(height: double.maxFinite),
       color: Theme.of(context).colorScheme.settingsBackground,
       child: Responsive(
-        desktop: settingsScreenDesktop(context, state),
-        tablet: settingsScreenTablet(context, state),
-        mobile: settingsScreenMobile(context, state),
+        desktop: settingsDesktop(context, state),
+        tablet: settingsTablet(context, state),
+        mobile: settingsMobile(context, state),
       ));
 }

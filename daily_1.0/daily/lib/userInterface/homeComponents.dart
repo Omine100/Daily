@@ -11,10 +11,10 @@ import 'package:daily/userInterface/homeSettings.dart';
 Widget homeBody(BuildContext context, State state) {
   switch (index) {
     case 0:
-      return homeMainBody(context, state);
+      return mainBody(context, state);
       break;
     case 3:
-      return homeSettingsBody(context, state);
+      return settingsBody(context, state);
       break;
     default:
       return Container();

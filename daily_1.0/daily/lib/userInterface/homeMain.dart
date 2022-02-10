@@ -3,29 +3,28 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/homeMainComponents.dart';
 
-homeMainDesktop(BuildContext context) {
-  return homeMainCamera(context);
+mainDesktop(BuildContext context) {
+  return mainCamera(context);
 }
 
-homeMainTablet(BuildContext context) {
-  return homeMainCamera(context);
+mainTablet(BuildContext context) {
+  return mainCamera(context);
 }
 
-homeMainMobile(BuildContext context, State state) {
+mainMobile(BuildContext context, State state) {
   return Stack(
     alignment: Alignment.center,
     children: [
-      Positioned(child: homeMainCamera(context)),
-      Positioned(
-          top: 50, right: 25, child: homeMainSwitchCamera(context, state)),
-      Positioned(bottom: 115, child: homeMainPictureButton(context))
+      Positioned(child: mainCamera(context)),
+      Positioned(top: 50, right: 25, child: mainSwitchCamera(context, state)),
+      Positioned(bottom: 115, child: mainPictureButton(context))
     ],
   );
 }
 
-Widget homeMainBody(BuildContext context, State state) {
+Widget mainBody(BuildContext context, State state) {
   return Responsive(
-      mobile: homeMainMobile(context, state),
-      tablet: homeMainTablet(context),
-      desktop: homeMainDesktop(context));
+      mobile: mainMobile(context, state),
+      tablet: mainTablet(context),
+      desktop: mainDesktop(context));
 }

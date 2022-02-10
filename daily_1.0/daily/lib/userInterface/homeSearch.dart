@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/homeSearchComponents.dart';
 
-homeSearchDesktop(BuildContext context) {
+searchDesktop(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -15,7 +15,7 @@ homeSearchDesktop(BuildContext context) {
   );
 }
 
-homeSearchTablet(BuildContext context) {
+searchTablet(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -28,7 +28,7 @@ homeSearchTablet(BuildContext context) {
   );
 }
 
-homeSearchMobile(BuildContext context) {
+searchMobile(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -41,9 +41,9 @@ homeSearchMobile(BuildContext context) {
   );
 }
 
-Widget homeSearchBody(BuildContext context) {
+Widget searchBody(BuildContext context) {
   return Responsive(
-      mobile: homeSearchMobile(context),
-      tablet: homeSearchTablet(context),
-      desktop: homeSearchDesktop(context));
+      mobile: searchMobile(context),
+      tablet: searchTablet(context),
+      desktop: searchDesktop(context));
 }

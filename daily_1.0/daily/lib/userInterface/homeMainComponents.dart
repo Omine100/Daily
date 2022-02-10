@@ -51,7 +51,7 @@ Widget cameraPreview(BuildContext context) {
       child: CameraPreview(_controller));
 }
 
-Widget homeMainCamera(BuildContext context) {
+Widget mainCamera(BuildContext context) {
   var size = MediaQuery.of(context).size;
   if (_isReady == false ||
       _controller == null ||
@@ -80,7 +80,7 @@ Widget homeMainCamera(BuildContext context) {
   );
 }
 
-Widget homeMainSwitchCamera(BuildContext context, State state) {
+Widget mainSwitchCamera(BuildContext context, State state) {
   return Container(
     alignment: Alignment.center,
     decoration: BoxDecoration(
@@ -99,7 +99,7 @@ Widget homeMainSwitchCamera(BuildContext context, State state) {
   );
 }
 
-Widget homeMainPictureButton(BuildContext context) {
+Widget mainPictureButton(BuildContext context) {
   XFile imageFile;
 
   return Container(
