@@ -14,12 +14,13 @@ void setupCamera(State state) async {
       _description == null ? _cameras[0] : _description,
       ResolutionPreset.ultraHigh,
     );
-    _description = _controller.description;
+    _controller.setFocusMode(FocusMode.auto);
 
     await _controller.initialize();
   } on CameraException catch (_) {
     // do something on error.
   }
+  if (!state.mounted) return;
   state.setState(() {
     _isReady = true;
   });
@@ -30,7 +31,7 @@ void disposeCamera() {
 }
 
 switchCamera(State state) {
-  final lensDirection = _description.lensDirection;
+  final lensDirection = _controller.description.lensDirection;
   if (lensDirection == CameraLensDirection.front) {
     _description = _cameras.firstWhere(
         (description) => description.lensDirection == CameraLensDirection.back);
@@ -78,13 +79,20 @@ Widget homeMainCamera(BuildContext context) {
 }
 
 Widget homeSwitchCamera(BuildContext context, State state) {
-  return IconButton(
-      onPressed: () {
-        switchCamera(state);
-      },
-      icon: Icon(
-        Icons.flip_camera_android,
-        size: 35,
-        color: Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
-      ));
+  return Container(
+    alignment: Alignment.center,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      color: Theme.of(context).colorScheme.homeNavigationBarBackground,
+    ),
+    child: IconButton(
+        onPressed: () {
+          switchCamera(state);
+        },
+        icon: Icon(
+          Icons.flip_camera_android,
+          size: 35,
+          color: Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
+        )),
+  );
 }
