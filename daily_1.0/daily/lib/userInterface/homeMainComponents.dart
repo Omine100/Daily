@@ -8,7 +8,7 @@ CameraDescription _description;
 bool _isReady = false;
 
 void setupCamera(State state) async {
-  _cameras ?? await availableCameras();
+  _cameras = await availableCameras();
   try {
     _controller = CameraController(
       _description == null ? _cameras[0] : _description,
