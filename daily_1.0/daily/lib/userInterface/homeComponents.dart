@@ -6,10 +6,10 @@ import 'package:daily/userInterface/homeSearch.dart';
 import 'package:daily/userInterface/homeGlobal.dart';
 import 'package:daily/userInterface/homeProfile.dart';
 
-Widget homeBody(BuildContext context) {
+Widget homeBody(BuildContext context, State state) {
   switch (index) {
     case 0:
-      return homeMainBody(context);
+      return homeMainBody(context, state);
       break;
     case 3:
       return homeProfileBody(context);

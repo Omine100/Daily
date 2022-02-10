@@ -23,15 +23,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   homeScreenDesktop() {
-    return homeBody(context);
+    return homeBody(context, this);
   }
 
   homeScreenTablet() {
-    return homeBody(context);
+    return homeBody(context, this);
   }
 
   homeScreenMobile() {
-    return homeBody(context);
+    return homeBody(context, this);
   }
 
   @override

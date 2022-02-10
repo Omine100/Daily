@@ -7,11 +7,8 @@ CameraController _controller;
 CameraDescription _description;
 bool _isReady = false;
 
-void getCameras() async {
-  _cameras = await availableCameras();
-}
-
 void setupCamera(State state) async {
+  _cameras ?? await availableCameras();
   try {
     _controller = CameraController(
       _description == null ? _cameras[0] : _description,
@@ -32,7 +29,7 @@ void disposeCamera() {
   _controller.dispose();
 }
 
-switchCamera() {
+switchCamera(State state) {
   final lensDirection = _description.lensDirection;
   if (lensDirection == CameraLensDirection.front) {
     _description = _cameras.firstWhere(
@@ -80,10 +77,10 @@ Widget homeMainCamera(BuildContext context) {
   );
 }
 
-Widget homeSwitchCamera(BuildContext context) {
+Widget homeSwitchCamera(BuildContext context, State state) {
   return IconButton(
       onPressed: () {
-        switchCamera();
+        switchCamera(state);
       },
       icon: Icon(
         Icons.flip_camera_android,
