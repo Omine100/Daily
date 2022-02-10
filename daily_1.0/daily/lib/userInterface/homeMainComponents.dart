@@ -113,9 +113,10 @@ Widget homeMainPictureButton(BuildContext context) {
         onPressed: () async {
           imageFile = await _controller.takePicture();
 
+          //Need to change to routeNavigation
           await Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => imageViewerScreen(
+              builder: (context) => ImageViewerScreen(
                 filePath: imageFile.path,
                 aspectRatio: _controller.value.aspectRatio,
               ),

@@ -3,16 +3,16 @@ import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/imageViewerComponents.dart';
 
-class imageViewerScreen extends StatefulWidget {
+class ImageViewerScreen extends StatefulWidget {
   final String filePath;
   final double aspectRatio;
-  imageViewerScreen({this.filePath, this.aspectRatio});
+  ImageViewerScreen({this.filePath, this.aspectRatio});
 
   @override
-  _imageViewerScreenState createState() => _imageViewerScreenState();
+  _ImageViewerScreenState createState() => _ImageViewerScreenState();
 }
 
-class _imageViewerScreenState extends State<imageViewerScreen> {
+class _ImageViewerScreenState extends State<ImageViewerScreen> {
   imageViewerScreenDesktop() {
     return imageViewerImage(context, widget.filePath, widget.aspectRatio);
   }
