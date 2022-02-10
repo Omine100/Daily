@@ -12,7 +12,7 @@ void setupCamera(State state) async {
   try {
     _controller = CameraController(
       _description == null ? _cameras[0] : _description,
-      ResolutionPreset.low,
+      ResolutionPreset.ultraHigh,
     );
     _description = _controller.description;
 
