@@ -58,6 +58,6 @@ DotNavigationBar homeNavigationBar(BuildContext context, State state) {
         icon: Icon(Icons.settings),
       ),
     ],
-    marginR: EdgeInsets.symmetric(horizontal: 45, vertical: 20),
+    marginR: EdgeInsets.symmetric(horizontal: 35, vertical: 20),
   );
 }

@@ -1,3 +1,4 @@
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:daily/themesLocal/colors.dart';
@@ -111,6 +112,7 @@ Widget mainPictureButton(BuildContext context) {
     child: GestureDetector(
       onTap: () async {
         imageFile = await _controller.takePicture();
+        routeNavigation.routeImageViewer(context, imageFile.path);
       },
       child: Container(),
     ),

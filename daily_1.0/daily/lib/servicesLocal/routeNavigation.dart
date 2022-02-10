@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:daily/userInterface/welcome.dart';
 import 'package:daily/userInterface/home.dart';
 import 'package:daily/userInterface/textViewer.dart';
+import 'package:daily/userInterface/imageViewer.dart';
 
 class RouteNavigation {
   void routePop(BuildContext context) {
@@ -22,6 +23,13 @@ class RouteNavigation {
         context,
         MaterialPageRoute(
             builder: (context) => TextViewerScreen(filePath: filePath)));
+  }
+
+  void routeImageViewer(BuildContext context, String filePath) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ImageViewerScreen(filePath: filePath)));
   }
 
   Widget routeInitial(BuildContext context, bool isSignedIn) {
