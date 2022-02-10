@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
 import 'dart:math' as math;
+import 'dart:io';
 
 Widget imageViewerImage(
     BuildContext context, String filePath, double aspectRatio) {
