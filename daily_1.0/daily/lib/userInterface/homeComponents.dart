@@ -1,10 +1,11 @@
+import 'package:daily/userInterface/homeSettings.dart';
 import 'package:flutter/material.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/homeMain.dart';
 import 'package:daily/userInterface/homeSearch.dart';
 import 'package:daily/userInterface/homeGlobal.dart';
-import 'package:daily/userInterface/homeProfile.dart';
+import 'package:daily/userInterface/homeSettings.dart';
 
 Widget homeBody(BuildContext context, State state) {
   switch (index) {
@@ -12,7 +13,7 @@ Widget homeBody(BuildContext context, State state) {
       return homeMainBody(context, state);
       break;
     case 3:
-      return homeProfileBody(context);
+      return homeSettingsBody(context, state);
       break;
     default:
       return Container();
@@ -29,7 +30,9 @@ DotNavigationBar homeNavigationBar(BuildContext context, State state) {
 
   return DotNavigationBar(
     currentIndex: index,
-    backgroundColor: Theme.of(context).colorScheme.homeNavigationBarBackground,
+    backgroundColor: index == 3
+        ? Theme.of(context).colorScheme.homeNavigationBarBackgroundSettings
+        : Theme.of(context).colorScheme.homeNavigationBarBackground,
     dotIndicatorColor: Theme.of(context).colorScheme.homeNavigationBarDot,
     duration: Duration(milliseconds: 1250),
     unselectedItemColor:
@@ -41,7 +44,7 @@ DotNavigationBar homeNavigationBar(BuildContext context, State state) {
     onTap: indexChanged,
     items: [
       DotNavigationBarItem(
-        icon: Icon(Icons.home),
+        icon: Icon(Icons.camera_alt),
       ),
       DotNavigationBarItem(
         icon: Icon(Icons.search),
@@ -50,7 +53,7 @@ DotNavigationBar homeNavigationBar(BuildContext context, State state) {
         icon: Icon(Icons.favorite),
       ),
       DotNavigationBarItem(
-        icon: Icon(Icons.person),
+        icon: Icon(Icons.settings),
       ),
     ],
     marginR: EdgeInsets.symmetric(horizontal: 45, vertical: 20),

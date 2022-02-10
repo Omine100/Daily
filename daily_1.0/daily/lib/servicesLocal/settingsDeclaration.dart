@@ -3,7 +3,7 @@ import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
-import 'package:daily/userInterface/settingsComponents.dart';
+import 'package:daily/userInterface/homeSettingsComponents.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();
