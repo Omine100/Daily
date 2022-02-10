@@ -1,6 +1,7 @@
-import 'package:daily/userInterface/homeSettings.dart';
 import 'package:flutter/material.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
+import 'package:daily/servicesLocal/settingsManagement.dart';
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/homeMain.dart';
 import 'package:daily/userInterface/homeSearch.dart';
@@ -25,6 +26,7 @@ DotNavigationBar homeNavigationBar(BuildContext context, State state) {
   void indexChanged(int i) {
     state.setState(() {
       index = i;
+      settingsToPrefs(settingsList);
     });
   }
 

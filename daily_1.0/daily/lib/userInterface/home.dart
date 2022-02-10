@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/settingsManagement.dart';
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/homeComponents.dart';
@@ -26,8 +28,13 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) setupCamera(this);
-    if (state == AppLifecycleState.paused) disposeCamera();
+    if (state == AppLifecycleState.resumed) {
+      setupCamera(this);
+    }
+    if (state == AppLifecycleState.paused) {
+      settingsToPrefs(settingsList);
+      disposeCamera();
+    }
   }
 
   homeScreenDesktop() {
