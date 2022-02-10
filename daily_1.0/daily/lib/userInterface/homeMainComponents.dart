@@ -4,13 +4,15 @@ import 'package:camera/camera.dart';
 List<CameraDescription> _cameras;
 CameraController _controller;
 bool _isReady = false;
+State states;
 
 void setupCamera(State state) async {
+  states = state;
   try {
     _cameras = await availableCameras();
     _controller = CameraController(
       _cameras[0],
-      ResolutionPreset.medium,
+      ResolutionPreset.low,
     );
 
     await _controller.initialize();
@@ -26,11 +28,13 @@ void disposeCamera() {
   _controller.dispose();
 }
 
-switchCamera(State state) {
-  _controller = CameraController(
-    _cameras[1],
-    ResolutionPreset.medium,
-  );
+switchCamera() {
+  states.setState(() {
+    _controller = CameraController(
+      _controller.description == _cameras[0] ? _cameras[1] : _cameras[0],
+      ResolutionPreset.low,
+    );
+  });
 }
 
 Widget cameraPreview(BuildContext context) {
@@ -45,7 +49,7 @@ Widget homeMainCamera(BuildContext context) {
       _controller == null ||
       !_controller.value.isInitialized) {
     return Container(
-      decoration: BoxDecoration(color: Colors.white),
+      decoration: BoxDecoration(color: Colors.black),
       width: size.width,
       height: size.height,
       child: Center(
@@ -68,7 +72,10 @@ Widget homeMainCamera(BuildContext context) {
   );
 }
 
-Widget homeSwitchCamera(BuildContext context, State state) {
+Widget homeSwitchCamera(BuildContext context) {
   return IconButton(
-      onPressed: switchCamera(state), icon: Icon(Icons.flip_camera_android));
+      onPressed: () {
+        switchCamera();
+      },
+      icon: Icon(Icons.flip_camera_android));
 }
