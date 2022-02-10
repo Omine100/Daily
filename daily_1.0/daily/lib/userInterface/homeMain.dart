@@ -16,7 +16,9 @@ homeMainMobile(BuildContext context, State state) {
     alignment: Alignment.center,
     children: [
       Positioned(child: homeMainCamera(context)),
-      Positioned(top: 50, right: 25, child: homeSwitchCamera(context, state)),
+      Positioned(
+          top: 50, right: 25, child: homeMainSwitchCamera(context, state)),
+      Positioned(bottom: 115, child: homeMainPictureButton(context))
     ],
   );
 }

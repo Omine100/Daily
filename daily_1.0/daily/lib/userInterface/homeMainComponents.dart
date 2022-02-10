@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/userInterface/imageViewer.dart';
 
 List<CameraDescription> _cameras;
 CameraController _controller;
@@ -45,7 +46,8 @@ switchCamera(State state) {
 
 Widget cameraPreview(BuildContext context) {
   return AspectRatio(
-      aspectRatio: _controller.value.aspectRatio,
+      aspectRatio: MediaQuery.of(context).size.width /
+          MediaQuery.of(context).size.height,
       child: CameraPreview(_controller));
 }
 
@@ -78,7 +80,7 @@ Widget homeMainCamera(BuildContext context) {
   );
 }
 
-Widget homeSwitchCamera(BuildContext context, State state) {
+Widget homeMainSwitchCamera(BuildContext context, State state) {
   return Container(
     alignment: Alignment.center,
     decoration: BoxDecoration(
@@ -93,6 +95,37 @@ Widget homeSwitchCamera(BuildContext context, State state) {
           Icons.flip_camera_android,
           size: 35,
           color: Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
+        )),
+  );
+}
+
+Widget homeMainPictureButton(BuildContext context) {
+  XFile imageFile;
+
+  return Container(
+    height: 75,
+    width: 75,
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+        color: Colors.transparent,
+        border: Border.all(width: 6, color: Colors.white)),
+    child: IconButton(
+        onPressed: () async {
+          imageFile = await _controller.takePicture();
+
+          await Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => imageViewerScreen(
+                filePath: imageFile.path,
+                aspectRatio: _controller.value.aspectRatio,
+              ),
+            ),
+          );
+        },
+        icon: Icon(
+          Icons.camera_alt_outlined,
+          size: 45,
+          color: Colors.white,
         )),
   );
 }
