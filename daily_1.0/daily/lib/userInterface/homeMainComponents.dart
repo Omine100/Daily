@@ -26,8 +26,8 @@ void disposeCamera() {
   _controller.dispose();
 }
 
-void switchCamera() {
-  CameraController(
+switchCamera(State state) {
+  _controller = CameraController(
     _cameras[1],
     ResolutionPreset.medium,
   );
@@ -68,7 +68,7 @@ Widget homeMainCamera(BuildContext context) {
   );
 }
 
-Widget homeSwitchCamera(BuildContext context) {
+Widget homeSwitchCamera(BuildContext context, State state) {
   return IconButton(
-      onPressed: switchCamera, icon: Icon(Icons.flip_camera_android));
+      onPressed: switchCamera(state), icon: Icon(Icons.flip_camera_android));
 }

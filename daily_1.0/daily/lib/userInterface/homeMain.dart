@@ -10,19 +10,19 @@ homeMainTablet(BuildContext context) {
   return homeMainCamera(context);
 }
 
-homeMainMobile(BuildContext context) {
+homeMainMobile(BuildContext context, State state) {
   return Stack(
     alignment: Alignment.center,
     children: [
       Positioned(child: homeMainCamera(context)),
-      Positioned(top: 50, left: 100, child: homeSwitchCamera(context)),
+      Positioned(top: 50, left: 100, child: homeSwitchCamera(context, state)),
     ],
   );
 }
 
-Widget homeMainBody(BuildContext context) {
+Widget homeMainBody(BuildContext context, State state) {
   return Responsive(
-      mobile: homeMainMobile(context),
+      mobile: homeMainMobile(context, state),
       tablet: homeMainTablet(context),
       desktop: homeMainDesktop(context));
 }
