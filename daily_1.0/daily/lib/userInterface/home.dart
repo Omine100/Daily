@@ -16,6 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
     setupCamera(this);
   }
 
+  @override
+  void dispose() {
+    disposeCamera();
+    super.dispose();
+  }
+
   homeScreenDesktop() {
     return homeBody(context);
   }

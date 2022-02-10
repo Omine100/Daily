@@ -3,11 +3,11 @@ import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/homeMainComponents.dart';
 
 homeMainDesktop(BuildContext context) {
-  return getBody(context);
+  return cameraPreview(context);
 }
 
 homeMainTablet(BuildContext context) {
-  return getBody(context);
+  return cameraPreview(context);
 }
 
 homeMainMobile(BuildContext context) {

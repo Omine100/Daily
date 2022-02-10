@@ -7,10 +7,7 @@ bool _isReady = false;
 
 void setupCamera(State state) async {
   try {
-    // initialize cameras.
     _cameras = await availableCameras();
-    // initialize camera controllers.
-    // Current bug for high / medium with samsung devices.
     _controller = CameraController(
       _cameras[0],
       ResolutionPreset.medium,
@@ -25,13 +22,17 @@ void setupCamera(State state) async {
   });
 }
 
+void disposeCamera() {
+  _controller.dispose();
+}
+
 Widget cameraPreview(BuildContext context) {
   return AspectRatio(
       aspectRatio: _controller.value.aspectRatio,
       child: CameraPreview(_controller));
 }
 
-Widget getBody(BuildContext context) {
+Widget homeMainBody(BuildContext context) {
   var size = MediaQuery.of(context).size;
   if (_isReady == false ||
       _controller == null ||
