@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/homeMainComponents.dart';
 
