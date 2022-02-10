@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/homeComponents.dart';
+import 'package:daily/userInterface/homeMainComponents.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -9,6 +10,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    setupCamera(this);
+  }
+
   homeScreenDesktop() {
     return homeBody(context);
   }

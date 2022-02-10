@@ -1,45 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/homeMainComponents.dart';
 
 homeMainDesktop(BuildContext context) {
-  return Stack(
-    alignment: Alignment.center,
-    children: [
-      Positioned(
-        left: 340,
-        top: 37,
-        child: Container(),
-      ),
-    ],
-  );
+  return getBody(context);
 }
 
 homeMainTablet(BuildContext context) {
-  return Stack(
-    alignment: Alignment.center,
-    children: [
-      Positioned(
-        left: 340,
-        top: 37,
-        child: Container(),
-      ),
-    ],
-  );
+  return getBody(context);
 }
 
 homeMainMobile(BuildContext context) {
-  return Stack(
-    alignment: Alignment.center,
-    children: [
-      Positioned(
-        left: 340,
-        top: 37,
-        child: Container(),
-      ),
-    ],
-  );
+  return cameraPreview(context);
 }
 
 Widget homeMainBody(BuildContext context) {

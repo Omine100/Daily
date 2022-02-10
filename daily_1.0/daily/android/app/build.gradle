@@ -34,7 +34,7 @@ android {
 
     defaultConfig {
         applicationId "com.phoenix.daily"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
