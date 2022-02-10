@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:daily/themesLocal/colors.dart';
 
 List<CameraDescription> _cameras;
 CameraController _controller;
 bool _isReady = false;
-State states;
 
 void setupCamera(State state) async {
-  states = state;
   try {
     _cameras = await availableCameras();
     _controller = CameraController(
@@ -29,12 +28,11 @@ void disposeCamera() {
 }
 
 switchCamera() {
-  states.setState(() {
-    _controller = CameraController(
-      _controller.description == _cameras[0] ? _cameras[1] : _cameras[0],
-      ResolutionPreset.low,
-    );
-  });
+  //Do need to send state down
+  _controller = CameraController(
+    _controller.description == _cameras[0] ? _cameras[1] : _cameras[0],
+    ResolutionPreset.low,
+  );
 }
 
 Widget cameraPreview(BuildContext context) {
@@ -77,5 +75,9 @@ Widget homeSwitchCamera(BuildContext context) {
       onPressed: () {
         switchCamera();
       },
-      icon: Icon(Icons.flip_camera_android));
+      icon: Icon(
+        Icons.flip_camera_android,
+        size: 35,
+        color: Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
+      ));
 }
