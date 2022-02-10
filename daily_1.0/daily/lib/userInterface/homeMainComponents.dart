@@ -4,15 +4,20 @@ import 'package:daily/themesLocal/colors.dart';
 
 List<CameraDescription> _cameras;
 CameraController _controller;
+CameraDescription _description;
 bool _isReady = false;
+
+void getCameras() async {
+  _cameras = await availableCameras();
+}
 
 void setupCamera(State state) async {
   try {
-    _cameras = await availableCameras();
     _controller = CameraController(
-      _cameras[0],
+      _description == null ? _cameras[0] : _description,
       ResolutionPreset.low,
     );
+    _description = _controller.description;
 
     await _controller.initialize();
   } on CameraException catch (_) {
@@ -28,11 +33,16 @@ void disposeCamera() {
 }
 
 switchCamera() {
-  //Do need to send state down
-  _controller = CameraController(
-    _controller.description == _cameras[0] ? _cameras[1] : _cameras[0],
-    ResolutionPreset.low,
-  );
+  final lensDirection = _description.lensDirection;
+  if (lensDirection == CameraLensDirection.front) {
+    _description = _cameras.firstWhere(
+        (description) => description.lensDirection == CameraLensDirection.back);
+  } else {
+    _description = _cameras.firstWhere((description) =>
+        description.lensDirection == CameraLensDirection.front);
+  }
+
+  setupCamera(state);
 }
 
 Widget cameraPreview(BuildContext context) {
