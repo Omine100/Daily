@@ -11,6 +11,7 @@ CameraDescription description;
 bool isReady = false;
 bool showFocusCircle = false;
 FlashMode flashMode = FlashMode.off;
+double zoomLevel = 0;
 double x = 0, y = 0;
 
 void setupCamera(State state) async {
@@ -21,7 +22,6 @@ void setupCamera(State state) async {
       ResolutionPreset.max,
     );
     await controller.initialize();
-    controller.setFlashMode(flashMode);
   } on CameraException catch (_) {
     // do something on error.
   }
@@ -45,14 +45,19 @@ switchCamera(State state) {
 }
 
 switchFlash(State state) async {
+  flashMode == FlashMode.off
+      ? await controller.setFlashMode(FlashMode.always)
+      : await controller.setFlashMode(FlashMode.off);
   state.setState(() {
     flashMode == FlashMode.off
         ? flashMode = FlashMode.always
         : flashMode = FlashMode.off;
   });
-  flashMode == FlashMode.off
-      ? await controller.setFlashMode(FlashMode.off)
-      : await controller.setFlashMode(FlashMode.off);
+}
+
+zoom(State state) async {
+  await controller.setZoomLevel(zoomLevel);
+  state.setState(() {});
 }
 
 Future<void> _onTap(
