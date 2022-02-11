@@ -14,7 +14,7 @@ void setupCamera(State state) async {
   cameras = await availableCameras();
   try {
     controller = CameraController(
-      description == null ? cameras[0] : description,
+      description == null ? cameras[1] : description,
       ResolutionPreset.max,
     );
     await controller.initialize();
@@ -29,12 +29,12 @@ void setupCamera(State state) async {
 
 switchCamera(State state) {
   final lensDirection = controller.description.lensDirection;
-  if (lensDirection == CameraLensDirection.front) {
-    description = cameras.firstWhere(
-        (description) => description.lensDirection == CameraLensDirection.back);
-  } else {
+  if (lensDirection == CameraLensDirection.back) {
     description = cameras.firstWhere((description) =>
         description.lensDirection == CameraLensDirection.front);
+  } else {
+    description = cameras.firstWhere(
+        (description) => description.lensDirection == CameraLensDirection.back);
   }
 
   setupCamera(state);
