@@ -86,13 +86,6 @@ Future<void> focus(
   }
 }
 
-Widget cameraPreview(BuildContext context) {
-  return AspectRatio(
-      aspectRatio: MediaQuery.of(context).size.width /
-          MediaQuery.of(context).size.height,
-      child: CameraPreview(controller));
-}
-
 Future<XFile> takePicture() async {
   final CameraController cameraController = controller;
   if (cameraController.value.isTakingPicture) {
@@ -137,7 +130,10 @@ Widget mainCamera(BuildContext context, State state) {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10)),
-          child: cameraPreview(context)),
+          child: AspectRatio(
+              aspectRatio: MediaQuery.of(context).size.width /
+                  MediaQuery.of(context).size.height,
+              child: CameraPreview(controller))),
     ),
   );
 }
