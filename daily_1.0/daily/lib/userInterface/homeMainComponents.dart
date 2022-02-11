@@ -60,7 +60,7 @@ zoom(State state) async {
   state.setState(() {});
 }
 
-Future<void> _onTap(
+Future<void> focus(
     BuildContext context, State state, TapUpDetails details) async {
   if (controller.value.isInitialized) {
     showFocusCircle = true;
@@ -128,7 +128,7 @@ Widget mainCamera(BuildContext context, State state) {
 
   return GestureDetector(
     onTapUp: (details) {
-      _onTap(context, state, details);
+      focus(context, state, details);
     },
     child: Container(
       width: size.width,
