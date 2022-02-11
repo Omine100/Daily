@@ -21,7 +21,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
   @override
   void dispose() {
-    disposeCamera();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
@@ -33,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     }
     if (state == AppLifecycleState.paused) {
       settingsToPrefs(settingsList);
-      disposeCamera();
     }
   }
 
