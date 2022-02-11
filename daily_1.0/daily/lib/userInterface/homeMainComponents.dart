@@ -2,43 +2,42 @@ import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:daily/themesLocal/colors.dart';
-import 'package:daily/userInterface/imageViewer.dart';
 
-List<CameraDescription> _cameras;
-CameraController _controller;
-CameraDescription _description;
-bool _isReady = false;
+List<CameraDescription> cameras;
+CameraController controller;
+CameraDescription description;
+bool isReady = false;
 
 void setupCamera(State state) async {
-  _cameras = await availableCameras();
+  cameras = await availableCameras();
   try {
-    _controller = CameraController(
-      _description == null ? _cameras[0] : _description,
+    controller = CameraController(
+      description == null ? cameras[0] : description,
       ResolutionPreset.ultraHigh,
     );
-    _controller.setFocusMode(FocusMode.auto);
+    controller.setFocusMode(FocusMode.auto);
 
-    await _controller.initialize();
+    await controller.initialize();
   } on CameraException catch (_) {
     // do something on error.
   }
   if (!state.mounted) return;
   state.setState(() {
-    _isReady = true;
+    isReady = true;
   });
 }
 
 void disposeCamera() {
-  _controller.dispose();
+  controller.dispose();
 }
 
 switchCamera(State state) {
-  final lensDirection = _controller.description.lensDirection;
+  final lensDirection = controller.description.lensDirection;
   if (lensDirection == CameraLensDirection.front) {
-    _description = _cameras.firstWhere(
+    description = cameras.firstWhere(
         (description) => description.lensDirection == CameraLensDirection.back);
   } else {
-    _description = _cameras.firstWhere((description) =>
+    description = cameras.firstWhere((description) =>
         description.lensDirection == CameraLensDirection.front);
   }
 
@@ -49,14 +48,14 @@ Widget cameraPreview(BuildContext context) {
   return AspectRatio(
       aspectRatio: MediaQuery.of(context).size.width /
           MediaQuery.of(context).size.height,
-      child: CameraPreview(_controller));
+      child: CameraPreview(controller));
 }
 
 Widget mainCamera(BuildContext context) {
   var size = MediaQuery.of(context).size;
-  if (_isReady == false ||
-      _controller == null ||
-      !_controller.value.isInitialized) {
+  if (isReady == false ||
+      controller == null ||
+      !controller.value.isInitialized) {
     return Container(
       decoration: BoxDecoration(color: Colors.black),
       width: size.width,
@@ -111,8 +110,9 @@ Widget mainPictureButton(BuildContext context) {
         border: Border.all(width: 6, color: Colors.white)),
     child: GestureDetector(
       onTap: () async {
-        imageFile = await _controller.takePicture();
-        routeNavigation.routeImageViewer(context, imageFile.path);
+        imageFile = await controller.takePicture();
+        routeNavigation.routeImageViewer(
+            context, imageFile.path, controller.value.aspectRatio);
       },
       child: Container(),
     ),

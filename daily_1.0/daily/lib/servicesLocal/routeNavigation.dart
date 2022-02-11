@@ -25,11 +25,15 @@ class RouteNavigation {
             builder: (context) => TextViewerScreen(filePath: filePath)));
   }
 
-  void routeImageViewer(BuildContext context, String filePath) {
+  void routeImageViewer(
+      BuildContext context, String filePath, double aspectRatio) {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => ImageViewerScreen(filePath: filePath)));
+            builder: (context) => ImageViewerScreen(
+                  filePath: filePath,
+                  aspectRatio: aspectRatio,
+                )));
   }
 
   Widget routeInitial(BuildContext context, bool isSignedIn) {
