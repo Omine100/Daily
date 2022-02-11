@@ -16,8 +16,11 @@ mainMobile(BuildContext context, State state) {
     alignment: Alignment.center,
     children: [
       Positioned(child: mainCamera(context, state)),
-      Positioned(top: 50, right: 25, child: mainSwitchCamera(context, state)),
-      Positioned(bottom: 115, child: mainPictureButton(context)),
+      Positioned(
+          top: 50, right: 25, child: mainSwitchCameraButton(context, state)),
+      Positioned(
+          top: 100, right: 25, child: mainSwitchFlashButton(context, state)),
+      Positioned(bottom: 100, child: mainPictureButton(context)),
       mainFocusCircle(context),
     ],
   );

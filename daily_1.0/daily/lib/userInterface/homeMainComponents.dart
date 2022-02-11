@@ -1,13 +1,16 @@
-import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'dart:io';
 import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/servicesLocal/routeNavigation.dart';
 
+RouteNavigation routeNavigation = new RouteNavigation();
 List<CameraDescription> cameras;
 CameraController controller;
 CameraDescription description;
 bool isReady = false;
 bool showFocusCircle = false;
+FlashMode flashMode = FlashMode.off;
 double x = 0, y = 0;
 
 void setupCamera(State state) async {
@@ -18,6 +21,7 @@ void setupCamera(State state) async {
       ResolutionPreset.max,
     );
     await controller.initialize();
+    controller.setFlashMode(flashMode);
   } on CameraException catch (_) {
     // do something on error.
   }
@@ -38,6 +42,17 @@ switchCamera(State state) {
   }
 
   setupCamera(state);
+}
+
+switchFlash(State state) async {
+  state.setState(() {
+    flashMode == FlashMode.off
+        ? flashMode = FlashMode.always
+        : flashMode = FlashMode.off;
+  });
+  flashMode == FlashMode.off
+      ? await controller.setFlashMode(FlashMode.always)
+      : await controller.setFlashMode(FlashMode.off);
 }
 
 Future<void> _onTap(
@@ -89,6 +104,20 @@ Widget cameraPreview(BuildContext context) {
       child: CameraPreview(controller));
 }
 
+Future<XFile> takePicture() async {
+  final CameraController cameraController = controller;
+  if (cameraController.value.isTakingPicture) {
+    return null;
+  }
+  try {
+    XFile file = await cameraController.takePicture();
+    return file;
+  } on CameraException catch (e) {
+    print('Error occured while taking picture: $e');
+    return null;
+  }
+}
+
 Widget mainCamera(BuildContext context, State state) {
   var size = MediaQuery.of(context).size;
   if (isReady == false ||
@@ -124,41 +153,44 @@ Widget mainCamera(BuildContext context, State state) {
   );
 }
 
-Widget mainSwitchCamera(BuildContext context, State state) {
-  return Container(
-    alignment: Alignment.center,
-    decoration: BoxDecoration(
-      shape: BoxShape.circle,
-      color: Theme.of(context).colorScheme.homeNavigationBarBackground,
-    ),
-    child: IconButton(
-        onPressed: () {
-          switchCamera(state);
-        },
-        icon: Icon(
-          Icons.flip_camera_android,
-          size: 35,
-          color: Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
-        )),
-  );
+Widget mainSwitchCameraButton(BuildContext context, State state) {
+  return IconButton(
+      onPressed: () {
+        switchCamera(state);
+      },
+      icon: Icon(
+        Icons.flip_camera_android,
+        size: 35,
+        color: Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
+      ));
+}
+
+Widget mainSwitchFlashButton(BuildContext context, State state) {
+  return IconButton(
+      onPressed: () {
+        switchFlash(state);
+      },
+      icon: Icon(
+        flashMode == FlashMode.off ? Icons.flash_on : Icons.flash_off,
+        size: 35,
+        color: Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
+      ));
 }
 
 Widget mainPictureButton(BuildContext context) {
-  XFile imageFile;
-  return GestureDetector(
+  return InkWell(
     onTap: () async {
-      imageFile = await controller.takePicture();
+      XFile rawImage = await takePicture();
+      File imageFile = File(rawImage.path);
       routeNavigation.routeImageViewer(
           context, imageFile.path, controller.value.aspectRatio);
     },
-    child: Container(
-      height: 75,
-      width: 75,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
-          color: Colors.transparent,
-          border: Border.all(width: 6, color: Colors.white)),
-      child: Container(),
+    child: Stack(
+      alignment: Alignment.center,
+      children: [
+        Icon(Icons.circle, color: Colors.white38, size: 80),
+        Icon(Icons.circle, color: Colors.white, size: 65),
+      ],
     ),
   );
 }
