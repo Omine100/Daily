@@ -136,6 +136,10 @@ extension CustomColorScheme on ColorScheme {
   Color get homeSettingsIcon => Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
   // #endregion
 
+  // #region main
+  Color get mainCard => Color(isDark.value ? 0xCC323232 : 0xFFEDEDED);
+  // #endregion
+
   // #region settings
   Color get settingsBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get settingsTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);

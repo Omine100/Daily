@@ -1,4 +1,3 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/homeMainComponents.dart';
@@ -17,9 +16,7 @@ mainMobile(BuildContext context, State state) {
     children: [
       Positioned(child: mainCamera(context, state)),
       Positioned(
-          top: 50, right: 25, child: mainSwitchCameraButton(context, state)),
-      Positioned(
-          top: 100, right: 25, child: mainSwitchFlashButton(context, state)),
+          top: 40, right: 15, child: mainCameraComponentCard(context, state)),
       Positioned(bottom: 100, child: mainPictureButton(context)),
       mainFocusCircle(context),
     ],

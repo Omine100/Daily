@@ -81,22 +81,6 @@ Future<void> _onTap(
   }
 }
 
-Widget mainFocusCircle(BuildContext context) {
-  return showFocusCircle
-      ? Positioned(
-          top: y - 20,
-          left: x - 20,
-          child: Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.white, width: 2)),
-          ),
-        )
-      : Container();
-}
-
 Widget cameraPreview(BuildContext context) {
   return AspectRatio(
       aspectRatio: MediaQuery.of(context).size.width /
@@ -149,6 +133,43 @@ Widget mainCamera(BuildContext context, State state) {
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10)),
           child: cameraPreview(context)),
+    ),
+  );
+}
+
+Widget mainFocusCircle(BuildContext context) {
+  return showFocusCircle
+      ? Positioned(
+          top: y - 20,
+          left: x - 20,
+          child: Container(
+            height: 40,
+            width: 40,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.white, width: 2)),
+          ),
+        )
+      : Container();
+}
+
+Widget mainCameraComponentCard(BuildContext context, State state) {
+  return Container(
+    decoration: BoxDecoration(
+      color: Theme.of(context).colorScheme.mainCard,
+      borderRadius: BorderRadius.circular(45),
+    ),
+    child: Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 5, bottom: 5),
+          child: mainSwitchCameraButton(context, state),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 5, bottom: 5),
+          child: mainSwitchFlashButton(context, state),
+        ),
+      ],
     ),
   );
 }
