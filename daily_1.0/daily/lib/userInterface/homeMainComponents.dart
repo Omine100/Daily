@@ -51,7 +51,7 @@ switchFlash(State state) async {
         : flashMode = FlashMode.off;
   });
   flashMode == FlashMode.off
-      ? await controller.setFlashMode(FlashMode.always)
+      ? await controller.setFlashMode(FlashMode.off)
       : await controller.setFlashMode(FlashMode.off);
 }
 
