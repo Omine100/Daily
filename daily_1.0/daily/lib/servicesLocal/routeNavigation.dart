@@ -25,13 +25,15 @@ class RouteNavigation {
             builder: (context) => TextViewerScreen(filePath: filePath)));
   }
 
-  void routeImageViewer(BuildContext context, String filePath, double scale) {
+  void routeImageViewer(
+      BuildContext context, String filePath, double scale, bool isMirrored) {
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => ImageViewerScreen(
                   filePath: filePath,
                   scale: scale,
+                  isMirrored: isMirrored,
                 )));
   }
 

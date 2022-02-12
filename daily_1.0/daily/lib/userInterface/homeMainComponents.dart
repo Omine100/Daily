@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:image/image.dart' as img;
 import 'dart:io';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
@@ -46,14 +47,12 @@ switchCamera(State state) {
 }
 
 switchFlash(State state) async {
-  flashMode == FlashMode.off
-      ? await controller.setFlashMode(FlashMode.off)
-      : await controller.setFlashMode(FlashMode.always);
   state.setState(() {
     flashMode == FlashMode.off
         ? flashMode = FlashMode.always
         : flashMode = FlashMode.off;
   });
+  await controller.setFlashMode(flashMode);
 }
 
 zoom(BuildContext context, State state, ScaleStartDetails details) async {
@@ -94,13 +93,10 @@ Future<void> focus(
   }
 }
 
-Future<XFile> takePicture() async {
-  final CameraController cameraController = controller;
-  if (cameraController.value.isTakingPicture) {
-    return null;
-  }
+Future<XFile> takePicture(State state) async {
   try {
-    XFile file = await cameraController.takePicture();
+    XFile file = await controller.takePicture();
+    state.setState(() {});
     return file;
   } on CameraException catch (e) {
     print('Error occured while taking picture: $e');
@@ -201,18 +197,27 @@ Widget mainSwitchFlashButton(BuildContext context, State state) {
         switchFlash(state);
       },
       icon: Icon(
-        flashMode == FlashMode.off ? Icons.flash_on : Icons.flash_off,
+        flashMode == FlashMode.off ? Icons.flash_off : Icons.flash_on,
         size: 35,
         color: Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
       ));
 }
 
-Widget mainPictureButton(BuildContext context) {
+Widget mainPictureButton(BuildContext context, State state) {
   return InkWell(
     onTap: () async {
-      XFile rawImage = await takePicture();
+      if (controller.value.isTakingPicture) return null;
+      XFile rawImage = await takePicture(state);
       File imageFile = File(rawImage.path);
-      routeNavigation.routeImageViewer(context, imageFile.path, scale);
+      Image image = new Image.file(File(imageFile.path));
+      image.frameBuilder
+      routeNavigation.routeImageViewer(
+          context,
+          imageFile.path,
+          scale,
+          controller.description.lensDirection == CameraLensDirection.front
+              ? true
+              : false);
     },
     child: Stack(
       alignment: Alignment.center,

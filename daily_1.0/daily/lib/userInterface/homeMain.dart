@@ -17,7 +17,7 @@ mainMobile(BuildContext context, State state) {
       Positioned(child: mainCamera(context, state)),
       Positioned(
           top: 40, right: 15, child: mainCameraComponentCard(context, state)),
-      Positioned(bottom: 100, child: mainPictureButton(context)),
+      Positioned(bottom: 100, child: mainPictureButton(context, state)),
       mainFocusCircle(context),
     ],
   );
