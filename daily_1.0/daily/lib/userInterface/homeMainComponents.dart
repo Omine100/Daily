@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:image/image.dart' as img;
@@ -117,7 +115,7 @@ Future<Image> imageProcess(XFile rawFile) async {
 
   return Image.memory(
     img.encodeJpg(image),
-    fit: BoxFit.contain,
+    fit: BoxFit.fill,
   );
 }
 
