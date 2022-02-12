@@ -25,14 +25,13 @@ class RouteNavigation {
             builder: (context) => TextViewerScreen(filePath: filePath)));
   }
 
-  void routeImageViewer(
-      BuildContext context, String filePath, double aspectRatio) {
+  void routeImageViewer(BuildContext context, String filePath, double scale) {
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => ImageViewerScreen(
                   filePath: filePath,
-                  aspectRatio: aspectRatio,
+                  scale: scale,
                 )));
   }
 

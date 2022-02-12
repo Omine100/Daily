@@ -8,11 +8,11 @@ RouteNavigation routeNavigation = new RouteNavigation();
 List<CameraDescription> cameras;
 CameraController controller;
 CameraDescription description;
-bool isReady = false;
 bool showFocusCircle = false;
 FlashMode flashMode = FlashMode.off;
-double zoomLevel = 0;
-double x = 0, y = 0;
+double zoomLevel = 1.0;
+double focusX = 0, focusY = 0;
+double scale = 0;
 
 void setupCamera(State state) async {
   cameras = await availableCameras();
@@ -25,10 +25,11 @@ void setupCamera(State state) async {
   } on CameraException catch (_) {
     // do something on error.
   }
-  if (!state.mounted) return;
-  state.setState(() {
-    isReady = true;
-  });
+  state.setState(() {});
+}
+
+void controllerDispose() {
+  controller.dispose();
 }
 
 switchCamera(State state) {
@@ -46,8 +47,8 @@ switchCamera(State state) {
 
 switchFlash(State state) async {
   flashMode == FlashMode.off
-      ? await controller.setFlashMode(FlashMode.always)
-      : await controller.setFlashMode(FlashMode.off);
+      ? await controller.setFlashMode(FlashMode.off)
+      : await controller.setFlashMode(FlashMode.always);
   state.setState(() {
     flashMode == FlashMode.off
         ? flashMode = FlashMode.always
@@ -55,29 +56,36 @@ switchFlash(State state) async {
   });
 }
 
-zoom(State state) async {
-  await controller.setZoomLevel(zoomLevel);
-  state.setState(() {});
+zoom(BuildContext context, State state, ScaleStartDetails details) async {
+  zoomLevel = scale;
+}
+
+zoomUpdate(
+    BuildContext context, State state, ScaleUpdateDetails details) async {
+  scale = zoomLevel * details.scale;
+  if (scale < 1) scale = 1;
+  if (scale > 8) scale = 8;
+  controller.setZoomLevel(scale);
 }
 
 Future<void> focus(
     BuildContext context, State state, TapUpDetails details) async {
   if (controller.value.isInitialized) {
     showFocusCircle = true;
-    x = details.localPosition.dx;
-    y = details.localPosition.dy;
+    focusX = details.localPosition.dx;
+    focusY = details.localPosition.dy;
 
     double fullWidth = MediaQuery.of(context).size.width;
     double cameraHeight = fullWidth * controller.value.aspectRatio;
 
-    double xp = x / fullWidth;
-    double yp = y / cameraHeight;
+    double xp = focusX / fullWidth;
+    double yp = focusX / cameraHeight;
 
     Offset point = Offset(xp, yp);
     await controller.setFocusPoint(point);
 
     state.setState(() {
-      Future.delayed(const Duration(milliseconds: 750)).whenComplete(() {
+      Future.delayed(const Duration(milliseconds: 500)).whenComplete(() {
         state.setState(() {
           showFocusCircle = false;
         });
@@ -101,39 +109,39 @@ Future<XFile> takePicture() async {
 }
 
 Widget mainCamera(BuildContext context, State state) {
-  var size = MediaQuery.of(context).size;
-  if (isReady == false ||
-      controller == null ||
-      !controller.value.isInitialized) {
+  final size = MediaQuery.of(context).size;
+  if (controller == null || !controller.value.isInitialized) {
     return Container(
-      decoration: BoxDecoration(color: Colors.black),
-      width: size.width,
-      height: size.height,
-      child: Center(
-          child: SizedBox(
-              width: 25,
-              height: 25,
-              child: CircularProgressIndicator(
-                strokeWidth: 3,
-              ))),
-    );
+        decoration: BoxDecoration(color: Colors.black),
+        width: size.width,
+        height: size.height,
+        child: Center(
+            child: SizedBox(
+                width: 25,
+                height: 25,
+                child: CircularProgressIndicator(
+                  strokeWidth: 3,
+                ))));
   }
+
+  scale = size.aspectRatio * controller.value.aspectRatio;
+  if (scale < 1) scale = 1 / scale;
 
   return GestureDetector(
     onTapUp: (details) {
       focus(context, state, details);
     },
-    child: Container(
-      width: size.width,
-      height: size.height,
-      child: ClipRRect(
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(10),
-              bottomRight: Radius.circular(10)),
-          child: AspectRatio(
-              aspectRatio: MediaQuery.of(context).size.width /
-                  MediaQuery.of(context).size.height,
-              child: CameraPreview(controller))),
+    onScaleStart: (details) {
+      zoom(context, state, details);
+    },
+    onScaleUpdate: (details) {
+      zoomUpdate(context, state, details);
+    },
+    child: Transform.scale(
+      scale: scale,
+      child: Center(
+        child: CameraPreview(controller),
+      ),
     ),
   );
 }
@@ -141,8 +149,8 @@ Widget mainCamera(BuildContext context, State state) {
 Widget mainFocusCircle(BuildContext context) {
   return showFocusCircle
       ? Positioned(
-          top: y - 20,
-          left: x - 20,
+          top: focusY - 20,
+          left: focusX - 20,
           child: Container(
             height: 40,
             width: 40,
@@ -204,8 +212,7 @@ Widget mainPictureButton(BuildContext context) {
     onTap: () async {
       XFile rawImage = await takePicture();
       File imageFile = File(rawImage.path);
-      routeNavigation.routeImageViewer(
-          context, imageFile.path, controller.value.aspectRatio);
+      routeNavigation.routeImageViewer(context, imageFile.path, scale);
     },
     child: Stack(
       alignment: Alignment.center,

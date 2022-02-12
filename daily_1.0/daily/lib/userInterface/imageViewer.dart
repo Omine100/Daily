@@ -5,8 +5,8 @@ import 'package:daily/userInterface/imageViewerComponents.dart';
 
 class ImageViewerScreen extends StatefulWidget {
   final String filePath;
-  final double aspectRatio;
-  ImageViewerScreen({this.filePath, this.aspectRatio});
+  final double scale;
+  ImageViewerScreen({this.filePath, this.scale});
 
   @override
   _ImageViewerScreenState createState() => _ImageViewerScreenState();
@@ -14,15 +14,15 @@ class ImageViewerScreen extends StatefulWidget {
 
 class _ImageViewerScreenState extends State<ImageViewerScreen> {
   imageViewerScreenDesktop() {
-    return imageViewerImage(context, widget.filePath, widget.aspectRatio);
+    return imageViewerImage(context, widget.filePath, widget.scale);
   }
 
   imageViewerScreenTablet() {
-    return imageViewerImage(context, widget.filePath, widget.aspectRatio);
+    return imageViewerImage(context, widget.filePath, widget.scale);
   }
 
   imageViewerScreenMobile() {
-    return imageViewerImage(context, widget.filePath, widget.aspectRatio);
+    return imageViewerImage(context, widget.filePath, widget.scale);
   }
 
   @override

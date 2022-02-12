@@ -27,11 +27,10 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) {
+    if (state == AppLifecycleState.inactive) {
+      controllerDispose();
+    } else if (state == AppLifecycleState.resumed) {
       setupCamera(this);
-    }
-    if (state == AppLifecycleState.paused) {
-      settingsToPrefs(settingsList);
     }
   }
 
