@@ -1,13 +1,13 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:image/image.dart' as img;
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/imageViewerComponents.dart';
 
 class ImageViewerScreen extends StatefulWidget {
-  final String filePath;
-  final double scale;
-  final bool isMirrored;
-  ImageViewerScreen({this.filePath, this.scale, this.isMirrored});
+  final Image image;
+  ImageViewerScreen({this.image});
 
   @override
   _ImageViewerScreenState createState() => _ImageViewerScreenState();
@@ -15,18 +15,15 @@ class ImageViewerScreen extends StatefulWidget {
 
 class _ImageViewerScreenState extends State<ImageViewerScreen> {
   imageViewerScreenDesktop() {
-    return imageViewerImage(
-        context, widget.filePath, widget.scale, widget.isMirrored);
+    return imageViewerImage(context, widget.image);
   }
 
   imageViewerScreenTablet() {
-    return imageViewerImage(
-        context, widget.filePath, widget.scale, widget.isMirrored);
+    return imageViewerImage(context, widget.image);
   }
 
   imageViewerScreenMobile() {
-    return imageViewerImage(
-        context, widget.filePath, widget.scale, widget.isMirrored);
+    return imageViewerImage(context, widget.image);
   }
 
   @override

@@ -1,20 +1,11 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
+import 'package:image/image.dart' as img;
 import 'dart:io';
 
-Widget imageViewerImage(
-    BuildContext context, String filePath, double scale, bool isMirrored) {
+Widget imageViewerImage(BuildContext context, Image image) {
   return Center(
-    child: Transform(
-      transform: Matrix4.rotationY(isMirrored ? -2 * math.pi / 2 : 0),
-      alignment: Alignment.center,
-      child: Transform.scale(
-        scale: scale,
-        child: Image.file(
-          File(filePath),
-          fit: BoxFit.fill,
-        ),
-      ),
-    ),
+    child: Align(alignment: Alignment.center, child: image),
   );
 }

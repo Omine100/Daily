@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:image/image.dart' as img;
@@ -104,6 +106,21 @@ Future<XFile> takePicture(State state) async {
   }
 }
 
+Future<Image> imageProcess(XFile rawFile) async {
+  img.Image image = img.decodeImage(File(rawFile.path).readAsBytesSync());
+  controller.description.lensDirection == CameraLensDirection.front
+      ? img.flipHorizontal(image)
+      : null;
+  img.copyResize(image,
+      width: (image.width * scale).toInt(),
+      height: (image.height * scale).toInt());
+
+  return Image.memory(
+    img.encodeJpg(image),
+    fit: BoxFit.contain,
+  );
+}
+
 Widget mainCamera(BuildContext context, State state) {
   final size = MediaQuery.of(context).size;
   if (controller == null || !controller.value.isInitialized) {
@@ -207,17 +224,8 @@ Widget mainPictureButton(BuildContext context, State state) {
   return InkWell(
     onTap: () async {
       if (controller.value.isTakingPicture) return null;
-      XFile rawImage = await takePicture(state);
-      File imageFile = File(rawImage.path);
-      Image image = new Image.file(File(imageFile.path));
-      image.frameBuilder
       routeNavigation.routeImageViewer(
-          context,
-          imageFile.path,
-          scale,
-          controller.description.lensDirection == CameraLensDirection.front
-              ? true
-              : false);
+          context, await imageProcess(await takePicture(state)));
     },
     child: Stack(
       alignment: Alignment.center,
