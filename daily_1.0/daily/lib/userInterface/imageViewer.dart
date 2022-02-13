@@ -1,12 +1,9 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
-import 'package:image/image.dart' as img;
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/imageViewerComponents.dart';
 
 class ImageViewerScreen extends StatefulWidget {
-  final Image image;
+  final Widget image;
   ImageViewerScreen({this.image});
 
   @override

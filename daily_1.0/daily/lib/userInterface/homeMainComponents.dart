@@ -104,53 +104,18 @@ Future<XFile> takePicture(State state) async {
   }
 }
 
-Future<Image> imageProcess(BuildContext context, XFile rawFile) async {
-  double processScale = scale;
+Future<Widget> imageProcess(BuildContext context, XFile rawFile) async {
   img.Image image = img.decodeImage(File(rawFile.path).readAsBytesSync());
   if (controller.description.lensDirection == CameraLensDirection.front)
     image = img.flipHorizontal(image);
 
-  print(image.width);
-  print(image.height);
-
-  img.Image imageResized = img.copyResize(
-    image,
-    width: (image.width * processScale).toInt(),
-  );
-
-  img.Image imageCropped = img.copyCrop(
-      imageResized,
-      (imageResized.width ~/ 2 -
-              ((MediaQuery.of(context).size.width *
-                      scale ~/
-                      MediaQuery.of(context).size.aspectRatio) /
-                  2))
-          .toInt(),
-      (imageResized.height ~/ 2 -
-              ((MediaQuery.of(context).size.height *
-                      scale ~/
-                      MediaQuery.of(context).size.aspectRatio) /
-                  2))
-          .toInt(),
-      (MediaQuery.of(context).size.width *
-              scale ~/
-              MediaQuery.of(context).size.aspectRatio)
-          .toInt(),
-      (MediaQuery.of(context).size.height *
-              scale ~/
-              MediaQuery.of(context).size.aspectRatio)
-          .toInt());
-  print(scale);
-  print(imageResized.width);
-  print(imageResized.height);
-
   Image newImage = new Image.memory(
-    img.encodeJpg(imageCropped),
+    img.encodeJpg(image),
     fit: BoxFit.fill,
     alignment: Alignment.center,
   );
 
-  return newImage;
+  return Transform.scale(scale: scale, child: newImage);
 }
 
 Widget mainCamera(BuildContext context, State state) {

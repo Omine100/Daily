@@ -27,7 +27,7 @@ class RouteNavigation {
             builder: (context) => TextViewerScreen(filePath: filePath)));
   }
 
-  void routeImageViewer(BuildContext context, Image image) {
+  void routeImageViewer(BuildContext context, Widget image) {
     Navigator.push(
         context,
         MaterialPageRoute(
