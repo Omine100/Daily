@@ -147,6 +147,9 @@ Widget mainCamera(BuildContext context, State state) {
     onScaleUpdate: (details) {
       zoomUpdate(context, state, details);
     },
+    onDoubleTap: () {
+      switchCamera(state);
+    },
     child: Transform.scale(
       scale: scale,
       child: Center(
@@ -200,7 +203,7 @@ Widget mainSwitchCameraButton(BuildContext context, State state) {
       },
       icon: Icon(
         Icons.flip_camera_android,
-        size: 35,
+        size: 30,
         color: Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
       ));
 }
@@ -212,7 +215,7 @@ Widget mainSwitchFlashButton(BuildContext context, State state) {
       },
       icon: Icon(
         flashMode == FlashMode.off ? Icons.flash_off : Icons.flash_on,
-        size: 35,
+        size: 30,
         color: Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
       ));
 }

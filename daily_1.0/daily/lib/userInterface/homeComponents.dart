@@ -13,6 +13,9 @@ Widget homeBody(BuildContext context, State state) {
     case 0:
       return mainBody(context, state);
       break;
+    case 1:
+      return searchBody(context);
+      break;
     case 3:
       return settingsBody(context, state);
       break;
@@ -22,7 +25,7 @@ Widget homeBody(BuildContext context, State state) {
 }
 
 int index = 0;
-DotNavigationBar homeNavigationBar(BuildContext context, State state) {
+Widget homeNavigationBar(BuildContext context, State state) {
   void indexChanged(int i) {
     state.setState(() {
       index = i;
@@ -59,5 +62,6 @@ DotNavigationBar homeNavigationBar(BuildContext context, State state) {
       ),
     ],
     marginR: EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+    paddingR: EdgeInsets.symmetric(vertical: 5),
   );
 }

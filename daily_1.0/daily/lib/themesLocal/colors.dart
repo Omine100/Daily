@@ -137,7 +137,7 @@ extension CustomColorScheme on ColorScheme {
   // #endregion
 
   // #region main
-  Color get mainCard => Color(isDark.value ? 0xCC323232 : 0xFFEDEDED);
+  Color get mainCard => Color(isDark.value ? 0xBB323232 : 0xFFEDEDED);
   // #endregion
 
   // #region settings

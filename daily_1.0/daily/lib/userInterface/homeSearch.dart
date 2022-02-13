@@ -33,9 +33,8 @@ searchMobile(BuildContext context) {
     alignment: Alignment.center,
     children: [
       Positioned(
-        left: 340,
-        top: 37,
-        child: Container(),
+        top: 45,
+        child: searchSearchBar(context),
       ),
     ],
   );
