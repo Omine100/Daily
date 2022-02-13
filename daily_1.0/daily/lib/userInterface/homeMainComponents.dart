@@ -104,19 +104,53 @@ Future<XFile> takePicture(State state) async {
   }
 }
 
-Future<Image> imageProcess(XFile rawFile) async {
+Future<Image> imageProcess(BuildContext context, XFile rawFile) async {
+  double processScale = scale;
   img.Image image = img.decodeImage(File(rawFile.path).readAsBytesSync());
-  controller.description.lensDirection == CameraLensDirection.front
-      ? img.flipHorizontal(image)
-      : null;
-  img.copyResize(image,
-      width: (image.width * scale).toInt(),
-      height: (image.height * scale).toInt());
+  if (controller.description.lensDirection == CameraLensDirection.front)
+    image = img.flipHorizontal(image);
 
-  return Image.memory(
-    img.encodeJpg(image),
-    fit: BoxFit.fill,
+  print(image.width);
+  print(image.height);
+
+  img.Image imageResized = img.copyResize(
+    image,
+    width: (image.width * processScale).toInt(),
   );
+
+  img.Image imageCropped = img.copyCrop(
+      imageResized,
+      (imageResized.width ~/ 2 -
+              ((MediaQuery.of(context).size.width *
+                      scale ~/
+                      MediaQuery.of(context).size.aspectRatio) /
+                  2))
+          .toInt(),
+      (imageResized.height ~/ 2 -
+              ((MediaQuery.of(context).size.height *
+                      scale ~/
+                      MediaQuery.of(context).size.aspectRatio) /
+                  2))
+          .toInt(),
+      (MediaQuery.of(context).size.width *
+              scale ~/
+              MediaQuery.of(context).size.aspectRatio)
+          .toInt(),
+      (MediaQuery.of(context).size.height *
+              scale ~/
+              MediaQuery.of(context).size.aspectRatio)
+          .toInt());
+  print(scale);
+  print(imageResized.width);
+  print(imageResized.height);
+
+  Image newImage = new Image.memory(
+    img.encodeJpg(imageCropped),
+    fit: BoxFit.fill,
+    alignment: Alignment.center,
+  );
+
+  return newImage;
 }
 
 Widget mainCamera(BuildContext context, State state) {
@@ -223,7 +257,7 @@ Widget mainPictureButton(BuildContext context, State state) {
     onTap: () async {
       if (controller.value.isTakingPicture) return null;
       routeNavigation.routeImageViewer(
-          context, await imageProcess(await takePicture(state)));
+          context, await imageProcess(context, await takePicture(state)));
     },
     child: Stack(
       alignment: Alignment.center,
