@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
-import 'package:daily/servicesLocal/mediaManagement.dart';
+import 'package:daily/servicesLocal/mediaPickerManagement.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
@@ -10,7 +10,7 @@ import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/userInterface/home.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
-MediaManagement mediaManagement = new MediaManagement();
+MediaPickerManagement mediaManagement = new MediaPickerManagement();
 RouteNavigation routeNavigation = new RouteNavigation();
 
 Future<Widget> showMediaSelection(

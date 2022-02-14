@@ -7,7 +7,7 @@ import 'dart:io';
 import 'package:daily/servicesBroad/firebaseCRUD.dart';
 import 'package:daily/standards/userIStandards.dart';
 
-class MediaManagement {
+class MediaPickerManagement {
   Picker picker = new Picker();
   FirebaseCRUD firebaseCRUD = new FirebaseCRUD();
 

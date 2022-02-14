@@ -17,6 +17,7 @@ void setupPageController() {
 
 void onResume(State state) {
   onPageChanged(state, 0);
+  onTabTapped(0);
 }
 
 void onPageChanged(State state, int i) {
