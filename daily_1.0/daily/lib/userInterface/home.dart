@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:daily/servicesLocal/settingsManagement.dart';
-import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/homeComponents.dart';
@@ -16,6 +14,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    setupPageController();
     setupCamera(this);
   }
 
@@ -30,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     if (state == AppLifecycleState.inactive) {
       controllerDispose();
     } else if (state == AppLifecycleState.resumed) {
+      onResume(this);
       setupCamera(this);
     }
   }

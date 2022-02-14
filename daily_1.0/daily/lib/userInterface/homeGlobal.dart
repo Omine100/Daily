@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/homeGlobalComponents.dart';
 
-homeGlobalDesktop(BuildContext context) {
+globalDesktop(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -15,7 +15,7 @@ homeGlobalDesktop(BuildContext context) {
   );
 }
 
-homeGlobalTablet(BuildContext context) {
+globalTablet(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -28,7 +28,7 @@ homeGlobalTablet(BuildContext context) {
   );
 }
 
-homeGlobalMobile(BuildContext context) {
+globalMobile(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -41,9 +41,9 @@ homeGlobalMobile(BuildContext context) {
   );
 }
 
-Widget homeGlobalBody(BuildContext context) {
+Widget globalBody(BuildContext context) {
   return Responsive(
-      mobile: homeGlobalMobile(context),
-      tablet: homeGlobalTablet(context),
-      desktop: homeGlobalDesktop(context));
+      mobile: globalMobile(context),
+      tablet: globalTablet(context),
+      desktop: globalDesktop(context));
 }

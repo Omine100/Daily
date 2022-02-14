@@ -8,34 +8,50 @@ import 'package:daily/userInterface/homeSearch.dart';
 import 'package:daily/userInterface/homeGlobal.dart';
 import 'package:daily/userInterface/homeSettings.dart';
 
-Widget homeBody(BuildContext context, State state) {
-  switch (index) {
-    case 0:
-      return mainBody(context, state);
-      break;
-    case 1:
-      return searchBody(context);
-      break;
-    case 3:
-      return settingsBody(context, state);
-      break;
-    default:
-      return Container();
-  }
+int pageIndex = 0;
+PageController pageController;
+
+void setupPageController() {
+  pageController = PageController(initialPage: pageIndex);
 }
 
-int index = 0;
-Widget homeNavigationBar(BuildContext context, State state) {
-  void indexChanged(int i) {
-    state.setState(() {
-      index = i;
-      settingsToPrefs(settingsList);
-    });
-  }
+void onResume(State state) {
+  onPageChanged(state, 0);
+}
 
+void onPageChanged(State state, int i) {
+  state.setState(() {
+    pageIndex = i;
+    settingsToPrefs(settingsList);
+  });
+}
+
+void onTabTapped(int i) {
+  pageController.animateToPage(i,
+      duration: const Duration(milliseconds: 500), curve: Curves.easeOutQuint);
+}
+
+Widget homeBody(BuildContext context, State state) {
+  List<Widget> pages = [
+    mainBody(context, state),
+    searchBody(context),
+    globalBody(context),
+    settingsBody(context, state)
+  ];
+
+  return PageView(
+    children: pages,
+    onPageChanged: (pageIndex) {
+      onPageChanged(state, pageIndex);
+    },
+    controller: pageController,
+  );
+}
+
+Widget homeNavigationBar(BuildContext context, State state) {
   return DotNavigationBar(
-    currentIndex: index,
-    backgroundColor: index == 3
+    currentIndex: pageIndex,
+    backgroundColor: pageIndex == 3
         ? Theme.of(context).colorScheme.homeNavigationBarBackgroundSettings
         : Theme.of(context).colorScheme.homeNavigationBarBackground,
     dotIndicatorColor: Theme.of(context).colorScheme.homeNavigationBarDot,
@@ -46,7 +62,9 @@ Widget homeNavigationBar(BuildContext context, State state) {
         Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
     enableFloatingNavBar: true,
     curve: Curves.easeOutQuint,
-    onTap: indexChanged,
+    onTap: (pageIndex) {
+      onTabTapped(pageIndex);
+    },
     items: [
       DotNavigationBarItem(
         icon: Icon(Icons.camera_alt),
