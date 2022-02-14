@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:daily/servicesLocal/variableDeclaration.dart';
+import 'package:image/image.dart' as img;
+import 'dart:io';
+
+List<CameraDescription> cameras;
+CameraController controller;
+CameraDescription description;
+bool showFocusCircle = false;
+FlashMode flashMode = FlashMode.off;
+double zoomLevel = 1.0;
+double focusX = 0, focusY = 0;
+double scale = 0;
 
 void setupCamera(State state) async {
   cameras = await availableCameras();
@@ -89,4 +99,18 @@ Future<XFile> takePicture(State state) async {
     print('Error occured while taking picture: $e');
     return null;
   }
+}
+
+Future<Widget> imageProcess(BuildContext context, XFile rawFile) async {
+  img.Image image = img.decodeImage(File(rawFile.path).readAsBytesSync());
+  if (controller.description.lensDirection == CameraLensDirection.front)
+    image = img.flipHorizontal(image);
+
+  Image newImage = new Image.memory(
+    img.encodeJpg(image),
+    fit: BoxFit.fill,
+    alignment: Alignment.center,
+  );
+
+  return Transform.scale(scale: scale, child: newImage);
 }

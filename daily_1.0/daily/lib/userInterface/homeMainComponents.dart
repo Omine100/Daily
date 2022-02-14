@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:daily/servicesLocal/cameraManagement.dart';
-import 'package:daily/servicesLocal/imageManagement.dart';
-import 'package:daily/servicesLocal/variableDeclaration.dart';
+import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
+
+RouteNavigation routeNavigation = new RouteNavigation();
 
 Widget mainCamera(BuildContext context, State state) {
   final size = MediaQuery.of(context).size;
