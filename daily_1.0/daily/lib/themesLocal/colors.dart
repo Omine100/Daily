@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 
-//Install extension '#region folding for VS Code'
+ThemeData materialThemeData() {
+  ThemeData materialTheme = ThemeData();
+  return materialTheme.copyWith(
+    colorScheme: materialTheme.colorScheme
+        .copyWith(secondary: Color(isDark.value ? 0xFF020202 : 0xFFFFFFFF)),
+  );
+}
 
+//Install extension '#region folding for VS Code'
 extension CustomColorScheme on ColorScheme {
   // #region essential
   Color get materialTransparent =>

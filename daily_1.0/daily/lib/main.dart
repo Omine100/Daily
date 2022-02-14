@@ -8,6 +8,7 @@ import 'package:daily/servicesLocal/systemLocalizations.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
+import 'package:daily/themesLocal/colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -59,6 +60,7 @@ class _DailyState extends State<Daily> {
       locale: locale.value != null
           ? Locale(locale.value.split("_").first, locale.value.split("_").last)
           : locale.defaultValue,
+      theme: materialThemeData(),
       supportedLocales: [
         Locale('zh'),
         Locale('en'),
