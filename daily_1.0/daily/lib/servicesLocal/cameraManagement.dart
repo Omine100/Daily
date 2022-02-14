@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:daily/servicesLocal/variableDeclaration.dart';
 
 void setupCamera(State state) async {
   cameras = await availableCameras();

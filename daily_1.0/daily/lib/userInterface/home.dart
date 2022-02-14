@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
+import 'package:daily/servicesLocal/cameraManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/homeComponents.dart';
-import 'package:daily/userInterface/homeMainComponents.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
