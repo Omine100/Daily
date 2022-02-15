@@ -12,15 +12,33 @@ class ImageViewerScreen extends StatefulWidget {
 
 class _ImageViewerScreenState extends State<ImageViewerScreen> {
   imageViewerScreenDesktop() {
-    return imageViewerImage(context, widget.image);
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        imageViewerImage(context, widget.image),
+        Positioned(bottom: 50, child: imageViewerProgressButton(context)),
+      ],
+    );
   }
 
   imageViewerScreenTablet() {
-    return imageViewerImage(context, widget.image);
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        imageViewerImage(context, widget.image),
+        Positioned(bottom: 50, child: imageViewerProgressButton(context)),
+      ],
+    );
   }
 
   imageViewerScreenMobile() {
-    return imageViewerImage(context, widget.image);
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        imageViewerImage(context, widget.image),
+        Positioned(bottom: 50, child: imageViewerProgressButton(context)),
+      ],
+    );
   }
 
   @override
