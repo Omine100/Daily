@@ -8,12 +8,10 @@ import 'dart:io';
 import 'package:daily/standards/userIStandards.dart';
 
 class FirebaseCRUD {
-  //VARIABLE INITIALIZATION
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   FirebaseStorage storage = FirebaseStorage.instance;
 
-  //MECHANICS
   Future<void> createImageData(
       BuildContext context, String fileName, File imageFile) async {
     var userId = auth.currentUser.uid;
