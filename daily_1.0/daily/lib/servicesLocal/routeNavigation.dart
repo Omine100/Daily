@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:daily/userInterface/welcome.dart';
 import 'package:daily/userInterface/home.dart';
@@ -27,12 +25,13 @@ class RouteNavigation {
             builder: (context) => TextViewerScreen(filePath: filePath)));
   }
 
-  void routeImageViewer(BuildContext context, Widget image) {
+  void routeImageViewer(BuildContext context, Widget image, String imagePath) {
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => ImageViewerScreen(
                   image: image,
+                  imagePath: imagePath,
                 )));
   }
 

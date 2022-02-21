@@ -112,8 +112,10 @@ Widget mainPictureButton(BuildContext context, State state) {
   return InkWell(
     onTap: () async {
       if (controller.value.isTakingPicture) return null;
+      Map<Widget, String> results =
+          await imageProcess(context, await takePicture(state));
       routeNavigation.routeImageViewer(
-          context, await imageProcess(context, await takePicture(state)));
+          context, results.keys.first, results.values.first);
     },
     child: Stack(
       alignment: Alignment.center,

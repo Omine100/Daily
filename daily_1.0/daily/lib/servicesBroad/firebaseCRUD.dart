@@ -15,17 +15,16 @@ class FirebaseCRUD {
   Future<void> createImageData(
       BuildContext context, String fileName, File imageFile) async {
     var userId = auth.currentUser.uid;
-    String date = DateFormat('yyyy-MM-dd-HH:mm:ss').format(DateTime.now());
     try {
       await storage
           .ref(fileName)
-          .putFile(imageFile, SettableMetadata(customMetadata: {'date': date}));
+          .putFile(imageFile, SettableMetadata(contentType: 'image/jpeg'));
       storage.ref(fileName).getDownloadURL().then((_imageURL) => {
             firestore
                 .collection(userId)
                 .doc("images")
                 .collection("complete")
-                .doc(date)
+                .doc(fileName)
                 .set({"imageURL": _imageURL})
           });
     } on FirebaseException {

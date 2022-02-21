@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:camera/camera.dart';
 import 'package:image/image.dart' as img;
-import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 
 List<CameraDescription> cameras;
@@ -103,7 +101,9 @@ Future<XFile> takePicture(State state) async {
   }
 }
 
-Future<Widget> imageProcess(BuildContext context, XFile rawFile) async {
+Map<Widget, String> results;
+Future<Map<Widget, String>> imageProcess(
+    BuildContext context, XFile rawFile) async {
   img.Image image = img.decodeImage(File(rawFile.path).readAsBytesSync());
   if (controller.description.lensDirection == CameraLensDirection.front)
     image = img.flipHorizontal(image);
@@ -113,8 +113,11 @@ Future<Widget> imageProcess(BuildContext context, XFile rawFile) async {
     fit: BoxFit.fill,
     alignment: Alignment.center,
   );
-  final File newImagePath = File("capture.jpg");
+  Transform transormedImage =
+      new Transform.scale(scale: scale, child: newImage);
+  final File newImagePath = File(rawFile.path);
   newImagePath.writeAsBytesSync(image.getBytes());
+  results = {transormedImage: rawFile.path};
 
-  return Transform.scale(scale: scale, child: newImage);
+  return results;
 }

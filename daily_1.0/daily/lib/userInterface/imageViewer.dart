@@ -4,7 +4,8 @@ import 'package:daily/userInterface/imageViewerComponents.dart';
 
 class ImageViewerScreen extends StatefulWidget {
   final Widget image;
-  ImageViewerScreen({this.image});
+  final String imagePath;
+  ImageViewerScreen({this.image, this.imagePath});
 
   @override
   _ImageViewerScreenState createState() => _ImageViewerScreenState();
@@ -16,7 +17,9 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
       alignment: Alignment.center,
       children: [
         imageViewerImage(context, widget.image),
-        Positioned(bottom: 50, child: imageViewerProgressButton(context)),
+        Positioned(
+            bottom: 50,
+            child: imageViewerProgressButton(context, widget.imagePath)),
       ],
     );
   }
@@ -26,7 +29,9 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
       alignment: Alignment.center,
       children: [
         imageViewerImage(context, widget.image),
-        Positioned(bottom: 50, child: imageViewerProgressButton(context)),
+        Positioned(
+            bottom: 50,
+            child: imageViewerProgressButton(context, widget.imagePath)),
       ],
     );
   }
@@ -36,7 +41,9 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
       alignment: Alignment.center,
       children: [
         imageViewerImage(context, widget.image),
-        Positioned(bottom: 50, child: imageViewerProgressButton(context)),
+        Positioned(
+            bottom: 50,
+            child: imageViewerProgressButton(context, widget.imagePath)),
       ],
     );
   }
