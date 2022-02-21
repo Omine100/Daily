@@ -113,6 +113,8 @@ Future<Widget> imageProcess(BuildContext context, XFile rawFile) async {
     fit: BoxFit.fill,
     alignment: Alignment.center,
   );
+  final File newImagePath = File("capture.jpg");
+  newImagePath.writeAsBytesSync(image.getBytes());
 
   return Transform.scale(scale: scale, child: newImage);
 }

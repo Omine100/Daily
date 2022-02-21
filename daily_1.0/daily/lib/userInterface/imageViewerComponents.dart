@@ -16,8 +16,8 @@ Widget imageViewerProgressButton(BuildContext context) {
   return IconButton(
     color: Colors.grey,
     onPressed: () {
-      // FirebaseCRUD()
-      //     .createImageData(context, date.toIso8601String(), File(image));
+      FirebaseCRUD()
+          .createImageData(context, date.toIso8601String(), File("capture"));
     },
     icon: Icon(Icons.arrow_forward, color: Colors.white),
     iconSize: 45,
