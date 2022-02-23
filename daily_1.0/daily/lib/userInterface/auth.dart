@@ -20,6 +20,10 @@ class _AuthScreenState extends State<AuthScreen> {
     isSignIn = widget.isSignIn;
   }
 
+  authScreenWeb() {
+    return Container();
+  }
+
   authScreenDesktop() {
     return Stack(
       alignment: Alignment.center,
@@ -233,6 +237,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             .visualDensity
                             .authBoxConstraintUnfocused)),
             child: Responsive(
+              web: authScreenWeb(),
               desktop: authScreenDesktop(),
               tablet: authScreenTablet(),
               mobile: authScreenMobile(),

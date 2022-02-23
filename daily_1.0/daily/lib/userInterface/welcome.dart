@@ -10,6 +10,10 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  welcomeScreenWeb() {
+    return Container();
+  }
+
   welcomeScreenDesktop() {
     return Stack(
       alignment: Alignment.center,
@@ -155,6 +159,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           color: Theme.of(context).colorScheme.welcomeBackground,
           constraints: BoxConstraints.expand(height: double.maxFinite),
           child: Responsive(
+            web: welcomeScreenWeb(),
             desktop: welcomeScreenDesktop(),
             tablet: welcomeScreenTablet(),
             mobile: welcomeScreenMobile(),
