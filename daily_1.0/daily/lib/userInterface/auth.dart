@@ -21,73 +21,7 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   authScreenWeb() {
-    return Container();
-  }
-
-  authScreenDesktop() {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Positioned(
-            top: getPosition(
-                context,
-                true,
-                Theme.of(context)
-                    .materialTapTargetSize
-                    .authDesktopCenterPieceTop),
-            child: authCenterPiece(context, this)),
-        Positioned(
-            top: getPosition(
-                context,
-                true,
-                Theme.of(context)
-                    .materialTapTargetSize
-                    .authDesktopUserInputTop),
-            child: authUserInput(context, isSignIn)),
-        Positioned(
-          top: isSignIn
-              ? getPosition(
-                  context,
-                  true,
-                  Theme.of(context)
-                      .materialTapTargetSize
-                      .authDesktopForgotPasswordTop)
-              : getPosition(
-                  context,
-                  true,
-                  Theme.of(context)
-                      .materialTapTargetSize
-                      .authDesktopPolicyAndTaCTop),
-          left: getPosition(
-              context,
-              false,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .authDesktopForgotPasswordPolicyAndTaCLeft),
-          child: isSignIn
-              ? authForgotPassword(context)
-              : authPolicyAndTaC(context),
-        ),
-        Positioned(
-            top: getPosition(
-                context,
-                true,
-                Theme.of(context)
-                    .materialTapTargetSize
-                    .authDesktopGetStartedTop),
-            child: authGetStarted(context, isSignIn, this)),
-        Positioned(
-            top: getPosition(context, true,
-                Theme.of(context).materialTapTargetSize.authDesktopSwitchTop),
-            child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isSignIn = !isSignIn;
-                  });
-                },
-                child: authSwitch(context, isSignIn)))
-      ],
-    );
+    return authPolicyAndTaC(context);
   }
 
   authScreenTablet() {
@@ -238,7 +172,6 @@ class _AuthScreenState extends State<AuthScreen> {
                             .authBoxConstraintUnfocused)),
             child: Responsive(
               web: authScreenWeb(),
-              desktop: authScreenDesktop(),
               tablet: authScreenTablet(),
               mobile: authScreenMobile(),
             )),

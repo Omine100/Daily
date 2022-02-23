@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     }
   }
 
-  homeScreenDesktop() {
+  homeScreenWeb() {
     return homeBody(context, this);
   }
 
@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           color: Theme.of(context).colorScheme.homeBackground,
           constraints: BoxConstraints.expand(height: double.maxFinite),
           child: Responsive(
-            desktop: homeScreenDesktop(),
+            web: homeScreenWeb(),
             tablet: homeScreenTablet(),
             mobile: homeScreenMobile(),
           ),

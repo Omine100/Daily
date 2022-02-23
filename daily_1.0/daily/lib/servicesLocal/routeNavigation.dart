@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:daily/userInterface/welcome.dart';
+import 'package:daily/userInterface/auth.dart';
 import 'package:daily/userInterface/home.dart';
 import 'package:daily/userInterface/textViewer.dart';
 import 'package:daily/userInterface/imageViewer.dart';
@@ -36,6 +38,12 @@ class RouteNavigation {
   }
 
   Widget routeInitial(BuildContext context, bool isSignedIn) {
-    return isSignedIn ? HomeScreen() : WelcomeScreen();
+    return isSignedIn
+        ? HomeScreen()
+        : (kIsWeb
+            ? AuthScreen(
+                isSignIn: true,
+              )
+            : WelcomeScreen());
   }
 }

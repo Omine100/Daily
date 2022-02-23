@@ -17,52 +17,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     forgotPasswordDispose();
   }
 
-  forgotPasswordScreenDesktop() {
-    return Stack(alignment: Alignment.center, children: [
-      Positioned(
-        top: getPosition(
-            context,
-            true,
-            Theme.of(context)
-                .materialTapTargetSize
-                .forgotPasswordDesktopTitleTop),
-        child: forgotPasswordTitle(context),
-      ),
-      Positioned(
-          top: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .forgotPasswordDesktopCenterPieceTop),
-          child: forgotPasswordCenterPiece(context)),
-      Positioned(
-          top: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .forgotPasswordDesktopUserInputTop),
-          child: forgotPasswordUserInputField(context)),
-      Positioned(
-        top: getPosition(
-            context,
-            true,
-            Theme.of(context)
-                .materialTapTargetSize
-                .forgotPasswordDesktopSendTop),
-        child: forgotPasswordSend(context, this),
-      ),
-      Positioned(
-        top: getPosition(
-            context,
-            true,
-            Theme.of(context)
-                .materialTapTargetSize
-                .forgotPasswordDesktopResendTop),
-        child: forgotPasswordResend(context),
-      )
-    ]);
+  forgotPasswordScreenWeb() {
+    return Container();
   }
 
   forgotPasswordScreenTablet() {
@@ -184,7 +140,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             .visualDensity
                             .forgotPasswordBoxConstraintUnfocused)),
             child: Responsive(
-              desktop: forgotPasswordScreenDesktop(),
+              web: forgotPasswordScreenWeb(),
               tablet: forgotPasswordScreenTablet(),
               mobile: forgotPasswordScreenMobile(),
             )),

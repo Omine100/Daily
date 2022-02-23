@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/homeGlobalComponents.dart';
 
-globalDesktop(BuildContext context) {
+globalWeb(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -43,7 +43,7 @@ globalMobile(BuildContext context) {
 
 Widget globalBody(BuildContext context) {
   return Responsive(
+      web: globalWeb(context),
       mobile: globalMobile(context),
-      tablet: globalTablet(context),
-      desktop: globalDesktop(context));
+      tablet: globalTablet(context));
 }

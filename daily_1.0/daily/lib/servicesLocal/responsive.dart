@@ -5,14 +5,12 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 class Responsive extends StatelessWidget {
   final Widget mobile;
   final Widget tablet;
-  final Widget desktop;
   final Widget web;
 
   const Responsive({
     Key key,
     @required this.mobile,
     @required this.tablet,
-    @required this.desktop,
     @required this.web,
   }) : super(key: key);
 
@@ -20,11 +18,7 @@ class Responsive extends StatelessWidget {
       MediaQuery.of(context).size.width < 650;
 
   static bool isTablet(BuildContext context) =>
-      MediaQuery.of(context).size.width < 1300 &&
       MediaQuery.of(context).size.width >= 650;
-
-  static bool isDesktop(BuildContext context) =>
-      MediaQuery.of(context).size.width >= 1300;
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +29,7 @@ class Responsive extends StatelessWidget {
               [DeviceOrientation.landscapeLeft]);
           return web;
         }
-        if (constraints.maxWidth >= 1300) {
-          SystemChrome.setPreferredOrientations(
-              [DeviceOrientation.landscapeLeft]);
-          return desktop;
-        } else if (constraints.maxWidth >= 650) {
+        if (constraints.maxWidth >= 650) {
           SystemChrome.setPreferredOrientations(
               [DeviceOrientation.landscapeLeft]);
           return tablet;

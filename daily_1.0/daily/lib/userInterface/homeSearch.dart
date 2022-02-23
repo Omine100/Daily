@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/homeSearchComponents.dart';
 
-searchDesktop(BuildContext context) {
+searchWeb(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -42,7 +42,7 @@ searchMobile(BuildContext context) {
 
 Widget searchBody(BuildContext context) {
   return Responsive(
+      web: searchWeb(context),
       mobile: searchMobile(context),
-      tablet: searchTablet(context),
-      desktop: searchDesktop(context));
+      tablet: searchTablet(context));
 }

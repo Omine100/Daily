@@ -14,57 +14,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Container();
   }
 
-  welcomeScreenDesktop() {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Positioned(
-          top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeDesktopTitleTop),
-          child: welcomeTitle(context),
-        ),
-        Positioned(
-          top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeDesktopCornerTop),
-          right: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .welcomeDesktopCornerRight),
-          child: welcomeCorner(context),
-        ),
-        Positioned(
-          top: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .welcomeDesktopCarouselTop),
-          child: welcomeCarousel(this, context),
-        ),
-        Positioned(
-          top: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .welcomeDesktopGetStartedTop),
-          child: welcomeGetStarted(context),
-        ),
-        Positioned(
-          top: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .welcomeDesktopAccountAlreadyTop),
-          child: welcomeAccountAlready(context),
-        ),
-      ],
-    );
-  }
-
   welcomeScreenTablet() {
     return Stack(
       alignment: Alignment.center,
@@ -160,7 +109,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           constraints: BoxConstraints.expand(height: double.maxFinite),
           child: Responsive(
             web: welcomeScreenWeb(),
-            desktop: welcomeScreenDesktop(),
             tablet: welcomeScreenTablet(),
             mobile: welcomeScreenMobile(),
           )),

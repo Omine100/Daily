@@ -4,7 +4,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/userInterface/homeSettingsComponents.dart';
 
-settingsDesktop(BuildContext context, State state) {
+settingsWeb(BuildContext context, State state) {
   return Stack(alignment: Alignment.center, children: [
     Positioned(
       top: getPosition(context, true,
@@ -68,7 +68,7 @@ Widget settingsBody(BuildContext context, State state) {
       constraints: BoxConstraints.expand(height: double.maxFinite),
       color: Theme.of(context).colorScheme.settingsBackground,
       child: Responsive(
-        desktop: settingsDesktop(context, state),
+        web: settingsWeb(context, state),
         tablet: settingsTablet(context, state),
         mobile: settingsMobile(context, state),
       ));

@@ -12,7 +12,7 @@ class ImageViewerScreen extends StatefulWidget {
 }
 
 class _ImageViewerScreenState extends State<ImageViewerScreen> {
-  imageViewerScreenDesktop() {
+  imageViewerScreenWeb() {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -53,7 +53,7 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
     return Material(
       child: Scaffold(
         body: Responsive(
-          desktop: imageViewerScreenDesktop(),
+          web: imageViewerScreenWeb(),
           tablet: imageViewerScreenTablet(),
           mobile: imageViewerScreenMobile(),
         ),

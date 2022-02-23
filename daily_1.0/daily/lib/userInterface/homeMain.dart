@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/homeMainComponents.dart';
 
-mainDesktop(BuildContext context, State state) {
+mainWeb(BuildContext context, State state) {
   return mainCamera(context, state);
 }
 
@@ -25,7 +25,7 @@ mainMobile(BuildContext context, State state) {
 
 Widget mainBody(BuildContext context, State state) {
   return Responsive(
+      web: mainWeb(context, state),
       mobile: mainMobile(context, state),
-      tablet: mainTablet(context, state),
-      desktop: mainDesktop(context, state));
+      tablet: mainTablet(context, state));
 }

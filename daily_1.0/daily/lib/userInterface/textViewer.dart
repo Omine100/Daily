@@ -12,7 +12,7 @@ class TextViewerScreen extends StatefulWidget {
 }
 
 class _TextViewerScreenState extends State<TextViewerScreen> {
-  textViewerScreenDesktop() {
+  textViewerScreenWeb() {
     return textViewerText(context, widget.filePath);
   }
 
@@ -32,7 +32,7 @@ class _TextViewerScreenState extends State<TextViewerScreen> {
         body: SingleChildScrollView(
           child: Expanded(
             child: Responsive(
-              desktop: textViewerScreenDesktop(),
+              web: textViewerScreenWeb(),
               tablet: textViewerScreenTablet(),
               mobile: textViewerScreenMobile(),
             ),
