@@ -11,7 +11,7 @@ import 'package:daily/userInterface/welcome.dart';
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(page: WelcomeScreen, initial: true),
-    AutoRoute(page: AuthScreen),
+    AutoRoute(page: AuthScreen, name: "/auth"),
     AutoRoute(page: ForgotPasswordScreen),
     AutoRoute(page: HomeScreen),
     AutoRoute(page: ImageViewerScreen),
