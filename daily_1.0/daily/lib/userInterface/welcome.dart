@@ -1,7 +1,7 @@
-import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:flutter/material.dart';
-import 'package:daily/servicesLocal/responsive.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
+import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/welcomeComponents.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';

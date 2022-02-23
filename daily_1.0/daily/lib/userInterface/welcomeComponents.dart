@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
-import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
-import 'package:daily/userInterface/auth.dart';
 
 Widget welcomeTitle(BuildContext context) {
   return Container(
@@ -131,11 +131,7 @@ Widget welcomeGetStarted(BuildContext context) {
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            RouteNavigation().routePage(
-                context,
-                AuthScreen(
-                  isSignIn: false,
-                ));
+            context.router.push(AuthScreen(isSignIn: false));
           },
           child: Container(
             child: Center(
@@ -159,11 +155,7 @@ Widget welcomeGetStarted(BuildContext context) {
 Widget welcomeAccountAlready(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      RouteNavigation().routePage(
-          context,
-          AuthScreen(
-            isSignIn: true,
-          ));
+      context.router.push(AuthScreen(isSignIn: true));
     },
     child: Center(
       child: RichText(

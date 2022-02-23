@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
-import 'package:daily/userInterface/home.dart';
-import 'package:daily/userInterface/forgotPassword.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();
@@ -125,7 +125,7 @@ Widget authUserInputField(
 Widget authForgotPassword(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      RouteNavigation().routePage(context, ForgotPasswordScreen());
+      context.router.push(ForgotPasswordScreen());
     },
     child: Text(
       getTranslated(context, "authForgotPassword"),
@@ -261,7 +261,7 @@ void authValidateSubmit(
     firebaseAccounts
         .signInEmailAndPassword(context, userEmail, userPass)
         .then((value) {
-      if (value) routeNavigation.routeBase(context, HomeScreen());
+      if (value) context.router.push(HomeScreen());
       firebaseAccounts.setCurrentUserProfilePicURL(state);
     });
   else
@@ -269,7 +269,7 @@ void authValidateSubmit(
         .signUpEmailAndPassword(
             context, userEmail, userPass, userPassVerify, userName)
         .then((value) {
-      if (value) routeNavigation.routeBase(context, HomeScreen());
+      if (value) context.router.push(HomeScreen());
       firebaseAccounts.setCurrentUserProfilePicURL(state);
     });
 }

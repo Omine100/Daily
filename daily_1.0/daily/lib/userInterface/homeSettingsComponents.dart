@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/contact.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
-import 'package:daily/servicesLocal/routeNavigation.dart';
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/standards/userXStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 import 'package:daily/themesLocal/sizes.dart';
-import 'package:daily/userInterface/welcome.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 
@@ -382,7 +382,7 @@ Widget settingsSignOut(BuildContext context) {
   return GestureDetector(
     onTap: () {
       firebaseAccounts.signOut();
-      RouteNavigation().routeBase(context, WelcomeScreen());
+      context.router.push(AuthScreen(isSignIn: true));
     },
     child: Text(
       getTranslated(context, "settingsSignOut"),

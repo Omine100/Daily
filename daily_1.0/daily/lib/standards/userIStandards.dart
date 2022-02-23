@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/mediaPickerManagement.dart';
-import 'package:daily/servicesLocal/routeNavigation.dart';
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
 import 'package:daily/themesLocal/sizes.dart';
 import 'package:daily/themesLocal/dimensions.dart';
-import 'package:daily/userInterface/home.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 MediaPickerManagement mediaManagement = new MediaPickerManagement();
-RouteNavigation routeNavigation = new RouteNavigation();
 
 Future<Widget> showMediaSelection(
     BuildContext context, State state, Function saveFunction) async {
@@ -53,7 +52,7 @@ Future<Widget> showMediaSelection(
                       ],
                     ),
                     onTap: () async {
-                      routeNavigation.routePop(context);
+                      context.router.pop();
                       mediaManagement.imagePicker(
                           context, false, state, saveFunction);
                     },
@@ -82,7 +81,7 @@ Future<Widget> showMediaSelection(
                       ],
                     ),
                     onTap: () async {
-                      routeNavigation.routePop(context);
+                      context.router.pop();
                       return await mediaManagement.imagePicker(
                           context, true, state, saveFunction);
                     },
@@ -113,7 +112,7 @@ Widget showShareButton(BuildContext context, String imageURL) {
 Widget showSocialButton(BuildContext context, int iconCase) {
   return new GestureDetector(
     onTap: () {
-      routeNavigation.routePage(context, HomeScreen());
+      context.router.push(HomeScreen());
     },
     child: Container(
       padding: EdgeInsets.all(7.5),

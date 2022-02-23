@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:daily/userInterface/textViewer.dart';
-import 'package:daily/userInterface/imageViewer.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
 
 class RouteNavigation {
-  void routeTextViewer(BuildContext context, String filePath) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => TextViewerScreen(filePath: filePath)));
+  void routeImageViewer(BuildContext context, Widget image, String imagePath) {
+    context.router.push(ImageViewerScreen(image: image, imagePath: imagePath));
   }
 
-  void routeImageViewer(BuildContext context, Widget image, String imagePath) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => ImageViewerScreen(
-                  image: image,
-                  imagePath: imagePath,
-                )));
+  void routeTextViewer(BuildContext context, String filePath) {
+    context.router.push(TextViewerScreen(filePath: filePath));
   }
 }
