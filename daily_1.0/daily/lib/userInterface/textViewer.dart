@@ -26,15 +26,18 @@ class _TextViewerScreenState extends State<TextViewerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.textViewerBackground,
-        body: SingleChildScrollView(
-          child: Expanded(
-            child: Responsive(
-              web: textViewerScreenWeb(),
-              tablet: textViewerScreenTablet(),
-              mobile: textViewerScreenMobile(),
+    return new WillPopScope(
+      onWillPop: () async => true,
+      child: Material(
+        child: Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.textViewerBackground,
+          body: SingleChildScrollView(
+            child: Expanded(
+              child: Responsive(
+                web: textViewerScreenWeb(),
+                tablet: textViewerScreenTablet(),
+                mobile: textViewerScreenMobile(),
+              ),
             ),
           ),
         ),
