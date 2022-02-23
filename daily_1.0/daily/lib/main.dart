@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/systemLocalizations.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
@@ -49,14 +50,16 @@ class _DailyState extends State<Daily> {
     });
   }
 
+  final _appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
       title: "Daily",
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
-      home: routeNavigation.routeInitial(
-          context, firebaseAccounts.getSignedInStatus()),
       locale: locale.value != null
           ? Locale(locale.value.split("_").first, locale.value.split("_").last)
           : locale.defaultValue,
