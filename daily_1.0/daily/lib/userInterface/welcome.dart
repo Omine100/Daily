@@ -1,3 +1,4 @@
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:auto_route/auto_route.dart';
@@ -12,14 +13,7 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
   welcomeScreenWeb() {
-    return IconButton(
-        onPressed: () {
-          AutoRouter.of(context).pushNamed("/auth");
-        },
-        icon: Icon(
-          Icons.person,
-          size: 55,
-        ));
+    return context.router.push(AuthScreen(isSignIn: true));
   }
 
   welcomeScreenTablet() {
