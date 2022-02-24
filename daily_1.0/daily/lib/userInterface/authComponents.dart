@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
@@ -17,6 +18,83 @@ Widget authCenterPiece(BuildContext context, State state) {
       height: getDimension(
           context, true, Theme.of(context).visualDensity.authCenterPieceHeight),
       child: Image(image: AssetImage("lib/assets/auth/auth_centerPiece.png")));
+}
+
+List<Image> _images = [
+  Image(image: AssetImage("lib/assets/welcome/welcome_carouselOne.png")),
+  Image(image: AssetImage("lib/assets/welcome/welcome_carouselTwo.png")),
+  Image(image: AssetImage("lib/assets/welcome/welcome_carouselThree.png")),
+];
+int _current = 0;
+Widget authCarousel(BuildContext context, State state) {
+  return Column(
+    children: [
+      Container(
+        height: getDimension(context, true,
+            Theme.of(context).visualDensity.welcomeCarouselHeight),
+        child: CarouselSlider(
+          items: _images,
+          options: CarouselOptions(
+            autoPlay: true,
+            enlargeCenterPage: true,
+            aspectRatio: 1.1,
+            onPageChanged: (index, reason) {
+              state.setState(() {
+                _current = index;
+              });
+            },
+          ),
+        ),
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: _images.map(
+          (image) {
+            int index = _images.indexOf(image);
+            return Container(
+              width: 40,
+              height: _current == index ? 20 : 15,
+              margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 3.5),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: _current == index
+                      ? Theme.of(context).colorScheme.welcomeCarouselCurrent
+                      : Theme.of(context)
+                          .colorScheme
+                          .welcomeCarouselNotCurrent),
+            );
+          },
+        ).toList(),
+      ),
+    ],
+  );
+}
+
+Widget authWebCard(BuildContext context, bool isSignIn) {
+  return Container(
+    height: MediaQuery.of(context).size.height,
+    width: MediaQuery.of(context).size.width * 0.5,
+    decoration: BoxDecoration(
+        color: Colors.grey.shade900,
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(50), bottomLeft: Radius.circular(50))),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [authWebTitle(context), authUserInput(context, isSignIn)],
+    ),
+  );
+}
+
+Widget authWebTitle(BuildContext context) {
+  return Text(
+    "Login to Daily",
+    style: TextStyle(
+      color: Colors.red,
+      fontSize: 45,
+      fontWeight: FontWeight.w500,
+    ),
+  );
 }
 
 String userName = "", userEmail = "", userPass = "", userPassVerify = "";

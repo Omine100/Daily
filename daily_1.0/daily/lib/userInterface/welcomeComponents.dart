@@ -96,7 +96,7 @@ Widget welcomeCarousel(State state, BuildContext context) {
                           .welcomeCarouselNotCurrent),
             );
           },
-        ).toList(), // this was the part the I had to add
+        ).toList(),
       ),
     ],
   );

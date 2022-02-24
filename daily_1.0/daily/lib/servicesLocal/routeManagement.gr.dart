@@ -63,20 +63,21 @@ class AppRouter extends _i7.RootStackRouter {
 
   @override
   List<_i7.RouteConfig> get routes => [
-        _i7.RouteConfig(WelcomeScreen.name, path: '/'),
-        _i7.RouteConfig(AuthScreen.name, path: '/auth-screen'),
-        _i7.RouteConfig(ForgotPasswordScreen.name,
-            path: '/forgot-password-screen'),
-        _i7.RouteConfig(HomeScreen.name, path: '/home-screen'),
-        _i7.RouteConfig(ImageViewerScreen.name, path: '/image-viewer-screen'),
-        _i7.RouteConfig(TextViewerScreen.name, path: '/text-viewer-screen')
+        _i7.RouteConfig('/#redirect',
+            path: '/', redirectTo: 'welcome', fullMatch: true),
+        _i7.RouteConfig(WelcomeScreen.name, path: 'welcome'),
+        _i7.RouteConfig(AuthScreen.name, path: 'auth'),
+        _i7.RouteConfig(ForgotPasswordScreen.name, path: 'forgot-password'),
+        _i7.RouteConfig(HomeScreen.name, path: 'home'),
+        _i7.RouteConfig(ImageViewerScreen.name, path: 'image-viewer'),
+        _i7.RouteConfig(TextViewerScreen.name, path: 'text-viewer')
       ];
 }
 
 /// generated route for
 /// [_i1.WelcomeScreen]
 class WelcomeScreen extends _i7.PageRouteInfo<void> {
-  const WelcomeScreen() : super(WelcomeScreen.name, path: '/');
+  const WelcomeScreen() : super(WelcomeScreen.name, path: 'welcome');
 
   static const String name = 'WelcomeScreen';
 }
@@ -86,7 +87,7 @@ class WelcomeScreen extends _i7.PageRouteInfo<void> {
 class AuthScreen extends _i7.PageRouteInfo<AuthScreenArgs> {
   AuthScreen({bool isSignIn})
       : super(AuthScreen.name,
-            path: '/auth-screen', args: AuthScreenArgs(isSignIn: isSignIn));
+            path: 'auth', args: AuthScreenArgs(isSignIn: isSignIn));
 
   static const String name = 'AuthScreen';
 }
@@ -106,7 +107,7 @@ class AuthScreenArgs {
 /// [_i3.ForgotPasswordScreen]
 class ForgotPasswordScreen extends _i7.PageRouteInfo<void> {
   const ForgotPasswordScreen()
-      : super(ForgotPasswordScreen.name, path: '/forgot-password-screen');
+      : super(ForgotPasswordScreen.name, path: 'forgot-password');
 
   static const String name = 'ForgotPasswordScreen';
 }
@@ -114,7 +115,7 @@ class ForgotPasswordScreen extends _i7.PageRouteInfo<void> {
 /// generated route for
 /// [_i4.HomeScreen]
 class HomeScreen extends _i7.PageRouteInfo<void> {
-  const HomeScreen() : super(HomeScreen.name, path: '/home-screen');
+  const HomeScreen() : super(HomeScreen.name, path: 'home');
 
   static const String name = 'HomeScreen';
 }
@@ -124,7 +125,7 @@ class HomeScreen extends _i7.PageRouteInfo<void> {
 class ImageViewerScreen extends _i7.PageRouteInfo<ImageViewerScreenArgs> {
   ImageViewerScreen({_i8.Widget image, String imagePath})
       : super(ImageViewerScreen.name,
-            path: '/image-viewer-screen',
+            path: 'image-viewer',
             args: ImageViewerScreenArgs(image: image, imagePath: imagePath));
 
   static const String name = 'ImageViewerScreen';
@@ -148,7 +149,7 @@ class ImageViewerScreenArgs {
 class TextViewerScreen extends _i7.PageRouteInfo<TextViewerScreenArgs> {
   TextViewerScreen({String filePath})
       : super(TextViewerScreen.name,
-            path: '/text-viewer-screen',
+            path: 'text-viewer',
             args: TextViewerScreenArgs(filePath: filePath));
 
   static const String name = 'TextViewerScreen';

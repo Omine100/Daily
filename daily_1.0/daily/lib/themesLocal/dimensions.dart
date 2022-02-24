@@ -20,6 +20,17 @@ extension CustomDimensions on VisualDensity {
   double get welcomeGetStartedWidth => 0.45;
   // #endregion
 
+  // #region authWeb
+  double get authWebTitleWidth => 1.0;
+  double get authWebBoxConstraintFocused => 1.2;
+  double get authWebBoxConstraintUnfocused => 1.0;
+  double get authWebCenterPieceHeight => 0.35;
+  double get authWebUserInputFieldHeight => 0.06;
+  double get authWebUserInputFieldWidth => 0.5;
+  double get authWebGetStartedHeight => 0.065;
+  double get authWebGetStartedWidth => 0.45;
+  // #endregion
+
   // #region auth
   double get authTitleWidth => 1.0;
   double get authBoxConstraintFocused => 1.2;

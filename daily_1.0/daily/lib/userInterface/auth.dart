@@ -17,11 +17,26 @@ class _AuthScreenState extends State<AuthScreen> {
   bool isSignIn = false;
   void initState() {
     super.initState();
-    isSignIn = widget.isSignIn;
+    isSignIn = (widget.isSignIn != null ? widget.isSignIn : true);
   }
 
   authScreenWeb() {
-    return authPolicyAndTaC(context);
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Positioned(
+          left: 175,
+          child: Transform.scale(
+            scale: 1.5,
+            child: authCarousel(context, this),
+          ),
+        ),
+        Positioned(
+          right: 0,
+          child: authWebCard(context, isSignIn),
+        ),
+      ],
+    );
   }
 
   authScreenTablet() {

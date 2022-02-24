@@ -9,12 +9,12 @@ import 'package:daily/userInterface/welcome.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(page: WelcomeScreen, initial: true),
-    AutoRoute(page: AuthScreen),
-    AutoRoute(page: ForgotPasswordScreen),
-    AutoRoute(page: HomeScreen),
-    AutoRoute(page: ImageViewerScreen),
-    AutoRoute(page: TextViewerScreen),
+    AutoRoute(page: WelcomeScreen, path: "welcome", initial: true),
+    AutoRoute(page: AuthScreen, path: "auth"),
+    AutoRoute(page: ForgotPasswordScreen, path: "forgot-password"),
+    AutoRoute(page: HomeScreen, path: "home"),
+    AutoRoute(page: ImageViewerScreen, path: "image-viewer"),
+    AutoRoute(page: TextViewerScreen, path: "text-viewer"),
   ],
 )
 class $AppRouter {}
