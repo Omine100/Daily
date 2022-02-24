@@ -30,6 +30,8 @@ class Adaptive extends StatelessWidget {
         SystemChrome.setPreferredOrientations(
             [DeviceOrientation.landscapeLeft]);
         return web;
+      } else {
+        return null;
       }
     }));
   }
