@@ -41,13 +41,6 @@ class _AuthScreenState extends State<AuthScreen> {
       alignment: Alignment.center,
       children: [
         Positioned(
-          left: 175,
-          child: Transform.scale(
-            scale: 1.5,
-            child: authCarousel(context, this),
-          ),
-        ),
-        Positioned(
           right: 0,
           child: authWebCard(context, isSignIn),
         ),

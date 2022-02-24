@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'dart:io' show Platform;
+import 'dart:io';
 
 class Adaptive extends StatelessWidget {
   final Widget iOS;
@@ -18,7 +18,11 @@ class Adaptive extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: ((context, constraints) {
-      if (Platform.isIOS) {
+      if (kIsWeb) {
+        SystemChrome.setPreferredOrientations(
+            [DeviceOrientation.landscapeLeft]);
+        return web;
+      } else if (Platform.isIOS) {
         SystemChrome.setPreferredOrientations(
             [DeviceOrientation.landscapeLeft]);
         return iOS;
@@ -26,13 +30,8 @@ class Adaptive extends StatelessWidget {
         SystemChrome.setPreferredOrientations(
             [DeviceOrientation.landscapeLeft]);
         return android;
-      } else if (kIsWeb) {
-        SystemChrome.setPreferredOrientations(
-            [DeviceOrientation.landscapeLeft]);
-        return web;
-      } else {
-        return null;
       }
+      return null;
     }));
   }
 }
