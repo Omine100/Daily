@@ -9,6 +9,8 @@ ThemeData materialThemeData() {
   );
 }
 
+extension CustomWebColorScheme on ColorScheme {}
+
 //Install extension '#region folding for VS Code'
 extension CustomColorScheme on ColorScheme {
   // #region essential
