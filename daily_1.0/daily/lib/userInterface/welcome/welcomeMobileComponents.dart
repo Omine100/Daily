@@ -19,7 +19,7 @@ Widget welcomeTitle(BuildContext context) {
         Text(
           getTranslated(context, "welcomeTitle"),
           style: TextStyle(
-            color: Theme.of(context).colorScheme.welcomeTitle,
+            color: Theme.of(context).colorScheme.welcomeMobileTitle,
             fontSize: Theme.of(context).textTheme.welcomeTitle,
             fontWeight: Theme.of(context).typography.welcomeTitle,
           ),
@@ -27,7 +27,7 @@ Widget welcomeTitle(BuildContext context) {
         Text(
           getTranslated(context, "welcomeSubtitle"),
           style: TextStyle(
-            color: Theme.of(context).colorScheme.welcomeSubtitle,
+            color: Theme.of(context).colorScheme.welcomeMobileSubtitle,
             fontSize: Theme.of(context).textTheme.welcomeSubtitle,
             fontWeight: Theme.of(context).typography.welcomeSubtitle,
           ),
@@ -90,10 +90,12 @@ Widget welcomeCarousel(State state, BuildContext context) {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: _current == index
-                      ? Theme.of(context).colorScheme.welcomeCarouselCurrent
+                      ? Theme.of(context)
+                          .colorScheme
+                          .welcomeMobileCarouselCurrent
                       : Theme.of(context)
                           .colorScheme
-                          .welcomeCarouselNotCurrent),
+                          .welcomeMobileCarouselNotCurrent),
             );
           },
         ).toList(),
@@ -122,12 +124,13 @@ Widget welcomeGetStarted(BuildContext context) {
       width: getDimension(context, false,
           Theme.of(context).visualDensity.welcomeGetStartedWidth),
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.welcomeGetStarted,
+          color: Theme.of(context).colorScheme.welcomeMobileGetStarted,
           borderRadius: BorderRadius.circular(30)),
       child: Material(
         color: Theme.of(context).colorScheme.materialTransparent,
         child: InkWell(
-          splashColor: Theme.of(context).colorScheme.welcomeGetStartedInkWell,
+          splashColor:
+              Theme.of(context).colorScheme.welcomeMobileGetStartedInkWell,
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
@@ -138,7 +141,8 @@ Widget welcomeGetStarted(BuildContext context) {
               child: Text(
                 getTranslated(context, "welcomeGetStarted"),
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.welcomeGetStartedText,
+                  color:
+                      Theme.of(context).colorScheme.welcomeMobileGetStartedText,
                   fontSize: Theme.of(context).textTheme.welcomeGetStartedText,
                   fontWeight:
                       Theme.of(context).typography.welcomeGetStartedText,
@@ -162,7 +166,7 @@ Widget welcomeAccountAlready(BuildContext context) {
         text: TextSpan(
           text: getTranslated(context, "welcomeAccountAlready"),
           style: TextStyle(
-            color: Theme.of(context).colorScheme.welcomeAccountAlready,
+            color: Theme.of(context).colorScheme.welcomeMobileAccountAlready,
             fontSize: Theme.of(context).textTheme.welcomeAccountAlready,
             fontWeight: Theme.of(context).typography.welcomeAccountAlready,
           ),
@@ -170,7 +174,9 @@ Widget welcomeAccountAlready(BuildContext context) {
             TextSpan(
               text: getTranslated(context, "welcomeAccountAlreadyLogin"),
               style: TextStyle(
-                color: Theme.of(context).colorScheme.welcomeAccountAlreadyLogin,
+                color: Theme.of(context)
+                    .colorScheme
+                    .welcomeMobileAccountAlreadyLogin,
                 fontSize:
                     Theme.of(context).textTheme.welcomeAccountAlreadyLogin,
                 fontWeight:

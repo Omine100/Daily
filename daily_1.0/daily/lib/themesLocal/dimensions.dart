@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 
 //Install extension '#region folding for VS Code'
 
-extension CustomDimensions on VisualDensity {
+extension CustomConnectedDimensions on VisualDensity {
   // #region userIStandards
   double get userIStandardsSocialButtonHeight => 0.05;
   double get userIStandardsSocialButtonWidth => 0.05;
   // #endregion
+}
 
+extension CustomWebDimensions on VisualDensity {}
+
+extension CustomMobileDimensions on VisualDensity {
   // #region welcome
   double get welcomeTitleWidth => 1.0;
   double get welcomeCarouselHeight => 0.50;

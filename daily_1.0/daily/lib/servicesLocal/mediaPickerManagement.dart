@@ -36,15 +36,4 @@ class MediaPickerManagement {
     }
     return imageFile;
   }
-
-  Future<void> shareImage(BuildContext context, String imageURL) async {
-    File imageFile;
-    try {
-      imageFile = await getImage(imageURL);
-      Share.shareFile(imageFile,
-          subject: "Thought you might like!", text: "What do you think?");
-    } catch (e) {
-      showToastMessage(context, "errorShare", true);
-    }
-  }
 }

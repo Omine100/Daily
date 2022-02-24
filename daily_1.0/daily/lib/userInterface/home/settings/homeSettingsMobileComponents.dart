@@ -24,7 +24,7 @@ Widget settingsTitle(BuildContext context) {
     child: Text(
       getTranslated(context, "settingsTitle"),
       style: TextStyle(
-        color: Theme.of(context).colorScheme.settingsTitle,
+        color: Theme.of(context).colorScheme.settingsMobileTitle,
         fontSize: Theme.of(context).textTheme.settingsTitle,
         fontWeight: Theme.of(context).typography.settingsTitle,
       ),
@@ -64,7 +64,7 @@ Widget settingsProfile(BuildContext context, State state) {
                       shape: BoxShape.circle,
                       color: Theme.of(context)
                           .colorScheme
-                          .settingsProfileBackground,
+                          .settingsMobileProfileBackground,
                     ),
                     child: CachedNetworkImage(
                       imageUrl: profileURL.value,
@@ -79,8 +79,9 @@ Widget settingsProfile(BuildContext context, State state) {
                       errorWidget: (context, url, error) => Icon(
                         Icons.person_outline_rounded,
                         size: 55,
-                        color:
-                            Theme.of(context).colorScheme.settingsProfileIcon,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .settingsMobileProfileIcon,
                       ),
                     ),
                   ),
@@ -98,8 +99,9 @@ Widget settingsProfile(BuildContext context, State state) {
                         firebaseAccounts.getCurrentUserDisplayName() ??
                             getTranslated(context, "settingsNullName"),
                         style: TextStyle(
-                          color:
-                              Theme.of(context).colorScheme.settingsProfileName,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .settingsMobileProfileName,
                           fontSize:
                               Theme.of(context).textTheme.settingsProfileName,
                           fontWeight:
@@ -112,8 +114,9 @@ Widget settingsProfile(BuildContext context, State state) {
                           getTranslated(context, "settingsNullEmail"),
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        color:
-                            Theme.of(context).colorScheme.settingsProfileEmail,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .settingsMobileProfileEmail,
                         fontSize:
                             Theme.of(context).textTheme.settingsProfileEmail,
                         fontWeight:
@@ -162,7 +165,7 @@ Container settingsCard(BuildContext context, State state) {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(35),
                       topRight: Radius.circular(35)),
-                  color: Theme.of(context).colorScheme.settingsCard,
+                  color: Theme.of(context).colorScheme.settingsMobileCard,
                 ),
                 child: Padding(
                     padding: EdgeInsets.only(left: 15, right: 15, top: 25),
@@ -205,7 +208,7 @@ Row settingsGroupTitle(BuildContext context, String key) {
       Text(
         getTranslated(context, key),
         style: TextStyle(
-          color: Theme.of(context).colorScheme.settingsGroupTitle,
+          color: Theme.of(context).colorScheme.settingsMobileGroupTitle,
           fontSize: Theme.of(context).textTheme.settingsGroupTitle,
           fontWeight: Theme.of(context).typography.settingsGroupTitle,
         ),
@@ -238,7 +241,7 @@ Row settingRow(BuildContext context, Setting setting, State state) {
         : [
             Text(getTranslated(context, setting.key),
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.settingsRowText,
+                  color: Theme.of(context).colorScheme.settingsMobileRowText,
                   fontSize: Theme.of(context).textTheme.settingsRowText,
                   fontWeight: Theme.of(context).typography.settingsRowText,
                 )),
@@ -257,12 +260,13 @@ Widget settingSwitch(BuildContext context, Setting setting, State state) {
           setting.onChanged.call(context, setting.value);
       });
     },
-    activeColor: Theme.of(context).colorScheme.settingSwitchActiveThumb,
-    activeTrackColor: Theme.of(context).colorScheme.settingSwitchActiveTrack,
+    activeColor: Theme.of(context).colorScheme.settingsMobileSwitchActiveThumb,
+    activeTrackColor:
+        Theme.of(context).colorScheme.settingsMobileSwitchActiveTrack,
     inactiveThumbColor:
-        Theme.of(context).colorScheme.settingSwitchInactiveThumb,
+        Theme.of(context).colorScheme.settingsMobileSwitchInactiveThumb,
     inactiveTrackColor:
-        Theme.of(context).colorScheme.settingSwitchInactiveTrack,
+        Theme.of(context).colorScheme.settingsMobileSwitchInactiveTrack,
   );
 }
 
@@ -279,9 +283,10 @@ Widget settingDropdown(BuildContext context, Setting setting, State state) {
         items: setting.items(context),
         value: setting.value,
         style: TextStyle(
-            color: Theme.of(context).colorScheme.settingDropdownText,
+            color: Theme.of(context).colorScheme.settingsMobileDropdownText,
             fontSize: Theme.of(context).textTheme.settingDropdownText),
-        dropdownColor: Theme.of(context).colorScheme.settingDropdownBackground,
+        dropdownColor:
+            Theme.of(context).colorScheme.settingsMobileDropdownBackground,
         onChanged: (value) {
           state.setState(() {
             setting.value = value;
@@ -312,7 +317,7 @@ Widget settingClick(BuildContext context, Setting setting, State state) {
         padding: const EdgeInsets.only(top: 8.0),
         child: Text(getTranslated(context, setting.key),
             style: TextStyle(
-              color: Theme.of(context).colorScheme.settingsRowText,
+              color: Theme.of(context).colorScheme.settingsMobileRowText,
               fontSize: Theme.of(context).textTheme.settingsRowText,
               fontWeight: Theme.of(context).typography.settingsRowText,
             )),
@@ -326,16 +331,17 @@ void showHelpSupportBox(BuildContext context) {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Theme.of(context).colorScheme.settingsBoxBackground,
+          backgroundColor:
+              Theme.of(context).colorScheme.settingsMobileBoxBackground,
           title: Text(getTranslated(context, "settingsHelpSupportBox"),
               style: TextStyle(
-                color: Theme.of(context).colorScheme.settingsBoxText,
+                color: Theme.of(context).colorScheme.settingsMobileBoxText,
                 fontSize: Theme.of(context).textTheme.settingsBoxTextTitle,
                 fontWeight: Theme.of(context).typography.settingsBoxTextTitle,
               )),
           content: Text(getContactEmail(),
               style: TextStyle(
-                color: Theme.of(context).colorScheme.settingsBoxText,
+                color: Theme.of(context).colorScheme.settingsMobileBoxText,
                 fontSize: Theme.of(context).textTheme.settingsBoxText,
                 fontWeight: Theme.of(context).typography.settingsBoxText,
               )),
@@ -350,17 +356,17 @@ void showAboutBox(BuildContext context) {
       return Theme(
         data: ThemeData(
           dialogBackgroundColor:
-              Theme.of(context).colorScheme.settingsBoxBackground,
+              Theme.of(context).colorScheme.settingsMobileBoxBackground,
           textTheme: TextTheme(
               headline5: TextStyle(
-                  color: Theme.of(context).colorScheme.settingsBoxText),
+                  color: Theme.of(context).colorScheme.settingsMobileBoxText),
               bodyText2: TextStyle(
-                  color: Theme.of(context).colorScheme.settingsBoxText),
+                  color: Theme.of(context).colorScheme.settingsMobileBoxText),
               caption: TextStyle(
-                  color: Theme.of(context).colorScheme.settingsBoxText)),
+                  color: Theme.of(context).colorScheme.settingsMobileBoxText)),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
-                primary: Theme.of(context).colorScheme.settingsBoxText),
+                primary: Theme.of(context).colorScheme.settingsMobileBoxText),
           ),
         ),
         child: AboutDialog(
@@ -387,7 +393,7 @@ Widget settingsSignOut(BuildContext context) {
     child: Text(
       getTranslated(context, "settingsSignOut"),
       style: TextStyle(
-        color: Theme.of(context).colorScheme.settingsSignOut,
+        color: Theme.of(context).colorScheme.settingsMobileSignOut,
         fontSize: Theme.of(context).textTheme.settingsSignOut,
         fontWeight: Theme.of(context).typography.settingsSignOut,
       ),

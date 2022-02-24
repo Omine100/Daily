@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 //Install extension '#region folding for VS Code'
 
-extension CustomPositions on MaterialTapTargetSize {
+extension CustomWebPositions on MaterialTapTargetSize {}
+
+extension CustomMobilePositions on MaterialTapTargetSize {
   // #region welcomeDesktop
   double get welcomeDesktopTitleTop => 0.065;
   double get welcomeDesktopCarouselTop => 0.22;

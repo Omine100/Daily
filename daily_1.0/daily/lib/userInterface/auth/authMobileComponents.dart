@@ -58,10 +58,12 @@ Widget authCarousel(BuildContext context, State state) {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: _current == index
-                      ? Theme.of(context).colorScheme.welcomeCarouselCurrent
+                      ? Theme.of(context)
+                          .colorScheme
+                          .welcomeMobileCarouselCurrent
                       : Theme.of(context)
                           .colorScheme
-                          .welcomeCarouselNotCurrent),
+                          .welcomeMobileCarouselNotCurrent),
             );
           },
         ).toList(),
@@ -138,25 +140,29 @@ Widget authUserInputField(
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: Theme.of(context).colorScheme.authUserInputField,
+        color: Theme.of(context).colorScheme.authMobileUserInputField,
       ),
       child: TextFormField(
         obscureText: isVariable ? !isVisible : false,
         onSaved: onSaved,
         autofocus: false,
         style: TextStyle(
-            color: Theme.of(context).colorScheme.authUserInputFieldText),
+            color: Theme.of(context).colorScheme.authMobileUserInputFieldText),
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: getTranslated(context, authForm),
           labelStyle: TextStyle(
-            color: Theme.of(context).colorScheme.authUserInputFieldDecoration,
+            color: Theme.of(context)
+                .colorScheme
+                .authMobileUserInputFieldDecoration,
             fontSize: Theme.of(context).textTheme.authUserInputFieldDecoration,
             fontWeight:
                 Theme.of(context).typography.authUserInputFieldDecoration,
           ),
           hintStyle: TextStyle(
-            color: Theme.of(context).colorScheme.authUserInputFieldDecoration,
+            color: Theme.of(context)
+                .colorScheme
+                .authMobileUserInputFieldDecoration,
             fontSize: Theme.of(context).textTheme.authUserInputFieldDecoration,
             fontWeight:
                 Theme.of(context).typography.authUserInputFieldDecoration,
@@ -168,8 +174,9 @@ Widget authUserInputField(
                     ? Icons.lock
                     : Icons.person)
                 : Icons.email,
-            color:
-                Theme.of(context).colorScheme.authUserInputFieldIconDecoration,
+            color: Theme.of(context)
+                .colorScheme
+                .authMobileUserInputFieldIconDecoration,
           ),
           suffixIcon: isVariable
               ? IconButton(
@@ -190,7 +197,7 @@ Widget authUserInputField(
                         : Icons.visibility_off_outlined,
                     color: Theme.of(context)
                         .colorScheme
-                        .authUserInputFieldIconDecoration,
+                        .authMobileUserInputFieldIconDecoration,
                   ),
                 )
               : null,
@@ -208,7 +215,7 @@ Widget authForgotPassword(BuildContext context) {
     child: Text(
       getTranslated(context, "authForgotPassword"),
       style: TextStyle(
-        color: Theme.of(context).colorScheme.authForgotPassword,
+        color: Theme.of(context).colorScheme.authMobileForgotPassword,
         fontSize: Theme.of(context).textTheme.authForgotPassword,
         fontWeight: Theme.of(context).typography.authForgotPassword,
       ),
@@ -223,7 +230,7 @@ Widget authPolicyAndTaC(BuildContext context) {
         child: Text.rich(TextSpan(
             text: getTranslated(context, "authPolicyAndTaCPrimary") + " ",
             style: TextStyle(
-              color: Theme.of(context).colorScheme.authPolicyAndTaC,
+              color: Theme.of(context).colorScheme.authMobilePolicyAndTaC,
               fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
               fontWeight: Theme.of(context).typography.authPolicyAndTaC,
             ),
@@ -231,7 +238,7 @@ Widget authPolicyAndTaC(BuildContext context) {
           TextSpan(
               text: getTranslated(context, "authPolicyAndTaCPrivacy"),
               style: TextStyle(
-                  color: Theme.of(context).colorScheme.authPolicyAndTaC,
+                  color: Theme.of(context).colorScheme.authMobilePolicyAndTaC,
                   fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
                   fontWeight: Theme.of(context).typography.authPolicyAndTaC,
                   decoration: TextDecoration.underline),
@@ -244,7 +251,7 @@ Widget authPolicyAndTaC(BuildContext context) {
                   getTranslated(context, "authPolicyAndTaCSeconday") +
                   " ",
               style: TextStyle(
-                color: Theme.of(context).colorScheme.authPolicyAndTaC,
+                color: Theme.of(context).colorScheme.authMobilePolicyAndTaC,
                 fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
                 fontWeight: Theme.of(context).typography.authPolicyAndTaC,
               ),
@@ -252,7 +259,9 @@ Widget authPolicyAndTaC(BuildContext context) {
                 TextSpan(
                     text: getTranslated(context, "authPolicyAndTaCConditions"),
                     style: TextStyle(
-                        color: Theme.of(context).colorScheme.authPolicyAndTaC,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .authMobilePolicyAndTaC,
                         fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
                         fontWeight:
                             Theme.of(context).typography.authPolicyAndTaC,
@@ -275,12 +284,13 @@ Widget authGetStarted(BuildContext context, bool isSignIn, State state) {
       width: getDimension(
           context, false, Theme.of(context).visualDensity.authGetStartedWidth),
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.authGetStarted,
+          color: Theme.of(context).colorScheme.authMobileGetStarted,
           borderRadius: BorderRadius.circular(30)),
       child: Material(
         color: Theme.of(context).colorScheme.materialTransparent,
         child: InkWell(
-          splashColor: Theme.of(context).colorScheme.authGetStartedInkWell,
+          splashColor:
+              Theme.of(context).colorScheme.authMobileGetStartedInkWell,
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
@@ -291,7 +301,7 @@ Widget authGetStarted(BuildContext context, bool isSignIn, State state) {
               child: Text(
                 getTranslated(context, isSignIn ? "authSignIn" : "authSignUp"),
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.authGetStartedText,
+                  color: Theme.of(context).colorScheme.authMobileGetStartedText,
                   fontSize: Theme.of(context).textTheme.authGetStartedText,
                   fontWeight: Theme.of(context).typography.authGetStartedText,
                 ),
@@ -310,7 +320,7 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
       text: getTranslated(context,
           isSignIn ? "authSwitchSignUpPrimary" : "authSwitchSignInPrimary"),
       style: TextStyle(
-        color: Theme.of(context).colorScheme.authSwitchPrimary,
+        color: Theme.of(context).colorScheme.authMobileSwitchPrimary,
         fontSize: Theme.of(context).textTheme.authSwitchPrimary,
         fontWeight: Theme.of(context).typography.authSwitchPrimary,
       ),
@@ -322,7 +332,7 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
                   ? "authSwitchSignUpSecondary"
                   : "authSwitchSignInSecondary"),
           style: TextStyle(
-            color: Theme.of(context).colorScheme.authSwitchSecondary,
+            color: Theme.of(context).colorScheme.authMobileSwitchSecondary,
             fontSize: Theme.of(context).textTheme.authSwitchSecondary,
             fontWeight: Theme.of(context).typography.authSwitchSecondary,
           ),

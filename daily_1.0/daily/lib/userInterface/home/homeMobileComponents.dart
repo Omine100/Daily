@@ -53,14 +53,16 @@ Widget homeNavigationBar(BuildContext context, State state) {
   return DotNavigationBar(
     currentIndex: pageIndex,
     backgroundColor: pageIndex == 3
-        ? Theme.of(context).colorScheme.homeNavigationBarBackgroundSettings
-        : Theme.of(context).colorScheme.homeNavigationBarBackground,
-    dotIndicatorColor: Theme.of(context).colorScheme.homeNavigationBarDot,
+        ? Theme.of(context)
+            .colorScheme
+            .homeMobileNavigationBarBackgroundSettings
+        : Theme.of(context).colorScheme.homeMobileNavigationBarBackground,
+    dotIndicatorColor: Theme.of(context).colorScheme.homeMobileNavigationBarDot,
     duration: Duration(milliseconds: 1250),
     unselectedItemColor:
-        Theme.of(context).colorScheme.homeNavigationBarUnselectedIcon,
+        Theme.of(context).colorScheme.homeMobileNavigationBarUnselectedIcon,
     selectedItemColor:
-        Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
+        Theme.of(context).colorScheme.homeMobileNavigationBarSelectedIcon,
     enableFloatingNavBar: true,
     curve: Curves.easeOutQuint,
     onTap: (pageIndex) {

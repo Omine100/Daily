@@ -92,23 +92,6 @@ Future<Widget> showMediaSelection(
       });
 }
 
-Widget showShareButton(BuildContext context, String imageURL) {
-  return new Material(
-    color: Theme.of(context).colorScheme.materialTransparent,
-    child: IconButton(
-      onPressed: () {
-        mediaManagement.shareImage(context, imageURL);
-      },
-      iconSize:
-          Theme.of(context).materialTapTargetSize.userIStandardsShareButton,
-      icon: Icon(
-        Icons.share_outlined,
-        color: Theme.of(context).colorScheme.userIStandardsShareButton,
-      ),
-    ),
-  );
-}
-
 Widget showSocialButton(BuildContext context, int iconCase) {
   return new GestureDetector(
     onTap: () {

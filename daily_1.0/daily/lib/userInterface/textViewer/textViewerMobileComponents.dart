@@ -13,7 +13,7 @@ Widget textViewerText(BuildContext context, String filePath) {
               snapshot.data ?? '',
               softWrap: true,
               style: TextStyle(
-                color: Theme.of(context).colorScheme.textViewerText,
+                color: Theme.of(context).colorScheme.textViewerMobileText,
                 fontSize: Theme.of(context).textTheme.textViewerText,
                 fontWeight: Theme.of(context).typography.textViewerText,
               ),

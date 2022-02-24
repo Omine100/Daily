@@ -66,7 +66,7 @@ Widget mainFocusCircle(BuildContext context) {
 Widget mainCameraComponentCard(BuildContext context, State state) {
   return Container(
     decoration: BoxDecoration(
-      color: Theme.of(context).colorScheme.mainCard,
+      color: Theme.of(context).colorScheme.mainMobileCard,
       borderRadius: BorderRadius.circular(45),
     ),
     child: Column(
@@ -92,7 +92,8 @@ Widget mainSwitchCameraButton(BuildContext context, State state) {
       icon: Icon(
         Icons.flip_camera_android,
         size: 30,
-        color: Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
+        color:
+            Theme.of(context).colorScheme.homeMobileNavigationBarSelectedIcon,
       ));
 }
 
@@ -104,7 +105,8 @@ Widget mainSwitchFlashButton(BuildContext context, State state) {
       icon: Icon(
         flashMode == FlashMode.off ? Icons.flash_off : Icons.flash_on,
         size: 30,
-        color: Theme.of(context).colorScheme.homeNavigationBarSelectedIcon,
+        color:
+            Theme.of(context).colorScheme.homeMobileNavigationBarSelectedIcon,
       ));
 }
 
