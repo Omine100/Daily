@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/userInterface/authComponents.dart';
+import 'package:daily/userInterface/auth/authMobileComponents.dart';
+import 'package:daily/userInterface/auth/authWebComponents.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/positions.dart';
@@ -20,7 +22,21 @@ class _AuthScreenState extends State<AuthScreen> {
     isSignIn = (widget.isSignIn != null ? widget.isSignIn : true);
   }
 
-  authScreenWeb() {
+  authScreenSmall() {
+    return Adaptive(
+        iOS: authScreenMobileSmall(false),
+        android: authScreenMobileSmall(true),
+        web: authScreenWebSmall());
+  }
+
+  authScreenLarge() {
+    return Adaptive(
+        iOS: authScreenMobileLarge(false),
+        android: authScreenMobileLarge(true),
+        web: authScreenWebLarge());
+  }
+
+  authScreenWebSmall() {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -39,7 +55,26 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  authScreenTablet() {
+  authScreenWebLarge() {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Positioned(
+          left: 175,
+          child: Transform.scale(
+            scale: 1.5,
+            child: authCarousel(context, this),
+          ),
+        ),
+        Positioned(
+          right: 0,
+          child: authWebCard(context, isSignIn),
+        ),
+      ],
+    );
+  }
+
+  authScreenMobileSmall(bool isAndroid) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -49,11 +84,11 @@ class _AuthScreenState extends State<AuthScreen> {
                 true,
                 Theme.of(context)
                     .materialTapTargetSize
-                    .authTabletCenterPieceTop),
+                    .authMobileCenterPieceTop),
             child: authCenterPiece(context, this)),
         Positioned(
             top: getPosition(context, true,
-                Theme.of(context).materialTapTargetSize.authTabletUserInputTop),
+                Theme.of(context).materialTapTargetSize.authMobileUserInputTop),
             child: authUserInput(context, isSignIn)),
         Positioned(
           top: isSignIn
@@ -62,19 +97,19 @@ class _AuthScreenState extends State<AuthScreen> {
                   true,
                   Theme.of(context)
                       .materialTapTargetSize
-                      .authTabletForgotPasswordTop)
+                      .authMobileForgotPasswordTop)
               : getPosition(
                   context,
                   true,
                   Theme.of(context)
                       .materialTapTargetSize
-                      .authTabletPolicyAndTaCTop),
+                      .authMobilePolicyAndTaCTop),
           left: getPosition(
               context,
               false,
               Theme.of(context)
                   .materialTapTargetSize
-                  .authTabletForgotPasswordPolicyAndTaCLeft),
+                  .authMobileForgotPasswordPolicyAndTaCLeft),
           child: isSignIn
               ? authForgotPassword(context)
               : authPolicyAndTaC(context),
@@ -85,11 +120,11 @@ class _AuthScreenState extends State<AuthScreen> {
                 true,
                 Theme.of(context)
                     .materialTapTargetSize
-                    .authTabletGetStartedTop),
+                    .authMobileGetStartedTop),
             child: authGetStarted(context, isSignIn, this)),
         Positioned(
             top: getPosition(context, true,
-                Theme.of(context).materialTapTargetSize.authTabletSwitchTop),
+                Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
             child: GestureDetector(
                 onTap: () {
                   setState(() {
@@ -101,7 +136,7 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  authScreenMobile() {
+  authScreenMobileLarge(bool isAndroid) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -186,9 +221,8 @@ class _AuthScreenState extends State<AuthScreen> {
                             .visualDensity
                             .authBoxConstraintUnfocused)),
             child: Responsive(
-              web: authScreenWeb(),
-              tablet: authScreenTablet(),
-              mobile: authScreenMobile(),
+              small: authScreenSmall(),
+              large: authScreenLarge(),
             )),
       ),
     ));
