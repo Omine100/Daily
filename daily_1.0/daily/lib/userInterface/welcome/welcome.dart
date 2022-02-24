@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/userInterface/welcomeComponents.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';
+import 'package:daily/userInterface/welcome/welcomeWebComponents.dart';
+import 'package:daily/userInterface/welcome/welcomeMobileComponents.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -12,29 +14,47 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  welcomeScreenWeb() {
+  welcomeScreenSmall() {
+    return Adaptive(
+        iOS: welcomeScreenMobileSmall(false),
+        android: welcomeScreenMobileSmall(true),
+        web: welcomeScreenWebSmall());
+  }
+
+  welcomeScreenLarge() {
+    return Adaptive(
+        iOS: welcomeScreenMobileLarge(false),
+        android: welcomeScreenMobileLarge(true),
+        web: welcomeScreenWebLarge());
+  }
+
+  welcomeScreenWebSmall() {
     return context.router.push(AuthScreen(isSignIn: true));
   }
 
-  welcomeScreenTablet() {
+  welcomeScreenWebLarge() {
+    return context.router.push(AuthScreen(isSignIn: true));
+  }
+
+  welcomeScreenMobileSmall(bool isAndroid) {
     return Stack(
       alignment: Alignment.center,
       children: [
         Positioned(
           top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeTabletTitleTop),
+              Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
           child: welcomeTitle(context),
         ),
         Positioned(
           top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeTabletCornerTop),
+              Theme.of(context).materialTapTargetSize.welcomeMobileCornerTop),
           right: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeTabletCornerRight),
+              Theme.of(context).materialTapTargetSize.welcomeMobileCornerRight),
           child: welcomeCorner(context),
         ),
         Positioned(
           top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeTabletCarouselTop),
+              Theme.of(context).materialTapTargetSize.welcomeMobileCarouselTop),
           child: welcomeCarousel(this, context),
         ),
         Positioned(
@@ -43,7 +63,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               true,
               Theme.of(context)
                   .materialTapTargetSize
-                  .welcomeTabletGetStartedTop),
+                  .welcomeMobileGetStartedTop),
           child: welcomeGetStarted(context),
         ),
         Positioned(
@@ -52,14 +72,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               true,
               Theme.of(context)
                   .materialTapTargetSize
-                  .welcomeTabletAccountAlreadyTop),
+                  .welcomeMobileAccountAlreadyTop),
           child: welcomeAccountAlready(context),
         ),
       ],
     );
   }
 
-  welcomeScreenMobile() {
+  welcomeScreenMobileLarge(bool isAndroid) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -110,9 +130,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           color: Theme.of(context).colorScheme.welcomeBackground,
           constraints: BoxConstraints.expand(height: double.maxFinite),
           child: Responsive(
-            web: welcomeScreenWeb(),
-            tablet: welcomeScreenTablet(),
-            mobile: welcomeScreenMobile(),
+            small: welcomeScreenSmall(),
+            large: welcomeScreenLarge(),
           )),
     ));
   }

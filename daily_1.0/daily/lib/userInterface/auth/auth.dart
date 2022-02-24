@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/userInterface/auth/authMobileComponents.dart';
-import 'package:daily/userInterface/auth/authWebComponents.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/positions.dart';
+import 'package:daily/userInterface/auth/authWebComponents.dart';
+import 'package:daily/userInterface/auth/authMobileComponents.dart';
 
 class AuthScreen extends StatefulWidget {
   final bool isSignIn;

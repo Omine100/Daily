@@ -3,10 +3,10 @@ import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/themesLocal/colors.dart';
-import 'package:daily/userInterface/homeMain.dart';
-import 'package:daily/userInterface/homeSearch.dart';
-import 'package:daily/userInterface/homeGlobal.dart';
-import 'package:daily/userInterface/homeSettings.dart';
+import 'package:daily/userInterface/home/main/homeMain.dart';
+import 'package:daily/userInterface/home/search/homeSearch.dart';
+import 'package:daily/userInterface/home/global/homeGlobal.dart';
+import 'package:daily/userInterface/home/settings/homeSettings.dart';
 
 int pageIndex = 0;
 PageController pageController;

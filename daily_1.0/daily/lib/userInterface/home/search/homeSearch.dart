@@ -1,8 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/userInterface/homeSearchComponents.dart';
+import 'package:daily/userInterface/home/search/homeSearchWebComponents.dart';
+import 'package:daily/userInterface/home/search/homeSearchMobileComponents.dart';
 
-searchWeb(BuildContext context) {
+searchSmall(BuildContext context) {
+  return Adaptive(
+      iOS: searchMobileSmall(context, false),
+      android: searchMobileSmall(context, true),
+      web: searchWebSmall(context));
+}
+
+searchLarge(BuildContext context) {
+  return Adaptive(
+      iOS: searchMobileLarge(context, false),
+      android: searchMobileLarge(context, true),
+      web: searchWebLarge(context));
+}
+
+searchWebSmall(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -15,7 +31,7 @@ searchWeb(BuildContext context) {
   );
 }
 
-searchTablet(BuildContext context) {
+searchWebLarge(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -28,7 +44,19 @@ searchTablet(BuildContext context) {
   );
 }
 
-searchMobile(BuildContext context) {
+searchMobileSmall(BuildContext context, bool isAndroid) {
+  return Stack(
+    alignment: Alignment.center,
+    children: [
+      Positioned(
+        top: 45,
+        child: searchSearchBar(context),
+      ),
+    ],
+  );
+}
+
+searchMobileLarge(BuildContext context, bool isAndroid) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -42,7 +70,7 @@ searchMobile(BuildContext context) {
 
 Widget searchBody(BuildContext context) {
   return Responsive(
-      web: searchWeb(context),
-      mobile: searchMobile(context),
-      tablet: searchTablet(context));
+    small: searchSmall(context),
+    large: searchLarge(context),
+  );
 }

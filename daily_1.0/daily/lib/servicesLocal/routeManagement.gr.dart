@@ -13,12 +13,12 @@
 import 'package:auto_route/auto_route.dart' as _i7;
 import 'package:flutter/material.dart' as _i8;
 
-import '../userInterface/auth.dart' as _i2;
-import '../userInterface/forgotPassword.dart' as _i3;
-import '../userInterface/home.dart' as _i4;
-import '../userInterface/imageViewer.dart' as _i5;
-import '../userInterface/textViewer.dart' as _i6;
-import '../userInterface/welcome.dart' as _i1;
+import '../userInterface/welcome/welcome.dart' as _i1;
+import '../userInterface/auth/auth.dart' as _i2;
+import '../userInterface/forgotPassword/forgotPassword.dart' as _i3;
+import '../userInterface/home/home.dart' as _i4;
+import '../userInterface/imageViewer/imageViewer.dart' as _i5;
+import '../userInterface/textViewer/textViewer.dart' as _i6;
 
 class AppRouter extends _i7.RootStackRouter {
   AppRouter([_i8.GlobalKey<_i8.NavigatorState> navigatorKey])

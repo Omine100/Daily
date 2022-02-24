@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/servicesLocal/cameraManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
-import 'package:daily/userInterface/homeComponents.dart';
+import 'package:daily/userInterface/home/homeWebComponents.dart';
+import 'package:daily/userInterface/home/homeMobileComponents.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -34,15 +36,33 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     }
   }
 
-  homeScreenWeb() {
+  homeScreenSmall() {
+    return Adaptive(
+        iOS: homeScreenMobileSmall(false),
+        android: homeScreenMobileSmall(true),
+        web: homeScreenWebSmall());
+  }
+
+  homeScreenLarge() {
+    return Adaptive(
+        iOS: homeScreenMobileLarge(false),
+        android: homeScreenMobileLarge(true),
+        web: homeScreenWebLarge());
+  }
+
+  homeScreenWebSmall() {
     return homeBody(context, this);
   }
 
-  homeScreenTablet() {
+  homeScreenWebLarge() {
     return homeBody(context, this);
   }
 
-  homeScreenMobile() {
+  homeScreenMobileSmall(bool isAndroid) {
+    return homeBody(context, this);
+  }
+
+  homeScreenMobileLarge(bool isAndroid) {
     return homeBody(context, this);
   }
 
@@ -55,9 +75,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           color: Theme.of(context).colorScheme.homeBackground,
           constraints: BoxConstraints.expand(height: double.maxFinite),
           child: Responsive(
-            web: homeScreenWeb(),
-            tablet: homeScreenTablet(),
-            mobile: homeScreenMobile(),
+            small: homeScreenSmall(),
+            large: homeScreenLarge(),
           ),
         ),
         bottomNavigationBar: homeNavigationBar(context, this),

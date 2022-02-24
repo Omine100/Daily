@@ -1,8 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/userInterface/homeGlobalComponents.dart';
+import 'package:daily/userInterface/home/global/homeGlobalWebComponents.dart';
+import 'package:daily/userInterface/home/global/homeGlobalMobileComponents.dart';
 
-globalWeb(BuildContext context) {
+globalSmall(BuildContext context) {
+  return Adaptive(
+      iOS: globalMobileSmall(context, false),
+      android: globalMobileSmall(context, true),
+      web: globalWebSmall(context));
+}
+
+globalLarge(BuildContext context) {
+  return Adaptive(
+      iOS: globalMobileLarge(context, false),
+      android: globalMobileLarge(context, true),
+      web: globalWebLarge(context));
+}
+
+globalWebSmall(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -15,7 +31,7 @@ globalWeb(BuildContext context) {
   );
 }
 
-globalTablet(BuildContext context) {
+globalWebLarge(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -28,7 +44,20 @@ globalTablet(BuildContext context) {
   );
 }
 
-globalMobile(BuildContext context) {
+globalMobileSmall(BuildContext context, bool isAndroid) {
+  return Stack(
+    alignment: Alignment.center,
+    children: [
+      Positioned(
+        left: 340,
+        top: 37,
+        child: Container(),
+      ),
+    ],
+  );
+}
+
+globalMobileLarge(BuildContext context, bool isAndroid) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -43,7 +72,7 @@ globalMobile(BuildContext context) {
 
 Widget globalBody(BuildContext context) {
   return Responsive(
-      web: globalWeb(context),
-      mobile: globalMobile(context),
-      tablet: globalTablet(context));
+    small: globalSmall(context),
+    large: globalLarge(context),
+  );
 }

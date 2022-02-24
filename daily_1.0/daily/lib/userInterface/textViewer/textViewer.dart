@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/themesLocal/colors.dart';
-import 'package:daily/userInterface/textViewerComponents.dart';
+import 'package:daily/userInterface/textViewer/textViewerWebComponents.dart';
+import 'package:daily/userInterface/textViewer/textViewerMobileComponents.dart';
 
 class TextViewerScreen extends StatefulWidget {
   final String filePath;
@@ -12,15 +14,33 @@ class TextViewerScreen extends StatefulWidget {
 }
 
 class _TextViewerScreenState extends State<TextViewerScreen> {
-  textViewerScreenWeb() {
+  textViewerScreenSmall() {
+    return Adaptive(
+        iOS: textViewerScreenMobileSmall(false),
+        android: textViewerScreenMobileSmall(true),
+        web: textViewerScreenWebSmall());
+  }
+
+  textViewerScreenLarge() {
+    return Adaptive(
+        iOS: textViewerScreenMobileLarge(false),
+        android: textViewerScreenMobileLarge(true),
+        web: textViewerScreenWebLarge());
+  }
+
+  textViewerScreenWebSmall() {
     return textViewerText(context, widget.filePath);
   }
 
-  textViewerScreenTablet() {
+  textViewerScreenWebLarge() {
     return textViewerText(context, widget.filePath);
   }
 
-  textViewerScreenMobile() {
+  textViewerScreenMobileSmall(bool isAndroid) {
+    return textViewerText(context, widget.filePath);
+  }
+
+  textViewerScreenMobileLarge(bool isAndroid) {
     return textViewerText(context, widget.filePath);
   }
 
@@ -34,9 +54,8 @@ class _TextViewerScreenState extends State<TextViewerScreen> {
           body: SingleChildScrollView(
             child: Expanded(
               child: Responsive(
-                web: textViewerScreenWeb(),
-                tablet: textViewerScreenTablet(),
-                mobile: textViewerScreenMobile(),
+                small: textViewerScreenSmall(),
+                large: textViewerScreenLarge(),
               ),
             ),
           ),

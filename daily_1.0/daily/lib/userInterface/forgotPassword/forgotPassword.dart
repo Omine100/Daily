@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/positions.dart';
-import 'package:daily/userInterface/forgotPasswordComponents.dart';
+import 'package:daily/userInterface/forgotPassword/forgotPasswordWebComponents.dart';
+import 'package:daily/userInterface/forgotPassword/forgotPasswordMobileComponents.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   @override
@@ -17,11 +19,29 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     forgotPasswordDispose();
   }
 
-  forgotPasswordScreenWeb() {
+  forgotPasswordScreenSmall() {
+    return Adaptive(
+        iOS: forgotPasswordScreenMobileSmall(false),
+        android: forgotPasswordScreenMobileSmall(true),
+        web: forgotPasswordScreenWebSmall());
+  }
+
+  forgotPasswordScreenLarge() {
+    return Adaptive(
+        iOS: forgotPasswordScreenMobileLarge(false),
+        android: forgotPasswordScreenMobileLarge(true),
+        web: forgotPasswordScreenWebLarge());
+  }
+
+  forgotPasswordScreenWebSmall() {
     return Container();
   }
 
-  forgotPasswordScreenTablet() {
+  forgotPasswordScreenWebLarge() {
+    return Container();
+  }
+
+  forgotPasswordScreenMobileSmall(bool isAndroid) {
     return Stack(alignment: Alignment.center, children: [
       Positioned(
         top: getPosition(
@@ -29,7 +49,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             true,
             Theme.of(context)
                 .materialTapTargetSize
-                .forgotPasswordTabletTitleTop),
+                .forgotPasswordMobileTitleTop),
         child: forgotPasswordTitle(context),
       ),
       Positioned(
@@ -38,7 +58,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               true,
               Theme.of(context)
                   .materialTapTargetSize
-                  .forgotPasswordTabletCenterPieceTop),
+                  .forgotPasswordMobileCenterPieceTop),
           child: forgotPasswordCenterPiece(context)),
       Positioned(
           top: getPosition(
@@ -46,7 +66,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               true,
               Theme.of(context)
                   .materialTapTargetSize
-                  .forgotPasswordTabletUserInputTop),
+                  .forgotPasswordMobileUserInputTop),
           child: forgotPasswordUserInputField(context)),
       Positioned(
         top: getPosition(
@@ -54,7 +74,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             true,
             Theme.of(context)
                 .materialTapTargetSize
-                .forgotPasswordTabletSendTop),
+                .forgotPasswordMobileSendTop),
         child: forgotPasswordSend(context, this),
       ),
       Positioned(
@@ -63,13 +83,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             true,
             Theme.of(context)
                 .materialTapTargetSize
-                .forgotPasswordTabletResendTop),
+                .forgotPasswordMobileResendTop),
         child: forgotPasswordResend(context),
       )
     ]);
   }
 
-  forgotPasswordScreenMobile() {
+  forgotPasswordScreenMobileLarge(bool isAndroid) {
     return Stack(alignment: Alignment.center, children: [
       Positioned(
         top: getPosition(
@@ -140,9 +160,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             .visualDensity
                             .forgotPasswordBoxConstraintUnfocused)),
             child: Responsive(
-              web: forgotPasswordScreenWeb(),
-              tablet: forgotPasswordScreenTablet(),
-              mobile: forgotPasswordScreenMobile(),
+              small: forgotPasswordScreenSmall(),
+              large: forgotPasswordScreenLarge(),
             )),
       ),
     ));

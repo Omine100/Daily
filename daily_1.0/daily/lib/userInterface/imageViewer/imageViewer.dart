@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/userInterface/imageViewerComponents.dart';
+import 'package:daily/userInterface/imageViewer/imageViewerWebComponents.dart';
+import 'package:daily/userInterface/imageViewer/imageViewerMobileComponents.dart';
 
 class ImageViewerScreen extends StatefulWidget {
   final Widget image;
@@ -12,7 +14,29 @@ class ImageViewerScreen extends StatefulWidget {
 }
 
 class _ImageViewerScreenState extends State<ImageViewerScreen> {
-  imageViewerScreenWeb() {
+  imageViewerScreenSmall() {
+    return Adaptive(
+        iOS: imageViewerScreenMobileSmall(false),
+        android: imageViewerScreenMobileSmall(true),
+        web: imageViewerScreenWebSmall());
+  }
+
+  imageViewerScreenLarge() {
+    return Adaptive(
+        iOS: imageViewerScreenMobileLarge(false),
+        android: imageViewerScreenMobileLarge(true),
+        web: imageViewerScreenWebLarge());
+  }
+
+  imageViewerScreenWebSmall() {
+    return Container();
+  }
+
+  imageViewerScreenWebLarge() {
+    return Container();
+  }
+
+  imageViewerScreenMobileSmall(bool isAndroid) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -24,19 +48,7 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
     );
   }
 
-  imageViewerScreenTablet() {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        imageViewerImage(context, widget.image),
-        Positioned(
-            bottom: 50,
-            child: imageViewerProgressButton(context, widget.imagePath)),
-      ],
-    );
-  }
-
-  imageViewerScreenMobile() {
+  imageViewerScreenMobileLarge(bool isAndroid) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -53,9 +65,8 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
     return Material(
       child: Scaffold(
         body: Responsive(
-          web: imageViewerScreenWeb(),
-          tablet: imageViewerScreenTablet(),
-          mobile: imageViewerScreenMobile(),
+          small: imageViewerScreenSmall(),
+          large: imageViewerScreenLarge(),
         ),
       ),
     );
