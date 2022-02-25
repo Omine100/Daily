@@ -78,8 +78,7 @@ Widget authWebCard(BuildContext context, bool isSignIn) {
     width: MediaQuery.of(context).size.width * 0.5,
     decoration: BoxDecoration(
         color: Colors.grey.shade900,
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(50), bottomLeft: Radius.circular(50))),
+        borderRadius: BorderRadius.all(Radius.circular(50))),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,

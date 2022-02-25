@@ -41,8 +41,13 @@ class _AuthScreenState extends State<AuthScreen> {
       alignment: Alignment.center,
       children: [
         Positioned(
-          child: authWebCard(context, isSignIn),
-        ),
+            child: Align(
+          alignment: Alignment.center,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 100),
+            child: authWebCard(context, isSignIn),
+          ),
+        )),
       ],
     );
   }
@@ -195,9 +200,9 @@ class _AuthScreenState extends State<AuthScreen> {
     FocusNode textFieldFocus = new FocusNode();
     return Material(
         child: Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.authBackground,
       body: SingleChildScrollView(
         child: Container(
-            color: Theme.of(context).colorScheme.authBackground,
             constraints: BoxConstraints(
                 maxHeight: textFieldFocus.hasFocus
                     ? getDimension(
