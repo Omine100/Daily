@@ -41,7 +41,6 @@ class _AuthScreenState extends State<AuthScreen> {
       alignment: Alignment.center,
       children: [
         Positioned(
-          right: 0,
           child: authWebCard(context, isSignIn),
         ),
       ],
