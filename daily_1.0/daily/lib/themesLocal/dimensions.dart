@@ -68,6 +68,8 @@ extension CustomMobileDimensions on VisualDensity {
   double get settingsCardWidth => 1.0;
   double get settingsCardSheetContainerHeight => 1.0;
   double get settingsCardSheetContainerWidth => 0.9;
+  double get settingsSheetMinSize => 0.87;
+  double get settingsSheetSize => 1.0;
   double get settingDropdownHeight => 0.4;
   // #endregion
 }

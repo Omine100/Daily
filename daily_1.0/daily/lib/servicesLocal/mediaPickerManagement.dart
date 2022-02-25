@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:share/share.dart';
 import 'package:picker/picker.dart';
 import 'dart:io';
 import 'package:daily/servicesBroad/firebaseCRUD.dart';

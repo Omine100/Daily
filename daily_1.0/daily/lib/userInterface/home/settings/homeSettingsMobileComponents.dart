@@ -12,7 +12,6 @@ import 'package:daily/standards/userXStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
-import 'package:daily/themesLocal/sizes.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 
@@ -141,10 +140,9 @@ Container settingsCard(BuildContext context, State state) {
         context, false, Theme.of(context).visualDensity.settingsCardWidth),
     child: DraggableScrollableSheet(
         initialChildSize: firebaseAccounts.getSignedInStatus()
-            ? Theme.of(context).materialTapTargetSize.settingsSheetMinSize
-            : Theme.of(context).materialTapTargetSize.settingsSheetSize,
-        minChildSize:
-            Theme.of(context).materialTapTargetSize.settingsSheetMinSize,
+            ? Theme.of(context).visualDensity.settingsSheetMinSize
+            : Theme.of(context).visualDensity.settingsSheetSize,
+        minChildSize: Theme.of(context).visualDensity.settingsSheetMinSize,
         builder: (context, scrollController) {
           return SingleChildScrollView(
             controller: scrollController,

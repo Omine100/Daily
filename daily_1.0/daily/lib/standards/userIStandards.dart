@@ -6,7 +6,6 @@ import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/fontProperties.dart';
-import 'package:daily/themesLocal/sizes.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
