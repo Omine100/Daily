@@ -72,7 +72,7 @@ Widget authCarousel(BuildContext context, State state) {
   );
 }
 
-Widget authWebCard(BuildContext context, bool isSignIn) {
+Widget authWebCard(BuildContext context, bool isSignIn, State state) {
   return Container(
     height: MediaQuery.of(context).size.height,
     width: MediaQuery.of(context).size.width * 0.5,
@@ -82,7 +82,13 @@ Widget authWebCard(BuildContext context, bool isSignIn) {
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [authWebTitle(context), authUserInput(context, isSignIn)],
+      children: [
+        authWebTitle(context),
+        authUserInput(context, isSignIn),
+        isSignIn ? authForgotPassword(context) : authPolicyAndTaC(context),
+        authGetStarted(context, isSignIn, state),
+        authSwitch(context, isSignIn)
+      ],
     ),
   );
 }

@@ -1,3 +1,4 @@
+import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
@@ -45,7 +46,7 @@ class _AuthScreenState extends State<AuthScreen> {
           alignment: Alignment.center,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 100),
-            child: authWebCard(context, isSignIn),
+            child: authWebCard(context, isSignIn, this),
           ),
         )),
       ],
@@ -65,7 +66,7 @@ class _AuthScreenState extends State<AuthScreen> {
         ),
         Positioned(
           right: 0,
-          child: authWebCard(context, isSignIn),
+          child: authWebCard(context, isSignIn, this),
         ),
       ],
     );
