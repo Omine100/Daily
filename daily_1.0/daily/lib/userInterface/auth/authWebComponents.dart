@@ -1,4 +1,3 @@
-import 'package:daily/userInterface/auth/authMobileComponents.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:auto_route/auto_route.dart';
@@ -33,7 +32,7 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
   return Container(
     height: MediaQuery.of(context).size.height,
     width: isSmall
-        ? MediaQuery.of(context).size.width * 0.6
+        ? MediaQuery.of(context).size.width * 0.7
         : MediaQuery.of(context).size.width * 0.5,
     decoration: BoxDecoration(
         color: Colors.grey.shade900,
