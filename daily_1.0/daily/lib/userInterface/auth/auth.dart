@@ -46,9 +46,13 @@ class _AuthScreenState extends State<AuthScreen> {
           alignment: Alignment.center,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 100),
-            child: authWebCard(context, isSignIn, this),
+            child: authWebCard(context, isSignIn, this, true),
           ),
         )),
+        Positioned(
+            top: getPosition(context, true,
+                Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
+            child: GestureDetector(child: authSwitch(context, isSignIn)))
       ],
     );
   }
@@ -58,16 +62,23 @@ class _AuthScreenState extends State<AuthScreen> {
       alignment: Alignment.center,
       children: [
         Positioned(
-          left: 175,
-          child: Transform.scale(
-            scale: 1.5,
-            child: authCarousel(context, this),
-          ),
+          left: 0,
+          child: authWebCenterPiece(context, this),
         ),
         Positioned(
           right: 0,
-          child: authWebCard(context, isSignIn, this),
+          child: authWebCard(context, isSignIn, this, false),
         ),
+        Positioned(
+            top: getPosition(context, true,
+                Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
+            child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isSignIn = !isSignIn;
+                  });
+                },
+                child: authSwitch(context, isSignIn)))
       ],
     );
   }
