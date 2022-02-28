@@ -35,3 +35,24 @@ class Adaptive extends StatelessWidget {
     }));
   }
 }
+
+class AdaptiveText extends StatelessWidget {
+  final String text;
+  final TextStyle style;
+  AdaptiveText(this.text, {this.style});
+
+  @override
+  Widget build(BuildContext context) {
+    if (kIsWeb) {
+      return SelectableText(
+        text,
+        style: style,
+      );
+    }
+
+    return Text(
+      text,
+      style: style,
+    );
+  }
+}

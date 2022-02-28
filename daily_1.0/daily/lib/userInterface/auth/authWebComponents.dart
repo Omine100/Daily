@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
@@ -15,7 +16,7 @@ RouteNavigation routeNavigation = new RouteNavigation();
 
 Widget authWebTitle(BuildContext context, bool isSignIn) {
   return Center(
-    child: Text(
+    child: AdaptiveText(
       isSignIn ? "Login to Daily" : "Signup for Daily",
       style: TextStyle(
         color: Colors.grey.shade600,
