@@ -55,19 +55,14 @@ flutter:
       - lib/legal/documents/termsAndConditions_01182022.txt
       - lib/assets/launcher/icon.png
       - lib/assets/launcher/icon_noBackground.png
-      - lib/assets/welcome/welcome_carouselOne.png
-      - lib/assets/welcome/welcome_carouselTwo.png
-      - lib/assets/welcome/welcome_carouselThree.png
-      - lib/assets/welcome/welcome_corner.png
+      - lib/assets/welcome/mobile/welcome_carouselOne.png
+      - lib/assets/welcome/mobile/welcome_carouselTwo.png
+      - lib/assets/welcome/mobile/welcome_carouselThree.png
+      - lib/assets/welcome/mobile/welcome_corner.png
       - lib/assets/auth/web/auth_centerPiece_dark.jpg
       - lib/assets/auth/web/auth_centerPiece_light.jpg
-      - lib/assets/auth/auth_centerPiece.png
-      - lib/assets/forgotPassword/forgotPassword_centerPiece.png
-      - lib/assets/home/home_carouselOne.png
-      - lib/assets/home/home_carouselTwo.png
-      - lib/assets/home/home_carouselThree.png
-      - lib/assets/home/home_carouselFour.png
-      - lib/assets/home/home_carouselFive.png
+      - lib/assets/auth/mobile/auth_centerPiece.png
+      - lib/assets/forgotPassword/mobile/forgotPassword_centerPiece.png
       - lib/localizations/zh.json
       - lib/localizations/de.json
       - lib/localizations/en.json
