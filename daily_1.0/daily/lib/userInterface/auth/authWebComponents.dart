@@ -1,3 +1,4 @@
+import 'package:daily/userInterface/auth/authMobileComponents.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:auto_route/auto_route.dart';
@@ -55,7 +56,8 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
         Padding(
           padding: EdgeInsets.only(top: 25),
           child: authWebGetStarted(context, isSmall, state),
-        )
+        ),
+        authWebSwitch(context, state),
       ],
     ),
   );

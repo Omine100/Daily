@@ -17,7 +17,7 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  bool isSignIn = false;
+  bool isSignIn;
   void initState() {
     super.initState();
     isSignIn = (widget.isSignIn != null ? widget.isSignIn : true);
@@ -43,7 +43,7 @@ class _AuthScreenState extends State<AuthScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Positioned(child: authWebCenterPiece(context, this, true)),
+        Positioned(left: 0, child: authWebCenterPiece(context, this, true)),
         Positioned(
             child: Align(
           alignment: Alignment.center,
@@ -52,16 +52,6 @@ class _AuthScreenState extends State<AuthScreen> {
             child: authWebCard(context, this, true),
           ),
         )),
-        Positioned(
-            top: getPosition(context, true,
-                Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
-            child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isSignIn = !isSignIn;
-                  });
-                },
-                child: authWebSwitch(context, this)))
       ],
     );
   }
@@ -78,11 +68,6 @@ class _AuthScreenState extends State<AuthScreen> {
           right: 0,
           child: authWebCard(context, this, false),
         ),
-        Positioned(
-          top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
-          child: authWebSwitch(context, this),
-        )
       ],
     );
   }
