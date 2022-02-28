@@ -16,7 +16,7 @@ RouteNavigation routeNavigation = new RouteNavigation();
 Widget authWebTitle(BuildContext context, bool isSignIn) {
   return Center(
     child: Text(
-      isSignIn ? "Login" : "Sign Up",
+      "Daily",
       style: TextStyle(
         color: Colors.grey.shade600,
         fontSize: 45,
@@ -47,13 +47,13 @@ Widget authWebCard(
           padding: EdgeInsets.all(15),
           child: authWebTitle(context, isSignIn),
         ),
-        authWebUserInput(context, isSignIn),
+        authWebUserInput(context, isSignIn, isSmall),
         isSignIn
             ? authWebForgotPassword(context)
             : authWebPolicyAndTaC(context),
         Padding(
-          padding: EdgeInsets.all(15),
-          child: authWebGetStarted(context, isSignIn, state),
+          padding: EdgeInsets.only(top: 25),
+          child: authWebGetStarted(context, isSignIn, isSmall, state),
         )
       ],
     ),
@@ -62,12 +62,12 @@ Widget authWebCard(
 
 String userName = "", userEmail = "", userPass = "", userPassVerify = "";
 final formKey = GlobalKey<FormState>();
-Widget authWebUserInput(BuildContext context, bool isSignIn) {
+Widget authWebUserInput(BuildContext context, bool isSignIn, bool isSmall) {
   return Form(
       key: formKey,
       child: Center(
         child: Container(
-          width: getDimension(context, false, 0.3),
+          width: getDimension(context, false, isSmall ? 0.5 : 0.35),
           child: Column(
             children: [
               isSignIn
@@ -171,7 +171,7 @@ Widget authWebUserInputField(
 
 Widget authWebForgotPassword(BuildContext context) {
   return Container(
-    width: getDimension(context, false, 0.3),
+    width: getDimension(context, false, 0.25),
     alignment: Alignment.centerLeft,
     child: Align(
       alignment: Alignment.center,
@@ -245,33 +245,37 @@ Widget authWebPolicyAndTaC(BuildContext context) {
   );
 }
 
-Widget authWebGetStarted(BuildContext context, bool isSignIn, State state) {
-  return Container(
-    height: getDimension(
-        context, true, Theme.of(context).visualDensity.authGetStartedHeight),
-    width: getDimension(context, false,
-            Theme.of(context).visualDensity.authGetStartedWidth) *
-        0.3,
-    decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.authMobileGetStarted,
-        borderRadius: BorderRadius.circular(30)),
-    child: Material(
-      color: Theme.of(context).colorScheme.materialTransparent,
-      child: InkWell(
-        splashColor: Theme.of(context).colorScheme.authMobileGetStartedInkWell,
-        customBorder:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        onTap: () {
-          authWebValidateSubmit(context, isSignIn, state);
-        },
-        child: Container(
-          child: Center(
-            child: Text(
-              getTranslated(context, isSignIn ? "authSignIn" : "authSignUp"),
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.authMobileGetStartedText,
-                fontSize: Theme.of(context).textTheme.authGetStartedText,
-                fontWeight: Theme.of(context).typography.authGetStartedText,
+Widget authWebGetStarted(
+    BuildContext context, bool isSignIn, bool isSmall, State state) {
+  return Center(
+    child: Container(
+      height: getDimension(
+          context, true, Theme.of(context).visualDensity.authGetStartedHeight),
+      width: getDimension(context, false,
+              Theme.of(context).visualDensity.authGetStartedWidth) *
+          0.3,
+      decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.authMobileGetStarted,
+          borderRadius: BorderRadius.circular(30)),
+      child: Material(
+        color: Theme.of(context).colorScheme.materialTransparent,
+        child: InkWell(
+          splashColor:
+              Theme.of(context).colorScheme.authMobileGetStartedInkWell,
+          customBorder:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+          onTap: () {
+            authWebValidateSubmit(context, isSignIn, state);
+          },
+          child: Container(
+            child: Center(
+              child: Text(
+                getTranslated(context, isSignIn ? "authSignIn" : "authSignUp"),
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.authMobileGetStartedText,
+                  fontSize: Theme.of(context).textTheme.authGetStartedText,
+                  fontWeight: Theme.of(context).typography.authGetStartedText,
+                ),
               ),
             ),
           ),

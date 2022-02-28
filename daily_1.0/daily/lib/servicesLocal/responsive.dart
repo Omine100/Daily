@@ -11,16 +11,16 @@ class Responsive extends StatelessWidget {
   }) : super(key: key);
 
   static bool isSmall(BuildContext context) =>
-      MediaQuery.of(context).size.width < 850;
+      MediaQuery.of(context).size.width < 900;
 
   static bool isLarge(BuildContext context) =>
-      MediaQuery.of(context).size.width >= 850;
+      MediaQuery.of(context).size.width >= 900;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth >= 850) {
+        if (constraints.maxWidth >= 900) {
           return large;
         } else {
           return small;

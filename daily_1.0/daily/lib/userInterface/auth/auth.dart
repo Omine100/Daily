@@ -52,7 +52,13 @@ class _AuthScreenState extends State<AuthScreen> {
         Positioned(
             top: getPosition(context, true,
                 Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
-            child: GestureDetector(child: authSwitch(context, isSignIn)))
+            child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isSignIn = !isSignIn;
+                  });
+                },
+                child: authSwitch(context, isSignIn)))
       ],
     );
   }
