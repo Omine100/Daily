@@ -333,10 +333,12 @@ void authWebValidateSubmit(
     });
 }
 
-Widget authWebCenterPiece(BuildContext context, State state) {
+Widget authWebCenterPiece(BuildContext context, State state, bool isSmall) {
   return Container(
       height: getDimension(context, true, 1.0),
-      width: MediaQuery.of(context).size.width * 0.6,
+      width: isSmall
+          ? MediaQuery.of(context).size.width
+          : MediaQuery.of(context).size.width * 0.6,
       child: Image(
           fit: BoxFit.cover,
           image: isDark.value
