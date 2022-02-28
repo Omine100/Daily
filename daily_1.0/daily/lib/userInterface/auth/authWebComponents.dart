@@ -13,6 +13,7 @@ import 'package:daily/themesLocal/fontProperties.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();
+bool isSignIn = true;
 
 Widget authWebTitle(BuildContext context, bool isSignIn) {
   return Center(
@@ -27,8 +28,7 @@ Widget authWebTitle(BuildContext context, bool isSignIn) {
   );
 }
 
-Widget authWebCard(
-    BuildContext context, bool isSignIn, State state, bool isSmall) {
+Widget authWebCard(BuildContext context, State state, bool isSmall) {
   return Container(
     height: MediaQuery.of(context).size.height,
     width: isSmall
@@ -48,13 +48,13 @@ Widget authWebCard(
           padding: EdgeInsets.all(15),
           child: authWebTitle(context, isSignIn),
         ),
-        authWebUserInput(context, isSignIn, isSmall),
+        authWebUserInput(context, isSmall),
         isSignIn
             ? authWebForgotPassword(context)
             : authWebPolicyAndTaC(context),
         Padding(
           padding: EdgeInsets.only(top: 25),
-          child: authWebGetStarted(context, isSignIn, isSmall, state),
+          child: authWebGetStarted(context, isSmall, state),
         )
       ],
     ),
@@ -63,7 +63,7 @@ Widget authWebCard(
 
 String userName = "", userEmail = "", userPass = "", userPassVerify = "";
 final formKey = GlobalKey<FormState>();
-Widget authWebUserInput(BuildContext context, bool isSignIn, bool isSmall) {
+Widget authWebUserInput(BuildContext context, bool isSmall) {
   return Form(
       key: formKey,
       child: Center(
@@ -246,8 +246,7 @@ Widget authWebPolicyAndTaC(BuildContext context) {
   );
 }
 
-Widget authWebGetStarted(
-    BuildContext context, bool isSignIn, bool isSmall, State state) {
+Widget authWebGetStarted(BuildContext context, bool isSmall, State state) {
   return Center(
     child: Container(
       height: getDimension(
@@ -266,7 +265,7 @@ Widget authWebGetStarted(
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            authWebValidateSubmit(context, isSignIn, state);
+            authWebValidateSubmit(context, state);
           },
           child: Container(
             child: Center(
@@ -286,36 +285,41 @@ Widget authWebGetStarted(
   );
 }
 
-Widget authWebSwitch(BuildContext context, bool isSignIn) {
-  return RichText(
-    text: TextSpan(
-      text: getTranslated(context,
-          isSignIn ? "authSwitchSignUpPrimary" : "authSwitchSignInPrimary"),
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.authMobileSwitchPrimary,
-        fontSize: Theme.of(context).textTheme.authSwitchPrimary,
-        fontWeight: Theme.of(context).typography.authSwitchPrimary,
-      ),
-      children: <TextSpan>[
-        TextSpan(
-          text: getTranslated(
-              context,
-              isSignIn
-                  ? "authSwitchSignUpSecondary"
-                  : "authSwitchSignInSecondary"),
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.authMobileSwitchSecondary,
-            fontSize: Theme.of(context).textTheme.authSwitchSecondary,
-            fontWeight: Theme.of(context).typography.authSwitchSecondary,
-          ),
+Widget authWebSwitch(BuildContext context, State state) {
+  return GestureDetector(
+    onTap: () {
+      isSignIn = !isSignIn;
+      state.setState(() {});
+    },
+    child: RichText(
+      text: TextSpan(
+        text: getTranslated(context,
+            isSignIn ? "authSwitchSignUpPrimary" : "authSwitchSignInPrimary"),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.authMobileSwitchPrimary,
+          fontSize: Theme.of(context).textTheme.authSwitchPrimary,
+          fontWeight: Theme.of(context).typography.authSwitchPrimary,
         ),
-      ],
+        children: <TextSpan>[
+          TextSpan(
+            text: getTranslated(
+                context,
+                isSignIn
+                    ? "authSwitchSignUpSecondary"
+                    : "authSwitchSignInSecondary"),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.authMobileSwitchSecondary,
+              fontSize: Theme.of(context).textTheme.authSwitchSecondary,
+              fontWeight: Theme.of(context).typography.authSwitchSecondary,
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }
 
-void authWebValidateSubmit(
-    BuildContext context, bool isSignIn, State state) async {
+void authWebValidateSubmit(BuildContext context, State state) async {
   formKey.currentState.save();
   if (isSignIn)
     firebaseAccounts

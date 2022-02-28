@@ -49,7 +49,7 @@ class _AuthScreenState extends State<AuthScreen> {
           alignment: Alignment.center,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 100),
-            child: authWebCard(context, isSignIn, this, true),
+            child: authWebCard(context, this, true),
           ),
         )),
         Positioned(
@@ -61,7 +61,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     isSignIn = !isSignIn;
                   });
                 },
-                child: authSwitch(context, isSignIn)))
+                child: authWebSwitch(context, this)))
       ],
     );
   }
@@ -76,18 +76,13 @@ class _AuthScreenState extends State<AuthScreen> {
         ),
         Positioned(
           right: 0,
-          child: authWebCard(context, isSignIn, this, false),
+          child: authWebCard(context, this, false),
         ),
         Positioned(
-            top: getPosition(context, true,
-                Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
-            child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isSignIn = !isSignIn;
-                  });
-                },
-                child: authSwitch(context, isSignIn)))
+          top: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
+          child: authWebSwitch(context, this),
+        )
       ],
     );
   }
