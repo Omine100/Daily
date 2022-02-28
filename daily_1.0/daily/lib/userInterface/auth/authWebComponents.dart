@@ -16,7 +16,7 @@ RouteNavigation routeNavigation = new RouteNavigation();
 Widget authWebTitle(BuildContext context, bool isSignIn) {
   return Center(
     child: Text(
-      "Daily",
+      isSignIn ? "Login to Daily" : "Signup for Daily",
       style: TextStyle(
         color: Colors.grey.shade600,
         fontSize: 45,
