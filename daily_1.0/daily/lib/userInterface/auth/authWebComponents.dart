@@ -96,7 +96,8 @@ Widget authWebUserInput(BuildContext context, bool isSmall) {
       key: formKey,
       child: Center(
         child: Container(
-          width: getDimension(context, false, isSmall ? 0.5 : 0.35),
+          width: getDimension(context, false,
+              Theme.of(context).visualDensity.authWebUserInputWidth),
           child: Column(
             children: [
               isSignIn
@@ -127,7 +128,7 @@ Widget authWebUserInputField(
     padding: const EdgeInsets.all(8.0),
     child: Container(
       height: getDimension(context, true,
-          Theme.of(context).visualDensity.authUserInputFieldHeight),
+          Theme.of(context).visualDensity.authWebUserInputFieldHeight),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
@@ -200,7 +201,8 @@ Widget authWebUserInputField(
 
 Widget authWebForgotPassword(BuildContext context, bool isSmall) {
   return Container(
-    width: getDimension(context, false, isSmall ? 0.47 : 0.33),
+    width: getDimension(context, false,
+        Theme.of(context).visualDensity.authWebForgotPasswordWidth),
     alignment: Alignment.centerLeft,
     child: GestureDetector(
       onTap: () {
@@ -274,11 +276,10 @@ Widget authWebPolicyAndTaC(BuildContext context) {
 Widget authWebGetStarted(BuildContext context, bool isSmall, State state) {
   return Center(
     child: Container(
-      height: getDimension(
-          context, true, Theme.of(context).visualDensity.authGetStartedHeight),
+      height: getDimension(context, true,
+          Theme.of(context).visualDensity.authWebGetStartedHeight),
       width: getDimension(context, false,
-              Theme.of(context).visualDensity.authGetStartedWidth) *
-          0.45,
+          Theme.of(context).visualDensity.authWebGetStartedWidth),
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.authWebGetStarted,
           borderRadius: BorderRadius.circular(30)),
