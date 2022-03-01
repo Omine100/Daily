@@ -131,6 +131,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    setResponsiveState(context);
     return Material(
         child: Scaffold(
       body: Container(
