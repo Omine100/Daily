@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
@@ -14,6 +15,12 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    if (kIsWeb) context.router.push(AuthScreen(isSignIn: true));
+  }
+
   welcomeScreenSmall() {
     return Adaptive(
         iOS: welcomeScreenMobileSmall(false),
@@ -29,11 +36,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
   welcomeScreenWebSmall() {
-    return context.router.push(AuthScreen(isSignIn: true));
+    return Container();
   }
 
   welcomeScreenWebLarge() {
-    return context.router.push(AuthScreen(isSignIn: true));
+    return Container();
   }
 
   welcomeScreenMobileSmall(bool isAndroid) {

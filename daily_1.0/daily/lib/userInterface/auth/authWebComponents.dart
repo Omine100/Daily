@@ -40,23 +40,37 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
             ? BorderRadius.all(Radius.circular(50))
             : BorderRadius.only(
                 topLeft: Radius.circular(50), bottomLeft: Radius.circular(50))),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
+    child: Stack(
+      //Change this to center
+      alignment: Alignment.center,
       children: [
-        Padding(
-          padding: EdgeInsets.all(15),
-          child: authWebTitle(context, isSignIn),
+        Positioned(
+          top: isSignIn ? 200 : 150,
+          child: Center(
+            child: authWebTitle(context, isSignIn),
+          ),
         ),
-        authWebUserInput(context, isSmall),
-        isSignIn
-            ? authWebForgotPassword(context)
-            : authWebPolicyAndTaC(context),
-        Padding(
-          padding: EdgeInsets.only(top: 25),
-          child: authWebGetStarted(context, isSmall, state),
+        Positioned(
+          top: isSignIn ? 275 : 225,
+          child: Center(
+            child: Column(
+              children: [
+                authWebUserInput(context, isSmall),
+                isSignIn
+                    ? Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: authWebForgotPassword(context, isSmall),
+                      )
+                    : authWebPolicyAndTaC(context),
+                authWebGetStarted(context, isSmall, state),
+              ],
+            ),
+          ),
         ),
-        authWebSwitch(context, state),
+        Positioned(
+          bottom: 30,
+          child: authWebSwitch(context, state),
+        ),
       ],
     ),
   );
@@ -171,23 +185,20 @@ Widget authWebUserInputField(
   );
 }
 
-Widget authWebForgotPassword(BuildContext context) {
+Widget authWebForgotPassword(BuildContext context, bool isSmall) {
   return Container(
-    width: getDimension(context, false, 0.25),
+    width: getDimension(context, false, isSmall ? 0.47 : 0.33),
     alignment: Alignment.centerLeft,
-    child: Align(
-      alignment: Alignment.center,
-      child: GestureDetector(
-        onTap: () {
-          context.router.push(ForgotPasswordScreen());
-        },
-        child: Text(
-          getTranslated(context, "authForgotPassword"),
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.authMobileForgotPassword,
-            fontSize: Theme.of(context).textTheme.authForgotPassword,
-            fontWeight: Theme.of(context).typography.authForgotPassword,
-          ),
+    child: GestureDetector(
+      onTap: () {
+        context.router.push(ForgotPasswordScreen());
+      },
+      child: Text(
+        getTranslated(context, "authForgotPassword"),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.authMobileForgotPassword,
+          fontSize: Theme.of(context).textTheme.authForgotPassword,
+          fontWeight: Theme.of(context).typography.authForgotPassword,
         ),
       ),
     ),

@@ -25,21 +25,21 @@ class _AuthScreenState extends State<AuthScreen> {
     //This way we dont have to send it everywhere
   }
 
-  authScreenSmall() {
+  Widget authScreenSmall() {
     return Adaptive(
         iOS: authScreenMobileSmall(false),
         android: authScreenMobileSmall(true),
         web: authScreenWebSmall());
   }
 
-  authScreenLarge() {
+  Widget authScreenLarge() {
     return Adaptive(
         iOS: authScreenMobileLarge(false),
         android: authScreenMobileLarge(true),
         web: authScreenWebLarge());
   }
 
-  authScreenWebSmall() {
+  Widget authScreenWebSmall() {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -56,7 +56,7 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  authScreenWebLarge() {
+  Widget authScreenWebLarge() {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -72,7 +72,7 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  authScreenMobileSmall(bool isAndroid) {
+  Widget authScreenMobileSmall(bool isAndroid) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -134,7 +134,7 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  authScreenMobileLarge(bool isAndroid) {
+  Widget authScreenMobileLarge(bool isAndroid) {
     return Stack(
       alignment: Alignment.center,
       children: [
