@@ -1,7 +1,13 @@
-import 'package:daily/servicesLocal/settingsDeclaration.dart';
-import 'package:daily/servicesLocal/settingsManagement.dart';
 import 'package:flutter/material.dart';
-import 'package:daily/servicesLocal/systemManagement.dart';
+
+bool isSmall = false;
+
+void setResponsiveState(BuildContext context) {
+  if (MediaQuery.of(context).size.width >= 900)
+    isSmall = false;
+  else
+    isSmall = true;
+}
 
 class Responsive extends StatelessWidget {
   final Widget small;
@@ -13,23 +19,15 @@ class Responsive extends StatelessWidget {
     @required this.large,
   }) : super(key: key);
 
-  static bool isSmall(BuildContext context) =>
-      MediaQuery.of(context).size.width < 900;
-
-  static bool isLarge(BuildContext context) =>
-      MediaQuery.of(context).size.width >= 900;
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth >= 900) {
-          setResponsiveness(false);
-          settingsToPrefs(settingsList);
+          isSmall = false;
           return large;
         } else {
-          setResponsiveness(true);
-          settingsToPrefs(settingsList);
+          isSmall = true;
           return small;
         }
       },
