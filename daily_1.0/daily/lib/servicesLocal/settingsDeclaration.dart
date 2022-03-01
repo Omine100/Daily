@@ -47,12 +47,6 @@ Setting isDark = new Setting(
     format: Format.NoUserInput,
     isSignInRequired: false,
     value: false);
-Setting isResponsiveSmall = new Setting(
-    key: "settingIsResponsiveSmall",
-    group: Group.settingGroupHidden,
-    format: Format.NoUserInput,
-    isSignInRequired: false,
-    value: false);
 Setting profileURL = new Setting(
     key: "settingProfileURL",
     group: Group.settingGroupHidden,
@@ -92,7 +86,6 @@ List<Setting> settingsList = [
   resetPassword,
   theme,
   isDark,
-  isResponsiveSmall,
   locale,
   notifications,
   helpSupport,

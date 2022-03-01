@@ -34,12 +34,6 @@ void setTheme(BuildContext context) {
 }
 // #endregion
 
-// #region responsiveness
-void setResponsiveness(bool state) {
-  isResponsiveSmall.value = state;
-}
-// #endregion
-
 // #region legal
 String getPolicyFilePath() {
   return "lib/legal/documents/privacyPolicy_01182022.txt";
