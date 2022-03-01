@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:daily/themesLocal/colors.dart';
-import 'package:daily/themesLocal/fontProperties.dart';
+import 'package:daily/themesLocal/fontSizes.dart';
+import 'package:daily/themesLocal/fontWeights.dart';
 
 Widget textViewerText(BuildContext context, String filePath) {
   return SafeArea(

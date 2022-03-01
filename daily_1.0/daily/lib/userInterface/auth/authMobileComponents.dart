@@ -7,7 +7,8 @@ import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
-import 'package:daily/themesLocal/fontProperties.dart';
+import 'package:daily/themesLocal/fontSizes.dart';
+import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();

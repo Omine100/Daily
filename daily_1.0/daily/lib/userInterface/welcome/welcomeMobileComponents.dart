@@ -5,7 +5,8 @@ import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
-import 'package:daily/themesLocal/fontProperties.dart';
+import 'package:daily/themesLocal/fontSizes.dart';
+import 'package:daily/themesLocal/fontWeights.dart';
 
 Widget welcomeTitle(BuildContext context) {
   return Container(

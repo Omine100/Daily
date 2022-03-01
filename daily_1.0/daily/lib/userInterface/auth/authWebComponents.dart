@@ -9,33 +9,34 @@ import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
-import 'package:daily/themesLocal/fontProperties.dart';
+import 'package:daily/themesLocal/fontSizes.dart';
+import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();
 bool isSignIn = true;
 
-Widget authWebTitle(BuildContext context, bool isSignIn) {
-  return Center(
-    child: AdaptiveText(
-      isSignIn ? "Login to Daily" : "Register for Daily",
-      style: TextStyle(
-        color: Colors.grey.shade600,
-        fontSize: 45,
-        fontWeight: FontWeight.w500,
-      ),
-    ),
-  );
+Widget authWebCenterPiece(BuildContext context, State state, bool isSmall) {
+  return Container(
+      height: getDimension(context, true,
+          Theme.of(context).visualDensity.authWebCenterPieceHeight),
+      width: getDimension(context, false,
+          Theme.of(context).visualDensity.authWebCenterPieceWidth),
+      child: Image(
+          fit: BoxFit.cover,
+          image: isDark.value
+              ? AssetImage("lib/assets/auth/web/auth_centerPiece_dark.jpg")
+              : AssetImage("lib/assets/auth/web/auth_centerPiece_light.jpg")));
 }
 
 Widget authWebCard(BuildContext context, State state, bool isSmall) {
   return Container(
-    height: MediaQuery.of(context).size.height,
-    width: isSmall
-        ? MediaQuery.of(context).size.width * 0.75
-        : MediaQuery.of(context).size.width * 0.5,
+    height: getDimension(
+        context, true, Theme.of(context).visualDensity.authWebCardHeight),
+    width: getDimension(
+        context, false, Theme.of(context).visualDensity.authWebCardWidth),
     decoration: BoxDecoration(
-        color: Colors.grey.shade900,
+        color: Theme.of(context).colorScheme.authWebCard,
         borderRadius: isSmall
             ? BorderRadius.all(Radius.circular(50))
             : BorderRadius.only(
@@ -71,6 +72,19 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
           child: authWebSwitch(context, state),
         ),
       ],
+    ),
+  );
+}
+
+Widget authWebTitle(BuildContext context, bool isSignIn) {
+  return Center(
+    child: AdaptiveText(
+      isSignIn ? "Login to Daily" : "Register for Daily",
+      style: TextStyle(
+        color: Theme.of(context).colorScheme.authWebTitle,
+        fontSize: Theme.of(context).textTheme.authWebTitle,
+        fontWeight: Theme.of(context).typography.authWebTitle,
+      ),
     ),
   );
 }
@@ -117,32 +131,32 @@ Widget authWebUserInputField(
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: Theme.of(context).colorScheme.authMobileUserInputField,
+        color: Theme.of(context).colorScheme.authWebUserInputField,
       ),
       child: TextFormField(
         obscureText: isVariable ? !isVisible : false,
         onSaved: onSaved,
         autofocus: false,
         style: TextStyle(
-            color: Theme.of(context).colorScheme.authMobileUserInputFieldText),
+            color: Theme.of(context).colorScheme.authWebUserInputFieldText),
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: getTranslated(context, authForm),
           labelStyle: TextStyle(
-            color: Theme.of(context)
-                .colorScheme
-                .authMobileUserInputFieldDecoration,
-            fontSize: Theme.of(context).textTheme.authUserInputFieldDecoration,
+            color:
+                Theme.of(context).colorScheme.authWebUserInputFieldDecoration,
+            fontSize:
+                Theme.of(context).textTheme.authWebUserInputFieldDecoration,
             fontWeight:
-                Theme.of(context).typography.authUserInputFieldDecoration,
+                Theme.of(context).typography.authWebUserInputFieldDecoration,
           ),
           hintStyle: TextStyle(
-            color: Theme.of(context)
-                .colorScheme
-                .authMobileUserInputFieldDecoration,
-            fontSize: Theme.of(context).textTheme.authUserInputFieldDecoration,
+            color:
+                Theme.of(context).colorScheme.authWebUserInputFieldDecoration,
+            fontSize:
+                Theme.of(context).textTheme.authWebUserInputFieldDecoration,
             fontWeight:
-                Theme.of(context).typography.authUserInputFieldDecoration,
+                Theme.of(context).typography.authWebUserInputFieldDecoration,
           ),
           prefixIcon: Icon(
             authForm != "authFormEmail"
@@ -153,7 +167,7 @@ Widget authWebUserInputField(
                 : Icons.email,
             color: Theme.of(context)
                 .colorScheme
-                .authMobileUserInputFieldIconDecoration,
+                .authWebUserInputFieldIconDecoration,
           ),
           suffixIcon: isVariable
               ? IconButton(
@@ -174,7 +188,7 @@ Widget authWebUserInputField(
                         : Icons.visibility_off_outlined,
                     color: Theme.of(context)
                         .colorScheme
-                        .authMobileUserInputFieldIconDecoration,
+                        .authWebUserInputFieldIconDecoration,
                   ),
                 )
               : null,
@@ -195,9 +209,9 @@ Widget authWebForgotPassword(BuildContext context, bool isSmall) {
       child: Text(
         getTranslated(context, "authForgotPassword"),
         style: TextStyle(
-          color: Theme.of(context).colorScheme.authMobileForgotPassword,
-          fontSize: Theme.of(context).textTheme.authForgotPassword,
-          fontWeight: Theme.of(context).typography.authForgotPassword,
+          color: Theme.of(context).colorScheme.authWebForgotPassword,
+          fontSize: Theme.of(context).textTheme.authWebForgotPassword,
+          fontWeight: Theme.of(context).typography.authWebForgotPassword,
         ),
       ),
     ),
@@ -211,17 +225,17 @@ Widget authWebPolicyAndTaC(BuildContext context) {
         child: Text.rich(TextSpan(
             text: getTranslated(context, "authPolicyAndTaCPrimary") + " ",
             style: TextStyle(
-              color: Theme.of(context).colorScheme.authMobilePolicyAndTaC,
-              fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
-              fontWeight: Theme.of(context).typography.authPolicyAndTaC,
+              color: Theme.of(context).colorScheme.authWebPolicyAndTaC,
+              fontSize: Theme.of(context).textTheme.authWebPolicyAndTaC,
+              fontWeight: Theme.of(context).typography.authWebPolicyAndTaC,
             ),
             children: <TextSpan>[
           TextSpan(
               text: getTranslated(context, "authPolicyAndTaCPrivacy"),
               style: TextStyle(
-                  color: Theme.of(context).colorScheme.authMobilePolicyAndTaC,
-                  fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
-                  fontWeight: Theme.of(context).typography.authPolicyAndTaC,
+                  color: Theme.of(context).colorScheme.authWebPolicyAndTaC,
+                  fontSize: Theme.of(context).textTheme.authWebPolicyAndTaC,
+                  fontWeight: Theme.of(context).typography.authWebPolicyAndTaC,
                   decoration: TextDecoration.underline),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
@@ -232,20 +246,20 @@ Widget authWebPolicyAndTaC(BuildContext context) {
                   getTranslated(context, "authPolicyAndTaCSeconday") +
                   " ",
               style: TextStyle(
-                color: Theme.of(context).colorScheme.authMobilePolicyAndTaC,
-                fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
-                fontWeight: Theme.of(context).typography.authPolicyAndTaC,
+                color: Theme.of(context).colorScheme.authWebPolicyAndTaC,
+                fontSize: Theme.of(context).textTheme.authWebPolicyAndTaC,
+                fontWeight: Theme.of(context).typography.authWebPolicyAndTaC,
               ),
               children: <TextSpan>[
                 TextSpan(
                     text: getTranslated(context, "authPolicyAndTaCConditions"),
                     style: TextStyle(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .authMobilePolicyAndTaC,
-                        fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
+                        color:
+                            Theme.of(context).colorScheme.authWebPolicyAndTaC,
+                        fontSize:
+                            Theme.of(context).textTheme.authWebPolicyAndTaC,
                         fontWeight:
-                            Theme.of(context).typography.authPolicyAndTaC,
+                            Theme.of(context).typography.authWebPolicyAndTaC,
                         decoration: TextDecoration.underline),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
@@ -266,13 +280,12 @@ Widget authWebGetStarted(BuildContext context, bool isSmall, State state) {
               Theme.of(context).visualDensity.authGetStartedWidth) *
           0.45,
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.authMobileGetStarted,
+          color: Theme.of(context).colorScheme.authWebGetStarted,
           borderRadius: BorderRadius.circular(30)),
       child: Material(
         color: Theme.of(context).colorScheme.materialTransparent,
         child: InkWell(
-          splashColor:
-              Theme.of(context).colorScheme.authMobileGetStartedInkWell,
+          splashColor: Theme.of(context).colorScheme.authWebGetStartedInkWell,
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
@@ -283,9 +296,10 @@ Widget authWebGetStarted(BuildContext context, bool isSmall, State state) {
               child: Text(
                 getTranslated(context, isSignIn ? "authSignIn" : "authSignUp"),
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.authMobileGetStartedText,
-                  fontSize: Theme.of(context).textTheme.authGetStartedText,
-                  fontWeight: Theme.of(context).typography.authGetStartedText,
+                  color: Theme.of(context).colorScheme.authWebGetStartedText,
+                  fontSize: Theme.of(context).textTheme.authWebGetStartedText,
+                  fontWeight:
+                      Theme.of(context).typography.authWebGetStartedText,
                 ),
               ),
             ),
@@ -307,9 +321,9 @@ Widget authWebSwitch(BuildContext context, State state) {
         text: getTranslated(context,
             isSignIn ? "authSwitchSignUpPrimary" : "authSwitchSignInPrimary"),
         style: TextStyle(
-          color: Theme.of(context).colorScheme.authMobileSwitchPrimary,
-          fontSize: Theme.of(context).textTheme.authSwitchPrimary,
-          fontWeight: Theme.of(context).typography.authSwitchPrimary,
+          color: Theme.of(context).colorScheme.authWebSwitchPrimary,
+          fontSize: Theme.of(context).textTheme.authWebSwitchPrimary,
+          fontWeight: Theme.of(context).typography.authWebSwitchPrimary,
         ),
         children: <TextSpan>[
           TextSpan(
@@ -319,9 +333,9 @@ Widget authWebSwitch(BuildContext context, State state) {
                     ? "authSwitchSignUpSecondary"
                     : "authSwitchSignInSecondary"),
             style: TextStyle(
-              color: Theme.of(context).colorScheme.authMobileSwitchSecondary,
-              fontSize: Theme.of(context).textTheme.authSwitchSecondary,
-              fontWeight: Theme.of(context).typography.authSwitchSecondary,
+              color: Theme.of(context).colorScheme.authWebSwitchSecondary,
+              fontSize: Theme.of(context).textTheme.authWebSwitchSecondary,
+              fontWeight: Theme.of(context).typography.authWebSwitchSecondary,
             ),
           ),
         ],
@@ -347,17 +361,4 @@ void authWebValidateSubmit(BuildContext context, State state) async {
       if (value) context.router.push(HomeScreen());
       firebaseAccounts.setCurrentUserProfilePicURL(state);
     });
-}
-
-Widget authWebCenterPiece(BuildContext context, State state, bool isSmall) {
-  return Container(
-      height: getDimension(context, true, 1.0),
-      width: isSmall
-          ? MediaQuery.of(context).size.width
-          : MediaQuery.of(context).size.width * 0.6,
-      child: Image(
-          fit: BoxFit.cover,
-          image: isDark.value
-              ? AssetImage("lib/assets/auth/web/auth_centerPiece_dark.jpg")
-              : AssetImage("lib/assets/auth/web/auth_centerPiece_light.jpg")));
 }

@@ -1,4 +1,3 @@
-import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
@@ -21,8 +20,6 @@ class _AuthScreenState extends State<AuthScreen> {
   void initState() {
     super.initState();
     isSignIn = (widget.isSignIn != null ? widget.isSignIn : true);
-    //Create method in mobile for assigning local variable isSignIn to value, then go from there
-    //This way we dont have to send it everywhere
   }
 
   Widget authScreenSmall() {
@@ -47,10 +44,7 @@ class _AuthScreenState extends State<AuthScreen> {
         Positioned(
             child: Align(
           alignment: Alignment.center,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 100),
-            child: authWebCard(context, this, true),
-          ),
+          child: authWebCard(context, this, true),
         )),
       ],
     );

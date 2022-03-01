@@ -55,7 +55,33 @@ extension CustomConnectedColorScheme on ColorScheme {
   // #endregion
 }
 
-extension CustomWebColorScheme on ColorScheme {}
+extension CustomWebColorScheme on ColorScheme {
+  // #region auth
+  Color get authWebTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get authWebCard => Color(isDark.value ? 0xFF202020 : 0xFFEDEDED);
+  Color get authWebUserInputField =>
+      Color(isDark.value ? 0xFF333333 : 0xFFEEEEEE);
+  Color get authWebUserInputFieldText =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
+  Color get authWebUserInputFieldDecoration =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
+  Color get authWebUserInputFieldIconDecoration =>
+      Color(isDark.value ? 0xFF555555 : 0xFF888888);
+  Color get authWebForgotPassword =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get authWebPolicyAndTaC =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get authWebGetStarted => Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+  Color get authWebGetStartedInkWell =>
+      Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
+  Color get authWebGetStartedText =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+  Color get authWebSwitchPrimary =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get authWebSwitchSecondary =>
+      Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+  // #endregion
+}
 
 //Install extension '#region folding for VS Code'
 extension CustomMobileColorScheme on ColorScheme {

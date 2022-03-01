@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/systemManagement.dart';
 
 //Install extension '#region folding for VS Code'
 
@@ -9,7 +10,22 @@ extension CustomConnectedDimensions on VisualDensity {
   // #endregion
 }
 
-extension CustomWebDimensions on VisualDensity {}
+extension CustomWebDimensions on VisualDensity {
+  // #region welcome
+  double get authWebCenterPieceHeight =>
+      (responsiveState == ResponsiveStates.small ? 1.0 : 1.0);
+  double get authWebCenterPieceWidth =>
+      (responsiveState == ResponsiveStates.small ? 1.0 : 0.6);
+  double get authWebCardHeight =>
+      (responsiveState == ResponsiveStates.small ? 0.8 : 1.0);
+  double get authWebCardWidth =>
+      (responsiveState == ResponsiveStates.small ? 0.75 : 0.5);
+  double get authWebUserInputFieldHeight => 0.06;
+  double get authWebUserInputFieldWidth => 0.5;
+  double get authWebGetStartedHeight => 0.065;
+  double get authWebGetStartedWidth => 0.45;
+  // #endregion
+}
 
 extension CustomMobileDimensions on VisualDensity {
   // #region welcome
@@ -22,17 +38,6 @@ extension CustomMobileDimensions on VisualDensity {
   double get welcomeCornerHeight => 0.22;
   double get welcomeGetStartedHeight => 0.065;
   double get welcomeGetStartedWidth => 0.45;
-  // #endregion
-
-  // #region authWeb
-  double get authWebTitleWidth => 1.0;
-  double get authWebBoxConstraintFocused => 1.2;
-  double get authWebBoxConstraintUnfocused => 1.0;
-  double get authWebCenterPieceHeight => 0.35;
-  double get authWebUserInputFieldHeight => 0.06;
-  double get authWebUserInputFieldWidth => 0.5;
-  double get authWebGetStartedHeight => 0.065;
-  double get authWebGetStartedWidth => 0.45;
   // #endregion
 
   // #region auth

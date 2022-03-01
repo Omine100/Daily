@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/systemManagement.dart';
 
 class Responsive extends StatelessWidget {
   final Widget small;
@@ -21,8 +22,10 @@ class Responsive extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth >= 900) {
+          setResponsiveness(ResponsiveStates.large);
           return large;
         } else {
+          setResponsiveness(ResponsiveStates.small);
           return small;
         }
       },
