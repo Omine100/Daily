@@ -1,3 +1,5 @@
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
+import 'package:daily/servicesLocal/settingsManagement.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 
@@ -22,10 +24,12 @@ class Responsive extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth >= 900) {
-          setResponsiveness(ResponsiveStates.large);
+          setResponsiveness(false);
+          settingsToPrefs(settingsList);
           return large;
         } else {
-          setResponsiveness(ResponsiveStates.small);
+          setResponsiveness(true);
+          settingsToPrefs(settingsList);
           return small;
         }
       },

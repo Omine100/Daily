@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:daily/servicesLocal/systemManagement.dart';
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
 
 //Install extension '#region folding for VS Code'
 
@@ -12,14 +12,10 @@ extension CustomConnectedDimensions on VisualDensity {
 
 extension CustomWebDimensions on VisualDensity {
   // #region welcome
-  double get authWebCenterPieceHeight =>
-      (responsiveState == ResponsiveStates.small ? 1.0 : 1.0);
-  double get authWebCenterPieceWidth =>
-      (responsiveState == ResponsiveStates.small ? 1.0 : 0.6);
-  double get authWebCardHeight =>
-      (responsiveState == ResponsiveStates.small ? 0.8 : 1.0);
-  double get authWebCardWidth =>
-      (responsiveState == ResponsiveStates.small ? 0.75 : 0.5);
+  double get authWebCenterPieceHeight => (isResponsiveSmall.value ? 1.0 : 1.0);
+  double get authWebCenterPieceWidth => (isResponsiveSmall.value ? 1.0 : 0.6);
+  double get authWebCardHeight => (isResponsiveSmall.value ? 0.8 : 1.0);
+  double get authWebCardWidth => (isResponsiveSmall.value ? 0.75 : 0.5);
   double get authWebUserInputFieldHeight => 0.06;
   double get authWebUserInputFieldWidth => 0.5;
   double get authWebGetStartedHeight => 0.065;

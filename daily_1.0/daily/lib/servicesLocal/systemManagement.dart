@@ -35,12 +35,8 @@ void setTheme(BuildContext context) {
 // #endregion
 
 // #region responsiveness
-enum ResponsiveStates { small, large }
-
-ResponsiveStates responsiveState;
-
-bool setResponsiveness(ResponsiveStates state) {
-  responsiveState = state;
+void setResponsiveness(bool state) {
+  isResponsiveSmall.value = state;
 }
 // #endregion
 
