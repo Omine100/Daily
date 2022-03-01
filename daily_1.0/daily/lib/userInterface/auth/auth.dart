@@ -192,6 +192,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
+    setResponsiveState(context);
     FocusNode textFieldFocus = new FocusNode();
     return Material(
         child: Scaffold(
