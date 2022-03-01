@@ -18,7 +18,7 @@ bool isSignIn = true;
 Widget authWebTitle(BuildContext context, bool isSignIn) {
   return Center(
     child: AdaptiveText(
-      isSignIn ? "Login to Daily" : "Signup for Daily",
+      isSignIn ? "I Love You" : "Register for Daily",
       style: TextStyle(
         color: Colors.grey.shade600,
         fontSize: 45,
@@ -45,27 +45,29 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
       alignment: Alignment.center,
       children: [
         Positioned(
-          top: isSignIn ? 200 : 150,
+          top: isSignIn ? (isSmall ? 200 : 290) : (isSmall ? 100 : 200),
           child: Center(
             child: authWebTitle(context, isSignIn),
           ),
         ),
-        Positioned(
-          top: isSignIn ? 275 : 225,
-          child: Center(
-            child: Column(
-              children: [
-                authWebUserInput(context, isSmall),
-                isSignIn
-                    ? Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: authWebForgotPassword(context, isSmall),
-                      )
-                    : authWebPolicyAndTaC(context),
-                authWebGetStarted(context, isSmall, state),
-              ],
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            authWebUserInput(context, isSmall),
+            isSignIn
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: authWebForgotPassword(context, isSmall),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: authWebPolicyAndTaC(context),
+                  ),
+            Padding(
+              padding: const EdgeInsets.only(top: 7.0),
+              child: authWebGetStarted(context, isSmall, state),
             ),
-          ),
+          ],
         ),
         Positioned(
           bottom: 30,
