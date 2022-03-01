@@ -18,7 +18,7 @@ bool isSignIn = true;
 Widget authWebTitle(BuildContext context, bool isSignIn) {
   return Center(
     child: AdaptiveText(
-      isSignIn ? "I Love You" : "Register for Daily",
+      isSignIn ? "Login to Daily" : "Register for Daily",
       style: TextStyle(
         color: Colors.grey.shade600,
         fontSize: 45,
@@ -32,7 +32,7 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
   return Container(
     height: MediaQuery.of(context).size.height,
     width: isSmall
-        ? MediaQuery.of(context).size.width * 0.7
+        ? MediaQuery.of(context).size.width * 0.75
         : MediaQuery.of(context).size.width * 0.5,
     decoration: BoxDecoration(
         color: Colors.grey.shade900,
@@ -41,18 +41,15 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
             : BorderRadius.only(
                 topLeft: Radius.circular(50), bottomLeft: Radius.circular(50))),
     child: Stack(
-      //Change this to center
       alignment: Alignment.center,
       children: [
-        Positioned(
-          top: isSignIn ? (isSmall ? 200 : 290) : (isSmall ? 100 : 200),
-          child: Center(
-            child: authWebTitle(context, isSignIn),
-          ),
-        ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 25.0),
+              child: authWebTitle(context, isSignIn),
+            ),
             authWebUserInput(context, isSmall),
             isSignIn
                 ? Padding(
@@ -267,7 +264,7 @@ Widget authWebGetStarted(BuildContext context, bool isSmall, State state) {
           context, true, Theme.of(context).visualDensity.authGetStartedHeight),
       width: getDimension(context, false,
               Theme.of(context).visualDensity.authGetStartedWidth) *
-          0.3,
+          0.45,
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.authMobileGetStarted,
           borderRadius: BorderRadius.circular(30)),
