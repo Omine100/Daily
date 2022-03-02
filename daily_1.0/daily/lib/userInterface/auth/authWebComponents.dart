@@ -131,7 +131,7 @@ Widget authWebUserInputField(
           Theme.of(context).visualDensity.authWebUserInputFieldHeight),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(10),
         color: Theme.of(context).colorScheme.authWebUserInputField,
       ),
       child: TextFormField(
