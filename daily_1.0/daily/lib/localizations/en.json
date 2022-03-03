@@ -50,6 +50,8 @@
     "welcomeAccountAlready": "Already have an account? ",
     "welcomeAccountAlreadyLogin": "LOGIN!",
     "welcomeGetStarted": "GET STARTED",
+    "authTitleLogin": "Login to Daily",
+    "authTitleSignUp": "Register for Daily",
     "authSignIn": "LOGIN",
     "authSignUp": "SIGN UP",
     "authFormName": "Name",

@@ -79,7 +79,7 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
 Widget authWebTitle(BuildContext context, bool isSignIn) {
   return Center(
     child: AdaptiveText(
-      isSignIn ? "Login to Daily" : "Register for Daily",
+      getTranslated(context, isSignIn ? "authTitleSignIn" : "authTitleSignUp"),
       style: TextStyle(
         color: Theme.of(context).colorScheme.authWebTitle,
         fontSize: Theme.of(context).textTheme.authWebTitle,
