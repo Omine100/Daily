@@ -355,7 +355,10 @@ void authWebValidateSubmit(BuildContext context, State state) async {
     firebaseAccounts
         .signInEmailAndPassword(context, userEmail, userPass)
         .then((value) {
-      if (value) context.router.push(HomeScreen());
+      if (value) {
+        context.router.push(HomeScreen());
+        formKey.currentState.reset();
+      }
       firebaseAccounts.setCurrentUserProfilePicURL(state);
     });
   else
@@ -363,7 +366,10 @@ void authWebValidateSubmit(BuildContext context, State state) async {
         .signUpEmailAndPassword(
             context, userEmail, userPass, userPassVerify, userName)
         .then((value) {
-      if (value) context.router.push(HomeScreen());
+      if (value) {
+        context.router.push(HomeScreen());
+        formKey.currentState.reset();
+      }
       firebaseAccounts.setCurrentUserProfilePicURL(state);
     });
 }
