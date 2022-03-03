@@ -359,7 +359,6 @@ void authWebValidateSubmit(BuildContext context, State state) async {
         context.router.push(HomeScreen());
         formKey.currentState.reset();
       }
-      firebaseAccounts.setCurrentUserProfilePicURL(state);
     });
   else
     firebaseAccounts
@@ -370,6 +369,6 @@ void authWebValidateSubmit(BuildContext context, State state) async {
         context.router.push(HomeScreen());
         formKey.currentState.reset();
       }
-      firebaseAccounts.setCurrentUserProfilePicURL(state);
     });
+  firebaseAccounts.setCurrentUserProfilePicURL(state);
 }
