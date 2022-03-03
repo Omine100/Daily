@@ -12,15 +12,15 @@ extension CustomConnectedDimensions on VisualDensity {
 
 extension CustomWebDimensions on VisualDensity {
   // #region welcome
-  double get authWebCenterPieceHeight => (isSmall ? 1.0 : 1.0);
-  double get authWebCenterPieceWidth => (isSmall ? 1.0 : 0.6);
-  double get authWebCardHeight => (isSmall ? 0.8 : 1.0);
-  double get authWebCardWidth => (isSmall ? 0.75 : 0.5);
-  double get authWebUserInputWidth => (isSmall ? 0.5 : 0.35);
-  double get authWebUserInputFieldHeight => (isSmall ? 0.05 : 0.05);
-  double get authWebForgotPasswordWidth => (isSmall ? 0.47 : 0.32);
-  double get authWebGetStartedHeight => (isSmall ? 0.065 : 0.065);
-  double get authWebGetStartedWidth => (isSmall ? 0.2025 : 0.2025);
+  double get authWebCenterPieceHeight => isSmall ? 1.0 : 1.0;
+  double get authWebCenterPieceWidth => isSmall ? 1.0 : 0.6;
+  double get authWebCardHeight => isSmall ? 0.8 : 1.0;
+  double get authWebCardWidth => isSmall ? 0.75 : 0.5;
+  double get authWebUserInputWidth => isSmall ? 0.5 : 0.35;
+  double get authWebUserInputFieldHeight => isSmall ? 0.05 : 0.05;
+  double get authWebForgotPasswordWidth => isSmall ? 0.47 : 0.32;
+  double get authWebGetStartedHeight => isSmall ? 0.065 : 0.065;
+  double get authWebGetStartedWidth => isSmall ? 0.2025 : 0.2025;
   // #endregion
 }
 

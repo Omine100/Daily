@@ -24,17 +24,17 @@ settingsWebSmall(BuildContext context, State state) {
   return Stack(alignment: Alignment.center, children: [
     Positioned(
       top: getPosition(context, true,
-          Theme.of(context).materialTapTargetSize.settingsDesktopTitleTop),
+          Theme.of(context).materialTapTargetSize.settingsMobileTitleTop),
       child: settingsTitle(context),
     ),
     Positioned(
       top: getPosition(context, true,
-          Theme.of(context).materialTapTargetSize.settingsDesktopProfileTop),
+          Theme.of(context).materialTapTargetSize.settingsMobileProfileTop),
       child: settingsProfile(context, state),
     ),
     Positioned(
       top: getPosition(context, true,
-          Theme.of(context).materialTapTargetSize.settingsDesktopCardTop),
+          Theme.of(context).materialTapTargetSize.settingsMobileCardTop),
       child: settingsCard(context, state),
     ),
   ]);
@@ -44,17 +44,17 @@ settingsWebLarge(BuildContext context, State state) {
   return Stack(alignment: Alignment.center, children: [
     Positioned(
       top: getPosition(context, true,
-          Theme.of(context).materialTapTargetSize.settingsDesktopTitleTop),
+          Theme.of(context).materialTapTargetSize.settingsMobileTitleTop),
       child: settingsTitle(context),
     ),
     Positioned(
       top: getPosition(context, true,
-          Theme.of(context).materialTapTargetSize.settingsDesktopProfileTop),
+          Theme.of(context).materialTapTargetSize.settingsMobileProfileTop),
       child: settingsProfile(context, state),
     ),
     Positioned(
       top: getPosition(context, true,
-          Theme.of(context).materialTapTargetSize.settingsDesktopCardTop),
+          Theme.of(context).materialTapTargetSize.settingsMobileCardTop),
       child: settingsCard(context, state),
     ),
   ]);
