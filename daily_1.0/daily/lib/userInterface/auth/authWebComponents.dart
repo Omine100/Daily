@@ -51,7 +51,7 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
               padding: const EdgeInsets.only(bottom: 25.0),
               child: authWebTitle(context, isSignIn),
             ),
-            authWebUserInput(context, isSmall),
+            authWebUserInput(context, state, isSmall),
             isSignIn
                 ? Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -91,7 +91,7 @@ Widget authWebTitle(BuildContext context, bool isSignIn) {
 
 String userName = "", userEmail = "", userPass = "", userPassVerify = "";
 final formKey = GlobalKey<FormState>();
-Widget authWebUserInput(BuildContext context, bool isSmall) {
+Widget authWebUserInput(BuildContext context, State state, bool isSmall) {
   return Form(
       key: formKey,
       child: Center(
@@ -102,16 +102,17 @@ Widget authWebUserInput(BuildContext context, bool isSmall) {
             children: [
               isSignIn
                   ? Container()
-                  : authWebUserInputField(context, (name) => {userName = name},
-                      "authFormName", false),
-              authWebUserInputField(context, (email) => {userEmail = email},
-                  "authFormEmail", false),
-              authWebUserInputField(
-                  context, (pass) => {userPass = pass}, "authFormPass", true),
+                  : authWebUserInputField(context, state,
+                      (name) => {userName = name}, "authFormName", false),
+              authWebUserInputField(context, state,
+                  (email) => {userEmail = email}, "authFormEmail", false),
+              authWebUserInputField(context, state, (pass) => {userPass = pass},
+                  "authFormPass", true),
               isSignIn
                   ? Container()
                   : authWebUserInputField(
                       context,
+                      state,
                       (passVerify) => {userPassVerify = passVerify},
                       "authFormPassVerify",
                       true),
@@ -122,8 +123,8 @@ Widget authWebUserInput(BuildContext context, bool isSmall) {
 }
 
 bool isVisible = false;
-Widget authWebUserInputField(
-    BuildContext context, Function onSaved, String authForm, bool isVariable) {
+Widget authWebUserInputField(BuildContext context, State state,
+    Function onSaved, String authForm, bool isVariable) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
@@ -137,6 +138,9 @@ Widget authWebUserInputField(
       child: TextFormField(
         obscureText: isVariable ? !isVisible : false,
         onSaved: onSaved,
+        onFieldSubmitted: (value) {
+          authWebValidateSubmit(context, state);
+        },
         autofocus: false,
         style: TextStyle(
             color: Theme.of(context).colorScheme.authWebUserInputFieldText),
