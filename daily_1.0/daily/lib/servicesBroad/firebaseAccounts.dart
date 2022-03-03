@@ -126,7 +126,7 @@ class FirebaseAccounts {
         default:
           key = "errorDefault";
       }
-      showToastMessage(context, key, false);
+      showToastMessage(context, key, true);
     }
     return false;
   }
@@ -161,7 +161,7 @@ class FirebaseAccounts {
         default:
           key = "errorDefault";
       }
-      showToastMessage(context, key, false);
+      showToastMessage(context, key, true);
       return false;
     }
   }

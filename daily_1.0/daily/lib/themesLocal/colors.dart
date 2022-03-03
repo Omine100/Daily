@@ -58,7 +58,7 @@ extension CustomConnectedColorScheme on ColorScheme {
 extension CustomWebColorScheme on ColorScheme {
   // #region auth
   Color get authWebTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
-  Color get authWebCard => Color(isDark.value ? 0xFF202020 : 0xFFEDEDED);
+  Color get authWebCard => Color(isDark.value ? 0xFF202020 : 0xFFFBFAF5);
   Color get authWebUserInputField =>
       Color(isDark.value ? 0xFF333333 : 0xFFEEEEEE);
   Color get authWebUserInputFieldText =>
