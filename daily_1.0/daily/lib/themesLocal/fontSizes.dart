@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 
 //Install extension '#region folding for VS Code'
 
+extension CustomConnectedFontSize on TextTheme {
+  // #region userIStandards
+  double get userIStandardsToastMessageContent => 18.0;
+  double get userIStandardsTextInputContent => 22.0;
+  // #endregion
+}
+
 extension CustomWebFontSize on TextTheme {
   // #region auth
   double get authWebTitle => 48;
@@ -15,11 +22,6 @@ extension CustomWebFontSize on TextTheme {
 }
 
 extension CustomMobileFontSize on TextTheme {
-  // #region userIStandards
-  double get userIStandardsToastMessageContent => 18.0;
-  double get userIStandardsTextInputContent => 22.0;
-  // #endregion
-
   // #region textViewer
   double get textViewerText => 14.0;
   // #endregion
