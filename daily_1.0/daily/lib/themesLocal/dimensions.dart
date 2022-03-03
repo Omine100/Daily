@@ -8,6 +8,11 @@ extension CustomConnectedDimensions on VisualDensity {
   double get userIStandardsSocialButtonHeight => 0.05;
   double get userIStandardsSocialButtonWidth => 0.05;
   // #endregion
+
+  // #region auth
+  double get authBoxConstraintFocused => 1.2;
+  double get authBoxConstraintUnfocused => 1.0;
+  // #endregion
 }
 
 extension CustomWebDimensions on VisualDensity {
@@ -39,8 +44,6 @@ extension CustomMobileDimensions on VisualDensity {
 
   // #region auth
   double get authTitleWidth => 1.0;
-  double get authBoxConstraintFocused => 1.2;
-  double get authBoxConstraintUnfocused => 1.0;
   double get authCenterPieceHeight => 0.35;
   double get authUserInputFieldHeight => 0.06;
   double get authUserInputFieldWidth => 0.875;
