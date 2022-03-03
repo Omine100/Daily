@@ -2,18 +2,14 @@ import 'package:flutter/material.dart';
 
 //Install extension '#region folding for VS Code'
 
-extension CustomWebPositions on MaterialTapTargetSize {}
+extension CustomWebPositions on MaterialTapTargetSize {
+  // #region auth
+  double get authWebCenterPieceLeft => 0;
+  double get authWebCardRight => 0;
+  // #endregion
+}
 
 extension CustomMobilePositions on MaterialTapTargetSize {
-  // #region welcomeDesktop
-  double get welcomeDesktopTitleTop => 0.065;
-  double get welcomeDesktopCarouselTop => 0.22;
-  double get welcomeDesktopCornerTop => 0;
-  double get welcomeDesktopCornerRight => -0.01;
-  double get welcomeDesktopGetStartedTop => 0.835;
-  double get welcomeDesktopAccountAlreadyTop => 0.93;
-  // #endregion
-
   // #region welcomeTablet
   double get welcomeTabletTitleTop => 0.065;
   double get welcomeTabletCarouselTop => 0.22;
@@ -30,16 +26,6 @@ extension CustomMobilePositions on MaterialTapTargetSize {
   double get welcomeMobileCornerRight => -0.01;
   double get welcomeMobileGetStartedTop => 0.835;
   double get welcomeMobileAccountAlreadyTop => 0.93;
-  // #endregion
-
-  // #region authDesktop
-  double get authDesktopCenterPieceTop => 0.06;
-  double get authDesktopUserInputTop => 0.45;
-  double get authDesktopForgotPasswordTop => 0.62;
-  double get authDesktopPolicyAndTaCTop => 0.765;
-  double get authDesktopForgotPasswordPolicyAndTaCLeft => 0.1;
-  double get authDesktopGetStartedTop => 0.835;
-  double get authDesktopSwitchTop => 0.93;
   // #endregion
 
   // #region authTablet
@@ -62,14 +48,6 @@ extension CustomMobilePositions on MaterialTapTargetSize {
   double get authMobileSwitchTop => 0.93;
   // #endregion
 
-  // #region forgotPasswordDesktop
-  double get forgotPasswordDesktopTitleTop => 0.1;
-  double get forgotPasswordDesktopCenterPieceTop => 0.063;
-  double get forgotPasswordDesktopUserInputTop => 0.5;
-  double get forgotPasswordDesktopSendTop => 0.835;
-  double get forgotPasswordDesktopResendTop => 0.93;
-  // #endregion
-
   // #region forgotPasswordTablet
   double get forgotPasswordTabletTitleTop => 0.1;
   double get forgotPasswordTabletCenterPieceTop => 0.06;
@@ -84,12 +62,6 @@ extension CustomMobilePositions on MaterialTapTargetSize {
   double get forgotPasswordMobileUserInputTop => 0.65;
   double get forgotPasswordMobileSendTop => 0.835;
   double get forgotPasswordMobileResendTop => 0.93;
-  // #endregion
-
-  // #region settingsDesktop
-  double get settingsDesktopTitleTop => 0.1;
-  double get settingsDesktopProfileTop => 0.125;
-  double get settingsDesktopCardTop => 0.125;
   // #endregion
 
   // #region settingsTablet

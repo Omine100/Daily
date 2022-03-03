@@ -55,11 +55,13 @@ class _AuthScreenState extends State<AuthScreen> {
       alignment: Alignment.center,
       children: [
         Positioned(
-          left: 0,
+          left: getPosition(context, false,
+              Theme.of(context).materialTapTargetSize.authWebCenterPieceLeft),
           child: authWebCenterPiece(context, this, false),
         ),
         Positioned(
-          right: 0,
+          right: getPosition(context, false,
+              Theme.of(context).materialTapTargetSize.authWebCardRight),
           child: authWebCard(context, this, false),
         ),
       ],
