@@ -12,6 +12,11 @@ import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();
+bool isSignIn;
+
+void setSignIn(bool value) {
+  isSignIn = value;
+}
 
 Widget authCenterPiece(BuildContext context, State state) {
   return Container(
