@@ -69,7 +69,7 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   Widget authScreenMobileSmall(bool isAndroid) {
-    setSignIn();
+    setSignIn(isSignIn);
 
     return Stack(
       alignment: Alignment.center,

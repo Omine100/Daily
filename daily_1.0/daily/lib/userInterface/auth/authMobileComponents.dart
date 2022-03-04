@@ -220,7 +220,7 @@ Widget authGetStarted(BuildContext context, State state) {
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            authValidateSubmit(context, isSignIn, state);
+            authValidateSubmit(context, state);
           },
           child: Container(
             child: Center(
