@@ -22,7 +22,7 @@ Widget authCenterPiece(BuildContext context, State state) {
 
 String userName = "", userEmail = "", userPass = "", userPassVerify = "";
 final formKey = GlobalKey<FormState>();
-Widget authUserInput(BuildContext context, bool isSignIn) {
+Widget authUserInput(BuildContext context) {
   return Form(
     key: formKey,
     child: Column(
@@ -197,7 +197,7 @@ Widget authPolicyAndTaC(BuildContext context) {
   );
 }
 
-Widget authGetStarted(BuildContext context, bool isSignIn, State state) {
+Widget authGetStarted(BuildContext context, State state) {
   return Center(
     child: Container(
       height: getDimension(
@@ -235,7 +235,7 @@ Widget authGetStarted(BuildContext context, bool isSignIn, State state) {
   );
 }
 
-Widget authSwitch(BuildContext context, bool isSignIn) {
+Widget authSwitch(BuildContext context) {
   return RichText(
     text: TextSpan(
       text: getTranslated(context,
@@ -263,22 +263,26 @@ Widget authSwitch(BuildContext context, bool isSignIn) {
   );
 }
 
-void authValidateSubmit(
-    BuildContext context, bool isSignIn, State state) async {
+void authValidateSubmit(BuildContext context, State state) async {
   formKey.currentState.save();
   if (isSignIn)
     firebaseAccounts
         .signInEmailAndPassword(context, userEmail, userPass)
         .then((value) {
-      if (value) context.router.push(HomeScreen());
-      firebaseAccounts.setCurrentUserProfilePicURL(state);
+      if (value) {
+        context.router.push(HomeScreen());
+        formKey.currentState.reset();
+      }
     });
   else
     firebaseAccounts
         .signUpEmailAndPassword(
             context, userEmail, userPass, userPassVerify, userName)
         .then((value) {
-      if (value) context.router.push(HomeScreen());
-      firebaseAccounts.setCurrentUserProfilePicURL(state);
+      if (value) {
+        context.router.push(HomeScreen());
+        formKey.currentState.reset();
+      }
     });
+  firebaseAccounts.setCurrentUserProfilePicURL(state);
 }

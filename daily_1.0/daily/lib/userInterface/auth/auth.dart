@@ -40,7 +40,7 @@ class _AuthScreenState extends State<AuthScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Positioned(left: 0, child: authWebCenterPiece(context, this, true)),
+        Positioned(left: 0, child: authWebCenterPiece(context, this)),
         Positioned(
             child: Align(
           alignment: Alignment.center,
@@ -57,7 +57,7 @@ class _AuthScreenState extends State<AuthScreen> {
         Positioned(
           left: getPosition(context, false,
               Theme.of(context).materialTapTargetSize.authWebCenterPieceLeft),
-          child: authWebCenterPiece(context, this, false),
+          child: authWebCenterPiece(context, this),
         ),
         Positioned(
           right: getPosition(context, false,

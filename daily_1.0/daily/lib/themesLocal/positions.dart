@@ -7,6 +7,7 @@ extension CustomWebPositions on MaterialTapTargetSize {
   // #region auth
   double get authWebCenterPieceLeft => isSmall ? 0 : 0;
   double get authWebCardRight => isSmall ? 0 : 0;
+  double get authWebSwitch => isSmall ? 0.02 : 0.02;
   // #endregion
 }
 

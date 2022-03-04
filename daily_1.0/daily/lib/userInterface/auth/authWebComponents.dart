@@ -1,3 +1,4 @@
+import 'package:daily/themesLocal/positions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:auto_route/auto_route.dart';
@@ -16,7 +17,7 @@ FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();
 bool isSignIn = true;
 
-Widget authWebCenterPiece(BuildContext context, State state, bool isSmall) {
+Widget authWebCenterPiece(BuildContext context, State state) {
   return Container(
       height: getDimension(context, true,
           Theme.of(context).visualDensity.authWebCenterPieceHeight),
@@ -68,7 +69,8 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
           ],
         ),
         Positioned(
-          bottom: 30,
+          bottom: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.authWebSwitch),
           child: authWebSwitch(context, state),
         ),
       ],
