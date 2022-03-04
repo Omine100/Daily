@@ -83,7 +83,7 @@ class _AuthScreenState extends State<AuthScreen> {
         Positioned(
             top: getPosition(context, true,
                 Theme.of(context).materialTapTargetSize.authMobileUserInputTop),
-            child: authUserInput(context, isSignIn)),
+            child: authUserInput(context)),
         Positioned(
           top: isSignIn
               ? getPosition(
@@ -115,7 +115,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 Theme.of(context)
                     .materialTapTargetSize
                     .authMobileGetStartedTop),
-            child: authGetStarted(context, isSignIn, this)),
+            child: authGetStarted(context, this)),
         Positioned(
             top: getPosition(context, true,
                 Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
@@ -125,7 +125,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     isSignIn = !isSignIn;
                   });
                 },
-                child: authSwitch(context, isSignIn)))
+                child: authSwitch(context)))
       ],
     );
   }
@@ -145,7 +145,7 @@ class _AuthScreenState extends State<AuthScreen> {
         Positioned(
             top: getPosition(context, true,
                 Theme.of(context).materialTapTargetSize.authMobileUserInputTop),
-            child: authUserInput(context, isSignIn)),
+            child: authUserInput(context)),
         Positioned(
           top: isSignIn
               ? getPosition(
@@ -177,7 +177,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 Theme.of(context)
                     .materialTapTargetSize
                     .authMobileGetStartedTop),
-            child: authGetStarted(context, isSignIn, this)),
+            child: authGetStarted(context, this)),
         Positioned(
             top: getPosition(context, true,
                 Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
@@ -187,7 +187,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     isSignIn = !isSignIn;
                   });
                 },
-                child: authSwitch(context, isSignIn)))
+                child: authSwitch(context)))
       ],
     );
   }
