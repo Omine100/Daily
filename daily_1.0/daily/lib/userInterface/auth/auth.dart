@@ -133,6 +133,8 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   Widget authScreenMobileLarge(bool isAndroid) {
+    setSignIn(isSignIn);
+
     return Stack(
       alignment: Alignment.center,
       children: [
