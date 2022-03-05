@@ -240,30 +240,36 @@ Widget authGetStarted(BuildContext context, State state) {
   );
 }
 
-Widget authSwitch(BuildContext context) {
-  return RichText(
-    text: TextSpan(
-      text: getTranslated(context,
-          isSignIn ? "authSwitchSignUpPrimary" : "authSwitchSignInPrimary"),
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.authMobileSwitchPrimary,
-        fontSize: Theme.of(context).textTheme.authSwitchPrimary,
-        fontWeight: Theme.of(context).typography.authSwitchPrimary,
-      ),
-      children: <TextSpan>[
-        TextSpan(
-          text: getTranslated(
-              context,
-              isSignIn
-                  ? "authSwitchSignUpSecondary"
-                  : "authSwitchSignInSecondary"),
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.authMobileSwitchSecondary,
-            fontSize: Theme.of(context).textTheme.authSwitchSecondary,
-            fontWeight: Theme.of(context).typography.authSwitchSecondary,
-          ),
+Widget authSwitch(BuildContext context, State state) {
+  return GestureDetector(
+    onTap: () {
+      isSignIn = !isSignIn;
+      state.setState(() {});
+    },
+    child: RichText(
+      text: TextSpan(
+        text: getTranslated(context,
+            isSignIn ? "authSwitchSignUpPrimary" : "authSwitchSignInPrimary"),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.authMobileSwitchPrimary,
+          fontSize: Theme.of(context).textTheme.authSwitchPrimary,
+          fontWeight: Theme.of(context).typography.authSwitchPrimary,
         ),
-      ],
+        children: <TextSpan>[
+          TextSpan(
+            text: getTranslated(
+                context,
+                isSignIn
+                    ? "authSwitchSignUpSecondary"
+                    : "authSwitchSignInSecondary"),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.authMobileSwitchSecondary,
+              fontSize: Theme.of(context).textTheme.authSwitchSecondary,
+              fontWeight: Theme.of(context).typography.authSwitchSecondary,
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }

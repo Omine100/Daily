@@ -121,13 +121,7 @@ class _AuthScreenState extends State<AuthScreen> {
         Positioned(
             top: getPosition(context, true,
                 Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
-            child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isSignIn = !isSignIn;
-                  });
-                },
-                child: authSwitch(context)))
+            child: authSwitch(context, this))
       ],
     );
   }
@@ -185,13 +179,7 @@ class _AuthScreenState extends State<AuthScreen> {
         Positioned(
             top: getPosition(context, true,
                 Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
-            child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isSignIn = !isSignIn;
-                  });
-                },
-                child: authSwitch(context)))
+            child: authSwitch(context, this))
       ],
     );
   }
