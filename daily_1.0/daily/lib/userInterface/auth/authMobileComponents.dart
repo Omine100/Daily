@@ -93,10 +93,6 @@ Widget authMobileUserInputField(
       width: getDimension(context, false,
           Theme.of(context).visualDensity.authUserInputFieldWidth),
       alignment: Alignment.center,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        color: Theme.of(context).colorScheme.authMobileUserInputField,
-      ),
       child: TextFormField(
         obscureText: isVariable ? !isVisible : false,
         onSaved: onSaved,
@@ -104,7 +100,18 @@ Widget authMobileUserInputField(
         style: TextStyle(
             color: Theme.of(context).colorScheme.authMobileUserInputFieldText),
         decoration: InputDecoration(
-          border: InputBorder.none,
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color:
+                  Theme.of(context).colorScheme.authMobileUserInputFieldBorder,
+            ),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color:
+                  Theme.of(context).colorScheme.authMobileUserInputFieldBorder,
+            ),
+          ),
           hintText: getTranslated(context, authForm),
           labelStyle: TextStyle(
             color: Theme.of(context)
