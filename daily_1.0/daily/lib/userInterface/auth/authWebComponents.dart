@@ -70,7 +70,7 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
         ),
         Positioned(
           bottom: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.authWebSwitch),
+              Theme.of(context).materialTapTargetSize.authWebSwitchBottom),
           child: authWebSwitch(context, state),
         ),
       ],

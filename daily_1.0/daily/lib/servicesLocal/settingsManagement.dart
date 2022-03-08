@@ -23,10 +23,12 @@ Future<void> prefsToSettings() async {
         saveToPrefs(setting.key, setting.defaultValue);
     });
   }
-  prefs.getKeys().forEach((key) {
-    settingsList.where((setting) => setting.key == key).first.value =
-        prefs.get(key);
-  });
+  try {
+    prefs.getKeys().forEach((key) {
+      settingsList.where((setting) => setting.key == key).first.value =
+          prefs.get(key);
+    });
+  } catch (e) {}
 }
 
 saveToPrefs(String key, dynamic value) {

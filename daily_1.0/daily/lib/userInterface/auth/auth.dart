@@ -84,44 +84,13 @@ class _AuthScreenState extends State<AuthScreen> {
             child: authCenterPiece(context, this)),
         Positioned(
             top: getPosition(context, true,
-                Theme.of(context).materialTapTargetSize.authMobileUserInputTop),
-            child: authUserInput(context)),
+                Theme.of(context).materialTapTargetSize.authMobileCardTop),
+            child: authMobileCard(context, this, true)),
         Positioned(
-          top: isSignIn
-              ? getPosition(
-                  context,
-                  true,
-                  Theme.of(context)
-                      .materialTapTargetSize
-                      .authMobileForgotPasswordTop)
-              : getPosition(
-                  context,
-                  true,
-                  Theme.of(context)
-                      .materialTapTargetSize
-                      .authMobilePolicyAndTaCTop),
-          left: getPosition(
-              context,
-              false,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .authMobileForgotPasswordPolicyAndTaCLeft),
-          child: isSignIn
-              ? authForgotPassword(context)
-              : authPolicyAndTaC(context),
+          bottom: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.authMobileSwitchBottom),
+          child: authMobileSwitch(context, this),
         ),
-        Positioned(
-            top: getPosition(
-                context,
-                true,
-                Theme.of(context)
-                    .materialTapTargetSize
-                    .authMobileGetStartedTop),
-            child: authGetStarted(context, this)),
-        Positioned(
-            top: getPosition(context, true,
-                Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
-            child: authSwitch(context, this))
       ],
     );
   }
@@ -142,44 +111,13 @@ class _AuthScreenState extends State<AuthScreen> {
             child: authCenterPiece(context, this)),
         Positioned(
             top: getPosition(context, true,
-                Theme.of(context).materialTapTargetSize.authMobileUserInputTop),
-            child: authUserInput(context)),
+                Theme.of(context).materialTapTargetSize.authMobileCardTop),
+            child: authMobileCard(context, this, false)),
         Positioned(
-          top: isSignIn
-              ? getPosition(
-                  context,
-                  true,
-                  Theme.of(context)
-                      .materialTapTargetSize
-                      .authMobileForgotPasswordTop)
-              : getPosition(
-                  context,
-                  true,
-                  Theme.of(context)
-                      .materialTapTargetSize
-                      .authMobilePolicyAndTaCTop),
-          left: getPosition(
-              context,
-              false,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .authMobileForgotPasswordPolicyAndTaCLeft),
-          child: isSignIn
-              ? authForgotPassword(context)
-              : authPolicyAndTaC(context),
+          bottom: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.authMobileSwitchBottom),
+          child: authMobileSwitch(context, this),
         ),
-        Positioned(
-            top: getPosition(
-                context,
-                true,
-                Theme.of(context)
-                    .materialTapTargetSize
-                    .authMobileGetStartedTop),
-            child: authGetStarted(context, this)),
-        Positioned(
-            top: getPosition(context, true,
-                Theme.of(context).materialTapTargetSize.authMobileSwitchTop),
-            child: authSwitch(context, this))
       ],
     );
   }

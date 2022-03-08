@@ -7,7 +7,7 @@ extension CustomWebPositions on MaterialTapTargetSize {
   // #region auth
   double get authWebCenterPieceLeft => isSmall ? 0 : 0;
   double get authWebCardRight => isSmall ? 0 : 0;
-  double get authWebSwitch => isSmall ? 0.02 : 0.02;
+  double get authWebSwitchBottom => isSmall ? 0.02 : 0.02;
   // #endregion
 }
 
@@ -23,12 +23,8 @@ extension CustomMobilePositions on MaterialTapTargetSize {
 
   // #region auth
   double get authMobileCenterPieceTop => isSmall ? 0.063 : 0.063;
-  double get authMobileUserInputTop => isSmall ? 0.45 : 0.45;
-  double get authMobileForgotPasswordTop => isSmall ? 0.62 : 0.62;
-  double get authMobilePolicyAndTaCTop => isSmall ? 0.765 : 0.765;
-  double get authMobileForgotPasswordPolicyAndTaCLeft => isSmall ? 0.1 : 0.1;
-  double get authMobileGetStartedTop => isSmall ? 0.835 : 0.835;
-  double get authMobileSwitchTop => isSmall ? 0.93 : 0.93;
+  double get authMobileCardTop => isSmall ? 0.45 : 0.45;
+  double get authMobileSwitchBottom => isSmall ? 0.03 : 0.03;
   // #endregion
 
   // #region forgotPassword

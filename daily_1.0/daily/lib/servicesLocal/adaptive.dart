@@ -19,16 +19,13 @@ class Adaptive extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: ((context, constraints) {
       if (kIsWeb) {
-        SystemChrome.setPreferredOrientations(
-            [DeviceOrientation.landscapeLeft]);
+        SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         return web;
       } else if (Platform.isIOS) {
-        SystemChrome.setPreferredOrientations(
-            [DeviceOrientation.landscapeLeft]);
+        SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         return iOS;
       } else if (Platform.isAndroid) {
-        SystemChrome.setPreferredOrientations(
-            [DeviceOrientation.landscapeLeft]);
+        SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         return android;
       }
       return null;

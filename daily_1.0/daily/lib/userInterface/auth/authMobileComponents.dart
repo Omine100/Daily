@@ -7,6 +7,7 @@ import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
+import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
 
@@ -15,19 +16,47 @@ RouteNavigation routeNavigation = new RouteNavigation();
 bool isSignIn;
 
 void setSignIn(bool value) {
-  isSignIn = value;
+  isSignIn ??= value;
 }
 
 Widget authCenterPiece(BuildContext context, State state) {
   return Container(
       height: getDimension(
           context, true, Theme.of(context).visualDensity.authCenterPieceHeight),
-      child: Image(image: AssetImage("lib/assets/auth/auth_centerPiece.png")));
+      child: Image(
+          image: AssetImage("lib/assets/auth/mobile/auth_centerPiece.png")));
+}
+
+Widget authMobileCard(BuildContext context, State state, bool isSmall) {
+  return Stack(
+    alignment: Alignment.center,
+    children: [
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          authMobileUserInput(context),
+          isSignIn
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: authMobileForgotPassword(context),
+                )
+              : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: authMobilePolicyAndTaC(context),
+                ),
+          Padding(
+            padding: const EdgeInsets.only(top: 7.0),
+            child: authMobileGetStarted(context, state),
+          ),
+        ],
+      ),
+    ],
+  );
 }
 
 String userName = "", userEmail = "", userPass = "", userPassVerify = "";
 final formKey = GlobalKey<FormState>();
-Widget authUserInput(BuildContext context) {
+Widget authMobileUserInput(BuildContext context) {
   return Form(
     key: formKey,
     child: Column(
@@ -35,15 +64,15 @@ Widget authUserInput(BuildContext context) {
       children: [
         isSignIn
             ? Container()
-            : authUserInputField(
+            : authMobileUserInputField(
                 context, (name) => {userName = name}, "authFormName", false),
-        authUserInputField(
+        authMobileUserInputField(
             context, (email) => {userEmail = email}, "authFormEmail", false),
-        authUserInputField(
+        authMobileUserInputField(
             context, (pass) => {userPass = pass}, "authFormPass", true),
         isSignIn
             ? Container()
-            : authUserInputField(
+            : authMobileUserInputField(
                 context,
                 (passVerify) => {userPassVerify = passVerify},
                 "authFormPassVerify",
@@ -54,7 +83,7 @@ Widget authUserInput(BuildContext context) {
 }
 
 bool isVisible = false;
-Widget authUserInputField(
+Widget authMobileUserInputField(
     BuildContext context, Function onSaved, String authForm, bool isVariable) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
@@ -133,7 +162,7 @@ Widget authUserInputField(
   );
 }
 
-Widget authForgotPassword(BuildContext context) {
+Widget authMobileForgotPassword(BuildContext context) {
   return GestureDetector(
     onTap: () {
       context.router.push(ForgotPasswordScreen());
@@ -149,7 +178,7 @@ Widget authForgotPassword(BuildContext context) {
   );
 }
 
-Widget authPolicyAndTaC(BuildContext context) {
+Widget authMobilePolicyAndTaC(BuildContext context) {
   return Container(
     alignment: Alignment.center,
     child: Center(
@@ -202,7 +231,7 @@ Widget authPolicyAndTaC(BuildContext context) {
   );
 }
 
-Widget authGetStarted(BuildContext context, State state) {
+Widget authMobileGetStarted(BuildContext context, State state) {
   return Center(
     child: Container(
       height: getDimension(
@@ -240,7 +269,7 @@ Widget authGetStarted(BuildContext context, State state) {
   );
 }
 
-Widget authSwitch(BuildContext context, State state) {
+Widget authMobileSwitch(BuildContext context, State state) {
   return GestureDetector(
     onTap: () {
       isSignIn = !isSignIn;
