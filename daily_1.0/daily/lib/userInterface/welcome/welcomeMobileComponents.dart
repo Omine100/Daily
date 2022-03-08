@@ -8,11 +8,11 @@ import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
 
-Widget welcomeTitle(BuildContext context) {
+Widget welcomeMobileTitle(BuildContext context) {
   return Container(
     padding: EdgeInsets.only(left: 20),
-    width: getDimension(
-        context, false, Theme.of(context).visualDensity.welcomeTitleWidth),
+    width: getDimension(context, false,
+        Theme.of(context).visualDensity.welcomeMobileTitleWidth),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,16 +21,16 @@ Widget welcomeTitle(BuildContext context) {
           getTranslated(context, "welcomeTitle"),
           style: TextStyle(
             color: Theme.of(context).colorScheme.welcomeMobileTitle,
-            fontSize: Theme.of(context).textTheme.welcomeTitle,
-            fontWeight: Theme.of(context).typography.welcomeTitle,
+            fontSize: Theme.of(context).textTheme.welcomeMobileTitle,
+            fontWeight: Theme.of(context).typography.welcomeMobileTitle,
           ),
         ),
         Text(
           getTranslated(context, "welcomeSubtitle"),
           style: TextStyle(
             color: Theme.of(context).colorScheme.welcomeMobileSubtitle,
-            fontSize: Theme.of(context).textTheme.welcomeSubtitle,
-            fontWeight: Theme.of(context).typography.welcomeSubtitle,
+            fontSize: Theme.of(context).textTheme.welcomeMobileSubtitle,
+            fontWeight: Theme.of(context).typography.welcomeMobileSubtitle,
           ),
         ),
       ],
@@ -45,14 +45,14 @@ List<Image> _images = [
       image: AssetImage("lib/assets/welcome/mobile/welcome_carouselThree.png")),
 ];
 int _current = 0;
-Widget welcomeCarousel(State state, BuildContext context) {
+Widget welcomeMobileCarousel(State state, BuildContext context) {
   return Column(
     children: [
       Container(
         height: getDimension(context, true,
-            Theme.of(context).visualDensity.welcomeCarouselHeight),
+            Theme.of(context).visualDensity.welcomeMobileCarouselHeight),
         width: getDimension(context, false,
-            Theme.of(context).visualDensity.welcomeCarouselWidth),
+            Theme.of(context).visualDensity.welcomeMobileCarouselWidth),
         child: CarouselSlider(
           items: _images,
           options: CarouselOptions(
@@ -73,21 +73,25 @@ Widget welcomeCarousel(State state, BuildContext context) {
           (image) {
             int index = _images.indexOf(image);
             return Container(
-              width: getDimension(context, false,
-                  Theme.of(context).visualDensity.welcomeCarouselSelectorWidth),
+              width: getDimension(
+                  context,
+                  false,
+                  Theme.of(context)
+                      .visualDensity
+                      .welcomeMobileCarouselSelectorWidth),
               height: _current == index
                   ? getDimension(
                       context,
                       true,
                       Theme.of(context)
                           .visualDensity
-                          .welcomeCarouselSelectorHeightCurrent)
+                          .welcomeMobileCarouselSelectorHeightCurrent)
                   : getDimension(
                       context,
                       true,
                       Theme.of(context)
                           .visualDensity
-                          .welcomeCarouselSelectorHeightNotCurrent),
+                          .welcomeMobileCarouselSelectorHeightNotCurrent),
               margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 3.5),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
@@ -106,25 +110,25 @@ Widget welcomeCarousel(State state, BuildContext context) {
   );
 }
 
-Widget welcomeCorner(BuildContext context) {
+Widget welcomeMobileCorner(BuildContext context) {
   return Container(
-    height: getDimension(
-        context, true, Theme.of(context).visualDensity.welcomeCornerHeight),
-    width: getDimension(
-        context, true, Theme.of(context).visualDensity.welcomeCornerHeight),
+    height: getDimension(context, true,
+        Theme.of(context).visualDensity.welcomeMobileCornerHeight),
+    width: getDimension(context, true,
+        Theme.of(context).visualDensity.welcomeMobileCornerHeight),
     child: Image(
       image: AssetImage("lib/assets/welcome/mobile/welcome_corner.png"),
     ),
   );
 }
 
-Widget welcomeGetStarted(BuildContext context) {
+Widget welcomeMobileGetStarted(BuildContext context) {
   return Center(
     child: Container(
       height: getDimension(context, true,
-          Theme.of(context).visualDensity.welcomeGetStartedHeight),
+          Theme.of(context).visualDensity.welcomeMobileGetStartedHeight),
       width: getDimension(context, false,
-          Theme.of(context).visualDensity.welcomeGetStartedWidth),
+          Theme.of(context).visualDensity.welcomeMobileGetStartedWidth),
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.welcomeMobileGetStarted,
           borderRadius: BorderRadius.circular(30)),
@@ -145,9 +149,10 @@ Widget welcomeGetStarted(BuildContext context) {
                 style: TextStyle(
                   color:
                       Theme.of(context).colorScheme.welcomeMobileGetStartedText,
-                  fontSize: Theme.of(context).textTheme.welcomeGetStartedText,
+                  fontSize:
+                      Theme.of(context).textTheme.welcomeMobileGetStartedText,
                   fontWeight:
-                      Theme.of(context).typography.welcomeGetStartedText,
+                      Theme.of(context).typography.welcomeMobileGetStartedText,
                 ),
               ),
             ),
@@ -158,7 +163,7 @@ Widget welcomeGetStarted(BuildContext context) {
   );
 }
 
-Widget welcomeAccountAlready(BuildContext context) {
+Widget welcomeMobileAccountAlready(BuildContext context) {
   return GestureDetector(
     onTap: () {
       context.router.push(AuthScreen(isSignIn: true));
@@ -169,8 +174,9 @@ Widget welcomeAccountAlready(BuildContext context) {
           text: getTranslated(context, "welcomeAccountAlready"),
           style: TextStyle(
             color: Theme.of(context).colorScheme.welcomeMobileAccountAlready,
-            fontSize: Theme.of(context).textTheme.welcomeAccountAlready,
-            fontWeight: Theme.of(context).typography.welcomeAccountAlready,
+            fontSize: Theme.of(context).textTheme.welcomeMobileAccountAlready,
+            fontWeight:
+                Theme.of(context).typography.welcomeMobileAccountAlready,
           ),
           children: <TextSpan>[
             TextSpan(
@@ -179,10 +185,12 @@ Widget welcomeAccountAlready(BuildContext context) {
                 color: Theme.of(context)
                     .colorScheme
                     .welcomeMobileAccountAlreadyLogin,
-                fontSize:
-                    Theme.of(context).textTheme.welcomeAccountAlreadyLogin,
-                fontWeight:
-                    Theme.of(context).typography.welcomeAccountAlreadyLogin,
+                fontSize: Theme.of(context)
+                    .textTheme
+                    .welcomeMobileAccountAlreadyLogin,
+                fontWeight: Theme.of(context)
+                    .typography
+                    .welcomeMobileAccountAlreadyLogin,
               ),
             ),
           ],

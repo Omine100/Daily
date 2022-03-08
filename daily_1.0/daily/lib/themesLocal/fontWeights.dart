@@ -27,22 +27,22 @@ extension CustomMobileFontWeight on Typography {
   // #endregion
 
   // #region welcome
-  FontWeight get welcomeTitle => FontWeight.w500;
-  FontWeight get welcomeSubtitle => FontWeight.w300;
-  FontWeight get welcomeGetStartedText => FontWeight.w500;
-  FontWeight get welcomeAccountAlready => FontWeight.w400;
-  FontWeight get welcomeAccountAlreadyLogin => FontWeight.w500;
+  FontWeight get welcomeMobileTitle => FontWeight.w500;
+  FontWeight get welcomeMobileSubtitle => FontWeight.w300;
+  FontWeight get welcomeMobileGetStartedText => FontWeight.w500;
+  FontWeight get welcomeMobileAccountAlready => FontWeight.w400;
+  FontWeight get welcomeMobileAccountAlreadyLogin => FontWeight.w500;
   // #endregion
 
   // #region auth
-  FontWeight get authTitle => FontWeight.w500;
-  FontWeight get authSubtitle => FontWeight.w300;
-  FontWeight get authUserInputFieldDecoration => FontWeight.w300;
-  FontWeight get authForgotPassword => FontWeight.w400;
-  FontWeight get authPolicyAndTaC => FontWeight.w400;
-  FontWeight get authGetStartedText => FontWeight.w500;
-  FontWeight get authSwitchPrimary => FontWeight.w400;
-  FontWeight get authSwitchSecondary => FontWeight.w500;
+  FontWeight get authMobileTitle => FontWeight.w500;
+  FontWeight get authMobileSubtitle => FontWeight.w300;
+  FontWeight get authMobileUserInputFieldDecoration => FontWeight.w300;
+  FontWeight get authMobileForgotPassword => FontWeight.w400;
+  FontWeight get authMobilePolicyAndTaC => FontWeight.w400;
+  FontWeight get authMobileGetStartedText => FontWeight.w500;
+  FontWeight get authMobileSwitchPrimary => FontWeight.w400;
+  FontWeight get authMobileSwitchSecondary => FontWeight.w500;
   // #endregion
 
   // #region forgotPassword

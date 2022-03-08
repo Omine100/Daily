@@ -7,7 +7,6 @@ import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
-import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
 
@@ -19,10 +18,10 @@ void setSignIn(bool value) {
   isSignIn ??= value;
 }
 
-Widget authCenterPiece(BuildContext context, State state) {
+Widget authMobileCenterPiece(BuildContext context, State state) {
   return Container(
-      height: getDimension(
-          context, true, Theme.of(context).visualDensity.authCenterPieceHeight),
+      height: getDimension(context, true,
+          Theme.of(context).visualDensity.authMobileCenterPieceHeight),
       child: Image(
           image: AssetImage("lib/assets/auth/mobile/auth_centerPiece.png")));
 }
@@ -89,9 +88,9 @@ Widget authMobileUserInputField(
     padding: const EdgeInsets.all(8.0),
     child: Container(
       height: getDimension(context, true,
-          Theme.of(context).visualDensity.authUserInputFieldHeight),
+          Theme.of(context).visualDensity.authMobileUserInputFieldHeight),
       width: getDimension(context, false,
-          Theme.of(context).visualDensity.authUserInputFieldWidth),
+          Theme.of(context).visualDensity.authMobileUserInputFieldWidth),
       alignment: Alignment.center,
       child: TextFormField(
         obscureText: isVariable ? !isVisible : false,
@@ -117,17 +116,19 @@ Widget authMobileUserInputField(
             color: Theme.of(context)
                 .colorScheme
                 .authMobileUserInputFieldDecoration,
-            fontSize: Theme.of(context).textTheme.authUserInputFieldDecoration,
+            fontSize:
+                Theme.of(context).textTheme.authMobileUserInputFieldDecoration,
             fontWeight:
-                Theme.of(context).typography.authUserInputFieldDecoration,
+                Theme.of(context).typography.authMobileUserInputFieldDecoration,
           ),
           hintStyle: TextStyle(
             color: Theme.of(context)
                 .colorScheme
                 .authMobileUserInputFieldDecoration,
-            fontSize: Theme.of(context).textTheme.authUserInputFieldDecoration,
+            fontSize:
+                Theme.of(context).textTheme.authMobileUserInputFieldDecoration,
             fontWeight:
-                Theme.of(context).typography.authUserInputFieldDecoration,
+                Theme.of(context).typography.authMobileUserInputFieldDecoration,
           ),
           prefixIcon: Icon(
             authForm != "authFormEmail"
@@ -178,8 +179,8 @@ Widget authMobileForgotPassword(BuildContext context) {
       getTranslated(context, "authForgotPassword"),
       style: TextStyle(
         color: Theme.of(context).colorScheme.authMobileForgotPassword,
-        fontSize: Theme.of(context).textTheme.authForgotPassword,
-        fontWeight: Theme.of(context).typography.authForgotPassword,
+        fontSize: Theme.of(context).textTheme.authMobileForgotPassword,
+        fontWeight: Theme.of(context).typography.authMobileForgotPassword,
       ),
     ),
   );
@@ -193,16 +194,17 @@ Widget authMobilePolicyAndTaC(BuildContext context) {
             text: getTranslated(context, "authPolicyAndTaCPrimary") + " ",
             style: TextStyle(
               color: Theme.of(context).colorScheme.authMobilePolicyAndTaC,
-              fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
-              fontWeight: Theme.of(context).typography.authPolicyAndTaC,
+              fontSize: Theme.of(context).textTheme.authMobilePolicyAndTaC,
+              fontWeight: Theme.of(context).typography.authMobilePolicyAndTaC,
             ),
             children: <TextSpan>[
           TextSpan(
               text: getTranslated(context, "authPolicyAndTaCPrivacy"),
               style: TextStyle(
                   color: Theme.of(context).colorScheme.authMobilePolicyAndTaC,
-                  fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
-                  fontWeight: Theme.of(context).typography.authPolicyAndTaC,
+                  fontSize: Theme.of(context).textTheme.authMobilePolicyAndTaC,
+                  fontWeight:
+                      Theme.of(context).typography.authMobilePolicyAndTaC,
                   decoration: TextDecoration.underline),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
@@ -214,8 +216,8 @@ Widget authMobilePolicyAndTaC(BuildContext context) {
                   " ",
               style: TextStyle(
                 color: Theme.of(context).colorScheme.authMobilePolicyAndTaC,
-                fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
-                fontWeight: Theme.of(context).typography.authPolicyAndTaC,
+                fontSize: Theme.of(context).textTheme.authMobilePolicyAndTaC,
+                fontWeight: Theme.of(context).typography.authMobilePolicyAndTaC,
               ),
               children: <TextSpan>[
                 TextSpan(
@@ -224,9 +226,10 @@ Widget authMobilePolicyAndTaC(BuildContext context) {
                         color: Theme.of(context)
                             .colorScheme
                             .authMobilePolicyAndTaC,
-                        fontSize: Theme.of(context).textTheme.authPolicyAndTaC,
+                        fontSize:
+                            Theme.of(context).textTheme.authMobilePolicyAndTaC,
                         fontWeight:
-                            Theme.of(context).typography.authPolicyAndTaC,
+                            Theme.of(context).typography.authMobilePolicyAndTaC,
                         decoration: TextDecoration.underline),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
@@ -241,10 +244,10 @@ Widget authMobilePolicyAndTaC(BuildContext context) {
 Widget authMobileGetStarted(BuildContext context, State state) {
   return Center(
     child: Container(
-      height: getDimension(
-          context, true, Theme.of(context).visualDensity.authGetStartedHeight),
-      width: getDimension(
-          context, false, Theme.of(context).visualDensity.authGetStartedWidth),
+      height: getDimension(context, true,
+          Theme.of(context).visualDensity.authMobileGetStartedHeight),
+      width: getDimension(context, false,
+          Theme.of(context).visualDensity.authMobileGetStartedWidth),
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.authMobileGetStarted,
           borderRadius: BorderRadius.circular(30)),
@@ -264,8 +267,10 @@ Widget authMobileGetStarted(BuildContext context, State state) {
                 getTranslated(context, isSignIn ? "authSignIn" : "authSignUp"),
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.authMobileGetStartedText,
-                  fontSize: Theme.of(context).textTheme.authGetStartedText,
-                  fontWeight: Theme.of(context).typography.authGetStartedText,
+                  fontSize:
+                      Theme.of(context).textTheme.authMobileGetStartedText,
+                  fontWeight:
+                      Theme.of(context).typography.authMobileGetStartedText,
                 ),
               ),
             ),
@@ -288,8 +293,8 @@ Widget authMobileSwitch(BuildContext context, State state) {
             isSignIn ? "authSwitchSignUpPrimary" : "authSwitchSignInPrimary"),
         style: TextStyle(
           color: Theme.of(context).colorScheme.authMobileSwitchPrimary,
-          fontSize: Theme.of(context).textTheme.authSwitchPrimary,
-          fontWeight: Theme.of(context).typography.authSwitchPrimary,
+          fontSize: Theme.of(context).textTheme.authMobileSwitchPrimary,
+          fontWeight: Theme.of(context).typography.authMobileSwitchPrimary,
         ),
         children: <TextSpan>[
           TextSpan(
@@ -300,8 +305,9 @@ Widget authMobileSwitch(BuildContext context, State state) {
                     : "authSwitchSignInSecondary"),
             style: TextStyle(
               color: Theme.of(context).colorScheme.authMobileSwitchSecondary,
-              fontSize: Theme.of(context).textTheme.authSwitchSecondary,
-              fontWeight: Theme.of(context).typography.authSwitchSecondary,
+              fontSize: Theme.of(context).textTheme.authMobileSwitchSecondary,
+              fontWeight:
+                  Theme.of(context).typography.authMobileSwitchSecondary,
             ),
           ),
         ],

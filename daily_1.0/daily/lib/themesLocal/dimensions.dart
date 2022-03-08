@@ -31,24 +31,26 @@ extension CustomWebDimensions on VisualDensity {
 
 extension CustomMobileDimensions on VisualDensity {
   // #region welcome
-  double get welcomeTitleWidth => 1.0;
-  double get welcomeCarouselHeight => 0.50;
-  double get welcomeCarouselWidth => 1.0;
-  double get welcomeCarouselSelectorHeightCurrent => 0.045;
-  double get welcomeCarouselSelectorHeightNotCurrent => 0.025;
-  double get welcomeCarouselSelectorWidth => 0.025;
-  double get welcomeCornerHeight => 0.22;
-  double get welcomeGetStartedHeight => 0.065;
-  double get welcomeGetStartedWidth => 0.45;
+  double get welcomeMobileTitleWidth => isSmall ? 1.0 : 1.0;
+  double get welcomeMobileCarouselHeight => isSmall ? 0.50 : 0.50;
+  double get welcomeMobileCarouselWidth => isSmall ? 1.0 : 1.0;
+  double get welcomeMobileCarouselSelectorHeightCurrent =>
+      isSmall ? 0.045 : 0.045;
+  double get welcomeMobileCarouselSelectorHeightNotCurrent =>
+      isSmall ? 0.025 : 0.025;
+  double get welcomeMobileCarouselSelectorWidth => isSmall ? 0.025 : 0.025;
+  double get welcomeMobileCornerHeight => isSmall ? 0.22 : 0.22;
+  double get welcomeMobileGetStartedHeight => isSmall ? 0.065 : 0.065;
+  double get welcomeMobileGetStartedWidth => isSmall ? 0.45 : 0.45;
   // #endregion
 
   // #region auth
-  double get authTitleWidth => 1.0;
-  double get authCenterPieceHeight => 0.35;
-  double get authUserInputFieldHeight => 0.06;
-  double get authUserInputFieldWidth => 0.875;
-  double get authGetStartedHeight => 0.065;
-  double get authGetStartedWidth => 0.45;
+  double get authMobileTitleWidth => isSmall ? 1.0 : 1.0;
+  double get authMobileCenterPieceHeight => isSmall ? 0.35 : 0.35;
+  double get authMobileUserInputFieldHeight => isSmall ? 0.06 : 0.06;
+  double get authMobileUserInputFieldWidth => isSmall ? 0.875 : 0.875;
+  double get authMobileGetStartedHeight => isSmall ? 0.065 : 0.065;
+  double get authMobileGetStartedWidth => isSmall ? 0.45 : 0.45;
   // #endregion
 
   // #region forgotPassword

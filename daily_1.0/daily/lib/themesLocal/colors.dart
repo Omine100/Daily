@@ -116,7 +116,7 @@ extension CustomMobileColorScheme on ColorScheme {
   Color get authMobileUserInputFieldText =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
   Color get authMobileUserInputFieldBorder =>
-      Color(isDark.value ? 0xFF222222 : 0xFFCCCCCC);
+      Color(isDark.value ? 0xFF333333 : 0xFFCCCCCC);
   Color get authMobileUserInputFieldDecoration =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
   Color get authMobileUserInputFieldIconDecoration =>

@@ -27,22 +27,22 @@ extension CustomMobileFontSize on TextTheme {
   // #endregion
 
   // #region welcome
-  double get welcomeTitle => 48;
-  double get welcomeSubtitle => 32;
-  double get welcomeGetStartedText => 20;
-  double get welcomeAccountAlready => 16;
-  double get welcomeAccountAlreadyLogin => 16;
+  double get welcomeMobileTitle => 48;
+  double get welcomeMobileSubtitle => 32;
+  double get welcomeMobileGetStartedText => 20;
+  double get welcomeMobileAccountAlready => 16;
+  double get welcomeMobileAccountAlreadyLogin => 16;
   // #endregion
 
   // #region auth
-  double get authTitle => 48;
-  double get authSubtitle => 32;
-  double get authUserInputFieldDecoration => 20;
-  double get authForgotPassword => 16;
-  double get authPolicyAndTaC => 14;
-  double get authGetStartedText => 20;
-  double get authSwitchPrimary => 16;
-  double get authSwitchSecondary => 16;
+  double get authMobileTitle => 48;
+  double get authMobileSubtitle => 32;
+  double get authMobileUserInputFieldDecoration => 20;
+  double get authMobileForgotPassword => 16;
+  double get authMobilePolicyAndTaC => 14;
+  double get authMobileGetStartedText => 20;
+  double get authMobileSwitchPrimary => 16;
+  double get authMobileSwitchSecondary => 16;
   // #endregion
 
   // #region forgotPassword

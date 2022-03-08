@@ -50,19 +50,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         Positioned(
           top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
-          child: welcomeTitle(context),
+          child: welcomeMobileTitle(context),
         ),
         Positioned(
           top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.welcomeMobileCornerTop),
           right: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.welcomeMobileCornerRight),
-          child: welcomeCorner(context),
+          child: welcomeMobileCorner(context),
         ),
         Positioned(
           top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.welcomeMobileCarouselTop),
-          child: welcomeCarousel(this, context),
+          child: welcomeMobileCarousel(this, context),
         ),
         Positioned(
           top: getPosition(
@@ -71,7 +71,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Theme.of(context)
                   .materialTapTargetSize
                   .welcomeMobileGetStartedTop),
-          child: welcomeGetStarted(context),
+          child: welcomeMobileGetStarted(context),
         ),
         Positioned(
           top: getPosition(
@@ -80,7 +80,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Theme.of(context)
                   .materialTapTargetSize
                   .welcomeMobileAccountAlreadyTop),
-          child: welcomeAccountAlready(context),
+          child: welcomeMobileAccountAlready(context),
         ),
       ],
     );
@@ -93,19 +93,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         Positioned(
           top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
-          child: welcomeTitle(context),
+          child: welcomeMobileTitle(context),
         ),
         Positioned(
           top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.welcomeMobileCornerTop),
           right: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.welcomeMobileCornerRight),
-          child: welcomeCorner(context),
+          child: welcomeMobileCorner(context),
         ),
         Positioned(
           top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.welcomeMobileCarouselTop),
-          child: welcomeCarousel(this, context),
+          child: welcomeMobileCarousel(this, context),
         ),
         Positioned(
           top: getPosition(
@@ -114,7 +114,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Theme.of(context)
                   .materialTapTargetSize
                   .welcomeMobileGetStartedTop),
-          child: welcomeGetStarted(context),
+          child: welcomeMobileGetStarted(context),
         ),
         Positioned(
           top: getPosition(
@@ -123,7 +123,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Theme.of(context)
                   .materialTapTargetSize
                   .welcomeMobileAccountAlreadyTop),
-          child: welcomeAccountAlready(context),
+          child: welcomeMobileAccountAlready(context),
         ),
       ],
     );
@@ -132,6 +132,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     setResponsiveState(context);
+    if (kIsWeb) context.router.push(AuthScreen(isSignIn: true));
     return Material(
         child: Scaffold(
       body: Container(
