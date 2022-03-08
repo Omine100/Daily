@@ -171,16 +171,21 @@ Widget authMobileUserInputField(
 }
 
 Widget authMobileForgotPassword(BuildContext context) {
-  return GestureDetector(
-    onTap: () {
-      context.router.push(ForgotPasswordScreen());
-    },
-    child: Text(
-      getTranslated(context, "authForgotPassword"),
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.authMobileForgotPassword,
-        fontSize: Theme.of(context).textTheme.authMobileForgotPassword,
-        fontWeight: Theme.of(context).typography.authMobileForgotPassword,
+  return Container(
+    width: getDimension(context, false,
+        Theme.of(context).visualDensity.authMobileForgotPasswordWidth),
+    alignment: Alignment.centerLeft,
+    child: GestureDetector(
+      onTap: () {
+        context.router.push(ForgotPasswordScreen());
+      },
+      child: Text(
+        getTranslated(context, "authForgotPassword"),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.authMobileForgotPassword,
+          fontSize: Theme.of(context).textTheme.authMobileForgotPassword,
+          fontWeight: Theme.of(context).typography.authMobileForgotPassword,
+        ),
       ),
     ),
   );

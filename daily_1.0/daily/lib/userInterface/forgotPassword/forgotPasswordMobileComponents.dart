@@ -51,7 +51,7 @@ Widget forgotPasswordCenterPiece(BuildContext context) {
           Theme.of(context).visualDensity.forgotPasswordCenterPieceWidth),
       child: Image(
           image: AssetImage(
-              "lib/assets/forgotPassword/forgotPassword_centerPiece.png")));
+              "lib/assets/forgotPassword/mobile/forgotPassword_centerPiece.png")));
 }
 
 String userEmail;

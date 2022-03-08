@@ -49,6 +49,7 @@ extension CustomMobileDimensions on VisualDensity {
   double get authMobileCenterPieceHeight => isSmall ? 0.35 : 0.35;
   double get authMobileUserInputFieldHeight => isSmall ? 0.06 : 0.06;
   double get authMobileUserInputFieldWidth => isSmall ? 0.875 : 0.875;
+  double get authMobileForgotPasswordWidth => isSmall ? 0.85 : 0.85;
   double get authMobileGetStartedHeight => isSmall ? 0.065 : 0.065;
   double get authMobileGetStartedWidth => isSmall ? 0.45 : 0.45;
   // #endregion

@@ -74,12 +74,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           child: welcomeMobileGetStarted(context),
         ),
         Positioned(
-          top: getPosition(
+          bottom: getPosition(
               context,
               true,
               Theme.of(context)
                   .materialTapTargetSize
-                  .welcomeMobileAccountAlreadyTop),
+                  .welcomeMobileAccountAlreadyBottom),
           child: welcomeMobileAccountAlready(context),
         ),
       ],
@@ -117,12 +117,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           child: welcomeMobileGetStarted(context),
         ),
         Positioned(
-          top: getPosition(
+          bottom: getPosition(
               context,
               true,
               Theme.of(context)
                   .materialTapTargetSize
-                  .welcomeMobileAccountAlreadyTop),
+                  .welcomeMobileAccountAlreadyBottom),
           child: welcomeMobileAccountAlready(context),
         ),
       ],
