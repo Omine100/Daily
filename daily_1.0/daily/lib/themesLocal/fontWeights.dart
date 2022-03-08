@@ -10,6 +10,10 @@ extension CustomConnectedFontSize on Typography {
 }
 
 extension CustomWebFontWeight on Typography {
+  // #region textViewer
+  FontWeight get textViewerWebText => FontWeight.w300;
+  // #endregion
+
   // #region auth
   FontWeight get authWebTitle => FontWeight.w500;
   FontWeight get authWebUserInputFieldDecoration => FontWeight.w300;
@@ -23,7 +27,7 @@ extension CustomWebFontWeight on Typography {
 
 extension CustomMobileFontWeight on Typography {
   // #region textViewer
-  FontWeight get textViewerText => FontWeight.w300;
+  FontWeight get textViewerMobileText => FontWeight.w300;
   // #endregion
 
   // #region welcome

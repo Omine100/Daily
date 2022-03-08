@@ -10,6 +10,10 @@ extension CustomConnectedFontSize on TextTheme {
 }
 
 extension CustomWebFontSize on TextTheme {
+  // #region textViewer
+  double get textViewerWebText => 14.0;
+  // #endregion
+
   // #region auth
   double get authWebTitle => 48;
   double get authWebUserInputFieldDecoration => 20;
@@ -23,7 +27,7 @@ extension CustomWebFontSize on TextTheme {
 
 extension CustomMobileFontSize on TextTheme {
   // #region textViewer
-  double get textViewerText => 14.0;
+  double get textViewerMobileText => 14.0;
   // #endregion
 
   // #region welcome

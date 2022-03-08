@@ -29,19 +29,19 @@ class _TextViewerScreenState extends State<TextViewerScreen> {
   }
 
   textViewerScreenWebSmall() {
-    return textViewerText(context, widget.filePath);
+    return textViewerWebText(context, widget.filePath);
   }
 
   textViewerScreenWebLarge() {
-    return textViewerText(context, widget.filePath);
+    return textViewerWebText(context, widget.filePath);
   }
 
   textViewerScreenMobileSmall(bool isAndroid) {
-    return textViewerText(context, widget.filePath);
+    return textViewerMobileText(context, widget.filePath);
   }
 
   textViewerScreenMobileLarge(bool isAndroid) {
-    return textViewerText(context, widget.filePath);
+    return textViewerMobileText(context, widget.filePath);
   }
 
   @override
