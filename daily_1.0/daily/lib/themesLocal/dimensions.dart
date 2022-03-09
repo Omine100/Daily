@@ -27,6 +27,11 @@ extension CustomWebDimensions on VisualDensity {
   double get authWebGetStartedHeight => isSmall ? 0.065 : 0.065;
   double get authWebGetStartedWidth => isSmall ? 0.2025 : 0.2025;
   // #endregion
+
+  // #region forgotPassword
+  double get forgotPasswordWebCardHeight => isSmall ? 0.8 : 0.8;
+  double get forgotPasswordWebCardWidth => isSmall ? 0.5 : 0.5;
+  // #endregion
 }
 
 extension CustomMobileDimensions on VisualDensity {

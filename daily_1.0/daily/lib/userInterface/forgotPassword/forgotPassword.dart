@@ -34,11 +34,29 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
 
   forgotPasswordScreenWebSmall() {
-    return Container();
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Positioned(
+            child: Align(
+          alignment: Alignment.center,
+          child: forgotPasswordWebCard(context),
+        )),
+      ],
+    );
   }
 
   forgotPasswordScreenWebLarge() {
-    return Container();
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Positioned(
+            child: Align(
+          alignment: Alignment.center,
+          child: forgotPasswordWebCard(context),
+        )),
+      ],
+    );
   }
 
   forgotPasswordScreenMobileSmall(bool isAndroid) {
