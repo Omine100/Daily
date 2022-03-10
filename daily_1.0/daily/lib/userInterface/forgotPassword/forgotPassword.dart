@@ -35,11 +35,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
 
   forgotPasswordScreenWebSmall() {
-    return forgotPasswordWebCard(context, this);
+    return Container();
   }
 
   forgotPasswordScreenWebLarge() {
-    return forgotPasswordWebCard(context, this);
+    return Container();
   }
 
   forgotPasswordScreenMobileSmall(bool isAndroid) {

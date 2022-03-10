@@ -10,32 +10,23 @@ import 'package:daily/themesLocal/fontWeights.dart';
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 
 Widget forgotPasswordWebCard(BuildContext context, State state) {
-  return Container(
-    height: getDimension(context, true,
-        Theme.of(context).visualDensity.forgotPasswordWebCardHeight),
-    width: getDimension(context, false,
-        Theme.of(context).visualDensity.forgotPasswordWebCardWidth),
-    decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.authWebCard,
-        borderRadius: BorderRadius.all(Radius.circular(50))),
-    child: Stack(
-      alignment: Alignment.center,
-      children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 25.0),
-              child: forgotPasswordWebTitle(context),
-            ),
-            forgotPasswordWebUserInputField(context, state),
-            forgotPasswordWebSwitchBack(context, state),
-            forgotPasswordWebSend(context, state),
-            forgotPasswordWebResend(context)
-          ],
-        ),
-      ],
-    ),
+  return Stack(
+    alignment: Alignment.center,
+    children: [
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 25.0),
+            child: forgotPasswordWebTitle(context),
+          ),
+          forgotPasswordWebUserInputField(context, state),
+          forgotPasswordWebSwitchBack(context, state),
+          forgotPasswordWebSend(context, state),
+          forgotPasswordWebResend(context)
+        ],
+      ),
+    ],
   );
 }
 

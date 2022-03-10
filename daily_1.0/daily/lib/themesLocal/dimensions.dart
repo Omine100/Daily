@@ -29,12 +29,10 @@ extension CustomWebDimensions on VisualDensity {
   // #endregion
 
   // #region forgotPassword
-  double get forgotPasswordWebCardHeight => isSmall ? 0.8 : 0.8;
-  double get forgotPasswordWebCardWidth => isSmall ? 0.5 : 0.5;
   double get forgotPasswordWebCenterPieceHeight => isSmall ? 1.0 : 1.0;
   double get forgotPasswordWebCenterPieceWidth => isSmall ? 1.0 : 1.0;
-  double get forgotPasswordWebUserInputFieldHeight => isSmall ? 0.065 : 0.065;
-  double get forgotPasswordWebUserInputFieldWidth => isSmall ? 0.35 : 0.35;
+  double get forgotPasswordWebUserInputFieldHeight => isSmall ? 0.05 : 0.05;
+  double get forgotPasswordWebUserInputFieldWidth => isSmall ? 0.5 : 0.35;
   double get forgotPasswordWebSendHeight => isSmall ? 0.065 : 0.065;
   double get forgotPasswordWebSendWidth => isSmall ? 0.2025 : 0.2025;
   // #endregion
