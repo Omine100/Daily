@@ -34,7 +34,7 @@ Widget authWebCenterPiece(BuildContext context, State state) {
 Widget authWebCardContainer(BuildContext context, State state, bool isSmall) {
   return SingleChildScrollView(
     child: Container(
-        constraints: BoxConstraints(minHeight: 300, minWidth: 300),
+        constraints: BoxConstraints(minHeight: 400, minWidth: 300),
         height: getDimension(
             context, true, Theme.of(context).visualDensity.authWebCardHeight),
         width: getDimension(
