@@ -68,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    //Check if signed in, otherwise bounce to auth
     return Material(
       child: Scaffold(
         extendBody: true,
