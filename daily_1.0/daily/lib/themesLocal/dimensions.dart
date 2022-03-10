@@ -16,7 +16,7 @@ extension CustomConnectedDimensions on VisualDensity {
 }
 
 extension CustomWebDimensions on VisualDensity {
-  // #region welcome
+  // #region auth
   double get authWebCenterPieceHeight => isSmall ? 1.0 : 1.0;
   double get authWebCenterPieceWidth => isSmall ? 1.0 : 0.6;
   double get authWebCardHeight => isSmall ? 0.8 : 1.0;

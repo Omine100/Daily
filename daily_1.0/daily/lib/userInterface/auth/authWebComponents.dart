@@ -32,19 +32,22 @@ Widget authWebCenterPiece(BuildContext context, State state) {
 }
 
 Widget authWebCardContainer(BuildContext context, State state, bool isSmall) {
-  return Container(
-      height: getDimension(
-          context, true, Theme.of(context).visualDensity.authWebCardHeight),
-      width: getDimension(
-          context, false, Theme.of(context).visualDensity.authWebCardWidth),
-      decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.authWebCard,
-          borderRadius: isSmall
-              ? BorderRadius.all(Radius.circular(50))
-              : BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  bottomLeft: Radius.circular(50))),
-      child: authWebCardPick(context, state, isSmall));
+  return SingleChildScrollView(
+    child: Container(
+        constraints: BoxConstraints(minHeight: 300, minWidth: 300),
+        height: getDimension(
+            context, true, Theme.of(context).visualDensity.authWebCardHeight),
+        width: getDimension(
+            context, false, Theme.of(context).visualDensity.authWebCardWidth),
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.authWebCard,
+            borderRadius: isSmall
+                ? BorderRadius.all(Radius.circular(50))
+                : BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    bottomLeft: Radius.circular(50))),
+        child: authWebCardPick(context, state, isSmall)),
+  );
 }
 
 Widget authWebCardPick(BuildContext context, State state, bool isSmall) {
