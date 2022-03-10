@@ -111,29 +111,25 @@ Widget authWebUserInput(BuildContext context, State state, bool isSmall) {
   return Form(
       key: formKey,
       child: Center(
-        child: Container(
-          width: getDimension(context, false,
-              Theme.of(context).visualDensity.authWebUserInputWidth),
-          child: Column(
-            children: [
-              isSignIn
-                  ? Container()
-                  : authWebUserInputField(context, state,
-                      (name) => {userName = name}, "authFormName", false),
-              authWebUserInputField(context, state,
-                  (email) => {userEmail = email}, "authFormEmail", false),
-              authWebUserInputField(context, state, (pass) => {userPass = pass},
-                  "authFormPass", true),
-              isSignIn
-                  ? Container()
-                  : authWebUserInputField(
-                      context,
-                      state,
-                      (passVerify) => {userPassVerify = passVerify},
-                      "authFormPassVerify",
-                      true),
-            ],
-          ),
+        child: Column(
+          children: [
+            isSignIn
+                ? Container()
+                : authWebUserInputField(context, state,
+                    (name) => {userName = name}, "authFormName", false),
+            authWebUserInputField(context, state,
+                (email) => {userEmail = email}, "authFormEmail", false),
+            authWebUserInputField(context, state, (pass) => {userPass = pass},
+                "authFormPass", true),
+            isSignIn
+                ? Container()
+                : authWebUserInputField(
+                    context,
+                    state,
+                    (passVerify) => {userPassVerify = passVerify},
+                    "authFormPassVerify",
+                    true),
+          ],
         ),
       ));
 }
@@ -144,8 +140,11 @@ Widget authWebUserInputField(BuildContext context, State state,
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
+      constraints: BoxConstraints(minHeight: 35, minWidth: 100),
       height: getDimension(context, true,
           Theme.of(context).visualDensity.authWebUserInputFieldHeight),
+      width: getDimension(context, false,
+          Theme.of(context).visualDensity.authWebUserInputWidth),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -298,6 +297,7 @@ Widget authWebPolicyAndTaC(BuildContext context) {
 Widget authWebGetStarted(BuildContext context, bool isSmall, State state) {
   return Center(
     child: Container(
+      constraints: BoxConstraints(minHeight: 35, minWidth: 100),
       height: getDimension(context, true,
           Theme.of(context).visualDensity.authWebGetStartedHeight),
       width: getDimension(context, false,
