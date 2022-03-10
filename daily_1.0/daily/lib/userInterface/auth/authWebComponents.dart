@@ -144,7 +144,7 @@ Widget authWebUserInputField(BuildContext context, State state,
       height: getDimension(context, true,
           Theme.of(context).visualDensity.authWebUserInputFieldHeight),
       width: getDimension(context, false,
-          Theme.of(context).visualDensity.authWebUserInputWidth),
+          Theme.of(context).visualDensity.authWebUserInputFieldWidth),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
