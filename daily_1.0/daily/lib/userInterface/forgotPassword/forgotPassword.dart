@@ -16,7 +16,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   void dispose() {
     super.dispose();
-    forgotPasswordDispose();
+    forgotPasswordMobileDispose();
+    forgotPasswordWebDispose();
   }
 
   forgotPasswordScreenSmall() {
@@ -37,10 +38,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
+        Positioned(left: 0, child: authWebCenterPiece(context, this)),
         Positioned(
             child: Align(
           alignment: Alignment.center,
-          child: forgotPasswordWebCard(context),
+          child: forgotPasswordWebCard(context, this),
         )),
       ],
     );
@@ -50,10 +52,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
+        Positioned(left: 0, child: authWebCenterPiece(context, this)),
         Positioned(
             child: Align(
           alignment: Alignment.center,
-          child: forgotPasswordWebCard(context),
+          child: forgotPasswordWebCard(context, this),
         )),
       ],
     );
@@ -85,7 +88,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               Theme.of(context)
                   .materialTapTargetSize
                   .forgotPasswordMobileUserInputTop),
-          child: forgotPasswordUserInputField(context)),
+          child: forgotPasswordUserInputField(context, this)),
       Positioned(
         top: getPosition(
             context,
@@ -133,7 +136,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               Theme.of(context)
                   .materialTapTargetSize
                   .forgotPasswordMobileUserInputTop),
-          child: forgotPasswordUserInputField(context)),
+          child: forgotPasswordUserInputField(context, this)),
       Positioned(
         top: getPosition(
             context,

@@ -56,7 +56,7 @@ Widget forgotPasswordCenterPiece(BuildContext context) {
 
 String userEmail;
 final GlobalKey<FormFieldState> formKey = GlobalKey<FormFieldState>();
-Widget forgotPasswordUserInputField(BuildContext context) {
+Widget forgotPasswordUserInputField(BuildContext context, State state) {
   return Container(
     height: getDimension(context, true,
         Theme.of(context).visualDensity.forgotPasswordUserInputFieldHeight),
@@ -71,6 +71,9 @@ Widget forgotPasswordUserInputField(BuildContext context) {
       key: formKey,
       obscureText: false,
       onSaved: (email) => userEmail = email,
+      onFieldSubmitted: (value) {
+        forgotPasswordValidateSubmit(context, state);
+      },
       autofocus: false,
       style: TextStyle(
           color: Theme.of(context)
@@ -131,18 +134,7 @@ Widget forgotPasswordSend(BuildContext context, State state) {
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            formKey.currentState.save();
-            firebaseAccounts
-                .sendPasswordReset(context, userEmail)
-                .then((_isSent) => {
-                      if (_isSent)
-                        {
-                          state.setState(() {
-                            isSent = true;
-                          })
-                        }
-                    });
-            formKey.currentState.reset();
+            forgotPasswordValidateSubmit(context, state);
           },
           child: Container(
             child: Center(
@@ -163,6 +155,18 @@ Widget forgotPasswordSend(BuildContext context, State state) {
       ),
     ),
   );
+}
+
+void forgotPasswordValidateSubmit(BuildContext context, State state) {
+  formKey.currentState.save();
+  firebaseAccounts.sendPasswordReset(context, userEmail).then((_isSent) => {
+        if (_isSent)
+          {
+            state.setState(() {
+              isSent = true;
+            })
+          }
+      });
 }
 
 Widget forgotPasswordResend(BuildContext context) {
@@ -206,6 +210,6 @@ Widget forgotPasswordResend(BuildContext context) {
       : Container();
 }
 
-void forgotPasswordDispose() {
+void forgotPasswordMobileDispose() {
   isSent = false;
 }
