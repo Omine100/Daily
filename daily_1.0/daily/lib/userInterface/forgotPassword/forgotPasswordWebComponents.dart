@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
-import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
@@ -67,19 +66,6 @@ Widget forgotPasswordWebTitle(BuildContext context) {
       ),
     ],
   );
-}
-
-Widget authWebCenterPiece(BuildContext context, State state) {
-  return Container(
-      height: getDimension(context, true,
-          Theme.of(context).visualDensity.forgotPasswordWebCenterPieceHeight),
-      width: getDimension(context, false,
-          Theme.of(context).visualDensity.forgotPasswordWebCenterPieceWidth),
-      child: Image(
-          fit: BoxFit.cover,
-          image: isDark.value
-              ? AssetImage("lib/assets/auth/web/auth_centerPiece_dark.jpg")
-              : AssetImage("lib/assets/auth/web/auth_centerPiece_light.jpg")));
 }
 
 String userEmail;

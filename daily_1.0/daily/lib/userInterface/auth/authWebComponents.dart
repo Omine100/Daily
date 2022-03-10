@@ -1,4 +1,5 @@
 import 'package:daily/themesLocal/positions.dart';
+import 'package:daily/userInterface/forgotPassword/forgotPasswordWebComponents.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:auto_route/auto_route.dart';
@@ -15,7 +16,7 @@ import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();
-bool isSignIn = true;
+bool isSignIn = true, isForgotPassword = false;
 
 Widget authWebCenterPiece(BuildContext context, State state) {
   return Container(
@@ -30,51 +31,61 @@ Widget authWebCenterPiece(BuildContext context, State state) {
               : AssetImage("lib/assets/auth/web/auth_centerPiece_light.jpg")));
 }
 
-Widget authWebCard(BuildContext context, State state, bool isSmall) {
+Widget authWebCardContainer(BuildContext context, State state, bool isSmall) {
   return Container(
-    height: getDimension(
-        context, true, Theme.of(context).visualDensity.authWebCardHeight),
-    width: getDimension(
-        context, false, Theme.of(context).visualDensity.authWebCardWidth),
-    decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.authWebCard,
-        borderRadius: isSmall
-            ? BorderRadius.all(Radius.circular(50))
-            : BorderRadius.only(
-                topLeft: Radius.circular(50), bottomLeft: Radius.circular(50))),
-    child: Stack(
-      alignment: Alignment.center,
-      children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 25.0),
-              child: authWebTitle(context, isSignIn),
-            ),
-            authWebUserInput(context, state, isSmall),
-            isSignIn
-                ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: authWebForgotPassword(context, isSmall),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: authWebPolicyAndTaC(context),
-                  ),
-            Padding(
-              padding: const EdgeInsets.only(top: 7.0),
-              child: authWebGetStarted(context, isSmall, state),
-            ),
-          ],
-        ),
-        Positioned(
-          bottom: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.authWebSwitchBottom),
-          child: authWebSwitch(context, state),
-        ),
-      ],
-    ),
+      height: getDimension(
+          context, true, Theme.of(context).visualDensity.authWebCardHeight),
+      width: getDimension(
+          context, false, Theme.of(context).visualDensity.authWebCardWidth),
+      decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.authWebCard,
+          borderRadius: isSmall
+              ? BorderRadius.all(Radius.circular(50))
+              : BorderRadius.only(
+                  topLeft: Radius.circular(50),
+                  bottomLeft: Radius.circular(50))),
+      child: authWebCardPick(context, state, isSmall));
+}
+
+Widget authWebCardPick(BuildContext context, State state, bool isSmall) {
+  return isForgotPassword
+      ? forgotPasswordWebCard(context, state)
+      : authWebCard(context, state, isSmall);
+}
+
+Widget authWebCard(BuildContext context, State state, bool isSmall) {
+  return Stack(
+    alignment: Alignment.center,
+    children: [
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 25.0),
+            child: authWebTitle(context, isSignIn),
+          ),
+          authWebUserInput(context, state, isSmall),
+          isSignIn
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: authWebForgotPassword(context, state, isSmall),
+                )
+              : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: authWebPolicyAndTaC(context),
+                ),
+          Padding(
+            padding: const EdgeInsets.only(top: 7.0),
+            child: authWebGetStarted(context, isSmall, state),
+          ),
+        ],
+      ),
+      Positioned(
+        bottom: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.authWebSwitchBottom),
+        child: authWebSwitch(context, state),
+      ),
+    ],
   );
 }
 
@@ -205,14 +216,16 @@ Widget authWebUserInputField(BuildContext context, State state,
   );
 }
 
-Widget authWebForgotPassword(BuildContext context, bool isSmall) {
+Widget authWebForgotPassword(BuildContext context, State state, bool isSmall) {
   return Container(
     width: getDimension(context, false,
         Theme.of(context).visualDensity.authWebForgotPasswordWidth),
     alignment: Alignment.centerLeft,
     child: GestureDetector(
       onTap: () {
-        context.router.push(ForgotPasswordScreen());
+        state.setState(() {
+          isForgotPassword = true;
+        });
       },
       child: Text(
         getTranslated(context, "authForgotPassword"),
