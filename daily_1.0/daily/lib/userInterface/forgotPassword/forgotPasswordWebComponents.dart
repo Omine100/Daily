@@ -1,3 +1,4 @@
+import 'package:daily/userInterface/auth/authWebComponents.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
@@ -28,6 +29,7 @@ Widget forgotPasswordWebCard(BuildContext context, State state) {
               child: forgotPasswordWebTitle(context),
             ),
             forgotPasswordWebUserInputField(context, state),
+            forgotPasswordWebSwitchBack(context, state),
             forgotPasswordWebSend(context, state),
             forgotPasswordWebResend(context)
           ],
@@ -125,6 +127,18 @@ Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
               .forgotPasswordMobileUserInputFieldIconDecoration,
         ),
       ),
+    ),
+  );
+}
+
+Widget forgotPasswordWebSwitchBack(BuildContext context, State state) {
+  return GestureDetector(
+    onTap: () {
+      authWebForgotPasswordSwitchBack(context, state);
+    },
+    child: Text(
+      "Remembered your account?",
+      style: TextStyle(color: Colors.white),
     ),
   );
 }

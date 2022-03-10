@@ -387,3 +387,9 @@ void authWebValidateSubmit(BuildContext context, State state) async {
     });
   firebaseAccounts.setCurrentUserProfilePicURL(state);
 }
+
+void authWebForgotPasswordSwitchBack(BuildContext context, State state) {
+  state.setState(() {
+    isForgotPassword = false;
+  });
+}
