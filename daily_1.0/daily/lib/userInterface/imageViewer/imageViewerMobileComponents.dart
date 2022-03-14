@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:daily/servicesBroad/firebaseCRUD.dart';
 
-Widget imageViewerImage(BuildContext context, Widget image) {
+Widget imageViewerMobileImage(BuildContext context, Widget image) {
   return Center(
     child: image,
   );
 }
 
-Widget imageViewerProgressButton(BuildContext context, String imagePath) {
+Widget imageViewerMobileProgressButton(BuildContext context, String imagePath) {
   DateTime date = DateTime.now();
   return IconButton(
     color: Colors.grey,
