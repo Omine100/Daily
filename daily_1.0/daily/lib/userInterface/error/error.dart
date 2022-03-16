@@ -33,7 +33,9 @@ class _ErrorScreenState extends State<ErrorScreen> {
   }
 
   errorScreenWebLarge() {
-    return Container();
+    return Container(
+      child: Text("Error"),
+    );
   }
 
   //Should stay like this cause we should never be able to get
