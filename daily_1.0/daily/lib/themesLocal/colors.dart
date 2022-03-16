@@ -44,6 +44,7 @@ extension CustomConnectedColorScheme on ColorScheme {
   // #endregion
 
   // #region backgrounds
+  Color get errorBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get welcomeBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get authBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get forgotPasswordBackground =>
