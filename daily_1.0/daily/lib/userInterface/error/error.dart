@@ -34,7 +34,7 @@ class _ErrorScreenState extends State<ErrorScreen> {
 
   errorScreenWebLarge() {
     return Container(
-      child: Text("Error"),
+      child: Text("Error", style: TextStyle(fontSize: 300)),
     );
   }
 
@@ -56,11 +56,9 @@ class _ErrorScreenState extends State<ErrorScreen> {
         child: Scaffold(
           backgroundColor: Theme.of(context).colorScheme.errorBackground,
           body: SingleChildScrollView(
-            child: Expanded(
-              child: Responsive(
-                small: errorScreenSmall(),
-                large: errorScreenLarge(),
-              ),
+            child: Responsive(
+              small: errorScreenSmall(),
+              large: errorScreenLarge(),
             ),
           ),
         ),
