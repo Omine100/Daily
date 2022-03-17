@@ -7,6 +7,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
+import 'package:daily/utilities/designUtil/glassmorphism/glassmorphism.dart';
 
 Widget welcomeMobileTitle(BuildContext context) {
   return Container(
@@ -39,14 +40,15 @@ Widget welcomeMobileCardContainer(BuildContext context, State state) {
   return SingleChildScrollView(
     child: Container(
       constraints: BoxConstraints(minHeight: 100, minWidth: 100),
-      height: 250,
-      width: 335,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.authWebCard,
-        borderRadius: BorderRadius.all(Radius.circular(50)),
-      ),
       child: welcomeMobileCard(context, state),
-    ),
+    ).addWrapperGlass(
+        colorOpacity: 0.05,
+        edgeColor: Colors.transparent,
+        backdropBlur: 20,
+        height: 250,
+        width: 335,
+        containerColor: Theme.of(context).colorScheme.authWebCard,
+        borderRadius: 50),
   );
 }
 
