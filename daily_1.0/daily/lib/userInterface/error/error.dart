@@ -29,13 +29,11 @@ class _ErrorScreenState extends State<ErrorScreen> {
   }
 
   errorScreenWebSmall() {
-    return Container();
+    return errorWebCenterPiece(context, this);
   }
 
   errorScreenWebLarge() {
-    return Container(
-      child: Text("Error", style: TextStyle(fontSize: 300)),
-    );
+    return errorWebCenterPiece(context, this);
   }
 
   //Should stay like this cause we should never be able to get

@@ -55,7 +55,7 @@ Widget forgotPasswordCenterPiece(BuildContext context) {
 }
 
 String userEmail;
-final GlobalKey<FormFieldState> formKey = GlobalKey<FormFieldState>();
+GlobalKey<FormFieldState> forgotPasswordFormKey = GlobalKey<FormFieldState>();
 Widget forgotPasswordUserInputField(BuildContext context, State state) {
   return Container(
     height: getDimension(context, true,
@@ -68,7 +68,7 @@ Widget forgotPasswordUserInputField(BuildContext context, State state) {
       color: Theme.of(context).colorScheme.forgotPasswordMobileUserInputField,
     ),
     child: TextFormField(
-      key: formKey,
+      key: forgotPasswordFormKey,
       obscureText: false,
       onSaved: (email) => userEmail = email,
       onFieldSubmitted: (value) {
@@ -158,7 +158,7 @@ Widget forgotPasswordSend(BuildContext context, State state) {
 }
 
 void forgotPasswordValidateSubmit(BuildContext context, State state) {
-  formKey.currentState.save();
+  forgotPasswordFormKey.currentState.save();
   firebaseAccounts.sendPasswordReset(context, userEmail).then((_isSent) => {
         if (_isSent)
           {
@@ -173,7 +173,7 @@ Widget forgotPasswordResend(BuildContext context) {
   return isSent
       ? GestureDetector(
           onTap: () {
-            formKey.currentState.save();
+            forgotPasswordFormKey.currentState.save();
             firebaseAccounts.sendPasswordReset(context, userEmail);
           },
           child: RichText(

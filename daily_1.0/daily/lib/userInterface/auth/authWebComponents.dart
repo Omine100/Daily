@@ -1,5 +1,3 @@
-import 'package:daily/themesLocal/positions.dart';
-import 'package:daily/userInterface/forgotPassword/forgotPasswordWebComponents.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:auto_route/auto_route.dart';
@@ -9,11 +7,13 @@ import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
+import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/constraints.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
+import 'package:daily/userInterface/forgotPassword/forgotPasswordWebComponents.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();
@@ -107,10 +107,10 @@ Widget authWebTitle(BuildContext context, bool isSignIn) {
 }
 
 String userName = "", userEmail = "", userPass = "", userPassVerify = "";
-final formKey = GlobalKey<FormState>();
+GlobalKey<FormState> authFormKey = GlobalKey<FormState>();
 Widget authWebUserInput(BuildContext context, State state, bool isSmall) {
   return Form(
-      key: formKey,
+      key: authFormKey,
       child: Center(
         child: Column(
           children: [
@@ -369,14 +369,14 @@ Widget authWebSwitch(BuildContext context, State state) {
 }
 
 void authWebValidateSubmit(BuildContext context, State state) async {
-  formKey.currentState.save();
+  authFormKey.currentState.save();
   if (isSignIn)
     firebaseAccounts
         .signInEmailAndPassword(context, userEmail, userPass)
         .then((value) {
       if (value) {
         context.router.push(HomeScreen());
-        formKey.currentState.reset();
+        authFormKey.currentState.reset();
       }
     });
   else
@@ -386,7 +386,7 @@ void authWebValidateSubmit(BuildContext context, State state) async {
         .then((value) {
       if (value) {
         context.router.push(HomeScreen());
-        formKey.currentState.reset();
+        authFormKey.currentState.reset();
       }
     });
   firebaseAccounts.setCurrentUserProfilePicURL(state);
