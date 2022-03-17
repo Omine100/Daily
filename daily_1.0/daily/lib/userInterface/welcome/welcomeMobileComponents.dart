@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
@@ -38,88 +38,15 @@ Widget welcomeMobileTitle(BuildContext context) {
   );
 }
 
-List<Image> _images = [
-  Image(image: AssetImage("lib/assets/welcome/mobile/welcome_carouselOne.png")),
-  Image(image: AssetImage("lib/assets/welcome/mobile/welcome_carouselTwo.png")),
-  Image(
-      image: AssetImage("lib/assets/welcome/mobile/welcome_carouselThree.png")),
-];
-int _current = 0;
-Widget welcomeMobileCarousel(State state, BuildContext context) {
-  return Column(
-    children: [
-      Container(
-        height: getDimension(context, true,
-            Theme.of(context).visualDensity.welcomeMobileCarouselHeight),
-        width: getDimension(context, false,
-            Theme.of(context).visualDensity.welcomeMobileCarouselWidth),
-        child: CarouselSlider(
-          items: _images,
-          options: CarouselOptions(
-            autoPlay: true,
-            enlargeCenterPage: true,
-            aspectRatio: 1.0,
-            onPageChanged: (index, reason) {
-              state.setState(() {
-                _current = index;
-              });
-            },
-          ),
-        ),
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: _images.map(
-          (image) {
-            int index = _images.indexOf(image);
-            return Container(
-              width: getDimension(
-                  context,
-                  false,
-                  Theme.of(context)
-                      .visualDensity
-                      .welcomeMobileCarouselSelectorWidth),
-              height: _current == index
-                  ? getDimension(
-                      context,
-                      true,
-                      Theme.of(context)
-                          .visualDensity
-                          .welcomeMobileCarouselSelectorHeightCurrent)
-                  : getDimension(
-                      context,
-                      true,
-                      Theme.of(context)
-                          .visualDensity
-                          .welcomeMobileCarouselSelectorHeightNotCurrent),
-              margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 3.5),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: _current == index
-                      ? Theme.of(context)
-                          .colorScheme
-                          .welcomeMobileCarouselCurrent
-                      : Theme.of(context)
-                          .colorScheme
-                          .welcomeMobileCarouselNotCurrent),
-            );
-          },
-        ).toList(),
-      ),
-    ],
-  );
-}
-
-Widget welcomeMobileCorner(BuildContext context) {
+Widget welcomeMobileCenterPiece(BuildContext context) {
   return Container(
-    height: getDimension(context, true,
-        Theme.of(context).visualDensity.welcomeMobileCornerHeight),
-    width: getDimension(context, true,
-        Theme.of(context).visualDensity.welcomeMobileCornerHeight),
-    child: Image(
-      image: AssetImage("lib/assets/welcome/mobile/welcome_corner.png"),
-    ),
-  );
+      height: getDimension(context, true,
+          Theme.of(context).visualDensity.welcomeMobileCenterPieceHeight),
+      child: Image(
+          fit: BoxFit.fitHeight,
+          image: isDark.value
+              ? AssetImage("lib/assets/auth/web/auth_centerPiece_dark.jpg")
+              : AssetImage("lib/assets/auth/web/auth_centerPiece_light.jpg")));
 }
 
 Widget welcomeMobileGetStarted(BuildContext context) {

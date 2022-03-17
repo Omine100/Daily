@@ -54,15 +54,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         ),
         Positioned(
           top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeMobileCornerTop),
-          right: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeMobileCornerRight),
-          child: welcomeMobileCorner(context),
-        ),
-        Positioned(
-          top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.welcomeMobileCarouselTop),
-          child: welcomeMobileCarousel(this, context),
+          child: welcomeMobileCenterPiece(context),
         ),
         Positioned(
           top: getPosition(
@@ -97,15 +90,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         ),
         Positioned(
           top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeMobileCornerTop),
-          right: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeMobileCornerRight),
-          child: welcomeMobileCorner(context),
-        ),
-        Positioned(
-          top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.welcomeMobileCarouselTop),
-          child: welcomeMobileCarousel(this, context),
+          child: welcomeMobileCenterPiece(context),
         ),
         Positioned(
           top: getPosition(

@@ -36,8 +36,6 @@ class _ErrorScreenState extends State<ErrorScreen> {
     return errorWebCenterPiece(context, this);
   }
 
-  //Should stay like this cause we should never be able to get
-  //to a page that does not exist on both mobile versions anyway
   errorScreenMobileSmall(bool isAndroid) {
     return Container();
   }

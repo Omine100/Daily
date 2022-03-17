@@ -56,10 +56,8 @@ flutter:
       - lib/assets/launcher/icon.png
       - lib/assets/launcher/icon_noBackground.png
       - lib/assets/error/web/error_centerPiece.png
-      - lib/assets/welcome/mobile/welcome_carouselOne.png
-      - lib/assets/welcome/mobile/welcome_carouselTwo.png
-      - lib/assets/welcome/mobile/welcome_carouselThree.png
-      - lib/assets/welcome/mobile/welcome_corner.png
+      - lib/assets/welcome/mobile/welcome_centerPiece_dark.jpg
+      - lib/assets/welcome/mobile/welcome_centerPiece_light.jpg
       - lib/assets/auth/web/auth_centerPiece_dark.jpg
       - lib/assets/auth/web/auth_centerPiece_light.jpg
       - lib/assets/auth/mobile/auth_centerPiece.png

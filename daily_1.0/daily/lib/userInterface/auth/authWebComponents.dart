@@ -19,7 +19,7 @@ FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();
 bool isSignIn = true, isForgotPassword = false;
 
-Widget authWebCenterPiece(BuildContext context, State state) {
+Widget authWebCenterPiece(BuildContext context) {
   return Container(
       height: getDimension(context, true,
           Theme.of(context).visualDensity.authWebCenterPieceHeight),

@@ -41,13 +41,7 @@ extension CustomWebDimensions on VisualDensity {
 extension CustomMobileDimensions on VisualDensity {
   // #region welcome
   double get welcomeMobileTitleWidth => isSmall ? 1.0 : 1.0;
-  double get welcomeMobileCarouselHeight => isSmall ? 0.50 : 0.50;
-  double get welcomeMobileCarouselWidth => isSmall ? 1.0 : 1.0;
-  double get welcomeMobileCarouselSelectorHeightCurrent =>
-      isSmall ? 0.045 : 0.045;
-  double get welcomeMobileCarouselSelectorHeightNotCurrent =>
-      isSmall ? 0.025 : 0.025;
-  double get welcomeMobileCarouselSelectorWidth => isSmall ? 0.025 : 0.025;
+  double get welcomeMobileCenterPieceHeight => isSmall ? 1.0 : 1.0;
   double get welcomeMobileCornerHeight => isSmall ? 0.22 : 0.22;
   double get welcomeMobileGetStartedHeight => isSmall ? 0.065 : 0.065;
   double get welcomeMobileGetStartedWidth => isSmall ? 0.45 : 0.45;
