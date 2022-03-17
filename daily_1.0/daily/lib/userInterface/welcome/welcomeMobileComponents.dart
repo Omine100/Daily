@@ -39,8 +39,8 @@ Widget welcomeMobileCardContainer(BuildContext context, State state) {
   return SingleChildScrollView(
     child: Container(
       constraints: BoxConstraints(minHeight: 100, minWidth: 100),
-      height: 100,
-      width: 100,
+      height: 250,
+      width: 335,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.authWebCard,
         borderRadius: BorderRadius.all(Radius.circular(50)),

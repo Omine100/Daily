@@ -62,7 +62,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           child: welcomeMobileCenterPiece(context),
         ),
         Positioned(
-          bottom: 100,
+          bottom: 40,
           child: welcomeMobileCardContainer(context, this),
         ),
       ],
@@ -88,7 +88,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           child: welcomeMobileCenterPiece(context),
         ),
         Positioned(
-          bottom: 100,
+          bottom: 50,
           child: welcomeMobileCardContainer(context, this),
         ),
       ],
