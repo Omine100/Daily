@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:daily/userInterface/error/error.dart';
 import 'package:daily/userInterface/welcome/welcome.dart';
 import 'package:daily/userInterface/auth/auth.dart';
 import 'package:daily/userInterface/forgotPassword/forgotPassword.dart';
@@ -15,6 +16,7 @@ import 'package:daily/userInterface/textViewer/textViewer.dart';
     AutoRoute(page: HomeScreen, path: "home"),
     AutoRoute(page: ImageViewerScreen, path: "image-viewer"),
     AutoRoute(page: TextViewerScreen, path: "text-viewer"),
+    AutoRoute(page: ErrorScreen, path: '*'),
   ],
 )
 class $AppRouter {}

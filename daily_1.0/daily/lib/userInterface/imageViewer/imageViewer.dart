@@ -29,21 +29,37 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
   }
 
   imageViewerScreenWebSmall() {
-    return Container();
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        imageViewerWebImage(context, widget.image),
+        Positioned(
+            bottom: 50,
+            child: imageViewerWebProgressButton(context, widget.imagePath)),
+      ],
+    );
   }
 
   imageViewerScreenWebLarge() {
-    return Container();
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        imageViewerWebImage(context, widget.image),
+        Positioned(
+            bottom: 50,
+            child: imageViewerWebProgressButton(context, widget.imagePath)),
+      ],
+    );
   }
 
   imageViewerScreenMobileSmall(bool isAndroid) {
     return Stack(
       alignment: Alignment.center,
       children: [
-        imageViewerImage(context, widget.image),
+        imageViewerMobileImage(context, widget.image),
         Positioned(
             bottom: 50,
-            child: imageViewerProgressButton(context, widget.imagePath)),
+            child: imageViewerMobileProgressButton(context, widget.imagePath)),
       ],
     );
   }
@@ -52,10 +68,10 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        imageViewerImage(context, widget.image),
+        imageViewerMobileImage(context, widget.image),
         Positioned(
             bottom: 50,
-            child: imageViewerProgressButton(context, widget.imagePath)),
+            child: imageViewerMobileProgressButton(context, widget.imagePath)),
       ],
     );
   }
