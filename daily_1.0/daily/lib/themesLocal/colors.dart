@@ -97,12 +97,10 @@ extension CustomMobileColorScheme on ColorScheme {
 
   // #region welcome
   Color get welcomeMobileTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
-  Color get welcomeMobileSubtitle =>
-      Color(isDark.value ? 0xFFAAAAAA : 0xFF111111);
-  Color get welcomeMobileCarouselCurrent =>
-      Color(isDark.value ? 0xFFEF5350 : 0xFFEF5350);
-  Color get welcomeMobileCarouselNotCurrent =>
-      Color(isDark.value ? 0xFFAAAAAA : 0xFFDDDDDD);
+  Color get welcomeMobileCardText =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get welcomeMobileCardSubText =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get welcomeMobileGetStarted =>
       Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
   Color get welcomeMobileGetStartedInkWell =>

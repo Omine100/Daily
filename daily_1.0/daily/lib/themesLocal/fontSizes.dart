@@ -32,7 +32,8 @@ extension CustomMobileFontSize on TextTheme {
 
   // #region welcome
   double get welcomeMobileTitle => 48;
-  double get welcomeMobileSubtitle => 32;
+  double get welcomeMobileCardText => 32;
+  double get welcomeMobileCardSubText => 18;
   double get welcomeMobileGetStartedText => 20;
   double get welcomeMobileAccountAlready => 16;
   double get welcomeMobileAccountAlreadyLogin => 16;
@@ -40,7 +41,6 @@ extension CustomMobileFontSize on TextTheme {
 
   // #region auth
   double get authMobileTitle => 48;
-  double get authMobileSubtitle => 32;
   double get authMobileUserInputFieldDecoration => 20;
   double get authMobileForgotPassword => 16;
   double get authMobilePolicyAndTaC => 14;

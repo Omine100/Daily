@@ -53,27 +53,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           child: welcomeMobileTitle(context),
         ),
         Positioned(
-          top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeMobileCarouselTop),
+          left: getPosition(
+              context,
+              false,
+              Theme.of(context)
+                  .materialTapTargetSize
+                  .welcomeMobileCenterPieceLeft),
           child: welcomeMobileCenterPiece(context),
         ),
         Positioned(
-          top: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .welcomeMobileGetStartedTop),
-          child: welcomeMobileGetStarted(context),
-        ),
-        Positioned(
-          bottom: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .welcomeMobileAccountAlreadyBottom),
-          child: welcomeMobileAccountAlready(context),
+          bottom: 100,
+          child: welcomeMobileCardContainer(context, this),
         ),
       ],
     );
@@ -89,27 +79,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           child: welcomeMobileTitle(context),
         ),
         Positioned(
-          top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeMobileCarouselTop),
+          left: getPosition(
+              context,
+              false,
+              Theme.of(context)
+                  .materialTapTargetSize
+                  .welcomeMobileCenterPieceLeft),
           child: welcomeMobileCenterPiece(context),
         ),
         Positioned(
-          top: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .welcomeMobileGetStartedTop),
-          child: welcomeMobileGetStarted(context),
-        ),
-        Positioned(
-          bottom: getPosition(
-              context,
-              true,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .welcomeMobileAccountAlreadyBottom),
-          child: welcomeMobileAccountAlready(context),
+          bottom: 100,
+          child: welcomeMobileCardContainer(context, this),
         ),
       ],
     );

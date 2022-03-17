@@ -32,7 +32,8 @@ extension CustomMobileFontWeight on Typography {
 
   // #region welcome
   FontWeight get welcomeMobileTitle => FontWeight.w500;
-  FontWeight get welcomeMobileSubtitle => FontWeight.w300;
+  FontWeight get welcomeMobileCardText => FontWeight.w500;
+  FontWeight get welcomeMobileCardSubText => FontWeight.w300;
   FontWeight get welcomeMobileGetStartedText => FontWeight.w500;
   FontWeight get welcomeMobileAccountAlready => FontWeight.w400;
   FontWeight get welcomeMobileAccountAlreadyLogin => FontWeight.w500;
