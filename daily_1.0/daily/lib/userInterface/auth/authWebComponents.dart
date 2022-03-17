@@ -11,6 +11,7 @@ import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
+import 'package:daily/themesLocal/constraints.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
 
@@ -34,7 +35,7 @@ Widget authWebCenterPiece(BuildContext context, State state) {
 Widget authWebCardContainer(BuildContext context, State state, bool isSmall) {
   return SingleChildScrollView(
     child: Container(
-        constraints: BoxConstraints(minHeight: 400, minWidth: 300),
+        constraints: Theme.of(context).bottomAppBarTheme.authWebCard,
         height: getDimension(
             context, true, Theme.of(context).visualDensity.authWebCardHeight),
         width: getDimension(
