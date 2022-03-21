@@ -5,9 +5,9 @@ import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
+import 'package:daily/themesLocal/constraints.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
-import 'package:daily/utilities/designUtil/glassmorphism/glassmorphism.dart';
 
 Widget welcomeMobileTitle(BuildContext context) {
   return Text(
@@ -37,9 +37,11 @@ Widget welcomeMobileCardContainer(BuildContext context, State state) {
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Theme.of(context).colorScheme.authWebCard),
-    width: 350,
-    height: 275,
-    constraints: BoxConstraints(minHeight: 100, minWidth: 100),
+    height: getDimension(
+        context, true, Theme.of(context).visualDensity.welcomeMobileCardHeight),
+    width: getDimension(
+        context, false, Theme.of(context).visualDensity.welcomeMobileCardWidth),
+    constraints: Theme.of(context).bottomAppBarTheme.welcomeMobileCard,
     child: welcomeMobileCard(context, state),
   ));
 }
@@ -49,12 +51,14 @@ Widget welcomeMobileCard(BuildContext context, State state) {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       welcomeMobileCardText(context),
-      SizedBox(
-        height: 30,
+      Padding(
+        padding: const EdgeInsets.only(top: 30.0),
+        child: welcomeMobileGetStarted(context),
       ),
-      welcomeMobileGetStarted(context),
-      SizedBox(height: 25),
-      welcomeMobileAccountAlready(context)
+      Padding(
+        padding: const EdgeInsets.only(top: 25.0),
+        child: welcomeMobileAccountAlready(context),
+      )
     ],
   );
 }
@@ -63,8 +67,7 @@ Widget welcomeMobileCardText(BuildContext context) {
   return Column(
     children: [
       Text(
-        "Memory made daily",
-        // getTranslated(context, "welcomeCardText"),
+        getTranslated(context, "welcomeCardText"),
         style: TextStyle(
           color: Theme.of(context).colorScheme.welcomeMobileCardText,
           fontSize: Theme.of(context).textTheme.welcomeMobileCardText,
@@ -74,10 +77,9 @@ Widget welcomeMobileCardText(BuildContext context) {
       Padding(
         padding: const EdgeInsets.only(top: 10.0),
         child: Text(
-          "Global prompt. Capture a new photo everyday, see what happens.",
+          getTranslated(context, "welcomeCardSubText"),
           softWrap: true,
           textAlign: TextAlign.center,
-          // getTranslated(context, "welcomeCardSubText"),
           style: TextStyle(
             color: Theme.of(context).colorScheme.welcomeMobileCardSubText,
             fontSize: Theme.of(context).textTheme.welcomeMobileCardSubText,

@@ -14,9 +14,8 @@ extension CustomWebPositions on MaterialTapTargetSize {
 extension CustomMobilePositions on MaterialTapTargetSize {
   // #region welcome
   double get welcomeMobileTitleTop => isSmall ? 0.065 : 0.065;
-  double get welcomeMobileCenterPieceLeft => isSmall ? 0 : 0;
-  double get welcomeMobileGetStartedTop => isSmall ? 0.835 : 0.835;
-  double get welcomeMobileAccountAlreadyBottom => isSmall ? 0.03 : 0.03;
+  double get welcomeMobileCenterPieceLeft => isSmall ? -0.25 : -0.25;
+  double get welcomeMobileCardBottom => isSmall ? 0.03 : 0.03;
   // #endregion
 
   // #region auth

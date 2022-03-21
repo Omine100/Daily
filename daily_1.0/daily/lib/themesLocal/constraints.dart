@@ -12,6 +12,8 @@ extension CustomWebConstraints on BottomAppBarTheme {
 }
 
 extension CustomMobileConstraints on BottomAppBarTheme {
-  // #region auth
+  // #region welcome
+  BoxConstraints get welcomeMobileCard =>
+      BoxConstraints(minHeight: 100, minWidth: 100);
   // #endregion
 }
