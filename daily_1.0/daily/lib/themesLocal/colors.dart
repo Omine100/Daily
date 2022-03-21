@@ -96,7 +96,7 @@ extension CustomMobileColorScheme on ColorScheme {
   // #endregion
 
   // #region welcome
-  Color get welcomeMobileTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get welcomeMobileTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get welcomeMobileCardText =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get welcomeMobileCardSubText =>

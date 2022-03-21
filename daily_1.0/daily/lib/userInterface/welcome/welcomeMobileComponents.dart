@@ -10,17 +10,12 @@ import 'package:daily/themesLocal/fontWeights.dart';
 import 'package:daily/utilities/designUtil/glassmorphism/glassmorphism.dart';
 
 Widget welcomeMobileTitle(BuildContext context) {
-  return Container(
-    padding: EdgeInsets.only(left: 20),
-    width: getDimension(context, false,
-        Theme.of(context).visualDensity.welcomeMobileTitleWidth),
-    child: Text(
-      getTranslated(context, "welcomeTitle"),
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.welcomeMobileTitle,
-        fontSize: Theme.of(context).textTheme.welcomeMobileTitle,
-        fontWeight: Theme.of(context).typography.welcomeMobileTitle,
-      ),
+  return Text(
+    getTranslated(context, "welcomeTitle"),
+    style: TextStyle(
+      color: Theme.of(context).colorScheme.welcomeMobileTitle,
+      fontSize: Theme.of(context).textTheme.welcomeMobileTitle,
+      fontWeight: Theme.of(context).typography.welcomeMobileTitle,
     ),
   );
 }
@@ -38,35 +33,28 @@ Widget welcomeMobileCenterPiece(BuildContext context) {
 
 Widget welcomeMobileCardContainer(BuildContext context, State state) {
   return SingleChildScrollView(
-    child: Container(
-      constraints: BoxConstraints(minHeight: 100, minWidth: 100),
-      child: welcomeMobileCard(context, state),
-    ).addWrapperGlass(
-        colorOpacity: 0.05,
-        edgeColor: Colors.transparent,
-        backdropBlur: 20,
-        height: 250,
-        width: 335,
-        containerColor: Theme.of(context).colorScheme.authWebCard,
-        borderRadius: 50),
-  );
+      child: Container(
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Theme.of(context).colorScheme.authWebCard),
+    width: 350,
+    height: 275,
+    constraints: BoxConstraints(minHeight: 100, minWidth: 100),
+    child: welcomeMobileCard(context, state),
+  ));
 }
 
 Widget welcomeMobileCard(BuildContext context, State state) {
-  return Stack(
-    alignment: Alignment.center,
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          welcomeMobileCardText(context),
-          welcomeMobileGetStarted(context),
-        ],
+      welcomeMobileCardText(context),
+      SizedBox(
+        height: 30,
       ),
-      Positioned(
-        bottom: 5,
-        child: welcomeMobileAccountAlready(context),
-      ),
+      welcomeMobileGetStarted(context),
+      SizedBox(height: 25),
+      welcomeMobileAccountAlready(context)
     ],
   );
 }
@@ -75,7 +63,7 @@ Widget welcomeMobileCardText(BuildContext context) {
   return Column(
     children: [
       Text(
-        "Testing",
+        "Memory made daily",
         // getTranslated(context, "welcomeCardText"),
         style: TextStyle(
           color: Theme.of(context).colorScheme.welcomeMobileCardText,
@@ -83,13 +71,18 @@ Widget welcomeMobileCardText(BuildContext context) {
           fontWeight: Theme.of(context).typography.welcomeMobileCardText,
         ),
       ),
-      Text(
-        "Testing testing testing testing",
-        // getTranslated(context, "welcomeCardSubText"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.welcomeMobileCardSubText,
-          fontSize: Theme.of(context).textTheme.welcomeMobileCardSubText,
-          fontWeight: Theme.of(context).typography.welcomeMobileCardSubText,
+      Padding(
+        padding: const EdgeInsets.only(top: 10.0),
+        child: Text(
+          "Global prompt. Capture a new photo everyday, see what happens.",
+          softWrap: true,
+          textAlign: TextAlign.center,
+          // getTranslated(context, "welcomeCardSubText"),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.welcomeMobileCardSubText,
+            fontSize: Theme.of(context).textTheme.welcomeMobileCardSubText,
+            fontWeight: Theme.of(context).typography.welcomeMobileCardSubText,
+          ),
         ),
       ),
     ],

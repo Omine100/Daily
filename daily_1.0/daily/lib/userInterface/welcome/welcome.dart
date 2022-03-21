@@ -48,21 +48,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       alignment: Alignment.center,
       children: [
         Positioned(
+          left: -100,
+          child: welcomeMobileCenterPiece(context),
+        ),
+        Positioned(
           top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
           child: welcomeMobileTitle(context),
         ),
         Positioned(
-          left: getPosition(
-              context,
-              false,
-              Theme.of(context)
-                  .materialTapTargetSize
-                  .welcomeMobileCenterPieceLeft),
-          child: welcomeMobileCenterPiece(context),
-        ),
-        Positioned(
-          bottom: 40,
+          bottom: 25,
           child: welcomeMobileCardContainer(context, this),
         ),
       ],
@@ -74,11 +69,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       alignment: Alignment.center,
       children: [
         Positioned(
-          top: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
-          child: welcomeMobileTitle(context),
-        ),
-        Positioned(
           left: getPosition(
               context,
               false,
@@ -86,6 +76,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   .materialTapTargetSize
                   .welcomeMobileCenterPieceLeft),
           child: welcomeMobileCenterPiece(context),
+        ),
+        Positioned(
+          top: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.welcomeMobileTitleTop),
+          child: welcomeMobileTitle(context),
         ),
         Positioned(
           bottom: 50,

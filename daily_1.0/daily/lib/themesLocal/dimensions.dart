@@ -43,7 +43,7 @@ extension CustomMobileDimensions on VisualDensity {
   double get welcomeMobileTitleWidth => isSmall ? 1.0 : 1.0;
   double get welcomeMobileCenterPieceHeight => isSmall ? 1.0 : 1.0;
   double get welcomeMobileGetStartedHeight => isSmall ? 0.065 : 0.065;
-  double get welcomeMobileGetStartedWidth => isSmall ? 0.45 : 0.45;
+  double get welcomeMobileGetStartedWidth => isSmall ? 0.75 : 0.75;
   // #endregion
 
   // #region auth
