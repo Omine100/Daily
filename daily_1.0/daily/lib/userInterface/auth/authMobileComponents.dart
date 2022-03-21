@@ -18,14 +18,6 @@ void setSignIn(bool value) {
   isSignIn ??= value;
 }
 
-Widget authMobileCenterPiece(BuildContext context, State state) {
-  return Container(
-      height: getDimension(context, true,
-          Theme.of(context).visualDensity.authMobileCenterPieceHeight),
-      child: Image(
-          image: AssetImage("lib/assets/auth/mobile/auth_centerPiece.png")));
-}
-
 Widget authMobileCard(BuildContext context, State state, bool isSmall) {
   return Stack(
     alignment: Alignment.center,
@@ -52,6 +44,8 @@ Widget authMobileCard(BuildContext context, State state, bool isSmall) {
     ],
   );
 }
+
+Widget authMobileCardPick(BuildContext context, State state, bool isSmall) {}
 
 String userName = "", userEmail = "", userPass = "", userPassVerify = "";
 GlobalKey<FormState> authFormKey = GlobalKey<FormState>();
