@@ -101,7 +101,32 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   Widget authScreenMobileLarge(bool isAndroid) {
-    return Container();
+    setSignIn(isSignIn);
+
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Positioned(
+          left: getPosition(
+              context,
+              false,
+              Theme.of(context)
+                  .materialTapTargetSize
+                  .authMobileCenterPieceLeft),
+          child: authMobileCenterPiece(context, this),
+        ),
+        Positioned(
+          top: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.authMobileTitleTop),
+          child: authMobileTitle(context),
+        ),
+        Positioned(
+          bottom: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.authMobileCardBottom),
+          child: authMobileCardContainer(context, this),
+        ),
+      ],
+    );
   }
 
   @override

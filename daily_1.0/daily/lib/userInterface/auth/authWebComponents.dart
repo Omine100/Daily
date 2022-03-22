@@ -35,26 +35,22 @@ Widget authWebCenterPiece(BuildContext context) {
 Widget authWebCardContainer(BuildContext context, State state, bool isSmall) {
   return SingleChildScrollView(
     child: Container(
-        constraints: Theme.of(context).bottomAppBarTheme.authWebCard,
-        height: getDimension(
-            context, true, Theme.of(context).visualDensity.authWebCardHeight),
-        width: getDimension(
-            context, false, Theme.of(context).visualDensity.authWebCardWidth),
+        constraints: Theme.of(context).bottomAppBarTheme.authWebCardContainer,
+        height: getDimension(context, true,
+            Theme.of(context).visualDensity.authWebCardContainerHeight),
+        width: getDimension(context, false,
+            Theme.of(context).visualDensity.authWebCardContainerWidth),
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.authWebCard,
+            color: Theme.of(context).colorScheme.authWebContainerCard,
             borderRadius: isSmall
                 ? BorderRadius.all(Radius.circular(50))
                 : BorderRadius.only(
                     topLeft: Radius.circular(50),
                     bottomLeft: Radius.circular(50))),
-        child: authWebCardPick(context, state, isSmall)),
+        child: isForgotPassword
+            ? forgotPasswordWebCard(context, state)
+            : authWebCard(context, state, isSmall)),
   );
-}
-
-Widget authWebCardPick(BuildContext context, State state, bool isSmall) {
-  return isForgotPassword
-      ? forgotPasswordWebCard(context, state)
-      : authWebCard(context, state, isSmall);
 }
 
 Widget authWebCard(BuildContext context, State state, bool isSmall) {

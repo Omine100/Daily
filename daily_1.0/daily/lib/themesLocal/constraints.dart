@@ -6,14 +6,14 @@ extension CustomConnectedConstraints on BottomAppBarTheme {}
 
 extension CustomWebConstraints on BottomAppBarTheme {
   // #region auth
-  BoxConstraints get authWebCard =>
+  BoxConstraints get authWebCardContainer =>
       BoxConstraints(minHeight: 400, minWidth: 300);
   // #endregion
 }
 
 extension CustomMobileConstraints on BottomAppBarTheme {
   // #region auth
-  BoxConstraints get authMobileCard =>
-      BoxConstraints(minHeight: 100, minWidth: 100);
+  BoxConstraints get authMobileCardContainer =>
+      BoxConstraints(minHeight: 200, minWidth: 200);
   // #endregion
 }

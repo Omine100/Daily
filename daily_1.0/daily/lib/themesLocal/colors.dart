@@ -62,7 +62,8 @@ extension CustomWebColorScheme on ColorScheme {
 
   // #region auth
   Color get authWebTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
-  Color get authWebCard => Color(isDark.value ? 0xFF202020 : 0xFFFBFAF5);
+  Color get authWebContainerCard =>
+      Color(isDark.value ? 0xFF202020 : 0xFFFBFAF5);
   Color get authWebUserInputField =>
       Color(isDark.value ? 0xFF333333 : 0xFFEEEEEE);
   Color get authWebUserInputFieldText =>
@@ -99,6 +100,8 @@ extension CustomMobileColorScheme on ColorScheme {
 
   // #region auth
   Color get authMobileTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+  Color get authMobileContainerCard =>
+      Color(isDark.value ? 0xFF202020 : 0xFFFBFAF5);
   Color get authMobileUserInputField =>
       Color(isDark.value ? 0xFF333333 : 0xFFEEEEEE);
   Color get authMobileUserInputFieldText =>

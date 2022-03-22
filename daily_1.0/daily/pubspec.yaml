@@ -56,11 +56,10 @@ flutter:
       - lib/assets/launcher/icon.png
       - lib/assets/launcher/icon_noBackground.png
       - lib/assets/error/web/error_centerPiece.png
-      - lib/assets/welcome/mobile/welcome_centerPiece_dark.jpg
-      - lib/assets/welcome/mobile/welcome_centerPiece_light.jpg
       - lib/assets/auth/web/auth_centerPiece_dark.jpg
       - lib/assets/auth/web/auth_centerPiece_light.jpg
-      - lib/assets/auth/mobile/auth_centerPiece.png
+      - lib/assets/auth/mobile/auth_centerPiece_dark.jpg
+      - lib/assets/auth/mobile/auth_centerPiece_light.jpg
       - lib/assets/forgotPassword/mobile/forgotPassword_centerPiece.png
       - lib/localizations/zh.json
       - lib/localizations/de.json
