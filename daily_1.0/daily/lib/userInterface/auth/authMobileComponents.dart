@@ -55,18 +55,22 @@ Widget authMobileCardContainer(BuildContext context, State state) {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: Theme.of(context).colorScheme.authWebCard),
-      width: isWelcome
-          ? getDimension(context, false,
-              Theme.of(context).visualDensity.authMobileCardWidth)
-          : 400,
       height: isWelcome
           ? getDimension(context, true,
-              Theme.of(context).visualDensity.authMobileCardHeight)
-          : 500,
+              Theme.of(context).visualDensity.authMobileCardWelcomeHeight)
+          : getDimension(context, true,
+              Theme.of(context).visualDensity.authMobileCardInputHeight),
+      width: isWelcome
+          ? getDimension(context, false,
+              Theme.of(context).visualDensity.authMobileCardWelcomeWidth)
+          : getDimension(context, false,
+              Theme.of(context).visualDensity.authMobileCardInputWidth),
       constraints: BoxConstraints(minHeight: 200, minWidth: 200),
       duration: const Duration(seconds: 1),
       curve: Curves.fastOutSlowIn,
-      child: authMobileCard(context, state),
+      child: isWelcome
+          ? authMobileCard(context, state)
+          : authMobileCardInput(context, state, false),
     ),
   );
 }
@@ -120,30 +124,34 @@ Widget authMobileCardInput(BuildContext context, State state, bool isSmall) {
   return Stack(
     alignment: Alignment.center,
     children: [
-      Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          authMobileUserInput(context),
-          isSignIn
-              ? Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: authMobileForgotPassword(context),
-                )
-              : Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: authMobilePolicyAndTaC(context),
-                ),
-          Padding(
-            padding: const EdgeInsets.only(top: 7.0),
-            child: authMobileGetStarted(context, state),
-          ),
-        ],
+      SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            authMobileUserInput(context),
+            isSignIn
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: authMobileForgotPassword(context),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: authMobilePolicyAndTaC(context),
+                  ),
+            Padding(
+              padding: const EdgeInsets.only(top: 7.0),
+              child: authMobileGetStarted(context, state),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 50),
+              child: authMobileSwitch(context, state),
+            ),
+          ],
+        ),
       ),
     ],
   );
 }
-
-Widget authMobileCardPick(BuildContext context, State state, bool isSmall) {}
 
 String userName = "", userEmail = "", userPass = "", userPassVerify = "";
 GlobalKey<FormState> authFormKey = GlobalKey<FormState>();
@@ -359,6 +367,7 @@ Widget authMobileGetStarted(BuildContext context, State state) {
             if (isWelcome) {
               state.setState(() {
                 isWelcome = false;
+                isSignIn = false;
               });
             } else {
               authValidateSubmit(context, state);
@@ -391,8 +400,14 @@ Widget authMobileGetStarted(BuildContext context, State state) {
 Widget authMobileSwitch(BuildContext context, State state) {
   return GestureDetector(
     onTap: () {
-      isSignIn = !isSignIn;
-      state.setState(() {});
+      if (isWelcome) {
+        isWelcome = false;
+        isSignIn = true;
+        state.setState(() {});
+      } else {
+        isSignIn = !isSignIn;
+        state.setState(() {});
+      }
     },
     child: RichText(
       text: TextSpan(

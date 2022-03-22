@@ -41,8 +41,10 @@ extension CustomWebDimensions on VisualDensity {
 extension CustomMobileDimensions on VisualDensity {
   // #region auth
   double get authMobileCenterPieceHeight => isSmall ? 1.0 : 1.0;
-  double get authMobileCardHeight => isSmall ? 0.3 : 0.3;
-  double get authMobileCardWidth => isSmall ? 0.85 : 0.85;
+  double get authMobileCardWelcomeHeight => isSmall ? 0.3 : 0.3;
+  double get authMobileCardWelcomeWidth => isSmall ? 0.85 : 0.85;
+  double get authMobileCardInputHeight => isSmall ? 0.8 : 0.8;
+  double get authMobileCardInputWidth => isSmall ? 0.95 : 0.95;
   double get authMobileUserInputFieldHeight => isSmall ? 0.06 : 0.06;
   double get authMobileUserInputFieldWidth => isSmall ? 0.875 : 0.875;
   double get authMobileForgotPasswordWidth => isSmall ? 0.85 : 0.85;
