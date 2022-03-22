@@ -474,6 +474,7 @@ void authValidateSubmit(BuildContext context, State state) async {
       if (value) {
         context.router.push(HomeScreen());
         authMobileFormKey.currentState.reset();
+        isWelcome = true;
       }
     });
   else
@@ -484,6 +485,7 @@ void authValidateSubmit(BuildContext context, State state) async {
       if (value) {
         context.router.push(HomeScreen());
         authMobileFormKey.currentState.reset();
+        isWelcome = true;
       }
     });
   firebaseAccounts.setCurrentUserProfilePicURL(state);

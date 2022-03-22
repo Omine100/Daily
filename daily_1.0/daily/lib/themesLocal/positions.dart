@@ -19,11 +19,10 @@ extension CustomMobilePositions on MaterialTapTargetSize {
   // #endregion
 
   // #region forgotPassword
-  double get forgotPasswordMobileTitleTop => isSmall ? 0.1 : 0.1;
-  double get forgotPasswordMobileCenterPieceTop => isSmall ? 0.15 : 0.15;
-  double get forgotPasswordMobileUserInputTop => isSmall ? 0.65 : 0.65;
-  double get forgotPasswordMobileSendTop => isSmall ? 0.835 : 0.835;
-  double get forgotPasswordMobileResendTop => isSmall ? 0.93 : 0.93;
+  double get forgotPasswordMobileTitleTop => isSmall ? 0.3 : 0.3;
+  double get forgotPasswordMobileUserInputTop => isSmall ? 0.475 : 0.475;
+  double get forgotPasswordMobileSendTop => isSmall ? 0.560 : 0.560;
+  double get forgotPasswordMobileResendTop => isSmall ? 0.70 : 0.70;
   // #endregion
 
   // #region settings

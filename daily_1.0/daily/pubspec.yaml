@@ -60,7 +60,6 @@ flutter:
       - lib/assets/auth/web/auth_centerPiece_light.jpg
       - lib/assets/auth/mobile/auth_centerPiece_dark.jpg
       - lib/assets/auth/mobile/auth_centerPiece_light.jpg
-      - lib/assets/forgotPassword/mobile/forgotPassword_centerPiece.png
       - lib/localizations/zh.json
       - lib/localizations/de.json
       - lib/localizations/en.json

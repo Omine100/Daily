@@ -64,7 +64,7 @@ extension CustomMobileDimensions on VisualDensity {
   double get forgotPasswordMobileUserInputFieldHeight => 0.065;
   double get forgotPasswordMobileUserInputFieldWidth => 0.875;
   double get forgotPasswordMobileSendHeight => 0.065;
-  double get forgotPasswordMobileSendWidth => 0.45;
+  double get forgotPasswordMobileSendWidth => 0.75;
   // #endregion
 
   // #region settings

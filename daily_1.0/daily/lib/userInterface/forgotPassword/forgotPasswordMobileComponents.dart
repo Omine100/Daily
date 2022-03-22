@@ -44,21 +44,6 @@ Widget forgotPasswordMobileTitle(BuildContext context) {
   );
 }
 
-Widget forgotPasswordMobileCenterPiece(BuildContext context) {
-  return Container(
-      height: getDimension(
-          context,
-          true,
-          Theme.of(context)
-              .visualDensity
-              .forgotPasswordMobileCenterPieceHeight),
-      width: getDimension(context, false,
-          Theme.of(context).visualDensity.forgotPasswordMobileCenterPieceWidth),
-      child: Image(
-          image: AssetImage(
-              "lib/assets/forgotPassword/mobile/forgotPassword_centerPiece.png")));
-}
-
 String userEmail;
 GlobalKey<FormFieldState> forgotPasswordMobileFormKey =
     GlobalKey<FormFieldState>();
