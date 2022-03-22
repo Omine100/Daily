@@ -472,6 +472,7 @@ void authValidateSubmit(BuildContext context, State state) async {
         .signInEmailAndPassword(context, userEmail, userPass)
         .then((value) {
       if (value) {
+        context.router.popUntilRoot();
         context.router.push(HomeScreen());
         authMobileFormKey.currentState.reset();
         isWelcome = true;

@@ -387,6 +387,7 @@ Widget settingsSignOut(BuildContext context) {
   return GestureDetector(
     onTap: () {
       firebaseAccounts.signOut();
+      context.router.popUntilRoot();
       context.router.push(AuthScreen(isSignIn: true));
     },
     child: Text(
