@@ -89,6 +89,31 @@ extension CustomWebColorScheme on ColorScheme {
   Color get authMobileCardSubText =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   // #endregion
+
+  // #region forgotPassword
+  Color get forgotPasswordWebTitle =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get forgotPasswordWebSubtitle =>
+      Color(isDark.value ? 0xFF999999 : 0xFF999999);
+  Color get forgotPasswordWebUserInputField =>
+      Color(isDark.value ? 0xFF333333 : 0xFFEEEEEE);
+  Color get forgotPasswordWebUserInputFieldText =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get forgotPasswordWebUserInputFieldDecoration =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
+  Color get forgotPasswordWebUserInputFieldIconDecoration =>
+      Color(isDark.value ? 0xFF555555 : 0xFF888888);
+  Color get forgotPasswordWebSend =>
+      Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+  Color get forgotPasswordWebSendInkWell =>
+      Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
+  Color get forgotPasswordWebSendText =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+  Color get forgotPasswordWebResendPrimary =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get forgotPasswordWebResendSecondary =>
+      Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+  // #endregion
 }
 
 //Install extension '#region folding for VS Code'
@@ -128,7 +153,7 @@ extension CustomMobileColorScheme on ColorScheme {
       Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
   // #endregion
 
-  // #region forgotPass
+  // #region forgotPassword
   Color get forgotPasswordMobileTitle =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get forgotPasswordMobileSubtitle =>
@@ -137,6 +162,8 @@ extension CustomMobileColorScheme on ColorScheme {
       Color(isDark.value ? 0xFF333333 : 0xFFEEEEEE);
   Color get forgotPasswordMobileUserInputFieldText =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get forgotPasswordMobileUserInputFieldBorder =>
+      Color(isDark.value ? 0xFF333333 : 0xFFCCCCCC);
   Color get forgotPasswordMobileUserInputFieldDecoration =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
   Color get forgotPasswordMobileUserInputFieldIconDecoration =>

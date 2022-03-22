@@ -103,10 +103,10 @@ Widget authWebTitle(BuildContext context, bool isSignIn) {
 }
 
 String userName = "", userEmail = "", userPass = "", userPassVerify = "";
-GlobalKey<FormState> authFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> authWebFormkey = GlobalKey<FormState>();
 Widget authWebUserInput(BuildContext context, State state, bool isSmall) {
   return Form(
-      key: authFormKey,
+      key: authWebFormkey,
       child: Center(
         child: Column(
           children: [
@@ -365,14 +365,14 @@ Widget authWebSwitch(BuildContext context, State state) {
 }
 
 void authWebValidateSubmit(BuildContext context, State state) async {
-  authFormKey.currentState.save();
+  authWebFormkey.currentState.save();
   if (isSignIn)
     firebaseAccounts
         .signInEmailAndPassword(context, userEmail, userPass)
         .then((value) {
       if (value) {
         context.router.push(HomeScreen());
-        authFormKey.currentState.reset();
+        authWebFormkey.currentState.reset();
       }
     });
   else
@@ -382,7 +382,7 @@ void authWebValidateSubmit(BuildContext context, State state) async {
         .then((value) {
       if (value) {
         context.router.push(HomeScreen());
-        authFormKey.currentState.reset();
+        authWebFormkey.currentState.reset();
       }
     });
   firebaseAccounts.setCurrentUserProfilePicURL(state);

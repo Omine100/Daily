@@ -174,10 +174,10 @@ Widget authMobileCardText(BuildContext context) {
 }
 
 String userName = "", userEmail = "", userPass = "", userPassVerify = "";
-GlobalKey<FormState> authFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> authMobileFormKey = GlobalKey<FormState>();
 Widget authMobileUserInput(BuildContext context) {
   return Form(
-    key: authFormKey,
+    key: authMobileFormKey,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -466,14 +466,14 @@ Widget authMobileSwitch(BuildContext context, State state) {
 }
 
 void authValidateSubmit(BuildContext context, State state) async {
-  authFormKey.currentState.save();
+  authMobileFormKey.currentState.save();
   if (isSignIn)
     firebaseAccounts
         .signInEmailAndPassword(context, userEmail, userPass)
         .then((value) {
       if (value) {
         context.router.push(HomeScreen());
-        authFormKey.currentState.reset();
+        authMobileFormKey.currentState.reset();
       }
     });
   else
@@ -483,7 +483,7 @@ void authValidateSubmit(BuildContext context, State state) async {
         .then((value) {
       if (value) {
         context.router.push(HomeScreen());
-        authFormKey.currentState.reset();
+        authMobileFormKey.currentState.reset();
       }
     });
   firebaseAccounts.setCurrentUserProfilePicURL(state);

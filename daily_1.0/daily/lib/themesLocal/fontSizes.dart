@@ -23,6 +23,15 @@ extension CustomWebFontSize on TextTheme {
   double get authWebSwitchPrimary => 16;
   double get authWebSwitchSecondary => 16;
   // #endregion
+
+  // #region forgotPassword
+  double get forgotPasswordWebTitle => 48;
+  double get forgotPasswordWebSubtitle => 18;
+  double get forgotPasswordWebUserInputFieldDecoration => 20;
+  double get forgotPasswordWebSendText => 20;
+  double get forgotPasswordWebResendPrimary => 16;
+  double get forgotPasswordWebResendSecondary => 16;
+  // #endregion
 }
 
 extension CustomMobileFontSize on TextTheme {
@@ -43,12 +52,12 @@ extension CustomMobileFontSize on TextTheme {
   // #endregion
 
   // #region forgotPassword
-  double get forgotPasswordTitle => 30;
-  double get forgotPasswordSubtitle => 18;
-  double get forgotPasswordUserInputFieldDecoration => 20;
-  double get forgotPasswordSendText => 20;
-  double get forgotPasswordResendPrimary => 16;
-  double get forgotPasswordResendSecondary => 16;
+  double get forgotPasswordMobileTitle => 30;
+  double get forgotPasswordMobileSubtitle => 18;
+  double get forgotPasswordMobileUserInputFieldDecoration => 20;
+  double get forgotPasswordMobileSendText => 20;
+  double get forgotPasswordMobileResendPrimary => 16;
+  double get forgotPasswordMobileResendSecondary => 16;
   // #endregion
 
   // #region settings

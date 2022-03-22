@@ -8,10 +8,10 @@ import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 
-Widget forgotPasswordTitle(BuildContext context) {
+Widget forgotPasswordMobileTitle(BuildContext context) {
   return Container(
     width: getDimension(context, false,
-        Theme.of(context).visualDensity.forgotPasswordTitleWidth),
+        Theme.of(context).visualDensity.forgotPasswordMobileTitleWidth),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -20,8 +20,8 @@ Widget forgotPasswordTitle(BuildContext context) {
           getTranslated(context, "forgotPasswordTitle"),
           style: TextStyle(
             color: Theme.of(context).colorScheme.forgotPasswordMobileTitle,
-            fontSize: Theme.of(context).textTheme.forgotPasswordTitle,
-            fontWeight: Theme.of(context).typography.forgotPasswordTitle,
+            fontSize: Theme.of(context).textTheme.forgotPasswordMobileTitle,
+            fontWeight: Theme.of(context).typography.forgotPasswordMobileTitle,
           ),
         ),
         Padding(
@@ -34,8 +34,9 @@ Widget forgotPasswordTitle(BuildContext context) {
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Theme.of(context).colorScheme.forgotPasswordMobileSubtitle,
-            fontSize: Theme.of(context).textTheme.forgotPasswordSubtitle,
-            fontWeight: Theme.of(context).typography.forgotPasswordSubtitle,
+            fontSize: Theme.of(context).textTheme.forgotPasswordMobileSubtitle,
+            fontWeight:
+                Theme.of(context).typography.forgotPasswordMobileSubtitle,
           ),
         ),
       ],
@@ -43,28 +44,41 @@ Widget forgotPasswordTitle(BuildContext context) {
   );
 }
 
-Widget forgotPasswordCenterPiece(BuildContext context) {
+Widget forgotPasswordMobileCenterPiece(BuildContext context) {
   return Container(
-      height: getDimension(context, true,
-          Theme.of(context).visualDensity.forgotPasswordCenterPieceHeight),
+      height: getDimension(
+          context,
+          true,
+          Theme.of(context)
+              .visualDensity
+              .forgotPasswordMobileCenterPieceHeight),
       width: getDimension(context, false,
-          Theme.of(context).visualDensity.forgotPasswordCenterPieceWidth),
+          Theme.of(context).visualDensity.forgotPasswordMobileCenterPieceWidth),
       child: Image(
           image: AssetImage(
               "lib/assets/forgotPassword/mobile/forgotPassword_centerPiece.png")));
 }
 
 String userEmail;
-GlobalKey<FormFieldState> forgotPasswordFormKey = GlobalKey<FormFieldState>();
+GlobalKey<FormFieldState> forgotPasswordMobileFormKey =
+    GlobalKey<FormFieldState>();
 Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
   return Container(
-    height: getDimension(context, true,
-        Theme.of(context).visualDensity.forgotPasswordUserInputFieldHeight),
-    width: getDimension(context, false,
-        Theme.of(context).visualDensity.forgotPasswordUserInputFieldWidth),
+    height: getDimension(
+        context,
+        true,
+        Theme.of(context)
+            .visualDensity
+            .forgotPasswordMobileUserInputFieldHeight),
+    width: getDimension(
+        context,
+        false,
+        Theme.of(context)
+            .visualDensity
+            .forgotPasswordMobileUserInputFieldWidth),
     alignment: Alignment.center,
     child: TextFormField(
-      key: forgotPasswordFormKey,
+      key: forgotPasswordMobileFormKey,
       obscureText: false,
       onSaved: (email) => userEmail = email,
       onFieldSubmitted: (value) {
@@ -78,12 +92,16 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
       decoration: InputDecoration(
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.authMobileUserInputFieldBorder,
+            color: Theme.of(context)
+                .colorScheme
+                .forgotPasswordMobileUserInputFieldBorder,
           ),
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.authMobileUserInputFieldBorder,
+            color: Theme.of(context)
+                .colorScheme
+                .forgotPasswordMobileUserInputFieldBorder,
           ),
         ),
         hintText: getTranslated(context, "forgotPasswordFormEmail"),
@@ -93,10 +111,10 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
               .forgotPasswordMobileUserInputFieldDecoration,
           fontSize: Theme.of(context)
               .textTheme
-              .forgotPasswordUserInputFieldDecoration,
+              .forgotPasswordMobileUserInputFieldDecoration,
           fontWeight: Theme.of(context)
               .typography
-              .forgotPasswordUserInputFieldDecoration,
+              .forgotPasswordMobileUserInputFieldDecoration,
         ),
         hintStyle: TextStyle(
           color: Theme.of(context)
@@ -104,10 +122,10 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
               .forgotPasswordMobileUserInputFieldDecoration,
           fontSize: Theme.of(context)
               .textTheme
-              .forgotPasswordUserInputFieldDecoration,
+              .forgotPasswordMobileUserInputFieldDecoration,
           fontWeight: Theme.of(context)
               .typography
-              .forgotPasswordUserInputFieldDecoration,
+              .forgotPasswordMobileUserInputFieldDecoration,
         ),
         prefixIcon: Icon(
           Icons.email,
@@ -121,13 +139,13 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
 }
 
 bool isSent = false;
-Widget forgotPasswordSend(BuildContext context, State state) {
+Widget forgotPasswordMobileSend(BuildContext context, State state) {
   return Center(
     child: Container(
       height: getDimension(context, true,
-          Theme.of(context).visualDensity.forgotPasswordSendHeight),
+          Theme.of(context).visualDensity.forgotPasswordMobileSendHeight),
       width: getDimension(context, false,
-          Theme.of(context).visualDensity.forgotPasswordSendWidth),
+          Theme.of(context).visualDensity.forgotPasswordMobileSendWidth),
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.forgotPasswordMobileSend,
           borderRadius: BorderRadius.circular(30)),
@@ -149,9 +167,10 @@ Widget forgotPasswordSend(BuildContext context, State state) {
                   color: Theme.of(context)
                       .colorScheme
                       .forgotPasswordMobileSendText,
-                  fontSize: Theme.of(context).textTheme.forgotPasswordSendText,
+                  fontSize:
+                      Theme.of(context).textTheme.forgotPasswordMobileSendText,
                   fontWeight:
-                      Theme.of(context).typography.forgotPasswordSendText,
+                      Theme.of(context).typography.forgotPasswordMobileSendText,
                 ),
               ),
             ),
@@ -163,7 +182,7 @@ Widget forgotPasswordSend(BuildContext context, State state) {
 }
 
 void forgotPasswordValidateSubmit(BuildContext context, State state) {
-  forgotPasswordFormKey.currentState.save();
+  forgotPasswordMobileFormKey.currentState.save();
   firebaseAccounts.sendPasswordReset(context, userEmail).then((_isSent) => {
         if (_isSent)
           {
@@ -174,11 +193,11 @@ void forgotPasswordValidateSubmit(BuildContext context, State state) {
       });
 }
 
-Widget forgotPasswordResend(BuildContext context) {
+Widget forgotPasswordMobileResend(BuildContext context) {
   return isSent
       ? GestureDetector(
           onTap: () {
-            forgotPasswordFormKey.currentState.save();
+            forgotPasswordMobileFormKey.currentState.save();
             firebaseAccounts.sendPasswordReset(context, userEmail);
           },
           child: RichText(
@@ -188,10 +207,12 @@ Widget forgotPasswordResend(BuildContext context) {
                 color: Theme.of(context)
                     .colorScheme
                     .forgotPasswordMobileResendPrimary,
-                fontSize:
-                    Theme.of(context).textTheme.forgotPasswordResendPrimary,
-                fontWeight:
-                    Theme.of(context).typography.forgotPasswordResendPrimary,
+                fontSize: Theme.of(context)
+                    .textTheme
+                    .forgotPasswordMobileResendPrimary,
+                fontWeight: Theme.of(context)
+                    .typography
+                    .forgotPasswordMobileResendPrimary,
               ),
               children: <TextSpan>[
                 TextSpan(
@@ -202,10 +223,10 @@ Widget forgotPasswordResend(BuildContext context) {
                         .forgotPasswordMobileResendSecondary,
                     fontSize: Theme.of(context)
                         .textTheme
-                        .forgotPasswordResendSecondary,
+                        .forgotPasswordMobileResendSecondary,
                     fontWeight: Theme.of(context)
                         .typography
-                        .forgotPasswordResendSecondary,
+                        .forgotPasswordMobileResendSecondary,
                   ),
                 ),
               ],

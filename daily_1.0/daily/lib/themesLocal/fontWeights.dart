@@ -25,6 +25,15 @@ extension CustomWebFontWeight on Typography {
   FontWeight get authMobileCardText => FontWeight.w500;
   FontWeight get authMobileCardSubText => FontWeight.w300;
   // #endregion
+
+  // #region forgotPassword
+  FontWeight get forgotPasswordWebTitle => FontWeight.w500;
+  FontWeight get forgotPasswordWebSubtitle => FontWeight.w300;
+  FontWeight get forgotPasswordWebUserInputFieldDecoration => FontWeight.w300;
+  FontWeight get forgotPasswordWebSendText => FontWeight.w500;
+  FontWeight get forgotPasswordWebResendPrimary => FontWeight.w400;
+  FontWeight get forgotPasswordWebResendSecondary => FontWeight.w500;
+  // #endregion
 }
 
 extension CustomMobileFontWeight on Typography {
@@ -44,12 +53,13 @@ extension CustomMobileFontWeight on Typography {
   // #endregion
 
   // #region forgotPassword
-  FontWeight get forgotPasswordTitle => FontWeight.w500;
-  FontWeight get forgotPasswordSubtitle => FontWeight.w300;
-  FontWeight get forgotPasswordUserInputFieldDecoration => FontWeight.w300;
-  FontWeight get forgotPasswordSendText => FontWeight.w500;
-  FontWeight get forgotPasswordResendPrimary => FontWeight.w400;
-  FontWeight get forgotPasswordResendSecondary => FontWeight.w500;
+  FontWeight get forgotPasswordMobileTitle => FontWeight.w500;
+  FontWeight get forgotPasswordMobileSubtitle => FontWeight.w300;
+  FontWeight get forgotPasswordMobileUserInputFieldDecoration =>
+      FontWeight.w300;
+  FontWeight get forgotPasswordMobileSendText => FontWeight.w500;
+  FontWeight get forgotPasswordMobileResendPrimary => FontWeight.w400;
+  FontWeight get forgotPasswordMobileResendSecondary => FontWeight.w500;
   // #endregion
 
   // #region settings

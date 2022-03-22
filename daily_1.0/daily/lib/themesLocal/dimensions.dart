@@ -13,6 +13,11 @@ extension CustomConnectedDimensions on VisualDensity {
   double get authBoxConstraintFocused => 1.2;
   double get authBoxConstraintUnfocused => 1.0;
   // #endregion
+
+  // #region forgotPassword
+  double get forgotPasswordBoxConstraintFocused => 1.1;
+  double get forgotPasswordBoxConstraintUnfocused => 1.0;
+  // #endregion
 }
 
 extension CustomWebDimensions on VisualDensity {
@@ -53,15 +58,13 @@ extension CustomMobileDimensions on VisualDensity {
   // #endregion
 
   // #region forgotPassword
-  double get forgotPasswordTitleWidth => 1.0;
-  double get forgotPasswordBoxConstraintFocused => 1.1;
-  double get forgotPasswordBoxConstraintUnfocused => 1.0;
-  double get forgotPasswordCenterPieceHeight => 0.6;
-  double get forgotPasswordCenterPieceWidth => 0.6;
-  double get forgotPasswordUserInputFieldHeight => 0.065;
-  double get forgotPasswordUserInputFieldWidth => 0.875;
-  double get forgotPasswordSendHeight => 0.065;
-  double get forgotPasswordSendWidth => 0.45;
+  double get forgotPasswordMobileTitleWidth => 1.0;
+  double get forgotPasswordMobileCenterPieceHeight => 0.6;
+  double get forgotPasswordMobileCenterPieceWidth => 0.6;
+  double get forgotPasswordMobileUserInputFieldHeight => 0.065;
+  double get forgotPasswordMobileUserInputFieldWidth => 0.875;
+  double get forgotPasswordMobileSendHeight => 0.065;
+  double get forgotPasswordMobileSendWidth => 0.45;
   // #endregion
 
   // #region settings

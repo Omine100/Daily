@@ -38,9 +38,9 @@ Widget forgotPasswordWebTitle(BuildContext context) {
       Text(
         getTranslated(context, "forgotPasswordTitle"),
         style: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordMobileTitle,
-          fontSize: Theme.of(context).textTheme.forgotPasswordTitle,
-          fontWeight: Theme.of(context).typography.forgotPasswordTitle,
+          color: Theme.of(context).colorScheme.forgotPasswordWebTitle,
+          fontSize: Theme.of(context).textTheme.forgotPasswordWebTitle,
+          fontWeight: Theme.of(context).typography.forgotPasswordWebTitle,
         ),
       ),
       Padding(
@@ -52,9 +52,9 @@ Widget forgotPasswordWebTitle(BuildContext context) {
             getTranslated(context, "forgotPasswordSubtitleSecondary"),
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordMobileSubtitle,
-          fontSize: Theme.of(context).textTheme.forgotPasswordSubtitle,
-          fontWeight: Theme.of(context).typography.forgotPasswordSubtitle,
+          color: Theme.of(context).colorScheme.forgotPasswordWebSubtitle,
+          fontSize: Theme.of(context).textTheme.forgotPasswordWebSubtitle,
+          fontWeight: Theme.of(context).typography.forgotPasswordWebSubtitle,
         ),
       ),
     ],
@@ -62,7 +62,8 @@ Widget forgotPasswordWebTitle(BuildContext context) {
 }
 
 String userEmail;
-GlobalKey<FormFieldState> forgotPasswordFormKey = GlobalKey<FormFieldState>();
+GlobalKey<FormFieldState> forgotPasswordWebFormKey =
+    GlobalKey<FormFieldState>();
 Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
   return Container(
     height: getDimension(context, true,
@@ -72,10 +73,10 @@ Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
     alignment: Alignment.center,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10),
-      color: Theme.of(context).colorScheme.forgotPasswordMobileUserInputField,
+      color: Theme.of(context).colorScheme.forgotPasswordWebUserInputField,
     ),
     child: TextFormField(
-      key: forgotPasswordFormKey,
+      key: forgotPasswordWebFormKey,
       obscureText: false,
       onSaved: (email) => userEmail = email,
       onFieldSubmitted: (value) {
@@ -85,37 +86,37 @@ Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
       style: TextStyle(
           color: Theme.of(context)
               .colorScheme
-              .forgotPasswordMobileUserInputFieldText),
+              .forgotPasswordWebUserInputFieldText),
       decoration: InputDecoration(
         border: InputBorder.none,
         hintText: getTranslated(context, "forgotPasswordFormEmail"),
         labelStyle: TextStyle(
           color: Theme.of(context)
               .colorScheme
-              .forgotPasswordMobileUserInputFieldDecoration,
+              .forgotPasswordWebUserInputFieldDecoration,
           fontSize: Theme.of(context)
               .textTheme
-              .forgotPasswordUserInputFieldDecoration,
+              .forgotPasswordWebUserInputFieldDecoration,
           fontWeight: Theme.of(context)
               .typography
-              .forgotPasswordUserInputFieldDecoration,
+              .forgotPasswordWebUserInputFieldDecoration,
         ),
         hintStyle: TextStyle(
           color: Theme.of(context)
               .colorScheme
-              .forgotPasswordMobileUserInputFieldDecoration,
+              .forgotPasswordWebUserInputFieldDecoration,
           fontSize: Theme.of(context)
               .textTheme
-              .forgotPasswordUserInputFieldDecoration,
+              .forgotPasswordWebUserInputFieldDecoration,
           fontWeight: Theme.of(context)
               .typography
-              .forgotPasswordUserInputFieldDecoration,
+              .forgotPasswordWebUserInputFieldDecoration,
         ),
         prefixIcon: Icon(
           Icons.email,
           color: Theme.of(context)
               .colorScheme
-              .forgotPasswordMobileUserInputFieldIconDecoration,
+              .forgotPasswordWebUserInputFieldIconDecoration,
         ),
       ),
     ),
@@ -143,13 +144,13 @@ Widget forgotPasswordWebSend(BuildContext context, State state) {
       width: getDimension(context, false,
           Theme.of(context).visualDensity.forgotPasswordWebSendWidth),
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.forgotPasswordMobileSend,
+          color: Theme.of(context).colorScheme.forgotPasswordWebSend,
           borderRadius: BorderRadius.circular(30)),
       child: Material(
         color: Theme.of(context).colorScheme.materialTransparent,
         child: InkWell(
           splashColor:
-              Theme.of(context).colorScheme.forgotPasswordMobileSendInkWell,
+              Theme.of(context).colorScheme.forgotPasswordWebSendInkWell,
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
@@ -160,12 +161,12 @@ Widget forgotPasswordWebSend(BuildContext context, State state) {
               child: Text(
                 getTranslated(context, "forgotPasswordSend"),
                 style: TextStyle(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .forgotPasswordMobileSendText,
-                  fontSize: Theme.of(context).textTheme.forgotPasswordSendText,
+                  color:
+                      Theme.of(context).colorScheme.forgotPasswordWebSendText,
+                  fontSize:
+                      Theme.of(context).textTheme.forgotPasswordWebSendText,
                   fontWeight:
-                      Theme.of(context).typography.forgotPasswordSendText,
+                      Theme.of(context).typography.forgotPasswordWebSendText,
                 ),
               ),
             ),
@@ -180,7 +181,7 @@ Widget forgotPasswordWebResend(BuildContext context) {
   return isSent
       ? GestureDetector(
           onTap: () {
-            forgotPasswordFormKey.currentState.save();
+            forgotPasswordWebFormKey.currentState.save();
             firebaseAccounts.sendPasswordReset(context, userEmail);
           },
           child: RichText(
@@ -189,11 +190,11 @@ Widget forgotPasswordWebResend(BuildContext context) {
               style: TextStyle(
                 color: Theme.of(context)
                     .colorScheme
-                    .forgotPasswordMobileResendPrimary,
+                    .forgotPasswordWebResendPrimary,
                 fontSize:
-                    Theme.of(context).textTheme.forgotPasswordResendPrimary,
+                    Theme.of(context).textTheme.forgotPasswordWebResendPrimary,
                 fontWeight:
-                    Theme.of(context).typography.forgotPasswordResendPrimary,
+                    Theme.of(context).typography.forgotPasswordWebResendPrimary,
               ),
               children: <TextSpan>[
                 TextSpan(
@@ -201,13 +202,13 @@ Widget forgotPasswordWebResend(BuildContext context) {
                   style: TextStyle(
                     color: Theme.of(context)
                         .colorScheme
-                        .forgotPasswordMobileResendSecondary,
+                        .forgotPasswordWebResendSecondary,
                     fontSize: Theme.of(context)
                         .textTheme
-                        .forgotPasswordResendSecondary,
+                        .forgotPasswordWebResendSecondary,
                     fontWeight: Theme.of(context)
                         .typography
-                        .forgotPasswordResendSecondary,
+                        .forgotPasswordWebResendSecondary,
                   ),
                 ),
               ],
@@ -218,7 +219,7 @@ Widget forgotPasswordWebResend(BuildContext context) {
 }
 
 void forgotPasswordValidateSubmit(BuildContext context, State state) {
-  forgotPasswordFormKey.currentState.save();
+  forgotPasswordWebFormKey.currentState.save();
   firebaseAccounts.sendPasswordReset(context, userEmail).then((_isSent) => {
         if (_isSent)
           {

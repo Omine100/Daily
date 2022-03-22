@@ -51,7 +51,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordMobileTitleTop),
-        child: forgotPasswordTitle(context),
+        child: forgotPasswordMobileTitle(context),
       ),
       Positioned(
           top: getPosition(
@@ -60,7 +60,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               Theme.of(context)
                   .materialTapTargetSize
                   .forgotPasswordMobileCenterPieceTop),
-          child: forgotPasswordCenterPiece(context)),
+          child: forgotPasswordMobileCenterPiece(context)),
       Positioned(
           top: getPosition(
               context,
@@ -76,7 +76,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordMobileSendTop),
-        child: forgotPasswordSend(context, this),
+        child: forgotPasswordMobileSend(context, this),
       ),
       Positioned(
         top: getPosition(
@@ -85,7 +85,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordMobileResendTop),
-        child: forgotPasswordResend(context),
+        child: forgotPasswordMobileResend(context),
       )
     ]);
   }
@@ -99,7 +99,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordMobileTitleTop),
-        child: forgotPasswordTitle(context),
+        child: forgotPasswordMobileTitle(context),
       ),
       Positioned(
           top: getPosition(
@@ -108,7 +108,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               Theme.of(context)
                   .materialTapTargetSize
                   .forgotPasswordMobileCenterPieceTop),
-          child: forgotPasswordCenterPiece(context)),
+          child: forgotPasswordMobileCenterPiece(context)),
       Positioned(
           top: getPosition(
               context,
@@ -124,7 +124,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordMobileSendTop),
-        child: forgotPasswordSend(context, this),
+        child: forgotPasswordMobileSend(context, this),
       ),
       Positioned(
         top: getPosition(
@@ -133,7 +133,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Theme.of(context)
                 .materialTapTargetSize
                 .forgotPasswordMobileResendTop),
-        child: forgotPasswordResend(context),
+        child: forgotPasswordMobileResend(context),
       )
     ]);
   }
