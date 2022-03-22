@@ -143,7 +143,7 @@ Widget authMobileCardInput(BuildContext context, State state, bool isSmall) {
               child: authMobileGetStarted(context, state),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 50),
+              padding: EdgeInsets.only(top: 30.0),
               child: authMobileSwitch(context, state),
             ),
           ],
