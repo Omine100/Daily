@@ -39,23 +39,15 @@ extension CustomWebDimensions on VisualDensity {
 }
 
 extension CustomMobileDimensions on VisualDensity {
-  // #region welcome
-  double get welcomeMobileTitleWidth => isSmall ? 1.0 : 1.0;
-  double get welcomeMobileCenterPieceHeight => isSmall ? 1.0 : 1.0;
-  double get welcomeMobileCardHeight => isSmall ? 0.3 : 0.3;
-  double get welcomeMobileCardWidth => isSmall ? 0.85 : 0.85;
-  double get welcomeMobileGetStartedHeight => isSmall ? 0.065 : 0.065;
-  double get welcomeMobileGetStartedWidth => isSmall ? 0.75 : 0.75;
-  // #endregion
-
   // #region auth
-  double get authMobileTitleWidth => isSmall ? 1.0 : 1.0;
-  double get authMobileCenterPieceHeight => isSmall ? 0.35 : 0.35;
+  double get authMobileCenterPieceHeight => isSmall ? 1.0 : 1.0;
+  double get authMobileCardHeight => isSmall ? 0.3 : 0.3;
+  double get authMobileCardWidth => isSmall ? 0.85 : 0.85;
   double get authMobileUserInputFieldHeight => isSmall ? 0.06 : 0.06;
   double get authMobileUserInputFieldWidth => isSmall ? 0.875 : 0.875;
   double get authMobileForgotPasswordWidth => isSmall ? 0.85 : 0.85;
   double get authMobileGetStartedHeight => isSmall ? 0.065 : 0.065;
-  double get authMobileGetStartedWidth => isSmall ? 0.45 : 0.45;
+  double get authMobileGetStartedWidth => isSmall ? 0.75 : 0.75;
   // #endregion
 
   // #region forgotPassword

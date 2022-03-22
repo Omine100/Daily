@@ -22,21 +22,14 @@ extension CustomWebFontWeight on Typography {
   FontWeight get authWebGetStartedText => FontWeight.w500;
   FontWeight get authWebSwitchPrimary => FontWeight.w400;
   FontWeight get authWebSwitchSecondary => FontWeight.w500;
+  FontWeight get authMobileCardText => FontWeight.w500;
+  FontWeight get authMobileCardSubText => FontWeight.w300;
   // #endregion
 }
 
 extension CustomMobileFontWeight on Typography {
   // #region textViewer
   FontWeight get textViewerMobileText => FontWeight.w300;
-  // #endregion
-
-  // #region welcome
-  FontWeight get welcomeMobileTitle => FontWeight.w500;
-  FontWeight get welcomeMobileCardText => FontWeight.w500;
-  FontWeight get welcomeMobileCardSubText => FontWeight.w300;
-  FontWeight get welcomeMobileGetStartedText => FontWeight.w500;
-  FontWeight get welcomeMobileAccountAlready => FontWeight.w400;
-  FontWeight get welcomeMobileAccountAlreadyLogin => FontWeight.w500;
   // #endregion
 
   // #region auth

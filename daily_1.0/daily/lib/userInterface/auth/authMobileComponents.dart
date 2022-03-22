@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
-import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
+import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
@@ -12,13 +13,110 @@ import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();
-bool isSignIn;
+bool isWelcome = true, isSignIn;
 
 void setSignIn(bool value) {
   isSignIn ??= value;
 }
 
-Widget authMobileCard(BuildContext context, State state, bool isSmall) {
+Widget authMobileTitle(BuildContext context) {
+  return Text(
+    getTranslated(context, "welcomeTitle"),
+    style: TextStyle(
+      color: Theme.of(context).colorScheme.authMobileTitle,
+      fontSize: Theme.of(context).textTheme.authMobileTitle,
+      fontWeight: Theme.of(context).typography.authMobileTitle,
+    ),
+  );
+}
+
+Widget authMobileCenterPiece(BuildContext context, State state) {
+  return GestureDetector(
+    onHorizontalDragDown: (value) {
+      state.setState(() {
+        isWelcome = true;
+      });
+    },
+    child: Container(
+        height: getDimension(context, true,
+            Theme.of(context).visualDensity.authMobileCenterPieceHeight),
+        child: Image(
+            fit: BoxFit.fitHeight,
+            image: isDark.value
+                ? AssetImage("lib/assets/auth/web/auth_centerPiece_dark.jpg")
+                : AssetImage(
+                    "lib/assets/auth/web/auth_centerPiece_light.jpg"))),
+  );
+}
+
+Widget authMobileCardContainer(BuildContext context, State state) {
+  return SingleChildScrollView(
+    child: AnimatedContainer(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Theme.of(context).colorScheme.authWebCard),
+      width: isWelcome
+          ? getDimension(context, false,
+              Theme.of(context).visualDensity.authMobileCardWidth)
+          : 400,
+      height: isWelcome
+          ? getDimension(context, true,
+              Theme.of(context).visualDensity.authMobileCardHeight)
+          : 500,
+      constraints: BoxConstraints(minHeight: 200, minWidth: 200),
+      duration: const Duration(seconds: 1),
+      curve: Curves.fastOutSlowIn,
+      child: authMobileCard(context, state),
+    ),
+  );
+}
+
+Widget authMobileCard(BuildContext context, State state) {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      authMobileCardText(context),
+      Padding(
+        padding: const EdgeInsets.only(top: 30.0),
+        child: authMobileGetStarted(context, state),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(top: 25.0),
+        child: authMobileSwitch(context, state),
+      )
+    ],
+  );
+}
+
+Widget authMobileCardText(BuildContext context) {
+  return Column(
+    children: [
+      Text(
+        getTranslated(context, "welcomeCardText"),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.authMobileCardText,
+          fontSize: Theme.of(context).textTheme.authMobileCardText,
+          fontWeight: Theme.of(context).typography.authMobileCardText,
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(top: 10.0),
+        child: Text(
+          getTranslated(context, "welcomeCardSubText"),
+          softWrap: true,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.authMobileCardSubText,
+            fontSize: Theme.of(context).textTheme.authMobileCardSubText,
+            fontWeight: Theme.of(context).typography.authMobileCardSubText,
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget authMobileCardInput(BuildContext context, State state, bool isSmall) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -258,12 +356,22 @@ Widget authMobileGetStarted(BuildContext context, State state) {
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            authValidateSubmit(context, state);
+            if (isWelcome) {
+              state.setState(() {
+                isWelcome = false;
+              });
+            } else {
+              authValidateSubmit(context, state);
+            }
           },
           child: Container(
             child: Center(
               child: Text(
-                getTranslated(context, isSignIn ? "authSignIn" : "authSignUp"),
+                getTranslated(
+                    context,
+                    isWelcome
+                        ? "welcomeGetStarted"
+                        : (isSignIn ? "authSignIn" : "authSignUp")),
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.authMobileGetStartedText,
                   fontSize:
@@ -288,8 +396,13 @@ Widget authMobileSwitch(BuildContext context, State state) {
     },
     child: RichText(
       text: TextSpan(
-        text: getTranslated(context,
-            isSignIn ? "authSwitchSignUpPrimary" : "authSwitchSignInPrimary"),
+        text: getTranslated(
+            context,
+            isWelcome
+                ? "authSwitchSignInPrimary"
+                : (isSignIn
+                    ? "authSwitchSignUpPrimary"
+                    : "authSwitchSignInPrimary")),
         style: TextStyle(
           color: Theme.of(context).colorScheme.authMobileSwitchPrimary,
           fontSize: Theme.of(context).textTheme.authMobileSwitchPrimary,
@@ -299,9 +412,11 @@ Widget authMobileSwitch(BuildContext context, State state) {
           TextSpan(
             text: getTranslated(
                 context,
-                isSignIn
-                    ? "authSwitchSignUpSecondary"
-                    : "authSwitchSignInSecondary"),
+                isWelcome
+                    ? "authSwitchSignInSecondary"
+                    : (isSignIn
+                        ? "authSwitchSignUpSecondary"
+                        : "authSwitchSignInSecondary")),
             style: TextStyle(
               color: Theme.of(context).colorScheme.authMobileSwitchSecondary,
               fontSize: Theme.of(context).textTheme.authMobileSwitchSecondary,

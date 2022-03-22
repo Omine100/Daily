@@ -78,51 +78,30 @@ class _AuthScreenState extends State<AuthScreen> {
       alignment: Alignment.center,
       children: [
         Positioned(
-            top: getPosition(
-                context,
-                true,
-                Theme.of(context)
-                    .materialTapTargetSize
-                    .authMobileCenterPieceTop),
-            child: authMobileCenterPiece(context, this)),
+          left: getPosition(
+              context,
+              false,
+              Theme.of(context)
+                  .materialTapTargetSize
+                  .authMobileCenterPieceLeft),
+          child: authMobileCenterPiece(context, this),
+        ),
         Positioned(
-            top: getPosition(context, true,
-                Theme.of(context).materialTapTargetSize.authMobileCardTop),
-            child: authMobileCard(context, this, true)),
+          top: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.authMobileTitleTop),
+          child: authMobileTitle(context),
+        ),
         Positioned(
           bottom: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.authMobileSwitchBottom),
-          child: authMobileSwitch(context, this),
+              Theme.of(context).materialTapTargetSize.authMobileCardBottom),
+          child: authMobileCardContainer(context, this),
         ),
       ],
     );
   }
 
   Widget authScreenMobileLarge(bool isAndroid) {
-    setSignIn(isSignIn);
-
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Positioned(
-            top: getPosition(
-                context,
-                true,
-                Theme.of(context)
-                    .materialTapTargetSize
-                    .authMobileCenterPieceTop),
-            child: authMobileCenterPiece(context, this)),
-        Positioned(
-            top: getPosition(context, true,
-                Theme.of(context).materialTapTargetSize.authMobileCardTop),
-            child: authMobileCard(context, this, false)),
-        Positioned(
-          bottom: getPosition(context, true,
-              Theme.of(context).materialTapTargetSize.authMobileSwitchBottom),
-          child: authMobileSwitch(context, this),
-        ),
-      ],
-    );
+    return Container();
   }
 
   @override

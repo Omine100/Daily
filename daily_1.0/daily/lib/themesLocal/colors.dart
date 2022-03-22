@@ -45,7 +45,6 @@ extension CustomConnectedColorScheme on ColorScheme {
 
   // #region backgrounds
   Color get errorBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
-  Color get welcomeBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get authBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get forgotPasswordBackground =>
       Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
@@ -85,6 +84,9 @@ extension CustomWebColorScheme on ColorScheme {
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get authWebSwitchSecondary =>
       Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+  Color get authMobileCardText => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get authMobileCardSubText =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   // #endregion
 }
 
@@ -95,25 +97,8 @@ extension CustomMobileColorScheme on ColorScheme {
       Color(isDark.value ? 0xFFCCCCCC : 0xFF000000);
   // #endregion
 
-  // #region welcome
-  Color get welcomeMobileTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
-  Color get welcomeMobileCardText =>
-      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
-  Color get welcomeMobileCardSubText =>
-      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
-  Color get welcomeMobileGetStarted =>
-      Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
-  Color get welcomeMobileGetStartedInkWell =>
-      Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
-  Color get welcomeMobileGetStartedText =>
-      Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
-  Color get welcomeMobileAccountAlready =>
-      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
-  Color get welcomeMobileAccountAlreadyLogin =>
-      Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
-  // #endregion
-
   // #region auth
+  Color get authMobileTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get authMobileUserInputField =>
       Color(isDark.value ? 0xFF333333 : 0xFFEEEEEE);
   Color get authMobileUserInputFieldText =>

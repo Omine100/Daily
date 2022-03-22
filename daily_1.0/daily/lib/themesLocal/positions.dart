@@ -12,16 +12,10 @@ extension CustomWebPositions on MaterialTapTargetSize {
 }
 
 extension CustomMobilePositions on MaterialTapTargetSize {
-  // #region welcome
-  double get welcomeMobileTitleTop => isSmall ? 0.065 : 0.065;
-  double get welcomeMobileCenterPieceLeft => isSmall ? -0.25 : -0.25;
-  double get welcomeMobileCardBottom => isSmall ? 0.03 : 0.03;
-  // #endregion
-
   // #region auth
-  double get authMobileCenterPieceTop => isSmall ? 0.063 : 0.063;
-  double get authMobileCardTop => isSmall ? 0.45 : 0.45;
-  double get authMobileSwitchBottom => isSmall ? 0.03 : 0.03;
+  double get authMobileTitleTop => isSmall ? 0.065 : 0.065;
+  double get authMobileCenterPieceLeft => isSmall ? -0.25 : -0.25;
+  double get authMobileCardBottom => isSmall ? 0.03 : 0.03;
   // #endregion
 
   // #region forgotPassword

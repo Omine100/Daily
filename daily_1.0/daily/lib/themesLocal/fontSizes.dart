@@ -30,15 +30,6 @@ extension CustomMobileFontSize on TextTheme {
   double get textViewerMobileText => 14.0;
   // #endregion
 
-  // #region welcome
-  double get welcomeMobileTitle => 48;
-  double get welcomeMobileCardText => 32;
-  double get welcomeMobileCardSubText => 18;
-  double get welcomeMobileGetStartedText => 20;
-  double get welcomeMobileAccountAlready => 16;
-  double get welcomeMobileAccountAlreadyLogin => 16;
-  // #endregion
-
   // #region auth
   double get authMobileTitle => 48;
   double get authMobileUserInputFieldDecoration => 20;
@@ -47,6 +38,8 @@ extension CustomMobileFontSize on TextTheme {
   double get authMobileGetStartedText => 20;
   double get authMobileSwitchPrimary => 16;
   double get authMobileSwitchSecondary => 16;
+  double get authMobileCardText => 32;
+  double get authMobileCardSubText => 18;
   // #endregion
 
   // #region forgotPassword
