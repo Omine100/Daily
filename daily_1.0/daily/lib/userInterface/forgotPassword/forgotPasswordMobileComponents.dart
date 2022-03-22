@@ -56,17 +56,13 @@ Widget forgotPasswordCenterPiece(BuildContext context) {
 
 String userEmail;
 GlobalKey<FormFieldState> forgotPasswordFormKey = GlobalKey<FormFieldState>();
-Widget forgotPasswordUserInputField(BuildContext context, State state) {
+Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
   return Container(
     height: getDimension(context, true,
         Theme.of(context).visualDensity.forgotPasswordUserInputFieldHeight),
     width: getDimension(context, false,
         Theme.of(context).visualDensity.forgotPasswordUserInputFieldWidth),
     alignment: Alignment.center,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(30),
-      color: Theme.of(context).colorScheme.forgotPasswordMobileUserInputField,
-    ),
     child: TextFormField(
       key: forgotPasswordFormKey,
       obscureText: false,
@@ -80,7 +76,16 @@ Widget forgotPasswordUserInputField(BuildContext context, State state) {
               .colorScheme
               .forgotPasswordMobileUserInputFieldText),
       decoration: InputDecoration(
-        border: InputBorder.none,
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.authMobileUserInputFieldBorder,
+          ),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.authMobileUserInputFieldBorder,
+          ),
+        ),
         hintText: getTranslated(context, "forgotPasswordFormEmail"),
         labelStyle: TextStyle(
           color: Theme.of(context)
