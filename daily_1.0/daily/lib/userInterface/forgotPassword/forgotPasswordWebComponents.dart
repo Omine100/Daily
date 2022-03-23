@@ -129,8 +129,12 @@ Widget forgotPasswordWebSwitchBack(BuildContext context, State state) {
       authWebForgotPasswordSwitchBack(context, state);
     },
     child: Text(
-      "Remembered your account?",
-      style: TextStyle(color: Colors.white),
+      getTranslated(context, "forgotPasswordRemembered"),
+      style: TextStyle(
+        color: Theme.of(context).colorScheme.forgotPasswordWebRemembered,
+        fontSize: Theme.of(context).textTheme.forgotPasswordWebRemembered,
+        fontWeight: Theme.of(context).typography.forgotPasswordWebRemembered,
+      ),
     ),
   );
 }

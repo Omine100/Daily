@@ -74,6 +74,7 @@
     "forgotPasswordSend": "送信",
     "forgotPasswordResendPrimary": "手に入れなかった？",
     "forgotPasswordResendSecondary": "res！",
+    "forgotPasswordRemembered": "あなたのパスワードを再作成しましたか？",
     "settingsTitle": "設定",
     "settingsNullName": "NULL名。",
     "settingsResetPasswordSent": "メールが送信されました",

@@ -33,6 +33,7 @@ extension CustomWebFontWeight on Typography {
   FontWeight get forgotPasswordWebSendText => FontWeight.w500;
   FontWeight get forgotPasswordWebResendPrimary => FontWeight.w400;
   FontWeight get forgotPasswordWebResendSecondary => FontWeight.w500;
+  FontWeight get forgotPasswordWebRemembered => FontWeight.w300;
   // #endregion
 }
 

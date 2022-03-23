@@ -74,6 +74,7 @@
     "forgotPasswordSend": "Schicken",
     "forgotPasswordResendPrimary": "Hast es nicht bekommen?",
     "forgotPasswordResendSecondary": "Erneut senden!",
+    "forgotPasswordRemembered": "Erinnerst du dein Passwort?",
     "settingsTitle": "Einstellungen",
     "settingsNullName": "NULL-Name",
     "settingsResetPasswordSent": "Die Email wurde verschickt",

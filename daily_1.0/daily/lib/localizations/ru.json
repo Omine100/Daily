@@ -74,6 +74,7 @@
     "forgotPasswordSend": "Отправлять",
     "forgotPasswordResendPrimary": "Не понял?",
     "forgotPasswordResendSecondary": "Отправить!",
+    "forgotPasswordRemembered": "Нарезать ваш пароль?",
     "settingsTitle": "Настройки",
     "settingsNullName": "NULL имя.",
     "settingsResetPasswordSent": "Письмо было отправлено",

@@ -74,6 +74,7 @@
     "forgotPasswordSend": "发送",
     "forgotPasswordResendPrimary": "没有得到它？",
     "forgotPasswordResendSecondary": "重发！",
+    "forgotPasswordRemembered": "记住您的密码？",
     "settingsTitle": "设置",
     "settingsNullName": "null名称。",
     "settingsResetPasswordSent": "邮件已发送",

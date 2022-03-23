@@ -74,6 +74,7 @@
     "forgotPasswordSend": "Envoyer",
     "forgotPasswordResendPrimary": "Ne l'a pas eu?",
     "forgotPasswordResendSecondary": "Renvoyez!",
+    "forgotPasswordRemembered": "Reméda votre mot de passe?",
     "settingsTitle": "Réglages",
     "settingsNullName": "Nom null.",
     "settingsResetPasswordSent": "L'email a été envoyé",
