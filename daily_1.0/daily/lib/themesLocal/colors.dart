@@ -114,7 +114,7 @@ extension CustomWebColorScheme on ColorScheme {
   Color get forgotPasswordWebResendSecondary =>
       Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
   Color get forgotPasswordWebRemembered =>
-      Color(isDark.value ? 0xFF999999 : 0xFF999999);
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   // #endregion
 }
 

@@ -28,18 +28,19 @@ extension CustomWebDimensions on VisualDensity {
   double get authWebCardContainerWidth => isSmall ? 0.75 : 0.5;
   double get authWebUserInputFieldHeight => isSmall ? 0.05 : 0.05;
   double get authWebUserInputFieldWidth => isSmall ? 0.5 : 0.35;
+  double get authWebPolicyAndTacWidth => isSmall ? 0.47 : 0.32;
   double get authWebForgotPasswordWidth => isSmall ? 0.47 : 0.32;
   double get authWebGetStartedHeight => isSmall ? 0.065 : 0.065;
   double get authWebGetStartedWidth => isSmall ? 0.2025 : 0.2025;
   // #endregion
 
   // #region forgotPassword
-  double get forgotPasswordWebCenterPieceHeight => isSmall ? 1.0 : 1.0;
-  double get forgotPasswordWebCenterPieceWidth => isSmall ? 1.0 : 1.0;
   double get forgotPasswordWebUserInputFieldHeight => isSmall ? 0.05 : 0.05;
   double get forgotPasswordWebUserInputFieldWidth => isSmall ? 0.5 : 0.35;
+  double get forgotPasswordWebRememberedWidth => isSmall ? 0.47 : 0.32;
   double get forgotPasswordWebSendHeight => isSmall ? 0.065 : 0.065;
   double get forgotPasswordWebSendWidth => isSmall ? 0.2025 : 0.2025;
+  double get forgotPasswordWebResendWidth => isSmall ? 0.47 : 0.32;
   // #endregion
 }
 
@@ -58,9 +59,6 @@ extension CustomMobileDimensions on VisualDensity {
   // #endregion
 
   // #region forgotPassword
-  double get forgotPasswordMobileTitleWidth => 1.0;
-  double get forgotPasswordMobileCenterPieceHeight => 0.6;
-  double get forgotPasswordMobileCenterPieceWidth => 0.6;
   double get forgotPasswordMobileUserInputFieldHeight => 0.065;
   double get forgotPasswordMobileUserInputFieldWidth => 0.875;
   double get forgotPasswordMobileSendHeight => 0.065;

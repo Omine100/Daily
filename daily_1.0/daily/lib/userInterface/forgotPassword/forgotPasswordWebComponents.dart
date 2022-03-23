@@ -9,23 +9,34 @@ import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 
+void forgotPasswordWebDispose() {
+  isSent = false;
+  forgotPasswordWebFormKey.currentState.reset();
+}
+
 Widget forgotPasswordWebCard(BuildContext context, State state) {
-  return Stack(
-    alignment: Alignment.center,
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 25.0),
-            child: forgotPasswordWebTitle(context),
-          ),
-          forgotPasswordWebUserInputField(context, state),
-          forgotPasswordWebSwitchBack(context, state),
-          forgotPasswordWebSend(context, state),
-          forgotPasswordWebResend(context)
-        ],
+      Padding(
+        padding: const EdgeInsets.only(bottom: 25.0),
+        child: forgotPasswordWebTitle(context),
       ),
+      forgotPasswordWebUserInputField(context, state),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: forgotPasswordWebSwitchBack(context, state),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(top: 7.0),
+        child: forgotPasswordWebSend(context, state),
+      ),
+      isSent
+          ? Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: forgotPasswordWebResend(context),
+            )
+          : Container(),
     ],
   );
 }
@@ -44,7 +55,7 @@ Widget forgotPasswordWebTitle(BuildContext context) {
         ),
       ),
       Padding(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(10),
       ),
       Text(
         getTranslated(context, "forgotPasswordSubtitlePrimary") +
@@ -124,16 +135,20 @@ Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
 }
 
 Widget forgotPasswordWebSwitchBack(BuildContext context, State state) {
-  return GestureDetector(
-    onTap: () {
-      authWebForgotPasswordSwitchBack(context, state);
-    },
-    child: Text(
-      getTranslated(context, "forgotPasswordRemembered"),
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.forgotPasswordWebRemembered,
-        fontSize: Theme.of(context).textTheme.forgotPasswordWebRemembered,
-        fontWeight: Theme.of(context).typography.forgotPasswordWebRemembered,
+  return Container(
+    width: getDimension(context, false,
+        Theme.of(context).visualDensity.forgotPasswordWebRememberedWidth),
+    child: GestureDetector(
+      onTap: () {
+        authWebForgotPasswordSwitchBack(context, state);
+      },
+      child: Text(
+        getTranslated(context, "forgotPasswordRemembered"),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.forgotPasswordWebRemembered,
+          fontSize: Theme.of(context).textTheme.forgotPasswordWebRemembered,
+          fontWeight: Theme.of(context).typography.forgotPasswordWebRemembered,
+        ),
       ),
     ),
   );
@@ -141,38 +156,31 @@ Widget forgotPasswordWebSwitchBack(BuildContext context, State state) {
 
 bool isSent = false;
 Widget forgotPasswordWebSend(BuildContext context, State state) {
-  return Center(
-    child: Container(
-      height: getDimension(context, true,
-          Theme.of(context).visualDensity.forgotPasswordWebSendHeight),
-      width: getDimension(context, false,
-          Theme.of(context).visualDensity.forgotPasswordWebSendWidth),
-      decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.forgotPasswordWebSend,
-          borderRadius: BorderRadius.circular(30)),
-      child: Material(
-        color: Theme.of(context).colorScheme.materialTransparent,
-        child: InkWell(
-          splashColor:
-              Theme.of(context).colorScheme.forgotPasswordWebSendInkWell,
-          customBorder:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          onTap: () {
-            forgotPasswordValidateSubmit(context, state);
-          },
-          child: Container(
-            child: Center(
-              child: Text(
-                getTranslated(context, "forgotPasswordSend"),
-                style: TextStyle(
-                  color:
-                      Theme.of(context).colorScheme.forgotPasswordWebSendText,
-                  fontSize:
-                      Theme.of(context).textTheme.forgotPasswordWebSendText,
-                  fontWeight:
-                      Theme.of(context).typography.forgotPasswordWebSendText,
-                ),
-              ),
+  return Container(
+    height: getDimension(context, true,
+        Theme.of(context).visualDensity.forgotPasswordWebSendHeight),
+    width: getDimension(context, false,
+        Theme.of(context).visualDensity.forgotPasswordWebSendWidth),
+    decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.forgotPasswordWebSend,
+        borderRadius: BorderRadius.circular(30)),
+    child: Material(
+      color: Theme.of(context).colorScheme.materialTransparent,
+      child: InkWell(
+        splashColor: Theme.of(context).colorScheme.forgotPasswordWebSendInkWell,
+        customBorder:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        onTap: () {
+          forgotPasswordValidateSubmit(context, state);
+        },
+        child: Center(
+          child: Text(
+            getTranslated(context, "forgotPasswordSend"),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.forgotPasswordWebSendText,
+              fontSize: Theme.of(context).textTheme.forgotPasswordWebSendText,
+              fontWeight:
+                  Theme.of(context).typography.forgotPasswordWebSendText,
             ),
           ),
         ),
@@ -182,44 +190,37 @@ Widget forgotPasswordWebSend(BuildContext context, State state) {
 }
 
 Widget forgotPasswordWebResend(BuildContext context) {
-  return isSent
-      ? GestureDetector(
-          onTap: () {
-            forgotPasswordWebFormKey.currentState.save();
-            firebaseAccounts.sendPasswordReset(context, userEmail);
-          },
-          child: RichText(
-            text: TextSpan(
-              text: getTranslated(context, "forgotPasswordResendPrimary"),
-              style: TextStyle(
-                color: Theme.of(context)
-                    .colorScheme
-                    .forgotPasswordWebResendPrimary,
-                fontSize:
-                    Theme.of(context).textTheme.forgotPasswordWebResendPrimary,
-                fontWeight:
-                    Theme.of(context).typography.forgotPasswordWebResendPrimary,
-              ),
-              children: <TextSpan>[
-                TextSpan(
-                  text: getTranslated(context, "forgotPasswordResendSecondary"),
-                  style: TextStyle(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .forgotPasswordWebResendSecondary,
-                    fontSize: Theme.of(context)
-                        .textTheme
-                        .forgotPasswordWebResendSecondary,
-                    fontWeight: Theme.of(context)
-                        .typography
-                        .forgotPasswordWebResendSecondary,
-                  ),
-                ),
-              ],
+  return GestureDetector(
+    onTap: () {
+      forgotPasswordWebFormKey.currentState.save();
+      firebaseAccounts.sendPasswordReset(context, userEmail);
+    },
+    child: RichText(
+      text: TextSpan(
+        text: getTranslated(context, "forgotPasswordResendPrimary"),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.forgotPasswordWebResendPrimary,
+          fontSize: Theme.of(context).textTheme.forgotPasswordWebResendPrimary,
+          fontWeight:
+              Theme.of(context).typography.forgotPasswordWebResendPrimary,
+        ),
+        children: <TextSpan>[
+          TextSpan(
+            text: getTranslated(context, "forgotPasswordResendSecondary"),
+            style: TextStyle(
+              color: Theme.of(context)
+                  .colorScheme
+                  .forgotPasswordWebResendSecondary,
+              fontSize:
+                  Theme.of(context).textTheme.forgotPasswordWebResendSecondary,
+              fontWeight:
+                  Theme.of(context).typography.forgotPasswordWebResendSecondary,
             ),
           ),
-        )
-      : Container();
+        ],
+      ),
+    ),
+  );
 }
 
 void forgotPasswordValidateSubmit(BuildContext context, State state) {
@@ -232,8 +233,4 @@ void forgotPasswordValidateSubmit(BuildContext context, State state) {
             })
           }
       });
-}
-
-void forgotPasswordWebDispose() {
-  isSent = false;
 }

@@ -8,39 +8,39 @@ import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 
+void forgotPasswordMobileDispose() {
+  isSent = false;
+  forgotPasswordMobileFormKey.currentState.reset();
+}
+
 Widget forgotPasswordMobileTitle(BuildContext context) {
-  return Container(
-    width: getDimension(context, false,
-        Theme.of(context).visualDensity.forgotPasswordMobileTitleWidth),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          getTranslated(context, "forgotPasswordTitle"),
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.forgotPasswordMobileTitle,
-            fontSize: Theme.of(context).textTheme.forgotPasswordMobileTitle,
-            fontWeight: Theme.of(context).typography.forgotPasswordMobileTitle,
-          ),
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Text(
+        getTranslated(context, "forgotPasswordTitle"),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.forgotPasswordMobileTitle,
+          fontSize: Theme.of(context).textTheme.forgotPasswordMobileTitle,
+          fontWeight: Theme.of(context).typography.forgotPasswordMobileTitle,
         ),
-        Padding(
-          padding: EdgeInsets.all(15),
+      ),
+      Padding(
+        padding: EdgeInsets.all(15),
+      ),
+      Text(
+        getTranslated(context, "forgotPasswordSubtitlePrimary") +
+            "\n" +
+            getTranslated(context, "forgotPasswordSubtitleSecondary"),
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.forgotPasswordMobileSubtitle,
+          fontSize: Theme.of(context).textTheme.forgotPasswordMobileSubtitle,
+          fontWeight: Theme.of(context).typography.forgotPasswordMobileSubtitle,
         ),
-        Text(
-          getTranslated(context, "forgotPasswordSubtitlePrimary") +
-              "\n" +
-              getTranslated(context, "forgotPasswordSubtitleSecondary"),
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.forgotPasswordMobileSubtitle,
-            fontSize: Theme.of(context).textTheme.forgotPasswordMobileSubtitle,
-            fontWeight:
-                Theme.of(context).typography.forgotPasswordMobileSubtitle,
-          ),
-        ),
-      ],
-    ),
+      ),
+    ],
   );
 }
 
@@ -125,57 +125,39 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
 
 bool isSent = false;
 Widget forgotPasswordMobileSend(BuildContext context, State state) {
-  return Center(
-    child: Container(
-      height: getDimension(context, true,
-          Theme.of(context).visualDensity.forgotPasswordMobileSendHeight),
-      width: getDimension(context, false,
-          Theme.of(context).visualDensity.forgotPasswordMobileSendWidth),
-      decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.forgotPasswordMobileSend,
-          borderRadius: BorderRadius.circular(30)),
-      child: Material(
-        color: Theme.of(context).colorScheme.materialTransparent,
-        child: InkWell(
-          splashColor:
-              Theme.of(context).colorScheme.forgotPasswordMobileSendInkWell,
-          customBorder:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          onTap: () {
-            forgotPasswordValidateSubmit(context, state);
-          },
-          child: Container(
-            child: Center(
-              child: Text(
-                getTranslated(context, "forgotPasswordSend"),
-                style: TextStyle(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .forgotPasswordMobileSendText,
-                  fontSize:
-                      Theme.of(context).textTheme.forgotPasswordMobileSendText,
-                  fontWeight:
-                      Theme.of(context).typography.forgotPasswordMobileSendText,
-                ),
-              ),
+  return Container(
+    height: getDimension(context, true,
+        Theme.of(context).visualDensity.forgotPasswordMobileSendHeight),
+    width: getDimension(context, false,
+        Theme.of(context).visualDensity.forgotPasswordMobileSendWidth),
+    decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.forgotPasswordMobileSend,
+        borderRadius: BorderRadius.circular(30)),
+    child: Material(
+      color: Theme.of(context).colorScheme.materialTransparent,
+      child: InkWell(
+        splashColor:
+            Theme.of(context).colorScheme.forgotPasswordMobileSendInkWell,
+        customBorder:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        onTap: () {
+          forgotPasswordValidateSubmit(context, state);
+        },
+        child: Center(
+          child: Text(
+            getTranslated(context, "forgotPasswordSend"),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.forgotPasswordMobileSendText,
+              fontSize:
+                  Theme.of(context).textTheme.forgotPasswordMobileSendText,
+              fontWeight:
+                  Theme.of(context).typography.forgotPasswordMobileSendText,
             ),
           ),
         ),
       ),
     ),
   );
-}
-
-void forgotPasswordValidateSubmit(BuildContext context, State state) {
-  forgotPasswordMobileFormKey.currentState.save();
-  firebaseAccounts.sendPasswordReset(context, userEmail).then((_isSent) => {
-        if (_isSent)
-          {
-            state.setState(() {
-              isSent = true;
-            })
-          }
-      });
 }
 
 Widget forgotPasswordMobileResend(BuildContext context) {
@@ -221,6 +203,14 @@ Widget forgotPasswordMobileResend(BuildContext context) {
       : Container();
 }
 
-void forgotPasswordMobileDispose() {
-  isSent = false;
+void forgotPasswordValidateSubmit(BuildContext context, State state) {
+  forgotPasswordMobileFormKey.currentState.save();
+  firebaseAccounts.sendPasswordReset(context, userEmail).then((_isSent) => {
+        if (_isSent)
+          {
+            state.setState(() {
+              isSent = true;
+            })
+          }
+      });
 }

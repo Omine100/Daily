@@ -31,7 +31,7 @@ extension CustomWebFontSize on TextTheme {
   double get forgotPasswordWebSendText => 20;
   double get forgotPasswordWebResendPrimary => 16;
   double get forgotPasswordWebResendSecondary => 16;
-  double get forgotPasswordWebRemembered => 18;
+  double get forgotPasswordWebRemembered => 16;
   // #endregion
 }
 

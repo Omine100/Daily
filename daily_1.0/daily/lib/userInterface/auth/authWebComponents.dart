@@ -240,6 +240,8 @@ Widget authWebForgotPassword(BuildContext context, State state, bool isSmall) {
 
 Widget authWebPolicyAndTaC(BuildContext context) {
   return Container(
+    width: getDimension(context, false,
+        Theme.of(context).visualDensity.authWebPolicyAndTacWidth),
     alignment: Alignment.center,
     child: Center(
         child: Text.rich(TextSpan(
@@ -251,7 +253,7 @@ Widget authWebPolicyAndTaC(BuildContext context) {
             ),
             children: <TextSpan>[
           TextSpan(
-              text: getTranslated(context, "authPolicyAndTaCPrivacy"),
+              text: getTranslated(context, "authPolicyAndTaCPrivacy") + " ",
               style: TextStyle(
                   color: Theme.of(context).colorScheme.authWebPolicyAndTaC,
                   fontSize: Theme.of(context).textTheme.authWebPolicyAndTaC,
@@ -262,9 +264,7 @@ Widget authWebPolicyAndTaC(BuildContext context) {
                   routeNavigation.routeTextViewer(context, getPolicyFilePath());
                 }),
           TextSpan(
-              text: "\n" +
-                  getTranslated(context, "authPolicyAndTaCSeconday") +
-                  " ",
+              text: getTranslated(context, "authPolicyAndTaCSeconday") + " ",
               style: TextStyle(
                 color: Theme.of(context).colorScheme.authWebPolicyAndTaC,
                 fontSize: Theme.of(context).textTheme.authWebPolicyAndTaC,
