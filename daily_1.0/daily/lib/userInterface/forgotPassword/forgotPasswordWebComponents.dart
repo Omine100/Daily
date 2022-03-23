@@ -1,4 +1,3 @@
-import 'package:daily/userInterface/auth/authWebComponents.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
@@ -6,6 +5,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
+import 'package:daily/userInterface/auth/authWebComponents.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 
@@ -76,58 +76,65 @@ String userEmail;
 GlobalKey<FormFieldState> forgotPasswordWebFormKey =
     GlobalKey<FormFieldState>();
 Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
-  return Container(
-    height: getDimension(context, true,
-        Theme.of(context).visualDensity.forgotPasswordWebUserInputFieldHeight),
-    width: getDimension(context, false,
-        Theme.of(context).visualDensity.forgotPasswordWebUserInputFieldWidth),
-    alignment: Alignment.center,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(10),
-      color: Theme.of(context).colorScheme.forgotPasswordWebUserInputField,
-    ),
-    child: TextFormField(
-      key: forgotPasswordWebFormKey,
-      obscureText: false,
-      onSaved: (email) => userEmail = email,
-      onFieldSubmitted: (value) {
-        forgotPasswordValidateSubmit(context, state);
-      },
-      autofocus: false,
-      style: TextStyle(
-          color: Theme.of(context)
-              .colorScheme
-              .forgotPasswordWebUserInputFieldText),
-      decoration: InputDecoration(
-        border: InputBorder.none,
-        hintText: getTranslated(context, "forgotPasswordFormEmail"),
-        labelStyle: TextStyle(
-          color: Theme.of(context)
-              .colorScheme
-              .forgotPasswordWebUserInputFieldDecoration,
-          fontSize: Theme.of(context)
-              .textTheme
-              .forgotPasswordWebUserInputFieldDecoration,
-          fontWeight: Theme.of(context)
-              .typography
-              .forgotPasswordWebUserInputFieldDecoration,
-        ),
-        hintStyle: TextStyle(
-          color: Theme.of(context)
-              .colorScheme
-              .forgotPasswordWebUserInputFieldDecoration,
-          fontSize: Theme.of(context)
-              .textTheme
-              .forgotPasswordWebUserInputFieldDecoration,
-          fontWeight: Theme.of(context)
-              .typography
-              .forgotPasswordWebUserInputFieldDecoration,
-        ),
-        prefixIcon: Icon(
-          Icons.email,
-          color: Theme.of(context)
-              .colorScheme
-              .forgotPasswordWebUserInputFieldIconDecoration,
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Container(
+      height: getDimension(
+          context,
+          true,
+          Theme.of(context)
+              .visualDensity
+              .forgotPasswordWebUserInputFieldHeight),
+      width: getDimension(context, false,
+          Theme.of(context).visualDensity.forgotPasswordWebUserInputFieldWidth),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Theme.of(context).colorScheme.forgotPasswordWebUserInputField,
+      ),
+      child: TextFormField(
+        key: forgotPasswordWebFormKey,
+        obscureText: false,
+        onSaved: (email) => userEmail = email,
+        onFieldSubmitted: (value) {
+          forgotPasswordValidateSubmit(context, state);
+        },
+        autofocus: false,
+        style: TextStyle(
+            color: Theme.of(context)
+                .colorScheme
+                .forgotPasswordWebUserInputFieldText),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: getTranslated(context, "forgotPasswordFormEmail"),
+          labelStyle: TextStyle(
+            color: Theme.of(context)
+                .colorScheme
+                .forgotPasswordWebUserInputFieldDecoration,
+            fontSize: Theme.of(context)
+                .textTheme
+                .forgotPasswordWebUserInputFieldDecoration,
+            fontWeight: Theme.of(context)
+                .typography
+                .forgotPasswordWebUserInputFieldDecoration,
+          ),
+          hintStyle: TextStyle(
+            color: Theme.of(context)
+                .colorScheme
+                .forgotPasswordWebUserInputFieldDecoration,
+            fontSize: Theme.of(context)
+                .textTheme
+                .forgotPasswordWebUserInputFieldDecoration,
+            fontWeight: Theme.of(context)
+                .typography
+                .forgotPasswordWebUserInputFieldDecoration,
+          ),
+          prefixIcon: Icon(
+            Icons.email,
+            color: Theme.of(context)
+                .colorScheme
+                .forgotPasswordWebUserInputFieldIconDecoration,
+          ),
         ),
       ),
     ),

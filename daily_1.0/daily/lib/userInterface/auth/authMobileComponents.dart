@@ -81,7 +81,7 @@ Widget authMobileCardContainer(BuildContext context, State state) {
                   .visualDensity
                   .authMobileCardContainerInputWidth),
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.authMobileContainerCard,
+          color: Theme.of(context).colorScheme.authMobileCarContainer,
           borderRadius: BorderRadius.circular(20)),
       duration: const Duration(seconds: 1),
       curve: Curves.fastOutSlowIn,

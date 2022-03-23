@@ -41,7 +41,7 @@ Widget authWebCardContainer(BuildContext context, State state, bool isSmall) {
         width: getDimension(context, false,
             Theme.of(context).visualDensity.authWebCardContainerWidth),
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.authWebContainerCard,
+            color: Theme.of(context).colorScheme.authWebCardContainer,
             borderRadius: isSmall
                 ? BorderRadius.all(Radius.circular(50))
                 : BorderRadius.only(

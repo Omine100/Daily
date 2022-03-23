@@ -55,7 +55,6 @@ flutter:
       - lib/legal/documents/termsAndConditions_01182022.txt
       - lib/assets/launcher/icon.png
       - lib/assets/launcher/icon_noBackground.png
-      - lib/assets/error/web/error_centerPiece.png
       - lib/assets/auth/web/auth_centerPiece_dark.jpg
       - lib/assets/auth/web/auth_centerPiece_light.jpg
       - lib/assets/auth/mobile/auth_centerPiece_dark.jpg

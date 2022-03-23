@@ -5,6 +5,11 @@ import 'package:flutter/material.dart';
 extension CustomConnectedConstraints on BottomAppBarTheme {}
 
 extension CustomWebConstraints on BottomAppBarTheme {
+  // #region error
+  BoxConstraints get errorWebCardContainer =>
+      BoxConstraints(minHeight: 200, minWidth: 200);
+  // #endregion
+
   // #region auth
   BoxConstraints get authWebCardContainer =>
       BoxConstraints(minHeight: 400, minWidth: 300);

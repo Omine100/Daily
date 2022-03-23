@@ -14,6 +14,10 @@ extension CustomWebFontSize on TextTheme {
   double get textViewerWebText => 14.0;
   // #endregion
 
+  // #region error
+  double get errorWebTitle => 48;
+  // #endregion
+
   // #region auth
   double get authWebTitle => 48;
   double get authWebUserInputFieldDecoration => 20;

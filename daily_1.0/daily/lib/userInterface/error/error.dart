@@ -1,3 +1,4 @@
+import 'package:daily/themesLocal/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
@@ -29,11 +30,35 @@ class _ErrorScreenState extends State<ErrorScreen> {
   }
 
   errorScreenWebSmall() {
-    return errorWebCenterPiece(context, this);
+    return Container(
+      height: getDimension(
+          context, true, Theme.of(context).visualDensity.errorWebHeight),
+      width: getDimension(
+          context, false, Theme.of(context).visualDensity.errorWebWidth),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          errorWebCardContainer(context),
+        ],
+      ),
+    );
   }
 
   errorScreenWebLarge() {
-    return errorWebCenterPiece(context, this);
+    return Container(
+      height: getDimension(
+          context, true, Theme.of(context).visualDensity.errorWebHeight),
+      width: getDimension(
+          context, false, Theme.of(context).visualDensity.errorWebWidth),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          errorWebCardContainer(context),
+        ],
+      ),
+    );
   }
 
   errorScreenMobileSmall(bool isAndroid) {

@@ -14,6 +14,10 @@ extension CustomWebFontWeight on Typography {
   FontWeight get textViewerWebText => FontWeight.w300;
   // #endregion
 
+  // #region error
+  FontWeight get errorWebTitle => FontWeight.w500;
+  // #endregion
+
   // #region auth
   FontWeight get authWebTitle => FontWeight.w500;
   FontWeight get authWebUserInputFieldDecoration => FontWeight.w300;
