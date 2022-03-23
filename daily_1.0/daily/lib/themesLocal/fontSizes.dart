@@ -15,7 +15,9 @@ extension CustomWebFontSize on TextTheme {
   // #endregion
 
   // #region error
-  double get errorWebTitle => 48;
+  double get errorWebTitle => 96;
+  double get errorWebSubtitle => 30;
+  double get errorWebText => 18;
   // #endregion
 
   // #region auth

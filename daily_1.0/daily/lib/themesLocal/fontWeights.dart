@@ -15,7 +15,9 @@ extension CustomWebFontWeight on Typography {
   // #endregion
 
   // #region error
-  FontWeight get errorWebTitle => FontWeight.w500;
+  FontWeight get errorWebTitle => FontWeight.w800;
+  FontWeight get errorWebSubtitle => FontWeight.w600;
+  FontWeight get errorWebText => FontWeight.w300;
   // #endregion
 
   // #region auth

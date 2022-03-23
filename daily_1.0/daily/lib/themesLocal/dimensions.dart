@@ -24,8 +24,9 @@ extension CustomWebDimensions on VisualDensity {
   // #region error
   double get errorWebHeight => isSmall ? 1.0 : 1.0;
   double get errorWebWidth => isSmall ? 1.0 : 1.0;
-  double get errorWebCardContainerHeight => isSmall ? 0.6 : 0.7;
-  double get errorWebCardContainerWidth => isSmall ? 0.8 : 0.7;
+  double get errorWebCardContainerHeight => isSmall ? 0.7 : 0.7;
+  double get errorWebCardContainerWidth => isSmall ? 0.7 : 0.7;
+  double get errorTextWidth => isSmall ? 0.6 : 0.3;
   // #endregion
 
   // #region auth

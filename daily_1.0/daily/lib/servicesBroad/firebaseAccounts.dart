@@ -65,7 +65,7 @@ class FirebaseAccounts {
 
   Future<bool> sendPasswordReset(BuildContext context, String email) async {
     if (email == "" || email == null || !isEmail(email)) {
-      showToastMessage(context, "errorInvalidEmail", true);
+      showToastMessage(context, "_errorInvalidEmail", true);
       return false;
     }
     auth.sendPasswordResetEmail(email: email);
@@ -83,23 +83,23 @@ class FirebaseAccounts {
         passwordVerify == "" ||
         name == null ||
         name == "") {
-      showToastMessage(context, "errorBlankField", true);
+      showToastMessage(context, "_errorBlankField", true);
       return false;
     }
     if (!isName(name)) {
-      showToastMessage(context, "errorInvalidName", true);
+      showToastMessage(context, "_errorInvalidName", true);
       return false;
     }
     if (!isEmail(email)) {
-      showToastMessage(context, "errorInvalidEmail", true);
+      showToastMessage(context, "_errorInvalidEmail", true);
       return false;
     }
     if (!isPassword(password)) {
-      showToastMessage(context, "errorPasswordRequirements", true);
+      showToastMessage(context, "_errorPasswordRequirements", true);
       return false;
     }
     if (password != passwordVerify) {
-      showToastMessage(context, "errorPasswordMatch", true);
+      showToastMessage(context, "_errorPasswordMatch", true);
       return false;
     }
     try {
@@ -112,19 +112,19 @@ class FirebaseAccounts {
       String key;
       switch (e.code) {
         case "invalid-password":
-          key = "errorInvalidPassword";
+          key = "_errorInvalidPassword";
           break;
         case "invalid-email":
-          key = "errorInvalidEmail";
+          key = "_errorInvalidEmail";
           break;
         case "email-already-in-use":
-          key = "errorEmailAlreadyExists";
+          key = "_errorEmailAlreadyExists";
           break;
         case "invalid-credential":
-          key = "errorInvalidEmail";
+          key = "_errorInvalidEmail";
           break;
         default:
-          key = "errorDefault";
+          key = "_errorDefault";
       }
       showToastMessage(context, key, true);
     }
@@ -134,7 +134,7 @@ class FirebaseAccounts {
   Future<bool> signInEmailAndPassword(
       BuildContext context, String email, String password) async {
     if (email == "" || password == "") {
-      showToastMessage(context, "errorBlankField", true);
+      showToastMessage(context, "_errorBlankField", true);
       return false;
     }
     try {
@@ -144,22 +144,22 @@ class FirebaseAccounts {
       String key;
       switch (e.code) {
         case "invalid-email":
-          key = "errorInvalidEmail";
+          key = "_errorInvalidEmail";
           break;
         case "wrong-password":
-          key = "errorWrongPassword";
+          key = "_errorWrongPassword";
           break;
         case "user-not-found":
-          key = "errorUserNotFound";
+          key = "_errorUserNotFound";
           break;
         case "user-disabled":
-          key = "errorUserDisabled";
+          key = "_errorUserDisabled";
           break;
         case "unknown":
-          key = "errorUserNotFound";
+          key = "_errorUserNotFound";
           break;
         default:
-          key = "errorDefault";
+          key = "_errorDefault";
       }
       showToastMessage(context, key, true);
       return false;

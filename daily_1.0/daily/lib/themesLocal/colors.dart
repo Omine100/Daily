@@ -63,6 +63,9 @@ extension CustomWebColorScheme on ColorScheme {
   // #region error
   Color get errorWebCardContainer =>
       Color(isDark.value ? 0xFF202020 : 0xFFFBFAF5);
+  Color get errorWebTitle => Color(isDark.value ? 0xFF777777 : 0xFF333333);
+  Color get errorWebSubtitle => Color(isDark.value ? 0xFF111111 : 0xFFFFFFFF);
+  Color get errorWebText => Color(isDark.value ? 0xFF999999 : 0xFF333333);
   // #endregion
 
   // #region auth

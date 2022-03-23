@@ -20,7 +20,7 @@ class MediaPickerManagement {
         function(image, state);
       });
     } catch (e) {
-      showToastMessage(context, "errorImage", true);
+      showToastMessage(context, "_errorImage", true);
     }
     return null;
   }

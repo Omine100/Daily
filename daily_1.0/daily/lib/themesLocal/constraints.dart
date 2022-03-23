@@ -8,6 +8,7 @@ extension CustomWebConstraints on BottomAppBarTheme {
   // #region error
   BoxConstraints get errorWebCardContainer =>
       BoxConstraints(minHeight: 200, minWidth: 200);
+  BoxConstraints get errorWebText => BoxConstraints(minWidth: 100);
   // #endregion
 
   // #region auth

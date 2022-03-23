@@ -13,6 +13,7 @@ import 'package:daily/themesLocal/fontWeights.dart';
 Widget errorWebCardContainer(BuildContext context) {
   return SingleChildScrollView(
     child: Container(
+      alignment: Alignment.center,
       constraints: Theme.of(context).bottomAppBarTheme.errorWebCardContainer,
       height: getDimension(context, true,
           Theme.of(context).visualDensity.errorWebCardContainerHeight),
@@ -21,12 +22,24 @@ Widget errorWebCardContainer(BuildContext context) {
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.errorWebCardContainer,
           borderRadius: BorderRadius.all(Radius.circular(50))),
-      child: errorWebCard(),
+      child: errorWebCard(context),
     ),
   );
 }
 
-Widget errorWebCard() {}
+Widget errorWebCard(BuildContext context) {
+  return SingleChildScrollView(
+    child: Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(bottom: 75.0),
+          child: errorTitle(context),
+        ),
+        errorText(context),
+      ],
+    ),
+  );
+}
 
 Widget errorTitle(BuildContext context) {
   return Column(
@@ -34,29 +47,42 @@ Widget errorTitle(BuildContext context) {
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       Text(
-        "404",
-        // getTranslated(context, "errorTitle"),
+        getTranslated(context, "errorTitle"),
         style: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordWebTitle,
-          fontSize: Theme.of(context).textTheme.forgotPasswordWebTitle,
-          fontWeight: Theme.of(context).typography.forgotPasswordWebTitle,
+          color: Theme.of(context).colorScheme.errorWebTitle,
+          fontSize: Theme.of(context).textTheme.errorWebTitle,
+          fontWeight: Theme.of(context).typography.errorWebTitle,
         ),
       ),
       Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(5),
       ),
       Text(
-        "Page not found",
-        //getTranslated(context, "errorSubtitle")
+        getTranslated(context, "errorSubtitle"),
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordWebSubtitle,
-          fontSize: Theme.of(context).textTheme.forgotPasswordWebSubtitle,
-          fontWeight: Theme.of(context).typography.forgotPasswordWebSubtitle,
+          color: Theme.of(context).colorScheme.errorWebSubtitle,
+          fontSize: Theme.of(context).textTheme.errorWebSubtitle,
+          fontWeight: Theme.of(context).typography.errorWebSubtitle,
         ),
       ),
     ],
   );
 }
 
-Widget errorText() {}
+Widget errorText(BuildContext context) {
+  return Container(
+    constraints: Theme.of(context).bottomAppBarTheme.errorWebText,
+    width: getDimension(
+        context, false, Theme.of(context).visualDensity.errorTextWidth),
+    child: Text(
+      getTranslated(context, "errorText"),
+      softWrap: true,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+          color: Theme.of(context).colorScheme.errorWebText,
+          fontSize: Theme.of(context).textTheme.errorWebText,
+          fontWeight: Theme.of(context).typography.errorWebText),
+    ),
+  );
+}
