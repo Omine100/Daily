@@ -371,7 +371,7 @@ void authWebValidateSubmit(BuildContext context, State state) async {
         .signInEmailAndPassword(context, userEmail, userPass)
         .then((value) {
       if (value) {
-        context.router.push(HomeScreen());
+        context.router.replaceAll([HomeScreen()]);
         authWebFormkey.currentState.reset();
       }
     });
@@ -381,7 +381,7 @@ void authWebValidateSubmit(BuildContext context, State state) async {
             context, userEmail, userPass, userPassVerify, userName)
         .then((value) {
       if (value) {
-        context.router.push(HomeScreen());
+        context.router.replaceAll([HomeScreen()]);
         authWebFormkey.currentState.reset();
       }
     });

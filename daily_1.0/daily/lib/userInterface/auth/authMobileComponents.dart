@@ -83,7 +83,7 @@ Widget authMobileCardContainer(BuildContext context, State state) {
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.authMobileCarContainer,
           borderRadius: BorderRadius.circular(20)),
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 1350),
       curve: Curves.fastOutSlowIn,
       child: isWelcome
           ? authMobileCardWelcome(context, state)
@@ -472,8 +472,7 @@ void authValidateSubmit(BuildContext context, State state) async {
         .signInEmailAndPassword(context, userEmail, userPass)
         .then((value) {
       if (value) {
-        context.router.popUntilRoot();
-        context.router.push(HomeScreen());
+        context.router.replaceAll([HomeScreen()]);
         authMobileFormKey.currentState.reset();
         isWelcome = true;
       }
@@ -484,7 +483,7 @@ void authValidateSubmit(BuildContext context, State state) async {
             context, userEmail, userPass, userPassVerify, userName)
         .then((value) {
       if (value) {
-        context.router.push(HomeScreen());
+        context.router.replaceAll([HomeScreen()]);
         authMobileFormKey.currentState.reset();
         isWelcome = true;
       }

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
+import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/servicesLocal/cameraManagement.dart';
+import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/home/homeWebComponents.dart';
 import 'package:daily/userInterface/home/homeMobileComponents.dart';
@@ -12,6 +17,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
+  FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+
   @override
   void initState() {
     super.initState();
@@ -68,7 +75,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    //Check if signed in, otherwise bounce to auth
+    if (!firebaseAccounts.getSignedInStatus())
+      context.router.replaceAll([AuthScreen(isSignIn: true)]);
     return Material(
       child: Scaffold(
         extendBody: true,
