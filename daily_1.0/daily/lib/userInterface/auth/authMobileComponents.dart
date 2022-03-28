@@ -14,11 +14,7 @@ import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();
-bool isWelcome = true, isSignIn;
-
-void setSignIn(bool value) {
-  isSignIn ??= value;
-}
+bool isWelcome = true, isSignIn = false;
 
 Widget authMobileTitle(BuildContext context) {
   return Text(
@@ -472,9 +468,16 @@ void authValidateSubmit(BuildContext context, State state) async {
         .signInEmailAndPassword(context, userEmail, userPass)
         .then((value) {
       if (value) {
-        context.router.replaceAll([HomeScreen()]);
-        authMobileFormKey.currentState.reset();
-        isWelcome = true;
+        firebaseAccounts.getEmailVerified().then((isVerified) {
+          if (!isVerified) {
+            context.router.push(VerifyScreen(email: userEmail));
+            firebaseAccounts.signOut();
+          } else {
+            context.router.replaceAll([HomeScreen()]);
+            isWelcome = true;
+          }
+          authMobileFormKey.currentState.reset();
+        });
       }
     });
   else
@@ -483,7 +486,8 @@ void authValidateSubmit(BuildContext context, State state) async {
             context, userEmail, userPass, userPassVerify, userName)
         .then((value) {
       if (value) {
-        context.router.replaceAll([HomeScreen()]);
+        context.router.push(VerifyScreen(email: userEmail));
+        firebaseAccounts.signOut();
         authMobileFormKey.currentState.reset();
         isWelcome = true;
       }

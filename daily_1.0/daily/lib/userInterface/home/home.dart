@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     if (!firebaseAccounts.getSignedInStatus())
-      context.router.replaceAll([AuthScreen(isSignIn: true)]);
+      context.router.replaceAll([AuthScreen()]);
     return Material(
       child: Scaffold(
         extendBody: true,

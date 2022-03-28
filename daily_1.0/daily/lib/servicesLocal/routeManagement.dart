@@ -5,11 +5,13 @@ import 'package:daily/userInterface/forgotPassword/forgotPassword.dart';
 import 'package:daily/userInterface/home/home.dart';
 import 'package:daily/userInterface/imageViewer/imageViewer.dart';
 import 'package:daily/userInterface/textViewer/textViewer.dart';
+import 'package:daily/userInterface/verify/verify.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(page: AuthScreen, path: "auth", initial: true),
+    AutoRoute(page: VerifyScreen, path: "verify"),
     AutoRoute(page: ForgotPasswordScreen, path: "forgot-password"),
     AutoRoute(page: HomeScreen, path: "home"),
     AutoRoute(page: ImageViewerScreen, path: "image-viewer"),

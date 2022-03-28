@@ -7,8 +7,8 @@ import 'package:daily/userInterface/verify/verifyWebComponents.dart';
 import 'package:daily/userInterface/verify/verifyMobileComponents.dart';
 
 class VerifyScreen extends StatefulWidget {
-  final String filePath;
-  VerifyScreen({this.filePath});
+  final String email;
+  VerifyScreen({this.email});
 
   @override
   _VerifyScreenState createState() => _VerifyScreenState();

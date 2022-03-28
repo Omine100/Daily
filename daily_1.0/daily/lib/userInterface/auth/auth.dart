@@ -8,9 +8,6 @@ import 'package:daily/userInterface/auth/authWebComponents.dart';
 import 'package:daily/userInterface/auth/authMobileComponents.dart';
 
 class AuthScreen extends StatefulWidget {
-  final bool isSignIn;
-  AuthScreen({this.isSignIn});
-
   @override
   _AuthScreenState createState() => _AuthScreenState();
 }
@@ -19,7 +16,6 @@ class _AuthScreenState extends State<AuthScreen> {
   bool isSignIn;
   void initState() {
     super.initState();
-    isSignIn = (widget.isSignIn != null ? widget.isSignIn : true);
   }
 
   Widget authScreenSmall() {
@@ -72,8 +68,6 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   Widget authScreenMobileSmall(bool isAndroid) {
-    setSignIn(isSignIn);
-
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -101,8 +95,6 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   Widget authScreenMobileLarge(bool isAndroid) {
-    setSignIn(isSignIn);
-
     return Stack(
       alignment: Alignment.center,
       children: [

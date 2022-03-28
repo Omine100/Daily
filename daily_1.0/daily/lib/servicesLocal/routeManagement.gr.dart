@@ -10,97 +10,111 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i7;
-import 'package:flutter/material.dart' as _i8;
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 
 import '../userInterface/auth/auth.dart' as _i1;
-import '../userInterface/error/error.dart' as _i6;
-import '../userInterface/forgotPassword/forgotPassword.dart' as _i2;
-import '../userInterface/home/home.dart' as _i3;
-import '../userInterface/imageViewer/imageViewer.dart' as _i4;
-import '../userInterface/textViewer/textViewer.dart' as _i5;
+import '../userInterface/error/error.dart' as _i7;
+import '../userInterface/forgotPassword/forgotPassword.dart' as _i3;
+import '../userInterface/home/home.dart' as _i4;
+import '../userInterface/imageViewer/imageViewer.dart' as _i5;
+import '../userInterface/textViewer/textViewer.dart' as _i6;
+import '../userInterface/verify/verify.dart' as _i2;
 
-class AppRouter extends _i7.RootStackRouter {
-  AppRouter([_i8.GlobalKey<_i8.NavigatorState> navigatorKey])
+class AppRouter extends _i8.RootStackRouter {
+  AppRouter([_i9.GlobalKey<_i9.NavigatorState> navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i7.PageFactory> pagesMap = {
+  final Map<String, _i8.PageFactory> pagesMap = {
     AuthScreen.name: (routeData) {
-      final args = routeData.argsAs<AuthScreenArgs>(
-          orElse: () => const AuthScreenArgs());
-      return _i7.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i1.AuthScreen(isSignIn: args.isSignIn));
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i1.AuthScreen());
+    },
+    VerifyScreen.name: (routeData) {
+      final args = routeData.argsAs<VerifyScreenArgs>(
+          orElse: () => const VerifyScreenArgs());
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i2.VerifyScreen(email: args.email));
     },
     ForgotPasswordScreen.name: (routeData) {
-      return _i7.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i2.ForgotPasswordScreen());
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i3.ForgotPasswordScreen());
     },
     HomeScreen.name: (routeData) {
-      return _i7.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i3.HomeScreen());
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i4.HomeScreen());
     },
     ImageViewerScreen.name: (routeData) {
       final args = routeData.argsAs<ImageViewerScreenArgs>(
           orElse: () => const ImageViewerScreenArgs());
-      return _i7.MaterialPageX<dynamic>(
+      return _i8.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i4.ImageViewerScreen(
+          child: _i5.ImageViewerScreen(
               image: args.image, imagePath: args.imagePath));
     },
     TextViewerScreen.name: (routeData) {
       final args = routeData.argsAs<TextViewerScreenArgs>(
           orElse: () => const TextViewerScreenArgs());
-      return _i7.MaterialPageX<dynamic>(
+      return _i8.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i5.TextViewerScreen(filePath: args.filePath));
+          child: _i6.TextViewerScreen(filePath: args.filePath));
     },
     ErrorScreen.name: (routeData) {
       final args = routeData.argsAs<ErrorScreenArgs>(
           orElse: () => const ErrorScreenArgs());
-      return _i7.MaterialPageX<dynamic>(
+      return _i8.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i6.ErrorScreen(filePath: args.filePath));
+          child: _i7.ErrorScreen(filePath: args.filePath));
     }
   };
 
   @override
-  List<_i7.RouteConfig> get routes => [
-        _i7.RouteConfig('/#redirect',
+  List<_i8.RouteConfig> get routes => [
+        _i8.RouteConfig('/#redirect',
             path: '/', redirectTo: 'auth', fullMatch: true),
-        _i7.RouteConfig(AuthScreen.name, path: 'auth'),
-        _i7.RouteConfig(ForgotPasswordScreen.name, path: 'forgot-password'),
-        _i7.RouteConfig(HomeScreen.name, path: 'home'),
-        _i7.RouteConfig(ImageViewerScreen.name, path: 'image-viewer'),
-        _i7.RouteConfig(TextViewerScreen.name, path: 'text-viewer'),
-        _i7.RouteConfig(ErrorScreen.name, path: '*')
+        _i8.RouteConfig(AuthScreen.name, path: 'auth'),
+        _i8.RouteConfig(VerifyScreen.name, path: 'verify'),
+        _i8.RouteConfig(ForgotPasswordScreen.name, path: 'forgot-password'),
+        _i8.RouteConfig(HomeScreen.name, path: 'home'),
+        _i8.RouteConfig(ImageViewerScreen.name, path: 'image-viewer'),
+        _i8.RouteConfig(TextViewerScreen.name, path: 'text-viewer'),
+        _i8.RouteConfig(ErrorScreen.name, path: '*')
       ];
 }
 
 /// generated route for
 /// [_i1.AuthScreen]
-class AuthScreen extends _i7.PageRouteInfo<AuthScreenArgs> {
-  AuthScreen({bool isSignIn})
-      : super(AuthScreen.name,
-            path: 'auth', args: AuthScreenArgs(isSignIn: isSignIn));
+class AuthScreen extends _i8.PageRouteInfo<void> {
+  const AuthScreen() : super(AuthScreen.name, path: 'auth');
 
   static const String name = 'AuthScreen';
 }
 
-class AuthScreenArgs {
-  const AuthScreenArgs({this.isSignIn});
+/// generated route for
+/// [_i2.VerifyScreen]
+class VerifyScreen extends _i8.PageRouteInfo<VerifyScreenArgs> {
+  VerifyScreen({String email})
+      : super(VerifyScreen.name,
+            path: 'verify', args: VerifyScreenArgs(email: email));
 
-  final bool isSignIn;
+  static const String name = 'VerifyScreen';
+}
+
+class VerifyScreenArgs {
+  const VerifyScreenArgs({this.email});
+
+  final String email;
 
   @override
   String toString() {
-    return 'AuthScreenArgs{isSignIn: $isSignIn}';
+    return 'VerifyScreenArgs{email: $email}';
   }
 }
 
 /// generated route for
-/// [_i2.ForgotPasswordScreen]
-class ForgotPasswordScreen extends _i7.PageRouteInfo<void> {
+/// [_i3.ForgotPasswordScreen]
+class ForgotPasswordScreen extends _i8.PageRouteInfo<void> {
   const ForgotPasswordScreen()
       : super(ForgotPasswordScreen.name, path: 'forgot-password');
 
@@ -108,17 +122,17 @@ class ForgotPasswordScreen extends _i7.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.HomeScreen]
-class HomeScreen extends _i7.PageRouteInfo<void> {
+/// [_i4.HomeScreen]
+class HomeScreen extends _i8.PageRouteInfo<void> {
   const HomeScreen() : super(HomeScreen.name, path: 'home');
 
   static const String name = 'HomeScreen';
 }
 
 /// generated route for
-/// [_i4.ImageViewerScreen]
-class ImageViewerScreen extends _i7.PageRouteInfo<ImageViewerScreenArgs> {
-  ImageViewerScreen({_i8.Widget image, String imagePath})
+/// [_i5.ImageViewerScreen]
+class ImageViewerScreen extends _i8.PageRouteInfo<ImageViewerScreenArgs> {
+  ImageViewerScreen({_i9.Widget image, String imagePath})
       : super(ImageViewerScreen.name,
             path: 'image-viewer',
             args: ImageViewerScreenArgs(image: image, imagePath: imagePath));
@@ -129,7 +143,7 @@ class ImageViewerScreen extends _i7.PageRouteInfo<ImageViewerScreenArgs> {
 class ImageViewerScreenArgs {
   const ImageViewerScreenArgs({this.image, this.imagePath});
 
-  final _i8.Widget image;
+  final _i9.Widget image;
 
   final String imagePath;
 
@@ -140,8 +154,8 @@ class ImageViewerScreenArgs {
 }
 
 /// generated route for
-/// [_i5.TextViewerScreen]
-class TextViewerScreen extends _i7.PageRouteInfo<TextViewerScreenArgs> {
+/// [_i6.TextViewerScreen]
+class TextViewerScreen extends _i8.PageRouteInfo<TextViewerScreenArgs> {
   TextViewerScreen({String filePath})
       : super(TextViewerScreen.name,
             path: 'text-viewer',
@@ -162,8 +176,8 @@ class TextViewerScreenArgs {
 }
 
 /// generated route for
-/// [_i6.ErrorScreen]
-class ErrorScreen extends _i7.PageRouteInfo<ErrorScreenArgs> {
+/// [_i7.ErrorScreen]
+class ErrorScreen extends _i8.PageRouteInfo<ErrorScreenArgs> {
   ErrorScreen({String filePath})
       : super(ErrorScreen.name,
             path: '*', args: ErrorScreenArgs(filePath: filePath));
