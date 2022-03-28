@@ -7,6 +7,8 @@ import 'package:daily/userInterface/imageViewer/imageViewer.dart';
 import 'package:daily/userInterface/textViewer/textViewer.dart';
 import 'package:daily/userInterface/verify/verify.dart';
 
+//flutter packages pub run build_runner build
+
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
