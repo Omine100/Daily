@@ -62,7 +62,7 @@ class FirebaseAccounts {
       androidInstallApp: true,
       androidMinimumVersion: '12');
 
-  Future<bool> sendEmailVerification(BuildContext context, String email) async {
+  Future<void> sendEmailVerification(BuildContext context, String email) async {
     FirebaseAuth.instance
         .sendSignInLinkToEmail(email: email, actionCodeSettings: acs)
         .catchError((onError) =>

@@ -1,3 +1,4 @@
+import 'package:daily/standards/userIStandards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:auto_route/auto_route.dart';
@@ -103,10 +104,10 @@ Widget authWebTitle(BuildContext context, bool isSignIn) {
 }
 
 String userName = "", userEmail = "", userPass = "", userPassVerify = "";
-GlobalKey<FormState> authWebFormkey = GlobalKey<FormState>();
+GlobalKey<FormState> authWebFormKey = GlobalKey<FormState>();
 Widget authWebUserInput(BuildContext context, State state, bool isSmall) {
   return Form(
-      key: authWebFormkey,
+      key: authWebFormKey,
       child: Center(
         child: Column(
           children: [
@@ -365,14 +366,22 @@ Widget authWebSwitch(BuildContext context, State state) {
 }
 
 void authWebValidateSubmit(BuildContext context, State state) async {
-  authWebFormkey.currentState.save();
+  authWebFormKey.currentState.save();
   if (isSignIn)
     firebaseAccounts
         .signInEmailAndPassword(context, userEmail, userPass)
         .then((value) {
       if (value) {
-        context.router.replaceAll([HomeScreen()]);
-        authWebFormkey.currentState.reset();
+        firebaseAccounts.getEmailVerified().then((isVerified) {
+          if (!isVerified) {
+            showToastMessage(context, "_errorEmailNotVerified", true);
+            context.router.push(VerifyScreen(email: userEmail));
+            firebaseAccounts.signOut();
+          } else {
+            context.router.replaceAll([HomeScreen()]);
+          }
+          authWebFormKey.currentState.reset();
+        });
       }
     });
   else
@@ -381,8 +390,9 @@ void authWebValidateSubmit(BuildContext context, State state) async {
             context, userEmail, userPass, userPassVerify, userName)
         .then((value) {
       if (value) {
-        context.router.replaceAll([HomeScreen()]);
-        authWebFormkey.currentState.reset();
+        context.router.push(VerifyScreen(email: userEmail));
+        firebaseAccounts.signOut();
+        authWebFormKey.currentState.reset();
       }
     });
   firebaseAccounts.setCurrentUserProfilePicURL(state);

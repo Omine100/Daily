@@ -1,3 +1,4 @@
+import 'package:daily/standards/userIStandards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:auto_route/auto_route.dart';
@@ -470,6 +471,7 @@ void authValidateSubmit(BuildContext context, State state) async {
       if (value) {
         firebaseAccounts.getEmailVerified().then((isVerified) {
           if (!isVerified) {
+            showToastMessage(context, "errorEmailNotVerified", true);
             context.router.push(VerifyScreen(email: userEmail));
             firebaseAccounts.signOut();
           } else {
