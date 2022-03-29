@@ -58,9 +58,8 @@ Widget forgotPasswordWebTitle(BuildContext context) {
         padding: EdgeInsets.all(10),
       ),
       Text(
-        getTranslated(context, "forgotPasswordSubtitlePrimary") +
-            "\n" +
-            getTranslated(context, "forgotPasswordSubtitleSecondary"),
+        getTranslated(context, "forgotPasswordSubtitle"),
+        softWrap: true,
         textAlign: TextAlign.center,
         style: TextStyle(
           color: Theme.of(context).colorScheme.forgotPasswordWebSubtitle,

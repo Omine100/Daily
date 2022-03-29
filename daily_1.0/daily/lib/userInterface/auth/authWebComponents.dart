@@ -1,13 +1,14 @@
-import 'package:daily/standards/userIStandards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:daily/datastructures/structures.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
+import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
@@ -15,10 +16,11 @@ import 'package:daily/themesLocal/constraints.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
 import 'package:daily/userInterface/forgotPassword/forgotPasswordWebComponents.dart';
+import 'package:daily/userInterface/verify/verifyWebComponents.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 RouteNavigation routeNavigation = new RouteNavigation();
-bool isSignIn = true, isForgotPassword = false;
+AuthControls authControls = AuthControls.signUp;
 
 Widget authWebCenterPiece(BuildContext context) {
   return Container(
@@ -48,10 +50,27 @@ Widget authWebCardContainer(BuildContext context, State state, bool isSmall) {
                 : BorderRadius.only(
                     topLeft: Radius.circular(50),
                     bottomLeft: Radius.circular(50))),
-        child: isForgotPassword
+        child: authControls == AuthControls.forgotPassword
             ? forgotPasswordWebCard(context, state)
             : authWebCard(context, state, isSmall)),
   );
+}
+
+Widget authWebCardPick(BuildContext context, State state, bool isSmall) {
+  switch (authControls) {
+    case AuthControls.welcome:
+      return Container();
+    case AuthControls.signIn:
+      return authWebCard(context, state, isSmall);
+    case AuthControls.signUp:
+      return authWebCard(context, state, isSmall);
+    case AuthControls.forgotPassword:
+      return forgotPasswordWebCard(context, state);
+    case AuthControls.verify:
+      return verifyWebCard(context, state);
+    default:
+      return Container();
+  }
 }
 
 Widget authWebCard(BuildContext context, State state, bool isSmall) {
@@ -63,7 +82,7 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 25.0),
-            child: authWebTitle(context, isSignIn),
+            child: authWebTitle(context),
           ),
           authWebUserInput(context, state, isSmall),
           isSignIn
@@ -90,10 +109,14 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
   );
 }
 
-Widget authWebTitle(BuildContext context, bool isSignIn) {
+Widget authWebTitle(BuildContext context) {
   return Center(
     child: AdaptiveText(
-      getTranslated(context, isSignIn ? "authTitleSignIn" : "authTitleSignUp"),
+      getTranslated(
+          context,
+          authControls == AuthControls.signIn
+              ? "authTitleSignIn"
+              : "authTitleSignUp"),
       style: TextStyle(
         color: Theme.of(context).colorScheme.authWebTitle,
         fontSize: Theme.of(context).textTheme.authWebTitle,
@@ -224,7 +247,7 @@ Widget authWebForgotPassword(BuildContext context, State state, bool isSmall) {
     child: GestureDetector(
       onTap: () {
         state.setState(() {
-          isForgotPassword = true;
+          authControls = AuthControls.forgotPassword;
         });
       },
       child: Text(
@@ -334,7 +357,10 @@ Widget authWebGetStarted(BuildContext context, bool isSmall, State state) {
 Widget authWebSwitch(BuildContext context, State state) {
   return GestureDetector(
     onTap: () {
-      isSignIn = !isSignIn;
+      if (authControls == AuthControls.signIn)
+        authControls = AuthControls.signUp;
+      else
+        authControls = AuthControls.signIn;
       state.setState(() {});
     },
     child: RichText(
@@ -400,6 +426,12 @@ void authWebValidateSubmit(BuildContext context, State state) async {
 
 void authWebForgotPasswordSwitchBack(BuildContext context, State state) {
   state.setState(() {
-    isForgotPassword = false;
+    authControls = AuthControls.signIn;
+  });
+}
+
+void authWebVerifySwitchBack(BuildContext context, State state) {
+  state.setState(() {
+    authControls = AuthControls.signIn;
   });
 }
