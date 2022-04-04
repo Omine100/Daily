@@ -30,6 +30,12 @@ extension CustomMobilePositions on MaterialTapTargetSize {
   double get settingsMobileProfileTop => isSmall ? 0.15 : 0.15;
   double get settingsMobileCardTop => isSmall ? 0.15 : 0.15;
   // #endregion
+
+  // #region verify
+  double get verifyMobileTitleTop => isSmall ? 0.3 : 0.3;
+  double get verifyMobileLoginTop => isSmall ? 0.560 : 0.560;
+  double get verifyMobileResendTop => isSmall ? 0.70 : 0.70;
+  // #endregion
 }
 
 double getPosition(BuildContext context, bool isHeight, double value) {

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/themesLocal/dimensions.dart';
+import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/userInterface/verify/verifyWebComponents.dart';
 import 'package:daily/userInterface/verify/verifyMobileComponents.dart';
 
@@ -38,11 +40,41 @@ class _VerifyScreenState extends State<VerifyScreen> {
   }
 
   verifyScreenMobileSmall(bool isAndroid) {
-    return Container();
+    return Stack(alignment: Alignment.center, children: [
+      Positioned(
+        top: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.verifyMobileTitleTop),
+        child: verifyMobileTitle(context),
+      ),
+      Positioned(
+          top: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.verifyMobileLoginTop),
+          child: verifyMobileLogin(context, this)),
+      Positioned(
+        top: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.verifyMobileResendTop),
+        child: verifyMobileResend(context),
+      ),
+    ]);
   }
 
   verifyScreenMobileLarge(bool isAndroid) {
-    return Container();
+    return Stack(alignment: Alignment.center, children: [
+      Positioned(
+        top: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.verifyMobileTitleTop),
+        child: verifyMobileTitle(context),
+      ),
+      Positioned(
+          top: getPosition(context, true,
+              Theme.of(context).materialTapTargetSize.verifyMobileLoginTop),
+          child: verifyMobileLogin(context, this)),
+      Positioned(
+        top: getPosition(context, true,
+            Theme.of(context).materialTapTargetSize.verifyMobileResendTop),
+        child: verifyMobileResend(context),
+      ),
+    ]);
   }
 
   @override
@@ -51,7 +83,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
       onWillPop: () async => true,
       child: Material(
         child: Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.errorBackground,
+          backgroundColor: Theme.of(context).colorScheme.verifyBackground,
           body: SingleChildScrollView(
             child: Responsive(
               small: verifyScreenSmall(),

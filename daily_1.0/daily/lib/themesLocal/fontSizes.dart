@@ -76,6 +76,14 @@ extension CustomMobileFontSize on TextTheme {
   double get forgotPasswordMobileResendSecondary => 16;
   // #endregion
 
+  // #region verify
+  double get verifyMobileTitle => 48;
+  double get verifyMobileSubtitle => 18;
+  double get verifyMobileLoginText => 20;
+  double get verifyMobileResendPrimary => 16;
+  double get verifyMobileResendSecondary => 16;
+  // #endregion
+
   // #region settings
   double get settingsTitle => 30;
   double get settingsProfileName => 26;

@@ -48,6 +48,7 @@ extension CustomConnectedColorScheme on ColorScheme {
   Color get authBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get forgotPasswordBackground =>
       Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
+  Color get verifyBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get homeBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get settingsBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get textViewerBackground =>
@@ -202,6 +203,21 @@ extension CustomMobileColorScheme on ColorScheme {
   Color get forgotPasswordMobileResendPrimary =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get forgotPasswordMobileResendSecondary =>
+      Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+  // #endregion
+
+  // #region verify
+  Color get verifyMobileTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get verifyMobileSubtitle =>
+      Color(isDark.value ? 0xFF999999 : 0xFF999999);
+  Color get verifyMobileLogin => Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+  Color get verifyMobileLoginInkWell =>
+      Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
+  Color get verifyMobileLoginText =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+  Color get verifyMobileResendPrimary =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get verifyMobileResendSecondary =>
       Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
   // #endregion
 

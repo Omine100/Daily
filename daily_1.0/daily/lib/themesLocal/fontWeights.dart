@@ -78,6 +78,14 @@ extension CustomMobileFontWeight on Typography {
   FontWeight get forgotPasswordMobileResendSecondary => FontWeight.w500;
   // #endregion
 
+  // #region verify
+  FontWeight get verifyMobileTitle => FontWeight.w500;
+  FontWeight get verifyMobileSubtitle => FontWeight.w300;
+  FontWeight get verifyMobileLoginText => FontWeight.w500;
+  FontWeight get verifyMobileResendPrimary => FontWeight.w400;
+  FontWeight get verifyMobileResendSecondary => FontWeight.w500;
+  // #endregion
+
   // #region settings
   FontWeight get settingsTitle => FontWeight.w500;
   FontWeight get settingsProfileName => FontWeight.w500;
