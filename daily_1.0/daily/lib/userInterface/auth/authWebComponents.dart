@@ -408,7 +408,8 @@ void authWebValidateSubmit(
         firebaseAccounts.getEmailVerified().then((isVerified) {
           if (!isVerified) {
             showToastMessage(context, "_errorEmailNotVerified", true);
-            context.router.push(VerifyScreen(email: userEmail));
+            authControls = AuthControls.verify;
+            state.setState(() {});
             firebaseAccounts.signOut();
           } else {
             context.router.replaceAll([HomeScreen()]);
@@ -423,7 +424,8 @@ void authWebValidateSubmit(
             context, userEmail, userPass, userPassVerify, userName)
         .then((value) {
       if (value) {
-        context.router.push(VerifyScreen(email: userEmail));
+        authControls = AuthControls.verify;
+        state.setState(() {});
         firebaseAccounts.signOut();
         authWebFormKey.currentState.reset();
       }

@@ -149,7 +149,7 @@ Widget forgotPasswordWebSwitchBack(BuildContext context, State state) {
         authWebForgotPasswordSwitchBack(context, state);
       },
       child: Text(
-        getTranslated(context, "forgotPasswordRemembered"),
+        getTranslated(context, "forgotPasswordAuthCallback"),
         style: TextStyle(
           color: Theme.of(context).colorScheme.forgotPasswordWebRemembered,
           fontSize: Theme.of(context).textTheme.forgotPasswordWebRemembered,

@@ -18,17 +18,19 @@ Widget verifyWebCard(BuildContext context, State state) {
         child: verifyWebTitle(context),
       ),
       Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: verifyWebSwitchBack(context, state),
-      ),
-      Padding(
         padding: const EdgeInsets.only(top: 7.0),
         child: verifyWebLogin(context, state),
       ),
       Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: verifyWebResend(context),
-      )
+        padding: const EdgeInsets.all(8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            verifyWebResend(context),
+            verifyWebSwitchBack(context, state),
+          ],
+        ),
+      ),
     ],
   );
 }
@@ -50,9 +52,7 @@ Widget verifyWebTitle(BuildContext context) {
         padding: EdgeInsets.all(10),
       ),
       Text(
-        getTranslated(context, "verifySubtitlePrimary") +
-            "\n" +
-            getTranslated(context, "verifySubtitleSecondary"),
+        getTranslated(context, "verifySubtitle"),
         textAlign: TextAlign.center,
         style: TextStyle(
           color: Theme.of(context).colorScheme.verifyWebSubtitle,
@@ -126,20 +126,16 @@ Widget verifyWebResend(BuildContext context) {
 }
 
 Widget verifyWebSwitchBack(BuildContext context, State state) {
-  return Container(
-    width: getDimension(context, false,
-        Theme.of(context).visualDensity.verifyWebSwitchBackWidth),
-    child: GestureDetector(
-      onTap: () {
-        authWebVerifySwitchBack(context, state);
-      },
-      child: Text(
-        getTranslated(context, "verifyAuthCallback"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.verifyWebSwitchBack,
-          fontSize: Theme.of(context).textTheme.verifyWebSwitchBack,
-          fontWeight: Theme.of(context).typography.verifyWebSwitchBack,
-        ),
+  return GestureDetector(
+    onTap: () {
+      authWebVerifySwitchBack(context, state);
+    },
+    child: Text(
+      getTranslated(context, "verifyAuthCallback"),
+      style: TextStyle(
+        color: Theme.of(context).colorScheme.verifyWebSwitchBack,
+        fontSize: Theme.of(context).textTheme.verifyWebSwitchBack,
+        fontWeight: Theme.of(context).typography.verifyWebSwitchBack,
       ),
     ),
   );

@@ -66,7 +66,7 @@ class FirebaseAccounts {
     FirebaseAuth.instance
         .sendSignInLinkToEmail(email: email, actionCodeSettings: acs)
         .catchError((onError) =>
-            showToastMessage(context, "_errorSendingVerification", true));
+            showToastMessage(context, "_errorVerificationSentFailed", true));
   }
 
   Future<bool> getEmailVerified() async {

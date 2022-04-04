@@ -54,7 +54,6 @@ extension CustomWebDimensions on VisualDensity {
   // #region verify
   double get verifyWebLoginHeight => isSmall ? 0.065 : 0.065;
   double get verifyWebLoginWidth => isSmall ? 0.2025 : 0.2025;
-  double get verifyWebSwitchBackWidth => isSmall ? 0.47 : 0.32;
   // #endregion
 }
 
