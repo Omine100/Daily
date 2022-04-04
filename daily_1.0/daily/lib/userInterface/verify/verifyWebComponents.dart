@@ -80,7 +80,7 @@ Widget verifyWebLogin(BuildContext context, State state) {
         customBorder:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         onTap: () {
-          //Put in login and routing information here
+          firebaseAccounts.signInEmailAndPassword(context, userEmail, userPass);
         },
         child: Center(
           child: Text(
