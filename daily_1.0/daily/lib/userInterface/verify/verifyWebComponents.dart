@@ -54,6 +54,7 @@ Widget verifyWebTitle(BuildContext context) {
       Text(
         getTranslated(context, "verifySubtitle"),
         textAlign: TextAlign.center,
+        softWrap: true,
         style: TextStyle(
           color: Theme.of(context).colorScheme.verifyWebSubtitle,
           fontSize: Theme.of(context).textTheme.verifyWebSubtitle,
@@ -66,6 +67,7 @@ Widget verifyWebTitle(BuildContext context) {
 
 Widget verifyWebLogin(BuildContext context, State state) {
   return Container(
+    constraints: BoxConstraints(minHeight: 35, minWidth: 100),
     height: getDimension(
         context, true, Theme.of(context).visualDensity.verifyWebLoginHeight),
     width: getDimension(
