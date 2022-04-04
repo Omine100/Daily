@@ -124,6 +124,21 @@ extension CustomWebColorScheme on ColorScheme {
   Color get forgotPasswordWebRemembered =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   // #endregion
+
+  // #region verify
+  Color get verifyWebTitle => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get verifyWebSubtitle => Color(isDark.value ? 0xFF999999 : 0xFF999999);
+  Color get verifyWebLogin => Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+  Color get verifyWebLoginInkWell =>
+      Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
+  Color get verifyWebLoginText => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+  Color get verifyWebResendPrimary =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get verifyWebResendSecondary =>
+      Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+  Color get verifyWebSwitchBack =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  // #endregion
 }
 
 //Install extension '#region folding for VS Code'

@@ -37,23 +37,20 @@ Widget authWebCenterPiece(BuildContext context) {
 
 Widget authWebCardContainer(BuildContext context, State state, bool isSmall) {
   return SingleChildScrollView(
-    child: Container(
-        constraints: Theme.of(context).bottomAppBarTheme.authWebCardContainer,
-        height: getDimension(context, true,
-            Theme.of(context).visualDensity.authWebCardContainerHeight),
-        width: getDimension(context, false,
-            Theme.of(context).visualDensity.authWebCardContainerWidth),
-        decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.authWebCardContainer,
-            borderRadius: isSmall
-                ? BorderRadius.all(Radius.circular(50))
-                : BorderRadius.only(
-                    topLeft: Radius.circular(50),
-                    bottomLeft: Radius.circular(50))),
-        child: authControls == AuthControls.forgotPassword
-            ? forgotPasswordWebCard(context, state)
-            : authWebCard(context, state, isSmall)),
-  );
+      child: Container(
+          constraints: Theme.of(context).bottomAppBarTheme.authWebCardContainer,
+          height: getDimension(context, true,
+              Theme.of(context).visualDensity.authWebCardContainerHeight),
+          width: getDimension(context, false,
+              Theme.of(context).visualDensity.authWebCardContainerWidth),
+          decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.authWebCardContainer,
+              borderRadius: isSmall
+                  ? BorderRadius.all(Radius.circular(50))
+                  : BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      bottomLeft: Radius.circular(50))),
+          child: authWebCardPick(context, state, isSmall)));
 }
 
 Widget authWebCardPick(BuildContext context, State state, bool isSmall) {
@@ -61,9 +58,9 @@ Widget authWebCardPick(BuildContext context, State state, bool isSmall) {
     case AuthControls.welcome:
       return Container();
     case AuthControls.signIn:
-      return authWebCard(context, state, isSmall);
+      return authWebCard(context, state, isSmall, true);
     case AuthControls.signUp:
-      return authWebCard(context, state, isSmall);
+      return authWebCard(context, state, isSmall, false);
     case AuthControls.forgotPassword:
       return forgotPasswordWebCard(context, state);
     case AuthControls.verify:
@@ -73,7 +70,8 @@ Widget authWebCardPick(BuildContext context, State state, bool isSmall) {
   }
 }
 
-Widget authWebCard(BuildContext context, State state, bool isSmall) {
+Widget authWebCard(
+    BuildContext context, State state, bool isSmall, bool isSignIn) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -82,9 +80,9 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 25.0),
-            child: authWebTitle(context),
+            child: authWebTitle(context, isSignIn),
           ),
-          authWebUserInput(context, state, isSmall),
+          authWebUserInput(context, state, isSmall, isSignIn),
           isSignIn
               ? Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -96,27 +94,23 @@ Widget authWebCard(BuildContext context, State state, bool isSmall) {
                 ),
           Padding(
             padding: const EdgeInsets.only(top: 7.0),
-            child: authWebGetStarted(context, isSmall, state),
+            child: authWebGetStarted(context, state, isSmall, isSignIn),
           ),
         ],
       ),
       Positioned(
         bottom: getPosition(context, true,
             Theme.of(context).materialTapTargetSize.authWebSwitchBottom),
-        child: authWebSwitch(context, state),
+        child: authWebSwitch(context, state, isSignIn),
       ),
     ],
   );
 }
 
-Widget authWebTitle(BuildContext context) {
+Widget authWebTitle(BuildContext context, bool isSignIn) {
   return Center(
     child: AdaptiveText(
-      getTranslated(
-          context,
-          authControls == AuthControls.signIn
-              ? "authTitleSignIn"
-              : "authTitleSignUp"),
+      getTranslated(context, isSignIn ? "authTitleSignIn" : "authTitleSignUp"),
       style: TextStyle(
         color: Theme.of(context).colorScheme.authWebTitle,
         fontSize: Theme.of(context).textTheme.authWebTitle,
@@ -128,7 +122,8 @@ Widget authWebTitle(BuildContext context) {
 
 String userName = "", userEmail = "", userPass = "", userPassVerify = "";
 GlobalKey<FormState> authWebFormKey = GlobalKey<FormState>();
-Widget authWebUserInput(BuildContext context, State state, bool isSmall) {
+Widget authWebUserInput(
+    BuildContext context, State state, bool isSmall, bool isSignIn) {
   return Form(
       key: authWebFormKey,
       child: Center(
@@ -136,12 +131,22 @@ Widget authWebUserInput(BuildContext context, State state, bool isSmall) {
           children: [
             isSignIn
                 ? Container()
-                : authWebUserInputField(context, state,
-                    (name) => {userName = name}, "authFormName", false),
-            authWebUserInputField(context, state,
-                (email) => {userEmail = email}, "authFormEmail", false),
+                : authWebUserInputField(
+                    context,
+                    state,
+                    (name) => {userName = name},
+                    "authFormName",
+                    false,
+                    isSignIn),
+            authWebUserInputField(
+                context,
+                state,
+                (email) => {userEmail = email},
+                "authFormEmail",
+                false,
+                isSignIn),
             authWebUserInputField(context, state, (pass) => {userPass = pass},
-                "authFormPass", true),
+                "authFormPass", true, isSignIn),
             isSignIn
                 ? Container()
                 : authWebUserInputField(
@@ -149,7 +154,8 @@ Widget authWebUserInput(BuildContext context, State state, bool isSmall) {
                     state,
                     (passVerify) => {userPassVerify = passVerify},
                     "authFormPassVerify",
-                    true),
+                    true,
+                    isSignIn),
           ],
         ),
       ));
@@ -157,7 +163,7 @@ Widget authWebUserInput(BuildContext context, State state, bool isSmall) {
 
 bool isVisible = false;
 Widget authWebUserInputField(BuildContext context, State state,
-    Function onSaved, String authForm, bool isVariable) {
+    Function onSaved, String authForm, bool isVariable, bool isSignIn) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
@@ -175,7 +181,7 @@ Widget authWebUserInputField(BuildContext context, State state,
         obscureText: isVariable ? !isVisible : false,
         onSaved: onSaved,
         onFieldSubmitted: (value) {
-          authWebValidateSubmit(context, state);
+          authWebValidateSubmit(context, state, isSignIn);
         },
         autofocus: false,
         style: TextStyle(
@@ -315,7 +321,8 @@ Widget authWebPolicyAndTaC(BuildContext context) {
   );
 }
 
-Widget authWebGetStarted(BuildContext context, bool isSmall, State state) {
+Widget authWebGetStarted(
+    BuildContext context, State state, bool isSmall, bool isSignIn) {
   return Center(
     child: Container(
       constraints: BoxConstraints(minHeight: 35, minWidth: 100),
@@ -333,7 +340,7 @@ Widget authWebGetStarted(BuildContext context, bool isSmall, State state) {
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            authWebValidateSubmit(context, state);
+            authWebValidateSubmit(context, state, isSignIn);
           },
           child: Container(
             child: Center(
@@ -354,13 +361,12 @@ Widget authWebGetStarted(BuildContext context, bool isSmall, State state) {
   );
 }
 
-Widget authWebSwitch(BuildContext context, State state) {
+Widget authWebSwitch(BuildContext context, State state, bool isSignIn) {
   return GestureDetector(
     onTap: () {
-      if (authControls == AuthControls.signIn)
-        authControls = AuthControls.signUp;
-      else
-        authControls = AuthControls.signIn;
+      isSignIn
+          ? authControls = AuthControls.signUp
+          : authControls = AuthControls.signIn;
       state.setState(() {});
     },
     child: RichText(
@@ -391,7 +397,8 @@ Widget authWebSwitch(BuildContext context, State state) {
   );
 }
 
-void authWebValidateSubmit(BuildContext context, State state) async {
+void authWebValidateSubmit(
+    BuildContext context, State state, bool isSignIn) async {
   authWebFormKey.currentState.save();
   if (isSignIn)
     firebaseAccounts

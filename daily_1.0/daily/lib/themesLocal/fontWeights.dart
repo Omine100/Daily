@@ -41,6 +41,15 @@ extension CustomWebFontWeight on Typography {
   FontWeight get forgotPasswordWebResendSecondary => FontWeight.w500;
   FontWeight get forgotPasswordWebRemembered => FontWeight.w300;
   // #endregion
+
+  // #region verify
+  FontWeight get verifyWebTitle => FontWeight.w500;
+  FontWeight get verifyWebSubtitle => FontWeight.w300;
+  FontWeight get verifyWebLoginText => FontWeight.w500;
+  FontWeight get verifyWebResendPrimary => FontWeight.w400;
+  FontWeight get verifyWebResendSecondary => FontWeight.w500;
+  FontWeight get verifyWebSwitchBack => FontWeight.w300;
+  // #endregion
 }
 
 extension CustomMobileFontWeight on Typography {

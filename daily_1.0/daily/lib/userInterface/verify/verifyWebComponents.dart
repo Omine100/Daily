@@ -128,17 +128,17 @@ Widget verifyWebResend(BuildContext context) {
 Widget verifyWebSwitchBack(BuildContext context, State state) {
   return Container(
     width: getDimension(context, false,
-        Theme.of(context).visualDensity.verifyWebRememberedWidth),
+        Theme.of(context).visualDensity.verifyWebSwitchBackWidth),
     child: GestureDetector(
       onTap: () {
         authWebVerifySwitchBack(context, state);
       },
       child: Text(
-        getTranslated(context, "verifyRemembered"),
+        getTranslated(context, "verifyAuthCallback"),
         style: TextStyle(
-          color: Theme.of(context).colorScheme.verifyWebRemembered,
-          fontSize: Theme.of(context).textTheme.verifyWebRemembered,
-          fontWeight: Theme.of(context).typography.verifyWebRemembered,
+          color: Theme.of(context).colorScheme.verifyWebSwitchBack,
+          fontSize: Theme.of(context).textTheme.verifyWebSwitchBack,
+          fontWeight: Theme.of(context).typography.verifyWebSwitchBack,
         ),
       ),
     ),

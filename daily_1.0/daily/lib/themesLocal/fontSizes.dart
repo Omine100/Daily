@@ -39,6 +39,15 @@ extension CustomWebFontSize on TextTheme {
   double get forgotPasswordWebResendSecondary => 16;
   double get forgotPasswordWebRemembered => 16;
   // #endregion
+
+  // #region verify
+  double get verifyWebTitle => 48;
+  double get verifyWebSubtitle => 18;
+  double get verifyWebLoginText => 20;
+  double get verifyWebResendPrimary => 16;
+  double get verifyWebResendSecondary => 16;
+  double get verifyWebSwitchBack => 16;
+  // #endregion
 }
 
 extension CustomMobileFontSize on TextTheme {
