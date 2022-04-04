@@ -167,7 +167,7 @@ Widget authWebUserInputField(BuildContext context, State state,
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
-      constraints: BoxConstraints(minHeight: 35, minWidth: 100),
+      constraints: Theme.of(context).bottomAppBarTheme.authWebUserInputField,
       height: getDimension(context, true,
           Theme.of(context).visualDensity.authWebUserInputFieldHeight),
       width: getDimension(context, false,
@@ -325,7 +325,7 @@ Widget authWebGetStarted(
     BuildContext context, State state, bool isSmall, bool isSignIn) {
   return Center(
     child: Container(
-      constraints: BoxConstraints(minHeight: 35, minWidth: 100),
+      constraints: Theme.of(context).bottomAppBarTheme.authWebGetStarted,
       height: getDimension(context, true,
           Theme.of(context).visualDensity.authWebGetStartedHeight),
       width: getDimension(context, false,

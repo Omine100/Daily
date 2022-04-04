@@ -14,14 +14,15 @@ extension CustomWebConstraints on BottomAppBarTheme {
   // #region auth
   BoxConstraints get authWebCardContainer =>
       BoxConstraints(minHeight: 400, minWidth: 300);
-	  BoxConstraints get authWebUserInputField =>
+  BoxConstraints get authWebUserInputField =>
       BoxConstraints(minHeight: 35, minWidth: 100);
-	  BoxConstraints get authWebGetStarted =>
+  BoxConstraints get authWebGetStarted =>
       BoxConstraints(minHeight: 35, minWidth: 100);
   // #endregion
-  
+
   // #region verify
-  BoxConstraints get verifyWebLogin => BoxConstraints(minHeight: 35, minWidth: 100);
+  BoxConstraints get verifyWebLogin =>
+      BoxConstraints(minHeight: 35, minWidth: 100);
   // #endregion
 }
 

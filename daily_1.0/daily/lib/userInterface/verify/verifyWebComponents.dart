@@ -67,7 +67,7 @@ Widget verifyWebTitle(BuildContext context) {
 
 Widget verifyWebLogin(BuildContext context, State state) {
   return Container(
-    constraints: BoxConstraints(minHeight: 35, minWidth: 100),
+    constraints: Theme.of(context).bottomAppBarTheme.verifyWebLogin,
     height: getDimension(
         context, true, Theme.of(context).visualDensity.verifyWebLoginHeight),
     width: getDimension(
