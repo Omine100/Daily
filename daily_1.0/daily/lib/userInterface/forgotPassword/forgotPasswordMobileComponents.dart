@@ -27,7 +27,7 @@ Widget forgotPasswordMobileTitle(BuildContext context) {
         ),
       ),
       Padding(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(10),
       ),
       Text(
         getTranslated(context, "forgotPasswordSubtitle"),
