@@ -8,6 +8,7 @@ import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/servicesLocal/cameraManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/themesLocal/constraints.dart';
 import 'package:daily/userInterface/home/homeWebComponents.dart';
 import 'package:daily/userInterface/home/homeMobileComponents.dart';
 
@@ -82,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         extendBody: true,
         body: Container(
           color: Theme.of(context).colorScheme.homeBackground,
-          constraints: BoxConstraints.expand(height: double.maxFinite),
+          constraints: Theme.of(context).bottomAppBarTheme.homeConstraints,
           child: Responsive(
             small: homeScreenSmall(),
             large: homeScreenLarge(),
