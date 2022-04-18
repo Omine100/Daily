@@ -10,7 +10,8 @@ import 'package:daily/userInterface/auth/authWebComponents.dart';
 
 FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 
-Widget verifyWebCard(BuildContext context, State state) {
+Widget verifyWebCard(
+    BuildContext context, State state, String userEmail, String userPass) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -20,17 +21,11 @@ Widget verifyWebCard(BuildContext context, State state) {
       ),
       Padding(
         padding: const EdgeInsets.only(top: 7.0),
-        child: verifyWebLogin(context, state),
+        child: verifyWebLogin(context, state, userEmail, userPass),
       ),
       Padding(
         padding: const EdgeInsets.all(8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            verifyWebResend(context),
-            verifyWebSwitchBack(context, state),
-          ],
-        ),
+        child: verifyWebSwitchBack(context, state),
       ),
     ],
   );
@@ -66,7 +61,8 @@ Widget verifyWebTitle(BuildContext context) {
   );
 }
 
-Widget verifyWebLogin(BuildContext context, State state) {
+Widget verifyWebLogin(
+    BuildContext context, State state, String userEmail, String userPass) {
   return Container(
     constraints: Theme.of(context).bottomAppBarTheme.verifyWebLogin,
     height: getDimension(
@@ -95,34 +91,6 @@ Widget verifyWebLogin(BuildContext context, State state) {
             ),
           ),
         ),
-      ),
-    ),
-  );
-}
-
-Widget verifyWebResend(BuildContext context) {
-  return GestureDetector(
-    onTap: () {
-      firebaseAccounts.sendEmailVerification(context, userEmail);
-    },
-    child: RichText(
-      text: TextSpan(
-        text: getTranslated(context, "verifyResendPrimary"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.verifyWebResendPrimary,
-          fontSize: Theme.of(context).textTheme.verifyWebResendPrimary,
-          fontWeight: Theme.of(context).typography.verifyWebResendPrimary,
-        ),
-        children: <TextSpan>[
-          TextSpan(
-            text: getTranslated(context, "verifyResendSecondary"),
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.verifyWebResendSecondary,
-              fontSize: Theme.of(context).textTheme.verifyWebResendSecondary,
-              fontWeight: Theme.of(context).typography.verifyWebResendSecondary,
-            ),
-          ),
-        ],
       ),
     ),
   );

@@ -70,32 +70,3 @@ Widget verifyMobileLogin(BuildContext context, State state) {
     ),
   );
 }
-
-Widget verifyMobileResend(BuildContext context) {
-  return GestureDetector(
-    onTap: () {
-      firebaseAccounts.sendEmailVerification(context, userEmail);
-    },
-    child: RichText(
-      text: TextSpan(
-        text: getTranslated(context, "verifyResendPrimary"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.verifyMobileResendPrimary,
-          fontSize: Theme.of(context).textTheme.verifyMobileResendPrimary,
-          fontWeight: Theme.of(context).typography.verifyMobileResendPrimary,
-        ),
-        children: <TextSpan>[
-          TextSpan(
-            text: getTranslated(context, "verifyResendSecondary"),
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.verifyMobileResendSecondary,
-              fontSize: Theme.of(context).textTheme.verifyMobileResendSecondary,
-              fontWeight:
-                  Theme.of(context).typography.verifyMobileResendSecondary,
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
-}

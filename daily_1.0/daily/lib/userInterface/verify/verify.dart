@@ -50,11 +50,6 @@ class _VerifyScreenState extends State<VerifyScreen> {
           top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.verifyMobileLoginTop),
           child: verifyMobileLogin(context, this)),
-      Positioned(
-        top: getPosition(context, true,
-            Theme.of(context).materialTapTargetSize.verifyMobileResendTop),
-        child: verifyMobileResend(context),
-      ),
     ]);
   }
 
@@ -69,11 +64,6 @@ class _VerifyScreenState extends State<VerifyScreen> {
           top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.verifyMobileLoginTop),
           child: verifyMobileLogin(context, this)),
-      Positioned(
-        top: getPosition(context, true,
-            Theme.of(context).materialTapTargetSize.verifyMobileResendTop),
-        child: verifyMobileResend(context),
-      ),
     ]);
   }
 

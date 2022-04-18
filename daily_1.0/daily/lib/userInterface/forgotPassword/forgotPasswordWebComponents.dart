@@ -11,7 +11,7 @@ FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
 
 void forgotPasswordWebDispose() {
   isSent = false;
-  forgotPasswordWebFormKey.currentState.reset();
+  _forgotPasswordWebFormKey.currentState.reset();
 }
 
 Widget forgotPasswordWebCard(BuildContext context, State state) {
@@ -71,8 +71,8 @@ Widget forgotPasswordWebTitle(BuildContext context) {
   );
 }
 
-String userEmail;
-GlobalKey<FormFieldState> forgotPasswordWebFormKey =
+String _userEmail;
+GlobalKey<FormFieldState> _forgotPasswordWebFormKey =
     GlobalKey<FormFieldState>();
 Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
   return Padding(
@@ -92,9 +92,9 @@ Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
         color: Theme.of(context).colorScheme.forgotPasswordWebUserInputField,
       ),
       child: TextFormField(
-        key: forgotPasswordWebFormKey,
+        key: _forgotPasswordWebFormKey,
         obscureText: false,
-        onSaved: (email) => userEmail = email,
+        onSaved: (email) => _userEmail = email,
         onFieldSubmitted: (value) {
           forgotPasswordValidateSubmit(context, state);
         },
@@ -198,8 +198,8 @@ Widget forgotPasswordWebSend(BuildContext context, State state) {
 Widget forgotPasswordWebResend(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      forgotPasswordWebFormKey.currentState.save();
-      firebaseAccounts.sendPasswordReset(context, userEmail);
+      _forgotPasswordWebFormKey.currentState.save();
+      firebaseAccounts.sendPasswordReset(context, _userEmail);
     },
     child: RichText(
       text: TextSpan(
@@ -230,8 +230,8 @@ Widget forgotPasswordWebResend(BuildContext context) {
 }
 
 void forgotPasswordValidateSubmit(BuildContext context, State state) {
-  forgotPasswordWebFormKey.currentState.save();
-  firebaseAccounts.sendPasswordReset(context, userEmail).then((_isSent) => {
+  _forgotPasswordWebFormKey.currentState.save();
+  firebaseAccounts.sendPasswordReset(context, _userEmail).then((_isSent) => {
         if (_isSent)
           {
             state.setState(() {

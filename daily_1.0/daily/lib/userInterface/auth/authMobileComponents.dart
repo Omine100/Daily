@@ -472,6 +472,7 @@ void authValidateSubmit(BuildContext context, State state) async {
         firebaseAccounts.getEmailVerified().then((isVerified) {
           if (!isVerified) {
             showToastMessage(context, "errorEmailNotVerified", true);
+            firebaseAccounts.sendEmailVerification(context);
             context.router.push(VerifyScreen(email: userEmail));
             firebaseAccounts.signOut();
           } else {

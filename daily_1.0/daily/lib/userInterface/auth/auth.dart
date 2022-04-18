@@ -13,26 +13,25 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  bool isSignIn;
   void initState() {
     super.initState();
   }
 
-  Widget authScreenSmall() {
+  Widget _authScreenSmall() {
     return Adaptive(
-        iOS: authScreenMobileSmall(false),
-        android: authScreenMobileSmall(true),
-        web: authScreenWebSmall());
+        iOS: _authScreenMobileSmall(false),
+        android: _authScreenMobileSmall(true),
+        web: _authScreenWebSmall());
   }
 
-  Widget authScreenLarge() {
+  Widget _authScreenLarge() {
     return Adaptive(
-        iOS: authScreenMobileLarge(false),
-        android: authScreenMobileLarge(true),
-        web: authScreenWebLarge());
+        iOS: _authScreenMobileLarge(false),
+        android: _authScreenMobileLarge(true),
+        web: _authScreenWebLarge());
   }
 
-  Widget authScreenWebSmall() {
+  Widget _authScreenWebSmall() {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -49,7 +48,7 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  Widget authScreenWebLarge() {
+  Widget _authScreenWebLarge() {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -67,7 +66,7 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  Widget authScreenMobileSmall(bool isAndroid) {
+  Widget _authScreenMobileSmall(bool isAndroid) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -94,7 +93,7 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  Widget authScreenMobileLarge(bool isAndroid) {
+  Widget _authScreenMobileLarge(bool isAndroid) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -124,14 +123,14 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     setResponsiveState(context);
-    FocusNode textFieldFocus = new FocusNode();
+    FocusNode _textFieldFocus = new FocusNode();
     return Material(
         child: Scaffold(
       backgroundColor: Theme.of(context).colorScheme.authBackground,
       body: SingleChildScrollView(
         child: Container(
             constraints: BoxConstraints(
-                maxHeight: textFieldFocus.hasFocus
+                maxHeight: _textFieldFocus.hasFocus
                     ? getDimension(
                         context,
                         true,
@@ -145,8 +144,8 @@ class _AuthScreenState extends State<AuthScreen> {
                             .visualDensity
                             .authBoxConstraintUnfocused)),
             child: Responsive(
-              small: authScreenSmall(),
-              large: authScreenLarge(),
+              small: _authScreenSmall(),
+              large: _authScreenLarge(),
             )),
       ),
     ));

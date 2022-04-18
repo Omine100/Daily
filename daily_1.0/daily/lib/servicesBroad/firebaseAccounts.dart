@@ -55,18 +55,9 @@ class FirebaseAccounts {
     return auth.currentUser.photoURL;
   }
 
-  var acs = ActionCodeSettings(
-      url: 'https://www.dailyme.one/#home',
-      handleCodeInApp: true,
-      androidPackageName: 'com.phoenix.daily',
-      androidInstallApp: true,
-      androidMinimumVersion: '12');
-
-  Future<void> sendEmailVerification(BuildContext context, String email) async {
-    FirebaseAuth.instance
-        .sendSignInLinkToEmail(email: email, actionCodeSettings: acs)
-        .catchError((onError) =>
-            showToastMessage(context, "_errorVerificationSentFailed", true));
+  Future<void> sendEmailVerification(BuildContext context) async {
+    auth.currentUser.sendEmailVerification().catchError((onError) =>
+        showToastMessage(context, "_errorVerificationSentFailed", true));
   }
 
   Future<bool> getEmailVerified() async {
@@ -116,7 +107,7 @@ class FirebaseAccounts {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
       await setCurrentUserDisplayName(name);
-      sendEmailVerification(context, email);
+      sendEmailVerification(context);
       return true;
     } on FirebaseAuthException catch (e) {
       String key;

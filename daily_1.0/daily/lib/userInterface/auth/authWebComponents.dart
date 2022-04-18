@@ -7,7 +7,6 @@ import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
-import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/themesLocal/colors.dart';
@@ -18,9 +17,8 @@ import 'package:daily/themesLocal/fontWeights.dart';
 import 'package:daily/userInterface/forgotPassword/forgotPasswordWebComponents.dart';
 import 'package:daily/userInterface/verify/verifyWebComponents.dart';
 
-FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
-RouteNavigation routeNavigation = new RouteNavigation();
-AuthControls authControls = AuthControls.signUp;
+FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
+AuthControls _authControls = AuthControls.signUp;
 
 Widget authWebCenterPiece(BuildContext context) {
   return Container(
@@ -50,11 +48,11 @@ Widget authWebCardContainer(BuildContext context, State state, bool isSmall) {
                   : BorderRadius.only(
                       topLeft: Radius.circular(50),
                       bottomLeft: Radius.circular(50))),
-          child: authWebCardPick(context, state, isSmall)));
+          child: _authWebCardPick(context, state, isSmall)));
 }
 
-Widget authWebCardPick(BuildContext context, State state, bool isSmall) {
-  switch (authControls) {
+Widget _authWebCardPick(BuildContext context, State state, bool isSmall) {
+  switch (_authControls) {
     case AuthControls.welcome:
       return Container();
     case AuthControls.signIn:
@@ -64,7 +62,7 @@ Widget authWebCardPick(BuildContext context, State state, bool isSmall) {
     case AuthControls.forgotPassword:
       return forgotPasswordWebCard(context, state);
     case AuthControls.verify:
-      return verifyWebCard(context, state);
+      return verifyWebCard(context, state, _userEmail, _userPass);
     default:
       return Container();
   }
@@ -120,12 +118,12 @@ Widget authWebTitle(BuildContext context, bool isSignIn) {
   );
 }
 
-String userName = "", userEmail = "", userPass = "", userPassVerify = "";
-GlobalKey<FormState> authWebFormKey = GlobalKey<FormState>();
+String _userName = "", _userEmail = "", _userPass = "", _userPassVerify = "";
+GlobalKey<FormState> _authWebFormKey = GlobalKey<FormState>();
 Widget authWebUserInput(
     BuildContext context, State state, bool isSmall, bool isSignIn) {
   return Form(
-      key: authWebFormKey,
+      key: _authWebFormKey,
       child: Center(
         child: Column(
           children: [
@@ -134,25 +132,25 @@ Widget authWebUserInput(
                 : authWebUserInputField(
                     context,
                     state,
-                    (name) => {userName = name},
+                    (name) => {_userName = name},
                     "authFormName",
                     false,
                     isSignIn),
             authWebUserInputField(
                 context,
                 state,
-                (email) => {userEmail = email},
+                (email) => {_userEmail = email},
                 "authFormEmail",
                 false,
                 isSignIn),
-            authWebUserInputField(context, state, (pass) => {userPass = pass},
+            authWebUserInputField(context, state, (pass) => {_userPass = pass},
                 "authFormPass", true, isSignIn),
             isSignIn
                 ? Container()
                 : authWebUserInputField(
                     context,
                     state,
-                    (passVerify) => {userPassVerify = passVerify},
+                    (passVerify) => {_userPassVerify = passVerify},
                     "authFormPassVerify",
                     true,
                     isSignIn),
@@ -161,7 +159,7 @@ Widget authWebUserInput(
       ));
 }
 
-bool isVisible = false;
+bool _isVisible = false;
 Widget authWebUserInputField(BuildContext context, State state,
     Function onSaved, String authForm, bool isVariable, bool isSignIn) {
   return Padding(
@@ -178,7 +176,7 @@ Widget authWebUserInputField(BuildContext context, State state,
         color: Theme.of(context).colorScheme.authWebUserInputField,
       ),
       child: TextFormField(
-        obscureText: isVariable ? !isVisible : false,
+        obscureText: isVariable ? !_isVisible : false,
         onSaved: onSaved,
         onFieldSubmitted: (value) {
           authWebValidateSubmit(context, state, isSignIn);
@@ -224,13 +222,13 @@ Widget authWebUserInputField(BuildContext context, State state,
                     FocusScopeNode currentFocus = FocusScope.of(context);
                     currentFocus.unfocus();
                     currentFocus.canRequestFocus = false;
-                    isVisible = !isVisible;
+                    _isVisible = !_isVisible;
                     Future.delayed(Duration(milliseconds: 100), () {
                       currentFocus.canRequestFocus = true;
                     });
                   },
                   icon: Icon(
-                    isVisible
+                    _isVisible
                         ? Icons.visibility_outlined
                         : Icons.visibility_off_outlined,
                     color: Theme.of(context)
@@ -253,7 +251,7 @@ Widget authWebForgotPassword(BuildContext context, State state, bool isSmall) {
     child: GestureDetector(
       onTap: () {
         state.setState(() {
-          authControls = AuthControls.forgotPassword;
+          _authControls = AuthControls.forgotPassword;
         });
       },
       child: Text(
@@ -365,8 +363,8 @@ Widget authWebSwitch(BuildContext context, State state, bool isSignIn) {
   return GestureDetector(
     onTap: () {
       isSignIn
-          ? authControls = AuthControls.signUp
-          : authControls = AuthControls.signIn;
+          ? _authControls = AuthControls.signUp
+          : _authControls = AuthControls.signIn;
       state.setState(() {});
     },
     child: RichText(
@@ -399,48 +397,49 @@ Widget authWebSwitch(BuildContext context, State state, bool isSignIn) {
 
 void authWebValidateSubmit(
     BuildContext context, State state, bool isSignIn) async {
-  authWebFormKey.currentState.save();
+  _authWebFormKey.currentState.save();
   if (isSignIn)
-    firebaseAccounts
-        .signInEmailAndPassword(context, userEmail, userPass)
+    _firebaseAccounts
+        .signInEmailAndPassword(context, _userEmail, _userPass)
         .then((value) {
       if (value) {
-        firebaseAccounts.getEmailVerified().then((isVerified) {
+        _firebaseAccounts.getEmailVerified().then((isVerified) {
           if (!isVerified) {
             showToastMessage(context, "_errorEmailNotVerified", true);
-            authControls = AuthControls.verify;
+            _firebaseAccounts.sendEmailVerification(context);
+            _authControls = AuthControls.verify;
             state.setState(() {});
-            firebaseAccounts.signOut();
+            _firebaseAccounts.signOut();
           } else {
             context.router.replaceAll([HomeScreen()]);
           }
-          authWebFormKey.currentState.reset();
+          _authWebFormKey.currentState.reset();
         });
       }
     });
   else
-    firebaseAccounts
+    _firebaseAccounts
         .signUpEmailAndPassword(
-            context, userEmail, userPass, userPassVerify, userName)
+            context, _userEmail, _userPass, _userPassVerify, _userName)
         .then((value) {
       if (value) {
-        authControls = AuthControls.verify;
+        _authControls = AuthControls.verify;
         state.setState(() {});
-        firebaseAccounts.signOut();
-        authWebFormKey.currentState.reset();
+        _firebaseAccounts.signOut();
+        _authWebFormKey.currentState.reset();
       }
     });
-  firebaseAccounts.setCurrentUserProfilePicURL(state);
+  _firebaseAccounts.setCurrentUserProfilePicURL(state);
 }
 
 void authWebForgotPasswordSwitchBack(BuildContext context, State state) {
   state.setState(() {
-    authControls = AuthControls.signIn;
+    _authControls = AuthControls.signIn;
   });
 }
 
 void authWebVerifySwitchBack(BuildContext context, State state) {
   state.setState(() {
-    authControls = AuthControls.signIn;
+    _authControls = AuthControls.signIn;
   });
 }
