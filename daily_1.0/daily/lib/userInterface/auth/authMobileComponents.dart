@@ -2,6 +2,7 @@ import 'package:daily/standards/userIStandards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:daily/datastructures/structures.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
@@ -13,9 +14,9 @@ import 'package:daily/themesLocal/constraints.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
 
-FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
-RouteNavigation routeNavigation = new RouteNavigation();
-bool isWelcome = true, isSignIn = false;
+FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
+RouteNavigation _routeNavigation = new RouteNavigation();
+AuthControls _authControls = AuthControls.welcome;
 
 Widget authMobileTitle(BuildContext context) {
   return Text(
@@ -32,7 +33,7 @@ Widget authMobileCenterPiece(BuildContext context, State state) {
   return GestureDetector(
     onVerticalDragDown: (value) {
       state.setState(() {
-        isWelcome = true;
+        _authControls = AuthControls.welcome;
       });
     },
     child: Container(
@@ -84,7 +85,8 @@ Widget authMobileCardContainer(BuildContext context, State state) {
       curve: Curves.fastOutSlowIn,
       child: isWelcome
           ? authMobileCardWelcome(context, state)
-          : authMobileCardInput(context, state, false),
+          : authMobileCardInput(context, state, false,
+              _authControls == AuthControls.signIn ? true : false),
     ),
   );
 }
@@ -106,7 +108,8 @@ Widget authMobileCardWelcome(BuildContext context, State state) {
   );
 }
 
-Widget authMobileCardInput(BuildContext context, State state, bool isSmall) {
+Widget authMobileCardInput(
+    BuildContext context, State state, bool isSmall, bool isSignIn) {
   return Stack(
     alignment: Alignment.topCenter,
     children: [
@@ -116,7 +119,7 @@ Widget authMobileCardInput(BuildContext context, State state, bool isSmall) {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
-              child: authMobileUserInput(context),
+              child: authMobileUserInput(context, isSignIn),
             ),
             isSignIn
                 ? Padding(
@@ -170,27 +173,27 @@ Widget authMobileCardText(BuildContext context) {
   );
 }
 
-String userName = "", userEmail = "", userPass = "", userPassVerify = "";
-GlobalKey<FormState> authMobileFormKey = GlobalKey<FormState>();
-Widget authMobileUserInput(BuildContext context) {
+String _userName = "", _userEmail = "", _userPass = "", _userPassVerify = "";
+GlobalKey<FormState> _authMobileFormKey = GlobalKey<FormState>();
+Widget authMobileUserInput(BuildContext context, bool isSignIn) {
   return Form(
-    key: authMobileFormKey,
+    key: _authMobileFormKey,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         isSignIn
             ? Container()
             : authMobileUserInputField(
-                context, (name) => {userName = name}, "authFormName", false),
+                context, (name) => {_userName = name}, "authFormName", false),
         authMobileUserInputField(
-            context, (email) => {userEmail = email}, "authFormEmail", false),
+            context, (email) => {_userEmail = email}, "authFormEmail", false),
         authMobileUserInputField(
-            context, (pass) => {userPass = pass}, "authFormPass", true),
+            context, (pass) => {_userPass = pass}, "authFormPass", true),
         isSignIn
             ? Container()
             : authMobileUserInputField(
                 context,
-                (passVerify) => {userPassVerify = passVerify},
+                (passVerify) => {_userPassVerify = passVerify},
                 "authFormPassVerify",
                 true),
       ],
@@ -198,7 +201,7 @@ Widget authMobileUserInput(BuildContext context) {
   );
 }
 
-bool isVisible = false;
+bool _isVisible = false;
 Widget authMobileUserInputField(
     BuildContext context, Function onSaved, String authForm, bool isVariable) {
   return Padding(
@@ -210,7 +213,7 @@ Widget authMobileUserInputField(
           Theme.of(context).visualDensity.authMobileUserInputFieldWidth),
       alignment: Alignment.center,
       child: TextFormField(
-        obscureText: isVariable ? !isVisible : false,
+        obscureText: isVariable ? !_isVisible : false,
         onSaved: onSaved,
         autofocus: false,
         style: TextStyle(
@@ -266,13 +269,13 @@ Widget authMobileUserInputField(
                     FocusScopeNode currentFocus = FocusScope.of(context);
                     currentFocus.unfocus();
                     currentFocus.canRequestFocus = false;
-                    isVisible = !isVisible;
+                    _isVisible = !_isVisible;
                     Future.delayed(Duration(milliseconds: 100), () {
                       currentFocus.canRequestFocus = true;
                     });
                   },
                   icon: Icon(
-                    isVisible
+                    _isVisible
                         ? Icons.visibility_outlined
                         : Icons.visibility_off_outlined,
                     color: Theme.of(context)
@@ -463,37 +466,37 @@ Widget authMobileSwitch(BuildContext context, State state) {
 }
 
 void authValidateSubmit(BuildContext context, State state) async {
-  authMobileFormKey.currentState.save();
+  _authMobileFormKey.currentState.save();
   if (isSignIn)
-    firebaseAccounts
-        .signInEmailAndPassword(context, userEmail, userPass)
+    _firebaseAccounts
+        .signInEmailAndPassword(context, _userEmail, _userPass)
         .then((value) {
       if (value) {
-        firebaseAccounts.getEmailVerified().then((isVerified) {
+        _firebaseAccounts.getEmailVerified().then((isVerified) {
           if (!isVerified) {
             showToastMessage(context, "errorEmailNotVerified", true);
-            firebaseAccounts.sendEmailVerification(context);
-            context.router.push(VerifyScreen(email: userEmail));
-            firebaseAccounts.signOut();
+            _firebaseAccounts.sendEmailVerification(context);
+            context.router.push(VerifyScreen(email: _userEmail));
+            _firebaseAccounts.signOut();
           } else {
             context.router.replaceAll([HomeScreen()]);
             isWelcome = true;
           }
-          authMobileFormKey.currentState.reset();
+          _authMobileFormKey.currentState.reset();
         });
       }
     });
   else
-    firebaseAccounts
+    _firebaseAccounts
         .signUpEmailAndPassword(
-            context, userEmail, userPass, userPassVerify, userName)
+            context, _userEmail, _userPass, _userPassVerify, _userName)
         .then((value) {
       if (value) {
-        context.router.push(VerifyScreen(email: userEmail));
-        firebaseAccounts.signOut();
-        authMobileFormKey.currentState.reset();
+        context.router.push(VerifyScreen(email: _userEmail));
+        _firebaseAccounts.signOut();
+        _authMobileFormKey.currentState.reset();
         isWelcome = true;
       }
     });
-  firebaseAccounts.setCurrentUserProfilePicURL(state);
+  _firebaseAccounts.setCurrentUserProfilePicURL(state);
 }

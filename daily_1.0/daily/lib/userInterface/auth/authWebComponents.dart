@@ -48,10 +48,10 @@ Widget authWebCardContainer(BuildContext context, State state, bool isSmall) {
                   : BorderRadius.only(
                       topLeft: Radius.circular(50),
                       bottomLeft: Radius.circular(50))),
-          child: _authWebCardPick(context, state, isSmall)));
+          child: authWebCardPick(context, state, isSmall)));
 }
 
-Widget _authWebCardPick(BuildContext context, State state, bool isSmall) {
+Widget authWebCardPick(BuildContext context, State state, bool isSmall) {
   switch (_authControls) {
     case AuthControls.welcome:
       return Container();
