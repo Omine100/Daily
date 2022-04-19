@@ -44,33 +44,33 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     }
   }
 
-  homeScreenSmall() {
+  _homeScreenSmall() {
     return Adaptive(
-        iOS: homeScreenMobileSmall(false),
-        android: homeScreenMobileSmall(true),
-        web: homeScreenWebSmall());
+        iOS: _homeScreenMobileSmall(false),
+        android: _homeScreenMobileSmall(true),
+        web: _homeScreenWebSmall());
   }
 
-  homeScreenLarge() {
+  _homeScreenLarge() {
     return Adaptive(
-        iOS: homeScreenMobileLarge(false),
-        android: homeScreenMobileLarge(true),
-        web: homeScreenWebLarge());
+        iOS: _homeScreenMobileLarge(false),
+        android: _homeScreenMobileLarge(true),
+        web: _homeScreenWebLarge());
   }
 
-  homeScreenWebSmall() {
+  _homeScreenWebSmall() {
     return homeBody(context, this);
   }
 
-  homeScreenWebLarge() {
+  _homeScreenWebLarge() {
     return homeBody(context, this);
   }
 
-  homeScreenMobileSmall(bool isAndroid) {
+  _homeScreenMobileSmall(bool isAndroid) {
     return homeBody(context, this);
   }
 
-  homeScreenMobileLarge(bool isAndroid) {
+  _homeScreenMobileLarge(bool isAndroid) {
     return homeBody(context, this);
   }
 
@@ -85,8 +85,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           color: Theme.of(context).colorScheme.homeBackground,
           constraints: Theme.of(context).bottomAppBarTheme.homeConstraints,
           child: Responsive(
-            small: homeScreenSmall(),
-            large: homeScreenLarge(),
+            small: _homeScreenSmall(),
+            large: _homeScreenLarge(),
           ),
         ),
         bottomNavigationBar: homeNavigationBar(context, this),

@@ -4,21 +4,21 @@ import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/home/global/homeGlobalWebComponents.dart';
 import 'package:daily/userInterface/home/global/homeGlobalMobileComponents.dart';
 
-globalSmall(BuildContext context) {
+_globalSmall(BuildContext context) {
   return Adaptive(
-      iOS: globalMobileSmall(context, false),
-      android: globalMobileSmall(context, true),
-      web: globalWebSmall(context));
+      iOS: _globalMobileSmall(context, false),
+      android: _globalMobileSmall(context, true),
+      web: _globalWebSmall(context));
 }
 
-globalLarge(BuildContext context) {
+_globalLarge(BuildContext context) {
   return Adaptive(
-      iOS: globalMobileLarge(context, false),
-      android: globalMobileLarge(context, true),
-      web: globalWebLarge(context));
+      iOS: _globalMobileLarge(context, false),
+      android: _globalMobileLarge(context, true),
+      web: _globalWebLarge(context));
 }
 
-globalWebSmall(BuildContext context) {
+_globalWebSmall(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -31,7 +31,7 @@ globalWebSmall(BuildContext context) {
   );
 }
 
-globalWebLarge(BuildContext context) {
+_globalWebLarge(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -44,7 +44,7 @@ globalWebLarge(BuildContext context) {
   );
 }
 
-globalMobileSmall(BuildContext context, bool isAndroid) {
+_globalMobileSmall(BuildContext context, bool isAndroid) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -57,7 +57,7 @@ globalMobileSmall(BuildContext context, bool isAndroid) {
   );
 }
 
-globalMobileLarge(BuildContext context, bool isAndroid) {
+_globalMobileLarge(BuildContext context, bool isAndroid) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -72,7 +72,7 @@ globalMobileLarge(BuildContext context, bool isAndroid) {
 
 Widget globalBody(BuildContext context) {
   return Responsive(
-    small: globalSmall(context),
-    large: globalLarge(context),
+    small: _globalSmall(context),
+    large: _globalLarge(context),
   );
 }
