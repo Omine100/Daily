@@ -48,11 +48,12 @@ Widget authMobileCenterPiece(BuildContext context, State state) {
   );
 }
 
-Widget authMobileCardContainer(BuildContext context, State state) {
+Widget authMobileCardContainer(
+    BuildContext context, State state, bool isSmall) {
   return SingleChildScrollView(
     child: AnimatedContainer(
       constraints: Theme.of(context).bottomAppBarTheme.authMobileCardContainer,
-      height: isWelcome
+      height: _authControls == AuthControls.welcome
           ? getDimension(
               context,
               true,
@@ -65,7 +66,7 @@ Widget authMobileCardContainer(BuildContext context, State state) {
               Theme.of(context)
                   .visualDensity
                   .authMobileCardContainerInputHeight),
-      width: isWelcome
+      width: _authControls == AuthControls.welcome
           ? getDimension(
               context,
               false,
@@ -83,12 +84,22 @@ Widget authMobileCardContainer(BuildContext context, State state) {
           borderRadius: BorderRadius.circular(20)),
       duration: const Duration(milliseconds: 1350),
       curve: Curves.fastOutSlowIn,
-      child: isWelcome
-          ? authMobileCardWelcome(context, state)
-          : authMobileCardInput(context, state, false,
-              _authControls == AuthControls.signIn ? true : false),
+      child: authMobileCardPick(context, state, isSmall),
     ),
   );
+}
+
+Widget authMobileCardPick(BuildContext context, State state, bool isSmall) {
+  switch (_authControls) {
+    case AuthControls.welcome:
+      return authMobileCardWelcome(context, state);
+    case AuthControls.signIn:
+      return authMobileCardInput(context, state, false, true);
+    case AuthControls.signUp:
+      return authMobileCardInput(context, state, false, false);
+    default:
+      return Container();
+  }
 }
 
 Widget authMobileCardWelcome(BuildContext context, State state) {

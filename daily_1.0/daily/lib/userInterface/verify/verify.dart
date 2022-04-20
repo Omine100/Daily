@@ -10,36 +10,37 @@ import 'package:daily/userInterface/verify/verifyMobileComponents.dart';
 
 class VerifyScreen extends StatefulWidget {
   final String email;
-  VerifyScreen({this.email});
+  final String pass;
+  VerifyScreen({this.email, this.pass});
 
   @override
   _VerifyScreenState createState() => _VerifyScreenState();
 }
 
 class _VerifyScreenState extends State<VerifyScreen> {
-  verifyScreenSmall() {
+  _verifyScreenSmall() {
     return Adaptive(
-        iOS: verifyScreenMobileSmall(false),
-        android: verifyScreenMobileSmall(true),
-        web: verifyScreenWebSmall());
+        iOS: _verifyScreenMobileSmall(false),
+        android: _verifyScreenMobileSmall(true),
+        web: _verifyScreenWebSmall());
   }
 
-  verifyScreenLarge() {
+  _verifyScreenLarge() {
     return Adaptive(
-        iOS: verifyScreenMobileLarge(false),
-        android: verifyScreenMobileLarge(true),
-        web: verifyScreenWebLarge());
+        iOS: _verifyScreenMobileLarge(false),
+        android: _verifyScreenMobileLarge(true),
+        web: _verifyScreenWebLarge());
   }
 
-  verifyScreenWebSmall() {
+  _verifyScreenWebSmall() {
     return Container();
   }
 
-  verifyScreenWebLarge() {
+  _verifyScreenWebLarge() {
     return Container();
   }
 
-  verifyScreenMobileSmall(bool isAndroid) {
+  _verifyScreenMobileSmall(bool isAndroid) {
     return Stack(alignment: Alignment.center, children: [
       Positioned(
         top: getPosition(context, true,
@@ -49,11 +50,11 @@ class _VerifyScreenState extends State<VerifyScreen> {
       Positioned(
           top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.verifyMobileLoginTop),
-          child: verifyMobileLogin(context, this)),
+          child: verifyMobileLogin(context, this, widget.email, widget.pass)),
     ]);
   }
 
-  verifyScreenMobileLarge(bool isAndroid) {
+  _verifyScreenMobileLarge(bool isAndroid) {
     return Stack(alignment: Alignment.center, children: [
       Positioned(
         top: getPosition(context, true,
@@ -63,7 +64,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
       Positioned(
           top: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.verifyMobileLoginTop),
-          child: verifyMobileLogin(context, this)),
+          child: verifyMobileLogin(context, this, widget.email, widget.pass)),
     ]);
   }
 
@@ -76,8 +77,8 @@ class _VerifyScreenState extends State<VerifyScreen> {
           backgroundColor: Theme.of(context).colorScheme.verifyBackground,
           body: SingleChildScrollView(
             child: Responsive(
-              small: verifyScreenSmall(),
-              large: verifyScreenLarge(),
+              small: _verifyScreenSmall(),
+              large: _verifyScreenLarge(),
             ),
           ),
         ),

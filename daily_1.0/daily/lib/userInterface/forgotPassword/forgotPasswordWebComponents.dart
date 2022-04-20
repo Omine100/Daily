@@ -7,10 +7,10 @@ import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
 import 'package:daily/userInterface/auth/authWebComponents.dart';
 
-FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
 void forgotPasswordWebDispose() {
-  isSent = false;
+  _isSent = false;
   _forgotPasswordWebFormKey.currentState.reset();
 }
 
@@ -31,7 +31,7 @@ Widget forgotPasswordWebCard(BuildContext context, State state) {
         padding: const EdgeInsets.only(top: 7.0),
         child: forgotPasswordWebSend(context, state),
       ),
-      isSent
+      _isSent
           ? Padding(
               padding: const EdgeInsets.all(8.0),
               child: forgotPasswordWebResend(context),
@@ -160,7 +160,7 @@ Widget forgotPasswordWebSwitchBack(BuildContext context, State state) {
   );
 }
 
-bool isSent = false;
+bool _isSent = false;
 Widget forgotPasswordWebSend(BuildContext context, State state) {
   return Container(
     height: getDimension(context, true,
@@ -199,7 +199,7 @@ Widget forgotPasswordWebResend(BuildContext context) {
   return GestureDetector(
     onTap: () {
       _forgotPasswordWebFormKey.currentState.save();
-      firebaseAccounts.sendPasswordReset(context, _userEmail);
+      _firebaseAccounts.sendPasswordReset(context, _userEmail);
     },
     child: RichText(
       text: TextSpan(
@@ -231,11 +231,11 @@ Widget forgotPasswordWebResend(BuildContext context) {
 
 void forgotPasswordValidateSubmit(BuildContext context, State state) {
   _forgotPasswordWebFormKey.currentState.save();
-  firebaseAccounts.sendPasswordReset(context, _userEmail).then((_isSent) => {
+  _firebaseAccounts.sendPasswordReset(context, _userEmail).then((_isSent) => {
         if (_isSent)
           {
             state.setState(() {
-              isSent = true;
+              _isSent = true;
             })
           }
       });

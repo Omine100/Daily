@@ -20,29 +20,29 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     forgotPasswordWebDispose();
   }
 
-  forgotPasswordScreenSmall() {
+  _forgotPasswordScreenSmall() {
     return Adaptive(
-        iOS: forgotPasswordScreenMobileSmall(false),
-        android: forgotPasswordScreenMobileSmall(true),
-        web: forgotPasswordScreenWebSmall());
+        iOS: _forgotPasswordScreenMobileSmall(false),
+        android: _forgotPasswordScreenMobileSmall(true),
+        web: _forgotPasswordScreenWebSmall());
   }
 
-  forgotPasswordScreenLarge() {
+  _forgotPasswordScreenLarge() {
     return Adaptive(
-        iOS: forgotPasswordScreenMobileLarge(false),
-        android: forgotPasswordScreenMobileLarge(true),
-        web: forgotPasswordScreenWebLarge());
+        iOS: _forgotPasswordScreenMobileLarge(false),
+        android: _forgotPasswordScreenMobileLarge(true),
+        web: _forgotPasswordScreenWebLarge());
   }
 
-  forgotPasswordScreenWebSmall() {
+  _forgotPasswordScreenWebSmall() {
     return Container();
   }
 
-  forgotPasswordScreenWebLarge() {
+  _forgotPasswordScreenWebLarge() {
     return Container();
   }
 
-  forgotPasswordScreenMobileSmall(bool isAndroid) {
+  _forgotPasswordScreenMobileSmall(bool isAndroid) {
     return Stack(alignment: Alignment.center, children: [
       Positioned(
         top: getPosition(
@@ -82,7 +82,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     ]);
   }
 
-  forgotPasswordScreenMobileLarge(bool isAndroid) {
+  _forgotPasswordScreenMobileLarge(bool isAndroid) {
     return Stack(alignment: Alignment.center, children: [
       Positioned(
         top: getPosition(
@@ -145,8 +145,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             .visualDensity
                             .forgotPasswordBoxConstraintUnfocused)),
             child: Responsive(
-              small: forgotPasswordScreenSmall(),
-              large: forgotPasswordScreenLarge(),
+              small: _forgotPasswordScreenSmall(),
+              large: _forgotPasswordScreenLarge(),
             )),
       ),
     ));

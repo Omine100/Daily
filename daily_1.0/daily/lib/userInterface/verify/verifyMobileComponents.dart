@@ -7,7 +7,7 @@ import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
 import 'package:daily/userInterface/auth/authMobileComponents.dart';
 
-FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
 Widget verifyMobileTitle(BuildContext context) {
   return Column(
@@ -38,7 +38,8 @@ Widget verifyMobileTitle(BuildContext context) {
   );
 }
 
-Widget verifyMobileLogin(BuildContext context, State state) {
+Widget verifyMobileLogin(
+    BuildContext context, State state, String userEmail, String userPass) {
   return Container(
     height: getDimension(
         context, true, Theme.of(context).visualDensity.verifyMobileLoginHeight),
@@ -54,7 +55,8 @@ Widget verifyMobileLogin(BuildContext context, State state) {
         customBorder:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         onTap: () {
-          firebaseAccounts.signInEmailAndPassword(context, userEmail, userPass);
+          _firebaseAccounts.signInEmailAndPassword(
+              context, userEmail, userPass);
         },
         child: Center(
           child: Text(

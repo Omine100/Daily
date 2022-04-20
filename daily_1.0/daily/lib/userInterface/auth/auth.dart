@@ -87,7 +87,7 @@ class _AuthScreenState extends State<AuthScreen> {
         Positioned(
           bottom: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.authMobileCardBottom),
-          child: authMobileCardContainer(context, this),
+          child: authMobileCardContainer(context, this, true),
         ),
       ],
     );
@@ -114,7 +114,7 @@ class _AuthScreenState extends State<AuthScreen> {
         Positioned(
           bottom: getPosition(context, true,
               Theme.of(context).materialTapTargetSize.authMobileCardBottom),
-          child: authMobileCardContainer(context, this),
+          child: authMobileCardContainer(context, this, false),
         ),
       ],
     );

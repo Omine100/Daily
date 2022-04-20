@@ -15,21 +15,21 @@ class ErrorScreen extends StatefulWidget {
 }
 
 class _ErrorScreenState extends State<ErrorScreen> {
-  errorScreenSmall() {
+  _errorScreenSmall() {
     return Adaptive(
-        iOS: errorScreenMobileSmall(false),
-        android: errorScreenMobileSmall(true),
-        web: errorScreenWebSmall());
+        iOS: _errorScreenMobileSmall(false),
+        android: _errorScreenMobileSmall(true),
+        web: _errorScreenWebSmall());
   }
 
-  errorScreenLarge() {
+  _errorScreenLarge() {
     return Adaptive(
-        iOS: errorScreenMobileLarge(false),
-        android: errorScreenMobileLarge(true),
-        web: errorScreenWebLarge());
+        iOS: _errorScreenMobileLarge(false),
+        android: _errorScreenMobileLarge(true),
+        web: _errorScreenWebLarge());
   }
 
-  errorScreenWebSmall() {
+  _errorScreenWebSmall() {
     return Container(
       height: getDimension(
           context, true, Theme.of(context).visualDensity.errorWebHeight),
@@ -45,7 +45,7 @@ class _ErrorScreenState extends State<ErrorScreen> {
     );
   }
 
-  errorScreenWebLarge() {
+  _errorScreenWebLarge() {
     return Container(
       height: getDimension(
           context, true, Theme.of(context).visualDensity.errorWebHeight),
@@ -61,11 +61,11 @@ class _ErrorScreenState extends State<ErrorScreen> {
     );
   }
 
-  errorScreenMobileSmall(bool isAndroid) {
+  _errorScreenMobileSmall(bool isAndroid) {
     return Container();
   }
 
-  errorScreenMobileLarge(bool isAndroid) {
+  _errorScreenMobileLarge(bool isAndroid) {
     return Container();
   }
 
@@ -78,8 +78,8 @@ class _ErrorScreenState extends State<ErrorScreen> {
           backgroundColor: Theme.of(context).colorScheme.errorBackground,
           body: SingleChildScrollView(
             child: Responsive(
-              small: errorScreenSmall(),
-              large: errorScreenLarge(),
+              small: _errorScreenSmall(),
+              large: _errorScreenLarge(),
             ),
           ),
         ),

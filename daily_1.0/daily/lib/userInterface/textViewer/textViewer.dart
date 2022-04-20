@@ -14,33 +14,33 @@ class TextViewerScreen extends StatefulWidget {
 }
 
 class _TextViewerScreenState extends State<TextViewerScreen> {
-  textViewerScreenSmall() {
+  _textViewerScreenSmall() {
     return Adaptive(
-        iOS: textViewerScreenMobileSmall(false),
-        android: textViewerScreenMobileSmall(true),
-        web: textViewerScreenWebSmall());
+        iOS: _textViewerScreenMobileSmall(false),
+        android: _textViewerScreenMobileSmall(true),
+        web: _textViewerScreenWebSmall());
   }
 
-  textViewerScreenLarge() {
+  _textViewerScreenLarge() {
     return Adaptive(
-        iOS: textViewerScreenMobileLarge(false),
-        android: textViewerScreenMobileLarge(true),
-        web: textViewerScreenWebLarge());
+        iOS: _textViewerScreenMobileLarge(false),
+        android: _textViewerScreenMobileLarge(true),
+        web: _textViewerScreenWebLarge());
   }
 
-  textViewerScreenWebSmall() {
+  _textViewerScreenWebSmall() {
     return textViewerWebText(context, widget.filePath);
   }
 
-  textViewerScreenWebLarge() {
+  _textViewerScreenWebLarge() {
     return textViewerWebText(context, widget.filePath);
   }
 
-  textViewerScreenMobileSmall(bool isAndroid) {
+  _textViewerScreenMobileSmall(bool isAndroid) {
     return textViewerMobileText(context, widget.filePath);
   }
 
-  textViewerScreenMobileLarge(bool isAndroid) {
+  _textViewerScreenMobileLarge(bool isAndroid) {
     return textViewerMobileText(context, widget.filePath);
   }
 
@@ -54,8 +54,8 @@ class _TextViewerScreenState extends State<TextViewerScreen> {
           body: SingleChildScrollView(
             child: Expanded(
               child: Responsive(
-                small: textViewerScreenSmall(),
-                large: textViewerScreenLarge(),
+                small: _textViewerScreenSmall(),
+                large: _textViewerScreenLarge(),
               ),
             ),
           ),

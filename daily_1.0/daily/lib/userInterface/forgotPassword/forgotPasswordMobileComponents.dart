@@ -6,11 +6,11 @@ import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
 
-FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
 void forgotPasswordMobileDispose() {
-  isSent = false;
-  forgotPasswordMobileFormKey.currentState.reset();
+  _isSent = false;
+  _forgotPasswordMobileFormKey.currentState.reset();
 }
 
 Widget forgotPasswordMobileTitle(BuildContext context) {
@@ -43,8 +43,8 @@ Widget forgotPasswordMobileTitle(BuildContext context) {
   );
 }
 
-String userEmail;
-GlobalKey<FormFieldState> forgotPasswordMobileFormKey =
+String _userEmail;
+GlobalKey<FormFieldState> _forgotPasswordMobileFormKey =
     GlobalKey<FormFieldState>();
 Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
   return Container(
@@ -62,9 +62,9 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
             .forgotPasswordMobileUserInputFieldWidth),
     alignment: Alignment.center,
     child: TextFormField(
-      key: forgotPasswordMobileFormKey,
+      key: _forgotPasswordMobileFormKey,
       obscureText: false,
-      onSaved: (email) => userEmail = email,
+      onSaved: (email) => _userEmail = email,
       onFieldSubmitted: (value) {
         forgotPasswordValidateSubmit(context, state);
       },
@@ -122,7 +122,7 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
   );
 }
 
-bool isSent = false;
+bool _isSent = false;
 Widget forgotPasswordMobileSend(BuildContext context, State state) {
   return Container(
     height: getDimension(context, true,
@@ -160,11 +160,11 @@ Widget forgotPasswordMobileSend(BuildContext context, State state) {
 }
 
 Widget forgotPasswordMobileResend(BuildContext context) {
-  return isSent
+  return _isSent
       ? GestureDetector(
           onTap: () {
-            forgotPasswordMobileFormKey.currentState.save();
-            firebaseAccounts.sendPasswordReset(context, userEmail);
+            _forgotPasswordMobileFormKey.currentState.save();
+            _firebaseAccounts.sendPasswordReset(context, _userEmail);
           },
           child: RichText(
             text: TextSpan(
@@ -203,12 +203,12 @@ Widget forgotPasswordMobileResend(BuildContext context) {
 }
 
 void forgotPasswordValidateSubmit(BuildContext context, State state) {
-  forgotPasswordMobileFormKey.currentState.save();
-  firebaseAccounts.sendPasswordReset(context, userEmail).then((_isSent) => {
+  _forgotPasswordMobileFormKey.currentState.save();
+  _firebaseAccounts.sendPasswordReset(context, _userEmail).then((_isSent) => {
         if (_isSent)
           {
             state.setState(() {
-              isSent = true;
+              _isSent = true;
             })
           }
       });

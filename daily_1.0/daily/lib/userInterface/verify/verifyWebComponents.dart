@@ -8,7 +8,7 @@ import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
 import 'package:daily/userInterface/auth/authWebComponents.dart';
 
-FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
 Widget verifyWebCard(
     BuildContext context, State state, String userEmail, String userPass) {
@@ -79,7 +79,8 @@ Widget verifyWebLogin(
         customBorder:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         onTap: () {
-          firebaseAccounts.signInEmailAndPassword(context, userEmail, userPass);
+          _firebaseAccounts.signInEmailAndPassword(
+              context, userEmail, userPass);
         },
         child: Center(
           child: Text(
