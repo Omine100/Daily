@@ -4,29 +4,29 @@ import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/home/main/homeMainWebComponents.dart';
 import 'package:daily/userInterface/home/main/homeMainMobileComponents.dart';
 
-mainSmall(BuildContext context, State state) {
+_mainSmall(BuildContext context, State state) {
   return Adaptive(
-      iOS: mainMobileSmall(context, state, false),
-      android: mainMobileSmall(context, state, true),
-      web: mainWebSmall(context));
+      iOS: _mainMobileSmall(context, state, false),
+      android: _mainMobileSmall(context, state, true),
+      web: _mainWebSmall(context));
 }
 
-mainLarge(BuildContext context, State state) {
+_mainLarge(BuildContext context, State state) {
   return Adaptive(
-      iOS: mainMobileLarge(context, state, false),
-      android: mainMobileLarge(context, state, true),
-      web: mainWebLarge(context));
+      iOS: _mainMobileLarge(context, state, false),
+      android: _mainMobileLarge(context, state, true),
+      web: _mainWebLarge(context));
 }
 
-mainWebSmall(BuildContext context) {
+_mainWebSmall(BuildContext context) {
   return Container();
 }
 
-mainWebLarge(BuildContext context) {
+_mainWebLarge(BuildContext context) {
   return Container();
 }
 
-mainMobileSmall(BuildContext context, State state, bool isAndroid) {
+_mainMobileSmall(BuildContext context, State state, bool isAndroid) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -39,7 +39,7 @@ mainMobileSmall(BuildContext context, State state, bool isAndroid) {
   );
 }
 
-mainMobileLarge(BuildContext context, State state, bool isAndroid) {
+_mainMobileLarge(BuildContext context, State state, bool isAndroid) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -54,7 +54,7 @@ mainMobileLarge(BuildContext context, State state, bool isAndroid) {
 
 Widget mainBody(BuildContext context, State state) {
   return Responsive(
-    small: mainSmall(context, state),
-    large: mainLarge(context, state),
+    small: _mainSmall(context, state),
+    large: _mainLarge(context, state),
   );
 }

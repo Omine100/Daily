@@ -4,21 +4,21 @@ import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/home/search/homeSearchWebComponents.dart';
 import 'package:daily/userInterface/home/search/homeSearchMobileComponents.dart';
 
-searchSmall(BuildContext context) {
+_searchSmall(BuildContext context) {
   return Adaptive(
-      iOS: searchMobileSmall(context, false),
-      android: searchMobileSmall(context, true),
-      web: searchWebSmall(context));
+      iOS: _searchMobileSmall(context, false),
+      android: _searchMobileSmall(context, true),
+      web: _searchWebSmall(context));
 }
 
-searchLarge(BuildContext context) {
+_searchLarge(BuildContext context) {
   return Adaptive(
-      iOS: searchMobileLarge(context, false),
-      android: searchMobileLarge(context, true),
-      web: searchWebLarge(context));
+      iOS: _searchMobileLarge(context, false),
+      android: _searchMobileLarge(context, true),
+      web: _searchWebLarge(context));
 }
 
-searchWebSmall(BuildContext context) {
+_searchWebSmall(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -31,7 +31,7 @@ searchWebSmall(BuildContext context) {
   );
 }
 
-searchWebLarge(BuildContext context) {
+_searchWebLarge(BuildContext context) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -44,7 +44,7 @@ searchWebLarge(BuildContext context) {
   );
 }
 
-searchMobileSmall(BuildContext context, bool isAndroid) {
+_searchMobileSmall(BuildContext context, bool isAndroid) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -56,7 +56,7 @@ searchMobileSmall(BuildContext context, bool isAndroid) {
   );
 }
 
-searchMobileLarge(BuildContext context, bool isAndroid) {
+_searchMobileLarge(BuildContext context, bool isAndroid) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -70,7 +70,7 @@ searchMobileLarge(BuildContext context, bool isAndroid) {
 
 Widget searchBody(BuildContext context) {
   return Responsive(
-    small: searchSmall(context),
-    large: searchLarge(context),
+    small: _searchSmall(context),
+    large: _searchLarge(context),
   );
 }

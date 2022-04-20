@@ -6,21 +6,21 @@ import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/userInterface/home/settings/homeSettingsWebComponents.dart';
 import 'package:daily/userInterface/home/settings/homeSettingsMobileComponents.dart';
 
-settingsSmall(BuildContext context, State state) {
+_settingsSmall(BuildContext context, State state) {
   return Adaptive(
-      iOS: settingsMobileSmall(context, state, false),
-      android: settingsMobileSmall(context, state, true),
-      web: settingsWebSmall(context, state));
+      iOS: _settingsMobileSmall(context, state, false),
+      android: _settingsMobileSmall(context, state, true),
+      web: _settingsWebSmall(context, state));
 }
 
-settingsLarge(BuildContext context, State state) {
+_settingsLarge(BuildContext context, State state) {
   return Adaptive(
-      iOS: settingsMobileLarge(context, state, false),
-      android: settingsMobileLarge(context, state, true),
-      web: settingsWebLarge(context, state));
+      iOS: _settingsMobileLarge(context, state, false),
+      android: _settingsMobileLarge(context, state, true),
+      web: _settingsWebLarge(context, state));
 }
 
-settingsWebSmall(BuildContext context, State state) {
+_settingsWebSmall(BuildContext context, State state) {
   return Stack(alignment: Alignment.center, children: [
     Positioned(
       top: getPosition(context, true,
@@ -40,7 +40,7 @@ settingsWebSmall(BuildContext context, State state) {
   ]);
 }
 
-settingsWebLarge(BuildContext context, State state) {
+_settingsWebLarge(BuildContext context, State state) {
   return Stack(alignment: Alignment.center, children: [
     Positioned(
       top: getPosition(context, true,
@@ -60,7 +60,7 @@ settingsWebLarge(BuildContext context, State state) {
   ]);
 }
 
-settingsMobileSmall(BuildContext context, State state, bool isAndroid) {
+_settingsMobileSmall(BuildContext context, State state, bool isAndroid) {
   return Stack(alignment: Alignment.center, children: [
     Positioned(
         top: getPosition(context, true,
@@ -79,7 +79,7 @@ settingsMobileSmall(BuildContext context, State state, bool isAndroid) {
   ]);
 }
 
-settingsMobileLarge(BuildContext context, State state, bool isAndroid) {
+_settingsMobileLarge(BuildContext context, State state, bool isAndroid) {
   return Stack(alignment: Alignment.center, children: [
     Positioned(
         top: getPosition(context, true,
@@ -103,7 +103,7 @@ Widget settingsBody(BuildContext context, State state) {
       constraints: BoxConstraints.expand(height: double.maxFinite),
       color: Theme.of(context).colorScheme.settingsBackground,
       child: Responsive(
-        small: settingsSmall(context, state),
-        large: settingsLarge(context, state),
+        small: _settingsSmall(context, state),
+        large: _settingsLarge(context, state),
       ));
 }
