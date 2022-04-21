@@ -276,9 +276,3 @@ extension CustomMobileColorScheme on ColorScheme {
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   // #endregion
 }
-
-extension ColorUtils on Color {
-  Color mix(Color another, double amount) {
-    return Color.lerp(this, another, amount);
-  }
-}

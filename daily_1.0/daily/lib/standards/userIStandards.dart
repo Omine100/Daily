@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/mediaPickerManagement.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
@@ -9,8 +8,7 @@ import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
 
-FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
-MediaPickerManagement mediaManagement = new MediaPickerManagement();
+MediaPickerManagement _mediaManagement = new MediaPickerManagement();
 
 Future<Widget> showMediaSelection(
     BuildContext context, State state, Function saveFunction) async {
@@ -53,7 +51,7 @@ Future<Widget> showMediaSelection(
                     ),
                     onTap: () async {
                       context.router.pop();
-                      mediaManagement.imagePicker(
+                      _mediaManagement.imagePicker(
                           context, false, state, saveFunction);
                     },
                   ),
@@ -82,7 +80,7 @@ Future<Widget> showMediaSelection(
                     ),
                     onTap: () async {
                       context.router.pop();
-                      return await mediaManagement.imagePicker(
+                      return await _mediaManagement.imagePicker(
                           context, true, state, saveFunction);
                     },
                   )

@@ -66,7 +66,7 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
       obscureText: false,
       onSaved: (email) => _userEmail = email,
       onFieldSubmitted: (value) {
-        forgotPasswordValidateSubmit(context, state);
+        _forgotPasswordValidateSubmit(context, state);
       },
       autofocus: false,
       style: TextStyle(
@@ -140,7 +140,7 @@ Widget forgotPasswordMobileSend(BuildContext context, State state) {
         customBorder:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         onTap: () {
-          forgotPasswordValidateSubmit(context, state);
+          _forgotPasswordValidateSubmit(context, state);
         },
         child: Center(
           child: Text(
@@ -202,7 +202,7 @@ Widget forgotPasswordMobileResend(BuildContext context) {
       : Container();
 }
 
-void forgotPasswordValidateSubmit(BuildContext context, State state) {
+void _forgotPasswordValidateSubmit(BuildContext context, State state) {
   _forgotPasswordMobileFormKey.currentState.save();
   _firebaseAccounts.sendPasswordReset(context, _userEmail).then((_isSent) => {
         if (_isSent)

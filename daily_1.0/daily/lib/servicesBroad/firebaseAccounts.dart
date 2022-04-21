@@ -10,35 +10,35 @@ import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/utilities/managementUtil/validation.dart';
 
 class FirebaseAccounts {
-  FirebaseAuth auth = FirebaseAuth.instance;
-  FirebaseStorage storage = FirebaseStorage.instance;
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseStorage _storage = FirebaseStorage.instance;
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   bool getSignedInStatus() {
-    if (auth.currentUser?.uid == null) return false;
+    if (_auth.currentUser?.uid == null) return false;
     return true;
   }
 
   String getCurrentUserId() {
-    return auth.currentUser.uid;
+    return _auth.currentUser.uid;
   }
 
   Future<void> setCurrentUserDisplayName(String displayName) async {
-    auth.currentUser.updateDisplayName(displayName);
+    _auth.currentUser.updateDisplayName(displayName);
   }
 
   String getCurrentUserDisplayName() {
-    return auth.currentUser.displayName;
+    return _auth.currentUser.displayName;
   }
 
   String getCurrentUserEmail() {
-    return auth.currentUser.email;
+    return _auth.currentUser.email;
   }
 
   Future<void> setCurrentUserProfilePicImage(File image, State state) async {
-    var storageRef = storage.ref(auth.currentUser.uid + '/profilePicture');
+    var storageRef = _storage.ref(_auth.currentUser.uid + '/profilePicture');
     await storageRef.putFile(image);
-    auth.currentUser
+    _auth.currentUser
         .updatePhotoURL(await storageRef.getDownloadURL())
         .then((value) {
       setCurrentUserProfilePicURL(state);
@@ -46,22 +46,22 @@ class FirebaseAccounts {
   }
 
   void setCurrentUserProfilePicURL(State state) async {
-    profileURL.value = auth.currentUser.photoURL;
+    profileURL.value = _auth.currentUser.photoURL;
     settingsToPrefs(settingsList);
     state.setState(() {});
   }
 
   String getCurrentUserProfilePic() {
-    return auth.currentUser.photoURL;
+    return _auth.currentUser.photoURL;
   }
 
   Future<void> sendEmailVerification(BuildContext context) async {
-    auth.currentUser.sendEmailVerification().catchError((onError) =>
+    _auth.currentUser.sendEmailVerification().catchError((onError) =>
         showToastMessage(context, "_errorVerificationSentFailed", true));
   }
 
   Future<bool> getEmailVerified() async {
-    return auth.currentUser.emailVerified;
+    return _auth.currentUser.emailVerified;
   }
 
   Future<bool> sendPasswordReset(BuildContext context, String email) async {
@@ -69,7 +69,7 @@ class FirebaseAccounts {
       showToastMessage(context, "_errorInvalidEmail", true);
       return false;
     }
-    auth.sendPasswordResetEmail(email: email);
+    _auth.sendPasswordResetEmail(email: email);
     showToastMessage(context, "settingsResetPasswordSent", false);
     return true;
   }
@@ -104,7 +104,7 @@ class FirebaseAccounts {
       return false;
     }
     try {
-      await auth.createUserWithEmailAndPassword(
+      await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       await setCurrentUserDisplayName(name);
       sendEmailVerification(context);
@@ -139,9 +139,9 @@ class FirebaseAccounts {
       return false;
     }
     try {
-      await auth.signInWithEmailAndPassword(email: email, password: password);
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
       return true;
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseException catch (e) {
       String key;
       switch (e.code) {
         case "invalid-email":
@@ -168,12 +168,12 @@ class FirebaseAccounts {
   }
 
   Future<void> signOut() async {
-    return auth.signOut();
+    return _auth.signOut();
   }
 
   Future<void> deleteUserData() async {
-    var userId = auth.currentUser.uid;
-    await firestore.collection(userId).get().then((snapshot) {
+    var userId = _auth.currentUser.uid;
+    await _firestore.collection(userId).get().then((snapshot) {
       for (DocumentSnapshot ds in snapshot.docs) {
         ds.reference.delete();
       }
@@ -182,6 +182,6 @@ class FirebaseAccounts {
 
   Future<void> deleteUser() async {
     deleteUserData();
-    auth.currentUser.delete();
+    _auth.currentUser.delete();
   }
 }

@@ -14,21 +14,21 @@ class ImageViewerScreen extends StatefulWidget {
 }
 
 class _ImageViewerScreenState extends State<ImageViewerScreen> {
-  imageViewerScreenSmall() {
+  _imageViewerScreenSmall() {
     return Adaptive(
-        iOS: imageViewerScreenMobileSmall(false),
-        android: imageViewerScreenMobileSmall(true),
-        web: imageViewerScreenWebSmall());
+        iOS: _imageViewerScreenMobileSmall(false),
+        android: _imageViewerScreenMobileSmall(true),
+        web: _imageViewerScreenWebSmall());
   }
 
-  imageViewerScreenLarge() {
+  _imageViewerScreenLarge() {
     return Adaptive(
-        iOS: imageViewerScreenMobileLarge(false),
-        android: imageViewerScreenMobileLarge(true),
-        web: imageViewerScreenWebLarge());
+        iOS: _imageViewerScreenMobileLarge(false),
+        android: _imageViewerScreenMobileLarge(true),
+        web: _imageViewerScreenWebLarge());
   }
 
-  imageViewerScreenWebSmall() {
+  _imageViewerScreenWebSmall() {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -40,7 +40,7 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
     );
   }
 
-  imageViewerScreenWebLarge() {
+  _imageViewerScreenWebLarge() {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -52,7 +52,7 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
     );
   }
 
-  imageViewerScreenMobileSmall(bool isAndroid) {
+  _imageViewerScreenMobileSmall(bool isAndroid) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -64,7 +64,7 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
     );
   }
 
-  imageViewerScreenMobileLarge(bool isAndroid) {
+  _imageViewerScreenMobileLarge(bool isAndroid) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -81,8 +81,8 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
     return Material(
       child: Scaffold(
         body: Responsive(
-          small: imageViewerScreenSmall(),
-          large: imageViewerScreenLarge(),
+          small: _imageViewerScreenSmall(),
+          large: _imageViewerScreenLarge(),
         ),
       ),
     );

@@ -94,9 +94,9 @@ Widget authMobileCardPick(BuildContext context, State state, bool isSmall) {
     case AuthControls.welcome:
       return authMobileCardWelcome(context, state);
     case AuthControls.signIn:
-      return authMobileCardInput(context, state, false, true);
+      return authMobileCardInput(context, state, false);
     case AuthControls.signUp:
-      return authMobileCardInput(context, state, false, false);
+      return authMobileCardInput(context, state, false);
     default:
       return Container();
   }
@@ -119,8 +119,7 @@ Widget authMobileCardWelcome(BuildContext context, State state) {
   );
 }
 
-Widget authMobileCardInput(
-    BuildContext context, State state, bool isSmall, bool isSignIn) {
+Widget authMobileCardInput(BuildContext context, State state, bool isSmall) {
   return Stack(
     alignment: Alignment.topCenter,
     children: [
@@ -130,9 +129,9 @@ Widget authMobileCardInput(
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
-              child: authMobileUserInput(context, isSignIn),
+              child: authMobileUserInput(context),
             ),
-            isSignIn
+            _authControls == AuthControls.signIn
                 ? Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: authMobileForgotPassword(context),
@@ -186,13 +185,13 @@ Widget authMobileCardText(BuildContext context) {
 
 String _userName = "", _userEmail = "", _userPass = "", _userPassVerify = "";
 GlobalKey<FormState> _authMobileFormKey = GlobalKey<FormState>();
-Widget authMobileUserInput(BuildContext context, bool isSignIn) {
+Widget authMobileUserInput(BuildContext context) {
   return Form(
     key: _authMobileFormKey,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        isSignIn
+        _authControls == AuthControls.signIn
             ? Container()
             : authMobileUserInputField(
                 context, (name) => {_userName = name}, "authFormName", false),
@@ -200,7 +199,7 @@ Widget authMobileUserInput(BuildContext context, bool isSignIn) {
             context, (email) => {_userEmail = email}, "authFormEmail", false),
         authMobileUserInputField(
             context, (pass) => {_userPass = pass}, "authFormPass", true),
-        isSignIn
+        _authControls == AuthControls.signIn
             ? Container()
             : authMobileUserInputField(
                 context,
@@ -395,13 +394,10 @@ Widget authMobileGetStarted(BuildContext context, State state) {
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            if (isWelcome) {
-              state.setState(() {
-                isWelcome = false;
-                isSignIn = false;
-              });
+            if (_authControls == AuthControls.welcome) {
+              _authControls = AuthControls.signUp;
             } else {
-              authValidateSubmit(context, state);
+              _authValidateSubmit(context, state);
             }
           },
           child: Container(
@@ -409,9 +405,11 @@ Widget authMobileGetStarted(BuildContext context, State state) {
               child: Text(
                 getTranslated(
                     context,
-                    isWelcome
+                    _authControls == AuthControls.welcome
                         ? "authGetStarted"
-                        : (isSignIn ? "authSignIn" : "authSignUp")),
+                        : (_authControls == AuthControls.signIn
+                            ? "authSignIn"
+                            : "authSignUp")),
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.authMobileGetStartedText,
                   fontSize:
@@ -431,12 +429,11 @@ Widget authMobileGetStarted(BuildContext context, State state) {
 Widget authMobileSwitch(BuildContext context, State state) {
   return GestureDetector(
     onTap: () {
-      if (isWelcome) {
-        isWelcome = false;
-        isSignIn = true;
+      if (_authControls == AuthControls.welcome) {
+        _authControls = AuthControls.signIn;
         state.setState(() {});
       } else {
-        isSignIn = !isSignIn;
+        _authControls = AuthControls.signUp;
         state.setState(() {});
       }
     },
@@ -444,9 +441,9 @@ Widget authMobileSwitch(BuildContext context, State state) {
       text: TextSpan(
         text: getTranslated(
             context,
-            isWelcome
+            _authControls == AuthControls.welcome
                 ? "authSwitchSignInPrimary"
-                : (isSignIn
+                : (_authControls == AuthControls.signIn
                     ? "authSwitchSignUpPrimary"
                     : "authSwitchSignInPrimary")),
         style: TextStyle(
@@ -458,9 +455,9 @@ Widget authMobileSwitch(BuildContext context, State state) {
           TextSpan(
             text: getTranslated(
                 context,
-                isWelcome
+                _authControls == AuthControls.welcome
                     ? "authSwitchSignInSecondary"
-                    : (isSignIn
+                    : (_authControls == AuthControls.signIn
                         ? "authSwitchSignUpSecondary"
                         : "authSwitchSignInSecondary")),
             style: TextStyle(
@@ -476,9 +473,9 @@ Widget authMobileSwitch(BuildContext context, State state) {
   );
 }
 
-void authValidateSubmit(BuildContext context, State state) async {
+void _authValidateSubmit(BuildContext context, State state) async {
   _authMobileFormKey.currentState.save();
-  if (isSignIn)
+  if (_authControls == AuthControls.signIn)
     _firebaseAccounts
         .signInEmailAndPassword(context, _userEmail, _userPass)
         .then((value) {
@@ -491,7 +488,6 @@ void authValidateSubmit(BuildContext context, State state) async {
             _firebaseAccounts.signOut();
           } else {
             context.router.replaceAll([HomeScreen()]);
-            isWelcome = true;
           }
           _authMobileFormKey.currentState.reset();
         });
@@ -506,7 +502,6 @@ void authValidateSubmit(BuildContext context, State state) async {
         context.router.push(VerifyScreen(email: _userEmail));
         _firebaseAccounts.signOut();
         _authMobileFormKey.currentState.reset();
-        isWelcome = true;
       }
     });
   _firebaseAccounts.setCurrentUserProfilePicURL(state);

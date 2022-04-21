@@ -56,9 +56,9 @@ Widget authWebCardPick(BuildContext context, State state, bool isSmall) {
     case AuthControls.welcome:
       return Container();
     case AuthControls.signIn:
-      return authWebCard(context, state, isSmall, true);
+      return authWebCard(context, state, isSmall);
     case AuthControls.signUp:
-      return authWebCard(context, state, isSmall, false);
+      return authWebCard(context, state, isSmall);
     case AuthControls.forgotPassword:
       return forgotPasswordWebCard(context, state);
     case AuthControls.verify:
@@ -68,8 +68,7 @@ Widget authWebCardPick(BuildContext context, State state, bool isSmall) {
   }
 }
 
-Widget authWebCard(
-    BuildContext context, State state, bool isSmall, bool isSignIn) {
+Widget authWebCard(BuildContext context, State state, bool isSmall) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -78,10 +77,10 @@ Widget authWebCard(
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 25.0),
-            child: authWebTitle(context, isSignIn),
+            child: authWebTitle(context),
           ),
-          authWebUserInput(context, state, isSmall, isSignIn),
-          isSignIn
+          authWebUserInput(context, state, isSmall),
+          _authControls == AuthControls.signIn
               ? Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: authWebForgotPassword(context, state, isSmall),
@@ -92,23 +91,27 @@ Widget authWebCard(
                 ),
           Padding(
             padding: const EdgeInsets.only(top: 7.0),
-            child: authWebGetStarted(context, state, isSmall, isSignIn),
+            child: authWebGetStarted(context, state, isSmall),
           ),
         ],
       ),
       Positioned(
         bottom: getPosition(context, true,
             Theme.of(context).materialTapTargetSize.authWebSwitchBottom),
-        child: authWebSwitch(context, state, isSignIn),
+        child: authWebSwitch(context, state),
       ),
     ],
   );
 }
 
-Widget authWebTitle(BuildContext context, bool isSignIn) {
+Widget authWebTitle(BuildContext context) {
   return Center(
     child: AdaptiveText(
-      getTranslated(context, isSignIn ? "authTitleSignIn" : "authTitleSignUp"),
+      getTranslated(
+          context,
+          _authControls == AuthControls.signIn
+              ? "authTitleSignIn"
+              : "authTitleSignUp"),
       style: TextStyle(
         color: Theme.of(context).colorScheme.authWebTitle,
         fontSize: Theme.of(context).textTheme.authWebTitle,
@@ -120,40 +123,28 @@ Widget authWebTitle(BuildContext context, bool isSignIn) {
 
 String _userName = "", _userEmail = "", _userPass = "", _userPassVerify = "";
 GlobalKey<FormState> _authWebFormKey = GlobalKey<FormState>();
-Widget authWebUserInput(
-    BuildContext context, State state, bool isSmall, bool isSignIn) {
+Widget authWebUserInput(BuildContext context, State state, bool isSmall) {
   return Form(
       key: _authWebFormKey,
       child: Center(
         child: Column(
           children: [
-            isSignIn
+            _authControls == AuthControls.signIn
                 ? Container()
-                : authWebUserInputField(
-                    context,
-                    state,
-                    (name) => {_userName = name},
-                    "authFormName",
-                    false,
-                    isSignIn),
-            authWebUserInputField(
-                context,
-                state,
-                (email) => {_userEmail = email},
-                "authFormEmail",
-                false,
-                isSignIn),
+                : authWebUserInputField(context, state,
+                    (name) => {_userName = name}, "authFormName", false),
+            authWebUserInputField(context, state,
+                (email) => {_userEmail = email}, "authFormEmail", false),
             authWebUserInputField(context, state, (pass) => {_userPass = pass},
-                "authFormPass", true, isSignIn),
-            isSignIn
+                "authFormPass", true),
+            _authControls == AuthControls.signIn
                 ? Container()
                 : authWebUserInputField(
                     context,
                     state,
                     (passVerify) => {_userPassVerify = passVerify},
                     "authFormPassVerify",
-                    true,
-                    isSignIn),
+                    true),
           ],
         ),
       ));
@@ -161,7 +152,7 @@ Widget authWebUserInput(
 
 bool _isVisible = false;
 Widget authWebUserInputField(BuildContext context, State state,
-    Function onSaved, String authForm, bool isVariable, bool isSignIn) {
+    Function onSaved, String authForm, bool isVariable) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
@@ -179,7 +170,7 @@ Widget authWebUserInputField(BuildContext context, State state,
         obscureText: isVariable ? !_isVisible : false,
         onSaved: onSaved,
         onFieldSubmitted: (value) {
-          authWebValidateSubmit(context, state, isSignIn);
+          _authWebValidateSubmit(context, state);
         },
         autofocus: false,
         style: TextStyle(
@@ -319,8 +310,7 @@ Widget authWebPolicyAndTaC(BuildContext context) {
   );
 }
 
-Widget authWebGetStarted(
-    BuildContext context, State state, bool isSmall, bool isSignIn) {
+Widget authWebGetStarted(BuildContext context, State state, bool isSmall) {
   return Center(
     child: Container(
       constraints: Theme.of(context).bottomAppBarTheme.authWebGetStarted,
@@ -338,12 +328,16 @@ Widget authWebGetStarted(
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            authWebValidateSubmit(context, state, isSignIn);
+            _authWebValidateSubmit(context, state);
           },
           child: Container(
             child: Center(
               child: Text(
-                getTranslated(context, isSignIn ? "authSignIn" : "authSignUp"),
+                getTranslated(
+                    context,
+                    _authControls == AuthControls.signUp
+                        ? "authSignIn"
+                        : "authSignUp"),
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.authWebGetStartedText,
                   fontSize: Theme.of(context).textTheme.authWebGetStartedText,
@@ -359,18 +353,21 @@ Widget authWebGetStarted(
   );
 }
 
-Widget authWebSwitch(BuildContext context, State state, bool isSignIn) {
+Widget authWebSwitch(BuildContext context, State state) {
   return GestureDetector(
     onTap: () {
-      isSignIn
+      _authControls == AuthControls.signIn
           ? _authControls = AuthControls.signUp
           : _authControls = AuthControls.signIn;
       state.setState(() {});
     },
     child: RichText(
       text: TextSpan(
-        text: getTranslated(context,
-            isSignIn ? "authSwitchSignUpPrimary" : "authSwitchSignInPrimary"),
+        text: getTranslated(
+            context,
+            _authControls == AuthControls.signIn
+                ? "authSwitchSignUpPrimary"
+                : "authSwitchSignInPrimary"),
         style: TextStyle(
           color: Theme.of(context).colorScheme.authWebSwitchPrimary,
           fontSize: Theme.of(context).textTheme.authWebSwitchPrimary,
@@ -380,7 +377,7 @@ Widget authWebSwitch(BuildContext context, State state, bool isSignIn) {
           TextSpan(
             text: getTranslated(
                 context,
-                isSignIn
+                _authControls == AuthControls.signIn
                     ? "authSwitchSignUpSecondary"
                     : "authSwitchSignInSecondary"),
             style: TextStyle(
@@ -395,10 +392,9 @@ Widget authWebSwitch(BuildContext context, State state, bool isSignIn) {
   );
 }
 
-void authWebValidateSubmit(
-    BuildContext context, State state, bool isSignIn) async {
+void _authWebValidateSubmit(BuildContext context, State state) async {
   _authWebFormKey.currentState.save();
-  if (isSignIn)
+  if (_authControls == AuthControls.signIn)
     _firebaseAccounts
         .signInEmailAndPassword(context, _userEmail, _userPass)
         .then((value) {

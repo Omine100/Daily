@@ -19,53 +19,19 @@ _searchLarge(BuildContext context) {
 }
 
 _searchWebSmall(BuildContext context) {
-  return Stack(
-    alignment: Alignment.center,
-    children: [
-      Positioned(
-        left: 340,
-        top: 37,
-        child: Container(),
-      ),
-    ],
-  );
+  return Container();
 }
 
 _searchWebLarge(BuildContext context) {
-  return Stack(
-    alignment: Alignment.center,
-    children: [
-      Positioned(
-        left: 340,
-        top: 37,
-        child: Container(),
-      ),
-    ],
-  );
+  return Container();
 }
 
 _searchMobileSmall(BuildContext context, bool isAndroid) {
-  return Stack(
-    alignment: Alignment.center,
-    children: [
-      Positioned(
-        top: 45,
-        child: searchSearchBar(context),
-      ),
-    ],
-  );
+  return Container();
 }
 
 _searchMobileLarge(BuildContext context, bool isAndroid) {
-  return Stack(
-    alignment: Alignment.center,
-    children: [
-      Positioned(
-        top: 45,
-        child: searchSearchBar(context),
-      ),
-    ],
-  );
+  return Container();
 }
 
 Widget searchBody(BuildContext context) {

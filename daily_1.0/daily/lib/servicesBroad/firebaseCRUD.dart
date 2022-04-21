@@ -8,19 +8,19 @@ import 'dart:io';
 import 'package:daily/standards/userIStandards.dart';
 
 class FirebaseCRUD {
-  FirebaseAuth auth = FirebaseAuth.instance;
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-  FirebaseStorage storage = FirebaseStorage.instance;
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  FirebaseStorage _storage = FirebaseStorage.instance;
 
   Future<void> createImageData(
       BuildContext context, String fileName, File imageFile) async {
-    var userId = auth.currentUser.uid;
+    var userId = _auth.currentUser.uid;
     try {
-      await storage
+      await _storage
           .ref(fileName)
           .putFile(imageFile, SettableMetadata(contentType: 'image/jpeg'));
-      storage.ref(fileName).getDownloadURL().then((_imageURL) => {
-            firestore
+      _storage.ref(fileName).getDownloadURL().then((_imageURL) => {
+            _firestore
                 .collection(userId)
                 .doc("images")
                 .collection("complete")
@@ -33,8 +33,8 @@ class FirebaseCRUD {
   }
 
   Future<List<DocumentSnapshot>> getImageDocuments() async {
-    var userId = auth.currentUser.uid;
-    final QuerySnapshot querySnapshot = await firestore
+    var userId = _auth.currentUser.uid;
+    final QuerySnapshot querySnapshot = await _firestore
         .collection(userId)
         .doc("images")
         .collection("complete")
@@ -50,20 +50,18 @@ class FirebaseCRUD {
   Future<void> updateImageData(
       BuildContext context, String imageURL, File imageFile) async {
     try {
-      await storage.refFromURL(imageURL).putFile(imageFile);
+      await _storage.refFromURL(imageURL).putFile(imageFile);
     } on FirebaseException {
       showToastMessage(context, "_errorImageFailedToUpload", true);
     }
   }
 
   Future<void> deleteImageData(DocumentSnapshot doc, String imageURL) async {
-    //MECHANICS: Firebase deletion
     Reference reference = FirebaseStorage.instance.refFromURL(imageURL);
     reference.delete();
 
-    //MECHANICS: Firestore deletion
-    var userID = auth.currentUser.uid;
-    await firestore
+    var userID = _auth.currentUser.uid;
+    await _firestore
         .collection(userID)
         .doc("images")
         .collection("complete")

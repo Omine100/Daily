@@ -3,52 +3,52 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 
-SharedPreferences prefs;
-prefsInstance() async {
-  prefs ??= await SharedPreferences.getInstance();
+SharedPreferences _prefs;
+_prefsInstance() async {
+  _prefs ??= await SharedPreferences.getInstance();
 }
 
 void settingsToPrefs(List<Setting> settingsList) async {
-  await prefsInstance();
+  await _prefsInstance();
   settingsList.forEach((setting) {
-    if (setting.value != null) saveToPrefs(setting.key, setting.value);
+    if (setting.value != null) _saveToPrefs(setting.key, setting.value);
   });
 }
 
 Future<void> prefsToSettings() async {
-  await prefsInstance();
-  if (prefs.getKeys().length == 0) {
+  await _prefsInstance();
+  if (_prefs.getKeys().length == 0) {
     settingsList.forEach((setting) {
       if (setting.defaultValue != null)
-        saveToPrefs(setting.key, setting.defaultValue);
+        _saveToPrefs(setting.key, setting.defaultValue);
     });
   }
   try {
-    prefs.getKeys().forEach((key) {
+    _prefs.getKeys().forEach((key) {
       settingsList.where((setting) => setting.key == key).first.value =
-          prefs.get(key);
+          _prefs.get(key);
     });
   } catch (e) {}
 }
 
-saveToPrefs(String key, dynamic value) {
+_saveToPrefs(String key, dynamic value) {
   switch (value.runtimeType) {
     case int:
-      prefs.setInt(key, value);
+      _prefs.setInt(key, value);
       break;
     case double:
-      prefs.setDouble(key, value);
+      _prefs.setDouble(key, value);
       break;
     case bool:
-      prefs.setBool(key, value);
+      _prefs.setBool(key, value);
       break;
     case String:
-      prefs.setString(key, value);
+      _prefs.setString(key, value);
       break;
     case Locale:
-      prefs.setString(key, value.languageCode + "_" + value.countryCode);
+      _prefs.setString(key, value.languageCode + "_" + value.countryCode);
       break;
     default:
-      prefs.setString(key, value.toString());
+      _prefs.setString(key, value.toString());
   }
 }
