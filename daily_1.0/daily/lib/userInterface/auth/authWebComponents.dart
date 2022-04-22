@@ -7,6 +7,7 @@ import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
+import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/themesLocal/colors.dart';
@@ -18,6 +19,7 @@ import 'package:daily/userInterface/forgotPassword/forgotPasswordWebComponents.d
 import 'package:daily/userInterface/verify/verifyWebComponents.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
+RouteNavigation _routeNavigation = new RouteNavigation();
 AuthControls _authControls = AuthControls.signUp;
 
 Widget authWebCenterPiece(BuildContext context) {
@@ -280,7 +282,8 @@ Widget authWebPolicyAndTaC(BuildContext context) {
                   decoration: TextDecoration.underline),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  routeNavigation.routeTextViewer(context, getPolicyFilePath());
+                  _routeNavigation.routeTextViewer(
+                      context, getPolicyFilePath());
                 }),
           TextSpan(
               text: getTranslated(context, "authPolicyAndTaCSeconday") + " ",
@@ -302,7 +305,7 @@ Widget authWebPolicyAndTaC(BuildContext context) {
                         decoration: TextDecoration.underline),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        routeNavigation.routeTextViewer(
+                        _routeNavigation.routeTextViewer(
                             context, getTaCFilePath());
                       })
               ])

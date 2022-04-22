@@ -1,10 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
-import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/servicesLocal/cameraManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/themesLocal/colors.dart';
@@ -18,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
-  FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+  FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
   @override
   void initState() {
@@ -44,6 +44,20 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     }
   }
 
+  _homeScreenNavigationBarSmall() {
+    return Adaptive(
+        iOS: homeMobileNavigationBar(context, this),
+        android: homeMobileNavigationBar(context, this),
+        web: homeMobileNavigationBar(context, this));
+  }
+
+  _homeScreenNavigationBarLarge() {
+    return Adaptive(
+        iOS: homeMobileNavigationBar(context, this),
+        android: homeMobileNavigationBar(context, this),
+        web: homeMobileNavigationBar(context, this));
+  }
+
   _homeScreenSmall() {
     return Adaptive(
         iOS: _homeScreenMobileSmall(false),
@@ -59,24 +73,24 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   }
 
   _homeScreenWebSmall() {
-    return homeBody(context, this);
+    return Container();
   }
 
   _homeScreenWebLarge() {
-    return homeBody(context, this);
+    return Container();
   }
 
   _homeScreenMobileSmall(bool isAndroid) {
-    return homeBody(context, this);
+    return homeMobileBody(context, this);
   }
 
   _homeScreenMobileLarge(bool isAndroid) {
-    return homeBody(context, this);
+    return homeMobileBody(context, this);
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!firebaseAccounts.getSignedInStatus())
+    if (!_firebaseAccounts.getSignedInStatus())
       context.router.replaceAll([AuthScreen()]);
     return Material(
       child: Scaffold(
@@ -89,7 +103,10 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             large: _homeScreenLarge(),
           ),
         ),
-        bottomNavigationBar: homeNavigationBar(context, this),
+        bottomNavigationBar: Responsive(
+          small: _homeScreenNavigationBarSmall(),
+          large: _homeScreenNavigationBarLarge(),
+        ),
       ),
     );
   }

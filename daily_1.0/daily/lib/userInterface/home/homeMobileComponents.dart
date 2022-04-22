@@ -8,31 +8,31 @@ import 'package:daily/userInterface/home/search/homeSearch.dart';
 import 'package:daily/userInterface/home/global/homeGlobal.dart';
 import 'package:daily/userInterface/home/settings/homeSettings.dart';
 
-int pageIndex = 0;
-PageController pageController;
+int _pageIndex = 0;
+PageController _pageController;
 
 void setupPageController() {
-  pageController = PageController(initialPage: pageIndex);
+  _pageController = PageController(initialPage: _pageIndex);
 }
 
 void onResume(State state) {
-  onPageChanged(state, 0);
-  onTabTapped(0);
+  _onPageChanged(state, 0);
+  _onTabTapped(0);
 }
 
-void onPageChanged(State state, int i) {
+void _onPageChanged(State state, int i) {
   state.setState(() {
-    pageIndex = i;
+    _pageIndex = i;
     settingsToPrefs(settingsList);
   });
 }
 
-void onTabTapped(int i) {
-  pageController.animateToPage(i,
+void _onTabTapped(int i) {
+  _pageController.animateToPage(i,
       duration: const Duration(milliseconds: 500), curve: Curves.easeOutQuint);
 }
 
-Widget homeBody(BuildContext context, State state) {
+Widget homeMobileBody(BuildContext context, State state) {
   List<Widget> pages = [
     mainBody(context, state),
     searchBody(context),
@@ -43,16 +43,16 @@ Widget homeBody(BuildContext context, State state) {
   return PageView(
     children: pages,
     onPageChanged: (pageIndex) {
-      onPageChanged(state, pageIndex);
+      _onPageChanged(state, pageIndex);
     },
-    controller: pageController,
+    controller: _pageController,
   );
 }
 
-Widget homeNavigationBar(BuildContext context, State state) {
+Widget homeMobileNavigationBar(BuildContext context, State state) {
   return DotNavigationBar(
-    currentIndex: pageIndex,
-    backgroundColor: pageIndex == 3
+    currentIndex: _pageIndex,
+    backgroundColor: _pageIndex == 3
         ? Theme.of(context)
             .colorScheme
             .homeMobileNavigationBarBackgroundSettings
@@ -66,7 +66,7 @@ Widget homeNavigationBar(BuildContext context, State state) {
     enableFloatingNavBar: true,
     curve: Curves.easeOutQuint,
     onTap: (pageIndex) {
-      onTabTapped(pageIndex);
+      _onTabTapped(pageIndex);
     },
     items: [
       DotNavigationBarItem(

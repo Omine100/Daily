@@ -4,7 +4,7 @@ import 'package:daily/servicesLocal/cameraManagement.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/colors.dart';
 
-RouteNavigation routeNavigation = new RouteNavigation();
+RouteNavigation _routeNavigation = new RouteNavigation();
 
 Widget mainCamera(BuildContext context, State state) {
   final size = MediaQuery.of(context).size;
@@ -116,7 +116,7 @@ Widget mainPictureButton(BuildContext context, State state) {
       if (controller.value.isTakingPicture) return null;
       Map<Widget, String> results =
           await imageProcess(context, await takePicture(state));
-      routeNavigation.routeImageViewer(
+      _routeNavigation.routeImageViewer(
           context, results.keys.first, results.values.first);
     },
     child: Stack(

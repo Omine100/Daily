@@ -5,16 +5,16 @@ import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/userInterface/home/settings/homeSettingsMobileComponents.dart';
 
-FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
-RouteNavigation routeNavigation = new RouteNavigation();
+FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
+RouteNavigation _routeNavigation = new RouteNavigation();
 
 Setting resetPassword = new Setting(
     key: "settingResetPassword",
     group: Group.settingGroupAccount,
     format: Format.Click,
     isSignInRequired: true,
-    onClicked: firebaseAccounts.sendPasswordReset,
-    call: firebaseAccounts.getCurrentUserEmail);
+    onClicked: _firebaseAccounts.sendPasswordReset,
+    call: _firebaseAccounts.getCurrentUserEmail);
 Setting locale = new Setting(
     key: "settingLocale",
     group: Group.settingGroupGeneral,
@@ -65,14 +65,14 @@ Setting privacyPolicy = new Setting(
     group: Group.settingGroupLegal,
     format: Format.Click,
     isSignInRequired: false,
-    onClicked: routeNavigation.routeTextViewer,
+    onClicked: _routeNavigation.routeTextViewer,
     call: getPolicyFilePath);
 Setting termsAndConditions = new Setting(
     key: "settingTermsAndConditions",
     group: Group.settingGroupLegal,
     format: Format.Click,
     isSignInRequired: false,
-    onClicked: routeNavigation.routeTextViewer,
+    onClicked: _routeNavigation.routeTextViewer,
     call: getTaCFilePath);
 Setting licenses = new Setting(
     key: "settingLicenses",

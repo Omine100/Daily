@@ -14,7 +14,7 @@ import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
 
-FirebaseAccounts firebaseAccounts = new FirebaseAccounts();
+FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
 Widget settingsTitle(BuildContext context) {
   return Container(
@@ -33,7 +33,7 @@ Widget settingsTitle(BuildContext context) {
 }
 
 Widget settingsProfile(BuildContext context, State state) {
-  return firebaseAccounts.getSignedInStatus()
+  return _firebaseAccounts.getSignedInStatus()
       ? Container(
           width: getDimension(context, false,
               Theme.of(context).visualDensity.settingsProfileWidth),
@@ -45,7 +45,7 @@ Widget settingsProfile(BuildContext context, State state) {
                 child: GestureDetector(
                   onTap: () {
                     showMediaSelection(context, state,
-                        firebaseAccounts.setCurrentUserProfilePicImage);
+                        _firebaseAccounts.setCurrentUserProfilePicImage);
                   },
                   child: Container(
                     height: getDimension(
@@ -96,7 +96,7 @@ Widget settingsProfile(BuildContext context, State state) {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 5.0),
                       child: Text(
-                        firebaseAccounts.getCurrentUserDisplayName() ??
+                        _firebaseAccounts.getCurrentUserDisplayName() ??
                             getTranslated(context, "settingsNullName"),
                         style: TextStyle(
                           color: Theme.of(context)
@@ -110,7 +110,7 @@ Widget settingsProfile(BuildContext context, State state) {
                       ),
                     ),
                     Text(
-                      firebaseAccounts.getCurrentUserEmail() ??
+                      _firebaseAccounts.getCurrentUserEmail() ??
                           getTranslated(context, "settingsNullEmail"),
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
@@ -140,7 +140,7 @@ Container settingsCard(BuildContext context, State state) {
     width: getDimension(
         context, false, Theme.of(context).visualDensity.settingsCardWidth),
     child: DraggableScrollableSheet(
-        initialChildSize: firebaseAccounts.getSignedInStatus()
+        initialChildSize: _firebaseAccounts.getSignedInStatus()
             ? Theme.of(context).visualDensity.settingsSheetMinSize
             : Theme.of(context).visualDensity.settingsSheetSize,
         minChildSize: Theme.of(context).visualDensity.settingsSheetMinSize,
@@ -179,7 +179,7 @@ Column settingsBreakdown(BuildContext context, State state) {
 
   settingsList.forEach((setting) {
     if (setting.group == Group.settingGroupHidden) return;
-    if (setting.isSignInRequired && !firebaseAccounts.getSignedInStatus())
+    if (setting.isSignInRequired && !_firebaseAccounts.getSignedInStatus())
       return;
     if (settings[setting.group] == null) {
       settings[setting.group] = new Column(children: []);
@@ -196,7 +196,7 @@ Column settingsBreakdown(BuildContext context, State state) {
       child: element.value,
     ));
   });
-  if (firebaseAccounts.getSignedInStatus() == true)
+  if (_firebaseAccounts.getSignedInStatus() == true)
     column.children.add(settingsSignOut(context));
   return column;
 }
@@ -386,7 +386,7 @@ void showAboutBox(BuildContext context) {
 Widget settingsSignOut(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      firebaseAccounts.signOut();
+      _firebaseAccounts.signOut();
       context.router.replaceAll([AuthScreen()]);
     },
     child: Text(
