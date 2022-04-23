@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
+import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/constraints.dart';
@@ -79,8 +82,16 @@ Widget verifyWebLogin(
         customBorder:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         onTap: () {
-          _firebaseAccounts.signInEmailAndPassword(
-              context, userEmail, userPass);
+          _firebaseAccounts.getEmailVerified().then((isVerified) {
+          if (!isVerified) {
+            showToastMessage(context, "_errorEmailNotVerified", true);
+            _firebaseAccounts.sendEmailVerification(context);
+            state.setState(() {});
+            _firebaseAccounts.signOut();
+          } else {
+            context.router.replaceAll([HomeScreen()]);
+          }
+          )
         },
         child: Center(
           child: Text(

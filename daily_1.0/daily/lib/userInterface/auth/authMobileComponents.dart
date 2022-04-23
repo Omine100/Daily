@@ -223,6 +223,7 @@ Widget authMobileUserInputField(
           Theme.of(context).visualDensity.authMobileUserInputFieldWidth),
       alignment: Alignment.center,
       child: TextFormField(
+        textAlignVertical: TextAlignVertical.center,
         obscureText: isVariable ? !_isVisible : false,
         onSaved: onSaved,
         autofocus: false,

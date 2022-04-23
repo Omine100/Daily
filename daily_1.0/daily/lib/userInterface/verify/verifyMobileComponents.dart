@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
@@ -57,6 +59,7 @@ Widget verifyMobileLogin(
         onTap: () {
           _firebaseAccounts.signInEmailAndPassword(
               context, userEmail, userPass);
+          context.router.replaceAll([HomeScreen()]);
         },
         child: Center(
           child: Text(

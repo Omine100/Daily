@@ -62,6 +62,7 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
             .forgotPasswordMobileUserInputFieldWidth),
     alignment: Alignment.center,
     child: TextFormField(
+      textAlignVertical: TextAlignVertical.center,
       key: _forgotPasswordMobileFormKey,
       obscureText: false,
       onSaved: (email) => _userEmail = email,

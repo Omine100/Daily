@@ -92,6 +92,7 @@ Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
         color: Theme.of(context).colorScheme.forgotPasswordWebUserInputField,
       ),
       child: TextFormField(
+        textAlignVertical: TextAlignVertical.center,
         key: _forgotPasswordWebFormKey,
         obscureText: false,
         onSaved: (email) => _userEmail = email,

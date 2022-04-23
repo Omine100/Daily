@@ -169,6 +169,7 @@ Widget authWebUserInputField(BuildContext context, State state,
         color: Theme.of(context).colorScheme.authWebUserInputField,
       ),
       child: TextFormField(
+        textAlignVertical: TextAlignVertical.center,
         obscureText: isVariable ? !_isVisible : false,
         onSaved: onSaved,
         onFieldSubmitted: (value) {
@@ -338,7 +339,7 @@ Widget authWebGetStarted(BuildContext context, State state, bool isSmall) {
               child: Text(
                 getTranslated(
                     context,
-                    _authControls == AuthControls.signUp
+                    _authControls == AuthControls.signIn
                         ? "authSignIn"
                         : "authSignUp"),
                 style: TextStyle(
