@@ -402,34 +402,30 @@ void _authWebValidateSubmit(BuildContext context, State state) async {
     _firebaseAccounts
         .signInEmailAndPassword(context, _userEmail, _userPass)
         .then((value) {
-      if (value) {
-        _firebaseAccounts.getEmailVerified().then((isVerified) {
-          if (!isVerified) {
-            showToastMessage(context, "_errorEmailNotVerified", true);
-            _firebaseAccounts.sendEmailVerification(context);
-            _authControls = AuthControls.verify;
-            state.setState(() {});
-            _firebaseAccounts.signOut();
-          } else {
-            context.router.replaceAll([HomeScreen()]);
-          }
-          _authWebFormKey.currentState.reset();
-        });
-      }
+      _authVerifiedHandling(context, state, value);
     });
   else
     _firebaseAccounts
         .signUpEmailAndPassword(
             context, _userEmail, _userPass, _userPassVerify, _userName)
         .then((value) {
-      if (value) {
-        _authControls = AuthControls.verify;
-        state.setState(() {});
-        _firebaseAccounts.signOut();
-        _authWebFormKey.currentState.reset();
-      }
+      _authVerifiedHandling(context, state, value);
     });
   _firebaseAccounts.setCurrentUserProfilePicURL(state);
+}
+
+void _authVerifiedHandling(BuildContext context, State state, bool value) {
+  if (value) {
+    if (!_firebaseAccounts.getEmailVerified(context)) {
+      showToastMessage(context, "_errorEmailNotVerified", true);
+      _authControls = AuthControls.verify;
+      state.setState(() {});
+      _firebaseAccounts.signOut();
+    } else {
+      context.router.replaceAll([HomeScreen()]);
+    }
+    _authWebFormKey.currentState.reset();
+  }
 }
 
 void authWebForgotPasswordSwitchBack(BuildContext context, State state) {

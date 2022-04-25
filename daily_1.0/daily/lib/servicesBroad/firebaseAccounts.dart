@@ -60,7 +60,8 @@ class FirebaseAccounts {
         showToastMessage(context, "_errorVerificationSentFailed", true));
   }
 
-  Future<bool> getEmailVerified() async {
+  bool getEmailVerified(BuildContext context) {
+    if (!_auth.currentUser.emailVerified) sendEmailVerification(context);
     return _auth.currentUser.emailVerified;
   }
 
@@ -107,7 +108,6 @@ class FirebaseAccounts {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       await setCurrentUserDisplayName(name);
-      sendEmailVerification(context);
       return true;
     } on FirebaseAuthException catch (e) {
       String key;

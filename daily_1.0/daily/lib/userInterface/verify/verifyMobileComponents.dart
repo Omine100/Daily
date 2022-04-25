@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
+import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
@@ -57,9 +58,16 @@ Widget verifyMobileLogin(
         customBorder:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         onTap: () {
-          _firebaseAccounts.signInEmailAndPassword(
-              context, userEmail, userPass);
-          context.router.replaceAll([HomeScreen()]);
+          _firebaseAccounts
+              .signInEmailAndPassword(context, userEmail, userPass)
+              .then((value) {
+            if (!_firebaseAccounts.getEmailVerified(context)) {
+              showToastMessage(context, "_errorEmailNotVerified", true);
+              _firebaseAccounts.signOut();
+            } else {
+              context.router.replaceAll([HomeScreen()]);
+            }
+          });
         },
         child: Center(
           child: Text(

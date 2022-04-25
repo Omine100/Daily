@@ -82,16 +82,16 @@ Widget verifyWebLogin(
         customBorder:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         onTap: () {
-          _firebaseAccounts.getEmailVerified().then((isVerified) {
-          if (!isVerified) {
-            showToastMessage(context, "_errorEmailNotVerified", true);
-            _firebaseAccounts.sendEmailVerification(context);
-            state.setState(() {});
-            _firebaseAccounts.signOut();
-          } else {
-            context.router.replaceAll([HomeScreen()]);
-          }
-          )
+          _firebaseAccounts
+              .signInEmailAndPassword(context, userEmail, userPass)
+              .then((value) {
+            if (!_firebaseAccounts.getEmailVerified(context)) {
+              showToastMessage(context, "_errorEmailNotVerified", true);
+              _firebaseAccounts.signOut();
+            } else {
+              context.router.replaceAll([HomeScreen()]);
+            }
+          });
         },
         child: Center(
           child: Text(

@@ -481,30 +481,27 @@ void _authValidateSubmit(BuildContext context, State state) async {
     _firebaseAccounts
         .signInEmailAndPassword(context, _userEmail, _userPass)
         .then((value) {
-      if (value) {
-        _firebaseAccounts.getEmailVerified().then((isVerified) {
-          if (!isVerified) {
-            showToastMessage(context, "errorEmailNotVerified", true);
-            _firebaseAccounts.sendEmailVerification(context);
-            context.router.push(VerifyScreen(email: _userEmail));
-            _firebaseAccounts.signOut();
-          } else {
-            context.router.replaceAll([HomeScreen()]);
-          }
-          _authMobileFormKey.currentState.reset();
-        });
-      }
+      _authVerifiedHandling(context, value);
     });
   else
     _firebaseAccounts
         .signUpEmailAndPassword(
             context, _userEmail, _userPass, _userPassVerify, _userName)
         .then((value) {
-      if (value) {
-        context.router.push(VerifyScreen(email: _userEmail));
-        _firebaseAccounts.signOut();
-        _authMobileFormKey.currentState.reset();
-      }
+      _authVerifiedHandling(context, value);
     });
   _firebaseAccounts.setCurrentUserProfilePicURL(state);
+}
+
+void _authVerifiedHandling(BuildContext context, bool value) {
+  if (value) {
+    if (!_firebaseAccounts.getEmailVerified(context)) {
+      showToastMessage(context, "_errorEmailNotVerified", true);
+      context.router.push(VerifyScreen(email: _userEmail));
+      _firebaseAccounts.signOut();
+    } else {
+      context.router.replaceAll([HomeScreen()]);
+    }
+    _authMobileFormKey.currentState.reset();
+  }
 }
