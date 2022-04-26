@@ -75,11 +75,9 @@ class _VerifyScreenState extends State<VerifyScreen> {
       child: Material(
         child: Scaffold(
           backgroundColor: Theme.of(context).colorScheme.verifyBackground,
-          body: SingleChildScrollView(
-            child: Responsive(
-              small: _verifyScreenSmall(),
-              large: _verifyScreenLarge(),
-            ),
+          body: Responsive(
+            small: _verifyScreenSmall(),
+            large: _verifyScreenLarge(),
           ),
         ),
       ),

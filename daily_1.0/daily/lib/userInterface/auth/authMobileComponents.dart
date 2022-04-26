@@ -398,6 +398,7 @@ Widget authMobileGetStarted(BuildContext context, State state) {
           onTap: () {
             if (_authControls == AuthControls.welcome) {
               _authControls = AuthControls.signUp;
+              state.setState(() {});
             } else {
               _authValidateSubmit(context, state);
             }
@@ -497,7 +498,7 @@ void _authVerifiedHandling(BuildContext context, bool value) {
   if (value) {
     if (!_firebaseAccounts.getEmailVerified(context)) {
       showToastMessage(context, "_errorEmailNotVerified", true);
-      context.router.push(VerifyScreen(email: _userEmail));
+      context.router.push(VerifyScreen(email: _userEmail, pass: _userPass));
       _firebaseAccounts.signOut();
     } else {
       context.router.replaceAll([HomeScreen()]);

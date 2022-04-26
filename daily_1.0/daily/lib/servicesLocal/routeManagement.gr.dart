@@ -35,7 +35,8 @@ class AppRouter extends _i8.RootStackRouter {
       final args = routeData.argsAs<VerifyScreenArgs>(
           orElse: () => const VerifyScreenArgs());
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i2.VerifyScreen(email: args.email));
+          routeData: routeData,
+          child: _i2.VerifyScreen(email: args.email, pass: args.pass));
     },
     ForgotPasswordScreen.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
@@ -94,21 +95,23 @@ class AuthScreen extends _i8.PageRouteInfo<void> {
 /// generated route for
 /// [_i2.VerifyScreen]
 class VerifyScreen extends _i8.PageRouteInfo<VerifyScreenArgs> {
-  VerifyScreen({String email})
+  VerifyScreen({String email, String pass})
       : super(VerifyScreen.name,
-            path: 'verify', args: VerifyScreenArgs(email: email));
+            path: 'verify', args: VerifyScreenArgs(email: email, pass: pass));
 
   static const String name = 'VerifyScreen';
 }
 
 class VerifyScreenArgs {
-  const VerifyScreenArgs({this.email});
+  const VerifyScreenArgs({this.email, this.pass});
 
   final String email;
 
+  final String pass;
+
   @override
   String toString() {
-    return 'VerifyScreenArgs{email: $email}';
+    return 'VerifyScreenArgs{email: $email, pass: $pass}';
   }
 }
 

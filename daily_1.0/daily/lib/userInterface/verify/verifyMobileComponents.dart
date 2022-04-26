@@ -13,31 +13,35 @@ import 'package:daily/userInterface/auth/authMobileComponents.dart';
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
 Widget verifyMobileTitle(BuildContext context) {
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.start,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      Text(
-        getTranslated(context, "verifyTitle"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.verifyMobileTitle,
-          fontSize: Theme.of(context).textTheme.verifyMobileTitle,
-          fontWeight: Theme.of(context).typography.verifyMobileTitle,
+  return Container(
+    width: getDimension(
+        context, false, Theme.of(context).visualDensity.verifyMobileTitleWidth),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          getTranslated(context, "verifyTitle"),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.verifyMobileTitle,
+            fontSize: Theme.of(context).textTheme.verifyMobileTitle,
+            fontWeight: Theme.of(context).typography.verifyMobileTitle,
+          ),
         ),
-      ),
-      Padding(
-        padding: EdgeInsets.all(10),
-      ),
-      Text(
-        getTranslated(context, "verifySubtitle"),
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.verifyMobileSubtitle,
-          fontSize: Theme.of(context).textTheme.verifyMobileSubtitle,
-          fontWeight: Theme.of(context).typography.verifyMobileSubtitle,
+        Padding(
+          padding: EdgeInsets.all(10),
         ),
-      ),
-    ],
+        Text(
+          getTranslated(context, "verifySubtitle"),
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.verifyMobileSubtitle,
+            fontSize: Theme.of(context).textTheme.verifyMobileSubtitle,
+            fontWeight: Theme.of(context).typography.verifyMobileSubtitle,
+          ),
+        ),
+      ],
+    ),
   );
 }
 
