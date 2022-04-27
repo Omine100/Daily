@@ -24,7 +24,10 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    setupPageController();
+    if (kIsWeb)
+      setupWebPageController();
+    else
+      setupMobilePageController();
     setupCamera(this);
   }
 
@@ -39,7 +42,10 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     if (state == AppLifecycleState.inactive) {
       controllerDispose();
     } else if (state == AppLifecycleState.resumed) {
-      onResume(this);
+      if (kIsWeb)
+        onWebResume(this);
+      else
+        onMobileResume(this);
       setupCamera(this);
     }
   }
@@ -92,6 +98,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     if (!_firebaseAccounts.getSignedInStatus())
       context.router.replaceAll([AuthScreen()]);
+    //Why don't we move material into the actual component itself?
     return Material(
       child: Scaffold(
         extendBody: true,

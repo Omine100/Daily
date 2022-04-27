@@ -11,11 +11,11 @@ import 'package:daily/userInterface/home/settings/homeSettings.dart';
 int _pageIndex = 0;
 PageController _pageController;
 
-void setupPageController() {
+void setupMobilePageController() {
   _pageController = PageController(initialPage: _pageIndex);
 }
 
-void onResume(State state) {
+void onMobileResume(State state) {
   _onPageChanged(state, 0);
   _onTabTapped(0);
 }
