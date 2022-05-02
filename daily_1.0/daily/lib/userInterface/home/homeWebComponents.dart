@@ -49,6 +49,48 @@ Widget homeWebBody(BuildContext context, State state) {
   );
 }
 
+Widget homeWebAppBar(BuildContext context, State state) {
+  return AppBar(
+    title: Text("Daily"),
+    backgroundColor: Theme.of(context).colorScheme.homeWebAppBarBackground,
+  );
+}
+
+Widget homeWebDrawer(BuildContext context, State state) {
+  return Drawer(
+    child: ListView(
+      // Important: Remove any padding from the ListView.
+      padding: EdgeInsets.zero,
+      children: [
+        const DrawerHeader(
+          decoration: BoxDecoration(
+            color: Colors.blue,
+          ),
+          child: Text('Drawer Header'),
+        ),
+        ListTile(
+          title: const Text('Item 1'),
+          onTap: () {
+            // Update the state of the app
+            // ...
+            // Then close the drawer
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          title: const Text('Item 2'),
+          onTap: () {
+            // Update the state of the app
+            // ...
+            // Then close the drawer
+            Navigator.pop(context);
+          },
+        ),
+      ],
+    ),
+  );
+}
+
 Widget homeWebNavigationBar(BuildContext context, State state) {
   return DotNavigationBar(
     currentIndex: _pageIndex,

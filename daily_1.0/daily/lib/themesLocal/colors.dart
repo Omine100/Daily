@@ -140,6 +140,20 @@ extension CustomWebColorScheme on ColorScheme {
   Color get verifyWebSwitchBack =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   // #endregion
+
+  // #region home
+  Color get homeWebAppBarBackground =>
+      Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
+  Color get homeWebAppBarBackgroundSettings =>
+      Color(isDark.value ? 0xFF222222 : 0xFFEDEDED);
+  Color get homeWebAppBarDot => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+  Color get homeWebAppBarSelectedIcon =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+  Color get homeWebAppBarUnselectedIcon =>
+      Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
+  Color get homeWebSettingsIcon =>
+      Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
+  // #endregion
 }
 
 //Install extension '#region folding for VS Code'

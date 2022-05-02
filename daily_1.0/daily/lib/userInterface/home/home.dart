@@ -50,20 +50,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     }
   }
 
-  _homeScreenNavigationBarSmall() {
-    return Adaptive(
-        iOS: homeMobileNavigationBar(context, this),
-        android: homeMobileNavigationBar(context, this),
-        web: homeMobileNavigationBar(context, this));
-  }
-
-  _homeScreenNavigationBarLarge() {
-    return Adaptive(
-        iOS: homeMobileNavigationBar(context, this),
-        android: homeMobileNavigationBar(context, this),
-        web: homeMobileNavigationBar(context, this));
-  }
-
   _homeScreenSmall() {
     return Adaptive(
         iOS: _homeScreenMobileSmall(false),
@@ -98,23 +84,21 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     if (!_firebaseAccounts.getSignedInStatus())
       context.router.replaceAll([AuthScreen()]);
-    //Why don't we move material into the actual component itself?
     return Material(
       child: Scaffold(
-        extendBody: true,
-        body: Container(
-          color: Theme.of(context).colorScheme.homeBackground,
-          constraints: Theme.of(context).bottomAppBarTheme.homeConstraints,
-          child: Responsive(
-            small: _homeScreenSmall(),
-            large: _homeScreenLarge(),
+          extendBody: true,
+          appBar: kIsWeb ? homeWebAppBar(context, this) : null,
+          drawer: kIsWeb ? homeWebDrawer(context, this) : null,
+          body: Container(
+            color: Theme.of(context).colorScheme.homeBackground,
+            constraints: Theme.of(context).bottomAppBarTheme.homeConstraints,
+            child: Responsive(
+              small: _homeScreenSmall(),
+              large: _homeScreenLarge(),
+            ),
           ),
-        ),
-        bottomNavigationBar: Responsive(
-          small: _homeScreenNavigationBarSmall(),
-          large: _homeScreenNavigationBarLarge(),
-        ),
-      ),
+          bottomNavigationBar:
+              kIsWeb ? null : homeMobileNavigationBar(context, this)),
     );
   }
 }
