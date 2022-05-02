@@ -65,11 +65,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   }
 
   _homeScreenWebSmall() {
-    return Container();
+    return homeWebBody(context, this);
   }
 
   _homeScreenWebLarge() {
-    return Container();
+    return homeWebBody(context, this);
   }
 
   _homeScreenMobileSmall(bool isAndroid) {
