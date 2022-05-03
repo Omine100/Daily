@@ -62,6 +62,7 @@ Widget homeWebAppBar(BuildContext context, State state) {
   return AppBar(
     title: Text("Daily"),
     backgroundColor: Theme.of(context).colorScheme.homeWebAppBarBackground,
+    shadowColor: Theme.of(context).colorScheme.materialTransparent,
   );
 }
 
@@ -116,7 +117,7 @@ Widget _createHeader({BuildContext context, State state}) {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 25.0, right: 35.0),
+                  padding: const EdgeInsets.only(left: 5.0, right: 5.0),
                   child: GestureDetector(
                     onTap: () {
                       showMediaSelection(context, state,
