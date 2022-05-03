@@ -75,17 +75,17 @@ Widget homeWebDrawer(BuildContext context, State state) {
             context: context,
             icon: Icons.home_outlined,
             text: 'Home',
-            onTap: () => Navigator.pushReplacementNamed(context, '/')),
+            onTap: () => {_onTabTapped(0)}),
         _createItem(
             context: context,
             icon: Icons.favorite,
             text: 'Favorites',
-            onTap: () => Navigator.pushReplacementNamed(context, '/')),
+            onTap: () => {_onTabTapped(1)}),
         _createItem(
             context: context,
             icon: Icons.settings,
             text: 'Settings',
-            onTap: () => Navigator.pushReplacementNamed(context, '/')),
+            onTap: () => {_onTabTapped(2)}),
         Expanded(child: Container()),
         Column(
           children: <Widget>[
@@ -93,12 +93,12 @@ Widget homeWebDrawer(BuildContext context, State state) {
                 context: context,
                 icon: Icons.help,
                 text: 'Help',
-                onTap: () => Navigator.pushReplacementNamed(context, '/')),
+                onTap: () => {_onTabTapped(0)}),
             _createItem(
                 context: context,
                 icon: Icons.exit_to_app,
                 text: 'Logout',
-                onTap: () => Navigator.pushReplacementNamed(context, '/'))
+                onTap: () => {_firebaseAccounts.signOut()})
           ],
         ),
       ],
