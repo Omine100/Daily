@@ -151,6 +151,9 @@ extension CustomWebColorScheme on ColorScheme {
       Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get homeWebAppBarUnselectedIcon =>
       Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
+  Color get homeWebDrawerBackground =>
+      Color(isDark.value ? 0xFF232323 : 0xFFFBFAF5);
+  Color get homeWebDrawerItem => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get homeWebSettingsIcon =>
       Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
   // #endregion

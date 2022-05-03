@@ -35,6 +35,7 @@ dependencies:
   page_transition: ^1.1.7+3
   font_awesome_flutter: ^9.1.0
   carousel_slider: ^4.0.0
+  flutter_cube: ^0.1.1
 
 dev_dependencies:
   flutter_test:
@@ -59,6 +60,7 @@ flutter:
       - lib/assets/auth/web/auth_centerPiece_light.jpg
       - lib/assets/auth/mobile/auth_centerPiece_dark.jpg
       - lib/assets/auth/mobile/auth_centerPiece_light.jpg
+      - lib/assets/earth/
       - lib/localizations/zh.json
       - lib/localizations/de.json
       - lib/localizations/en.json

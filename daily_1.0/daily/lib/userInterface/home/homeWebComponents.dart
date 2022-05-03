@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
-import 'package:daily/servicesLocal/settingsManagement.dart';
+import 'package:daily/servicesBroad/firebaseAccounts.dart';
+import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
+import 'package:daily/servicesLocal/settingsManagement.dart';
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
+import 'package:daily/standards/userIStandards.dart';
+import 'package:daily/standards/userXStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/themesLocal/dimensions.dart';
+import 'package:daily/themesLocal/fontSizes.dart';
+import 'package:daily/themesLocal/fontWeights.dart';
 import 'package:daily/userInterface/home/main/homeMain.dart';
 import 'package:daily/userInterface/home/search/homeSearch.dart';
 import 'package:daily/userInterface/home/global/homeGlobal.dart';
 import 'package:daily/userInterface/home/settings/homeSettings.dart';
 
+FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 int _pageIndex = 0;
 PageController _pageController;
 
@@ -35,7 +45,6 @@ void _onTabTapped(int i) {
 Widget homeWebBody(BuildContext context, State state) {
   List<Widget> pages = [
     mainBody(context, state),
-    searchBody(context),
     globalBody(context),
     settingsBody(context, state)
   ];
@@ -58,36 +67,171 @@ Widget homeWebAppBar(BuildContext context, State state) {
 
 Widget homeWebDrawer(BuildContext context, State state) {
   return Drawer(
-    child: ListView(
-      // Important: Remove any padding from the ListView.
-      padding: EdgeInsets.zero,
-      children: [
-        const DrawerHeader(
-          decoration: BoxDecoration(
-            color: Colors.blue,
-          ),
-          child: Text('Drawer Header'),
-        ),
-        ListTile(
-          title: const Text('Item 1'),
-          onTap: () {
-            // Update the state of the app
-            // ...
-            // Then close the drawer
-            Navigator.pop(context);
-          },
-        ),
-        ListTile(
-          title: const Text('Item 2'),
-          onTap: () {
-            // Update the state of the app
-            // ...
-            // Then close the drawer
-            Navigator.pop(context);
-          },
+    backgroundColor: Theme.of(context).colorScheme.homeWebAppBarBackground,
+    child: Column(
+      children: <Widget>[
+        _createHeader(context: context, state: state),
+        _createItem(
+            context: context,
+            icon: Icons.home_outlined,
+            text: 'Home',
+            onTap: () => Navigator.pushReplacementNamed(context, '/')),
+        _createItem(
+            context: context,
+            icon: Icons.favorite,
+            text: 'Favorites',
+            onTap: () => Navigator.pushReplacementNamed(context, '/')),
+        _createItem(
+            context: context,
+            icon: Icons.settings,
+            text: 'Settings',
+            onTap: () => Navigator.pushReplacementNamed(context, '/')),
+        Expanded(child: Container()),
+        Column(
+          children: <Widget>[
+            _createItem(
+                context: context,
+                icon: Icons.help,
+                text: 'Help',
+                onTap: () => Navigator.pushReplacementNamed(context, '/')),
+            _createItem(
+                context: context,
+                icon: Icons.exit_to_app,
+                text: 'Logout',
+                onTap: () => Navigator.pushReplacementNamed(context, '/'))
+          ],
         ),
       ],
     ),
+  );
+}
+
+Widget _createHeader({BuildContext context, State state}) {
+  return DrawerHeader(
+    child: _firebaseAccounts.getSignedInStatus()
+        ? Container(
+            width: getDimension(context, false,
+                Theme.of(context).visualDensity.settingsProfileWidth),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 25.0, right: 35.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      showMediaSelection(context, state,
+                          _firebaseAccounts.setCurrentUserProfilePicImage);
+                    },
+                    child: Container(
+                      height: getDimension(
+                          context,
+                          true,
+                          Theme.of(context)
+                              .visualDensity
+                              .settingsProfileIconHeight),
+                      width: getDimension(
+                          context,
+                          true,
+                          Theme.of(context)
+                              .visualDensity
+                              .settingsProfileIconWidth),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .settingsMobileProfileBackground,
+                      ),
+                      child: CachedNetworkImage(
+                        imageUrl: profileURL.value,
+                        imageBuilder: (context, imageProvider) => Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: imageProvider, fit: BoxFit.cover),
+                          ),
+                        ),
+                        placeholder: (context, url) => showProgress(context),
+                        errorWidget: (context, url, error) => Icon(
+                          Icons.person_outline_rounded,
+                          size: 55,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .settingsMobileProfileIcon,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: getDimension(context, false,
+                      Theme.of(context).visualDensity.settingsProfileInfoWidth),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 5.0),
+                        child: Text(
+                          _firebaseAccounts.getCurrentUserDisplayName() ??
+                              getTranslated(context, "settingsNullName"),
+                          style: TextStyle(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .settingsMobileProfileName,
+                            fontSize:
+                                Theme.of(context).textTheme.settingsProfileName,
+                            fontWeight: Theme.of(context)
+                                .typography
+                                .settingsProfileName,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        _firebaseAccounts.getCurrentUserEmail() ??
+                            getTranslated(context, "settingsNullEmail"),
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .settingsMobileProfileEmail,
+                          fontSize:
+                              Theme.of(context).textTheme.settingsProfileEmail,
+                          fontWeight:
+                              Theme.of(context).typography.settingsProfileEmail,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        : Container(),
+  );
+}
+
+Widget _createItem(
+    {BuildContext context,
+    IconData icon,
+    String text,
+    GestureTapCallback onTap}) {
+  return ListTile(
+    title: Row(
+      children: <Widget>[
+        Icon(icon, color: Theme.of(context).colorScheme.homeWebDrawerItem),
+        Padding(
+          padding: EdgeInsets.only(left: 8.0),
+          child: Text(
+            text,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.homeWebDrawerItem,
+              fontSize: 18,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        )
+      ],
+    ),
+    onTap: onTap,
   );
 }
 

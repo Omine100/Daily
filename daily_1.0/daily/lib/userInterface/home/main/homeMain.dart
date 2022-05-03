@@ -8,22 +8,58 @@ _mainSmall(BuildContext context, State state) {
   return Adaptive(
       iOS: _mainMobileSmall(context, state, false),
       android: _mainMobileSmall(context, state, true),
-      web: _mainWebSmall(context));
+      web: _mainWebSmall(context, state));
 }
 
 _mainLarge(BuildContext context, State state) {
   return Adaptive(
       iOS: _mainMobileLarge(context, state, false),
       android: _mainMobileLarge(context, state, true),
-      web: _mainWebLarge(context));
+      web: _mainWebLarge(context, state));
 }
 
-_mainWebSmall(BuildContext context) {
-  return Container();
+bool isInteracting = false;
+_mainWebSmall(BuildContext context, State state) {
+  return Container(
+    child: Center(
+      child: GestureDetector(
+        onHorizontalDragEnd: (value) {
+          state.setState(() {
+            isInteracting = false;
+          });
+        },
+        onHorizontalDragStart: (value) {
+          state.setState(() {
+            isInteracting = true;
+          });
+        },
+        child: Planet(
+          interactive: isInteracting,
+        ),
+      ),
+    ),
+  );
 }
 
-_mainWebLarge(BuildContext context) {
-  return Container();
+_mainWebLarge(BuildContext context, State state) {
+  return Container(
+    child: Center(
+      child: GestureDetector(
+        onTap: () {
+          state.setState(() {
+            isInteracting = !isInteracting;
+          });
+        },
+        child: !isInteracting
+            ? Planet(
+                interactive: false,
+              )
+            : Planet(
+                interactive: true,
+              ),
+      ),
+    ),
+  );
 }
 
 _mainMobileSmall(BuildContext context, State state, bool isAndroid) {
