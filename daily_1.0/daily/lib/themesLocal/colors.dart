@@ -196,9 +196,9 @@ extension CustomMobileColorScheme on ColorScheme {
   Color get authMobileGetStartedInkWell =>
       Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
   Color get authMobileGetStartedDeactived =>
-      Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+      Color(isDark.value ? 0xFF323232 : 0xFF202020);
   Color get authMobileGetStartedInkWellDeactivated =>
-      Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
+      Color(isDark.value ? 0xFF777777 : 0xFF000000);
   Color get authMobileGetStartedText =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get authMobileSwitchPrimary =>

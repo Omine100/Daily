@@ -183,7 +183,7 @@ Widget authMobileCardText(BuildContext context) {
   );
 }
 
-bool _formComplete;
+bool _formComplete = false;
 void _updateFormProgress(State state, List<String> strings) {
   _formComplete = true;
   for (int i = 0; i < strings.length; i++)
@@ -408,51 +408,71 @@ Widget authMobileGetStarted(BuildContext context, State state) {
       decoration: BoxDecoration(
           color: _authControls != AuthControls.welcome
               ? (_formComplete
-                  ? Theme.of(context).colorScheme.authMobileGetStartedDeactived
-                  : Theme.of(context).colorScheme.authMobileGetStarted)
+                  ? Theme.of(context).colorScheme.authMobileGetStarted
+                  : Theme.of(context).colorScheme.authMobileGetStartedDeactived)
               : Theme.of(context).colorScheme.authMobileGetStarted,
           borderRadius: BorderRadius.circular(30)),
       child: Material(
         color: Theme.of(context).colorScheme.materialTransparent,
-        child: InkWell(
-          splashColor: _authControls != AuthControls.welcome
-              ? (_formComplete
-                  ? Theme.of(context)
-                      .colorScheme
-                      .authMobileGetStartedInkWellDeactivated
-                  : Theme.of(context).colorScheme.authMobileGetStartedInkWell)
-              : Theme.of(context).colorScheme.authMobileGetStartedInkWell,
-          customBorder:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          onTap: () {
-            if (_authControls == AuthControls.welcome) {
-              _authControls = AuthControls.signUp;
-              state.setState(() {});
-            } else {
-              _formComplete ? _authValidateSubmit(context, state) : null;
-            }
-          },
-          child: Container(
-            child: Center(
-              child: Text(
-                getTranslated(
-                    context,
-                    _authControls == AuthControls.welcome
-                        ? "authGetStarted"
-                        : (_authControls == AuthControls.signIn
+        child: _formComplete
+            ? InkWell(
+                splashColor: _authControls != AuthControls.welcome
+                    ? (_formComplete
+                        ? Theme.of(context)
+                            .colorScheme
+                            .authMobileGetStartedInkWell
+                        : Theme.of(context)
+                            .colorScheme
+                            .authMobileGetStartedInkWellDeactivated)
+                    : Theme.of(context).colorScheme.authMobileGetStartedInkWell,
+                customBorder: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                onTap: () {
+                  _formComplete ? _authValidateSubmit(context, state) : null;
+                },
+                child: Container(
+                  child: Center(
+                    child: Text(
+                      getTranslated(
+                          context,
+                          _authControls == AuthControls.signIn
+                              ? "authSignIn"
+                              : "authSignUp"),
+                      style: TextStyle(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .authMobileGetStartedText,
+                        fontSize: Theme.of(context)
+                            .textTheme
+                            .authMobileGetStartedText,
+                        fontWeight: Theme.of(context)
+                            .typography
+                            .authMobileGetStartedText,
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            : Container(
+                child: Center(
+                  child: Text(
+                    getTranslated(
+                        context,
+                        _authControls == AuthControls.signIn
                             ? "authSignIn"
-                            : "authSignUp")),
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.authMobileGetStartedText,
-                  fontSize:
-                      Theme.of(context).textTheme.authMobileGetStartedText,
-                  fontWeight:
-                      Theme.of(context).typography.authMobileGetStartedText,
+                            : "authSignUp"),
+                    style: TextStyle(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .authMobileGetStartedText,
+                      fontSize:
+                          Theme.of(context).textTheme.authMobileGetStartedText,
+                      fontWeight:
+                          Theme.of(context).typography.authMobileGetStartedText,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-        ),
       ),
     ),
   );
@@ -465,7 +485,9 @@ Widget authMobileSwitch(BuildContext context, State state) {
         _authControls = AuthControls.signIn;
         state.setState(() {});
       } else {
-        _authControls = AuthControls.signUp;
+        _authControls == AuthControls.signUp
+            ? _authControls = AuthControls.signIn
+            : _authControls = AuthControls.signUp;
         state.setState(() {});
       }
     },
