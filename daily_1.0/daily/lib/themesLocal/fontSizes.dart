@@ -48,6 +48,11 @@ extension CustomWebFontSize on TextTheme {
   double get verifyWebResendSecondary => 16;
   double get verifyWebSwitchBack => 16;
   // #endregion
+
+  // #region home
+  double get homeWebProfileName => 20;
+  double get homeWebProfileEmail => 16;
+  // #endregion
 }
 
 extension CustomMobileFontSize on TextTheme {

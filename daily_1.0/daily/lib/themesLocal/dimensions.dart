@@ -55,6 +55,13 @@ extension CustomWebDimensions on VisualDensity {
   double get verifyWebLoginHeight => isSmall ? 0.065 : 0.065;
   double get verifyWebLoginWidth => isSmall ? 0.2025 : 0.2025;
   // #endregion
+
+  // #region home
+  double get homeWebProfileWidth => 1.0;
+  double get homeWebProfileIconHeight => 0.11;
+  double get homeWebProfileIconWidth => 0.11;
+  double get homeWebProfileInfoWidth => 0.1;
+  // #endregion
 }
 
 extension CustomMobileDimensions on VisualDensity {

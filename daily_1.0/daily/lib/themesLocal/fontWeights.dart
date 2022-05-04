@@ -50,6 +50,11 @@ extension CustomWebFontWeight on Typography {
   FontWeight get verifyWebResendSecondary => FontWeight.w500;
   FontWeight get verifyWebSwitchBack => FontWeight.w300;
   // #endregion
+
+  // #region home
+  FontWeight get homeWebProfileName => FontWeight.w500;
+  FontWeight get homeWebProfileEmail => FontWeight.w300;
+  // #endregion
 }
 
 extension CustomMobileFontWeight on Typography {

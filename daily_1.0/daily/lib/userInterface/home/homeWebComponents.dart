@@ -112,12 +112,13 @@ Widget _createHeader({BuildContext context, State state}) {
     child: _firebaseAccounts.getSignedInStatus()
         ? Container(
             width: getDimension(context, false,
-                Theme.of(context).visualDensity.settingsProfileWidth),
+                Theme.of(context).visualDensity.homeWebProfileWidth),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+                  padding: const EdgeInsets.only(left: 5.0, right: 15.0),
                   child: GestureDetector(
                     onTap: () {
                       showMediaSelection(context, state,
@@ -129,18 +130,18 @@ Widget _createHeader({BuildContext context, State state}) {
                           true,
                           Theme.of(context)
                               .visualDensity
-                              .settingsProfileIconHeight),
+                              .homeWebProfileIconHeight),
                       width: getDimension(
                           context,
                           true,
                           Theme.of(context)
                               .visualDensity
-                              .settingsProfileIconWidth),
+                              .homeWebProfileIconWidth),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Theme.of(context)
                             .colorScheme
-                            .settingsMobileProfileBackground,
+                            .homeWebProfileBackground,
                       ),
                       child: CachedNetworkImage(
                         imageUrl: profileURL.value,
@@ -155,9 +156,8 @@ Widget _createHeader({BuildContext context, State state}) {
                         errorWidget: (context, url, error) => Icon(
                           Icons.person_outline_rounded,
                           size: 55,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .settingsMobileProfileIcon,
+                          color:
+                              Theme.of(context).colorScheme.homeWebProfileIcon,
                         ),
                       ),
                     ),
@@ -165,8 +165,9 @@ Widget _createHeader({BuildContext context, State state}) {
                 ),
                 Container(
                   width: getDimension(context, false,
-                      Theme.of(context).visualDensity.settingsProfileInfoWidth),
+                      Theme.of(context).visualDensity.homeWebProfileInfoWidth),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
@@ -174,15 +175,16 @@ Widget _createHeader({BuildContext context, State state}) {
                         child: Text(
                           _firebaseAccounts.getCurrentUserDisplayName() ??
                               getTranslated(context, "settingsNullName"),
+                          softWrap: false,
+                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: Theme.of(context)
                                 .colorScheme
-                                .settingsMobileProfileName,
+                                .homeWebProfileName,
                             fontSize:
-                                Theme.of(context).textTheme.settingsProfileName,
-                            fontWeight: Theme.of(context)
-                                .typography
-                                .settingsProfileName,
+                                Theme.of(context).textTheme.homeWebProfileName,
+                            fontWeight:
+                                Theme.of(context).typography.homeWebProfileName,
                           ),
                         ),
                       ),
@@ -191,13 +193,12 @@ Widget _createHeader({BuildContext context, State state}) {
                             getTranslated(context, "settingsNullEmail"),
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .settingsMobileProfileEmail,
+                          color:
+                              Theme.of(context).colorScheme.homeWebProfileEmail,
                           fontSize:
-                              Theme.of(context).textTheme.settingsProfileEmail,
+                              Theme.of(context).textTheme.homeWebProfileEmail,
                           fontWeight:
-                              Theme.of(context).typography.settingsProfileEmail,
+                              Theme.of(context).typography.homeWebProfileEmail,
                         ),
                       ),
                     ],

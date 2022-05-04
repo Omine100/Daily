@@ -129,7 +129,7 @@ Widget authMobileCardInput(BuildContext context, State state, bool isSmall) {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
-              child: authMobileUserInput(context),
+              child: authMobileUserInput(context, state),
             ),
             _authControls == AuthControls.signIn
                 ? Padding(
@@ -183,11 +183,31 @@ Widget authMobileCardText(BuildContext context) {
   );
 }
 
+bool _formComplete;
+void _updateFormProgress(State state, List<String> strings) {
+  _formComplete = true;
+  for (int i = 0; i < strings.length; i++)
+    if (strings[i].isEmpty) {
+      _formComplete = false;
+      break;
+    }
+  state.setState(() {
+    _formComplete;
+  });
+}
+
 String _userName = "", _userEmail = "", _userPass = "", _userPassVerify = "";
 GlobalKey<FormState> _authMobileFormKey = GlobalKey<FormState>();
-Widget authMobileUserInput(BuildContext context) {
+Widget authMobileUserInput(BuildContext context, State state) {
   return Form(
     key: _authMobileFormKey,
+    onChanged: () {
+      _updateFormProgress(
+          state,
+          _authControls == AuthControls.signIn
+              ? [_userEmail, _userPass]
+              : [_userName, _userEmail, _userPass, _userPassVerify]);
+    },
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -212,8 +232,8 @@ Widget authMobileUserInput(BuildContext context) {
 }
 
 bool _isVisible = false;
-Widget authMobileUserInputField(
-    BuildContext context, Function onSaved, String authForm, bool isVariable) {
+Widget authMobileUserInputField(BuildContext context, Function onChanged,
+    String authForm, bool isVariable) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
@@ -225,7 +245,7 @@ Widget authMobileUserInputField(
       child: TextFormField(
         textAlignVertical: TextAlignVertical.center,
         obscureText: isVariable ? !_isVisible : false,
-        onSaved: onSaved,
+        onChanged: onChanged,
         autofocus: false,
         style: TextStyle(
             color: Theme.of(context).colorScheme.authMobileUserInputFieldText),
@@ -386,13 +406,22 @@ Widget authMobileGetStarted(BuildContext context, State state) {
       width: getDimension(context, false,
           Theme.of(context).visualDensity.authMobileGetStartedWidth),
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.authMobileGetStarted,
+          color: _authControls != AuthControls.welcome
+              ? (_formComplete
+                  ? Theme.of(context).colorScheme.authMobileGetStartedDeactived
+                  : Theme.of(context).colorScheme.authMobileGetStarted)
+              : Theme.of(context).colorScheme.authMobileGetStarted,
           borderRadius: BorderRadius.circular(30)),
       child: Material(
         color: Theme.of(context).colorScheme.materialTransparent,
         child: InkWell(
-          splashColor:
-              Theme.of(context).colorScheme.authMobileGetStartedInkWell,
+          splashColor: _authControls != AuthControls.welcome
+              ? (_formComplete
+                  ? Theme.of(context)
+                      .colorScheme
+                      .authMobileGetStartedInkWellDeactivated
+                  : Theme.of(context).colorScheme.authMobileGetStartedInkWell)
+              : Theme.of(context).colorScheme.authMobileGetStartedInkWell,
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
@@ -400,7 +429,7 @@ Widget authMobileGetStarted(BuildContext context, State state) {
               _authControls = AuthControls.signUp;
               state.setState(() {});
             } else {
-              _authValidateSubmit(context, state);
+              _formComplete ? _authValidateSubmit(context, state) : null;
             }
           },
           child: Container(

@@ -90,13 +90,14 @@ extension CustomWebColorScheme on ColorScheme {
       Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
   Color get authWebGetStartedText =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+  Color get authWebGetStartedDeactived =>
+      Color(isDark.value ? 0xFF323232 : 0xFF202020);
+  Color get authWebGetStartedInkWellDeactivated =>
+      Color(isDark.value ? 0xFF777777 : 0xFF000000);
   Color get authWebSwitchPrimary =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get authWebSwitchSecondary =>
       Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
-  Color get authMobileCardText => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
-  Color get authMobileCardSubText =>
-      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   // #endregion
 
   // #region forgotPassword
@@ -156,6 +157,12 @@ extension CustomWebColorScheme on ColorScheme {
   Color get homeWebDrawerItem => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get homeWebSettingsIcon =>
       Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
+  Color get homeWebProfileBackground =>
+      Color(isDark.value ? 0xFF666666 : 0xFFCCCCCC);
+  Color get homeWebProfileIcon => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+  Color get homeWebProfileName => Color(isDark.value ? 0xFFAAAAAA : 0xFF444444);
+  Color get homeWebProfileEmail =>
+      Color(isDark.value ? 0xFFBBBBBB : 0xFF555555);
   // #endregion
 }
 
@@ -188,12 +195,19 @@ extension CustomMobileColorScheme on ColorScheme {
       Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
   Color get authMobileGetStartedInkWell =>
       Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
+  Color get authMobileGetStartedDeactived =>
+      Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+  Color get authMobileGetStartedInkWellDeactivated =>
+      Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
   Color get authMobileGetStartedText =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get authMobileSwitchPrimary =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get authMobileSwitchSecondary =>
       Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
+  Color get authMobileCardText => Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
+  Color get authMobileCardSubText =>
+      Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   // #endregion
 
   // #region forgotPassword
