@@ -18,48 +18,12 @@ _mainLarge(BuildContext context, State state) {
       web: _mainWebLarge(context, state));
 }
 
-bool isInteracting = false;
 _mainWebSmall(BuildContext context, State state) {
-  return Container(
-    child: Center(
-      child: GestureDetector(
-        onHorizontalDragEnd: (value) {
-          state.setState(() {
-            isInteracting = false;
-          });
-        },
-        onHorizontalDragStart: (value) {
-          state.setState(() {
-            isInteracting = true;
-          });
-        },
-        child: Planet(
-          interactive: isInteracting,
-        ),
-      ),
-    ),
-  );
+  return Container();
 }
 
 _mainWebLarge(BuildContext context, State state) {
-  return Container(
-    child: Center(
-      child: GestureDetector(
-        onTap: () {
-          state.setState(() {
-            isInteracting = !isInteracting;
-          });
-        },
-        child: !isInteracting
-            ? Planet(
-                interactive: false,
-              )
-            : Planet(
-                interactive: true,
-              ),
-      ),
-    ),
-  );
+  return Container();
 }
 
 _mainMobileSmall(BuildContext context, State state, bool isAndroid) {

@@ -391,13 +391,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
-  flutter_cube:
-    dependency: "direct main"
-    description:
-      name: flutter_cube
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.1"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -525,13 +518,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.11"
-  material_color_utilities:
-    dependency: transitive
-    description:
-      name: material_color_utilities
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.3"
   meta:
     dependency: transitive
     description:
@@ -837,7 +823,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.8"
+    version: "0.4.3"
   timing:
     dependency: transitive
     description:
