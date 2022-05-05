@@ -65,11 +65,22 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   }
 
   _homeScreenWebSmall() {
-    return homeWebBody(context, this, true);
+    return homeWebCardContainer(context, this, true);
   }
 
   _homeScreenWebLarge() {
-    return homeWebBody(context, this, false);
+    return Row(
+      children: [
+        Expanded(
+          flex: 4,
+          child: SideMenu(),
+        ),
+        Expanded(
+          flex: 15,
+          child: homeWebCardContainer(context, this, isSmall),
+        ),
+      ],
+    );
   }
 
   _homeScreenMobileSmall(bool isAndroid) {
@@ -87,12 +98,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     return Material(
       child: Scaffold(
           extendBody: true,
-          appBar: kIsWeb ? homeWebAppBar(context, this) : null,
-          drawer: kIsWeb
-              ? getIsSmall(context)
-                  ? homeWebDrawer(context, this)
-                  : null
-              : null,
           body: Container(
             color: Theme.of(context).colorScheme.homeBackground,
             constraints: Theme.of(context).bottomAppBarTheme.homeConstraints,

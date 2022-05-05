@@ -60,7 +60,7 @@ extension CustomWebDimensions on VisualDensity {
   double get homeWebProfileWidth => 1.0;
   double get homeWebProfileIconHeight => 0.11;
   double get homeWebProfileIconWidth => 0.11;
-  double get homeWebProfileInfoWidth => 0.1;
+  double get homeWebProfileInfoWidth => 0.15;
   // #endregion
 }
 

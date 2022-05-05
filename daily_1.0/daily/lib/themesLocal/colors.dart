@@ -153,7 +153,7 @@ extension CustomWebColorScheme on ColorScheme {
   Color get homeWebAppBarUnselectedIcon =>
       Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
   Color get homeWebDrawerBackground =>
-      Color(isDark.value ? 0xFF232323 : 0xFFFBFAF5);
+      Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get homeWebDrawerItem => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
   Color get homeWebSettingsIcon =>
       Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
@@ -163,6 +163,8 @@ extension CustomWebColorScheme on ColorScheme {
   Color get homeWebProfileName => Color(isDark.value ? 0xFFAAAAAA : 0xFF444444);
   Color get homeWebProfileEmail =>
       Color(isDark.value ? 0xFFBBBBBB : 0xFF555555);
+  Color get homeWebCardContainer =>
+      Color(isDark.value ? 0xFF202020 : 0xFFFBFAF5);
   // #endregion
 }
 

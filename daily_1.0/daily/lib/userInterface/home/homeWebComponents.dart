@@ -1,3 +1,4 @@
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -44,20 +45,24 @@ void _onTabTapped(int i) {
       duration: const Duration(milliseconds: 500), curve: Curves.easeOutQuint);
 }
 
-Widget homeWebBody(BuildContext context, State state, bool isSmall) {
+Widget homeWebCardContainer(BuildContext context, State state, bool isSmall) {
   List<Widget> pages = [
     mainBody(context, state),
     globalBody(context),
     settingsBody(context, state)
   ];
 
-  return PageView(
-    children: pages,
-    onPageChanged: (pageIndex) {
-      _onPageChanged(state, pageIndex);
-    },
-    controller: _pageController,
-  );
+  return Container(
+      decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.homeWebCardContainer,
+          borderRadius: BorderRadius.horizontal(left: Radius.circular(50))),
+      child: PageView(
+        children: pages,
+        onPageChanged: (pageIndex) {
+          _onPageChanged(state, pageIndex);
+        },
+        controller: _pageController,
+      ));
 }
 
 Widget homeWebAppBar(BuildContext context, State state) {
@@ -74,51 +79,66 @@ Widget homeWebDrawer(BuildContext context, State state) {
   );
 }
 
-Widget _createProfileHeader({BuildContext context}) {
+Widget _createHeader(BuildContext context) {
+  return Row(
+    children: [
+      Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Image.asset(
+          "lib/assets/launcher/icon_noBackground.png",
+          height: 50,
+        ),
+      ),
+      AdaptiveText(
+        "Daily",
+        style: TextStyle(
+            color: Colors.white, fontSize: 30, fontWeight: FontWeight.w500),
+      )
+    ],
+  );
+}
+
+Widget _createProfile(BuildContext context) {
   return _firebaseAccounts.getSignedInStatus()
       ? Container(
           width: getDimension(context, false,
               Theme.of(context).visualDensity.homeWebProfileWidth),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 5.0, right: 15.0),
-                child: Container(
-                  height: getDimension(context, true,
-                      Theme.of(context).visualDensity.homeWebProfileIconHeight),
-                  width: getDimension(context, true,
-                      Theme.of(context).visualDensity.homeWebProfileIconWidth),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color:
-                        Theme.of(context).colorScheme.homeWebProfileBackground,
+              Container(
+                height: getDimension(context, true,
+                    Theme.of(context).visualDensity.homeWebProfileIconHeight),
+                width: getDimension(context, true,
+                    Theme.of(context).visualDensity.homeWebProfileIconWidth),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Theme.of(context).colorScheme.homeWebProfileBackground,
+                ),
+                child: CachedNetworkImage(
+                  imageUrl: profileURL.value,
+                  imageBuilder: (context, imageProvider) => Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: imageProvider, fit: BoxFit.cover),
+                    ),
                   ),
-                  child: CachedNetworkImage(
-                    imageUrl: profileURL.value,
-                    imageBuilder: (context, imageProvider) => Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            image: imageProvider, fit: BoxFit.cover),
-                      ),
-                    ),
-                    placeholder: (context, url) => showProgress(context),
-                    errorWidget: (context, url, error) => Icon(
-                      Icons.person_outline_rounded,
-                      size: 55,
-                      color: Theme.of(context).colorScheme.homeWebProfileIcon,
-                    ),
+                  placeholder: (context, url) => showProgress(context),
+                  errorWidget: (context, url, error) => Icon(
+                    Icons.person_outline_rounded,
+                    size: 55,
+                    color: Theme.of(context).colorScheme.homeWebProfileIcon,
                   ),
                 ),
               ),
               Container(
+                padding: EdgeInsets.only(top: 15),
                 width: getDimension(context, false,
                     Theme.of(context).visualDensity.homeWebProfileInfoWidth),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 5.0),
@@ -167,156 +187,79 @@ class SideMenu extends StatelessWidget {
       padding: EdgeInsets.only(top: kIsWeb ? 5 : 0),
       color: Theme.of(context).colorScheme.homeWebDrawerBackground,
       child: SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 5),
-          child: Column(
-            children: [
-              _createProfileHeader(context: context),
-              Row(
-                children: [
-                  Spacer(),
-                  // We don't want to show this close button on Desktop mood
-                  if (!getIsLarge(context)) CloseButton(),
-                ],
-              ),
-              SizedBox(height: 5),
-              FlatButton.icon(
-                minWidth: double.infinity,
-                padding: EdgeInsets.symmetric(
-                  vertical: 5,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                color: Colors.grey,
-                onPressed: () {},
-                icon: Icon(Icons.edit, size: 16),
-                label: Text(
-                  "New message",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-              SizedBox(height: 5),
-              FlatButton.icon(
-                minWidth: double.infinity,
-                padding: EdgeInsets.symmetric(
-                  vertical: 5,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                color: Colors.blue,
-                onPressed: () {},
-                icon: Icon(Icons.download, size: 16),
-                label: Text(
-                  "Get messages",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-              SizedBox(height: 10),
-              // Menu Items
-              SideMenuItem(
-                press: () {},
-                title: "Inbox",
-                iconSrc: "assets/Icons/Inbox.svg",
-                isActive: true,
-                itemCount: 3,
-              ),
-              SideMenuItem(
-                press: () {},
-                title: "Sent",
-                iconSrc: "assets/Icons/Send.svg",
-                isActive: false,
-              ),
-              SideMenuItem(
-                press: () {},
-                title: "Drafts",
-                iconSrc: "assets/Icons/File.svg",
-                isActive: false,
-              ),
-              SideMenuItem(
-                press: () {},
-                title: "Deleted",
-                iconSrc: "assets/Icons/Trash.svg",
-                isActive: false,
-                showBorder: false,
-              ),
-
-              SizedBox(height: 10),
-            ],
-          ),
+          child: Column(children: [
+        _createHeader(context),
+        SizedBox(
+          height: 5,
         ),
-      ),
+        _createProfile(context),
+        Row(
+          children: [
+            Spacer(),
+            if (!getIsLarge(context)) CloseButton(),
+          ],
+        ),
+        SizedBox(height: 15),
+        _createItem(
+            context: context,
+            icon: Icons.home,
+            text: 'Home',
+            onTap: () => {_onTabTapped(0)}),
+        _createItem(
+            context: context,
+            icon: Icons.favorite,
+            text: 'Favorites',
+            onTap: () => {_onTabTapped(1)}),
+        _createItem(
+            context: context,
+            icon: Icons.settings,
+            text: 'Settings',
+            onTap: () => {_onTabTapped(2)}),
+        Expanded(child: Container()),
+        Column(
+          children: <Widget>[
+            Container(
+              width: MediaQuery.of(context).size.width / 6,
+              child: Divider(
+                thickness: 2,
+                color: Theme.of(context).colorScheme.homeWebCardContainer,
+              ),
+            ),
+            _createItem(
+                context: context,
+                icon: Icons.help,
+                text: 'Help',
+                onTap: () => {_onTabTapped(0)}),
+            _createItem(
+                context: context,
+                icon: Icons.exit_to_app,
+                text: 'Logout',
+                onTap: () => {_firebaseAccounts.signOut()})
+          ],
+        ),
+      ])),
     );
   }
 }
 
-class SideMenuItem extends StatelessWidget {
-  const SideMenuItem({
-    Key key,
-    this.isActive,
-    this.isHover = false,
-    this.itemCount,
-    this.showBorder = true,
-    @required this.iconSrc,
-    @required this.title,
-    @required this.press,
-  }) : super(key: key);
-
-  final bool isActive, isHover, showBorder;
-  final int itemCount;
-  final String iconSrc, title;
-  final VoidCallback press;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 5),
-      child: InkWell(
-        onTap: press,
-        child: Row(
-          children: [
-            (isActive || isHover)
-                ? Icon(
-                    Icons.arrow_right,
-                    size: 15,
-                  )
-                : SizedBox(width: 15),
-            SizedBox(width: 1.2),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(bottom: 15, right: 5),
-                decoration: showBorder
-                    ? BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(color: Color(0xFFDFE2EF)),
-                        ),
-                      )
-                    : null,
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.ac_unit,
-                      size: 20,
-                      color: (isActive || isHover) ? Colors.grey : Colors.blue,
-                    ),
-                    SizedBox(width: 3.75),
-                    Text(
-                      title,
-                      style: Theme.of(context).textTheme.button.copyWith(
-                            color: (isActive || isHover)
-                                ? Colors.white
-                                : Colors.blue,
-                          ),
-                    ),
-                    Spacer(),
-                  ],
-                ),
+Widget _createItem(
+    {BuildContext context,
+    IconData icon,
+    String text,
+    GestureTapCallback onTap}) {
+  return ListTile(
+      onTap: onTap,
+      title: Row(children: <Widget>[
+        Icon(icon, color: Theme.of(context).colorScheme.homeWebDrawerItem),
+        Padding(
+            padding: EdgeInsets.only(left: 8.0),
+            child: Text(
+              text,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.homeWebDrawerItem,
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
               ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+            )),
+      ]));
 }
