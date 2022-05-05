@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
@@ -5,6 +6,7 @@ import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
+import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/standards/userXStandards.dart';
@@ -42,7 +44,7 @@ void _onTabTapped(int i) {
       duration: const Duration(milliseconds: 500), curve: Curves.easeOutQuint);
 }
 
-Widget homeWebBody(BuildContext context, State state) {
+Widget homeWebBody(BuildContext context, State state, bool isSmall) {
   List<Widget> pages = [
     mainBody(context, state),
     globalBody(context),
@@ -68,171 +70,253 @@ Widget homeWebAppBar(BuildContext context, State state) {
 
 Widget homeWebDrawer(BuildContext context, State state) {
   return Drawer(
-    backgroundColor: Theme.of(context).colorScheme.homeWebAppBarBackground,
-    child: Column(
-      children: <Widget>[
-        _createHeader(context: context, state: state),
-        _createItem(
-            context: context,
-            icon: Icons.home_outlined,
-            text: 'Home',
-            onTap: () => {_onTabTapped(0)}),
-        _createItem(
-            context: context,
-            icon: Icons.favorite,
-            text: 'Favorites',
-            onTap: () => {_onTabTapped(1)}),
-        _createItem(
-            context: context,
-            icon: Icons.settings,
-            text: 'Settings',
-            onTap: () => {_onTabTapped(2)}),
-        Expanded(child: Container()),
-        Column(
-          children: <Widget>[
-            _createItem(
-                context: context,
-                icon: Icons.help,
-                text: 'Help',
-                onTap: () => {_onTabTapped(0)}),
-            _createItem(
-                context: context,
-                icon: Icons.exit_to_app,
-                text: 'Logout',
-                onTap: () => {_firebaseAccounts.signOut()})
-          ],
-        ),
-      ],
-    ),
+    child: SideMenu(),
   );
 }
 
-Widget _createHeader({BuildContext context, State state}) {
-  return DrawerHeader(
-    child: _firebaseAccounts.getSignedInStatus()
-        ? Container(
-            width: getDimension(context, false,
-                Theme.of(context).visualDensity.homeWebProfileWidth),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 5.0, right: 15.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      showMediaSelection(context, state,
-                          _firebaseAccounts.setCurrentUserProfilePicImage);
-                    },
-                    child: Container(
-                      height: getDimension(
-                          context,
-                          true,
-                          Theme.of(context)
-                              .visualDensity
-                              .homeWebProfileIconHeight),
-                      width: getDimension(
-                          context,
-                          true,
-                          Theme.of(context)
-                              .visualDensity
-                              .homeWebProfileIconWidth),
+Widget _createProfileHeader({BuildContext context}) {
+  return _firebaseAccounts.getSignedInStatus()
+      ? Container(
+          width: getDimension(context, false,
+              Theme.of(context).visualDensity.homeWebProfileWidth),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 5.0, right: 15.0),
+                child: Container(
+                  height: getDimension(context, true,
+                      Theme.of(context).visualDensity.homeWebProfileIconHeight),
+                  width: getDimension(context, true,
+                      Theme.of(context).visualDensity.homeWebProfileIconWidth),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color:
+                        Theme.of(context).colorScheme.homeWebProfileBackground,
+                  ),
+                  child: CachedNetworkImage(
+                    imageUrl: profileURL.value,
+                    imageBuilder: (context, imageProvider) => Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .homeWebProfileBackground,
+                        image: DecorationImage(
+                            image: imageProvider, fit: BoxFit.cover),
                       ),
-                      child: CachedNetworkImage(
-                        imageUrl: profileURL.value,
-                        imageBuilder: (context, imageProvider) => Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: imageProvider, fit: BoxFit.cover),
-                          ),
-                        ),
-                        placeholder: (context, url) => showProgress(context),
-                        errorWidget: (context, url, error) => Icon(
-                          Icons.person_outline_rounded,
-                          size: 55,
-                          color:
-                              Theme.of(context).colorScheme.homeWebProfileIcon,
-                        ),
-                      ),
+                    ),
+                    placeholder: (context, url) => showProgress(context),
+                    errorWidget: (context, url, error) => Icon(
+                      Icons.person_outline_rounded,
+                      size: 55,
+                      color: Theme.of(context).colorScheme.homeWebProfileIcon,
                     ),
                   ),
                 ),
-                Container(
-                  width: getDimension(context, false,
-                      Theme.of(context).visualDensity.homeWebProfileInfoWidth),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 5.0),
-                        child: Text(
-                          _firebaseAccounts.getCurrentUserDisplayName() ??
-                              getTranslated(context, "settingsNullName"),
-                          softWrap: false,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .homeWebProfileName,
-                            fontSize:
-                                Theme.of(context).textTheme.homeWebProfileName,
-                            fontWeight:
-                                Theme.of(context).typography.homeWebProfileName,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        _firebaseAccounts.getCurrentUserEmail() ??
-                            getTranslated(context, "settingsNullEmail"),
+              ),
+              Container(
+                width: getDimension(context, false,
+                    Theme.of(context).visualDensity.homeWebProfileInfoWidth),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 5.0),
+                      child: Text(
+                        _firebaseAccounts.getCurrentUserDisplayName() ??
+                            getTranslated(context, "settingsNullName"),
+                        softWrap: false,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color:
-                              Theme.of(context).colorScheme.homeWebProfileEmail,
+                              Theme.of(context).colorScheme.homeWebProfileName,
                           fontSize:
-                              Theme.of(context).textTheme.homeWebProfileEmail,
+                              Theme.of(context).textTheme.homeWebProfileName,
                           fontWeight:
-                              Theme.of(context).typography.homeWebProfileEmail,
+                              Theme.of(context).typography.homeWebProfileName,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Text(
+                      _firebaseAccounts.getCurrentUserEmail() ??
+                          getTranslated(context, "settingsNullEmail"),
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color:
+                            Theme.of(context).colorScheme.homeWebProfileEmail,
+                        fontSize:
+                            Theme.of(context).textTheme.homeWebProfileEmail,
+                        fontWeight:
+                            Theme.of(context).typography.homeWebProfileEmail,
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          )
-        : Container(),
-  );
-}
-
-Widget _createItem(
-    {BuildContext context,
-    IconData icon,
-    String text,
-    GestureTapCallback onTap}) {
-  return ListTile(
-    title: Row(
-      children: <Widget>[
-        Icon(icon, color: Theme.of(context).colorScheme.homeWebDrawerItem),
-        Padding(
-          padding: EdgeInsets.only(left: 8.0),
-          child: Text(
-            text,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.homeWebDrawerItem,
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-            ),
+              ),
+            ],
           ),
         )
-      ],
-    ),
-    onTap: onTap,
-  );
+      : Container();
+}
+
+class SideMenu extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: double.infinity,
+      padding: EdgeInsets.only(top: kIsWeb ? 5 : 0),
+      color: Theme.of(context).colorScheme.homeWebDrawerBackground,
+      child: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: Column(
+            children: [
+              _createProfileHeader(context: context),
+              Row(
+                children: [
+                  Spacer(),
+                  // We don't want to show this close button on Desktop mood
+                  if (!getIsLarge(context)) CloseButton(),
+                ],
+              ),
+              SizedBox(height: 5),
+              FlatButton.icon(
+                minWidth: double.infinity,
+                padding: EdgeInsets.symmetric(
+                  vertical: 5,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                color: Colors.grey,
+                onPressed: () {},
+                icon: Icon(Icons.edit, size: 16),
+                label: Text(
+                  "New message",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              SizedBox(height: 5),
+              FlatButton.icon(
+                minWidth: double.infinity,
+                padding: EdgeInsets.symmetric(
+                  vertical: 5,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                color: Colors.blue,
+                onPressed: () {},
+                icon: Icon(Icons.download, size: 16),
+                label: Text(
+                  "Get messages",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              SizedBox(height: 10),
+              // Menu Items
+              SideMenuItem(
+                press: () {},
+                title: "Inbox",
+                iconSrc: "assets/Icons/Inbox.svg",
+                isActive: true,
+                itemCount: 3,
+              ),
+              SideMenuItem(
+                press: () {},
+                title: "Sent",
+                iconSrc: "assets/Icons/Send.svg",
+                isActive: false,
+              ),
+              SideMenuItem(
+                press: () {},
+                title: "Drafts",
+                iconSrc: "assets/Icons/File.svg",
+                isActive: false,
+              ),
+              SideMenuItem(
+                press: () {},
+                title: "Deleted",
+                iconSrc: "assets/Icons/Trash.svg",
+                isActive: false,
+                showBorder: false,
+              ),
+
+              SizedBox(height: 10),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SideMenuItem extends StatelessWidget {
+  const SideMenuItem({
+    Key key,
+    this.isActive,
+    this.isHover = false,
+    this.itemCount,
+    this.showBorder = true,
+    @required this.iconSrc,
+    @required this.title,
+    @required this.press,
+  }) : super(key: key);
+
+  final bool isActive, isHover, showBorder;
+  final int itemCount;
+  final String iconSrc, title;
+  final VoidCallback press;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 5),
+      child: InkWell(
+        onTap: press,
+        child: Row(
+          children: [
+            (isActive || isHover)
+                ? Icon(
+                    Icons.arrow_right,
+                    size: 15,
+                  )
+                : SizedBox(width: 15),
+            SizedBox(width: 1.2),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.only(bottom: 15, right: 5),
+                decoration: showBorder
+                    ? BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(color: Color(0xFFDFE2EF)),
+                        ),
+                      )
+                    : null,
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.ac_unit,
+                      size: 20,
+                      color: (isActive || isHover) ? Colors.grey : Colors.blue,
+                    ),
+                    SizedBox(width: 3.75),
+                    Text(
+                      title,
+                      style: Theme.of(context).textTheme.button.copyWith(
+                            color: (isActive || isHover)
+                                ? Colors.white
+                                : Colors.blue,
+                          ),
+                    ),
+                    Spacer(),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

@@ -9,6 +9,14 @@ void setResponsiveState(BuildContext context) {
     isSmall = true;
 }
 
+bool getIsSmall(BuildContext context) {
+  return MediaQuery.of(context).size.width < 900 ? true : false;
+}
+
+bool getIsLarge(BuildContext context) {
+  return MediaQuery.of(context).size.width >= 900 ? true : false;
+}
+
 class Responsive extends StatelessWidget {
   final Widget small;
   final Widget large;

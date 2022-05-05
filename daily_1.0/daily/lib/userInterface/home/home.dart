@@ -65,11 +65,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   }
 
   _homeScreenWebSmall() {
-    return homeWebBody(context, this);
+    return homeWebBody(context, this, true);
   }
 
   _homeScreenWebLarge() {
-    return homeWebBody(context, this);
+    return homeWebBody(context, this, false);
   }
 
   _homeScreenMobileSmall(bool isAndroid) {
@@ -88,7 +88,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       child: Scaffold(
           extendBody: true,
           appBar: kIsWeb ? homeWebAppBar(context, this) : null,
-          drawer: kIsWeb ? homeWebDrawer(context, this) : null,
+          drawer: kIsWeb
+              ? getIsSmall(context)
+                  ? homeWebDrawer(context, this)
+                  : null
+              : null,
           body: Container(
             color: Theme.of(context).colorScheme.homeBackground,
             constraints: Theme.of(context).bottomAppBarTheme.homeConstraints,
