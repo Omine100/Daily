@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:daily/datastructures/structures.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
+import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';

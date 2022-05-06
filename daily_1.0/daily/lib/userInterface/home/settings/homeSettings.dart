@@ -21,23 +21,11 @@ _settingsLarge(BuildContext context, State state) {
 }
 
 _settingsWebSmall(BuildContext context, State state) {
-  return Stack(alignment: Alignment.center, children: [
-    Positioned(
-      top: getPosition(context, true,
-          Theme.of(context).materialTapTargetSize.settingsMobileCardTop),
-      child: settingsWebCard(context, state),
-    ),
-  ]);
+  return settingsWebCard(context, state);
 }
 
 _settingsWebLarge(BuildContext context, State state) {
-  return Stack(alignment: Alignment.center, children: [
-    Positioned(
-      top: getPosition(context, true,
-          Theme.of(context).materialTapTargetSize.settingsMobileCardTop),
-      child: settingsWebCard(context, state),
-    ),
-  ]);
+  return settingsWebCard(context, state);
 }
 
 _settingsMobileSmall(BuildContext context, State state, bool isAndroid) {
@@ -79,11 +67,8 @@ _settingsMobileLarge(BuildContext context, State state, bool isAndroid) {
 }
 
 Widget settingsBody(BuildContext context, State state) {
-  return Container(
-      constraints: BoxConstraints.expand(height: double.maxFinite),
-      color: Theme.of(context).colorScheme.settingsBackground,
-      child: Responsive(
-        small: _settingsSmall(context, state),
-        large: _settingsLarge(context, state),
-      ));
+  return Responsive(
+    small: _settingsSmall(context, state),
+    large: _settingsLarge(context, state),
+  );
 }

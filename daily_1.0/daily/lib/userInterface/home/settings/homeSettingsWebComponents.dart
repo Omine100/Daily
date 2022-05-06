@@ -16,46 +16,9 @@ import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
-Container settingsWebCard(BuildContext context, State state) {
+Widget settingsWebCard(BuildContext context, State state) {
   return Container(
-    padding: EdgeInsets.only(left: 15, right: 15),
-    height: getDimension(
-        context, true, Theme.of(context).visualDensity.settingsCardHeight),
-    width: getDimension(
-        context, false, Theme.of(context).visualDensity.settingsCardWidth),
-    child: DraggableScrollableSheet(
-        initialChildSize: _firebaseAccounts.getSignedInStatus()
-            ? Theme.of(context).visualDensity.settingsSheetMinSize
-            : Theme.of(context).visualDensity.settingsSheetSize,
-        minChildSize: Theme.of(context).visualDensity.settingsSheetMinSize,
-        builder: (context, scrollController) {
-          return SingleChildScrollView(
-            controller: scrollController,
-            child: Container(
-                height: getDimension(
-                    context,
-                    true,
-                    Theme.of(context)
-                        .visualDensity
-                        .settingsCardSheetContainerHeight),
-                width: getDimension(
-                    context,
-                    false,
-                    Theme.of(context)
-                        .visualDensity
-                        .settingsCardSheetContainerWidth),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(35),
-                      topRight: Radius.circular(35)),
-                  color: Theme.of(context).colorScheme.settingsMobileCard,
-                ),
-                child: Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15, top: 25),
-                    child: settingsBreakdown(context, state))),
-          );
-        }),
-  );
+      padding: EdgeInsets.all(20), child: settingsBreakdown(context, state));
 }
 
 Column settingsBreakdown(BuildContext context, State state) {

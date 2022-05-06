@@ -1,9 +1,12 @@
-import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
+import 'package:daily/servicesLocal/hover.dart';
+import 'package:daily/servicesBroad/contact.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
@@ -41,8 +44,7 @@ void _onPageChanged(State state, int i) {
 }
 
 void _onTabTapped(int i) {
-  _pageController.animateToPage(i,
-      duration: const Duration(milliseconds: 500), curve: Curves.easeOutQuint);
+  _pageController.jumpToPage(i);
 }
 
 Widget homeWebCardContainer(BuildContext context, State state, bool isSmall) {
@@ -229,12 +231,16 @@ class SideMenu extends StatelessWidget {
                 context: context,
                 icon: Icons.help,
                 text: 'Help',
-                onTap: () => {_onTabTapped(0)}),
+                onTap: () => {showHelpSupportBox(context)}),
             _createItem(
-                context: context,
-                icon: Icons.exit_to_app,
-                text: 'Logout',
-                onTap: () => {_firebaseAccounts.signOut()})
+              context: context,
+              icon: Icons.exit_to_app,
+              text: 'Logout',
+              onTap: () {
+                _firebaseAccounts.signOut();
+                context.router.replaceAll([AuthScreen()]);
+              },
+            )
           ],
         ),
       ])),
@@ -247,19 +253,44 @@ Widget _createItem(
     IconData icon,
     String text,
     GestureTapCallback onTap}) {
-  return ListTile(
-      onTap: onTap,
-      title: Row(children: <Widget>[
-        Icon(icon, color: Theme.of(context).colorScheme.homeWebDrawerItem),
-        Padding(
-            padding: EdgeInsets.only(left: 8.0),
-            child: Text(
-              text,
+  return InkWell(
+    child: ListTile(
+        onTap: onTap,
+        title: Row(children: <Widget>[
+          Icon(icon, color: Theme.of(context).colorScheme.homeWebDrawerItem),
+          Padding(
+              padding: EdgeInsets.only(left: 8.0),
+              child: Text(
+                text,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.homeWebDrawerItem,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                ),
+              ).showCursorOnHover),
+        ])),
+  );
+}
+
+void showHelpSupportBox(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor:
+              Theme.of(context).colorScheme.settingsMobileBoxBackground,
+          title: Text(getTranslated(context, "settingsHelpSupportBox"),
               style: TextStyle(
-                color: Theme.of(context).colorScheme.homeWebDrawerItem,
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-              ),
-            )),
-      ]));
+                color: Theme.of(context).colorScheme.settingsMobileBoxText,
+                fontSize: Theme.of(context).textTheme.settingsBoxTextTitle,
+                fontWeight: Theme.of(context).typography.settingsBoxTextTitle,
+              )),
+          content: Text(getContactEmail(),
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.settingsMobileBoxText,
+                fontSize: Theme.of(context).textTheme.settingsBoxText,
+                fontWeight: Theme.of(context).typography.settingsBoxText,
+              )),
+        );
+      });
 }
