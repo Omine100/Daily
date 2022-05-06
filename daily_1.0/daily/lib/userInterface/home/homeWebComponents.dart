@@ -231,7 +231,7 @@ class SideMenu extends StatelessWidget {
                 context: context,
                 icon: Icons.help,
                 text: 'Help',
-                onTap: () => {showHelpSupportBox(context)}),
+                onTap: () => {showHelpSupportBox(context)}).showCursorOnHover,
             _createItem(
               context: context,
               icon: Icons.exit_to_app,
@@ -267,7 +267,7 @@ Widget _createItem(
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
                 ),
-              ).showCursorOnHover),
+              )),
         ])),
   );
 }

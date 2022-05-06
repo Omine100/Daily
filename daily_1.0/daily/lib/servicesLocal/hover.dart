@@ -8,6 +8,9 @@ extension HoverExtensions on Widget {
   Widget get showCursorOnHover {
     return MouseRegion(
       child: this,
+      onEnter: (event) {
+        appContainer.style.cursor = 'pointer';
+      },
       onHover: (event) {
         appContainer.style.cursor = 'pointer';
       },
