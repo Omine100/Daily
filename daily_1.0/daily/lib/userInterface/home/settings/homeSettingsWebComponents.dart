@@ -170,29 +170,6 @@ Widget settingClick(BuildContext context, Setting setting, State state) {
   );
 }
 
-void showHelpSupportBox(BuildContext context) {
-  showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor:
-              Theme.of(context).colorScheme.settingsMobileBoxBackground,
-          title: Text(getTranslated(context, "settingsHelpSupportBox"),
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.settingsMobileBoxText,
-                fontSize: Theme.of(context).textTheme.settingsBoxTextTitle,
-                fontWeight: Theme.of(context).typography.settingsBoxTextTitle,
-              )),
-          content: Text(getContactEmail(),
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.settingsMobileBoxText,
-                fontSize: Theme.of(context).textTheme.settingsBoxText,
-                fontWeight: Theme.of(context).typography.settingsBoxText,
-              )),
-        );
-      });
-}
-
 void showAboutBox(BuildContext context) {
   showDialog<void>(
     context: context,
