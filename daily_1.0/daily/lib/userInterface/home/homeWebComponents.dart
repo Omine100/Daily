@@ -118,8 +118,6 @@ Widget _createProfile(BuildContext context, State state) {
                       var result = await FilePicker.platform.pickFiles(
                           type: FileType.custom,
                           allowedExtensions: ['jpg', 'png']);
-                      await _firebaseAccounts.setCurrentUserProfilePicImage(
-                          File(result.files.first.path), state);
                       await FirebaseStorage.instance
                           .ref('uploads/test')
                           .putData(result.files.first.bytes);
