@@ -278,7 +278,7 @@ Widget authWebForgotPassword(BuildContext context, State state, bool isSmall) {
         ),
       ),
     ),
-  );
+  ).showClickOnHover;
 }
 
 Widget authWebPolicyAndTaC(BuildContext context) {
@@ -446,7 +446,7 @@ Widget authWebSwitch(BuildContext context, State state) {
         ],
       ),
     ),
-  );
+  ).showClickOnHover;
 }
 
 void _authWebValidateSubmit(BuildContext context, State state) async {

@@ -1,5 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'dart:typed_data';
+import 'dart:io';
+import 'package:file_picker/file_picker.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
@@ -100,88 +104,126 @@ Widget _createHeader(BuildContext context) {
   );
 }
 
-Widget _createProfile(BuildContext context) {
+Widget _createProfile(BuildContext context, State state) {
   return _firebaseAccounts.getSignedInStatus()
-      ? Container(
-          width: getDimension(context, false,
-              Theme.of(context).visualDensity.homeWebProfileWidth),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                height: getDimension(context, true,
-                    Theme.of(context).visualDensity.homeWebProfileIconHeight),
-                width: getDimension(context, true,
-                    Theme.of(context).visualDensity.homeWebProfileIconWidth),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Theme.of(context).colorScheme.homeWebProfileBackground,
-                ),
-                child: CachedNetworkImage(
-                  imageUrl: profileURL.value,
-                  imageBuilder: (context, imageProvider) => Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: imageProvider, fit: BoxFit.cover),
-                    ),
-                  ),
-                  placeholder: (context, url) => showProgress(context),
-                  errorWidget: (context, url, error) => Icon(
-                    Icons.person_outline_rounded,
-                    size: 55,
-                    color: Theme.of(context).colorScheme.homeWebProfileIcon,
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(top: 15),
-                width: getDimension(context, false,
-                    Theme.of(context).visualDensity.homeWebProfileInfoWidth),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 5.0),
-                      child: Text(
-                        _firebaseAccounts.getCurrentUserDisplayName() ??
-                            getTranslated(context, "settingsNullName"),
-                        softWrap: false,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
+      ? Center(
+          child: Container(
+              width: getDimension(context, false,
+                  Theme.of(context).visualDensity.homeWebProfileWidth),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () async {
+                      var result = await FilePicker.platform.pickFiles(
+                          type: FileType.custom,
+                          allowedExtensions: ['jpg', 'png']);
+                      await _firebaseAccounts.setCurrentUserProfilePicImage(
+                          File(result.files.first.path), state);
+                      await FirebaseStorage.instance
+                          .ref('uploads/test')
+                          .putData(result.files.first.bytes);
+                    },
+                    child: Container(
+                      height: getDimension(
+                          context,
+                          true,
+                          Theme.of(context)
+                              .visualDensity
+                              .homeWebProfileIconHeight),
+                      width: getDimension(
+                          context,
+                          true,
+                          Theme.of(context)
+                              .visualDensity
+                              .homeWebProfileIconWidth),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .homeWebProfileBackground,
+                      ),
+                      child: CachedNetworkImage(
+                        imageUrl: profileURL.value,
+                        imageBuilder: (context, imageProvider) => Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: imageProvider, fit: BoxFit.cover),
+                          ),
+                        ),
+                        placeholder: (context, url) => showProgress(context),
+                        errorWidget: (context, url, error) => Icon(
+                          Icons.person_outline_rounded,
+                          size: 55,
                           color:
-                              Theme.of(context).colorScheme.homeWebProfileName,
-                          fontSize:
-                              Theme.of(context).textTheme.homeWebProfileName,
-                          fontWeight:
-                              Theme.of(context).typography.homeWebProfileName,
+                              Theme.of(context).colorScheme.homeWebProfileIcon,
                         ),
                       ),
+                    ).showClickOnHover,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 15),
+                    width: getDimension(
+                        context,
+                        false,
+                        Theme.of(context)
+                            .visualDensity
+                            .homeWebProfileInfoWidth),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 5.0),
+                          child: Text(
+                            _firebaseAccounts.getCurrentUserDisplayName() ??
+                                getTranslated(context, "settingsNullName"),
+                            softWrap: false,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .homeWebProfileName,
+                              fontSize: Theme.of(context)
+                                  .textTheme
+                                  .homeWebProfileName,
+                              fontWeight: Theme.of(context)
+                                  .typography
+                                  .homeWebProfileName,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          _firebaseAccounts.getCurrentUserEmail() ??
+                              getTranslated(context, "settingsNullEmail"),
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .homeWebProfileEmail,
+                            fontSize:
+                                Theme.of(context).textTheme.homeWebProfileEmail,
+                            fontWeight: Theme.of(context)
+                                .typography
+                                .homeWebProfileEmail,
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      _firebaseAccounts.getCurrentUserEmail() ??
-                          getTranslated(context, "settingsNullEmail"),
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        color:
-                            Theme.of(context).colorScheme.homeWebProfileEmail,
-                        fontSize:
-                            Theme.of(context).textTheme.homeWebProfileEmail,
-                        fontWeight:
-                            Theme.of(context).typography.homeWebProfileEmail,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+                  ),
+                ],
+              )),
         )
       : Container();
 }
 
-class SideMenu extends StatelessWidget {
+class SideMenu extends StatefulWidget {
+  @override
+  _SideMenuState createState() => _SideMenuState();
+}
+
+class _SideMenuState extends State<SideMenu> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -194,7 +236,7 @@ class SideMenu extends StatelessWidget {
         SizedBox(
           height: 5,
         ),
-        _createProfile(context),
+        _createProfile(context, this),
         Row(
           children: [
             Spacer(),
@@ -231,7 +273,7 @@ class SideMenu extends StatelessWidget {
                 context: context,
                 icon: Icons.help,
                 text: 'Help',
-                onTap: () => {showHelpSupportBox(context)}).showCursorOnHover,
+                onTap: () => {showHelpSupportBox(context)}),
             _createItem(
               context: context,
               icon: Icons.exit_to_app,

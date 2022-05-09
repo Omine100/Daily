@@ -302,6 +302,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.2"
+  file_picker:
+    dependency: "direct main"
+    description:
+      name: file_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.5.1"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -637,13 +644,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.4.0"
-  picker:
-    dependency: "direct main"
-    description:
-      name: picker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.6"
   platform:
     dependency: transitive
     description:
@@ -893,7 +893,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.11"
+    version: "2.5.2"
   xdg_directories:
     dependency: transitive
     description:

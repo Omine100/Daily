@@ -1,22 +1,11 @@
 import 'package:flutter/material.dart';
-import 'dart:html' as html;
+import 'package:flutter/widgets.dart';
 
 extension HoverExtensions on Widget {
-  static final appContainer =
-      html.window.document.getElementById('app-container');
-
-  Widget get showCursorOnHover {
+  Widget get showClickOnHover {
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
       child: this,
-      onEnter: (event) {
-        appContainer.style.cursor = 'pointer';
-      },
-      onHover: (event) {
-        appContainer.style.cursor = 'pointer';
-      },
-      onExit: (event) {
-        appContainer.style.cursor = 'default';
-      },
     );
   }
 }
