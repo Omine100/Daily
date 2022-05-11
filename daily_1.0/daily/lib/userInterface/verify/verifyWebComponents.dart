@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
+import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/standards/userIStandards.dart';
@@ -120,6 +121,6 @@ Widget verifyWebSwitchBack(BuildContext context, State state) {
         fontSize: Theme.of(context).textTheme.verifyWebSwitchBack,
         fontWeight: Theme.of(context).typography.verifyWebSwitchBack,
       ),
-    ),
+    ).showClickOnHover,
   );
 }
