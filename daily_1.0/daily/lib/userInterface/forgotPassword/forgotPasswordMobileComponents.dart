@@ -43,6 +43,15 @@ Widget forgotPasswordMobileTitle(BuildContext context) {
   );
 }
 
+bool _formComplete = false;
+void _updateFormProgress(State state) {
+  _formComplete = false;
+  if (!_userEmail.isEmpty) _formComplete = true;
+  state.setState(() {
+    _formComplete;
+  });
+}
+
 String _userEmail;
 GlobalKey<FormFieldState> _forgotPasswordMobileFormKey =
     GlobalKey<FormFieldState>();
@@ -65,7 +74,12 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
       textAlignVertical: TextAlignVertical.center,
       key: _forgotPasswordMobileFormKey,
       obscureText: false,
-      onSaved: (email) => _userEmail = email,
+      onChanged: (email) {
+        _userEmail = email;
+        print(_userEmail);
+        _updateFormProgress(state);
+      },
+      onSaved: (email) => {_userEmail = email},
       onFieldSubmitted: (value) {
         _forgotPasswordValidateSubmit(context, state);
       },
@@ -131,32 +145,63 @@ Widget forgotPasswordMobileSend(BuildContext context, State state) {
     width: getDimension(context, false,
         Theme.of(context).visualDensity.forgotPasswordMobileSendWidth),
     decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.forgotPasswordMobileSend,
+        color: _formComplete
+            ? Theme.of(context).colorScheme.forgotPasswordMobileSend
+            : Theme.of(context).colorScheme.forgotPasswordMobileSendDeactived,
         borderRadius: BorderRadius.circular(30)),
     child: Material(
-      color: Theme.of(context).colorScheme.materialTransparent,
-      child: InkWell(
-        splashColor:
-            Theme.of(context).colorScheme.forgotPasswordMobileSendInkWell,
-        customBorder:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        onTap: () {
-          _forgotPasswordValidateSubmit(context, state);
-        },
-        child: Center(
-          child: Text(
-            getTranslated(context, "forgotPasswordSend"),
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.forgotPasswordMobileSendText,
-              fontSize:
-                  Theme.of(context).textTheme.forgotPasswordMobileSendText,
-              fontWeight:
-                  Theme.of(context).typography.forgotPasswordMobileSendText,
-            ),
-          ),
-        ),
-      ),
-    ),
+        color: Theme.of(context).colorScheme.materialTransparent,
+        child: _formComplete
+            ? InkWell(
+                splashColor: _formComplete
+                    ? Theme.of(context)
+                        .colorScheme
+                        .forgotPasswordMobileSendInkWell
+                    : Theme.of(context)
+                        .colorScheme
+                        .forgotPasswordMobileSendInkWellDeactivated,
+                customBorder: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                onTap: () {
+                  _formComplete
+                      ? _forgotPasswordValidateSubmit(context, state)
+                      : null;
+                },
+                child: Center(
+                  child: Text(
+                    getTranslated(context, "forgotPasswordSend"),
+                    style: TextStyle(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .forgotPasswordMobileSendText,
+                      fontSize: Theme.of(context)
+                          .textTheme
+                          .forgotPasswordMobileSendText,
+                      fontWeight: Theme.of(context)
+                          .typography
+                          .forgotPasswordMobileSendText,
+                    ),
+                  ),
+                ),
+              )
+            : Container(
+                child: Center(
+                  child: Text(
+                    getTranslated(context, "forgotPasswordSend"),
+                    style: TextStyle(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .forgotPasswordMobileSendText,
+                      fontSize: Theme.of(context)
+                          .textTheme
+                          .forgotPasswordMobileSendText,
+                      fontWeight: Theme.of(context)
+                          .typography
+                          .forgotPasswordMobileSendText,
+                    ),
+                  ),
+                ),
+              )),
   );
 }
 

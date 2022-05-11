@@ -119,6 +119,10 @@ extension CustomWebColorScheme on ColorScheme {
       Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
   Color get forgotPasswordWebSendText =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+  Color get forgotPasswordWebSendDeactived =>
+      Color(isDark.value ? 0xFF323232 : 0xFF202020);
+  Color get forgotPasswordWebSendInkWellDeactivated =>
+      Color(isDark.value ? 0xFF777777 : 0xFF000000);
   Color get forgotPasswordWebResendPrimary =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get forgotPasswordWebResendSecondary =>
@@ -233,6 +237,10 @@ extension CustomMobileColorScheme on ColorScheme {
       Color(isDark.value ? 0xFFFF5350 : 0xFFFF9999);
   Color get forgotPasswordMobileSendText =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+  Color get forgotPasswordMobileSendDeactived =>
+      Color(isDark.value ? 0xFF323232 : 0xFF202020);
+  Color get forgotPasswordMobileSendInkWellDeactivated =>
+      Color(isDark.value ? 0xFF777777 : 0xFF000000);
   Color get forgotPasswordMobileResendPrimary =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   Color get forgotPasswordMobileResendSecondary =>

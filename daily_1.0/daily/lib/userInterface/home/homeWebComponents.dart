@@ -61,7 +61,8 @@ Widget homeWebCardContainer(BuildContext context, State state, bool isSmall) {
   return Container(
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.homeWebCardContainer,
-          borderRadius: BorderRadius.horizontal(left: Radius.circular(50))),
+          borderRadius:
+              BorderRadius.horizontal(left: Radius.circular(isSmall ? 0 : 50))),
       child: PageView(
         children: pages,
         onPageChanged: (pageIndex) {
@@ -98,7 +99,7 @@ Widget _createHeader(BuildContext context) {
       AdaptiveText(
         "Daily",
         style: TextStyle(
-            color: Colors.white, fontSize: 30, fontWeight: FontWeight.w500),
+            color: Colors.grey, fontSize: 30, fontWeight: FontWeight.w500),
       )
     ],
   );
