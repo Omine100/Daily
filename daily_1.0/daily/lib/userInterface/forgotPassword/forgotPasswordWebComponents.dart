@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
+import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
@@ -71,6 +72,15 @@ Widget forgotPasswordWebTitle(BuildContext context) {
   );
 }
 
+bool _formComplete = false;
+void _updateFormProgress(State state) {
+  _formComplete = true;
+  if (_userEmail.isEmpty) _formComplete = false;
+  state.setState(() {
+    _formComplete;
+  });
+}
+
 String _userEmail;
 GlobalKey<FormFieldState> _forgotPasswordWebFormKey =
     GlobalKey<FormFieldState>();
@@ -95,6 +105,9 @@ Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
         textAlignVertical: TextAlignVertical.center,
         key: _forgotPasswordWebFormKey,
         obscureText: false,
+        onChanged: (value) {
+          _updateFormProgress(state);
+        },
         onSaved: (email) => _userEmail = email,
         onFieldSubmitted: (value) {
           _forgotPasswordValidateSubmit(context, state);
@@ -158,7 +171,7 @@ Widget forgotPasswordWebSwitchBack(BuildContext context, State state) {
         ),
       ),
     ),
-  );
+  ).showClickOnHover;
 }
 
 bool _isSent = false;
@@ -227,7 +240,7 @@ Widget forgotPasswordWebResend(BuildContext context) {
         ],
       ),
     ),
-  );
+  ).showClickOnHover;
 }
 
 void _forgotPasswordValidateSubmit(BuildContext context, State state) {
