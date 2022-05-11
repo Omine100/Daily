@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:typed_data';
 import 'dart:async';
 import 'dart:io';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
@@ -43,6 +45,16 @@ class FirebaseAccounts {
         .then((value) {
       setCurrentUserProfilePicURL(state);
     });
+  }
+
+  Future<void> setCurrentUserProfilePicData(
+      Uint8List bytes, State state) async {
+    Uint8List imageInUnit8List = bytes;
+    final tempDir = await getTemporaryDirectory();
+    File file = await File('${tempDir.path}/image.png').create();
+    file.writeAsBytesSync(imageInUnit8List);
+
+    setCurrentUserProfilePicImage(file, state);
   }
 
   void setCurrentUserProfilePicURL(State state) async {

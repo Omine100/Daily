@@ -12,6 +12,7 @@ Setting resetPassword = new Setting(
     key: "settingResetPassword",
     group: Group.settingGroupAccount,
     format: Format.Click,
+    isMobile: false,
     isSignInRequired: true,
     onClicked: _firebaseAccounts.sendPasswordReset,
     call: _firebaseAccounts.getCurrentUserEmail);
@@ -19,6 +20,7 @@ Setting locale = new Setting(
     key: "settingLocale",
     group: Group.settingGroupGeneral,
     format: Format.DropDown,
+    isMobile: false,
     isSignInRequired: false,
     value: null,
     defaultValue: Locale("en", "en"),
@@ -29,6 +31,7 @@ Setting notifications = new Setting(
     key: "settingNotifications",
     group: Group.settingGroupGeneral,
     format: Format.Switch,
+    isMobile: false,
     isSignInRequired: false,
     value: false,
     defaultValue: false);
@@ -37,6 +40,7 @@ Setting theme = new Setting(
     group: Group.settingGroupGeneral,
     format: Format.DropDown,
     isSignInRequired: false,
+    isMobile: false,
     value: null,
     defaultValue: "settingThemeDefault",
     items: getThemeDropdownMenuList,
@@ -45,12 +49,14 @@ Setting isDark = new Setting(
     key: "settingIsDark",
     group: Group.settingGroupHidden,
     format: Format.NoUserInput,
+    isMobile: false,
     isSignInRequired: false,
     value: false);
 Setting profileURL = new Setting(
     key: "settingProfileURL",
     group: Group.settingGroupHidden,
     format: Format.NoUserInput,
+    isMobile: false,
     isSignInRequired: true,
     value: null,
     defaultValue: "");
@@ -58,12 +64,14 @@ Setting helpSupport = new Setting(
     key: "settingHelpSupport",
     group: Group.settingGroupGeneral,
     format: Format.Click,
+    isMobile: true,
     isSignInRequired: true,
     onClicked: showHelpSupportBox);
 Setting privacyPolicy = new Setting(
     key: "settingPrivacyPolicy",
     group: Group.settingGroupLegal,
     format: Format.Click,
+    isMobile: false,
     isSignInRequired: false,
     onClicked: _routeNavigation.routeTextViewer,
     call: getPolicyFilePath);
@@ -71,6 +79,7 @@ Setting termsAndConditions = new Setting(
     key: "settingTermsAndConditions",
     group: Group.settingGroupLegal,
     format: Format.Click,
+    isMobile: false,
     isSignInRequired: false,
     onClicked: _routeNavigation.routeTextViewer,
     call: getTaCFilePath);
@@ -78,6 +87,7 @@ Setting licenses = new Setting(
     key: "settingLicenses",
     group: Group.settingGroupLegal,
     format: Format.Click,
+    isMobile: false,
     isSignInRequired: true,
     onClicked: showAboutBox);
 

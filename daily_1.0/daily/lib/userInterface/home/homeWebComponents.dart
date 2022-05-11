@@ -115,12 +115,18 @@ Widget _createProfile(BuildContext context, State state) {
                 children: [
                   GestureDetector(
                     onTap: () async {
-                      var result = await FilePicker.platform.pickFiles(
-                          type: FileType.custom,
-                          allowedExtensions: ['jpg', 'png']);
-                      await FirebaseStorage.instance
-                          .ref('uploads/test')
-                          .putData(result.files.first.bytes);
+                      await FilePicker.platform
+                          .pickFiles(
+                              type: FileType.custom,
+                              allowMultiple: false,
+                              allowedExtensions: [
+                            'jpg',
+                            'png'
+                          ]).then((value) => {
+                                print(value.files.first.path),
+                                _firebaseAccounts.setCurrentUserProfilePicData(
+                                    value.files.first.bytes, state)
+                              });
                     },
                     child: Container(
                       height: getDimension(
@@ -142,7 +148,7 @@ Widget _createProfile(BuildContext context, State state) {
                             .homeWebProfileBackground,
                       ),
                       child: CachedNetworkImage(
-                        imageUrl: profileURL.value,
+                        imageUrl: _firebaseAccounts.getCurrentUserProfilePic(),
                         imageBuilder: (context, imageProvider) => Container(
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
