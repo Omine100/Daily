@@ -11,6 +11,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/constraints.dart';
 import 'package:daily/userInterface/home/homeWebComponents.dart';
 import 'package:daily/userInterface/home/homeMobileComponents.dart';
+import 'package:daily/userInterface/home/sideMenu.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -97,6 +98,18 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       context.router.replaceAll([AuthScreen()]);
     return Material(
       child: Scaffold(
+          drawer: kIsWeb
+              ? isSmall
+                  ? Drawer(
+                      child: SideMenu(),
+                    )
+                  : null
+              : null,
+          appBar: kIsWeb
+              ? isSmall
+                  ? homeWebAppBar(context, this)
+                  : null
+              : null,
           extendBody: true,
           body: Container(
             color: Theme.of(context).colorScheme.homeBackground,
