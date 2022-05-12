@@ -1,4 +1,3 @@
-import 'package:daily/userInterface/home/homeWebComponents.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:file_picker/file_picker.dart';
@@ -11,11 +10,13 @@ import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
+import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/standards/userXStandards.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
+import 'package:daily/userInterface/home/homeWebComponents.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
@@ -38,12 +39,6 @@ class _SideMenuState extends State<SideMenu> {
           height: 5,
         ),
         _createProfile(context, this),
-        Row(
-          children: [
-            Spacer(),
-            if (!getIsLarge(context)) CloseButton(),
-          ],
-        ),
         SizedBox(height: 15),
         _createItem(
             context: context,
@@ -74,7 +69,12 @@ class _SideMenuState extends State<SideMenu> {
                 context: context,
                 icon: Icons.help,
                 text: 'Help',
-                onTap: () => {showHelpSupportBox(context)}),
+                onTap: () => {
+                      showDialogBox(
+                          context,
+                          getTranslated(context, "settingsHelpSupportBox"),
+                          getContactEmail())
+                    }),
             _createItem(
               context: context,
               icon: Icons.exit_to_app,
@@ -105,7 +105,12 @@ Widget _createHeader(BuildContext context) {
         "Daily",
         style: TextStyle(
             color: Colors.grey, fontSize: 30, fontWeight: FontWeight.w500),
-      )
+      ),
+      Spacer(),
+      if (!getIsLarge(context))
+        CloseButton(
+          color: Colors.grey,
+        ),
     ],
   );
 }
@@ -244,33 +249,10 @@ Widget _createItem(
                 text,
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.homeWebDrawerItem,
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.w400,
                 ),
               )),
         ])),
   );
-}
-
-void showHelpSupportBox(BuildContext context) {
-  showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor:
-              Theme.of(context).colorScheme.settingsMobileBoxBackground,
-          title: Text(getTranslated(context, "settingsHelpSupportBox"),
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.settingsMobileBoxText,
-                fontSize: Theme.of(context).textTheme.settingsBoxTextTitle,
-                fontWeight: Theme.of(context).typography.settingsBoxTextTitle,
-              )),
-          content: Text(getContactEmail(),
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.settingsMobileBoxText,
-                fontSize: Theme.of(context).textTheme.settingsBoxText,
-                fontWeight: Theme.of(context).typography.settingsBoxText,
-              )),
-        );
-      });
 }

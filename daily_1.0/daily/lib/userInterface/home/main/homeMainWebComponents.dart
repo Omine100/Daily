@@ -23,4 +23,11 @@ Widget mainWebPrompt(BuildContext context) {}
 
 Widget mainWebFeed() {}
 
-Widget _feedCard() {}
+Widget _feedCard() {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10),
+      color: Colors.blue,
+    ),
+  );
+}

@@ -108,6 +108,29 @@ Widget showSocialButton(BuildContext context, int iconCase) {
   );
 }
 
+void showDialogBox(BuildContext context, String title, String content) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor:
+              Theme.of(context).colorScheme.settingsMobileBoxBackground,
+          title: Text(title,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.settingsMobileBoxText,
+                fontSize: Theme.of(context).textTheme.settingsBoxTextTitle,
+                fontWeight: Theme.of(context).typography.settingsBoxTextTitle,
+              )),
+          content: Text(content,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.settingsMobileBoxText,
+                fontSize: Theme.of(context).textTheme.settingsBoxText,
+                fontWeight: Theme.of(context).typography.settingsBoxText,
+              )),
+        );
+      });
+}
+
 void showToastMessage(BuildContext context, String key, bool isError) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     content: Text(

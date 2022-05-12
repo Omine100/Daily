@@ -6,7 +6,6 @@ import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/cameraManagement.dart';
-import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/constraints.dart';
 import 'package:daily/userInterface/home/homeWebComponents.dart';
@@ -99,14 +98,14 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     return Material(
       child: Scaffold(
           drawer: kIsWeb
-              ? isSmall
+              ? getIsSmall(context)
                   ? Drawer(
                       child: SideMenu(),
                     )
                   : null
               : null,
           appBar: kIsWeb
-              ? isSmall
+              ? getIsSmall(context)
                   ? homeWebAppBar(context, this)
                   : null
               : null,

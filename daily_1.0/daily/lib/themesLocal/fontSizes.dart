@@ -51,7 +51,7 @@ extension CustomWebFontSize on TextTheme {
 
   // #region home
   double get homeWebProfileName => 20;
-  double get homeWebProfileEmail => 16;
+  double get homeWebProfileEmail => 12;
   // #endregion
 }
 
