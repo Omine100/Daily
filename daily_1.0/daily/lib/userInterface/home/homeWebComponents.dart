@@ -72,7 +72,7 @@ Widget homeWebHeader(BuildContext context, State state, bool isSmall,
       children: [
         isSmall ? _homeWebHeaderDrawer(context, scaffoldKey) : Container(),
         isSmall ? _homeWebHeaderTitle() : Container(),
-        _homeWebHeaderSearchBar(),
+        _homeWebHeaderSearchBar(context),
         Spacer(),
         _homeWebHeaderNotifications(),
       ],
@@ -105,7 +105,7 @@ Widget _homeWebHeaderTitle() {
   );
 }
 
-Widget _homeWebHeaderSearchBar() {
+Widget _homeWebHeaderSearchBar(BuildContext context) {
   return Container();
 }
 
