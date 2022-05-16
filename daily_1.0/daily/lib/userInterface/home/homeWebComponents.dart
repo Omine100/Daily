@@ -31,7 +31,8 @@ void onTabTapped(int i) {
   _pageController.jumpToPage(i);
 }
 
-Widget homeWebCardContainer(BuildContext context, State state, bool isSmall) {
+Widget homeWebCardContainer(BuildContext context, State state, bool isSmall,
+    GlobalKey<ScaffoldState> scaffoldKey) {
   List<Widget> pages = [
     mainBody(context, state),
     globalBody(context),
@@ -40,24 +41,82 @@ Widget homeWebCardContainer(BuildContext context, State state, bool isSmall) {
   ];
 
   return Container(
+      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.homeWebCardContainer,
           borderRadius:
               BorderRadius.horizontal(left: Radius.circular(isSmall ? 0 : 50))),
-      child: PageView(
-        children: pages,
-        onPageChanged: (pageIndex) {
-          _onPageChanged(state, pageIndex);
-        },
-        controller: _pageController,
+      child: Column(
+        children: [
+          homeWebHeader(context, state, isSmall, scaffoldKey),
+          Container(
+            height: MediaQuery.of(context).size.height - 50,
+            child: PageView(
+              children: pages,
+              onPageChanged: (pageIndex) {
+                _onPageChanged(state, pageIndex);
+              },
+              controller: _pageController,
+            ),
+          )
+        ],
       ));
 }
 
-Widget homeWebAppBar(BuildContext context, State state) {
-  return AppBar(
-    title: Text("Daily"),
-    backgroundColor: Theme.of(context).colorScheme.homeWebAppBarBackground,
-    shadowColor: Theme.of(context).colorScheme.materialTransparent,
+Widget homeWebHeader(BuildContext context, State state, bool isSmall,
+    GlobalKey<ScaffoldState> scaffoldKey) {
+  return Container(
+    height: 50,
+    width: MediaQuery.of(context).size.width,
+    child: Row(
+      children: [
+        isSmall ? _homeWebHeaderDrawer(context, scaffoldKey) : Container(),
+        isSmall ? _homeWebHeaderTitle() : Container(),
+        _homeWebHeaderSearchBar(),
+        Spacer(),
+        _homeWebHeaderNotifications(),
+      ],
+    ),
+  );
+}
+
+Widget _homeWebHeaderDrawer(
+    BuildContext context, GlobalKey<ScaffoldState> scaffoldKey) {
+  return IconButton(
+    icon: Icon(
+      Icons.menu,
+      color: Colors.grey,
+    ),
+    iconSize: 25,
+    onPressed: () {
+      scaffoldKey.currentState?.openDrawer();
+    },
+  );
+}
+
+Widget _homeWebHeaderTitle() {
+  return Text(
+    "Daily",
+    style: TextStyle(
+      color: Colors.grey,
+      fontSize: 20,
+      fontWeight: FontWeight.w400,
+    ),
+  );
+}
+
+Widget _homeWebHeaderSearchBar() {
+  return Container();
+}
+
+Widget _homeWebHeaderNotifications() {
+  return IconButton(
+    icon: Icon(
+      Icons.notifications,
+      color: Colors.grey,
+    ),
+    iconSize: 25,
+    onPressed: () {},
   );
 }
 

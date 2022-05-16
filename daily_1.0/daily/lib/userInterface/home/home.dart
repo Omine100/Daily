@@ -65,21 +65,23 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   }
 
   _homeScreenWebSmall() {
-    return homeWebCardContainer(context, this, true);
+    return homeWebCardContainer(context, this, true, _scaffoldKey);
   }
 
   _homeScreenWebLarge() {
-    return Row(
-      children: [
-        Expanded(
-          flex: 4,
-          child: SideMenu(),
-        ),
-        Expanded(
-          flex: 15,
-          child: homeWebCardContainer(context, this, false),
-        ),
-      ],
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Row(
+        children: [
+          Expanded(
+            flex: 4,
+            child: SideMenu(),
+          ),
+          Expanded(
+              flex: 15,
+              child: homeWebCardContainer(context, this, false, _scaffoldKey)),
+        ],
+      ),
     );
   }
 
@@ -91,22 +93,19 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     return homeMobileBody(context, this);
   }
 
+  var _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     if (!_firebaseAccounts.getSignedInStatus())
       context.router.replaceAll([AuthScreen()]);
     return Material(
       child: Scaffold(
+          key: _scaffoldKey,
           drawer: kIsWeb
               ? getIsSmall(context)
                   ? Drawer(
                       child: SideMenu(),
                     )
-                  : null
-              : null,
-          appBar: kIsWeb
-              ? getIsSmall(context)
-                  ? homeWebAppBar(context, this)
                   : null
               : null,
           extendBody: true,
