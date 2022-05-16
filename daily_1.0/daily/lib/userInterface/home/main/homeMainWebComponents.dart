@@ -17,7 +17,16 @@ Widget _mainWebTitle() {}
 
 Widget _mainWebSearchBar() {}
 
-Widget _mainWebNotifications() {}
+Widget _mainWebNotifications() {
+  return IconButton(
+    icon: Icon(
+      Icons.notifications,
+      color: Colors.grey,
+    ),
+    iconSize: 25,
+    onPressed: () {},
+  );
+}
 
 Widget mainWebPrompt(BuildContext context) {}
 
