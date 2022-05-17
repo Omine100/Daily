@@ -17,17 +17,17 @@ class Setting {
   bool isSignInRequired;
   dynamic value;
   dynamic defaultValue;
-  Function items;
-  Function onChanged;
-  Function onClicked;
-  Function call;
+  Function? items;
+  Function? onChanged;
+  Function? onClicked;
+  Function? call;
 
   Setting(
-      {@required this.key,
-      @required this.group,
-      @required this.format,
-      @required this.isMobile,
-      @required this.isSignInRequired,
+      {required this.key,
+      required this.group,
+      required this.format,
+      required this.isMobile,
+      required this.isSignInRequired,
       this.value,
       this.defaultValue,
       this.items,

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:file_picker/file_picker.dart';
@@ -126,18 +128,16 @@ Widget _createProfile(BuildContext context, State state) {
                 children: [
                   GestureDetector(
                     onTap: () async {
-                      await FilePicker.platform
-                          .pickFiles(
-                              type: FileType.custom,
-                              allowMultiple: false,
-                              allowedExtensions: [
+                      await FilePicker.platform.pickFiles(
+                          type: FileType.custom,
+                          allowMultiple: false,
+                          allowedExtensions: [
                             'jpg',
                             'png'
                           ]).then((value) => {
-                                print(value.files.first.path),
-                                _firebaseAccounts.setCurrentUserProfilePicData(
-                                    value.files.first.bytes, state)
-                              });
+                            _firebaseAccounts.setCurrentUserProfilePicData(
+                                value!.files.first.bytes, state)
+                          });
                     },
                     child: Container(
                       height: getDimension(
@@ -234,10 +234,10 @@ Widget _createProfile(BuildContext context, State state) {
 }
 
 Widget _createItem(
-    {BuildContext context,
-    IconData icon,
-    String text,
-    GestureTapCallback onTap}) {
+    {required BuildContext context,
+    required IconData icon,
+    required String text,
+    required GestureTapCallback onTap}) {
   return InkWell(
     child: ListTile(
         onTap: onTap,

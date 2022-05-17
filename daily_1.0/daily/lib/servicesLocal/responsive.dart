@@ -22,9 +22,9 @@ class Responsive extends StatelessWidget {
   final Widget large;
 
   const Responsive({
-    Key key,
-    @required this.small,
-    @required this.large,
+    Key? key,
+    required this.small,
+    required this.large,
   }) : super(key: key);
 
   @override

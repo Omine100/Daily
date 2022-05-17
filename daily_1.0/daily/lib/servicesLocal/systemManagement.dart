@@ -25,7 +25,7 @@ List<DropdownMenuItem> getThemeDropdownMenuList(BuildContext context) {
 void setTheme(BuildContext context) {
   if (theme.value == "settingThemeDark" ||
       (theme.value == "settingThemeDefault" &&
-          SchedulerBinding.instance.window.platformBrightness ==
+          SchedulerBinding.instance!.window.platformBrightness ==
               Brightness.dark)) {
     isDark.value = true;
     return;

@@ -528,7 +528,7 @@ Widget authMobileSwitch(BuildContext context, State state) {
 }
 
 void _authValidateSubmit(BuildContext context, State state) async {
-  _authMobileFormKey.currentState.save();
+  _authMobileFormKey.currentState!.save();
   if (_authControls == AuthControls.signIn)
     _firebaseAccounts
         .signInEmailAndPassword(context, _userEmail, _userPass)
@@ -554,6 +554,6 @@ void _authVerifiedHandling(BuildContext context, bool value) {
     } else {
       context.router.replaceAll([HomeScreen()]);
     }
-    _authMobileFormKey.currentState.reset();
+    _authMobileFormKey.currentState!.reset();
   }
 }

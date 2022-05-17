@@ -11,7 +11,7 @@ import 'package:daily/userInterface/verify/verifyMobileComponents.dart';
 class VerifyScreen extends StatefulWidget {
   final String email;
   final String pass;
-  VerifyScreen({this.email, this.pass});
+  VerifyScreen({required this.email, required this.pass});
 
   @override
   _VerifyScreenState createState() => _VerifyScreenState();

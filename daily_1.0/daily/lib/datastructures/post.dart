@@ -8,11 +8,11 @@ class Post {
   DateTime timePosted;
 
   Post(
-      {@required this.postID,
-      @required this.username,
-      @required this.downloadURL,
-      @required this.description,
-      @required this.timePosted});
+      {required this.postID,
+      required this.username,
+      required this.downloadURL,
+      required this.description,
+      required this.timePosted});
 }
 
 //What if for postID we dont do this cause there would only be one post per person per day
@@ -22,9 +22,11 @@ class PostID {
   DateTime timePosted;
 
   PostID(
-      {@required this.username,
-      @required this.downloadURL,
-      @required this.timePosted});
+      {required this.username,
+      required this.downloadURL,
+      required this.timePosted});
 
-  String _PostIDGeneration() {}
+  String _PostIDGeneration() {
+    return "";
+  }
 }

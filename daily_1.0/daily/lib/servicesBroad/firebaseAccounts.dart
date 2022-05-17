@@ -22,25 +22,25 @@ class FirebaseAccounts {
   }
 
   String getCurrentUserId() {
-    return _auth.currentUser.uid;
+    return _auth.currentUser!.uid;
   }
 
   Future<void> setCurrentUserDisplayName(String displayName) async {
-    _auth.currentUser.updateDisplayName(displayName);
+    _auth.currentUser!.updateDisplayName(displayName);
   }
 
   String getCurrentUserDisplayName() {
-    return _auth.currentUser.displayName;
+    return _auth.currentUser?.displayName ?? "";
   }
 
   String getCurrentUserEmail() {
-    return _auth.currentUser.email;
+    return _auth.currentUser?.email ?? "";
   }
 
   Future<void> setCurrentUserProfilePicImage(File image, State state) async {
-    var storageRef = _storage.ref(_auth.currentUser.uid + '/profilePicture');
+    var storageRef = _storage.ref(_auth.currentUser!.uid + '/profilePicture');
     await storageRef.putFile(image);
-    _auth.currentUser
+    _auth.currentUser!
         .updatePhotoURL(await storageRef.getDownloadURL())
         .then((value) {
       setCurrentUserProfilePicURL(state);
@@ -48,33 +48,34 @@ class FirebaseAccounts {
   }
 
   Future<void> setCurrentUserProfilePicData(
-      Uint8List bytes, State state) async {
-    Uint8List imageInUnit8List = bytes;
-    final tempDir = await getTemporaryDirectory();
-    File file = await File('${tempDir.path}/image.png').create();
-    file.writeAsBytesSync(imageInUnit8List);
-
-    setCurrentUserProfilePicImage(file, state);
+      Uint8List? bytes, State state) async {
+    Uint8List? imageInUnit8List = bytes;
+    if (imageInUnit8List != null) {
+      final tempDir = await getTemporaryDirectory();
+      File file = await File('${tempDir.path}/image.png').create();
+      file.writeAsBytesSync(imageInUnit8List);
+      setCurrentUserProfilePicImage(file, state);
+    }
   }
 
   void setCurrentUserProfilePicURL(State state) async {
-    profileURL.value = _auth.currentUser.photoURL;
+    profileURL.value = _auth.currentUser!.photoURL;
     settingsToPrefs(settingsList);
     state.setState(() {});
   }
 
   String getCurrentUserProfilePic() {
-    return _auth.currentUser.photoURL;
+    return _auth.currentUser?.photoURL ?? "";
   }
 
   Future<void> sendEmailVerification(BuildContext context) async {
-    _auth.currentUser.sendEmailVerification().catchError((onError) =>
+    _auth.currentUser!.sendEmailVerification().catchError((onError) =>
         showToastMessage(context, "_errorVerificationSentFailed", true));
   }
 
   bool getEmailVerified(BuildContext context) {
-    if (!_auth.currentUser.emailVerified) sendEmailVerification(context);
-    return _auth.currentUser.emailVerified;
+    if (!_auth.currentUser!.emailVerified) sendEmailVerification(context);
+    return _auth.currentUser!.emailVerified;
   }
 
   Future<bool> sendPasswordReset(BuildContext context, String email) async {
@@ -184,7 +185,7 @@ class FirebaseAccounts {
   }
 
   Future<void> deleteUserData() async {
-    var userId = _auth.currentUser.uid;
+    var userId = _auth.currentUser!.uid;
     await _firestore.collection(userId).get().then((snapshot) {
       for (DocumentSnapshot ds in snapshot.docs) {
         ds.reference.delete();
@@ -194,6 +195,6 @@ class FirebaseAccounts {
 
   Future<void> deleteUser() async {
     deleteUserData();
-    _auth.currentUser.delete();
+    _auth.currentUser!.delete();
   }
 }

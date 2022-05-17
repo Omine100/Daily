@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:daily/standards/userIStandards.dart';
 
 class MediaPickerManagement {
-  Future<File> imagePicker(BuildContext context, bool isCamera, State state,
+  void imagePicker(BuildContext context, bool isCamera, State state,
       Function function) async {
     try {
       // Picker.pickImage(
@@ -20,14 +20,14 @@ class MediaPickerManagement {
     return null;
   }
 
-  Future<File> getImage(String imageURL) async {
+  getImage(String imageURL) async {
     File imageFile;
     if (Platform.isAndroid) {
       var response = await get(Uri.parse(imageURL));
-      final documentDirectory = (await getExternalStorageDirectory()).path;
+      final documentDirectory = (await getExternalStorageDirectory())?.path;
       imageFile = new File('$documentDirectory/flutter.png');
       imageFile.writeAsBytesSync(response.bodyBytes);
+      return imageFile;
     }
-    return imageFile;
   }
 }

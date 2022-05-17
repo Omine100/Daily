@@ -7,7 +7,7 @@ import 'package:daily/userInterface/imageViewer/imageViewerMobileComponents.dart
 class ImageViewerScreen extends StatefulWidget {
   final Widget image;
   final String imagePath;
-  ImageViewerScreen({this.image, this.imagePath});
+  ImageViewerScreen({required this.image, required this.imagePath});
 
   @override
   _ImageViewerScreenState createState() => _ImageViewerScreenState();

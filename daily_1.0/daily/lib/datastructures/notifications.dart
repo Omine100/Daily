@@ -5,7 +5,7 @@ class Notification {
   String userID;
 
   Notification({
-    @required this.postID,
-    @required this.userID,
+    required this.postID,
+    required this.userID,
   });
 }

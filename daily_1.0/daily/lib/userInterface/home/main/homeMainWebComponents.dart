@@ -11,11 +11,17 @@ Widget mainWebHeader(BuildContext context, State state, bool isSmall) {
   );
 }
 
-Widget _mainWebDrawer() {}
+Widget _mainWebDrawer() {
+  return Container();
+}
 
-Widget _mainWebTitle() {}
+Widget _mainWebTitle() {
+  return Container();
+}
 
-Widget _mainWebSearchBar() {}
+Widget _mainWebSearchBar() {
+  return Container();
+}
 
 Widget _mainWebNotifications() {
   return IconButton(
@@ -28,9 +34,13 @@ Widget _mainWebNotifications() {
   );
 }
 
-Widget mainWebPrompt(BuildContext context) {}
+Widget mainWebPrompt(BuildContext context) {
+  return Container();
+}
 
-Widget mainWebFeed() {}
+Widget mainWebFeed() {
+  return Container();
+}
 
 Widget _feedCard() {
   return Container(

@@ -14,7 +14,7 @@ class FirebaseCRUD {
 
   Future<void> createImageData(
       BuildContext context, String fileName, File imageFile) async {
-    var userId = _auth.currentUser.uid;
+    var userId = _auth.currentUser!.uid;
     try {
       await _storage
           .ref(fileName)
@@ -33,7 +33,7 @@ class FirebaseCRUD {
   }
 
   Future<List<DocumentSnapshot>> getImageDocuments() async {
-    var userId = _auth.currentUser.uid;
+    var userId = _auth.currentUser!.uid;
     final QuerySnapshot querySnapshot = await _firestore
         .collection(userId)
         .doc("images")
@@ -60,7 +60,7 @@ class FirebaseCRUD {
     Reference reference = FirebaseStorage.instance.refFromURL(imageURL);
     reference.delete();
 
-    var userID = _auth.currentUser.uid;
+    var userID = _auth.currentUser!.uid;
     await _firestore
         .collection(userID)
         .doc("images")

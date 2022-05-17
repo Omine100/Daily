@@ -9,10 +9,10 @@ class Adaptive extends StatelessWidget {
   final Widget web;
 
   const Adaptive({
-    Key key,
-    @required this.iOS,
-    @required this.android,
-    @required this.web,
+    Key? key,
+    required this.iOS,
+    required this.android,
+    required this.web,
   }) : super(key: key);
 
   @override
@@ -28,14 +28,14 @@ class Adaptive extends StatelessWidget {
         SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
         return android;
       }
-      return null;
+      return web;
     }));
   }
 }
 
 class AdaptiveText extends StatelessWidget {
   final String text;
-  final TextStyle style;
+  final TextStyle? style;
   AdaptiveText(this.text, {this.style});
 
   @override

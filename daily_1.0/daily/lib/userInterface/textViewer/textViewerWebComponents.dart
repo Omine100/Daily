@@ -12,7 +12,7 @@ Widget textViewerWebText(BuildContext context, String filePath) {
           future: DefaultAssetBundle.of(context).loadString(filePath),
           builder: (context, snapshot) {
             return AdaptiveText(
-              snapshot.data ?? '',
+              snapshot.data.toString(),
               style: TextStyle(
                 color: Theme.of(context).colorScheme.textViewerWebText,
                 fontSize: Theme.of(context).textTheme.textViewerWebText,

@@ -7,7 +7,7 @@ import 'package:daily/userInterface/textViewer/textViewerMobileComponents.dart';
 
 class TextViewerScreen extends StatefulWidget {
   final String filePath;
-  TextViewerScreen({this.filePath});
+  TextViewerScreen({required this.filePath});
 
   @override
   _TextViewerScreenState createState() => _TextViewerScreenState();

@@ -8,7 +8,7 @@ import 'package:daily/userInterface/error/errorMobileComponents.dart';
 
 class ErrorScreen extends StatefulWidget {
   final String filePath;
-  ErrorScreen({this.filePath});
+  ErrorScreen({required this.filePath});
 
   @override
   _ErrorScreenState createState() => _ErrorScreenState();

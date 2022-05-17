@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 
-SharedPreferences _prefs;
+SharedPreferences? _prefs;
 _prefsInstance() async {
   _prefs ??= await SharedPreferences.getInstance();
 }
@@ -17,16 +17,16 @@ void settingsToPrefs(List<Setting> settingsList) async {
 
 Future<void> prefsToSettings() async {
   await _prefsInstance();
-  if (_prefs.getKeys().length == 0) {
+  if (_prefs?.getKeys().length == 0) {
     settingsList.forEach((setting) {
       if (setting.defaultValue != null)
         _saveToPrefs(setting.key, setting.defaultValue);
     });
   }
   try {
-    _prefs.getKeys().forEach((key) {
+    _prefs?.getKeys().forEach((key) {
       settingsList.where((setting) => setting.key == key).first.value =
-          _prefs.get(key);
+          _prefs?.get(key);
     });
   } catch (e) {}
 }
@@ -34,21 +34,21 @@ Future<void> prefsToSettings() async {
 _saveToPrefs(String key, dynamic value) {
   switch (value.runtimeType) {
     case int:
-      _prefs.setInt(key, value);
+      _prefs?.setInt(key, value);
       break;
     case double:
-      _prefs.setDouble(key, value);
+      _prefs?.setDouble(key, value);
       break;
     case bool:
-      _prefs.setBool(key, value);
+      _prefs?.setBool(key, value);
       break;
     case String:
-      _prefs.setString(key, value);
+      _prefs?.setString(key, value);
       break;
     case Locale:
-      _prefs.setString(key, value.languageCode + "_" + value.countryCode);
+      _prefs?.setString(key, value.languageCode + "_" + value.countryCode);
       break;
     default:
-      _prefs.setString(key, value.toString());
+      _prefs?.setString(key, value.toString());
   }
 }
