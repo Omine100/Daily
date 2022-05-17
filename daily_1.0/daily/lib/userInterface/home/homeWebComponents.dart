@@ -7,6 +7,7 @@ import 'package:daily/userInterface/home/search/homeSearch.dart';
 import 'package:daily/userInterface/home/global/homeGlobal.dart';
 import 'package:daily/userInterface/home/settings/homeSettings.dart';
 import 'package:daily/userInterface/home/sideMenu.dart';
+import 'package:daily/userInterface/home/searchBar.dart';
 
 int _pageIndex = 0;
 PageController _pageController;
@@ -50,7 +51,7 @@ Widget homeWebCardContainer(BuildContext context, State state, bool isSmall,
         children: [
           homeWebHeader(context, state, isSmall, scaffoldKey),
           Container(
-            height: MediaQuery.of(context).size.height - 50,
+            height: MediaQuery.of(context).size.height - 75,
             child: PageView(
               children: pages,
               onPageChanged: (pageIndex) {
@@ -66,12 +67,16 @@ Widget homeWebCardContainer(BuildContext context, State state, bool isSmall,
 Widget homeWebHeader(BuildContext context, State state, bool isSmall,
     GlobalKey<ScaffoldState> scaffoldKey) {
   return Container(
-    height: 50,
+    height: 75,
     width: MediaQuery.of(context).size.width,
     child: Row(
       children: [
-        isSmall ? _homeWebHeaderDrawer(context, scaffoldKey) : Container(),
-        isSmall ? _homeWebHeaderTitle() : Container(),
+        isSmall
+            ? _homeWebHeaderDrawer(context, scaffoldKey)
+            : SizedBox(
+                width: 12.5,
+              ),
+        isSmall ? _homeWebHeaderTitle() : SizedBox(width: 12.5),
         _homeWebHeaderSearchBar(context),
         Spacer(),
         _homeWebHeaderNotifications(),
@@ -106,7 +111,17 @@ Widget _homeWebHeaderTitle() {
 }
 
 Widget _homeWebHeaderSearchBar(BuildContext context) {
-  return Container();
+  return SearchBar(
+      height: 40,
+      width: MediaQuery.of(context).size.width * 0.5,
+      borderRadius: 10,
+      background: Colors.black38,
+      foreground: Colors.grey,
+      iconSize: 25,
+      fontWeight: FontWeight.w300,
+      fontSize: 16,
+      hint: "Search",
+      onChanged: null);
 }
 
 Widget _homeWebHeaderNotifications() {

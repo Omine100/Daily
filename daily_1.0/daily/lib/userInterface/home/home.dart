@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             child: SideMenu(),
           ),
           Expanded(
-              flex: 15,
+              flex: 20,
               child: homeWebCardContainer(context, this, false, _scaffoldKey)),
         ],
       ),
