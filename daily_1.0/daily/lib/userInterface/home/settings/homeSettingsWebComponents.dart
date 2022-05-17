@@ -1,9 +1,11 @@
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/contact.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
+import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
@@ -18,7 +20,8 @@ FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
 Widget settingsWebCard(BuildContext context, State state) {
   return Container(
-      padding: EdgeInsets.all(20), child: settingsBreakdown(context, state));
+      padding: EdgeInsets.only(left: 20, right: 20),
+      child: settingsBreakdown(context, state));
 }
 
 Column settingsBreakdown(BuildContext context, State state) {
@@ -49,7 +52,7 @@ Column settingsBreakdown(BuildContext context, State state) {
 Row settingsGroupTitle(BuildContext context, String key) {
   return Row(
     children: [
-      Text(
+      AdaptiveText(
         getTranslated(context, key),
         style: TextStyle(
           color: Theme.of(context).colorScheme.settingsMobileGroupTitle,
@@ -83,7 +86,7 @@ Row settingRow(BuildContext context, Setting setting, State state) {
     children: setting.format == Format.Click
         ? [settingClick(context, setting, state)]
         : [
-            Text(getTranslated(context, setting.key),
+            AdaptiveText(getTranslated(context, setting.key),
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.settingsMobileRowText,
                   fontSize: Theme.of(context).textTheme.settingsRowText,
@@ -167,7 +170,7 @@ Widget settingClick(BuildContext context, Setting setting, State state) {
             )),
       ),
     ),
-  );
+  ).showClickOnHover;
 }
 
 void showAboutBox(BuildContext context) {

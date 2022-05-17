@@ -46,7 +46,7 @@ Widget homeWebCardContainer(BuildContext context, State state, bool isSmall,
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.homeWebCardContainer,
           borderRadius:
-              BorderRadius.horizontal(left: Radius.circular(isSmall ? 0 : 50))),
+              BorderRadius.only(topLeft: Radius.circular(isSmall ? 0 : 50))),
       child: Column(
         children: [
           homeWebHeader(context, state, isSmall, scaffoldKey),
