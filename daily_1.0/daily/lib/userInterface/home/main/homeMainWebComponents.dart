@@ -1,3 +1,4 @@
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/themesLocal/colors.dart';
 
@@ -23,7 +24,7 @@ Widget mainWebPromptSection(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        AdaptiveText(
           "Prompt",
           style: TextStyle(
               color: Colors.grey, fontSize: 20, fontWeight: FontWeight.w600),
@@ -50,7 +51,7 @@ Widget mainWebPrompt(BuildContext context) {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(
-            child: Text(
+            child: AdaptiveText(
           "Prompt #103: Something dark and scary.",
           style: TextStyle(
               color: Colors.grey, fontSize: 18, fontWeight: FontWeight.w400),
@@ -67,7 +68,7 @@ Widget mainWebFeedSection(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        AdaptiveText(
           "Feed",
           style: TextStyle(
               color: Colors.grey, fontSize: 20, fontWeight: FontWeight.w600),
