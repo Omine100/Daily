@@ -144,7 +144,7 @@ Widget _homeWebHeaderSearchBar(BuildContext context) {
 Widget _homeWebHeaderNotifications(BuildContext context) {
   return AlertsDropdown(
     backgroundColor: Theme.of(context).colorScheme.homeBackground,
-    iconColor: Colors.white,
+    iconColor: Colors.grey,
     icons: [
       Icon(Icons.person),
       Icon(Icons.settings),

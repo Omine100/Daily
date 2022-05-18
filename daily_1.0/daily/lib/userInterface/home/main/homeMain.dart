@@ -19,11 +19,11 @@ _mainLarge(BuildContext context, State state) {
 }
 
 _mainWebSmall(BuildContext context, State state) {
-  return Container();
+  return mainWebCard(context, state);
 }
 
 _mainWebLarge(BuildContext context, State state) {
-  return Container();
+  return mainWebCard(context, state);
 }
 
 _mainMobileSmall(BuildContext context, State state, bool isAndroid) {

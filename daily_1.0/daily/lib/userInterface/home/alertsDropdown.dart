@@ -70,7 +70,7 @@ class _AlertsDropdownState extends State<AlertsDropdown>
       child: IconButton(
         icon: Icon(Icons.notifications),
         iconSize: 25,
-        color: Colors.white,
+        color: Colors.grey,
         onPressed: () {
           if (isMenuOpen) {
             closeMenu();
