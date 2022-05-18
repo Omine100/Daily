@@ -33,7 +33,7 @@ extension CustomWebDimensions on VisualDensity {
   double get authWebCenterPieceHeight => isSmall ? 1.0 : 1.0;
   double get authWebCenterPieceWidth => isSmall ? 1.0 : 0.6;
   double get authWebCardContainerHeight => isSmall ? 0.8 : 1.0;
-  double get authWebCardContainerWidth => isSmall ? 0.75 : 0.5;
+  double get authWebCardContainerWidth => isSmall ? 0.65 : 0.5;
   double get authWebUserInputFieldHeight => isSmall ? 0.05 : 0.05;
   double get authWebUserInputFieldWidth => isSmall ? 0.5 : 0.35;
   double get authWebPolicyAndTacWidth => isSmall ? 0.47 : 0.32;

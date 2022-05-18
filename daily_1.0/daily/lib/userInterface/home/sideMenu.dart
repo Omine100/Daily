@@ -59,7 +59,7 @@ class _SideMenuState extends State<SideMenu> {
         Column(
           children: <Widget>[
             Container(
-              width: MediaQuery.of(context).size.width / 6,
+              width: MediaQuery.of(context).size.width / 8,
               child: Divider(
                 thickness: 2,
                 color: Theme.of(context).colorScheme.homeWebCardContainer,

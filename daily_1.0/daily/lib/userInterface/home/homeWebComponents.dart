@@ -1,3 +1,5 @@
+import 'package:daily/servicesLocal/adaptive.dart';
+import 'package:daily/userInterface/home/alertsDropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
@@ -70,16 +72,31 @@ Widget homeWebHeader(BuildContext context, State state, bool isSmall,
     height: 75,
     width: MediaQuery.of(context).size.width,
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         isSmall
-            ? _homeWebHeaderDrawer(context, scaffoldKey)
+            ? Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: _homeWebHeaderDrawer(context, scaffoldKey),
+              )
             : SizedBox(
                 width: 12.5,
               ),
         isSmall ? _homeWebHeaderTitle() : SizedBox(width: 12.5),
-        _homeWebHeaderSearchBar(context),
-        Spacer(),
-        _homeWebHeaderNotifications(),
+        Spacer(
+          flex: 1,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: _homeWebHeaderSearchBar(context),
+        ),
+        Spacer(
+          flex: 1,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: _homeWebHeaderNotifications(context),
+        ),
       ],
     ),
   );
@@ -100,7 +117,7 @@ Widget _homeWebHeaderDrawer(
 }
 
 Widget _homeWebHeaderTitle() {
-  return Text(
+  return AdaptiveText(
     "Daily",
     style: TextStyle(
       color: Colors.grey,
@@ -124,14 +141,18 @@ Widget _homeWebHeaderSearchBar(BuildContext context) {
       onChanged: null);
 }
 
-Widget _homeWebHeaderNotifications() {
-  return IconButton(
-    icon: Icon(
-      Icons.notifications,
-      color: Colors.grey,
-    ),
-    iconSize: 25,
-    onPressed: () {},
+Widget _homeWebHeaderNotifications(BuildContext context) {
+  return AlertsDropdown(
+    backgroundColor: Theme.of(context).colorScheme.homeBackground,
+    iconColor: Colors.white,
+    icons: [
+      Icon(Icons.person),
+      Icon(Icons.settings),
+      Icon(Icons.four_g_plus_mobiledata)
+    ],
+    onChange: (index) {
+      print(index);
+    },
   );
 }
 

@@ -73,13 +73,12 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       width: MediaQuery.of(context).size.width,
       child: Row(
         children: [
-          Expanded(
-            flex: 4,
-            child: SideMenu(),
-          ),
-          Expanded(
-              flex: 20,
-              child: homeWebCardContainer(context, this, false, _scaffoldKey)),
+          Container(
+              width: MediaQuery.of(context).size.width * 0.167,
+              child: SideMenu()),
+          Container(
+              width: MediaQuery.of(context).size.width * 0.833,
+              child: homeWebCardContainer(context, this, false, _scaffoldKey))
         ],
       ),
     );
