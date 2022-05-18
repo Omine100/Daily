@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:daily/servicesLocal/hover.dart';
 
 class AlertsDropdown extends StatefulWidget {
   final List<Icon> icons;
@@ -88,56 +89,59 @@ class _AlertsDropdownState extends State<AlertsDropdown>
           top: buttonPosition.dy + buttonSize.height,
           left: buttonPosition.dx - 170,
           width: 200,
-          child: Material(
-            color: Colors.transparent,
-            child: Stack(
-              children: <Widget>[
-                Align(
-                  alignment: Alignment.topRight,
-                  child: ClipPath(
-                    clipper: ArrowClipper(),
-                    child: Container(
-                      width: 17,
-                      height: 17,
-                      color: widget.backgroundColor ?? Color(0xFFF),
+          child: MouseRegion(
+            onExit: (event) => {closeMenu()},
+            child: Material(
+              color: Colors.transparent,
+              child: Stack(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: ClipPath(
+                      clipper: ArrowClipper(),
+                      child: Container(
+                        width: 17,
+                        height: 17,
+                        color: widget.backgroundColor ?? Color(0xFFF),
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15.0),
-                  child: Container(
-                    height: widget.icons.length * buttonSize.height,
-                    width: 200,
-                    decoration: BoxDecoration(
-                      color: widget.backgroundColor,
-                      borderRadius: _borderRadius,
-                    ),
-                    child: Theme(
-                      data: ThemeData(
-                        iconTheme: IconThemeData(
-                          color: widget.iconColor,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15.0),
+                    child: Container(
+                      height: widget.icons.length * buttonSize.height,
+                      width: 200,
+                      decoration: BoxDecoration(
+                        color: widget.backgroundColor,
+                        borderRadius: _borderRadius,
+                      ),
+                      child: Theme(
+                        data: ThemeData(
+                          iconTheme: IconThemeData(
+                            color: widget.iconColor,
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: List.generate(widget.icons.length, (index) {
+                            return GestureDetector(
+                              onTap: () {
+                                widget.onChange(index);
+                                closeMenu();
+                              },
+                              child: Container(
+                                width: buttonSize.width,
+                                height: buttonSize.height,
+                                child: widget.icons[index],
+                              ),
+                            ).showClickOnHover;
+                          }),
                         ),
                       ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: List.generate(widget.icons.length, (index) {
-                          return GestureDetector(
-                            onTap: () {
-                              widget.onChange(index);
-                              closeMenu();
-                            },
-                            child: Container(
-                              width: buttonSize.width,
-                              height: buttonSize.height,
-                              child: widget.icons[index],
-                            ),
-                          );
-                        }),
-                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

@@ -72,10 +72,6 @@ Widget authWebCardPick(BuildContext context, State state, bool isSmall) {
 }
 
 Widget authWebCard(BuildContext context, State state, bool isSmall) {
-  _userEmail = "matthewrhb12321@gmail.com";
-  _userPass = "Mtthews123";
-  _authWebValidateSubmit(context, state);
-
   return Stack(
     alignment: Alignment.center,
     children: [
