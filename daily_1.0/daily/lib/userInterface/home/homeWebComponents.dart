@@ -94,7 +94,7 @@ Widget homeWebHeader(BuildContext context, State state, bool isSmall,
           flex: 1,
         ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(right: 8.0),
           child: _homeWebHeaderNotifications(context),
         ),
         Padding(
