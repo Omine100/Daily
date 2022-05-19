@@ -19,8 +19,6 @@ class FeedCard extends StatefulWidget {
 }
 
 class _FeedCardState extends State<FeedCard> {
-  GlobalKey _searchBarKey = new GlobalKey();
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -32,7 +30,9 @@ class _FeedCardState extends State<FeedCard> {
           borderRadius: BorderRadius.circular(widget.borderRadius),
           color: Colors.red,
         ),
-        child: Container(),
+        child: Column(
+          children: [],
+        ),
       ),
     );
   }
