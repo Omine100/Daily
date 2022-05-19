@@ -62,6 +62,7 @@ flutter:
       - lib/assets/launcher/icon.png
       - lib/assets/launcher/icon_noBackground.png
       - lib/assets/auth/web/auth_centerPiece_dark.jpg
+      - lib/assets/auth/web/test.jpg
       - lib/assets/auth/web/auth_centerPiece_light.jpg
       - lib/assets/auth/mobile/auth_centerPiece_dark.jpg
       - lib/assets/auth/mobile/auth_centerPiece_light.jpg

@@ -1,3 +1,4 @@
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/hover.dart';
@@ -47,7 +48,7 @@ Widget forgotPasswordWebTitle(BuildContext context) {
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      Text(
+      AdaptiveText(
         getTranslated(context, "forgotPasswordTitle"),
         style: TextStyle(
           color: Theme.of(context).colorScheme.forgotPasswordWebTitle,

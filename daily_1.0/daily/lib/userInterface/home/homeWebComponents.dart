@@ -97,6 +97,10 @@ Widget homeWebHeader(BuildContext context, State state, bool isSmall,
           padding: const EdgeInsets.all(8.0),
           child: _homeWebHeaderNotifications(context),
         ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8, top: 8, bottom: 8, right: 16),
+          child: _homeWebPostButton(context),
+        )
       ],
     ),
   );
@@ -141,18 +145,66 @@ Widget _homeWebHeaderSearchBar(BuildContext context) {
       onChanged: null);
 }
 
+Widget _homeWebPostButton(BuildContext context) {
+  return Tooltip(
+    message: "Upload an image for the day",
+    waitDuration: Duration(seconds: 1),
+    child: Container(
+        height: 40,
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.authWebGetStarted,
+            borderRadius: BorderRadius.circular(10)),
+        child: Material(
+            color: Theme.of(context).colorScheme.materialTransparent,
+            child: InkWell(
+                splashColor:
+                    Theme.of(context).colorScheme.authWebGetStartedInkWell,
+                customBorder: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                onTap: () {},
+                child: Center(
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        child: Icon(
+                          Icons.upload,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Text(
+                          "Post",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      )
+                    ],
+                  ),
+                )))),
+  );
+}
+
 Widget _homeWebHeaderNotifications(BuildContext context) {
-  return AlertsDropdown(
-    backgroundColor: Theme.of(context).colorScheme.homeBackground,
-    iconColor: Colors.grey,
-    icons: [
-      Icon(Icons.person),
-      Icon(Icons.settings),
-      Icon(Icons.four_g_plus_mobiledata)
-    ],
-    onChange: (index) {
-      print(index);
-    },
+  return Tooltip(
+    message: "Notifications",
+    waitDuration: Duration(seconds: 1),
+    child: AlertsDropdown(
+      backgroundColor: Theme.of(context).colorScheme.homeBackground,
+      iconColor: Colors.grey,
+      icons: [
+        Icon(Icons.person),
+        Icon(Icons.settings),
+        Icon(Icons.four_g_plus_mobiledata)
+      ],
+      onChange: (index) {
+        print(index);
+      },
+    ),
   );
 }
 
