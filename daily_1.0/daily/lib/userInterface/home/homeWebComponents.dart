@@ -170,7 +170,7 @@ Widget _homeWebPostButton(BuildContext context) {
                         child: Icon(
                           Icons.upload,
                           color: Colors.white,
-                          size: 30,
+                          size: 25,
                         ),
                       ),
                       Padding(
