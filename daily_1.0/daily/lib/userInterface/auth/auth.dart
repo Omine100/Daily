@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/positions.dart';
@@ -120,9 +123,17 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
+  bool checkLoggedInStatus() {
+    FirebaseAuth.instance.authStateChanges().listen((User user) {
+      return user == null ? true : false;
+    });
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     setResponsiveState(context);
+    if (checkLoggedInStatus()) context.router.replaceAll([HomeScreen()]);
     FocusNode _textFieldFocus = new FocusNode();
     return Material(
         child: Scaffold(
