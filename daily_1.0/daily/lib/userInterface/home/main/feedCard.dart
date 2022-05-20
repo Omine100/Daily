@@ -23,17 +23,21 @@ class _FeedCardState extends State<FeedCard> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 10,
+      color: Colors.transparent,
       child: Container(
-        height: widget.height,
-        width: widget.width,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(widget.borderRadius),
-          color: Colors.red,
-        ),
-        child: Column(
-          children: [],
-        ),
-      ),
+          height: widget.height,
+          width: widget.width,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+            color: Colors.grey,
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+            child: Image(
+                fit: BoxFit.fill,
+                image: AssetImage(
+                    "lib/assets/auth/web/auth_centerPiece_dark.jpg")),
+          )),
     );
   }
 }

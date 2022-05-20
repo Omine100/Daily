@@ -1,4 +1,5 @@
 import 'package:daily/servicesLocal/adaptive.dart';
+import 'package:daily/userInterface/home/main/feedCard.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/themesLocal/colors.dart';
 
@@ -83,14 +84,21 @@ Widget mainWebFeedSection(BuildContext context) {
 }
 
 Widget mainWebFeed() {
-  return Container();
-}
-
-Widget _feedCard() {
   return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(10),
-      color: Colors.blue,
+    height: 539,
+    child: GridView.count(
+      crossAxisCount: 3,
+      children: List.generate(
+          100,
+          (index) => Padding(
+                padding: EdgeInsets.all(8),
+                child: FeedCard(
+                  borderRadius: 15,
+                  height: 300,
+                  width: 225,
+                  onTapped: null,
+                ),
+              )),
     ),
   );
 }
