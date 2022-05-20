@@ -1,7 +1,9 @@
-import 'package:daily/servicesLocal/adaptive.dart';
-import 'package:daily/userInterface/home/main/feedCard.dart';
+import 'package:daily/servicesLocal/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/userInterface/home/main/feedCard.dart';
 
 Widget mainWebCard(BuildContext context, State state) {
   return Container(
@@ -77,28 +79,27 @@ Widget mainWebFeedSection(BuildContext context) {
         SizedBox(
           height: 15,
         ),
-        mainWebFeed()
+        mainWebFeed(context)
       ],
     ),
   );
 }
 
-Widget mainWebFeed() {
+Widget mainWebFeed(BuildContext context) {
   return Container(
-    height: 539,
-    child: GridView.count(
-      crossAxisCount: 3,
-      children: List.generate(
-          100,
-          (index) => Padding(
-                padding: EdgeInsets.all(8),
-                child: FeedCard(
-                  borderRadius: 15,
-                  height: 300,
-                  width: 225,
-                  onTapped: null,
-                ),
-              )),
+    height: 617,
+    child: MasonryGridView.count(
+      crossAxisCount: getIsSmall(context) ? 1 : 3,
+      mainAxisSpacing: 8,
+      crossAxisSpacing: 8,
+      itemBuilder: (context, index) {
+        return FeedCard(
+          index: index,
+          height: getIsSmall(context) ? 300 : (index % 4 + 2) * 100,
+          width: 100,
+          borderRadius: 10,
+        );
+      },
     ),
   );
 }
