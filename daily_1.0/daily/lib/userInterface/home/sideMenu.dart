@@ -209,19 +209,24 @@ Widget _createProfile(BuildContext context, State state) {
                             ),
                           ),
                         ),
-                        Text(
-                          _firebaseAccounts.getCurrentUserEmail() ??
-                              getTranslated(context, "settingsNullEmail"),
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .homeWebProfileEmail,
-                            fontSize:
-                                Theme.of(context).textTheme.homeWebProfileEmail,
-                            fontWeight: Theme.of(context)
-                                .typography
-                                .homeWebProfileEmail,
+                        Tooltip(
+                          waitDuration: Duration(seconds: 1),
+                          message: _firebaseAccounts.getCurrentUserEmail(),
+                          child: Text(
+                            _firebaseAccounts.getCurrentUserEmail() ??
+                                getTranslated(context, "settingsNullEmail"),
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .homeWebProfileEmail,
+                              fontSize: Theme.of(context)
+                                  .textTheme
+                                  .homeWebProfileEmail,
+                              fontWeight: Theme.of(context)
+                                  .typography
+                                  .homeWebProfileEmail,
+                            ),
                           ),
                         ),
                       ],
