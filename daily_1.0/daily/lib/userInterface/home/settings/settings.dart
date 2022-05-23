@@ -3,8 +3,8 @@ import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/positions.dart';
-import 'package:daily/userInterface/home/settings/homeSettingsWebComponents.dart';
-import 'package:daily/userInterface/home/settings/homeSettingsMobileComponents.dart';
+import 'package:daily/userInterface/home/settings/settingsWebComponents.dart';
+import 'package:daily/userInterface/home/settings/settingsMobileComponents.dart';
 
 _settingsSmall(BuildContext context, State state) {
   return Adaptive(

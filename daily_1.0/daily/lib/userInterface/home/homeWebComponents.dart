@@ -6,9 +6,9 @@ import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/home/main/homeMain.dart';
-import 'package:daily/userInterface/home/search/homeSearch.dart';
-import 'package:daily/userInterface/home/global/homeGlobal.dart';
-import 'package:daily/userInterface/home/settings/homeSettings.dart';
+import 'package:daily/userInterface/home/search/search.dart';
+import 'package:daily/userInterface/home/global/global.dart';
+import 'package:daily/userInterface/home/settings/settings.dart';
 import 'package:daily/userInterface/home/sideMenu.dart';
 import 'package:daily/userInterface/home/searchBar.dart';
 
