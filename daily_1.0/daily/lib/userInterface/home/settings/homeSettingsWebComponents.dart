@@ -1,10 +1,11 @@
-import 'package:daily/servicesLocal/adaptive.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daily/datastructures/settingState.dart';
 import 'package:daily/servicesBroad/contact.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
@@ -31,6 +32,7 @@ Column settingsBreakdown(BuildContext context, State state) {
     if (setting.group == Group.settingGroupHidden) return;
     if (setting.isSignInRequired && !_firebaseAccounts.getSignedInStatus())
       return;
+    if (setting.isMobile && kIsWeb) return;
     if (settings[setting.group] == null) {
       settings[setting.group] = new Column(children: []);
       settings[setting.group].children.add(settingsGroupTitle(

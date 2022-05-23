@@ -1,5 +1,6 @@
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/userInterface/home/alertsDropdown.dart';
+import 'package:daily/userInterface/home/upload.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
@@ -146,47 +147,7 @@ Widget _homeWebHeaderSearchBar(BuildContext context) {
 }
 
 Widget _homeWebPostButton(BuildContext context) {
-  return Tooltip(
-    message: "Upload an image for the day",
-    waitDuration: Duration(seconds: 1),
-    child: Container(
-        height: 40,
-        decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.authWebGetStarted,
-            borderRadius: BorderRadius.circular(10)),
-        child: Material(
-            color: Theme.of(context).colorScheme.materialTransparent,
-            child: InkWell(
-                splashColor:
-                    Theme.of(context).colorScheme.authWebGetStartedInkWell,
-                customBorder: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                onTap: () {},
-                child: Center(
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                        child: Icon(
-                          Icons.upload,
-                          color: Colors.white,
-                          size: 25,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: Text(
-                          "Post",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      )
-                    ],
-                  ),
-                )))),
-  );
+  return Upload();
 }
 
 Widget _homeWebHeaderNotifications(BuildContext context) {

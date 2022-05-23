@@ -57,8 +57,6 @@ class _FeedCardState extends State<FeedCard> {
                   borderRadius: BorderRadius.circular(widget.borderRadius),
                   child: Image.network(
                     'https://picsum.photos/200/${widget.height}?random=${widget.index}',
-                    width: widget.width.toDouble(),
-                    height: widget.height.toDouble(),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -68,9 +66,13 @@ class _FeedCardState extends State<FeedCard> {
                   overlayBackground.remove();
                   overlayEntry.remove();
                 },
-                child: Icon(Icons.close,
-                    color: Colors.white,
-                    size: MediaQuery.of(context).size.height * 0.025),
+                child: Tooltip(
+                  waitDuration: Duration(seconds: 1),
+                  message: "Close",
+                  child: Icon(Icons.close,
+                      color: Colors.white,
+                      size: MediaQuery.of(context).size.height * 0.025),
+                ),
               )
             ],
           ),

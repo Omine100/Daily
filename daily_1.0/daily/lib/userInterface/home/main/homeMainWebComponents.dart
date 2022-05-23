@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/themesLocal/colors.dart';
-import 'package:daily/userInterface/home/main/feedCard.dart';
+import 'package:daily/userInterface/home/feedCard.dart';
 
 Widget mainWebCard(BuildContext context, State state) {
   return Container(
@@ -11,32 +11,30 @@ Widget mainWebCard(BuildContext context, State state) {
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          mainWebPromptSection(context),
+          mainWebPromptTitle(context),
+          SizedBox(
+            height: 15,
+          ),
+          mainWebPrompt(context),
           SizedBox(
             height: 30,
           ),
-          mainWebFeedSection(context)
+          mainWebFeedTitle(context),
+          SizedBox(
+            height: 15,
+          ),
+          mainWebFeed(context)
         ],
       ));
 }
 
-Widget mainWebPromptSection(BuildContext context) {
+Widget mainWebPromptTitle(BuildContext context) {
   return Container(
     width: MediaQuery.of(context).size.width,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AdaptiveText(
-          "Prompt",
-          style: TextStyle(
-              color: Colors.grey, fontSize: 20, fontWeight: FontWeight.w600),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        mainWebPrompt(context)
-      ],
+    child: AdaptiveText(
+      "Prompt",
+      style: TextStyle(
+          color: Colors.grey, fontSize: 20, fontWeight: FontWeight.w600),
     ),
   );
 }
@@ -64,42 +62,35 @@ Widget mainWebPrompt(BuildContext context) {
   );
 }
 
-Widget mainWebFeedSection(BuildContext context) {
+Widget mainWebFeedTitle(BuildContext context) {
   return Container(
     width: MediaQuery.of(context).size.width,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AdaptiveText(
-          "Feed",
-          style: TextStyle(
-              color: Colors.grey, fontSize: 20, fontWeight: FontWeight.w600),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        mainWebFeed(context)
-      ],
+    child: AdaptiveText(
+      "Feed",
+      style: TextStyle(
+          color: Colors.grey, fontSize: 20, fontWeight: FontWeight.w600),
     ),
   );
 }
 
 Widget mainWebFeed(BuildContext context) {
-  return Container(
-    height: 617,
-    child: MasonryGridView.count(
-      crossAxisCount: getIsSmall(context) ? 1 : 3,
-      mainAxisSpacing: 8,
-      crossAxisSpacing: 8,
-      itemBuilder: (context, index) {
-        return FeedCard(
-          index: index,
-          height: getIsSmall(context) ? 300 : (index % 4 + 2) * 100,
-          width: 100,
-          borderRadius: 10,
-        );
-      },
+  return Expanded(
+    child: Container(
+      width:
+          MediaQuery.of(context).size.width * (getIsSmall(context) ? 0.7 : 0.9),
+      child: MasonryGridView.count(
+        crossAxisCount: getIsSmall(context) ? 1 : 3,
+        mainAxisSpacing: 8,
+        crossAxisSpacing: 8,
+        itemBuilder: (context, index) {
+          return FeedCard(
+            index: index,
+            height: getIsSmall(context) ? 300 : (index % 4 + 2) * 100,
+            width: 100,
+            borderRadius: 10,
+          );
+        },
+      ),
     ),
   );
 }
