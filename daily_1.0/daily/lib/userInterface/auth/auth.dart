@@ -123,17 +123,16 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  bool checkLoggedInStatus() {
-    FirebaseAuth.instance.authStateChanges().listen((User user) {
-      return user == null ? true : false;
+  void checkLoggedInStatus() async {
+    await FirebaseAuth.instance.authStateChanges().listen((User user) {
+      if (user != null) context.router.replaceAll([HomeScreen()]);
     });
-    return false;
   }
 
   @override
   Widget build(BuildContext context) {
     setResponsiveState(context);
-    if (checkLoggedInStatus()) context.router.replaceAll([HomeScreen()]);
+    checkLoggedInStatus();
     FocusNode _textFieldFocus = new FocusNode();
     return Material(
         child: Scaffold(
