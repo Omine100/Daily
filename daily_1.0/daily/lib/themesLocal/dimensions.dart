@@ -38,7 +38,7 @@ extension CustomWebDimensions on VisualDensity {
   double get authWebUserInputFieldWidth => isSmall ? 0.5 : 0.35;
   double get authWebPolicyAndTacWidth => isSmall ? 0.47 : 0.32;
   double get authWebForgotPasswordWidth => isSmall ? 0.47 : 0.32;
-  double get authWebGetStartedHeight => isSmall ? 0.065 : 0.065;
+  double get authWebGetStartedHeight => isSmall ? 0.06 : 0.06;
   double get authWebGetStartedWidth => isSmall ? 0.2025 : 0.2025;
   // #endregion
 
@@ -46,13 +46,13 @@ extension CustomWebDimensions on VisualDensity {
   double get forgotPasswordWebUserInputFieldHeight => isSmall ? 0.05 : 0.05;
   double get forgotPasswordWebUserInputFieldWidth => isSmall ? 0.5 : 0.35;
   double get forgotPasswordWebRememberedWidth => isSmall ? 0.47 : 0.32;
-  double get forgotPasswordWebSendHeight => isSmall ? 0.065 : 0.065;
+  double get forgotPasswordWebSendHeight => isSmall ? 0.06 : 0.06;
   double get forgotPasswordWebSendWidth => isSmall ? 0.2025 : 0.2025;
   double get forgotPasswordWebResendWidth => isSmall ? 0.47 : 0.32;
   // #endregion
 
   // #region verify
-  double get verifyWebLoginHeight => isSmall ? 0.065 : 0.065;
+  double get verifyWebLoginHeight => isSmall ? 0.06 : 0.06;
   double get verifyWebLoginWidth => isSmall ? 0.2025 : 0.2025;
   // #endregion
 
@@ -74,20 +74,20 @@ extension CustomMobileDimensions on VisualDensity {
   double get authMobileUserInputFieldHeight => isSmall ? 0.06 : 0.06;
   double get authMobileUserInputFieldWidth => isSmall ? 0.875 : 0.875;
   double get authMobileForgotPasswordWidth => isSmall ? 0.85 : 0.85;
-  double get authMobileGetStartedHeight => isSmall ? 0.065 : 0.065;
+  double get authMobileGetStartedHeight => isSmall ? 0.06 : 0.06;
   double get authMobileGetStartedWidth => isSmall ? 0.75 : 0.75;
   // #endregion
 
   // #region forgotPassword
   double get forgotPasswordMobileUserInputFieldHeight => 0.7;
   double get forgotPasswordMobileUserInputFieldWidth => 0.875;
-  double get forgotPasswordMobileSendHeight => 0.065;
+  double get forgotPasswordMobileSendHeight => 0.06;
   double get forgotPasswordMobileSendWidth => 0.75;
   // #endregion
 
   // #region verify
   double get verifyMobileTitleWidth => isSmall ? 0.75 : 0.75;
-  double get verifyMobileLoginHeight => isSmall ? 0.065 : 0.065;
+  double get verifyMobileLoginHeight => isSmall ? 0.06 : 0.06;
   double get verifyMobileLoginWidth => isSmall ? 0.75 : 0.75;
   // #endregion
 
