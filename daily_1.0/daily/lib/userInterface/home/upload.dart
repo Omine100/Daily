@@ -33,7 +33,7 @@ class _UploadState extends State<Upload> {
               color: Theme.of(context).colorScheme.homeBackground),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
                 onTap: () {
