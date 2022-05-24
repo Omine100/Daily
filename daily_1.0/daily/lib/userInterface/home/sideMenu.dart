@@ -106,11 +106,6 @@ Widget _createHeader(BuildContext context) {
         style: TextStyle(
             color: Colors.grey, fontSize: 30, fontWeight: FontWeight.w500),
       ),
-      Spacer(),
-      if (!getIsLarge(context))
-        CloseButton(
-          color: Colors.grey,
-        ),
     ],
   );
 }
