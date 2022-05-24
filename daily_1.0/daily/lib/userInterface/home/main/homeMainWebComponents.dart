@@ -1,11 +1,10 @@
-import 'package:daily/servicesLocal/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/home/feedCard.dart';
 
-Widget mainWebCard(BuildContext context, State state) {
+Widget mainWebCard(BuildContext context, State state, bool isSmall) {
   return Container(
       padding: EdgeInsets.only(left: 20, right: 20),
       width: MediaQuery.of(context).size.width,
@@ -23,7 +22,7 @@ Widget mainWebCard(BuildContext context, State state) {
           SizedBox(
             height: 15,
           ),
-          mainWebFeed(context)
+          mainWebFeed(context, isSmall)
         ],
       ));
 }
@@ -73,19 +72,18 @@ Widget mainWebFeedTitle(BuildContext context) {
   );
 }
 
-Widget mainWebFeed(BuildContext context) {
+Widget mainWebFeed(BuildContext context, bool isSmall) {
   return Expanded(
     child: Container(
-      width:
-          MediaQuery.of(context).size.width * (getIsSmall(context) ? 0.7 : 0.9),
+      width: MediaQuery.of(context).size.width * (isSmall ? 0.7 : 0.9),
       child: MasonryGridView.count(
-        crossAxisCount: getIsSmall(context) ? 1 : 3,
+        crossAxisCount: isSmall ? 1 : 3,
         mainAxisSpacing: 8,
         crossAxisSpacing: 8,
         itemBuilder: (context, index) {
           return FeedCard(
             index: index,
-            height: getIsSmall(context) ? 300 : (index % 4 + 2) * 100,
+            height: isSmall ? 300 : (index % 4 + 2) * 100,
             width: 100,
             borderRadius: 10,
           );

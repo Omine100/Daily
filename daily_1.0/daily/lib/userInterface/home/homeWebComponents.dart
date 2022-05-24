@@ -9,6 +9,7 @@ import 'package:daily/userInterface/home/main/homeMain.dart';
 import 'package:daily/userInterface/home/search/search.dart';
 import 'package:daily/userInterface/home/global/global.dart';
 import 'package:daily/userInterface/home/settings/settings.dart';
+import 'package:daily/userInterface/home/profile/profile.dart';
 import 'package:daily/userInterface/home/sideMenu.dart';
 import 'package:daily/userInterface/home/searchBar.dart';
 
@@ -41,7 +42,8 @@ Widget homeWebCardContainer(BuildContext context, State state, bool isSmall,
     mainBody(context, state),
     globalBody(context),
     settingsBody(context, state),
-    searchBody(context)
+    searchBody(context),
+    profileBody(context, state)
   ];
 
   return Container(

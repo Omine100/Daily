@@ -21,11 +21,11 @@ _profileLarge(BuildContext context, State state) {
 }
 
 _profileWebSmall(BuildContext context, State state) {
-  return Container();
+  return profileWebCard(context, state, true);
 }
 
 _profileWebLarge(BuildContext context, State state) {
-  return Container();
+  return profileWebCard(context, state, false);
 }
 
 _profileMobileSmall(BuildContext context, State state, bool isAndroid) {
