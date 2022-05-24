@@ -100,13 +100,10 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     return Material(
       child: Scaffold(
           key: _scaffoldKey,
-          drawer: kIsWeb
-              ? getIsSmall(context)
-                  ? Drawer(
-                      child: SideMenu(),
-                    )
-                  : null
-              : null,
+          drawer: Responsive(
+            small: SideMenu(),
+            large: null,
+          ),
           extendBody: true,
           body: Container(
             color: Theme.of(context).colorScheme.homeBackground,

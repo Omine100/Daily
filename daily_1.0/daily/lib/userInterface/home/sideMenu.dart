@@ -106,11 +106,6 @@ Widget _createHeader(BuildContext context) {
         style: TextStyle(
             color: Colors.grey, fontSize: 30, fontWeight: FontWeight.w500),
       ),
-      Spacer(),
-      if (!getIsLarge(context))
-        CloseButton(
-          color: Colors.grey,
-        ),
     ],
   );
 }
@@ -191,23 +186,30 @@ Widget _createProfile(BuildContext context, State state) {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(bottom: 5.0),
-                          child: Text(
-                            _firebaseAccounts.getCurrentUserDisplayName() ??
-                                getTranslated(context, "settingsNullName"),
-                            softWrap: false,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .homeWebProfileName,
-                              fontSize: Theme.of(context)
-                                  .textTheme
-                                  .homeWebProfileName,
-                              fontWeight: Theme.of(context)
-                                  .typography
-                                  .homeWebProfileName,
+                          child: GestureDetector(
+                            onTap: () {
+                              onTabTapped(4);
+                            },
+                            child: Text(
+                              "@" +
+                                      _firebaseAccounts
+                                          .getCurrentUserDisplayName() ??
+                                  getTranslated(context, "settingsNullName"),
+                              softWrap: false,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .homeWebProfileName,
+                                fontSize: Theme.of(context)
+                                    .textTheme
+                                    .homeWebProfileName,
+                                fontWeight: Theme.of(context)
+                                    .typography
+                                    .homeWebProfileName,
+                              ),
                             ),
-                          ),
+                          ).showClickOnHover,
                         ),
                         Tooltip(
                           waitDuration: Duration(seconds: 1),
