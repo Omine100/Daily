@@ -127,7 +127,6 @@ class _UploadState extends State<Upload> {
                     borderRadius: BorderRadius.circular(10)),
                 onTap: () {
                   _showOverlay(context);
-                  print("Test");
                 },
                 child: Center(
                   child: Row(
