@@ -49,7 +49,7 @@ class _UploadState extends State<Upload> {
                       color: Colors.white,
                       size: MediaQuery.of(context).size.height * 0.025),
                 ),
-              ),
+              ).showClickOnHover,
               Container(
                 child: _uploadStep(),
               )
