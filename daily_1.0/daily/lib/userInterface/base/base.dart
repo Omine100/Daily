@@ -8,9 +8,9 @@ import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/cameraManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/constraints.dart';
-import 'package:daily/userInterface/home/homeWebComponents.dart';
-import 'package:daily/userInterface/home/homeMobileComponents.dart';
-import 'package:daily/userInterface/home/sideMenu.dart';
+import 'package:daily/userInterface/base/homeWebComponents.dart';
+import 'package:daily/userInterface/base/homeMobileComponents.dart';
+import 'package:daily/userInterface/base/sideMenu.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -50,25 +50,25 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     }
   }
 
-  _homeScreenSmall() {
+  _baseScreenSmall() {
     return Adaptive(
-        iOS: _homeScreenMobileSmall(false),
-        android: _homeScreenMobileSmall(true),
-        web: _homeScreenWebSmall());
+        iOS: _baseScreenMobileSmall(false),
+        android: _baseScreenMobileSmall(true),
+        web: _baseScreenWebSmall());
   }
 
-  _homeScreenLarge() {
+  _baseScreenLarge() {
     return Adaptive(
-        iOS: _homeScreenMobileLarge(false),
-        android: _homeScreenMobileLarge(true),
-        web: _homeScreenWebLarge());
+        iOS: _baseScreenMobileLarge(false),
+        android: _baseScreenMobileLarge(true),
+        web: _baseScreenWebLarge());
   }
 
-  _homeScreenWebSmall() {
-    return homeWebCardContainer(context, this, true, _scaffoldKey);
+  _baseScreenWebSmall() {
+    return baseWebCardContainer(context, this, true, _scaffoldKey);
   }
 
-  _homeScreenWebLarge() {
+  _baseScreenWebLarge() {
     return Row(
       children: [
         Container(
@@ -76,17 +76,17 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             child: SideMenu()),
         Container(
             width: MediaQuery.of(context).size.width * 0.833,
-            child: homeWebCardContainer(context, this, false, _scaffoldKey))
+            child: baseWebCardContainer(context, this, false, _scaffoldKey))
       ],
     );
   }
 
-  _homeScreenMobileSmall(bool isAndroid) {
-    return homeMobileBody(context, this);
+  _baseScreenMobileSmall(bool isAndroid) {
+    return baseMobileBody(context, this);
   }
 
-  _homeScreenMobileLarge(bool isAndroid) {
-    return homeMobileBody(context, this);
+  _baseScreenMobileLarge(bool isAndroid) {
+    return baseMobileBody(context, this);
   }
 
   var _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -103,15 +103,15 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           ),
           extendBody: true,
           body: Container(
-            color: Theme.of(context).colorScheme.homeBackground,
-            constraints: Theme.of(context).bottomAppBarTheme.homeConstraints,
+            color: Theme.of(context).colorScheme.baseBackground,
+            constraints: Theme.of(context).bottomAppBarTheme.baseConstraints,
             child: Responsive(
-              small: _homeScreenSmall(),
-              large: _homeScreenLarge(),
+              small: _baseScreenSmall(),
+              large: _baseScreenLarge(),
             ),
           ),
           bottomNavigationBar:
-              kIsWeb ? null : homeMobileNavigationBar(context, this)),
+              kIsWeb ? null : baseMobileNavigationBar(context, this)),
     );
   }
 }

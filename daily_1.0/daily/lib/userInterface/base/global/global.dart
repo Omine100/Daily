@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/userInterface/home/global/globalWebComponents.dart';
-import 'package:daily/userInterface/home/global/globalMobileComponents.dart';
+import 'package:daily/userInterface/base/global/globalWebComponents.dart';
+import 'package:daily/userInterface/base/global/globalMobileComponents.dart';
 
 _globalSmall(BuildContext context) {
   return Adaptive(

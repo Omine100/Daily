@@ -6,7 +6,7 @@ import 'package:daily/themesLocal/colors.dart';
 
 RouteNavigation _routeNavigation = new RouteNavigation();
 
-Widget mainCamera(BuildContext context, State state) {
+Widget homeCamera(BuildContext context, State state) {
   final size = MediaQuery.of(context).size;
   if (controller == null || !controller.value.isInitialized) {
     return Container(
@@ -47,7 +47,7 @@ Widget mainCamera(BuildContext context, State state) {
   );
 }
 
-Widget mainFocusCircle(BuildContext context) {
+Widget homeFocusCircle(BuildContext context) {
   return showFocusCircle
       ? Positioned(
           top: focusY - 20,
@@ -63,28 +63,28 @@ Widget mainFocusCircle(BuildContext context) {
       : Container();
 }
 
-Widget mainCameraComponentCard(BuildContext context, State state) {
+Widget homeCameraComponentCard(BuildContext context, State state) {
   return Container(
     decoration: BoxDecoration(
-      color: Theme.of(context).colorScheme.mainMobileCard,
+      color: Theme.of(context).colorScheme.homeMobileCard,
       borderRadius: BorderRadius.circular(45),
     ),
     child: Column(
       children: [
         Padding(
           padding: EdgeInsets.only(top: 5, bottom: 5),
-          child: mainSwitchCameraButton(context, state),
+          child: homeSwitchCameraButton(context, state),
         ),
         Padding(
           padding: EdgeInsets.only(top: 5, bottom: 5),
-          child: mainSwitchFlashButton(context, state),
+          child: homeSwitchFlashButton(context, state),
         ),
       ],
     ),
   );
 }
 
-Widget mainSwitchCameraButton(BuildContext context, State state) {
+Widget homeSwitchCameraButton(BuildContext context, State state) {
   return IconButton(
       onPressed: () {
         switchCamera(state);
@@ -93,11 +93,11 @@ Widget mainSwitchCameraButton(BuildContext context, State state) {
         Icons.flip_camera_android,
         size: 30,
         color:
-            Theme.of(context).colorScheme.homeMobileNavigationBarSelectedIcon,
+            Theme.of(context).colorScheme.baseMobileNavigationBarSelectedIcon,
       ));
 }
 
-Widget mainSwitchFlashButton(BuildContext context, State state) {
+Widget homeSwitchFlashButton(BuildContext context, State state) {
   return IconButton(
       onPressed: () {
         switchFlash(state);
@@ -106,11 +106,11 @@ Widget mainSwitchFlashButton(BuildContext context, State state) {
         flashMode == FlashMode.off ? Icons.flash_off : Icons.flash_on,
         size: 30,
         color:
-            Theme.of(context).colorScheme.homeMobileNavigationBarSelectedIcon,
+            Theme.of(context).colorScheme.baseMobileNavigationBarSelectedIcon,
       ));
 }
 
-Widget mainPictureButton(BuildContext context, State state) {
+Widget homePictureButton(BuildContext context, State state) {
   return InkWell(
     onTap: () async {
       if (controller.value.isTakingPicture) return null;

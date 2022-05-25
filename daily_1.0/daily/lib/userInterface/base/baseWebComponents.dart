@@ -1,18 +1,18 @@
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/userInterface/home/alertsDropdown.dart';
-import 'package:daily/userInterface/home/upload.dart';
+import 'package:daily/userInterface/base/alertsDropdown.dart';
+import 'package:daily/userInterface/base/upload.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
-import 'package:daily/userInterface/home/main/homeMain.dart';
-import 'package:daily/userInterface/home/search/search.dart';
-import 'package:daily/userInterface/home/global/global.dart';
-import 'package:daily/userInterface/home/settings/settings.dart';
-import 'package:daily/userInterface/home/profile/profile.dart';
-import 'package:daily/userInterface/home/sideMenu.dart';
-import 'package:daily/userInterface/home/searchBar.dart';
+import 'package:daily/userInterface/base/home/home.dart';
+import 'package:daily/userInterface/base/search/search.dart';
+import 'package:daily/userInterface/base/global/global.dart';
+import 'package:daily/userInterface/base/settings/settings.dart';
+import 'package:daily/userInterface/base/profile/profile.dart';
+import 'package:daily/userInterface/base/sideMenu.dart';
+import 'package:daily/userInterface/base/searchBar.dart';
 
 int _pageIndex = 0;
 PageController _pageController;
@@ -37,10 +37,10 @@ void onTabTapped(int i) {
   _pageController.jumpToPage(i);
 }
 
-Widget homeWebCardContainer(BuildContext context, State state, bool isSmall,
+Widget baseWebCardContainer(BuildContext context, State state, bool isSmall,
     GlobalKey<ScaffoldState> scaffoldKey) {
   List<Widget> pages = [
-    mainBody(context, state, isSmall),
+    homeBody(context, state, isSmall),
     globalBody(context),
     settingsBody(context, state),
     searchBody(context),
@@ -50,12 +50,12 @@ Widget homeWebCardContainer(BuildContext context, State state, bool isSmall,
   return Container(
       height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.homeWebCardContainer,
+          color: Theme.of(context).colorScheme.baseWebCardContainer,
           borderRadius:
               BorderRadius.only(topLeft: Radius.circular(isSmall ? 0 : 50))),
       child: Column(
         children: [
-          homeWebHeader(context, state, isSmall, scaffoldKey),
+          baseWebHeader(context, state, isSmall, scaffoldKey),
           Container(
             height: MediaQuery.of(context).size.height - 75,
             child: PageView(
@@ -70,7 +70,7 @@ Widget homeWebCardContainer(BuildContext context, State state, bool isSmall,
       ));
 }
 
-Widget homeWebHeader(BuildContext context, State state, bool isSmall,
+Widget baseWebHeader(BuildContext context, State state, bool isSmall,
     GlobalKey<ScaffoldState> scaffoldKey) {
   return Container(
     height: 75,
@@ -81,36 +81,36 @@ Widget homeWebHeader(BuildContext context, State state, bool isSmall,
         isSmall
             ? Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: _homeWebHeaderDrawer(context, scaffoldKey),
+                child: _baseWebHeaderDrawer(context, scaffoldKey),
               )
             : SizedBox(
                 width: 12.5,
               ),
-        isSmall ? _homeWebHeaderTitle() : SizedBox(width: 12.5),
+        isSmall ? _baseWebHeaderTitle() : SizedBox(width: 12.5),
         Spacer(
           flex: 1,
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: _homeWebHeaderSearchBar(context),
+          child: _baseWebHeaderSearchBar(context),
         ),
         Spacer(
           flex: 1,
         ),
         Padding(
           padding: const EdgeInsets.only(right: 8.0),
-          child: _homeWebHeaderNotifications(context),
+          child: _baseWebHeaderNotifications(context),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 8, top: 8, bottom: 8, right: 16),
-          child: _homeWebPostButton(context),
+          child: _baseWebPostButton(context),
         )
       ],
     ),
   );
 }
 
-Widget _homeWebHeaderDrawer(
+Widget _baseWebHeaderDrawer(
     BuildContext context, GlobalKey<ScaffoldState> scaffoldKey) {
   return IconButton(
     icon: Icon(
@@ -124,7 +124,7 @@ Widget _homeWebHeaderDrawer(
   );
 }
 
-Widget _homeWebHeaderTitle() {
+Widget _baseWebHeaderTitle() {
   return AdaptiveText(
     "Daily",
     style: TextStyle(
@@ -135,7 +135,7 @@ Widget _homeWebHeaderTitle() {
   );
 }
 
-Widget _homeWebHeaderSearchBar(BuildContext context) {
+Widget _baseWebHeaderSearchBar(BuildContext context) {
   return SearchBar(
       height: 40,
       width: MediaQuery.of(context).size.width * 0.5,
@@ -149,16 +149,16 @@ Widget _homeWebHeaderSearchBar(BuildContext context) {
       onChanged: null);
 }
 
-Widget _homeWebPostButton(BuildContext context) {
+Widget _baseWebPostButton(BuildContext context) {
   return Upload();
 }
 
-Widget _homeWebHeaderNotifications(BuildContext context) {
+Widget _baseWebHeaderNotifications(BuildContext context) {
   return Tooltip(
     message: "Notifications",
     waitDuration: Duration(seconds: 1),
     child: AlertsDropdown(
-      backgroundColor: Theme.of(context).colorScheme.homeBackground,
+      backgroundColor: Theme.of(context).colorScheme.baseBackground,
       iconColor: Colors.grey,
       icons: [
         Icon(Icons.person),
@@ -172,7 +172,7 @@ Widget _homeWebHeaderNotifications(BuildContext context) {
   );
 }
 
-Widget homeWebDrawer(BuildContext context, State state) {
+Widget baseWebDrawer(BuildContext context, State state) {
   return Drawer(
     child: SideMenu(),
   );

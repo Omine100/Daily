@@ -3,10 +3,10 @@ import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/themesLocal/colors.dart';
-import 'package:daily/userInterface/home/main/homeMain.dart';
-import 'package:daily/userInterface/home/search/search.dart';
-import 'package:daily/userInterface/home/global/global.dart';
-import 'package:daily/userInterface/home/settings/settings.dart';
+import 'package:daily/userInterface/base/home/home.dart';
+import 'package:daily/userInterface/base/search/search.dart';
+import 'package:daily/userInterface/base/global/global.dart';
+import 'package:daily/userInterface/base/settings/settings.dart';
 
 int _pageIndex = 0;
 PageController _pageController;
@@ -32,9 +32,9 @@ void _onTabTapped(int i) {
       duration: const Duration(milliseconds: 500), curve: Curves.easeOutQuint);
 }
 
-Widget homeMobileBody(BuildContext context, State state) {
+Widget baseMobileBody(BuildContext context, State state) {
   List<Widget> pages = [
-    mainBody(context, state, true),
+    homeBody(context, state, true),
     searchBody(context),
     globalBody(context),
     settingsBody(context, state)
@@ -49,20 +49,20 @@ Widget homeMobileBody(BuildContext context, State state) {
   );
 }
 
-Widget homeMobileNavigationBar(BuildContext context, State state) {
+Widget baseMobileNavigationBar(BuildContext context, State state) {
   return DotNavigationBar(
     currentIndex: _pageIndex,
     backgroundColor: _pageIndex == 3
         ? Theme.of(context)
             .colorScheme
-            .homeMobileNavigationBarBackgroundSettings
-        : Theme.of(context).colorScheme.homeMobileNavigationBarBackground,
-    dotIndicatorColor: Theme.of(context).colorScheme.homeMobileNavigationBarDot,
+            .baseMobileNavigationBarBackgroundSettings
+        : Theme.of(context).colorScheme.baseMobileNavigationBarBackground,
+    dotIndicatorColor: Theme.of(context).colorScheme.baseMobileNavigationBarDot,
     duration: Duration(milliseconds: 1250),
     unselectedItemColor:
-        Theme.of(context).colorScheme.homeMobileNavigationBarUnselectedIcon,
+        Theme.of(context).colorScheme.baseMobileNavigationBarUnselectedIcon,
     selectedItemColor:
-        Theme.of(context).colorScheme.homeMobileNavigationBarSelectedIcon,
+        Theme.of(context).colorScheme.baseMobileNavigationBarSelectedIcon,
     enableFloatingNavBar: true,
     curve: Curves.easeOutQuint,
     onTap: (pageIndex) {

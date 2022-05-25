@@ -30,7 +30,7 @@ class _UploadState extends State<Upload> {
           width: MediaQuery.of(context).size.height * 0.7,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Theme.of(context).colorScheme.homeBackground),
+              color: Theme.of(context).colorScheme.baseBackground),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

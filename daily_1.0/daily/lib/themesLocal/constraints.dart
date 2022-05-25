@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 //Install extension '#region folding for VS Code'
 
 extension CustomConnectedConstraints on BottomAppBarTheme {
-  // #region home
-  BoxConstraints get homeConstraints =>
+  // #region base
+  BoxConstraints get baseConstraints =>
       BoxConstraints.expand(height: double.maxFinite);
   // #endregion
 }

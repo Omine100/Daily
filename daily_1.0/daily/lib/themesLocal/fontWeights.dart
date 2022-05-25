@@ -51,9 +51,9 @@ extension CustomWebFontWeight on Typography {
   FontWeight get verifyWebSwitchBack => FontWeight.w300;
   // #endregion
 
-  // #region home
-  FontWeight get homeWebProfileName => FontWeight.w500;
-  FontWeight get homeWebProfileEmail => FontWeight.w300;
+  // #region base
+  FontWeight get baseWebProfileName => FontWeight.w500;
+  FontWeight get baseWebProfileEmail => FontWeight.w300;
   // #endregion
 }
 

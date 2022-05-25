@@ -43,7 +43,7 @@ class _FeedCardState extends State<FeedCard> {
           width: MediaQuery.of(context).size.width * 0.8,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(widget.borderRadius),
-              color: Theme.of(context).colorScheme.homeBackground),
+              color: Theme.of(context).colorScheme.baseBackground),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,

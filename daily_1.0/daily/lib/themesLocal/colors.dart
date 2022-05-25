@@ -49,7 +49,7 @@ extension CustomConnectedColorScheme on ColorScheme {
   Color get forgotPasswordBackground =>
       Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get verifyBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
-  Color get homeBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
+  Color get baseBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get settingsBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get textViewerBackground =>
       Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
@@ -146,28 +146,28 @@ extension CustomWebColorScheme on ColorScheme {
       Color(isDark.value ? 0xFFCCCCCC : 0xFF333333);
   // #endregion
 
-  // #region home
-  Color get homeWebAppBarBackground =>
+  // #region base
+  Color get baseWebAppBarBackground =>
       Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
-  Color get homeWebAppBarBackgroundSettings =>
+  Color get baseWebAppBarBackgroundSettings =>
       Color(isDark.value ? 0xFF222222 : 0xFFEDEDED);
-  Color get homeWebAppBarDot => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
-  Color get homeWebAppBarSelectedIcon =>
+  Color get baseWebAppBarDot => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+  Color get baseWebAppBarSelectedIcon =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
-  Color get homeWebAppBarUnselectedIcon =>
+  Color get baseWebAppBarUnselectedIcon =>
       Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
-  Color get homeWebDrawerBackground =>
+  Color get baseWebDrawerBackground =>
       Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
-  Color get homeWebDrawerItem => Color(isDark.value ? 0xFFCCCCCC : 0xFF555555);
-  Color get homeWebSettingsIcon =>
+  Color get baseWebDrawerItem => Color(isDark.value ? 0xFFCCCCCC : 0xFF555555);
+  Color get baseWebSettingsIcon =>
       Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
-  Color get homeWebProfileBackground =>
+  Color get baseWebProfileBackground =>
       Color(isDark.value ? 0xFF666666 : 0xFFCCCCCC);
-  Color get homeWebProfileIcon => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
-  Color get homeWebProfileName => Color(isDark.value ? 0xFFAAAAAA : 0xFF444444);
-  Color get homeWebProfileEmail =>
+  Color get baseWebProfileIcon => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
+  Color get baseWebProfileName => Color(isDark.value ? 0xFFAAAAAA : 0xFF444444);
+  Color get baseWebProfileEmail =>
       Color(isDark.value ? 0xFFBBBBBB : 0xFF555555);
-  Color get homeWebCardContainer =>
+  Color get baseWebCardContainer =>
       Color(isDark.value ? 0xFF202020 : 0xFFFFFFFF);
   // #endregion
 }
@@ -262,23 +262,23 @@ extension CustomMobileColorScheme on ColorScheme {
       Color(isDark.value ? 0xFFEF5350 : 0xFFFF4350);
   // #endregion
 
-  // #region home
-  Color get homeMobileNavigationBarBackground =>
+  // #region base
+  Color get baseMobileNavigationBarBackground =>
       Color(isDark.value ? 0xFF323232 : 0xFFEDEDED);
-  Color get homeMobileNavigationBarBackgroundSettings =>
+  Color get baseMobileNavigationBarBackgroundSettings =>
       Color(isDark.value ? 0xFF222222 : 0xFFEDEDED);
-  Color get homeMobileNavigationBarDot =>
+  Color get baseMobileNavigationBarDot =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
-  Color get homeMobileNavigationBarSelectedIcon =>
+  Color get baseMobileNavigationBarSelectedIcon =>
       Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
-  Color get homeMobileNavigationBarUnselectedIcon =>
+  Color get baseMobileNavigationBarUnselectedIcon =>
       Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
-  Color get homeMobileSettingsIcon =>
+  Color get baseMobileSettingsIcon =>
       Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
   // #endregion
 
-  // #region main
-  Color get mainMobileCard => Color(isDark.value ? 0xBB323232 : 0xFFEDEDED);
+  // #region home
+  Color get homeMobileCard => Color(isDark.value ? 0xBB323232 : 0xFFEDEDED);
   // #endregion
 
   // #region settings

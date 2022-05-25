@@ -2,32 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/themesLocal/colors.dart';
-import 'package:daily/userInterface/home/feedCard.dart';
+import 'package:daily/userInterface/base/feedCard.dart';
 
-Widget mainWebCard(BuildContext context, State state, bool isSmall) {
+Widget homeWebCard(BuildContext context, State state, bool isSmall) {
   return Container(
       padding: EdgeInsets.only(left: 20, right: 20),
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          mainWebPromptTitle(context),
+          homeWebPromptTitle(context),
           SizedBox(
             height: 15,
           ),
-          mainWebPrompt(context),
+          homeWebPrompt(context),
           SizedBox(
             height: 30,
           ),
-          mainWebFeedTitle(context),
+          homeWebFeedTitle(context),
           SizedBox(
             height: 15,
           ),
-          mainWebFeed(context, isSmall)
+          homeWebFeed(context, isSmall)
         ],
       ));
 }
 
-Widget mainWebPromptTitle(BuildContext context) {
+Widget homeWebPromptTitle(BuildContext context) {
   return Container(
     width: MediaQuery.of(context).size.width,
     child: AdaptiveText(
@@ -38,7 +38,7 @@ Widget mainWebPromptTitle(BuildContext context) {
   );
 }
 
-Widget mainWebPrompt(BuildContext context) {
+Widget homeWebPrompt(BuildContext context) {
   return Card(
     elevation: 10,
     color: Colors.transparent,
@@ -46,7 +46,7 @@ Widget mainWebPrompt(BuildContext context) {
       height: 60,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).colorScheme.homeBackground,
+        color: Theme.of(context).colorScheme.baseBackground,
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -61,7 +61,7 @@ Widget mainWebPrompt(BuildContext context) {
   );
 }
 
-Widget mainWebFeedTitle(BuildContext context) {
+Widget homeWebFeedTitle(BuildContext context) {
   return Container(
     width: MediaQuery.of(context).size.width,
     child: AdaptiveText(
@@ -72,7 +72,7 @@ Widget mainWebFeedTitle(BuildContext context) {
   );
 }
 
-Widget mainWebFeed(BuildContext context, bool isSmall) {
+Widget homeWebFeed(BuildContext context, bool isSmall) {
   return Expanded(
     child: Container(
       width: MediaQuery.of(context).size.width * (isSmall ? 0.7 : 0.9),

@@ -49,9 +49,9 @@ extension CustomWebFontSize on TextTheme {
   double get verifyWebSwitchBack => 16;
   // #endregion
 
-  // #region home
-  double get homeWebProfileName => 20;
-  double get homeWebProfileEmail => 12;
+  // #region base
+  double get baseWebProfileName => 20;
+  double get baseWebProfileEmail => 12;
   // #endregion
 }
 

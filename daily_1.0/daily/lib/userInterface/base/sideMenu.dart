@@ -16,7 +16,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
-import 'package:daily/userInterface/home/homeWebComponents.dart';
+import 'package:daily/userInterface/base/homeWebComponents.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
@@ -31,7 +31,7 @@ class _SideMenuState extends State<SideMenu> {
     return Container(
       height: double.infinity,
       padding: EdgeInsets.only(top: kIsWeb ? 5 : 0),
-      color: Theme.of(context).colorScheme.homeWebDrawerBackground,
+      color: Theme.of(context).colorScheme.baseWebDrawerBackground,
       child: SafeArea(
           child: Column(children: [
         _createHeader(context),
@@ -62,7 +62,7 @@ class _SideMenuState extends State<SideMenu> {
               width: MediaQuery.of(context).size.width / 8,
               child: Divider(
                 thickness: 2,
-                color: Theme.of(context).colorScheme.homeWebCardContainer,
+                color: Theme.of(context).colorScheme.baseWebCardContainer,
               ),
             ),
             _createItem(
@@ -115,7 +115,7 @@ Widget _createProfile(BuildContext context, State state) {
       ? Center(
           child: Container(
               width: getDimension(context, false,
-                  Theme.of(context).visualDensity.homeWebProfileWidth),
+                  Theme.of(context).visualDensity.baseWebProfileWidth),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -140,18 +140,18 @@ Widget _createProfile(BuildContext context, State state) {
                           true,
                           Theme.of(context)
                               .visualDensity
-                              .homeWebProfileIconHeight),
+                              .baseWebProfileIconHeight),
                       width: getDimension(
                           context,
                           true,
                           Theme.of(context)
                               .visualDensity
-                              .homeWebProfileIconWidth),
+                              .baseWebProfileIconWidth),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Theme.of(context)
                             .colorScheme
-                            .homeWebProfileBackground,
+                            .baseWebProfileBackground,
                       ),
                       child: CachedNetworkImage(
                         imageUrl: _firebaseAccounts.getCurrentUserProfilePic(),
@@ -167,7 +167,7 @@ Widget _createProfile(BuildContext context, State state) {
                           Icons.person_outline_rounded,
                           size: 55,
                           color:
-                              Theme.of(context).colorScheme.homeWebProfileIcon,
+                              Theme.of(context).colorScheme.baseWebProfileIcon,
                         ),
                       ),
                     ).showClickOnHover,
@@ -179,7 +179,7 @@ Widget _createProfile(BuildContext context, State state) {
                         false,
                         Theme.of(context)
                             .visualDensity
-                            .homeWebProfileInfoWidth),
+                            .baseWebProfileInfoWidth),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -200,13 +200,13 @@ Widget _createProfile(BuildContext context, State state) {
                               style: TextStyle(
                                 color: Theme.of(context)
                                     .colorScheme
-                                    .homeWebProfileName,
+                                    .baseWebProfileName,
                                 fontSize: Theme.of(context)
                                     .textTheme
-                                    .homeWebProfileName,
+                                    .baseWebProfileName,
                                 fontWeight: Theme.of(context)
                                     .typography
-                                    .homeWebProfileName,
+                                    .baseWebProfileName,
                               ),
                             ),
                           ).showClickOnHover,
@@ -221,13 +221,13 @@ Widget _createProfile(BuildContext context, State state) {
                             style: TextStyle(
                               color: Theme.of(context)
                                   .colorScheme
-                                  .homeWebProfileEmail,
+                                  .baseWebProfileEmail,
                               fontSize: Theme.of(context)
                                   .textTheme
-                                  .homeWebProfileEmail,
+                                  .baseWebProfileEmail,
                               fontWeight: Theme.of(context)
                                   .typography
-                                  .homeWebProfileEmail,
+                                  .baseWebProfileEmail,
                             ),
                           ),
                         ),
@@ -249,13 +249,13 @@ Widget _createItem(
     child: ListTile(
         onTap: onTap,
         title: Row(children: <Widget>[
-          Icon(icon, color: Theme.of(context).colorScheme.homeWebDrawerItem),
+          Icon(icon, color: Theme.of(context).colorScheme.baseWebDrawerItem),
           Padding(
               padding: EdgeInsets.only(left: 8.0),
               child: Text(
                 text,
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.homeWebDrawerItem,
+                  color: Theme.of(context).colorScheme.baseWebDrawerItem,
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                 ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/userInterface/home/search/searchWebComponents.dart';
-import 'package:daily/userInterface/home/search/searchMobileComponents.dart';
+import 'package:daily/userInterface/base/search/searchWebComponents.dart';
+import 'package:daily/userInterface/base/search/searchMobileComponents.dart';
 
 _searchSmall(BuildContext context) {
   return Adaptive(
