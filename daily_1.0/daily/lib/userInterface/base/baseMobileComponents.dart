@@ -32,12 +32,12 @@ void _onTabTapped(int i) {
       duration: const Duration(milliseconds: 500), curve: Curves.easeOutQuint);
 }
 
-Widget baseMobileBody(BuildContext context, State state) {
+Widget baseMobileBody(BuildContext context, State state, bool isSmall) {
   List<Widget> pages = [
-    homeBody(context, state, true),
-    searchBody(context),
-    globalBody(context),
-    settingsBody(context, state)
+    homeBody(context, state, isSmall),
+    searchBody(context, state, isSmall),
+    globalBody(context, state, isSmall),
+    settingsBody(context, state, isSmall)
   ];
 
   return PageView(

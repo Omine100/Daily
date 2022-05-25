@@ -93,7 +93,7 @@ Future<Widget> showMediaSelection(
 Widget showSocialButton(BuildContext context, int iconCase) {
   return new GestureDetector(
     onTap: () {
-      context.router.push(HomeScreen());
+      context.router.push(BaseScreen());
     },
     child: Container(
       padding: EdgeInsets.all(7.5),

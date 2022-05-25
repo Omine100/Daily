@@ -1,5 +1,4 @@
 import 'package:daily/servicesLocal/adaptive.dart';
-import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/base/alertsDropdown.dart';
 import 'package:daily/userInterface/base/upload.dart';
 import 'package:flutter/material.dart';
@@ -41,10 +40,10 @@ Widget baseWebCardContainer(BuildContext context, State state, bool isSmall,
     GlobalKey<ScaffoldState> scaffoldKey) {
   List<Widget> pages = [
     homeBody(context, state, isSmall),
-    globalBody(context),
-    settingsBody(context, state),
-    searchBody(context),
-    profileBody(context, state)
+    globalBody(context, state, isSmall),
+    settingsBody(context, state, isSmall),
+    searchBody(context, state, isSmall),
+    profileBody(context, state, isSmall)
   ];
 
   return Container(

@@ -4,21 +4,21 @@ import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/base/global/globalWebComponents.dart';
 import 'package:daily/userInterface/base/global/globalMobileComponents.dart';
 
-_globalSmall(BuildContext context) {
+_globalSmall(BuildContext context, State state) {
   return Adaptive(
-      iOS: _globalMobileSmall(context, false),
-      android: _globalMobileSmall(context, true),
-      web: _globalWebSmall(context));
+      iOS: _globalMobileSmall(context, state, false),
+      android: _globalMobileSmall(context, state, true),
+      web: _globalWebSmall(context, state));
 }
 
-_globalLarge(BuildContext context) {
+_globalLarge(BuildContext context, State state) {
   return Adaptive(
-      iOS: _globalMobileLarge(context, false),
-      android: _globalMobileLarge(context, true),
-      web: _globalWebLarge(context));
+      iOS: _globalMobileLarge(context, state, false),
+      android: _globalMobileLarge(context, state, true),
+      web: _globalWebLarge(context, state));
 }
 
-_globalWebSmall(BuildContext context) {
+_globalWebSmall(BuildContext context, State state) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -31,7 +31,7 @@ _globalWebSmall(BuildContext context) {
   );
 }
 
-_globalWebLarge(BuildContext context) {
+_globalWebLarge(BuildContext context, State state) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -44,7 +44,7 @@ _globalWebLarge(BuildContext context) {
   );
 }
 
-_globalMobileSmall(BuildContext context, bool isAndroid) {
+_globalMobileSmall(BuildContext context, State state, bool isAndroid) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -57,7 +57,7 @@ _globalMobileSmall(BuildContext context, bool isAndroid) {
   );
 }
 
-_globalMobileLarge(BuildContext context, bool isAndroid) {
+_globalMobileLarge(BuildContext context, State state, bool isAndroid) {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -70,9 +70,6 @@ _globalMobileLarge(BuildContext context, bool isAndroid) {
   );
 }
 
-Widget globalBody(BuildContext context) {
-  return Responsive(
-    small: _globalSmall(context),
-    large: _globalLarge(context),
-  );
+Widget globalBody(BuildContext context, State state, bool isSmall) {
+  return isSmall ? _globalSmall(context, state) : _globalLarge(context, state);
 }

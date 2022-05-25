@@ -90,7 +90,7 @@ Widget verifyWebLogin(
               showToastMessage(context, "_errorEmailNotVerified", true);
               _firebaseAccounts.signOut();
             } else {
-              context.router.replaceAll([HomeScreen()]);
+              context.router.replaceAll([BaseScreen()]);
             }
           });
         },

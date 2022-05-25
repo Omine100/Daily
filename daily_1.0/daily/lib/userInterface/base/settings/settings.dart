@@ -21,11 +21,11 @@ _settingsLarge(BuildContext context, State state) {
 }
 
 _settingsWebSmall(BuildContext context, State state) {
-  return settingsWebCard(context, state);
+  return settingsWebCard(context, state, true);
 }
 
 _settingsWebLarge(BuildContext context, State state) {
-  return settingsWebCard(context, state);
+  return settingsWebCard(context, state, false);
 }
 
 _settingsMobileSmall(BuildContext context, State state, bool isAndroid) {
@@ -66,9 +66,8 @@ _settingsMobileLarge(BuildContext context, State state, bool isAndroid) {
   ]);
 }
 
-Widget settingsBody(BuildContext context, State state) {
-  return Responsive(
-    small: _settingsSmall(context, state),
-    large: _settingsLarge(context, state),
-  );
+Widget settingsBody(BuildContext context, State state, bool isSmall) {
+  return isSmall
+      ? _settingsSmall(context, state)
+      : _settingsLarge(context, state);
 }

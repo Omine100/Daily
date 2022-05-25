@@ -36,9 +36,8 @@ _profileMobileLarge(BuildContext context, State state, bool isAndroid) {
   return Container();
 }
 
-Widget profileBody(BuildContext context, State state) {
-  return Responsive(
-    small: _profileSmall(context, state),
-    large: _profileLarge(context, state),
-  );
+Widget profileBody(BuildContext context, State state, bool isSmall) {
+  return isSmall
+      ? _profileSmall(context, state)
+      : _profileLarge(context, state);
 }

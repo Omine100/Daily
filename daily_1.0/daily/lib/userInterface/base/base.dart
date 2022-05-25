@@ -8,16 +8,16 @@ import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/cameraManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/constraints.dart';
-import 'package:daily/userInterface/base/homeWebComponents.dart';
-import 'package:daily/userInterface/base/homeMobileComponents.dart';
+import 'package:daily/userInterface/base/baseWebComponents.dart';
+import 'package:daily/userInterface/base/baseMobileComponents.dart';
 import 'package:daily/userInterface/base/sideMenu.dart';
 
-class HomeScreen extends StatefulWidget {
+class BaseScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _BaseScreenState createState() => _BaseScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
+class _BaseScreenState extends State<BaseScreen> with WidgetsBindingObserver {
   FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
   @override
@@ -82,11 +82,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   }
 
   _baseScreenMobileSmall(bool isAndroid) {
-    return baseMobileBody(context, this);
+    return baseMobileBody(context, this, true);
   }
 
   _baseScreenMobileLarge(bool isAndroid) {
-    return baseMobileBody(context, this);
+    return baseMobileBody(context, this, false);
   }
 
   var _scaffoldKey = GlobalKey<ScaffoldState>();

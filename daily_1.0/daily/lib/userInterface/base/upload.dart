@@ -8,6 +8,8 @@ class Upload extends StatefulWidget {
 }
 
 class _UploadState extends State<Upload> {
+  int _step = 0;
+
   void _showOverlay(BuildContext context) async {
     OverlayState overlayState = Overlay.of(context);
     OverlayEntry overlayEntry;
@@ -47,6 +49,9 @@ class _UploadState extends State<Upload> {
                       color: Colors.white,
                       size: MediaQuery.of(context).size.height * 0.025),
                 ),
+              ),
+              Container(
+                child: _uploadStep(),
               )
             ],
           ),
@@ -56,6 +61,48 @@ class _UploadState extends State<Upload> {
 
     overlayState.insert(overlayBackground);
     overlayState.insert(overlayEntry);
+  }
+
+  Widget _backButton() {
+    return IconButton(
+      onPressed: () {
+        this.setState(() {
+          _step--;
+        });
+      },
+    );
+  }
+
+  Widget _forwardButton() {
+    return IconButton(
+      onPressed: () {
+        this.setState(() {
+          _step++;
+        });
+      },
+    );
+  }
+
+  Widget _uploadStep() {
+    switch (_step) {
+      case 0:
+        return Column(
+          children: [],
+        );
+        break;
+      case 1:
+        return Column(
+          children: [],
+        );
+        break;
+      case 2:
+        return Column(
+          children: [],
+        );
+        break;
+      default:
+        return Container();
+    }
   }
 
   @override

@@ -19,7 +19,7 @@ import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
-Widget settingsWebCard(BuildContext context, State state) {
+Widget settingsWebCard(BuildContext context, State state, bool isSmall) {
   return Container(
       padding: EdgeInsets.only(left: 20, right: 20),
       child: settingsBreakdown(context, state));

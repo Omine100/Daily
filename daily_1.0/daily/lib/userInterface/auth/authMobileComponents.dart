@@ -552,7 +552,7 @@ void _authVerifiedHandling(BuildContext context, bool value) {
       context.router.push(VerifyScreen(email: _userEmail, pass: _userPass));
       _firebaseAccounts.signOut();
     } else {
-      context.router.replaceAll([HomeScreen()]);
+      context.router.replaceAll([BaseScreen()]);
     }
     _authMobileFormKey.currentState.reset();
   }

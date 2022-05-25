@@ -8,7 +8,6 @@ import 'package:daily/servicesBroad/contact.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
-import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/standards/userXStandards.dart';
@@ -16,7 +15,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
-import 'package:daily/userInterface/base/homeWebComponents.dart';
+import 'package:daily/userInterface/base/baseWebComponents.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 

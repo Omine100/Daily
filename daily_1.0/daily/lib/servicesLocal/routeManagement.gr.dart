@@ -14,9 +14,9 @@ import 'package:auto_route/auto_route.dart' as _i8;
 import 'package:flutter/material.dart' as _i9;
 
 import '../userInterface/auth/auth.dart' as _i1;
+import '../userInterface/base/base.dart' as _i4;
 import '../userInterface/error/error.dart' as _i7;
 import '../userInterface/forgotPassword/forgotPassword.dart' as _i3;
-import '../userInterface/home/home.dart' as _i4;
 import '../userInterface/imageViewer/imageViewer.dart' as _i5;
 import '../userInterface/textViewer/textViewer.dart' as _i6;
 import '../userInterface/verify/verify.dart' as _i2;
@@ -42,9 +42,9 @@ class AppRouter extends _i8.RootStackRouter {
       return _i8.MaterialPageX<dynamic>(
           routeData: routeData, child: _i3.ForgotPasswordScreen());
     },
-    HomeScreen.name: (routeData) {
+    BaseScreen.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i4.HomeScreen());
+          routeData: routeData, child: _i4.BaseScreen());
     },
     ImageViewerScreen.name: (routeData) {
       final args = routeData.argsAs<ImageViewerScreenArgs>(
@@ -77,7 +77,7 @@ class AppRouter extends _i8.RootStackRouter {
         _i8.RouteConfig(AuthScreen.name, path: 'auth'),
         _i8.RouteConfig(VerifyScreen.name, path: 'verify'),
         _i8.RouteConfig(ForgotPasswordScreen.name, path: 'forgot-password'),
-        _i8.RouteConfig(HomeScreen.name, path: 'home'),
+        _i8.RouteConfig(BaseScreen.name, path: 'base'),
         _i8.RouteConfig(ImageViewerScreen.name, path: 'image-viewer'),
         _i8.RouteConfig(TextViewerScreen.name, path: 'text-viewer'),
         _i8.RouteConfig(ErrorScreen.name, path: '*')
@@ -125,11 +125,11 @@ class ForgotPasswordScreen extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.HomeScreen]
-class HomeScreen extends _i8.PageRouteInfo<void> {
-  const HomeScreen() : super(HomeScreen.name, path: 'home');
+/// [_i4.BaseScreen]
+class BaseScreen extends _i8.PageRouteInfo<void> {
+  const BaseScreen() : super(BaseScreen.name, path: 'base');
 
-  static const String name = 'HomeScreen';
+  static const String name = 'BaseScreen';
 }
 
 /// generated route for

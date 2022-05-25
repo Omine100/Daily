@@ -125,7 +125,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   void checkLoggedInStatus() async {
     await FirebaseAuth.instance.authStateChanges().listen((User user) {
-      if (user != null) context.router.replaceAll([HomeScreen()]);
+      if (user != null) context.router.replaceAll([BaseScreen()]);
     });
   }
 

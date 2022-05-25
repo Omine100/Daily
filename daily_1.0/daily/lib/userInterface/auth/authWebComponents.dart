@@ -475,7 +475,7 @@ void _authVerifiedHandling(BuildContext context, State state, bool value) {
       state.setState(() {});
       _firebaseAccounts.signOut();
     } else {
-      context.router.replaceAll([HomeScreen()]);
+      context.router.replaceAll([BaseScreen()]);
     }
     _authWebFormKey.currentState.reset();
   }
