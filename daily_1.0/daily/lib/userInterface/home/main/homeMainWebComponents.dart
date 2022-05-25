@@ -82,11 +82,10 @@ Widget mainWebFeed(BuildContext context, bool isSmall) {
         crossAxisSpacing: 8,
         itemBuilder: (context, index) {
           return FeedCard(
-            index: index,
-            height: isSmall ? 300 : (index % 4 + 2) * 100,
-            width: 100,
-            borderRadius: 10,
-          );
+              index: index,
+              height: isSmall ? 300 : (index % 4 + 2) * 100,
+              width: 100,
+              borderRadius: 10);
         },
       ),
     ),

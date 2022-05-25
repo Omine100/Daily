@@ -52,9 +52,6 @@ _mainMobileLarge(BuildContext context, State state, bool isAndroid) {
   );
 }
 
-Widget mainBody(BuildContext context, State state) {
-  return Responsive(
-    small: _mainSmall(context, state),
-    large: _mainLarge(context, state),
-  );
+Widget mainBody(BuildContext context, State state, bool isSmall) {
+  return isSmall ? _mainSmall(context, state) : _mainLarge(context, state);
 }

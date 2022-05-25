@@ -34,7 +34,7 @@ void _onTabTapped(int i) {
 
 Widget homeMobileBody(BuildContext context, State state) {
   List<Widget> pages = [
-    mainBody(context, state),
+    mainBody(context, state, true),
     searchBody(context),
     globalBody(context),
     settingsBody(context, state)

@@ -1,4 +1,5 @@
 import 'package:daily/servicesLocal/adaptive.dart';
+import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/home/alertsDropdown.dart';
 import 'package:daily/userInterface/home/upload.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ void onTabTapped(int i) {
 Widget homeWebCardContainer(BuildContext context, State state, bool isSmall,
     GlobalKey<ScaffoldState> scaffoldKey) {
   List<Widget> pages = [
-    mainBody(context, state),
+    mainBody(context, state, isSmall),
     globalBody(context),
     settingsBody(context, state),
     searchBody(context),
