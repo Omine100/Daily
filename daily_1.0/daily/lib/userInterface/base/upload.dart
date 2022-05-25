@@ -92,8 +92,24 @@ class _UploadState extends State<Upload> {
   Widget _uploadStep() {
     switch (_step) {
       case 0:
-        return Column(
-          children: [],
+        return Center(
+          child: Column(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.image_search),
+                iconSize: 25,
+                color: Colors.white,
+              ),
+              Text(
+                "Upload Image",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400),
+              )
+            ],
+          ),
         );
         break;
       case 1:
