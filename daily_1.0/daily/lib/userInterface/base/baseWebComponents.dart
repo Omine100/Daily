@@ -150,7 +150,11 @@ Widget _baseWebHeaderSearchBar(BuildContext context) {
 }
 
 Widget _baseWebPostButton(BuildContext context) {
-  return Upload();
+  return Tooltip(
+    message: "Upload an image for the day",
+    waitDuration: Duration(seconds: 1),
+    child: Upload(),
+  );
 }
 
 Widget _baseWebHeaderNotifications(BuildContext context) {

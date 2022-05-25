@@ -113,49 +113,45 @@ class _UploadState extends State<Upload> {
 
   @override
   Widget build(BuildContext context) {
-    return Tooltip(
-      message: "Upload an image for the day",
-      waitDuration: Duration(seconds: 1),
-      child: Container(
-          height: 40,
-          decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.authWebGetStarted,
-              borderRadius: BorderRadius.circular(10)),
-          child: Material(
-              color: Theme.of(context).colorScheme.materialTransparent,
-              child: InkWell(
-                  splashColor:
-                      Theme.of(context).colorScheme.authWebGetStartedInkWell,
-                  customBorder: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  onTap: () {
-                    _showOverlay(context);
-                    print("Test");
-                  },
-                  child: Center(
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                          child: Icon(
-                            Icons.upload,
-                            color: Colors.white,
-                            size: 25,
-                          ),
+    return Container(
+        height: 40,
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.authWebGetStarted,
+            borderRadius: BorderRadius.circular(10)),
+        child: Material(
+            color: Theme.of(context).colorScheme.materialTransparent,
+            child: InkWell(
+                splashColor:
+                    Theme.of(context).colorScheme.authWebGetStartedInkWell,
+                customBorder: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                onTap: () {
+                  _showOverlay(context);
+                  print("Test");
+                },
+                child: Center(
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        child: Icon(
+                          Icons.upload,
+                          color: Colors.white,
+                          size: 25,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: Text(
-                            "Post",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        )
-                      ],
-                    ),
-                  )))),
-    );
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Text(
+                          "Post",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      )
+                    ],
+                  ),
+                ))));
   }
 }
