@@ -70,6 +70,9 @@ class _UploadState extends State<Upload> {
           _step--;
         });
       },
+      icon: Icon(Icons.arrow_back),
+      iconSize: 25,
+      color: Colors.white,
     );
   }
 
@@ -80,6 +83,9 @@ class _UploadState extends State<Upload> {
           _step++;
         });
       },
+      icon: Icon(Icons.arrow_forward),
+      iconSize: 25,
+      color: Colors.white,
     );
   }
 

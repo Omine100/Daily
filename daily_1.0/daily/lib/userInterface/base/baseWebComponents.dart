@@ -58,6 +58,7 @@ Widget baseWebCardContainer(BuildContext context, State state, bool isSmall,
           Container(
             height: MediaQuery.of(context).size.height - 75,
             child: PageView(
+              physics: NeverScrollableScrollPhysics(),
               children: pages,
               onPageChanged: (pageIndex) {
                 _onPageChanged(state, pageIndex);
