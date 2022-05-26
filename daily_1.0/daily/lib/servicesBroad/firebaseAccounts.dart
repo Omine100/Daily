@@ -64,8 +64,8 @@ class FirebaseAccounts {
     state.setState(() {});
   }
 
-  Future<String> getCurrentUserProfilePic() async {
-    return await _auth.currentUser.photoURL;
+  String getCurrentUserProfilePic() {
+    return _auth.currentUser.photoURL;
   }
 
   Future<void> sendEmailVerification(BuildContext context) async {

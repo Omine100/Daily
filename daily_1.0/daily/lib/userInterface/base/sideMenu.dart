@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'package:image_picker_for_web/image_picker_for_web.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daily/servicesLocal/hover.dart';
@@ -80,23 +82,24 @@ class _SideMenuState extends State<SideMenu> {
                               .colorScheme
                               .baseWebProfileBackground,
                         ),
-                        child: FutureBuilder(
-                          future: _firebaseAccounts.getCurrentUserProfilePic(),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasError) {
-                              return const Text(
-                                "Something went wrong",
-                              );
-                            }
-                            if (snapshot.connectionState ==
-                                ConnectionState.done) {
-                              return Image.network(
-                                snapshot.data.toString(),
-                              );
-                            }
-                            return const Center(
-                                child: CircularProgressIndicator());
-                          },
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              _firebaseAccounts.getCurrentUserProfilePic(),
+                          imageBuilder: (context, imageProvider) => Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: imageProvider, fit: BoxFit.cover),
+                            ),
+                          ),
+                          placeholder: (context, url) => showProgress(context),
+                          errorWidget: (context, url, error) => Icon(
+                            Icons.person_outline_rounded,
+                            size: 55,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .baseWebProfileIcon,
+                          ),
                         ),
                       ).showClickOnHover,
                     ),
@@ -194,7 +197,7 @@ class _SideMenuState extends State<SideMenu> {
 
   void upload() async {
     await ImagePicker()
-        .getImage(source: ImageSource.gallery)
+        .pickImage(source: ImageSource.gallery)
         .then((value) async {
       _firebaseAccounts.setCurrentUserProfilePicData(
           await value.readAsBytes(), this);
