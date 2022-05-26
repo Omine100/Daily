@@ -28,10 +28,16 @@ class _FeedCardState extends State<FeedCard> {
 
     overlayBackground = OverlayEntry(builder: (context) {
       return Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          color: new Color(0x6F000000),
+        child: GestureDetector(
+          onTap: () {
+            overlayEntry.remove();
+            overlayBackground.remove();
+          },
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: new Color(0xCC000000),
+          ),
         ),
       );
     });
@@ -61,19 +67,6 @@ class _FeedCardState extends State<FeedCard> {
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  overlayBackground.remove();
-                  overlayEntry.remove();
-                },
-                child: Tooltip(
-                  waitDuration: Duration(seconds: 1),
-                  message: "Close",
-                  child: Icon(Icons.close,
-                      color: Colors.white,
-                      size: MediaQuery.of(context).size.height * 0.025),
-                ),
-              )
             ],
           ),
         ),
