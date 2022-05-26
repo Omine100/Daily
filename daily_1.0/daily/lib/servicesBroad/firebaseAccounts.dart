@@ -49,12 +49,13 @@ class FirebaseAccounts {
 
   Future<void> setCurrentUserProfilePicData(
       Uint8List bytes, State state) async {
-    Uint8List imageInUnit8List = bytes;
-    final tempDir = await getTemporaryDirectory();
-    File file = await File('${tempDir.path}/image.png').create();
-    file.writeAsBytesSync(imageInUnit8List);
-
-    setCurrentUserProfilePicImage(file, state);
+    var storageRef = _storage.ref(_auth.currentUser.uid + '/profilePicture');
+    await storageRef.putData(bytes);
+    _auth.currentUser
+        .updatePhotoURL(await storageRef.getDownloadURL())
+        .then((value) {
+      setCurrentUserProfilePicURL(state);
+    });
   }
 
   void setCurrentUserProfilePicURL(State state) async {
@@ -63,8 +64,8 @@ class FirebaseAccounts {
     state.setState(() {});
   }
 
-  String getCurrentUserProfilePic() {
-    return _auth.currentUser.photoURL;
+  Future<String> getCurrentUserProfilePic() async {
+    return await _auth.currentUser.photoURL;
   }
 
   Future<void> sendEmailVerification(BuildContext context) async {
