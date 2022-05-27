@@ -20,7 +20,6 @@ import 'package:daily/themesLocal/fontWeights.dart';
 import 'package:daily/userInterface/base/baseWebComponents.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
-FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
 
 class SideMenu extends StatefulWidget {
   @override
