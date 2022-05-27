@@ -1,10 +1,7 @@
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:firebase_storage_web/firebase_storage_web.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 import 'package:image_picker_for_web/image_picker_for_web.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
