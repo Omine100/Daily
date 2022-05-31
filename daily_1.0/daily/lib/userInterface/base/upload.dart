@@ -125,16 +125,9 @@ class _UploadState extends State<Upload> {
   }
 
   Widget step2() {
-    return Container(
-      height: 300,
-      width: 300,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Theme.of(context).colorScheme.baseBackground),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: image,
-      ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: image,
     );
   }
 
