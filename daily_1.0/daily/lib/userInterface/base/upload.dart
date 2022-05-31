@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
-import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/themesLocal/colors.dart';
-import 'package:image_picker/image_picker.dart';
 
 class Upload extends StatefulWidget {
   @override
@@ -26,10 +27,10 @@ class _UploadState extends State<Upload> {
       return Center(
         child: GestureDetector(
           onTap: () {
-            overlayBackground.remove();
-            overlayBase.remove();
-            overlayUploadStep1.remove();
-            overlayUploadStep2.remove();
+            overlayBase.mounted ? overlayBase.remove() : null;
+            overlayUploadStep1.mounted ? overlayUploadStep1.remove() : null;
+            overlayUploadStep2.mounted ? overlayUploadStep2.remove() : null;
+            overlayBackground.mounted ? overlayBackground.remove() : null;
           },
           child: Container(
             height: MediaQuery.of(context).size.height,
@@ -60,13 +61,22 @@ class _UploadState extends State<Upload> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Theme.of(context).colorScheme.baseBackground),
-          child: Center(child: _step == 0 ? step1() : step2()),
+          child: Center(child: step1()),
         ),
       );
     });
 
     overlayUploadStep2 = OverlayEntry(builder: (context) {
-      return Container();
+      return Center(
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.7,
+          width: MediaQuery.of(context).size.height * 0.7,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Theme.of(context).colorScheme.baseBackground),
+          child: Center(child: step2()),
+        ),
+      );
     });
 
     overlayState.insert(overlayBackground);
@@ -115,15 +125,30 @@ class _UploadState extends State<Upload> {
   }
 
   Widget step2() {
-    return Container();
+    return Container(
+      height: 300,
+      width: 300,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Theme.of(context).colorScheme.baseBackground),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: image,
+      ),
+    );
   }
+
+  Image image;
 
   void getImage() async {
     await ImagePicker()
         .pickImage(source: ImageSource.gallery)
         .then((value) async {
-      _firebaseAccounts.setCurrentUserProfilePicData(
-          await value.readAsBytes(), this);
+      //Have to do it like this for web, otherwise we can do "Image.File" will have that in cleanup
+      image = Image.network(
+        value.path,
+        fit: BoxFit.fill,
+      );
     });
   }
 

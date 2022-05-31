@@ -50,9 +50,9 @@ Future<Widget> showMediaSelection(
                       ],
                     ),
                     onTap: () async {
-                      context.router.pop();
-                      _mediaManagement.imagePicker(
-                          context, false, state, saveFunction);
+                      // context.router.pop();
+                      // _mediaManagement.imagePicker(
+                      //     context, false, state, saveFunction);
                     },
                   ),
                   Padding(padding: EdgeInsets.all(8.0)),
@@ -79,9 +79,9 @@ Future<Widget> showMediaSelection(
                       ],
                     ),
                     onTap: () async {
-                      context.router.pop();
-                      return await _mediaManagement.imagePicker(
-                          context, true, state, saveFunction);
+                      // context.router.pop();
+                      // return await _mediaManagement.imagePicker(
+                      //     context, true, state, saveFunction);
                     },
                   )
                 ],
