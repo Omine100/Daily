@@ -15,10 +15,9 @@ class _UploadState extends State<Upload> {
   FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
   OverlayState overlayState;
   OverlayEntry overlayBackground;
-  OverlayEntry overlayBase;
-  OverlayEntry overlayUploadStep1;
-  OverlayEntry overlayUploadStep2;
+  OverlayEntry overlayEntry;
   int _step = 0;
+  double _height = 0, _width = 0;
 
   void _showOverlay(BuildContext context) async {
     overlayState = Overlay.of(context);
@@ -27,9 +26,7 @@ class _UploadState extends State<Upload> {
       return Center(
         child: GestureDetector(
           onTap: () {
-            overlayBase.mounted ? overlayBase.remove() : null;
-            overlayUploadStep1.mounted ? overlayUploadStep1.remove() : null;
-            overlayUploadStep2.mounted ? overlayUploadStep2.remove() : null;
+            overlayEntry.mounted ? overlayEntry.remove() : null;
             overlayBackground.mounted ? overlayBackground.remove() : null;
           },
           child: Container(
@@ -41,48 +38,27 @@ class _UploadState extends State<Upload> {
       );
     });
 
-    overlayBase = OverlayEntry(builder: (context) {
+    overlayEntry = OverlayEntry(builder: (context) {
       return Center(
-          child: AnimatedContainer(
-        height: MediaQuery.of(context).size.height * (_step == 0 ? 0.7 : 0.3),
-        width: MediaQuery.of(context).size.height * (_step == 0 ? 0.7 : 0.9),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Theme.of(context).colorScheme.baseBackground),
-        duration: const Duration(milliseconds: 1350),
-        curve: Curves.fastOutSlowIn,
-      ));
-    });
-
-    overlayUploadStep1 = OverlayEntry(builder: (context) {
-      return Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height * 0.7,
-          width: MediaQuery.of(context).size.height * 0.7,
+        child: AnimatedContainer(
+          duration: const Duration(seconds: 2),
+          curve: Curves.fastOutSlowIn,
+          height: MediaQuery.of(context).size.height *
+              0.7 *
+              (_step == 0 ? 1 : _height),
+          width: MediaQuery.of(context).size.height *
+              0.7 *
+              (_step == 0 ? 1 : _width),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Theme.of(context).colorScheme.baseBackground),
-          child: Center(child: step1()),
-        ),
-      );
-    });
-
-    overlayUploadStep2 = OverlayEntry(builder: (context) {
-      return Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height * 0.7,
-          width: MediaQuery.of(context).size.height * 0.7,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Theme.of(context).colorScheme.baseBackground),
-          child: Center(child: step2()),
+          child: Center(child: _step == 0 ? step1() : step2()),
         ),
       );
     });
 
     overlayState.insert(overlayBackground);
-    overlayState.insert(overlayBase);
-    overlayState.insert(overlayUploadStep1);
+    overlayState.insert(overlayEntry);
   }
 
   Widget _backButton() {
@@ -108,10 +84,11 @@ class _UploadState extends State<Upload> {
           IconButton(
             onPressed: () async {
               await getImage();
-              overlayUploadStep1.remove();
-              overlayBase.remove();
-              overlayState.insert(overlayBase);
-              overlayState.insert(overlayUploadStep2);
+              this.setState(() {
+                _step++;
+                overlayEntry.remove();
+                overlayState.insert(overlayEntry);
+              });
             },
             icon: Icon(Icons.image),
             iconSize: 45,
@@ -141,10 +118,12 @@ class _UploadState extends State<Upload> {
         .pickImage(source: ImageSource.gallery)
         .then((value) async {
       //Have to do it like this for web, otherwise we can do "Image.File" will have that in cleanup
+      //Need to get size
       image = Image.network(
         value.path,
-        fit: BoxFit.fill,
       );
+      _height = 0.5;
+      _width = 0.3;
     });
   }
 
