@@ -43,14 +43,15 @@ class _UploadState extends State<Upload> {
 
     overlayBase = OverlayEntry(builder: (context) {
       return Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height * 0.7,
-          width: MediaQuery.of(context).size.height * 0.7,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Theme.of(context).colorScheme.baseBackground),
-        ),
-      );
+          child: AnimatedContainer(
+        height: MediaQuery.of(context).size.height * (_step == 0 ? 0.7 : 0.3),
+        width: MediaQuery.of(context).size.height * (_step == 0 ? 0.7 : 0.9),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Theme.of(context).colorScheme.baseBackground),
+        duration: const Duration(milliseconds: 1350),
+        curve: Curves.fastOutSlowIn,
+      ));
     });
 
     overlayUploadStep1 = OverlayEntry(builder: (context) {
@@ -108,6 +109,8 @@ class _UploadState extends State<Upload> {
             onPressed: () async {
               await getImage();
               overlayUploadStep1.remove();
+              overlayBase.remove();
+              overlayState.insert(overlayBase);
               overlayState.insert(overlayUploadStep2);
             },
             icon: Icon(Icons.image),
