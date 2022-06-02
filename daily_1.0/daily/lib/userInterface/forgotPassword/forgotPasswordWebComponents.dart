@@ -108,7 +108,6 @@ Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
         obscureText: false,
         onChanged: (email) {
           _userEmail = email;
-          print(_userEmail);
           _updateFormProgress(state);
         },
         onSaved: (email) => {_userEmail = email},
