@@ -3,8 +3,11 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
-import 'package:daily/servicesLocal/hover.dart';
+import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/themesLocal/dimensions.dart';
+import 'package:daily/themesLocal/fontSizes.dart';
+import 'package:daily/themesLocal/fontWeights.dart';
 
 class Upload extends StatefulWidget {
   @override
@@ -17,7 +20,7 @@ class _UploadState extends State<Upload> {
   OverlayEntry overlayBackground;
   OverlayEntry overlayEntry;
   int _step = 0;
-  double _height = 0, _width = 0;
+  double _aspectRatio = 0;
 
   void _showOverlay(BuildContext context) async {
     overlayState = Overlay.of(context);
@@ -28,6 +31,7 @@ class _UploadState extends State<Upload> {
           onTap: () {
             overlayEntry.mounted ? overlayEntry.remove() : null;
             overlayBackground.mounted ? overlayBackground.remove() : null;
+            _step = 0;
           },
           child: Container(
             height: MediaQuery.of(context).size.height,
@@ -44,34 +48,23 @@ class _UploadState extends State<Upload> {
           duration: const Duration(seconds: 2),
           curve: Curves.fastOutSlowIn,
           height: MediaQuery.of(context).size.height *
-              0.7 *
-              (_step == 0 ? 1 : _height),
+              (_step == 0 ? 0.6 : _aspectRatio),
           width: MediaQuery.of(context).size.height *
-              0.7 *
-              (_step == 0 ? 1 : _width),
+              (_step == 0 ? 0.6 : _aspectRatio),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Theme.of(context).colorScheme.baseBackground),
-          child: Center(child: _step == 0 ? step1() : step2()),
+          child: _step == 0
+              ? Center(
+                  child: step1(),
+                )
+              : step2(),
         ),
       );
     });
 
     overlayState.insert(overlayBackground);
     overlayState.insert(overlayEntry);
-  }
-
-  Widget _backButton() {
-    return IconButton(
-      onPressed: () {
-        this.setState(() {
-          _step--;
-        });
-      },
-      icon: Icon(Icons.arrow_back),
-      iconSize: 25,
-      color: Colors.white,
-    );
   }
 
   Widget step1() {
@@ -84,11 +77,15 @@ class _UploadState extends State<Upload> {
           IconButton(
             onPressed: () async {
               await getImage();
-              this.setState(() {
-                _step++;
-                overlayEntry.remove();
-                overlayState.insert(overlayEntry);
-              });
+              image.image.resolve(ImageConfiguration()).addListener(
+                  ImageStreamListener((ImageInfo info, bool isSync) {
+                setState(() {
+                  _aspectRatio = info.image.height / info.image.width;
+                  _step++;
+                  overlayEntry.remove();
+                  overlayState.insert(overlayEntry);
+                });
+              }));
             },
             icon: Icon(Icons.image),
             iconSize: 45,
@@ -104,26 +101,113 @@ class _UploadState extends State<Upload> {
     );
   }
 
+  String _userEmail = "";
+  GlobalKey<FormFieldState> _forgotPasswordWebFormKey =
+      GlobalKey<FormFieldState>();
   Widget step2() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: image,
+    return Column(
+      children: [
+        ClipRRect(borderRadius: BorderRadius.circular(10), child: image),
+        Material(
+            color: Theme.of(context).colorScheme.baseBackground,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: getDimension(
+                        context,
+                        true,
+                        Theme.of(context)
+                            .visualDensity
+                            .forgotPasswordWebUserInputFieldHeight),
+                    width: getDimension(
+                        context,
+                        false,
+                        Theme.of(context)
+                            .visualDensity
+                            .forgotPasswordWebUserInputFieldWidth),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .forgotPasswordWebUserInputField,
+                    ),
+                    child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
+                      key: _forgotPasswordWebFormKey,
+                      obscureText: false,
+                      onChanged: (email) {
+                        _userEmail = email;
+                      },
+                      onSaved: (email) => {_userEmail = email},
+                      onFieldSubmitted: (value) {},
+                      autofocus: false,
+                      style: TextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .forgotPasswordWebUserInputFieldText),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText:
+                            getTranslated(context, "forgotPasswordFormEmail"),
+                        labelStyle: TextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .forgotPasswordWebUserInputFieldDecoration,
+                          fontSize: Theme.of(context)
+                              .textTheme
+                              .forgotPasswordWebUserInputFieldDecoration,
+                          fontWeight: Theme.of(context)
+                              .typography
+                              .forgotPasswordWebUserInputFieldDecoration,
+                        ),
+                        hintStyle: TextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .forgotPasswordWebUserInputFieldDecoration,
+                          fontSize: Theme.of(context)
+                              .textTheme
+                              .forgotPasswordWebUserInputFieldDecoration,
+                          fontWeight: Theme.of(context)
+                              .typography
+                              .forgotPasswordWebUserInputFieldDecoration,
+                        ),
+                        prefixIcon: Icon(
+                          Icons.email,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .forgotPasswordWebUserInputFieldIconDecoration,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                  onPressed: () {},
+                ),
+              ],
+            )),
+      ],
     );
   }
 
   Image image;
-
   void getImage() async {
     await ImagePicker()
         .pickImage(source: ImageSource.gallery)
         .then((value) async {
-      //Have to do it like this for web, otherwise we can do "Image.File" will have that in cleanup
-      //Need to get size
-      image = Image.network(
-        value.path,
+      image = new Image(
+        image: NetworkImage(value.path),
+        fit: BoxFit.fill,
       );
-      _height = 0.5;
-      _width = 0.3;
     });
   }
 
