@@ -1,3 +1,4 @@
+import 'package:daily/datastructures/post.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -21,6 +22,7 @@ class _UploadState extends State<Upload> {
   OverlayEntry overlayEntry;
   int _step = 0;
   double _aspectRatio = 0;
+  Post post;
 
   void _showOverlay(BuildContext context) async {
     overlayState = Overlay.of(context);
@@ -32,6 +34,7 @@ class _UploadState extends State<Upload> {
             overlayEntry.mounted ? overlayEntry.remove() : null;
             overlayBackground.mounted ? overlayBackground.remove() : null;
             _step = 0;
+            post = null;
           },
           child: Container(
             height: MediaQuery.of(context).size.height,
@@ -101,7 +104,7 @@ class _UploadState extends State<Upload> {
     );
   }
 
-  String _userEmail = "";
+  String _description = "";
   GlobalKey<FormFieldState> _forgotPasswordWebFormKey =
       GlobalKey<FormFieldState>();
   Widget step2() {
@@ -139,10 +142,10 @@ class _UploadState extends State<Upload> {
                       textAlignVertical: TextAlignVertical.center,
                       key: _forgotPasswordWebFormKey,
                       obscureText: false,
-                      onChanged: (email) {
-                        _userEmail = email;
+                      onChanged: (description) {
+                        _description = description;
                       },
-                      onSaved: (email) => {_userEmail = email},
+                      onSaved: (description) => {_description = description},
                       onFieldSubmitted: (value) {},
                       autofocus: false,
                       style: TextStyle(
@@ -191,7 +194,9 @@ class _UploadState extends State<Upload> {
                     color: Colors.white,
                     size: 30,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    postCreation();
+                  },
                 ),
               ],
             )),
@@ -200,15 +205,25 @@ class _UploadState extends State<Upload> {
   }
 
   Image image;
+  String path;
   void getImage() async {
     await ImagePicker()
         .pickImage(source: ImageSource.gallery)
         .then((value) async {
+      path = value.path;
       image = new Image(
         image: NetworkImage(value.path),
         fit: BoxFit.fill,
       );
     });
+  }
+
+  void postCreation() {
+    post = new Post(
+        username: _firebaseAccounts.getCurrentUserId(),
+        downloadURL: path,
+        description: _description,
+        timePosted: DateTime.now());
   }
 
   @override

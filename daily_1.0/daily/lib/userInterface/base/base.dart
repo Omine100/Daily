@@ -26,9 +26,10 @@ class _BaseScreenState extends State<BaseScreen> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     if (kIsWeb)
       setupWebPageController();
-    else
+    else {
       setupMobilePageController();
-    setupCamera(this);
+      setupCamera(this);
+    }
   }
 
   @override
@@ -44,9 +45,10 @@ class _BaseScreenState extends State<BaseScreen> with WidgetsBindingObserver {
     } else if (state == AppLifecycleState.resumed) {
       if (kIsWeb)
         onWebResume(this);
-      else
+      else {
         onMobileResume(this);
-      setupCamera(this);
+        setupCamera(this);
+      }
     }
   }
 
