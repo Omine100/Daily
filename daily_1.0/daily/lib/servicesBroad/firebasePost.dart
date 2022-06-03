@@ -21,7 +21,7 @@ class FirebasePose {
           .collection("Users")
           .doc(_auth.currentUser.uid)
           .collection("Posts")
-          .doc(post.postId)
+          .doc(post.postId) //Maybe change to current date?
           .set(post.toMap());
     } on FirebaseException {
       showToastMessage(context, "_errorImageFailedToUpload", true);
