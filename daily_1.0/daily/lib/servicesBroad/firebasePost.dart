@@ -48,17 +48,17 @@ class FirebasePose {
     return null;
   }
 
-  DocumentSnapshot readPosts(BuildContext context, String uid) async {
-    try {
-      await _firestore
-          .collection("Users")
-          .doc(uid)
-          .collection("Posts")
-          .snapshots();
-    } on FirebaseException {
-      showToastMessage(context, "_errorImageFailedToUpload", true);
-    }
-  }
+  // DocumentSnapshot readPosts(BuildContext context, String uid) async {
+  //   try {
+  //     await _firestore
+  //         .collection("Users")
+  //         .doc(uid)
+  //         .collection("Posts")
+  //         .snapshots();
+  //   } on FirebaseException {
+  //     showToastMessage(context, "_errorImageFailedToUpload", true);
+  //   }
+  // }
 
   void updateUserPost(
       BuildContext context, Post originalPost, Post newPost) async {
