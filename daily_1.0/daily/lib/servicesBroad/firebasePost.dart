@@ -30,8 +30,27 @@ class FirebasePose {
   }
 
   Post readPost(BuildContext context, String uid) async {
+    Post post = new Post();
     try {
-      await _firestore.collection("Users").doc(uid).collection("Posts").doc();
+      return await _firestore
+          .collection("Users")
+          .doc(uid)
+          .collection("Posts")
+          .doc(DateFormat("yyyy-MM-dd").format(DateTime.now())).get().then((value) => {
+            post.
+          });
+    } on FirebaseException {
+      showToastMessage(context, "_errorImageFailedToUpload", true);
+    }
+  }
+
+  DocumentSnapshot readPosts(BuildContext context, String uid) async {
+    try {
+      await _firestore
+          .collection("Users")
+          .doc(uid)
+          .collection("Posts")
+          .snapshots();
     } on FirebaseException {
       showToastMessage(context, "_errorImageFailedToUpload", true);
     }
