@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Post {
+  String postId;
   String username;
   String downloadURL;
   String description;
@@ -8,7 +9,8 @@ class Post {
   DateTime timePosted;
 
   Post(
-      {@required this.username,
+      {@required this.postId,
+      @required this.username,
       @required this.downloadURL,
       @required this.description,
       @required this.prompt,
@@ -16,6 +18,7 @@ class Post {
 
   Map<String, dynamic> toMap() {
     return {
+      "postId": postId,
       "username": username,
       "downloadURL": downloadURL,
       "description": description,
@@ -28,6 +31,7 @@ class Post {
     if (map == null) return null;
 
     return Post(
+        postId: map["postId"],
         username: map["username"],
         downloadURL: map["downloadURL"],
         description: map["description"],

@@ -1,12 +1,9 @@
 import 'package:daily/datastructures/post.dart';
+import 'package:daily/standards/userIStandards.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:path_provider/path_provider.dart';
-import 'dart:typed_data';
-import 'dart:async';
-import 'dart:io';
 
 class FirebasePose {
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -18,9 +15,47 @@ class FirebasePose {
     return true;
   }
 
-  void setUserPost(Post post) {}
+  void createUserPost(BuildContext context, Post post) async {
+    try {
+      await _firestore
+          .collection("Users")
+          .doc(_auth.currentUser.uid)
+          .collection("Posts")
+          .doc(post.postId)
+          .set(post.toMap());
+    } on FirebaseException {
+      showToastMessage(context, "_errorImageFailedToUpload", true);
+    }
+  }
 
-  Post getUserPost() {}
+  Post readPost(BuildContext context, String uid) async {
+    try {
+      await _firestore.collection(uid).doc("Posts");
+    } on FirebaseException {
+      showToastMessage(context, "_errorImageFailedToUpload", true);
+    }
+  }
 
-  Post getPost(String uid) {}
+  void updateUserPost(
+      BuildContext context, Post originalPost, Post newPost) async {
+    deleteUserPost(context, originalPost);
+    createUserPost(context, newPost);
+  }
+
+  void deleteUserPost(BuildContext context, Post post) async {
+    await _firestore
+        .collection(_auth.currentUser.uid)
+        .doc("Posts")
+        .collection(post.timePosted.toIso8601String())
+        .snapshots()
+        .first
+        .then((value) => {
+              _firestore
+                  .collection(_auth.currentUser.uid)
+                  .doc("Posts")
+                  .collection(post.timePosted.toIso8601String())
+                  .doc(value.docs.first.id)
+                  .delete()
+            });
+  }
 }
