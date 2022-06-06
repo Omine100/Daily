@@ -11,9 +11,19 @@ class FirebasePose {
   FirebaseStorage _storage = FirebaseStorage.instance;
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  bool getHasUserPosted() {
-    if (_auth.currentUser?.uid == null) return false;
-    return true;
+  Future<bool> getHasUserPosted(BuildContext context) async {
+    try {
+      var doc = await _firestore
+          .collection("Users")
+          .doc(_auth.currentUser.uid)
+          .collection("Posts")
+          .doc(DateFormat("yyyy-MM-dd").format(DateTime.now()))
+          .get();
+      return doc.exists;
+    } on FirebaseException {
+      showToastMessage(context, "_errorImageFailedToUpload", true);
+    }
+    return false;
   }
 
   void createUserPost(BuildContext context, Post post) async {
@@ -48,17 +58,16 @@ class FirebasePose {
     return null;
   }
 
-  // DocumentSnapshot readPosts(BuildContext context, String uid) async {
-  //   try {
-  //     await _firestore
-  //         .collection("Users")
-  //         .doc(uid)
-  //         .collection("Posts")
-  //         .snapshots();
-  //   } on FirebaseException {
-  //     showToastMessage(context, "_errorImageFailedToUpload", true);
-  //   }
-  // }
+  Future<List<DocumentSnapshot>> readPosts(
+      BuildContext context, String uid) async {
+    final QuerySnapshot querySnapshot =
+        await _firestore.collection("Users").doc(uid).collection("Posts").get();
+    final List<DocumentSnapshot> documentSnapshots = querySnapshot.docs;
+    List<DocumentSnapshot> documentSnapshotsReversed = [];
+    for (int i = documentSnapshots.length - 1; i >= 0; i--)
+      documentSnapshotsReversed.add(documentSnapshots.elementAt(i));
+    return documentSnapshotsReversed;
+  }
 
   void updateUserPost(
       BuildContext context, Post originalPost, Post newPost) async {

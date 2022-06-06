@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:daily/servicesBroad/firebaseCRUD.dart';
 
 Widget imageViewerMobileImage(BuildContext context, Widget image) {
   return Center(
@@ -13,8 +12,8 @@ Widget imageViewerMobileProgressButton(BuildContext context, String imagePath) {
   return IconButton(
     color: Colors.grey,
     onPressed: () {
-      FirebaseCRUD()
-          .createImageData(context, date.toIso8601String(), File(imagePath));
+      // FirebaseCRUD()
+      //     .createImageData(context, date.toIso8601String(), File(imagePath));
     },
     icon: Icon(Icons.arrow_forward, color: Colors.white),
     iconSize: 45,
