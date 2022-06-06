@@ -1,4 +1,6 @@
+import 'package:daily/servicesBroad/firebasePost.dart';
 import 'package:flutter/material.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/userInterface/base/feedCard.dart';
@@ -13,6 +15,7 @@ import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
+FirebasePost _firebasePost = new FirebasePost();
 
 Widget profileWebCard(BuildContext context, State state, bool isSmall) {
   return Container(
@@ -119,19 +122,46 @@ Widget profileWebFeedTitle(BuildContext context) {
 }
 
 Widget profileWebFeed(BuildContext context, bool isSmall) {
+  int index = -1;
+
   return Expanded(
     child: Container(
       width: MediaQuery.of(context).size.width * (isSmall ? 0.7 : 0.9),
-      child: MasonryGridView.count(
-        crossAxisCount: isSmall ? 1 : 3,
-        mainAxisSpacing: 8,
-        crossAxisSpacing: 8,
-        itemBuilder: (context, index) {
-          return FeedCard(
-              index: index,
-              height: isSmall ? 300 : (index % 4 + 2) * 100,
-              width: 100,
-              borderRadius: 10);
+      child: new FutureBuilder(
+        future: _firebasePost.readPosts(
+            context, _firebaseAccounts.getCurrentUserId()),
+        builder: (BuildContext context, post) {
+          if (post.data.documents.isEmpty) {
+            return new Container();
+          } else {
+            index++;
+            return TimelineTile(
+              alignment: TimelineAlign.manual,
+              lineXY: 0.1,
+              isFirst: index == 0,
+              isLast: index == examples.length - 1,
+              indicatorStyle: IndicatorStyle(
+                width: 40,
+                height: 40,
+                indicator: _IndicatorExample(number: '${index + 1}'),
+                drawGap: true,
+              ),
+              beforeLineStyle: LineStyle(
+                color: Colors.white.withOpacity(0.2),
+              ),
+              endChild: GestureDetector(
+                child: _RowExample(example: example),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<ShowcaseTimeline>(
+                      builder: (_) => ShowcaseTimeline(example: example),
+                    ),
+                  );
+                },
+              ),
+            );
+          }
         },
       ),
     ),
