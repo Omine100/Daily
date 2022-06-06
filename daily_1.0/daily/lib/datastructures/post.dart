@@ -1,9 +1,11 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 class Post {
   String postId;
   String username;
-  String downloadURL;
+  Uint8List imageBytes;
   String description;
   String prompt;
   DateTime timePosted;
@@ -11,7 +13,7 @@ class Post {
   Post(
       {@required this.postId,
       @required this.username,
-      @required this.downloadURL,
+      @required this.imageBytes,
       @required this.description,
       @required this.prompt,
       @required this.timePosted});
@@ -20,7 +22,7 @@ class Post {
     return {
       "postId": postId,
       "username": username,
-      "downloadURL": downloadURL,
+      "downloadURL": imageBytes,
       "description": description,
       "prompt": prompt,
       "timePosted": timePosted
@@ -33,7 +35,7 @@ class Post {
     return Post(
         postId: map["postId"],
         username: map["username"],
-        downloadURL: map["downloadURL"],
+        imageBytes: map["imageBytes"],
         description: map["description"],
         prompt: map["prompt"],
         timePosted: map['timePosted']);

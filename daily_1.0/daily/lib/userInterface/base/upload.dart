@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:daily/datastructures/post.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -205,12 +207,12 @@ class _UploadState extends State<Upload> {
   }
 
   Image image;
-  String path;
+  Uint8List imageBytes;
   void getImage() async {
     await ImagePicker()
         .pickImage(source: ImageSource.gallery)
         .then((value) async {
-      path = value.path;
+      imageBytes = await value.readAsBytes();
       image = new Image(
         image: NetworkImage(value.path),
         fit: BoxFit.fill,
@@ -221,7 +223,7 @@ class _UploadState extends State<Upload> {
   void postCreation() {
     post = new Post(
         username: _firebaseAccounts.getCurrentUserId(),
-        downloadURL: path,
+        imageBytes: imageBytes,
         description: _description,
         timePosted: DateTime.now());
   }
