@@ -137,21 +137,32 @@ Widget profileWebFeed(BuildContext context, bool isSmall) {
             index++;
             return TimelineTile(
               alignment: TimelineAlign.manual,
+              axis: TimelineAxis.horizontal,
               lineXY: 0.1,
-              isFirst: index == 0,
-              isLast: index == examples.length - 1,
               indicatorStyle: IndicatorStyle(
                 width: 40,
                 height: 40,
-                indicator: _IndicatorExample(number: '${index + 1}'),
+                indicator: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.fromBorderSide(
+                      BorderSide(
+                        color: Colors.white.withOpacity(0.2),
+                        width: 4,
+                      ),
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Test",
+                      style: const TextStyle(fontSize: 30),
+                    ),
+                  ),
+                ),
                 drawGap: true,
               ),
               beforeLineStyle: LineStyle(
                 color: Colors.white.withOpacity(0.2),
-              ),
-              endChild: GestureDetector(
-                child: _RowExample(example: example),
-                onTap: () {},
               ),
             );
           }
