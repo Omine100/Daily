@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
+import 'package:daily/userInterface/base/feedCard.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
@@ -23,7 +26,11 @@ Widget profileWebCard(BuildContext context, State state, bool isSmall) {
           SizedBox(
             height: 15,
           ),
-          profileContent(context, isSmall),
+          profileWebFeedTitle(context),
+          SizedBox(
+            height: 15,
+          ),
+          profileWebFeed(context, isSmall)
         ],
       ));
 }
@@ -100,6 +107,33 @@ Widget profileInfo(BuildContext context) {
   );
 }
 
-Widget profileContent(BuildContext context, bool isSmall) {
-  return Container();
+Widget profileWebFeedTitle(BuildContext context) {
+  return Container(
+    width: MediaQuery.of(context).size.width,
+    child: AdaptiveText(
+      "Feed",
+      style: TextStyle(
+          color: Colors.grey, fontSize: 20, fontWeight: FontWeight.w600),
+    ),
+  );
+}
+
+Widget profileWebFeed(BuildContext context, bool isSmall) {
+  return Expanded(
+    child: Container(
+      width: MediaQuery.of(context).size.width * (isSmall ? 0.7 : 0.9),
+      child: MasonryGridView.count(
+        crossAxisCount: isSmall ? 1 : 3,
+        mainAxisSpacing: 8,
+        crossAxisSpacing: 8,
+        itemBuilder: (context, index) {
+          return FeedCard(
+              index: index,
+              height: isSmall ? 300 : (index % 4 + 2) * 100,
+              width: 100,
+              borderRadius: 10);
+        },
+      ),
+    ),
+  );
 }
