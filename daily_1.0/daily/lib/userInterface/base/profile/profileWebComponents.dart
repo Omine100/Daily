@@ -151,14 +151,7 @@ Widget profileWebFeed(BuildContext context, bool isSmall) {
               ),
               endChild: GestureDetector(
                 child: _RowExample(example: example),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute<ShowcaseTimeline>(
-                      builder: (_) => ShowcaseTimeline(example: example),
-                    ),
-                  );
-                },
+                onTap: () {},
               ),
             );
           }
