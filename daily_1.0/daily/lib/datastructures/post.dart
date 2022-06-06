@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class Post {
   String postId;
   String username;
-  Uint8List imageBytes;
+  String imageBytes;
   String description;
   String prompt;
   DateTime timePosted;

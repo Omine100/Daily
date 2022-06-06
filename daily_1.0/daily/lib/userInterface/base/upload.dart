@@ -1,16 +1,18 @@
-import 'dart:typed_data';
-
 import 'package:daily/datastructures/post.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:typed_data';
 import 'dart:io';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
+import 'package:daily/servicesBroad/firebasePost.dart';
+import 'package:daily/servicesBroad/firebasePrompt.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/fontSizes.dart';
 import 'package:daily/themesLocal/fontWeights.dart';
+import 'package:intl/intl.dart';
 
 class Upload extends StatefulWidget {
   @override
@@ -19,6 +21,8 @@ class Upload extends StatefulWidget {
 
 class _UploadState extends State<Upload> {
   FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
+  FirebasePost _firebasePost = new FirebasePost();
+  FirebasePrompt _firebasePrompt = new FirebasePrompt();
   OverlayState overlayState;
   OverlayEntry overlayBackground;
   OverlayEntry overlayEntry;
@@ -207,12 +211,12 @@ class _UploadState extends State<Upload> {
   }
 
   Image image;
-  Uint8List imageBytes;
+  String imageBytes;
   void getImage() async {
     await ImagePicker()
         .pickImage(source: ImageSource.gallery)
         .then((value) async {
-      imageBytes = await value.readAsBytes();
+      imageBytes = new String.fromCharCodes(await value.readAsBytes());
       image = new Image(
         image: NetworkImage(value.path),
         fit: BoxFit.fill,
@@ -220,12 +224,16 @@ class _UploadState extends State<Upload> {
     });
   }
 
-  void postCreation() {
-    post = new Post(
+  void postCreation() async {
+    Post post = await Post(
+        postId: DateFormat("yyyy-MM-dd").format(DateTime.now()),
         username: _firebaseAccounts.getCurrentUserId(),
         imageBytes: imageBytes,
         description: _description,
+        prompt: await _firebasePrompt.getPrompt(
+            context, DateFormat("yyyy-MM-dd").format(DateTime.now())),
         timePosted: DateTime.now());
+    _firebasePost.createUserPost(context, post);
   }
 
   @override

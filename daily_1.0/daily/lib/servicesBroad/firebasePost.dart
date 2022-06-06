@@ -1,14 +1,13 @@
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:daily/datastructures/post.dart';
 import 'package:daily/standards/userIStandards.dart';
 
-class FirebasePose {
+class FirebasePost {
   FirebaseAuth _auth = FirebaseAuth.instance;
-  FirebaseStorage _storage = FirebaseStorage.instance;
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<bool> getHasUserPosted(BuildContext context) async {
@@ -37,6 +36,10 @@ class FirebasePose {
     } on FirebaseException {
       showToastMessage(context, "_errorImageFailedToUpload", true);
     }
+  }
+
+  Uint8List readImage(BuildContext context, String byteString) {
+    return Uint8List.fromList(byteString.codeUnits);
   }
 
   Future<Post> readPost(BuildContext context, String uid) async {
