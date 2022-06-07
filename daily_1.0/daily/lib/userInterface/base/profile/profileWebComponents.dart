@@ -44,20 +44,18 @@ Widget profileInfo(BuildContext context) {
     child: Container(
         width: getDimension(context, false,
             Theme.of(context).visualDensity.baseWebProfileWidth),
-        child: Column(
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              height: getDimension(context, true,
-                  Theme.of(context).visualDensity.baseWebProfileIconHeight),
-              width: getDimension(context, true,
-                  Theme.of(context).visualDensity.baseWebProfileIconWidth),
+              height: 125,
+              width: 125,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Theme.of(context).colorScheme.baseWebProfileBackground,
               ),
               child: Container(),
-            ).showClickOnHover,
+            ),
             Container(
               padding: EdgeInsets.only(top: 15),
               width: getDimension(context, false,
@@ -68,23 +66,19 @@ Widget profileInfo(BuildContext context) {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 5.0),
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Text(
-                        "@" + _firebaseAccounts.getCurrentUserDisplayName() ??
-                            getTranslated(context, "settingsNullName"),
-                        softWrap: false,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color:
-                              Theme.of(context).colorScheme.baseWebProfileName,
-                          fontSize:
-                              Theme.of(context).textTheme.baseWebProfileName,
-                          fontWeight:
-                              Theme.of(context).typography.baseWebProfileName,
-                        ),
+                    child: Text(
+                      "@" + _firebaseAccounts.getCurrentUserDisplayName() ??
+                          getTranslated(context, "settingsNullName"),
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.baseWebProfileName,
+                        fontSize:
+                            Theme.of(context).textTheme.baseWebProfileName,
+                        fontWeight:
+                            Theme.of(context).typography.baseWebProfileName,
                       ),
-                    ).showClickOnHover,
+                    ),
                   ),
                   Tooltip(
                     waitDuration: Duration(seconds: 1),
@@ -115,7 +109,7 @@ Widget profileWebFeedTitle(BuildContext context) {
   return Container(
     width: MediaQuery.of(context).size.width,
     child: AdaptiveText(
-      "Feed",
+      "Timeline",
       style: TextStyle(
           color: Colors.grey, fontSize: 20, fontWeight: FontWeight.w600),
     ),
@@ -125,7 +119,7 @@ Widget profileWebFeedTitle(BuildContext context) {
 Widget profileWebFeed(BuildContext context, bool isSmall) {
   return Expanded(
     child: Container(
-        padding: EdgeInsets.only(bottom: 50),
+        padding: EdgeInsets.only(bottom: 15),
         width: MediaQuery.of(context).size.width * (isSmall ? 0.7 : 0.9),
         child: StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance

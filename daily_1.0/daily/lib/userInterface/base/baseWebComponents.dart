@@ -50,8 +50,11 @@ Widget baseWebCardContainer(BuildContext context, State state, bool isSmall,
       height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.baseWebCardContainer,
-          borderRadius:
-              BorderRadius.only(topLeft: Radius.circular(isSmall ? 0 : 50))),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(isSmall ? 0 : 50),
+              bottomLeft: _pageIndex == 4
+                  ? Radius.circular(isSmall ? 0 : 50)
+                  : Radius.circular(0))),
       child: Column(
         children: [
           baseWebHeader(context, state, isSmall, scaffoldKey),
