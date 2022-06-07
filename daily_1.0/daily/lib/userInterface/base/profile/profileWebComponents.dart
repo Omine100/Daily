@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:daily/servicesBroad/firebasePost.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -126,6 +127,7 @@ Widget profileWebFeed(BuildContext context, bool isSmall) {
 
   return Expanded(
     child: Container(
+      padding: EdgeInsets.only(bottom: 50),
       width: MediaQuery.of(context).size.width * (isSmall ? 0.7 : 0.9),
       child: new FutureBuilder(
         future: _firebasePost.readPosts(
@@ -138,10 +140,11 @@ Widget profileWebFeed(BuildContext context, bool isSmall) {
             return TimelineTile(
               alignment: TimelineAlign.manual,
               axis: TimelineAxis.horizontal,
-              lineXY: 0.1,
+              isFirst: index == 0,
+              lineXY: 0.5,
               indicatorStyle: IndicatorStyle(
-                width: 40,
-                height: 40,
+                width: 30,
+                height: 30,
                 indicator: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -155,12 +158,22 @@ Widget profileWebFeed(BuildContext context, bool isSmall) {
                 ),
                 drawGap: true,
               ),
-              startChild: FeedCard(
-                borderRadius: 10,
-                height: 200,
-                width: 200,
-                index: 1,
-              ),
+              startChild: index % 2 == 0
+                  ? FeedCard(
+                      borderRadius: 10,
+                      height: 200,
+                      width: 300,
+                      index: 1,
+                    )
+                  : Container(),
+              endChild: index % 2 != 0
+                  ? FeedCard(
+                      borderRadius: 10,
+                      height: 200,
+                      width: 300,
+                      index: 1,
+                    )
+                  : Container(),
               beforeLineStyle: LineStyle(
                 color: Colors.white.withOpacity(0.2),
               ),
