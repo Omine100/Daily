@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
+import 'package:daily/servicesLocal/customScrollBehavior.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/systemLocalizations.dart';
@@ -55,6 +56,7 @@ class _DailyState extends State<Daily> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      scrollBehavior: CustomScrollBehavior(),
       routerDelegate: _appRouter.delegate(),
       routeInformationParser: _appRouter.defaultRouteParser(),
       title: "Daily",

@@ -123,71 +123,72 @@ Widget profileWebFeedTitle(BuildContext context) {
 }
 
 Widget profileWebFeed(BuildContext context, bool isSmall) {
-  int index = -1;
-
   return Expanded(
     child: Container(
-      padding: EdgeInsets.only(bottom: 50),
-      width: MediaQuery.of(context).size.width * (isSmall ? 0.7 : 0.9),
-      child: new FutureBuilder(
-        future: _firebasePost.readPosts(
-            context, _firebaseAccounts.getCurrentUserId()),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> post) {
-          if (!post.hasData) {
-            return new Container();
-          } else {
-            return ListView(
-              children: post.data.docs.map((DocumentSnapshot document) {
-                return Container(
-                  height: 200,
-                  width: 300,
-                  child: TimelineTile(
-                    alignment: TimelineAlign.manual,
-                    axis: TimelineAxis.horizontal,
-                    isFirst: index == 0,
-                    lineXY: 0.5,
-                    indicatorStyle: IndicatorStyle(
-                      width: 30,
-                      height: 30,
-                      indicator: Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.fromBorderSide(
-                            BorderSide(
+        padding: EdgeInsets.only(bottom: 50),
+        width: MediaQuery.of(context).size.width * (isSmall ? 0.7 : 0.9),
+        child: StreamBuilder<QuerySnapshot>(
+            stream: FirebaseFirestore.instance
+                .collection("Users")
+                .doc("nHSs82HWtfTFpy4hCtEEe9WN3B52")
+                .collection("Posts")
+                .snapshots(),
+            builder: (context, snapshot) {
+              return !snapshot.hasData
+                  ? Center(child: CircularProgressIndicator())
+                  : ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemCount: snapshot.data.docs.length,
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot data = snapshot.data.docs[index];
+                        return Container(
+                          height: 200,
+                          width: 300,
+                          child: TimelineTile(
+                            alignment: TimelineAlign.manual,
+                            axis: TimelineAxis.horizontal,
+                            isFirst: index == 0,
+                            isLast: index == snapshot.data.docs.length - 1,
+                            lineXY: 0.5,
+                            indicatorStyle: IndicatorStyle(
+                              width: 30,
+                              height: 30,
+                              indicator: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.fromBorderSide(
+                                    BorderSide(
+                                      color: Colors.white.withOpacity(0.2),
+                                      width: 4,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              drawGap: true,
+                            ),
+                            startChild: index % 2 == 0
+                                ? FeedCard(
+                                    borderRadius: 10,
+                                    height: 200,
+                                    width: 300,
+                                    index: 1,
+                                  )
+                                : Container(),
+                            endChild: index % 2 != 0
+                                ? FeedCard(
+                                    borderRadius: 10,
+                                    height: 200,
+                                    width: 300,
+                                    index: 1,
+                                  )
+                                : Container(),
+                            beforeLineStyle: LineStyle(
                               color: Colors.white.withOpacity(0.2),
-                              width: 4,
                             ),
                           ),
-                        ),
-                      ),
-                      drawGap: true,
-                    ),
-                    startChild: index % 2 == 0
-                        ? FeedCard(
-                            borderRadius: 10,
-                            height: 200,
-                            width: 300,
-                            index: 1,
-                          )
-                        : Container(),
-                    endChild: index % 2 != 0
-                        ? FeedCard(
-                            borderRadius: 10,
-                            height: 200,
-                            width: 300,
-                            index: 1,
-                          )
-                        : Container(),
-                    beforeLineStyle: LineStyle(
-                      color: Colors.white.withOpacity(0.2),
-                    ),
-                  ),
-                );
-              }).toList(),
-            );
-          }
-        },
-      ),
-    ),
+                        );
+                      });
+            })),
   );
 }
