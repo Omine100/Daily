@@ -136,7 +136,6 @@ Widget profileWebFeed(BuildContext context, bool isSmall) {
           if (!post.hasData) {
             return new Container();
           } else {
-            index++;
             return ListView(
               children: post.data.docs.map((DocumentSnapshot document) {
                 return Container(
