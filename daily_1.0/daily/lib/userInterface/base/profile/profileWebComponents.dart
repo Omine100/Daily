@@ -131,7 +131,7 @@ Widget profileWebFeed(BuildContext context, bool isSmall) {
         future: _firebasePost.readPosts(
             context, _firebaseAccounts.getCurrentUserId()),
         builder: (BuildContext context, post) {
-          if (post.data.documents.isEmpty) {
+          if (!post.hasData) {
             return new Container();
           } else {
             index++;
@@ -152,14 +152,14 @@ Widget profileWebFeed(BuildContext context, bool isSmall) {
                       ),
                     ),
                   ),
-                  child: Center(
-                    child: Text(
-                      "Test",
-                      style: const TextStyle(fontSize: 30),
-                    ),
-                  ),
                 ),
                 drawGap: true,
+              ),
+              startChild: FeedCard(
+                borderRadius: 10,
+                height: 200,
+                width: 200,
+                index: 1,
               ),
               beforeLineStyle: LineStyle(
                 color: Colors.white.withOpacity(0.2),

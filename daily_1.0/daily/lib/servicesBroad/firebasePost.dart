@@ -25,6 +25,8 @@ class FirebasePost {
     return false;
   }
 
+  //Need to see about with large files
+  //May need to change to firebaseStorage
   void createUserPost(BuildContext context, Post post) async {
     try {
       await _firestore
@@ -61,15 +63,11 @@ class FirebasePost {
     return null;
   }
 
-  Future<List<DocumentSnapshot>> readPosts(
+  Future<List<QueryDocumentSnapshot>> readPosts(
       BuildContext context, String uid) async {
-    final QuerySnapshot querySnapshot =
+    QuerySnapshot querySnapshot =
         await _firestore.collection("Users").doc(uid).collection("Posts").get();
-    final List<DocumentSnapshot> documentSnapshots = querySnapshot.docs;
-    List<DocumentSnapshot> documentSnapshotsReversed = [];
-    for (int i = documentSnapshots.length - 1; i >= 0; i--)
-      documentSnapshotsReversed.add(documentSnapshots.elementAt(i));
-    return documentSnapshotsReversed;
+    return querySnapshot.docs;
   }
 
   void updateUserPost(

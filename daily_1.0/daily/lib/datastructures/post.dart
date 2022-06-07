@@ -22,7 +22,7 @@ class Post {
     return {
       "postId": postId,
       "username": username,
-      "downloadURL": imageBytes,
+      "imageBytes": imageBytes,
       "description": description,
       "prompt": prompt,
       "timePosted": timePosted
