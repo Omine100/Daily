@@ -230,8 +230,7 @@ class _UploadState extends State<Upload> {
         username: _firebaseAccounts.getCurrentUserId(),
         imageBytes: imageBytes,
         description: _description,
-        prompt: await _firebasePrompt.getPrompt(
-            context, DateFormat("yyyy-MM-dd").format(DateTime.now())),
+        prompt: await _firebasePrompt.getPrompt(context, DateTime.now()),
         timePosted: DateTime.now());
     _firebasePost.createUserPost(context, post);
   }

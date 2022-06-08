@@ -8,9 +8,12 @@ class FirebasePrompt {
   FirebaseAuth _auth = FirebaseAuth.instance;
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<String> getPrompt(BuildContext context, String date) async {
+  Future<String> getPrompt(BuildContext context, DateTime date) async {
     try {
-      var doc = await _firestore.collection("Prompts").doc(date).get();
+      var doc = await _firestore
+          .collection("Prompts")
+          .doc(DateFormat("yyyy-MM-dd").format(date))
+          .get();
       return doc.data().entries.first.value;
     } on FirebaseException {
       showToastMessage(context, "_errorImageFailedToUpload", true);

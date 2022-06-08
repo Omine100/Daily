@@ -24,9 +24,7 @@ Widget profileWebCard(BuildContext context, State state, bool isSmall) {
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          Center(
-            child: profileInfo(context),
-          ),
+          profileWebInfo(context),
           SizedBox(
             height: 15,
           ),
@@ -39,70 +37,94 @@ Widget profileWebCard(BuildContext context, State state, bool isSmall) {
       ));
 }
 
-Widget profileInfo(BuildContext context) {
-  return Center(
-    child: Container(
-        width: getDimension(context, false,
-            Theme.of(context).visualDensity.baseWebProfileWidth),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              height: 125,
-              width: 125,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Theme.of(context).colorScheme.baseWebProfileBackground,
-              ),
-              child: Container(),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 15),
-              width: getDimension(context, false,
-                  Theme.of(context).visualDensity.baseWebProfileInfoWidth),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5.0),
-                    child: Text(
-                      "@" + _firebaseAccounts.getCurrentUserDisplayName() ??
-                          getTranslated(context, "settingsNullName"),
-                      softWrap: false,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.baseWebProfileName,
-                        fontSize:
-                            Theme.of(context).textTheme.baseWebProfileName,
-                        fontWeight:
-                            Theme.of(context).typography.baseWebProfileName,
-                      ),
+Widget profileWebInfo(BuildContext context) {
+  return Card(
+      elevation: 10,
+      color: Colors.transparent,
+      child: Container(
+          padding: const EdgeInsets.all(8.0),
+          height: 100,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Theme.of(context).colorScheme.baseBackground,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: getDimension(context, true,
+                    Theme.of(context).visualDensity.baseWebProfileIconHeight),
+                width: getDimension(context, true,
+                    Theme.of(context).visualDensity.baseWebProfileIconWidth),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Theme.of(context).colorScheme.baseWebProfileBackground,
+                ),
+                child: CachedNetworkImage(
+                  imageUrl: _firebaseAccounts.getCurrentUserProfilePic(),
+                  imageBuilder: (context, imageProvider) => Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: imageProvider, fit: BoxFit.cover),
                     ),
                   ),
-                  Tooltip(
-                    waitDuration: Duration(seconds: 1),
-                    message: _firebaseAccounts.getCurrentUserEmail(),
-                    child: Text(
-                      _firebaseAccounts.getCurrentUserEmail() ??
-                          getTranslated(context, "settingsNullEmail"),
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        color:
-                            Theme.of(context).colorScheme.baseWebProfileEmail,
-                        fontSize:
-                            Theme.of(context).textTheme.baseWebProfileEmail,
-                        fontWeight:
-                            Theme.of(context).typography.baseWebProfileEmail,
+                  placeholder: (context, url) => showProgress(context),
+                  errorWidget: (context, url, error) => Icon(
+                    Icons.person_outline_rounded,
+                    size: 55,
+                    color: Theme.of(context).colorScheme.baseWebProfileIcon,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 15),
+                width: getDimension(context, false,
+                    Theme.of(context).visualDensity.baseWebProfileInfoWidth),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 5.0),
+                      child: Text(
+                        "@" + _firebaseAccounts.getCurrentUserDisplayName() ??
+                            getTranslated(context, "settingsNullName"),
+                        softWrap: false,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color:
+                              Theme.of(context).colorScheme.baseWebProfileName,
+                          fontSize:
+                              Theme.of(context).textTheme.baseWebProfileName,
+                          fontWeight:
+                              Theme.of(context).typography.baseWebProfileName,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    Tooltip(
+                      waitDuration: Duration(seconds: 1),
+                      message: _firebaseAccounts.getCurrentUserEmail(),
+                      child: Text(
+                        _firebaseAccounts.getCurrentUserEmail() ??
+                            getTranslated(context, "settingsNullEmail"),
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color:
+                              Theme.of(context).colorScheme.baseWebProfileEmail,
+                          fontSize:
+                              Theme.of(context).textTheme.baseWebProfileEmail,
+                          fontWeight:
+                              Theme.of(context).typography.baseWebProfileEmail,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        )),
-  );
+            ],
+          )));
 }
 
 Widget profileWebFeedTitle(BuildContext context) {

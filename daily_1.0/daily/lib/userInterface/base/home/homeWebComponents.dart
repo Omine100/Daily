@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:daily/servicesBroad/firebasePrompt.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/base/feedCard.dart';
+
+FirebasePrompt _firebasePrompt = new FirebasePrompt();
 
 Widget homeWebCard(BuildContext context, State state, bool isSmall) {
   return Container(
@@ -40,25 +43,28 @@ Widget homeWebPromptTitle(BuildContext context) {
 }
 
 Widget homeWebPrompt(BuildContext context) {
-  return Card(
-    elevation: 10,
-    color: Colors.transparent,
-    child: Container(
-      height: 60,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).colorScheme.baseBackground,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Center(
-            child: AdaptiveText(
-          "Prompt #103: Something dark and scary.",
-          style: TextStyle(
-              color: Colors.grey, fontSize: 18, fontWeight: FontWeight.w400),
-        )),
-      ),
-    ),
+  return FutureBuilder(
+    future: _firebasePrompt.getPrompt(context, DateTime.now()),
+    builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+      return Card(
+        elevation: 10,
+        color: Colors.transparent,
+        child: Container(
+          padding: const EdgeInsets.all(8.0),
+          height: 60,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Theme.of(context).colorScheme.baseBackground,
+          ),
+          child: Center(
+              child: AdaptiveText(
+            snapshot.hasData ? snapshot.data : "Prompt Unavailable....",
+            style: TextStyle(
+                color: Colors.grey, fontSize: 18, fontWeight: FontWeight.w400),
+          )),
+        ),
+      );
+    },
   );
 }
 

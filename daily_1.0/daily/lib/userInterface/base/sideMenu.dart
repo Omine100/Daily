@@ -28,22 +28,27 @@ class SideMenu extends StatefulWidget {
 
 class _SideMenuState extends State<SideMenu> {
   Widget _createHeader(BuildContext context) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Image.asset(
-            "lib/assets/launcher/icon_noBackground.png",
-            height: 50,
+    return GestureDetector(
+      onTap: () {
+        onTabTapped(0);
+      },
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Image.asset(
+              "lib/assets/launcher/icon_noBackground.png",
+              height: 50,
+            ),
           ),
-        ),
-        AdaptiveText(
-          "Daily",
-          style: TextStyle(
-              color: Colors.grey, fontSize: 30, fontWeight: FontWeight.w500),
-        ),
-      ],
-    );
+          Text(
+            "Daily",
+            style: TextStyle(
+                color: Colors.grey, fontSize: 30, fontWeight: FontWeight.w500),
+          ),
+        ],
+      ),
+    ).showClickOnHover;
   }
 
   Widget _createProfile(BuildContext context, State state) {
