@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
+import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/base/feedCard.dart';
 
@@ -16,9 +17,9 @@ Widget homeWebCard(BuildContext context, State state, bool isSmall) {
           ),
           homeWebPrompt(context),
           SizedBox(
-            height: 30,
+            height: 15,
           ),
-          homeWebFeedTitle(context),
+          homeWebFeedTitle(context, state),
           SizedBox(
             height: 15,
           ),
@@ -61,13 +62,50 @@ Widget homeWebPrompt(BuildContext context) {
   );
 }
 
-Widget homeWebFeedTitle(BuildContext context) {
+bool _isFollowing = true;
+Widget homeWebFeedTitle(BuildContext context, State state) {
   return Container(
     width: MediaQuery.of(context).size.width,
-    child: AdaptiveText(
-      "Feed",
-      style: TextStyle(
-          color: Colors.grey, fontSize: 20, fontWeight: FontWeight.w600),
+    child: Row(
+      children: [
+        AdaptiveText(
+          "Feed",
+          style: TextStyle(
+              color: Colors.grey, fontSize: 20, fontWeight: FontWeight.w600),
+        ),
+        Spacer(),
+        GestureDetector(
+          onTap: () {
+            state.setState(() {
+              _isFollowing = true;
+            });
+          },
+          child: Text(
+            "Following",
+            style: TextStyle(
+                color: _isFollowing ? Colors.white : Colors.grey,
+                fontSize: 18,
+                fontWeight: _isFollowing ? FontWeight.w600 : FontWeight.w400),
+          ).showClickOnHover,
+        ),
+        SizedBox(
+          width: 15,
+        ),
+        GestureDetector(
+          onTap: () {
+            state.setState(() {
+              _isFollowing = false;
+            });
+          },
+          child: Text(
+            "Global",
+            style: TextStyle(
+                color: _isFollowing ? Colors.grey : Colors.white,
+                fontSize: 18,
+                fontWeight: _isFollowing ? FontWeight.w400 : FontWeight.w600),
+          ).showClickOnHover,
+        ),
+      ],
     ),
   );
 }
