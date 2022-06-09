@@ -17,8 +17,11 @@ import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 FirebasePost _firebasePost = new FirebasePost();
+String _userId;
 
-Widget profileWebCard(BuildContext context, State state, bool isSmall) {
+Widget profileWebCard(
+    BuildContext context, State state, bool isSmall, String userId) {
+  _userId = userId;
   return Container(
       padding: EdgeInsets.only(left: 20, right: 20),
       width: MediaQuery.of(context).size.width,

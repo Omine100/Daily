@@ -6,38 +6,41 @@ import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/userInterface/base/profile/profileWebComponents.dart';
 import 'package:daily/userInterface/base/profile/profileMobileComponents.dart';
 
-_profileSmall(BuildContext context, State state) {
+_profileSmall(BuildContext context, State state, String userId) {
   return Adaptive(
-      iOS: _profileMobileSmall(context, state, false),
-      android: _profileMobileSmall(context, state, true),
-      web: _profileWebSmall(context, state));
+      iOS: _profileMobileSmall(context, state, false, userId),
+      android: _profileMobileSmall(context, state, true, userId),
+      web: _profileWebSmall(context, state, userId));
 }
 
-_profileLarge(BuildContext context, State state) {
+_profileLarge(BuildContext context, State state, String userId) {
   return Adaptive(
-      iOS: _profileMobileLarge(context, state, false),
-      android: _profileMobileLarge(context, state, true),
-      web: _profileWebLarge(context, state));
+      iOS: _profileMobileLarge(context, state, false, userId),
+      android: _profileMobileLarge(context, state, true, userId),
+      web: _profileWebLarge(context, state, userId));
 }
 
-_profileWebSmall(BuildContext context, State state) {
-  return profileWebCard(context, state, true);
+_profileWebSmall(BuildContext context, State state, String userId) {
+  return profileWebCard(context, state, true, userId);
 }
 
-_profileWebLarge(BuildContext context, State state) {
-  return profileWebCard(context, state, false);
+_profileWebLarge(BuildContext context, State state, String userId) {
+  return profileWebCard(context, state, false, userId);
 }
 
-_profileMobileSmall(BuildContext context, State state, bool isAndroid) {
+_profileMobileSmall(
+    BuildContext context, State state, bool isAndroid, String userId) {
   return Container();
 }
 
-_profileMobileLarge(BuildContext context, State state, bool isAndroid) {
+_profileMobileLarge(
+    BuildContext context, State state, bool isAndroid, String userId) {
   return Container();
 }
 
-Widget profileBody(BuildContext context, State state, bool isSmall) {
+Widget profileBody(
+    BuildContext context, State state, bool isSmall, String userId) {
   return isSmall
-      ? _profileSmall(context, state)
-      : _profileLarge(context, state);
+      ? _profileSmall(context, state, userId)
+      : _profileLarge(context, state, userId);
 }

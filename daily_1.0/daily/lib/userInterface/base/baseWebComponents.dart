@@ -1,10 +1,11 @@
-import 'package:daily/servicesLocal/adaptive.dart';
-import 'package:daily/userInterface/base/alertsDropdown.dart';
-import 'package:daily/userInterface/base/upload.dart';
 import 'package:flutter/material.dart';
+import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
+import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/userInterface/base/alertsDropdown.dart';
+import 'package:daily/userInterface/base/upload.dart';
 import 'package:daily/userInterface/base/home/home.dart';
 import 'package:daily/userInterface/base/search/search.dart';
 import 'package:daily/userInterface/base/global/global.dart';
@@ -13,6 +14,7 @@ import 'package:daily/userInterface/base/profile/profile.dart';
 import 'package:daily/userInterface/base/sideMenu.dart';
 import 'package:daily/userInterface/base/searchBar.dart';
 
+FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 int _pageIndex = 0;
 PageController _pageController;
 
@@ -43,7 +45,7 @@ Widget baseWebCardContainer(BuildContext context, State state, bool isSmall,
     globalBody(context, state, isSmall),
     settingsBody(context, state, isSmall),
     searchBody(context, state, isSmall),
-    profileBody(context, state, isSmall)
+    profileBody(context, state, isSmall, _firebaseAccounts.getCurrentUserId())
   ];
 
   return Container(
