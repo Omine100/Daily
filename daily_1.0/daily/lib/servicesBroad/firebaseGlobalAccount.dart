@@ -8,14 +8,12 @@ class FirebaseGlobalAccount {
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
   User _user;
 
-  String getUserId(String displayName) {
+  String getUserDisplayName(String uid) {
     
-  } 
+  }
 
-  bool getUserProfilePic() {
+  bool getUserProfilePic(String uid) {
     _auth.currentUser.
     return _user.
   }
-
-
 }
