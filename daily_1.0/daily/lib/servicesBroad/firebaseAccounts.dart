@@ -119,9 +119,17 @@ class FirebaseAccounts {
       return false;
     }
     try {
-      await _auth.createUserWithEmailAndPassword(
+      UserCredential cred = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       await setCurrentUserDisplayName(name);
+      dataStructure.User user = new dataStructure.User(
+          uid: cred.user.uid,
+          email: email,
+          displayName: name,
+          profilePicURL: "",
+          followers: [],
+          following: []);
+      await _firestore.collection("Users").doc(cred.user.uid).set(user.toMap());
       return true;
     } on FirebaseAuthException catch (e) {
       String key;
