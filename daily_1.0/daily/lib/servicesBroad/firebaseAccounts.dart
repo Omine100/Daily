@@ -17,6 +17,11 @@ class FirebaseAccounts {
   FirebaseStorage _storage = FirebaseStorage.instance;
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  Future<dataStructure.User> getUserInfo(String uid) async {
+    DocumentSnapshot snap = await _firestore.collection("Users").doc(uid).get();
+    return dataStructure.User.fromMap(snap.data());
+  }
+
   bool getSignedInStatus() {
     if (_auth.currentUser?.uid == null) return false;
     return true;
@@ -205,11 +210,6 @@ class FirebaseAccounts {
   Future<void> deleteUser() async {
     deleteUserData();
     _auth.currentUser.delete();
-  }
-
-  Future<dataStructure.User> getUserInfo(String uid) async {
-    DocumentSnapshot snap = await _firestore.collection("Users").doc(uid).get();
-    return dataStructure.User.fromMap(snap.data());
   }
 
   Future<bool> isFollowing(String currentUid, String uid) async {
