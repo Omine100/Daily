@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'dart:typed_data';
 import 'dart:async';
 import 'dart:io';
+import 'package:daily/datastructures/user.dart' as dataStructure;
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
 import 'package:daily/standards/userIStandards.dart';
@@ -196,5 +197,28 @@ class FirebaseAccounts {
   Future<void> deleteUser() async {
     deleteUserData();
     _auth.currentUser.delete();
+  }
+
+  Future<dataStructure.User> getUserInfo(String uid) async {
+    DocumentSnapshot snap = await _firestore.collection("Users").doc(uid).get();
+    return dataStructure.User.fromMap(snap.data());
+  }
+
+  Future<bool> isFollowing(String currentUid, String uid) async {
+    DocumentSnapshot snap =
+        await _firestore.collection("Users").doc(currentUid).get();
+    return ((snap.data() as dynamic)['following'] as List).contains(uid);
+  }
+
+  void followUser(String currentUid, String uid) async {
+    if (await isFollowing(currentUid, uid)) {
+      await _firestore.collection("Users").doc(currentUid).update({
+        'following': FieldValue.arrayRemove([uid])
+      });
+    } else {
+      await _firestore.collection("Users").doc(currentUid).update({
+        'following': FieldValue.arrayUnion([uid])
+      });
+    }
   }
 }
