@@ -2,7 +2,7 @@ import 'package:daily/standards/userIStandards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:daily/datastructures/structures.dart';
+import 'package:daily/datastructures/enums.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';

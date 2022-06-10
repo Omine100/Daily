@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
+import 'package:uuid/uuid.dart';
 import 'package:daily/datastructures/post.dart';
+import 'package:daily/datastructures/comment.dart';
 import 'package:daily/standards/userIStandards.dart';
 
 class FirebasePost {
@@ -25,16 +27,9 @@ class FirebasePost {
     return false;
   }
 
-  //Need to see about with large files
-  //May need to change to firebaseStorage
   void createUserPost(BuildContext context, Post post) async {
     try {
-      await _firestore
-          .collection("Users")
-          .doc(_auth.currentUser.uid)
-          .collection("Posts")
-          .doc(post.postId)
-          .set(post.toMap());
+      await _firestore.collection("Posts").doc(post.postId).set(post.toMap());
     } on FirebaseException {
       showToastMessage(context, "_errorImageFailedToUpload", true);
     }
@@ -76,11 +71,62 @@ class FirebasePost {
   }
 
   void deleteUserPost(BuildContext context, Post post) async {
-    await _firestore
+    _firestore
         .collection("Users")
         .doc(_auth.currentUser.uid)
         .collection("Posts")
         .doc(post.postId)
+        .delete();
+  }
+
+  Future<bool> isLiked(String postId, String uid) async {
+    DocumentSnapshot snap =
+        await _firestore.collection("Posts").doc(postId).get();
+    return (((snap.data() as dynamic))['likes'] as List).contains(uid);
+  }
+
+  void likePost(String postId, String uid) async {
+    if (await isLiked(postId, uid)) {
+      await _firestore.collection("Posts").doc(postId).update({
+        'likes': FieldValue.arrayUnion([uid])
+      });
+    } else {
+      _firestore.collection("Posts").doc(postId).update({
+        'likes': FieldValue.arrayRemove([uid])
+      });
+    }
+  }
+
+  void createComment(String postId, Comment comment) {
+    _firestore
+        .collection("Posts")
+        .doc(postId)
+        .collection("Comments")
+        .doc(comment.commentId)
+        .set(comment.toMap());
+  }
+
+  List<Comment> readComments(
+    String postId,
+  ) {
+    _firestore.collection("Posts").doc(postId).collection("Comments").get();
+  }
+
+  void updateComment(String postId, String commentId, Comment comment) {
+    _firestore
+        .collection("Posts")
+        .doc(postId)
+        .collection("Comments")
+        .doc(commentId)
+        .update(comment.toMap());
+  }
+
+  void deleteComment(String postId, String commentId) {
+    _firestore
+        .collection("Posts")
+        .doc(postId)
+        .collection("Comments")
+        .doc(commentId)
         .delete();
   }
 }
