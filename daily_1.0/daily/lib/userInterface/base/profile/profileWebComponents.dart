@@ -6,6 +6,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/userInterface/base/feedCard.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:daily/datastructures/user.dart' as dataStructure;
 import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
@@ -27,7 +28,7 @@ Widget profileWebCard(
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          profileWebInfo(context),
+          profileWebInfo(context, state),
           SizedBox(
             height: 15,
           ),
@@ -40,7 +41,7 @@ Widget profileWebCard(
       ));
 }
 
-Widget profileWebInfo(BuildContext context) {
+Widget profileWebInfo(BuildContext context, State state) {
   return Card(
       elevation: 10,
       color: Colors.transparent,
@@ -64,22 +65,22 @@ Widget profileWebInfo(BuildContext context) {
                   shape: BoxShape.circle,
                   color: Theme.of(context).colorScheme.baseWebProfileBackground,
                 ),
-                child: CachedNetworkImage(
-                  imageUrl: _firebaseAccounts.getCurrentUserProfilePic(),
-                  imageBuilder: (context, imageProvider) => Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: imageProvider, fit: BoxFit.cover),
-                    ),
-                  ),
-                  placeholder: (context, url) => showProgress(context),
-                  errorWidget: (context, url, error) => Icon(
-                    Icons.person_outline_rounded,
-                    size: 55,
-                    color: Theme.of(context).colorScheme.baseWebProfileIcon,
-                  ),
-                ),
+                // child: CachedNetworkImage(
+                //   imageUrl: _firebaseAccounts.getCurrentUserProfilePic(),
+                //   imageBuilder: (context, imageProvider) => Container(
+                //     decoration: BoxDecoration(
+                //       shape: BoxShape.circle,
+                //       image: DecorationImage(
+                //           image: imageProvider, fit: BoxFit.cover),
+                //     ),
+                //   ),
+                //   placeholder: (context, url) => showProgress(context),
+                //   errorWidget: (context, url, error) => Icon(
+                //     Icons.person_outline_rounded,
+                //     size: 55,
+                //     color: Theme.of(context).colorScheme.baseWebProfileIcon,
+                //   ),
+                // ),
               ),
               Container(
                 padding: EdgeInsets.only(top: 15),
@@ -123,11 +124,38 @@ Widget profileWebInfo(BuildContext context) {
                         ),
                       ),
                     ),
+                    _userId == _firebaseAccounts.getCurrentUserId()
+                        ? Container()
+                        : followButton(context, state)
                   ],
                 ),
               ),
             ],
           )));
+}
+
+Widget followButton(BuildContext context, State state) {
+  return FutureBuilder(
+      future: _firebaseAccounts.isFollowing(
+          _firebaseAccounts.getCurrentUserId(), _userId),
+      builder: (BuildContext context, AsyncSnapshot<bool> isFollowing) {
+        return isFollowing.hasData
+            ? Container(
+                height: 100,
+                width: 200,
+                decoration: BoxDecoration(
+                    color: isFollowing.data ? Colors.red : Colors.blue,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Text(
+                  isFollowing.data ? "Unfollow" : "Follow",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400),
+                ),
+              )
+            : Container();
+      });
 }
 
 Widget profileWebFeedTitle(BuildContext context) {

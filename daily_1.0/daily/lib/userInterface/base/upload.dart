@@ -227,11 +227,13 @@ class _UploadState extends State<Upload> {
   void postCreation() async {
     Post post = await Post(
         postId: DateFormat("yyyy-MM-dd").format(DateTime.now()),
-        username: _firebaseAccounts.getCurrentUserId(),
+        uid: _firebaseAccounts.getCurrentUserId(),
         imageBytes: imageBytes,
         description: _description,
         prompt: await _firebasePrompt.getPrompt(context, DateTime.now()),
-        timePosted: DateTime.now());
+        timePosted: DateTime.now(),
+        likes: [],
+        comments: []);
     _firebasePost.createUserPost(context, post);
   }
 

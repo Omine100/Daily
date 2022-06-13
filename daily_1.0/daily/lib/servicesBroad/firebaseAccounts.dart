@@ -65,6 +65,10 @@ class FirebaseAccounts {
   }
 
   void setCurrentUserProfilePicURL(State state) async {
+    await _firestore
+        .collection("Users")
+        .doc(_auth.currentUser.uid)
+        .update({'profilePicURL': _auth.currentUser?.photoURL});
     profileURL.value = _auth.currentUser?.photoURL;
     settingsToPrefs(settingsList);
     state.setState(() {});
