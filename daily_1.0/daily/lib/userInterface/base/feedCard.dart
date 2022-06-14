@@ -103,8 +103,8 @@ class _FeedCardState extends State<FeedCard> {
         color: Colors.transparent,
         child: ClipRRect(
             borderRadius: BorderRadius.circular(widget.borderRadius),
-            child: Image(
-              image: _firebasePost.readImage(context, widget.post.imageBytes),
+            child: Image.memory(
+              _firebasePost.readImage(context, widget.post.imageBytes),
             )),
       ),
     ).showClickOnHover;
