@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 import 'package:daily/datastructures/comment.dart';
@@ -9,8 +10,8 @@ class Post {
   String description;
   String prompt;
   DateTime timePosted;
-  List<String> likes;
-  List<Comment> comments;
+  List<dynamic> likes;
+  List<dynamic> comments;
 
   Post(
       {@required this.postId,
@@ -44,7 +45,7 @@ class Post {
         imageBytes: map["imageBytes"],
         description: map["description"],
         prompt: map["prompt"],
-        timePosted: map["timePosted"],
+        timePosted: (map["timePosted"] as Timestamp).toDate(),
         likes: map["likes"],
         comments: map["comments"]);
   }

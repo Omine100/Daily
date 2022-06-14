@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:daily/datastructures/post.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:daily/servicesBroad/firebasePost.dart';
@@ -130,7 +131,7 @@ Widget homeWebFeed(BuildContext context, bool isSmall) {
                   itemCount: snapshot.data.docs.length,
                   itemBuilder: (context, index) {
                     return FeedCard(
-                        post: null,
+                        post: Post.fromMap(snapshot.data.docs[index].data()),
                         index: index,
                         height: isSmall ? 300 : (index % 4 + 2) * 100,
                         width: 100,
