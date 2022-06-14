@@ -72,7 +72,7 @@ Widget homeWebPrompt(BuildContext context) {
   );
 }
 
-bool _isFollowing = true;
+bool _isFollowing = false;
 Widget homeWebFeedTitle(BuildContext context, State state) {
   return Container(
     width: MediaQuery.of(context).size.width,
