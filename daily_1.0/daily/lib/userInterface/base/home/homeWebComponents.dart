@@ -125,14 +125,16 @@ Widget homeWebFeed(BuildContext context, bool isSmall) {
         future: _firebasePost.readPosts(context),
         builder: (context, snapshot) {
           return snapshot.hasData
-              ? ListView.builder(itemBuilder: (context, index) {
-                  return FeedCard(
-                      post: snapshot.data[index],
-                      index: index,
-                      height: isSmall ? 300 : (index % 4 + 2) * 100,
-                      width: 100,
-                      borderRadius: 10);
-                })
+              ? ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (context, index) {
+                    return FeedCard(
+                        post: snapshot.data[index],
+                        index: index,
+                        height: isSmall ? 300 : (index % 4 + 2) * 100,
+                        width: 100,
+                        borderRadius: 10);
+                  })
               : Container();
         }),
   );
