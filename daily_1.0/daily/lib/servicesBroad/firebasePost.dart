@@ -12,11 +12,11 @@ class FirebasePost {
   FirebaseAuth _auth = FirebaseAuth.instance;
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<bool> getHasUserPosted(BuildContext context) async {
+  Future<bool> getHasUserPosted(BuildContext context, String uid) async {
     try {
       var doc = await _firestore
-          .collection("Users")
-          .doc(_auth.currentUser.uid)
+          .collection("Post")
+          .doc()
           .collection("Posts")
           .doc(DateFormat("yyyy-MM-dd").format(DateTime.now()))
           .get();
@@ -47,7 +47,7 @@ class FirebasePost {
     Post post;
     try {
       await _firestore
-          .collection("Users")
+          .collection("Posts")
           .doc(uid)
           .collection("Posts")
           .doc(DateFormat("yyyy-MM-dd").format(DateTime.now()))
@@ -62,9 +62,10 @@ class FirebasePost {
     return null;
   }
 
-  Future<QuerySnapshot> readPosts(BuildContext context, String uid) async {
-    QuerySnapshot querySnapshot =
-        await _firestore.collection("Users").doc(uid).collection("Posts").get();
+  Future<QuerySnapshot> readUserPosts(BuildContext context, String uid) async {}
+
+  Future<QuerySnapshot> readPosts(BuildContext context) async {
+    QuerySnapshot querySnapshot = await _firestore.collection("Posts").get();
     return querySnapshot;
   }
 

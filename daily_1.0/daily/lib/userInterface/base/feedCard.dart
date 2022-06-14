@@ -1,8 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:daily/standards/userXStandards.dart';
 import 'package:flutter/material.dart';
+import 'package:daily/datastructures/post.dart';
 import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/themesLocal/colors.dart';
 
 class FeedCard extends StatefulWidget {
+  final Post post;
   final int height;
   final int width;
   final int index;
@@ -10,6 +14,7 @@ class FeedCard extends StatefulWidget {
 
   FeedCard(
       {Key key,
+      @required this.post,
       @required this.height,
       @required this.width,
       @required this.index,
@@ -61,9 +66,16 @@ class _FeedCardState extends State<FeedCard> {
                     BoxDecoration(borderRadius: BorderRadius.circular(10)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
-                  child: Image.network(
-                    'https://picsum.photos/200/${widget.height}?random=${widget.index}',
-                    fit: BoxFit.fill,
+                  child: CachedNetworkImage(
+                    imageUrl: widget.post.imageBytes,
+                    imageBuilder: (context, imageProvider) => Container(
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: imageProvider, fit: BoxFit.cover)),
+                    ),
+                    placeholder: (context, url) => showProgress(context),
+                    errorWidget: (context, url, error) =>
+                        Container(color: Colors.blue),
                   ),
                 ),
               ),
@@ -86,15 +98,15 @@ class _FeedCardState extends State<FeedCard> {
       child: Card(
         elevation: 10,
         color: Colors.transparent,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(widget.borderRadius),
-          child: Image.network(
-            'https://picsum.photos/200/${widget.height}?random=${widget.index}',
-            width: widget.width.toDouble(),
-            height: widget.height.toDouble(),
-            fit: BoxFit.cover,
-          ),
-        ),
+        // child: ClipRRect(
+        //   borderRadius: BorderRadius.circular(widget.borderRadius),
+        //   child: Image.network(
+        //     widget.post.imageBytes,
+        //     width: widget.width.toDouble(),
+        //     height: widget.height.toDouble(),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
       ),
     ).showClickOnHover;
   }

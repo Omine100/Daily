@@ -464,7 +464,6 @@ void _authWebValidateSubmit(BuildContext context, State state) async {
         .then((value) {
       _authVerifiedHandling(context, state, value);
     });
-  _firebaseAccounts.setCurrentUserProfilePicURL(state);
 }
 
 void _authVerifiedHandling(BuildContext context, State state, bool value) {

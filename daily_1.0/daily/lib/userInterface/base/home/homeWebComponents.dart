@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:daily/servicesBroad/firebasePost.dart';
 import 'package:daily/servicesBroad/firebasePrompt.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/hover.dart';
@@ -7,6 +8,7 @@ import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/base/feedCard.dart';
 
 FirebasePrompt _firebasePrompt = new FirebasePrompt();
+FirebasePost _firebasePost = new FirebasePost();
 
 Widget homeWebCard(BuildContext context, State state, bool isSmall) {
   return Container(
@@ -83,23 +85,6 @@ Widget homeWebFeedTitle(BuildContext context, State state) {
         GestureDetector(
           onTap: () {
             state.setState(() {
-              _isFollowing = true;
-            });
-          },
-          child: Text(
-            "Following",
-            style: TextStyle(
-                color: _isFollowing ? Colors.white : Colors.grey,
-                fontSize: 18,
-                fontWeight: _isFollowing ? FontWeight.w600 : FontWeight.w400),
-          ).showClickOnHover,
-        ),
-        SizedBox(
-          width: 15,
-        ),
-        GestureDetector(
-          onTap: () {
-            state.setState(() {
               _isFollowing = false;
             });
           },
@@ -111,6 +96,23 @@ Widget homeWebFeedTitle(BuildContext context, State state) {
                 fontWeight: _isFollowing ? FontWeight.w400 : FontWeight.w600),
           ).showClickOnHover,
         ),
+        SizedBox(
+          width: 15,
+        ),
+        GestureDetector(
+          onTap: () {
+            state.setState(() {
+              _isFollowing = true;
+            });
+          },
+          child: Text(
+            "Following",
+            style: TextStyle(
+                color: _isFollowing ? Colors.white : Colors.grey,
+                fontSize: 18,
+                fontWeight: _isFollowing ? FontWeight.w600 : FontWeight.w400),
+          ).showClickOnHover,
+        ),
       ],
     ),
   );
@@ -120,18 +122,20 @@ Widget homeWebFeed(BuildContext context, bool isSmall) {
   return Expanded(
     child: Container(
       width: MediaQuery.of(context).size.width * (isSmall ? 0.7 : 0.9),
-      child: MasonryGridView.count(
-        crossAxisCount: isSmall ? 1 : 3,
-        mainAxisSpacing: 8,
-        crossAxisSpacing: 8,
-        itemBuilder: (context, index) {
-          return FeedCard(
-              index: index,
-              height: isSmall ? 300 : (index % 4 + 2) * 100,
-              width: 100,
-              borderRadius: 10);
-        },
-      ),
+      // child: FutureBuilder(
+      //     future: _firebasePost.readPosts(context),
+      //     builder: (context, snapshot) {
+      //       return ListView.builder(itemBuilder: (context, index) {
+      //         return snapshot.hasData
+      //             ? FeedCard(
+      //                 post: snapshot.data[index],
+      //                 index: index,
+      //                 height: isSmall ? 300 : (index % 4 + 2) * 100,
+      //                 width: 100,
+      //                 borderRadius: 10)
+      //             : Container();
+      //       });
+      //     }),
     ),
   );
 }
