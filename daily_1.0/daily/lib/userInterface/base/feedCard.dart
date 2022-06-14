@@ -69,16 +69,9 @@ class _FeedCardState extends State<FeedCard> {
                     BoxDecoration(borderRadius: BorderRadius.circular(10)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
-                  child: CachedNetworkImage(
-                    imageUrl: widget.post.imageBytes,
-                    imageBuilder: (context, imageProvider) => Container(
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: imageProvider, fit: BoxFit.cover)),
-                    ),
-                    placeholder: (context, url) => showProgress(context),
-                    errorWidget: (context, url, error) =>
-                        Container(color: Colors.blue),
+                  child: Image.memory(
+                    _firebasePost.readImage(context, widget.post.imageBytes),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
