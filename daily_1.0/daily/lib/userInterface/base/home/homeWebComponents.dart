@@ -127,7 +127,10 @@ Widget homeWebFeed(BuildContext context, bool isSmall) {
         stream: _firebasePost.readPosts(context),
         builder: (context, snapshot) {
           return snapshot.hasData
-              ? ListView.builder(
+              ? MasonryGridView.count(
+                  crossAxisCount: isSmall ? 1 : 3,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
                   itemCount: snapshot.data.docs.length,
                   itemBuilder: (context, index) {
                     return FeedCard(
