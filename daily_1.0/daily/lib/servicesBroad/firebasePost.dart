@@ -27,6 +27,10 @@ class FirebasePost {
     return false;
   }
 
+  String postIdGenerator() {
+    return Uuid().v1();
+  }
+
   void createUserPost(BuildContext context, Post post) async {
     try {
       await _firestore.collection("Posts").doc(post.postId).set(post.toMap());

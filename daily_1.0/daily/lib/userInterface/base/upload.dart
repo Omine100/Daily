@@ -1,8 +1,8 @@
-import 'package:daily/datastructures/post.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:typed_data';
 import 'dart:io';
+import 'package:daily/datastructures/post.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesBroad/firebasePost.dart';
 import 'package:daily/servicesBroad/firebasePrompt.dart';
@@ -226,7 +226,7 @@ class _UploadState extends State<Upload> {
 
   void postCreation() async {
     Post post = await Post(
-        postId: DateFormat("yyyy-MM-dd").format(DateTime.now()),
+        postId: _firebasePost.postIdGenerator(),
         uid: _firebaseAccounts.getCurrentUserId(),
         imageBytes: imageBytes,
         description: _description,

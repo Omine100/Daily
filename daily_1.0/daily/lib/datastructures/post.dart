@@ -48,8 +48,4 @@ class Post {
         likes: map["likes"],
         comments: map["comments"]);
   }
-
-  String postIdGenerator() {
-    return Uuid().v1();
-  }
 }
