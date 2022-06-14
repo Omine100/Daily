@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:daily/servicesBroad/firebasePost.dart';
 import 'package:daily/standards/userXStandards.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/datastructures/post.dart';
@@ -26,6 +27,8 @@ class FeedCard extends StatefulWidget {
 }
 
 class _FeedCardState extends State<FeedCard> {
+  FirebasePost _firebasePost = new FirebasePost();
+
   void _showOverlay(BuildContext context) async {
     OverlayState overlayState = Overlay.of(context);
     OverlayEntry overlayEntry;
@@ -98,15 +101,11 @@ class _FeedCardState extends State<FeedCard> {
       child: Card(
         elevation: 10,
         color: Colors.transparent,
-        // child: ClipRRect(
-        //   borderRadius: BorderRadius.circular(widget.borderRadius),
-        //   child: Image.network(
-        //     widget.post.imageBytes,
-        //     width: widget.width.toDouble(),
-        //     height: widget.height.toDouble(),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+            child: Image(
+              image: _firebasePost.readImage(context, widget.post.imageBytes),
+            )),
       ),
     ).showClickOnHover;
   }
