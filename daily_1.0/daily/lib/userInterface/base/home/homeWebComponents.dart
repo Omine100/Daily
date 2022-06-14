@@ -119,23 +119,21 @@ Widget homeWebFeedTitle(BuildContext context, State state) {
 }
 
 Widget homeWebFeed(BuildContext context, bool isSmall) {
-  return Expanded(
-    child: Container(
-      width: MediaQuery.of(context).size.width * (isSmall ? 0.7 : 0.9),
-      // child: FutureBuilder(
-      //     future: _firebasePost.readPosts(context),
-      //     builder: (context, snapshot) {
-      //       return ListView.builder(itemBuilder: (context, index) {
-      //         return snapshot.hasData
-      //             ? FeedCard(
-      //                 post: snapshot.data[index],
-      //                 index: index,
-      //                 height: isSmall ? 300 : (index % 4 + 2) * 100,
-      //                 width: 100,
-      //                 borderRadius: 10)
-      //             : Container();
-      //       });
-      //     }),
-    ),
+  return Container(
+    height: 300,
+    child: FutureBuilder(
+        future: _firebasePost.readPosts(context),
+        builder: (context, snapshot) {
+          return snapshot.hasData
+              ? ListView.builder(itemBuilder: (context, index) {
+                  return FeedCard(
+                      post: snapshot.data[index],
+                      index: index,
+                      height: isSmall ? 300 : (index % 4 + 2) * 100,
+                      width: 100,
+                      borderRadius: 10);
+                })
+              : Container();
+        }),
   );
 }
