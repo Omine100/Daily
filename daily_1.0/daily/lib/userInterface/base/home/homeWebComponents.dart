@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:daily/servicesBroad/firebasePost.dart';
@@ -121,15 +122,15 @@ Widget homeWebFeedTitle(BuildContext context, State state) {
 Widget homeWebFeed(BuildContext context, bool isSmall) {
   return Container(
     height: 300,
-    child: FutureBuilder(
-        future: _firebasePost.readPosts(context),
+    child: StreamBuilder<QuerySnapshot>(
+        stream: _firebasePost.readPosts(context),
         builder: (context, snapshot) {
           return snapshot.hasData
               ? ListView.builder(
-                  itemCount: snapshot.data.length,
+                  itemCount: snapshot.data.docs.length,
                   itemBuilder: (context, index) {
                     return FeedCard(
-                        post: snapshot.data[index],
+                        post: null,
                         index: index,
                         height: isSmall ? 300 : (index % 4 + 2) * 100,
                         width: 100,

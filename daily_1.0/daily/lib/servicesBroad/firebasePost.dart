@@ -64,8 +64,8 @@ class FirebasePost {
 
   Future<QuerySnapshot> readUserPosts(BuildContext context, String uid) async {}
 
-  Future<Stream<QuerySnapshot>> readPosts(BuildContext context) async {
-    var querySnapshots = await _firestore.collection("Posts").snapshots();
+  Stream<QuerySnapshot> readPosts(BuildContext context) {
+    var querySnapshots = _firestore.collection("Posts").snapshots();
     return querySnapshots;
   }
 
