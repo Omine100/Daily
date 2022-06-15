@@ -17,6 +17,7 @@ import 'package:daily/userInterface/base/searchBar.dart';
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 int _pageIndex = 0;
 PageController _pageController;
+String uid;
 
 void setupWebPageController() {
   _pageController = PageController(initialPage: _pageIndex);
@@ -45,7 +46,7 @@ Widget baseWebCardContainer(BuildContext context, State state, bool isSmall,
     globalBody(context, state, isSmall),
     settingsBody(context, state, isSmall),
     searchBody(context, state, isSmall),
-    profileBody(context, state, isSmall, _firebaseAccounts.getCurrentUserId())
+    profileBody(context, state, isSmall, uid)
   ];
 
   return Container(

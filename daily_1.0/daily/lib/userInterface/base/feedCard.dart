@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:daily/datastructures/post.dart';
 import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/themesLocal/colors.dart';
+import 'package:daily/userInterface/base/baseWebComponents.dart';
 
 class FeedCard extends StatefulWidget {
   final Post post;
@@ -89,7 +90,10 @@ class _FeedCardState extends State<FeedCard> {
                       return snapshot.hasData
                           ? GestureDetector(
                               onTap: () {
-                                //Load profile page with specific uid
+                                uid = widget.post.uid;
+                                onTabTapped(4);
+                                overlayEntry.remove();
+                                overlayBackground.remove();
                               },
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(100),

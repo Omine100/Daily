@@ -122,7 +122,8 @@ Widget homeWebFeedTitle(BuildContext context, State state) {
 
 Widget homeWebFeed(BuildContext context, bool isSmall) {
   return Container(
-    height: 300,
+    //Need to add back in expanded
+    height: 350,
     child: StreamBuilder<QuerySnapshot>(
         stream: _firebasePost.readPosts(context),
         builder: (context, snapshot) {

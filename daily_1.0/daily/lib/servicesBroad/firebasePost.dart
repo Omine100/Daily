@@ -16,13 +16,17 @@ class FirebasePost {
 
   Future<bool> getHasUserPosted(BuildContext context, String uid) async {
     try {
-      var doc = await _firestore
-          .collection("Post")
-          .doc()
-          .collection("Posts")
-          .doc(DateFormat("yyyy-MM-dd").format(DateTime.now()))
-          .get();
-      return doc.exists;
+      Stream<QuerySnapshot> stream = readUserPosts(context, uid);
+      stream.forEach((element) {
+        for (int i = 0; i < element.docs.length; i++) {
+          DateTime postDate =
+              (Post.fromMap(element.docs[i].data()).timePosted as Timestamp)
+                  .toDate();
+          if (postDate.year == DateTime.now().year &&
+              postDate.month == DateTime.now().month &&
+              postDate.day == DateTime.now().day) return true;
+        }
+      });
     } on FirebaseException {
       showToastMessage(context, "_errorImageFailedToUpload", true);
     }
@@ -48,14 +52,12 @@ class FirebasePost {
     }
   }
 
-  Future<Post> readPost(BuildContext context, String uid) async {
+  Future<Post> readPost(BuildContext context, String postId) async {
     Post post;
     try {
       await _firestore
           .collection("Posts")
-          .doc(uid)
-          .collection("Posts")
-          .doc(DateFormat("yyyy-MM-dd").format(DateTime.now()))
+          .doc(postId)
           .get()
           .then((value) => {post = Post.fromMap(value.data())})
           .then((value) {
@@ -67,18 +69,22 @@ class FirebasePost {
     return null;
   }
 
-  Future<QuerySnapshot> readUserPosts(BuildContext context, String uid) async {}
+  Stream<QuerySnapshot> readUserPosts(BuildContext context, String uid) {
+    return _firestore
+        .collection("Posts")
+        .where("uid", isEqualTo: uid)
+        .snapshots();
+  }
 
   Stream<QuerySnapshot> readPosts(BuildContext context) {
     final Timestamp now = Timestamp.fromDate(DateTime.now());
     final Timestamp yesterday = Timestamp.fromDate(
       DateTime.now().subtract(const Duration(days: 1)),
     );
-    var querySnapshots = _firestore
+    return _firestore
         .collection("Posts")
-        .where('timePosted', isLessThan: now, isGreaterThan: yesterday)
+        .where("timePosted", isLessThan: now, isGreaterThan: yesterday)
         .snapshots();
-    return querySnapshots;
   }
 
   void updateUserPost(BuildContext context, Post originalPost, Post newPost,

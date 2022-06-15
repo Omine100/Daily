@@ -65,22 +65,22 @@ Widget profileWebInfo(BuildContext context, State state) {
                   shape: BoxShape.circle,
                   color: Theme.of(context).colorScheme.baseWebProfileBackground,
                 ),
-                // child: CachedNetworkImage(
-                //   imageUrl: _firebaseAccounts.getCurrentUserProfilePic(),
-                //   imageBuilder: (context, imageProvider) => Container(
-                //     decoration: BoxDecoration(
-                //       shape: BoxShape.circle,
-                //       image: DecorationImage(
-                //           image: imageProvider, fit: BoxFit.cover),
-                //     ),
-                //   ),
-                //   placeholder: (context, url) => showProgress(context),
-                //   errorWidget: (context, url, error) => Icon(
-                //     Icons.person_outline_rounded,
-                //     size: 55,
-                //     color: Theme.of(context).colorScheme.baseWebProfileIcon,
-                //   ),
-                // ),
+                child: CachedNetworkImage(
+                  imageUrl: _firebaseAccounts.getCurrentUserProfilePic(),
+                  imageBuilder: (context, imageProvider) => Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: imageProvider, fit: BoxFit.cover),
+                    ),
+                  ),
+                  placeholder: (context, url) => showProgress(context),
+                  errorWidget: (context, url, error) => Icon(
+                    Icons.person_outline_rounded,
+                    size: 55,
+                    color: Theme.of(context).colorScheme.baseWebProfileIcon,
+                  ),
+                ),
               ),
               Container(
                 padding: EdgeInsets.only(top: 15),

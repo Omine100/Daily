@@ -120,6 +120,7 @@ class _SideMenuState extends State<SideMenu> {
                             padding: const EdgeInsets.only(bottom: 5.0),
                             child: GestureDetector(
                               onTap: () {
+                                uid = _firebaseAccounts.getCurrentUserId();
                                 onTabTapped(4);
                               },
                               child: Text(
