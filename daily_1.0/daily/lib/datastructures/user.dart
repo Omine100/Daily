@@ -6,8 +6,8 @@ class User {
   final String email;
   final String displayName;
   final String profilePicURL;
-  final List<String> followers;
-  final List<String> following;
+  final List<dynamic> followers;
+  final List<dynamic> following;
 
   User(
       {@required this.uid,

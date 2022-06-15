@@ -22,9 +22,8 @@ class FirebaseAccounts {
     return dataStructure.User.fromSnap(snap.data());
   }
 
-  Future<DocumentSnapshot> getUserInfoDoc(String uid) async {
-    DocumentSnapshot snap = await _firestore.collection("Users").doc(uid).get();
-    return snap;
+  Stream<DocumentSnapshot> getUserInfoDoc(String uid) {
+    return _firestore.collection("Users").doc(uid).snapshots();
   }
 
   bool getSignedInStatus() {

@@ -83,10 +83,9 @@ class _FeedCardState extends State<FeedCard> {
                   width: 100,
                   height: 100,
                   decoration: BoxDecoration(shape: BoxShape.circle),
-                  child: FutureBuilder(
-                    future: _firebaseAccounts.getUserInfoDoc(widget.post.uid),
-                    builder:
-                        (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+                  child: StreamBuilder<DocumentSnapshot>(
+                    stream: _firebaseAccounts.getUserInfoDoc(widget.post.uid),
+                    builder: (context, snapshot) {
                       return snapshot.hasData
                           ? GestureDetector(
                               onTap: () {
@@ -95,9 +94,8 @@ class _FeedCardState extends State<FeedCard> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(100),
                                 child: Image.network(
-                                    (dataStructure.User.fromSnap(
-                                            snapshot as DocumentSnapshot))
-                                        .profilePicURL),
+                                    (dataStructure.User.fromSnap(snapshot.data)
+                                        .profilePicURL)),
                               ),
                             )
                           : Container(
