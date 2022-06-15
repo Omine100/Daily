@@ -28,6 +28,18 @@ class User {
     };
   }
 
+  static User fromSnap(DocumentSnapshot snap) {
+    var snapshot = snap.data() as Map<String, dynamic>;
+
+    return User(
+        uid: snapshot["uid"],
+        email: snapshot["email"],
+        displayName: snapshot["displayName"],
+        profilePicURL: snapshot["profilePicURL"],
+        followers: snapshot["followers"],
+        following: snapshot["following"]);
+  }
+
   static User fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 

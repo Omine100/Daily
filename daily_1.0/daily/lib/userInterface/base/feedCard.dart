@@ -1,4 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:daily/datastructures/user.dart' as dataStructure;
+import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesBroad/firebasePost.dart';
 import 'package:daily/standards/userXStandards.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +30,7 @@ class FeedCard extends StatefulWidget {
 }
 
 class _FeedCardState extends State<FeedCard> {
+  FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
   FirebasePost _firebasePost = new FirebasePost();
 
   void _showOverlay(BuildContext context) async {
@@ -69,12 +73,38 @@ class _FeedCardState extends State<FeedCard> {
                     BoxDecoration(borderRadius: BorderRadius.circular(10)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
-                  child: Image.memory(
-                    _firebasePost.readImage(context, widget.post.imageBytes),
+                  child: Image.network(
+                    widget.post.imageUrl,
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
+              Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(shape: BoxShape.circle),
+                  child: FutureBuilder(
+                    future: _firebaseAccounts.getUserInfoDoc(widget.post.uid),
+                    builder:
+                        (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+                      return snapshot.hasData
+                          ? GestureDetector(
+                              onTap: () {
+                                //Load profile page with specific uid
+                              },
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(100),
+                                child: Image.network(
+                                    (dataStructure.User.fromSnap(
+                                            snapshot as DocumentSnapshot))
+                                        .profilePicURL),
+                              ),
+                            )
+                          : Container(
+                              color: Colors.blue,
+                            );
+                    },
+                  ))
             ],
           ),
         ),
@@ -96,9 +126,7 @@ class _FeedCardState extends State<FeedCard> {
         color: Colors.transparent,
         child: ClipRRect(
             borderRadius: BorderRadius.circular(widget.borderRadius),
-            child: Image.memory(
-              _firebasePost.readImage(context, widget.post.imageBytes),
-            )),
+            child: Image.network(widget.post.imageUrl)),
       ),
     ).showClickOnHover;
   }

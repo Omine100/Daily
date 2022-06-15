@@ -44,8 +44,8 @@ Widget settingsProfile(BuildContext context, State state) {
                 padding: const EdgeInsets.only(left: 25.0, right: 35.0),
                 child: GestureDetector(
                   onTap: () {
-                    showMediaSelection(context, state,
-                        _firebaseAccounts.setCurrentUserProfilePicImage);
+                    // showMediaSelection(context, state,
+                    //     _firebaseAccounts.setCurrentUserProfilePicImage);
                   },
                   child: Container(
                     height: getDimension(

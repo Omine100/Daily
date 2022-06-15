@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:typed_data';
@@ -211,12 +212,12 @@ class _UploadState extends State<Upload> {
   }
 
   Image image;
-  String imageBytes;
+  Uint8List imageBytes;
   void getImage() async {
     await ImagePicker()
         .pickImage(source: ImageSource.gallery)
         .then((value) async {
-      imageBytes = new String.fromCharCodes(await value.readAsBytes());
+      imageBytes = await value.readAsBytes();
       image = new Image(
         image: NetworkImage(value.path),
         fit: BoxFit.fill,
@@ -228,13 +229,13 @@ class _UploadState extends State<Upload> {
     Post post = await Post(
         postId: _firebasePost.postIdGenerator(),
         uid: _firebaseAccounts.getCurrentUserId(),
-        imageBytes: imageBytes,
+        imageUrl: "",
         description: _description,
         prompt: await _firebasePrompt.getPrompt(context, DateTime.now()),
-        timePosted: DateTime.now(),
+        timePosted: FieldValue.serverTimestamp(),
         likes: [],
         comments: []);
-    _firebasePost.createUserPost(context, post);
+    _firebasePost.createUserPost(context, post, imageBytes);
   }
 
   @override

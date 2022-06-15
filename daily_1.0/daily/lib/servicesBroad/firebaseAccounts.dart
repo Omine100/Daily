@@ -19,7 +19,12 @@ class FirebaseAccounts {
 
   Future<dataStructure.User> getUserInfo(String uid) async {
     DocumentSnapshot snap = await _firestore.collection("Users").doc(uid).get();
-    return dataStructure.User.fromMap(snap.data());
+    return dataStructure.User.fromSnap(snap.data());
+  }
+
+  Future<DocumentSnapshot> getUserInfoDoc(String uid) async {
+    DocumentSnapshot snap = await _firestore.collection("Users").doc(uid).get();
+    return snap;
   }
 
   bool getSignedInStatus() {
@@ -43,19 +48,10 @@ class FirebaseAccounts {
     return _auth.currentUser.email;
   }
 
-  Future<void> setCurrentUserProfilePicImage(File image, State state) async {
-    var storageRef = _storage.ref(_auth.currentUser.uid + '/profilePicture');
-    await storageRef.putFile(image);
-    _auth.currentUser
-        .updatePhotoURL(await storageRef.getDownloadURL())
-        .then((value) {
-      setCurrentUserProfilePicURL(state);
-    });
-  }
-
   Future<void> setCurrentUserProfilePicData(
       Uint8List bytes, State state) async {
-    var storageRef = _storage.ref(_auth.currentUser.uid + '/profilePicture');
+    var storageRef =
+        _storage.ref('ProfilePictures' + '/${_auth.currentUser.uid}');
     await storageRef.putData(bytes);
     _auth.currentUser
         .updatePhotoURL(await storageRef.getDownloadURL())
