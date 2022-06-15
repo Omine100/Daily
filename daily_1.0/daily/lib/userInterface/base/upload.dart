@@ -250,6 +250,7 @@ class _UploadState extends State<Upload> {
               future: _firebasePost.getHasUserPosted(
                   context, _firebaseAccounts.getCurrentUserId()),
               builder: (context, hasPosted) {
+                print(hasPosted.data as bool);
                 return Material(
                     color: Theme.of(context).colorScheme.materialTransparent,
                     child: InkWell(

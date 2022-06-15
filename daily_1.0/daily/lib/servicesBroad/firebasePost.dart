@@ -15,24 +15,22 @@ class FirebasePost {
   FirebaseStorage _storage = FirebaseStorage.instance;
 
   Future<bool> getHasUserPosted(BuildContext context, String uid) async {
-    try {
-      Stream<QuerySnapshot> stream = readUserPosts(context, uid);
-      stream.forEach((element) {
-        for (int i = 0; i < element.docs.length; i++) {
-          DateTime postDate =
-              (Post.fromMap(element.docs[i].data()).timePosted as Timestamp)
-                  .toDate();
-          if (postDate.year == DateTime.now().year &&
-              postDate.month == DateTime.now().month &&
-              postDate.day == DateTime.now().day) {
-            return true;
-          }
+    bool hasPosted = false;
+    Stream<QuerySnapshot> stream = await readUserPosts(context, uid);
+    stream.forEach((element) {
+      for (int i = 0; i < element.docs.length; i++) {
+        DateTime postDate =
+            (Post.fromMap(element.docs[i].data()).timePosted as Timestamp)
+                .toDate();
+        if (postDate.year == DateTime.now().year &&
+            postDate.month == DateTime.now().month &&
+            postDate.day == DateTime.now().day) {
+          hasPosted = true;
+          break;
         }
-      });
-    } on FirebaseException {
-      showToastMessage(context, "_errorImageFailedToUpload", true);
-    }
-    return false;
+      }
+    });
+    return hasPosted;
   }
 
   String postIdGenerator() {
