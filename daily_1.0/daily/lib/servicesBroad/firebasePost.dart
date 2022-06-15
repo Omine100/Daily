@@ -24,7 +24,9 @@ class FirebasePost {
                   .toDate();
           if (postDate.year == DateTime.now().year &&
               postDate.month == DateTime.now().month &&
-              postDate.day == DateTime.now().day) return true;
+              postDate.day == DateTime.now().day) {
+            return true;
+          }
         }
       });
     } on FirebaseException {
