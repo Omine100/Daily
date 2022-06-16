@@ -222,9 +222,15 @@ class FirebaseAccounts {
       await _firestore.collection("Users").doc(currentUid).update({
         'following': FieldValue.arrayRemove([uid])
       });
+      await _firestore.collection("Users").doc(uid).update({
+        'followers': FieldValue.arrayRemove([currentUid])
+      });
     } else {
       await _firestore.collection("Users").doc(currentUid).update({
         'following': FieldValue.arrayUnion([uid])
+      });
+      await _firestore.collection("Users").doc(uid).update({
+        'followers': FieldValue.arrayUnion([currentUid])
       });
     }
   }

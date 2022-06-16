@@ -16,20 +16,23 @@ class FirebasePost {
 
   Future<bool> getHasUserPosted(BuildContext context, String uid) async {
     bool hasPosted = false;
-    Stream<QuerySnapshot> stream = await readUserPosts(context, uid);
-    stream.forEach((element) {
-      for (int i = 0; i < element.docs.length; i++) {
-        DateTime postDate =
-            (Post.fromMap(element.docs[i].data()).timePosted as Timestamp)
-                .toDate();
-        if (postDate.year == DateTime.now().year &&
-            postDate.month == DateTime.now().month &&
-            postDate.day == DateTime.now().day) {
-          hasPosted = true;
-          break;
-        }
-      }
-    });
+    DateTime postDate;
+    await _firestore
+        .collection("Posts")
+        .where("uid", isEqualTo: uid)
+        .get()
+        .then((value) => {
+              for (int i = 0; i < value.docs.length; i++)
+                {
+                  postDate = (Post.fromMap(value.docs[i].data()).timePosted
+                          as Timestamp)
+                      .toDate(),
+                  if (postDate.year == DateTime.now().year &&
+                      postDate.month == DateTime.now().month &&
+                      postDate.day == DateTime.now().day)
+                    {hasPosted = true}
+                }
+            });
     return hasPosted;
   }
 

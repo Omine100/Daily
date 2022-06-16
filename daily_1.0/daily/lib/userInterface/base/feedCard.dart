@@ -80,33 +80,89 @@ class _FeedCardState extends State<FeedCard> {
                   ),
                 ),
               ),
-              Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(shape: BoxShape.circle),
-                  child: StreamBuilder<DocumentSnapshot>(
-                    stream: _firebaseAccounts.getUserInfoDoc(widget.post.uid),
-                    builder: (context, snapshot) {
-                      return snapshot.hasData
-                          ? GestureDetector(
-                              onTap: () {
-                                uid = widget.post.uid;
-                                onTabTapped(4);
-                                overlayEntry.remove();
-                                overlayBackground.remove();
-                              },
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(100),
-                                child: Image.network(
-                                    (dataStructure.User.fromSnap(snapshot.data)
-                                        .profilePicURL)),
-                              ),
-                            )
-                          : Container(
-                              color: Colors.blue,
-                            );
-                    },
-                  ))
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Material(
+                    color: Theme.of(context).colorScheme.baseBackground,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          StreamBuilder<DocumentSnapshot>(
+                            stream: _firebaseAccounts
+                                .getUserInfoDoc(widget.post.uid),
+                            builder: (context, snapshot) {
+                              return snapshot.hasData
+                                  ? GestureDetector(
+                                      onTap: () {
+                                        uid = widget.post.uid;
+                                        onTabTapped(4);
+                                        overlayEntry.remove();
+                                        overlayBackground.remove();
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            height: 100,
+                                            width: 100,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(360),
+                                              child: Image.network(
+                                                  (dataStructure.User.fromSnap(
+                                                          snapshot.data)
+                                                      .profilePicURL),
+                                                  fit: BoxFit.cover),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                          ),
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "@" +
+                                                    (dataStructure.User
+                                                            .fromSnap(
+                                                                snapshot.data)
+                                                        .displayName),
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontStyle:
+                                                        FontStyle.italic),
+                                              ),
+                                              Text(
+                                                widget.post.description,
+                                                style: TextStyle(
+                                                    color: Colors.grey.shade300,
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w300,
+                                                    fontStyle:
+                                                        FontStyle.normal),
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ))
+                                  : Container(
+                                      color: Colors.blue,
+                                    );
+                            },
+                          )
+                        ]),
+                  ),
+                ),
+              )
             ],
           ),
         ),

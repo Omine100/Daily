@@ -124,34 +124,47 @@ Widget profileWebInfo(BuildContext context, State state) {
                         ),
                       ),
                     ),
-                    _userId == _firebaseAccounts.getCurrentUserId()
-                        ? Container()
-                        : followButton(context, state)
                   ],
                 ),
               ),
+              _userId == _firebaseAccounts.getCurrentUserId()
+                  ? Container()
+                  : followButton(context, state)
             ],
           )));
 }
 
 Widget followButton(BuildContext context, State state) {
+  //Need to change this to a streamBuilder
   return FutureBuilder(
       future: _firebaseAccounts.isFollowing(
           _firebaseAccounts.getCurrentUserId(), _userId),
       builder: (BuildContext context, AsyncSnapshot<bool> isFollowing) {
         return isFollowing.hasData
             ? Container(
-                height: 100,
-                width: 200,
+                height: 40,
+                width: 75,
                 decoration: BoxDecoration(
-                    color: isFollowing.data ? Colors.red : Colors.blue,
+                    color: !isFollowing.data ? Colors.red : Colors.grey,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text(
-                  isFollowing.data ? "Unfollow" : "Follow",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400),
+                child: InkWell(
+                  splashColor: isFollowing.data ? Colors.white : Colors.white,
+                  customBorder: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  onTap: () async {
+                    await _firebaseAccounts.followUser(
+                        _firebaseAccounts.getCurrentUserId(), _userId);
+                    state.setState(() {});
+                  },
+                  child: Center(
+                    child: Text(
+                      isFollowing.data ? "Unfollow" : "Follow",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ),
                 ),
               )
             : Container();

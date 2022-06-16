@@ -240,58 +240,65 @@ class _UploadState extends State<Upload> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-          height: 40,
-          decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.authWebGetStarted,
-              borderRadius: BorderRadius.circular(10)),
-          child: FutureBuilder(
-              future: _firebasePost.getHasUserPosted(
-                  context, _firebaseAccounts.getCurrentUserId()),
-              builder: (context, hasPosted) {
-                print(hasPosted.data as bool);
-                return Material(
+    return FutureBuilder(
+        future: _firebasePost.getHasUserPosted(
+            context, _firebaseAccounts.getCurrentUserId()),
+        builder: (context, hasPosted) {
+          return hasPosted.hasData
+              ? Center(
+                  child: Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                      color: (hasPosted.data as bool)
+                          ? Theme.of(context).colorScheme.authWebGetStarted
+                          : Theme.of(context)
+                              .colorScheme
+                              .authWebGetStartedDeactived,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Material(
                     color: Theme.of(context).colorScheme.materialTransparent,
-                    child: InkWell(
-                        splashColor: Theme.of(context)
-                            .colorScheme
-                            .authWebGetStartedInkWell,
-                        customBorder: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        onTap: () {
-                          _showOverlay(context);
-                        },
-                        child: Center(
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 4.0),
-                                child: Icon(
-                                  Icons.upload,
-                                  color: hasPosted.hasData
-                                      ? ((hasPosted.data as bool)
-                                          ? Colors.white
-                                          : Colors.black)
-                                      : Colors.green,
-                                  size: 25,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 8.0),
-                                child: Text(
-                                  "Post",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              )
-                            ],
-                          ),
-                        )));
-              })),
+                    child: (hasPosted.data as bool)
+                        ? InkWell(
+                            splashColor: Theme.of(context)
+                                .colorScheme
+                                .authWebGetStartedInkWell,
+                            customBorder: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            onTap: () {
+                              _showOverlay(context);
+                            },
+                            child: postButtonContent())
+                        : postButtonContent(),
+                  ),
+                ))
+              : postButtonContent();
+        });
+  }
+
+  Widget postButtonContent() {
+    return Center(
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: Icon(
+              Icons.upload,
+              color: Colors.white,
+              size: 25,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: Text(
+              "Post",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
