@@ -127,17 +127,17 @@ Widget homeWebFeed(BuildContext context, bool isSmall) {
     child: _isFollowing
         ? FutureBuilder(
             future: _firebasePost.readFollowingPosts(context),
-            builder: (context, snapshot) {
+            builder: (context, AsyncSnapshot<List<QuerySnapshot>> snapshot) {
               return snapshot.hasData
                   ? MasonryGridView.count(
                       crossAxisCount: isSmall ? 1 : 3,
                       mainAxisSpacing: 8,
                       crossAxisSpacing: 8,
-                      itemCount: snapshot.data.docs.length,
+                      itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
                         return FeedCard(
                             post:
-                                Post.fromMap(snapshot.data.docs[index].data()),
+                                Post.fromMap(snapshot.data[index].),
                             index: index,
                             height: isSmall ? 300 : (index % 4 + 2) * 100,
                             width: 100,
