@@ -19,7 +19,7 @@ class FirebaseAccounts {
 
   Future<dataStructure.User> getUserInfo(String uid) async {
     DocumentSnapshot snap = await _firestore.collection("Users").doc(uid).get();
-    return dataStructure.User.fromSnap(snap.data());
+    return dataStructure.User.fromSnap(snap);
   }
 
   Stream<DocumentSnapshot> getUserInfoDoc(String uid) {

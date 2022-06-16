@@ -82,13 +82,22 @@ class FirebasePost {
         .snapshots();
   }
 
-  Future<QuerySnapshot> readFollowingPosts(BuildContext context) async {
-    userStructure.User user = await _firebaseAccounts
-        .getUserInfo(_firebaseAccounts.getCurrentUserId());
-    return _firestore
-        .collection("Posts")
-        .where("uid", arrayContainsAny: user.following)
-        .get();
+  Future<List<QuerySnapshot>> readFollowingPosts(BuildContext context) async {
+    Stream<DocumentSnapshot<Object>> user = await _firebaseAccounts
+        .getUserInfoDoc(_firebaseAccounts.getCurrentUserId());
+    List<String> following =  (userStructure.User.fromSnap(
+                                                          user.first)
+                                                      .following;
+    List<QuerySnapshot> list = [];
+
+    following.forEach((element) async {
+      list.add(await _firestore
+          .collection("Posts")
+          .where('uid', isEqualTo: element)
+          .get());
+    });
+
+    return list;
   }
 
   Stream<QuerySnapshot> readPosts(BuildContext context) {
