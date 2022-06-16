@@ -244,34 +244,36 @@ class _UploadState extends State<Upload> {
         future: _firebasePost.getHasUserPosted(
             context, _firebaseAccounts.getCurrentUserId()),
         builder: (context, hasPosted) {
-          return hasPosted.hasData
-              ? Center(
-                  child: Container(
-                  height: 40,
-                  decoration: BoxDecoration(
-                      color: (hasPosted.data as bool)
-                          ? Theme.of(context).colorScheme.authWebGetStarted
-                          : Theme.of(context)
+          return Center(
+              child: Container(
+            height: 40,
+            decoration: BoxDecoration(
+                color: hasPosted.hasData
+                    ? !(hasPosted.data as bool)
+                        ? Theme.of(context).colorScheme.authWebGetStarted
+                        : Theme.of(context)
+                            .colorScheme
+                            .authWebGetStartedDeactived
+                    : Theme.of(context).colorScheme.authWebGetStartedDeactived,
+                borderRadius: BorderRadius.circular(10)),
+            child: Material(
+              color: Theme.of(context).colorScheme.materialTransparent,
+              child: hasPosted.hasData
+                  ? !(hasPosted.data as bool)
+                      ? InkWell(
+                          splashColor: Theme.of(context)
                               .colorScheme
-                              .authWebGetStartedDeactived,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Material(
-                    color: Theme.of(context).colorScheme.materialTransparent,
-                    child: (hasPosted.data as bool)
-                        ? InkWell(
-                            splashColor: Theme.of(context)
-                                .colorScheme
-                                .authWebGetStartedInkWell,
-                            customBorder: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            onTap: () {
-                              _showOverlay(context);
-                            },
-                            child: postButtonContent())
-                        : postButtonContent(),
-                  ),
-                ))
-              : postButtonContent();
+                              .authWebGetStartedInkWell,
+                          customBorder: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          onTap: () {
+                            _showOverlay(context);
+                          },
+                          child: postButtonContent())
+                      : postButtonContent()
+                  : postButtonContent(),
+            ),
+          ));
         });
   }
 

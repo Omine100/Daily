@@ -141,14 +141,20 @@ class _FeedCardState extends State<FeedCard> {
                                                     fontStyle:
                                                         FontStyle.italic),
                                               ),
-                                              Text(
-                                                widget.post.description,
-                                                style: TextStyle(
-                                                    color: Colors.grey.shade300,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w300,
-                                                    fontStyle:
-                                                        FontStyle.normal),
+                                              Container(
+                                                width: 150,
+                                                child: Text(
+                                                  widget.post.description,
+                                                  softWrap: true,
+                                                  style: TextStyle(
+                                                      color:
+                                                          Colors.grey.shade300,
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                      fontStyle:
+                                                          FontStyle.normal),
+                                                ),
                                               )
                                             ],
                                           )

@@ -52,7 +52,7 @@ class FirebasePost {
       await _firestore
           .collection("Posts")
           .doc(post.postId)
-          .update({'imageUrl': snapshot.ref.getDownloadURL()});
+          .update({'imageUrl': await snapshot.ref.getDownloadURL()});
     } on FirebaseException {
       showToastMessage(context, "_errorImageFailedToUpload", true);
     }
