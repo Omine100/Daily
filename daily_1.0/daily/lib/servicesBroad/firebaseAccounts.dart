@@ -22,6 +22,11 @@ class FirebaseAccounts {
     return dataStructure.User.fromSnap(snap);
   }
 
+  //Swap
+  Future<DocumentSnapshot> getUserInfoStream(String uid) {
+    return _firestore.collection("Users").doc(uid).get();
+  }
+
   Stream<DocumentSnapshot> getUserInfoDoc(String uid) {
     return _firestore.collection("Users").doc(uid).snapshots();
   }
