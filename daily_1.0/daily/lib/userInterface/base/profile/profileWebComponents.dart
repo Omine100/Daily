@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:daily/datastructures/post.dart';
 import 'package:daily/servicesBroad/firebasePost.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -18,11 +19,11 @@ import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 FirebasePost _firebasePost = new FirebasePost();
-String _userId;
+String _uid;
 
 Widget profileWebCard(
     BuildContext context, State state, bool isSmall, String userId) {
-  _userId = userId;
+  _uid = userId;
   return Container(
       padding: EdgeInsets.only(left: 20, right: 20),
       width: MediaQuery.of(context).size.width,
@@ -127,7 +128,7 @@ Widget profileWebInfo(BuildContext context, State state) {
                   ],
                 ),
               ),
-              _userId == _firebaseAccounts.getCurrentUserId()
+              _uid == _firebaseAccounts.getCurrentUserId()
                   ? Container()
                   : followButton(context, state)
             ],
@@ -135,10 +136,9 @@ Widget profileWebInfo(BuildContext context, State state) {
 }
 
 Widget followButton(BuildContext context, State state) {
-  //Need to change this to a streamBuilder
   return FutureBuilder(
       future: _firebaseAccounts.isFollowing(
-          _firebaseAccounts.getCurrentUserId(), _userId),
+          _firebaseAccounts.getCurrentUserId(), _uid),
       builder: (BuildContext context, AsyncSnapshot<bool> isFollowing) {
         return isFollowing.hasData
             ? Container(
@@ -153,7 +153,7 @@ Widget followButton(BuildContext context, State state) {
                       borderRadius: BorderRadius.circular(10)),
                   onTap: () async {
                     await _firebaseAccounts.followUser(
-                        _firebaseAccounts.getCurrentUserId(), _userId);
+                        _firebaseAccounts.getCurrentUserId(), _uid);
                     state.setState(() {});
                   },
                   child: Center(
@@ -188,11 +188,7 @@ Widget profileWebFeed(BuildContext context, bool isSmall) {
         padding: EdgeInsets.only(bottom: 15),
         width: MediaQuery.of(context).size.width * (isSmall ? 0.7 : 0.9),
         child: StreamBuilder<QuerySnapshot>(
-            stream: FirebaseFirestore.instance
-                .collection("Users")
-                .doc("nHSs82HWtfTFpy4hCtEEe9WN3B52")
-                .collection("Posts")
-                .snapshots(),
+            stream: _firebasePost.readUserPosts(context, _uid),
             builder: (context, snapshot) {
               return !snapshot.hasData
                   ? Center(child: CircularProgressIndicator())
@@ -201,7 +197,6 @@ Widget profileWebFeed(BuildContext context, bool isSmall) {
                       shrinkWrap: true,
                       itemCount: snapshot.data.docs.length,
                       itemBuilder: (context, index) {
-                        DocumentSnapshot data = snapshot.data.docs[index];
                         return Container(
                           height: 200,
                           width: 300,
@@ -229,6 +224,8 @@ Widget profileWebFeed(BuildContext context, bool isSmall) {
                             ),
                             startChild: index % 2 == 0
                                 ? FeedCard(
+                                    post: Post.fromMap(
+                                        snapshot.data.docs[index].data()),
                                     borderRadius: 10,
                                     height: 200,
                                     width: 300,
@@ -237,6 +234,8 @@ Widget profileWebFeed(BuildContext context, bool isSmall) {
                                 : Container(),
                             endChild: index % 2 != 0
                                 ? FeedCard(
+                                    post: Post.fromMap(
+                                        snapshot.data.docs[index].data()),
                                     borderRadius: 10,
                                     height: 200,
                                     width: 300,

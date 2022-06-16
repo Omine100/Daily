@@ -1,10 +1,12 @@
 import 'dart:typed_data';
+import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
+import 'package:daily/datastructures/user.dart' as userStructure;
 import 'package:daily/datastructures/post.dart';
 import 'package:daily/datastructures/comment.dart';
 import 'package:daily/standards/userIStandards.dart';
@@ -13,6 +15,7 @@ class FirebasePost {
   FirebaseAuth _auth = FirebaseAuth.instance;
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
   FirebaseStorage _storage = FirebaseStorage.instance;
+  FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
   Future<bool> getHasUserPosted(BuildContext context, String uid) async {
     bool hasPosted = false;
@@ -77,6 +80,15 @@ class FirebasePost {
         .collection("Posts")
         .where("uid", isEqualTo: uid)
         .snapshots();
+  }
+
+  Future<QuerySnapshot> readFollowingPosts(BuildContext context) async {
+    userStructure.User user = await _firebaseAccounts
+        .getUserInfo(_firebaseAccounts.getCurrentUserId());
+    return _firestore
+        .collection("Posts")
+        .where("uid", arrayContainsAny: user.following)
+        .get();
   }
 
   Stream<QuerySnapshot> readPosts(BuildContext context) {

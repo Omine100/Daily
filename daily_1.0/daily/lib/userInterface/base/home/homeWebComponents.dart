@@ -124,24 +124,46 @@ Widget homeWebFeed(BuildContext context, bool isSmall) {
   return Container(
     //Need to add back in expanded
     height: 350,
-    child: StreamBuilder<QuerySnapshot>(
-        stream: _firebasePost.readPosts(context),
-        builder: (context, snapshot) {
-          return snapshot.hasData
-              ? MasonryGridView.count(
-                  crossAxisCount: isSmall ? 1 : 3,
-                  mainAxisSpacing: 8,
-                  crossAxisSpacing: 8,
-                  itemCount: snapshot.data.docs.length,
-                  itemBuilder: (context, index) {
-                    return FeedCard(
-                        post: Post.fromMap(snapshot.data.docs[index].data()),
-                        index: index,
-                        height: isSmall ? 300 : (index % 4 + 2) * 100,
-                        width: 100,
-                        borderRadius: 10);
-                  })
-              : Container();
-        }),
+    child: _isFollowing
+        ? FutureBuilder(
+            future: _firebasePost.readFollowingPosts(context),
+            builder: (context, snapshot) {
+              return snapshot.hasData
+                  ? MasonryGridView.count(
+                      crossAxisCount: isSmall ? 1 : 3,
+                      mainAxisSpacing: 8,
+                      crossAxisSpacing: 8,
+                      itemCount: snapshot.data.docs.length,
+                      itemBuilder: (context, index) {
+                        return FeedCard(
+                            post:
+                                Post.fromMap(snapshot.data.docs[index].data()),
+                            index: index,
+                            height: isSmall ? 300 : (index % 4 + 2) * 100,
+                            width: 100,
+                            borderRadius: 10);
+                      })
+                  : Container();
+            })
+        : StreamBuilder<QuerySnapshot>(
+            stream: _firebasePost.readPosts(context),
+            builder: (context, snapshot) {
+              return snapshot.hasData
+                  ? MasonryGridView.count(
+                      crossAxisCount: isSmall ? 1 : 3,
+                      mainAxisSpacing: 8,
+                      crossAxisSpacing: 8,
+                      itemCount: snapshot.data.docs.length,
+                      itemBuilder: (context, index) {
+                        return FeedCard(
+                            post:
+                                Post.fromMap(snapshot.data.docs[index].data()),
+                            index: index,
+                            height: isSmall ? 300 : (index % 4 + 2) * 100,
+                            width: 100,
+                            borderRadius: 10);
+                      })
+                  : Container();
+            }),
   );
 }
