@@ -90,7 +90,7 @@ class _FeedCardState extends State<FeedCard> {
                         children: [
                           StreamBuilder<DocumentSnapshot>(
                             stream: _firebaseAccounts
-                                .getUserInfoDoc(widget.post.uid),
+                                .getUserInfoStream(widget.post.uid),
                             builder: (context, snapshot) {
                               return snapshot.hasData
                                   ? GestureDetector(

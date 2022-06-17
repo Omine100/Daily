@@ -127,7 +127,8 @@ Widget homeWebFeed(BuildContext context, bool isSmall) {
     child: _isFollowing
         ? FutureBuilder(
             future: _firebasePost.readFollowingPosts(context),
-            builder: (context, AsyncSnapshot<List<QuerySnapshot>> snapshot) {
+            builder:
+                (context, AsyncSnapshot<List<QueryDocumentSnapshot>> snapshot) {
               return snapshot.hasData
                   ? MasonryGridView.count(
                       crossAxisCount: isSmall ? 1 : 3,
@@ -136,8 +137,7 @@ Widget homeWebFeed(BuildContext context, bool isSmall) {
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
                         return FeedCard(
-                            post:
-                                Post.fromMap(snapshot.data[index].),
+                            post: Post.fromMap(snapshot.data[index].data()),
                             index: index,
                             height: isSmall ? 300 : (index % 4 + 2) * 100,
                             width: 100,

@@ -7,7 +7,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/userInterface/base/feedCard.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:daily/datastructures/user.dart' as dataStructure;
+import 'package:daily/datastructures/user.dart' as userStructure;
 import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
@@ -53,86 +53,116 @@ Widget profileWebInfo(BuildContext context, State state) {
             borderRadius: BorderRadius.circular(10),
             color: Theme.of(context).colorScheme.baseBackground,
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: getDimension(context, true,
-                    Theme.of(context).visualDensity.baseWebProfileIconHeight),
-                width: getDimension(context, true,
-                    Theme.of(context).visualDensity.baseWebProfileIconWidth),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Theme.of(context).colorScheme.baseWebProfileBackground,
-                ),
-                child: CachedNetworkImage(
-                  imageUrl: _firebaseAccounts.getCurrentUserProfilePic(),
-                  imageBuilder: (context, imageProvider) => Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: imageProvider, fit: BoxFit.cover),
-                    ),
-                  ),
-                  placeholder: (context, url) => showProgress(context),
-                  errorWidget: (context, url, error) => Icon(
-                    Icons.person_outline_rounded,
-                    size: 55,
-                    color: Theme.of(context).colorScheme.baseWebProfileIcon,
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(top: 15),
-                width: getDimension(context, false,
-                    Theme.of(context).visualDensity.baseWebProfileInfoWidth),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 5.0),
-                      child: Text(
-                        "@" + _firebaseAccounts.getCurrentUserDisplayName() ??
-                            getTranslated(context, "settingsNullName"),
-                        softWrap: false,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color:
-                              Theme.of(context).colorScheme.baseWebProfileName,
-                          fontSize:
-                              Theme.of(context).textTheme.baseWebProfileName,
-                          fontWeight:
-                              Theme.of(context).typography.baseWebProfileName,
-                        ),
-                      ),
-                    ),
-                    Tooltip(
-                      waitDuration: Duration(seconds: 1),
-                      message: _firebaseAccounts.getCurrentUserEmail(),
-                      child: Text(
-                        _firebaseAccounts.getCurrentUserEmail() ??
-                            getTranslated(context, "settingsNullEmail"),
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color:
-                              Theme.of(context).colorScheme.baseWebProfileEmail,
-                          fontSize:
-                              Theme.of(context).textTheme.baseWebProfileEmail,
-                          fontWeight:
-                              Theme.of(context).typography.baseWebProfileEmail,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              _uid == _firebaseAccounts.getCurrentUserId()
-                  ? Container()
-                  : followButton(context, state)
-            ],
+          child: FutureBuilder(
+            future: _firebaseAccounts.getUserInfoDoc(_uid),
+            builder: (context, AsyncSnapshot<DocumentSnapshot> document) {
+              userStructure.User user = document.hasData
+                  ? userStructure.User.fromSnap(document.data)
+                  : null;
+              return document.hasData
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        profileImage(context, user),
+                        profileInfo(context, user),
+                        _uid == _firebaseAccounts.getCurrentUserId()
+                            ? Container()
+                            : followButton(context, state)
+                      ],
+                    )
+                  : Container();
+            },
           )));
+}
+
+Widget profileInfo(BuildContext context, userStructure.User user) {
+  return Container(
+    padding: EdgeInsets.only(top: 15),
+    width: getDimension(context, false,
+        Theme.of(context).visualDensity.baseWebProfileInfoWidth),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 5.0),
+          child: Text(
+            "@" + user.displayName ??
+                getTranslated(context, "settingsNullName"),
+            softWrap: false,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.baseWebProfileName,
+              fontSize: Theme.of(context).textTheme.baseWebProfileName,
+              fontWeight: Theme.of(context).typography.baseWebProfileName,
+            ),
+          ),
+        ),
+        Text(
+          user.email ?? getTranslated(context, "settingsNullEmail"),
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.baseWebProfileEmail,
+            fontSize: Theme.of(context).textTheme.baseWebProfileEmail,
+            fontWeight: Theme.of(context).typography.baseWebProfileEmail,
+          ),
+        ),
+        Row(
+          children: [
+            Text(
+              "Following ${user.following.length}" ??
+                  getTranslated(context, "settingsNullEmail"),
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.baseWebProfileEmail,
+                fontSize: Theme.of(context).textTheme.baseWebProfileEmail,
+                fontWeight: Theme.of(context).typography.baseWebProfileEmail,
+              ),
+            ),
+            Text(
+              "Followers ${user.followers.length}" ??
+                  getTranslated(context, "settingsNullEmail"),
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.baseWebProfileEmail,
+                fontSize: Theme.of(context).textTheme.baseWebProfileEmail,
+                fontWeight: Theme.of(context).typography.baseWebProfileEmail,
+              ),
+            )
+          ],
+        )
+      ],
+    ),
+  );
+}
+
+Widget profileImage(BuildContext context, userStructure.User user) {
+  return Container(
+    height: getDimension(context, true,
+        Theme.of(context).visualDensity.baseWebProfileIconHeight),
+    width: getDimension(
+        context, true, Theme.of(context).visualDensity.baseWebProfileIconWidth),
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      color: Theme.of(context).colorScheme.baseWebProfileBackground,
+    ),
+    child: CachedNetworkImage(
+      imageUrl: user.profilePicURL,
+      imageBuilder: (context, imageProvider) => Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+        ),
+      ),
+      placeholder: (context, url) => showProgress(context),
+      errorWidget: (context, url, error) => Icon(
+        Icons.person_outline_rounded,
+        size: 55,
+        color: Theme.of(context).colorScheme.baseWebProfileIcon,
+      ),
+    ),
+  );
 }
 
 Widget followButton(BuildContext context, State state) {

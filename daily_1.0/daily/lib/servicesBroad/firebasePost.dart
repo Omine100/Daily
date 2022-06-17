@@ -82,18 +82,26 @@ class FirebasePost {
         .snapshots();
   }
 
-  Future<List<QuerySnapshot>> readFollowingPosts(BuildContext context) async {
+  Future<List<QueryDocumentSnapshot>> readFollowingPosts(
+      BuildContext context) async {
+    final Timestamp now = Timestamp.fromDate(DateTime.now());
+    final Timestamp yesterday = Timestamp.fromDate(
+      DateTime.now().subtract(const Duration(days: 1)),
+    );
     DocumentSnapshot<Object> user = await _firebaseAccounts
-        .getUserInfoStream(_firebaseAccounts.getCurrentUserId());
-    List<QuerySnapshot> list = [];
+        .getUserInfoDoc(_firebaseAccounts.getCurrentUserId());
+    List<QueryDocumentSnapshot> list = [];
 
     userStructure.User.fromSnap(user).following.forEach((element) async {
-      list.add(await _firestore
+      await _firestore
           .collection("Posts")
-          .where('uid', isEqualTo: element)
-          .get());
+          .where("uid", isEqualTo: element)
+          .where("timePosted", isLessThan: now, isGreaterThan: yesterday)
+          .get()
+          .then((value) {
+        value.docs.forEach((document) => {list.add(document)});
+      });
     });
-
     return list;
   }
 
