@@ -49,7 +49,7 @@ extension CustomConnectedColorScheme on ColorScheme {
   Color get forgotPasswordBackground =>
       Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get verifyBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
-  Color get baseBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
+  Color get baseBackground => Color(isDark.value ? 0xFF121212 : 0xFF121212);
   Color get settingsBackground => Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
   Color get textViewerBackground =>
       Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
@@ -157,7 +157,7 @@ extension CustomWebColorScheme on ColorScheme {
   Color get baseWebAppBarUnselectedIcon =>
       Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
   Color get baseWebDrawerBackground =>
-      Color(isDark.value ? 0xFF121212 : 0xFFFBFAF5);
+      Color(isDark.value ? 0xFF121212 : 0xFF121212);
   Color get baseWebDrawerItem => Color(isDark.value ? 0xFFCCCCCC : 0xFF555555);
   Color get baseWebSettingsIcon =>
       Color(isDark.value ? 0xFF525252 : 0xFFBDBDBD);
