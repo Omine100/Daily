@@ -114,9 +114,12 @@ class _SearchBarState extends State<SearchBar> {
       child: TextFormField(
         onChanged: (searchText) {
           _searchText = searchText;
-          _overlayEntry?.remove();
-          _setupOverlay(context);
-          Overlay.of(context).insert(_overlayEntry);
+          if (_searchText.length < 2) _overlayEntry?.remove();
+          if (_searchText.length > 1) {
+            _overlayEntry?.remove();
+            _setupOverlay(context);
+            Overlay.of(context).insert(_overlayEntry);
+          }
         },
         onSaved: (searchText) => {_searchText = searchText},
         key: _searchBarKey,
