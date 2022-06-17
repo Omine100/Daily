@@ -242,7 +242,8 @@ class FirebaseAccounts {
   Future<QuerySnapshot> searchUsers(String searchText) async {
     var docs = await _firestore
         .collection("Users")
-        .where("displayName", isLessThanOrEqualTo: searchText)
+        .where("displayName", isGreaterThanOrEqualTo: searchText)
+        .where("displayName", isLessThanOrEqualTo: "al\uf7ff")
         .get();
     return docs;
   }
