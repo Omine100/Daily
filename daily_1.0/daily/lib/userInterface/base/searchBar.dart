@@ -33,6 +33,7 @@ class SearchBar extends StatefulWidget {
 
 class _SearchBarState extends State<SearchBar> {
   FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
+  final LayerLink layerLink = LayerLink();
   GlobalKey _searchBarKey = new GlobalKey();
   String _searchText = "";
   OverlayEntry _overlayBackground;
@@ -45,6 +46,8 @@ class _SearchBarState extends State<SearchBar> {
           onTap: () {
             _overlayEntry.mounted ? _overlayEntry.remove() : null;
             _overlayBackground.mounted ? _overlayBackground.remove() : null;
+            _overlayEntry = null;
+            _overlayBackground = null;
           },
           child: Container(
             height: MediaQuery.of(context).size.height,
@@ -58,47 +61,67 @@ class _SearchBarState extends State<SearchBar> {
     _overlayEntry = OverlayEntry(
         builder: (_) => Positioned(
               width: (context.findRenderObject() as RenderBox).size.width,
-              child: Material(
-                child: FutureBuilder(
-                    future: _firebaseAccounts.searchUsers(_searchText),
-                    builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                      List<userStructure.User> users = [];
-                      snapshot.hasData
-                          ? snapshot.data.docs.forEach((element) {
-                              users.add(userStructure.User.fromSnap(element));
-                            })
-                          : null;
-                      return snapshot.hasData
-                          ? Container(
-                              height: 100,
-                              child: ListView(
-                                children: [
-                                  ListTile(
-                                    title: Text(
-                                      "${users.length} - ${_searchText}",
-                                      style: TextStyle(
-                                          color: Colors.black, fontSize: 30),
-                                    ),
-                                    onTap: () {
-                                      //Go to profile and dismiss
-                                    },
-                                  ),
-                                  for (var item in users)
-                                    ListTile(
-                                      title: Text(
-                                        "Test ${item.displayName}",
-                                        style: TextStyle(
-                                            color: Colors.black, fontSize: 30),
+              child: CompositedTransformFollower(
+                link: layerLink,
+                offset: Offset(0.0,
+                    (context.findRenderObject() as RenderBox).size.height - 10),
+                child: Material(
+                  color: Colors.grey,
+                  child: FutureBuilder(
+                      future: _firebaseAccounts.searchUsers(_searchText),
+                      builder:
+                          (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                        List<userStructure.User> users = [];
+                        snapshot.hasData
+                            ? snapshot.data.docs.forEach((element) {
+                                users.add(userStructure.User.fromSnap(element));
+                              })
+                            : null;
+                        return snapshot.hasData
+                            ? Container(
+                                height: 100,
+                                child: ListView(
+                                  children: [
+                                    for (var item in users)
+                                      ListTile(
+                                        title: Text(
+                                          "Test ${item.displayName}",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 30),
+                                        ),
+                                        onTap: () {
+                                          //Go to profile and dismiss
+                                        },
                                       ),
-                                      onTap: () {
-                                        //Go to profile and dismiss
-                                      },
-                                    ),
-                                ],
-                              ),
-                            )
-                          : Container();
-                    }),
+                                    users.isEmpty
+                                        ? ListTile(
+                                            title: Text(
+                                              "Empty",
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 30),
+                                            ),
+                                            onTap: () {
+                                              //Go to profile and dismiss
+                                            },
+                                          )
+                                        : Container()
+                                  ],
+                                ),
+                              )
+                            : ListTile(
+                                title: Text(
+                                  "Empty",
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 30),
+                                ),
+                                onTap: () {
+                                  //Go to profile and dismiss
+                                },
+                              );
+                      }),
+                ),
               ),
             ));
 
@@ -108,42 +131,45 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: widget.height,
-      width: widget.width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(widget.borderRadius),
-        color: widget.background,
-      ),
-      child: TextFormField(
-        onChanged: (searchText) {
-          _searchText = searchText;
-          if (_overlayBackground == null) _setupOverlay(context);
-        },
-        onSaved: (searchText) => {_searchText = searchText},
-        key: _searchBarKey,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          disabledBorder: InputBorder.none,
-          focusedErrorBorder: InputBorder.none,
-          errorBorder: InputBorder.none,
-          labelStyle: TextStyle(
-            color: widget.foreground,
-            fontSize: widget.fontSize,
-            fontWeight: widget.fontWeight,
-          ),
-          hintText: widget.hint,
-          hintStyle: TextStyle(
-            color: widget.foreground,
-            fontSize: widget.fontSize,
-            fontWeight: widget.fontWeight,
-          ),
-          prefixIcon: Icon(
-            Icons.search_outlined,
-            size: widget.iconSize,
-            color: widget.foreground,
+    return CompositedTransformTarget(
+      link: layerLink,
+      child: Container(
+        height: widget.height,
+        width: widget.width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+          color: widget.background,
+        ),
+        child: TextFormField(
+          onChanged: (searchText) {
+            _searchText = searchText;
+            if (_overlayBackground == null) _setupOverlay(context);
+          },
+          onSaved: (searchText) => {_searchText = searchText},
+          key: _searchBarKey,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+            focusedErrorBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            labelStyle: TextStyle(
+              color: widget.foreground,
+              fontSize: widget.fontSize,
+              fontWeight: widget.fontWeight,
+            ),
+            hintText: widget.hint,
+            hintStyle: TextStyle(
+              color: widget.foreground,
+              fontSize: widget.fontSize,
+              fontWeight: widget.fontWeight,
+            ),
+            prefixIcon: Icon(
+              Icons.search_outlined,
+              size: widget.iconSize,
+              color: widget.foreground,
+            ),
           ),
         ),
       ),
