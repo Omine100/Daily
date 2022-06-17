@@ -35,9 +35,27 @@ class _SearchBarState extends State<SearchBar> {
   FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
   GlobalKey _searchBarKey = new GlobalKey();
   String _searchText = "";
+  OverlayEntry _overlayBackground;
   OverlayEntry _overlayEntry;
 
   void _setupOverlay(BuildContext context) {
+    _overlayBackground = OverlayEntry(builder: (context) {
+      return Center(
+        child: GestureDetector(
+          onTap: () {
+            _overlayEntry.mounted ? _overlayEntry.remove() : null;
+            _overlayBackground.mounted ? _overlayBackground.remove() : null;
+          },
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: new Color(0xCC000000),
+          ),
+        ),
+      );
+    });
+    Overlay.of(context).insert(_overlayBackground);
+
     _overlayEntry?.remove();
     _overlayEntry = OverlayEntry(
         builder: (_) => Positioned(
@@ -101,7 +119,7 @@ class _SearchBarState extends State<SearchBar> {
                     }),
               ),
             ));
-    Overlay.of(context).insert(_overlayEntry);
+    _overlayEntry != null ? Overlay.of(context).insert(_overlayEntry) : null;
   }
 
   @override
@@ -116,10 +134,7 @@ class _SearchBarState extends State<SearchBar> {
       child: TextFormField(
         onChanged: (searchText) {
           _searchText = searchText;
-          if (_searchText.length < 2) _overlayEntry?.remove();
-          if (_searchText.length > 1) {
-            _setupOverlay(context);
-          }
+          _setupOverlay(context);
         },
         onSaved: (searchText) => {_searchText = searchText},
         key: _searchBarKey,
