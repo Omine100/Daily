@@ -1,4 +1,6 @@
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:daily/datastructures/user.dart' as userStructure;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
@@ -52,126 +54,156 @@ class _SideMenuState extends State<SideMenu> {
   }
 
   Widget _createProfile(BuildContext context, State state) {
-    return _firebaseAccounts.getSignedInStatus()
-        ? Center(
-            child: Container(
-                width: getDimension(context, false,
-                    Theme.of(context).visualDensity.baseWebProfileWidth),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () async {
-                        upload();
-                      },
-                      child: Container(
-                        height: getDimension(
-                            context,
-                            true,
-                            Theme.of(context)
-                                .visualDensity
-                                .baseWebProfileIconHeight),
-                        width: getDimension(
-                            context,
-                            true,
-                            Theme.of(context)
-                                .visualDensity
-                                .baseWebProfileIconWidth),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .baseWebProfileBackground,
-                        ),
-                        child: CachedNetworkImage(
-                          imageUrl:
-                              _firebaseAccounts.getCurrentUserProfilePic(),
-                          imageBuilder: (context, imageProvider) => Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  image: imageProvider, fit: BoxFit.cover),
-                            ),
-                          ),
-                          placeholder: (context, url) => showProgress(context),
-                          errorWidget: (context, url, error) => Icon(
-                            Icons.person_outline_rounded,
-                            size: 55,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .baseWebProfileIcon,
-                          ),
-                        ),
-                      ).showClickOnHover,
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(top: 15),
-                      width: getDimension(
-                          context,
-                          false,
-                          Theme.of(context)
-                              .visualDensity
-                              .baseWebProfileInfoWidth),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+    return Center(
+      child: Container(
+          width: getDimension(context, false,
+              Theme.of(context).visualDensity.baseWebProfileWidth),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              _createProfilePicture(context),
+              _createProfileInfo(context),
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: _createProfileReach(context),
+              )
+            ],
+          )),
+    );
+  }
+
+  Widget _createProfilePicture(BuildContext context) {
+    return GestureDetector(
+      onTap: () async {
+        upload();
+      },
+      child: Container(
+        height: getDimension(context, true,
+            Theme.of(context).visualDensity.baseWebProfileIconHeight),
+        width: getDimension(context, true,
+            Theme.of(context).visualDensity.baseWebProfileIconWidth),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Theme.of(context).colorScheme.baseWebProfileBackground,
+        ),
+        child: CachedNetworkImage(
+          imageUrl: _firebaseAccounts.getCurrentUserProfilePic(),
+          imageBuilder: (context, imageProvider) => Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+            ),
+          ),
+          placeholder: (context, url) => showProgress(context),
+          errorWidget: (context, url, error) => Icon(
+            Icons.person_outline_rounded,
+            size: 55,
+            color: Theme.of(context).colorScheme.baseWebProfileIcon,
+          ),
+        ),
+      ).showClickOnHover,
+    );
+  }
+
+  Widget _createProfileInfo(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(top: 15),
+      width: getDimension(context, false,
+          Theme.of(context).visualDensity.baseWebProfileInfoWidth),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 5.0),
+            child: GestureDetector(
+              onTap: () {
+                uid = _firebaseAccounts.getCurrentUserId();
+                onTabTapped(4);
+              },
+              child: Text(
+                "@" + _firebaseAccounts.getCurrentUserDisplayName() ??
+                    getTranslated(context, "settingsNullName"),
+                softWrap: false,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.baseWebProfileName,
+                  fontSize: Theme.of(context).textTheme.baseWebProfileName,
+                  fontWeight: Theme.of(context).typography.baseWebProfileName,
+                ),
+              ),
+            ).showClickOnHover,
+          ),
+          Tooltip(
+            waitDuration: Duration(seconds: 1),
+            message: _firebaseAccounts.getCurrentUserEmail(),
+            child: Text(
+              _firebaseAccounts.getCurrentUserEmail() ??
+                  getTranslated(context, "settingsNullEmail"),
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.baseWebProfileEmail,
+                fontSize: Theme.of(context).textTheme.baseWebProfileEmail,
+                fontWeight: Theme.of(context).typography.baseWebProfileEmail,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _createProfileReach(BuildContext context) {
+    return FutureBuilder(
+        future: _firebaseAccounts
+            .getUserInfoDoc(_firebaseAccounts.getCurrentUserId()),
+        builder: (context, AsyncSnapshot<DocumentSnapshot> document) {
+          userStructure.User user = document.hasData
+              ? userStructure.User.fromSnap(document.data)
+              : null;
+          return document.hasData
+              ? IntrinsicHeight(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 5.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                uid = _firebaseAccounts.getCurrentUserId();
-                                onTabTapped(4);
-                              },
-                              child: Text(
-                                "@" +
-                                        _firebaseAccounts
-                                            .getCurrentUserDisplayName() ??
-                                    getTranslated(context, "settingsNullName"),
-                                softWrap: false,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .baseWebProfileName,
-                                  fontSize: Theme.of(context)
-                                      .textTheme
-                                      .baseWebProfileName,
-                                  fontWeight: Theme.of(context)
-                                      .typography
-                                      .baseWebProfileName,
-                                ),
-                              ),
-                            ).showClickOnHover,
+                          Text(
+                            user.followers.length.toString(),
+                            style: TextStyle(color: Colors.white),
                           ),
-                          Tooltip(
-                            waitDuration: Duration(seconds: 1),
-                            message: _firebaseAccounts.getCurrentUserEmail(),
-                            child: Text(
-                              _firebaseAccounts.getCurrentUserEmail() ??
-                                  getTranslated(context, "settingsNullEmail"),
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .baseWebProfileEmail,
-                                fontSize: Theme.of(context)
-                                    .textTheme
-                                    .baseWebProfileEmail,
-                                fontWeight: Theme.of(context)
-                                    .typography
-                                    .baseWebProfileEmail,
-                              ),
-                            ),
-                          ),
+                          Text(
+                            "Followers",
+                            style: TextStyle(color: Colors.grey),
+                          )
                         ],
                       ),
-                    ),
-                  ],
-                )),
-          )
-        : Container();
+                      const VerticalDivider(
+                        width: 20,
+                        thickness: 1,
+                        color: Colors.grey,
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            user.following.length.toString(),
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            "Following",
+                            style: TextStyle(color: Colors.grey),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              : Container();
+        });
   }
+
+  Widget _createProfileReachContent(BuildContext context) {}
 
   Widget _createItem(
       {BuildContext context,

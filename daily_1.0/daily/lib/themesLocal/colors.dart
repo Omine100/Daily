@@ -164,7 +164,7 @@ extension CustomWebColorScheme on ColorScheme {
   Color get baseWebProfileBackground =>
       Color(isDark.value ? 0xFF666666 : 0xFFCCCCCC);
   Color get baseWebProfileIcon => Color(isDark.value ? 0xFFCCCCCC : 0xFFFFFFFF);
-  Color get baseWebProfileName => Color(isDark.value ? 0xFFAAAAAA : 0xFF444444);
+  Color get baseWebProfileName => Color(isDark.value ? 0xFFCCCCCC : 0xFF444444);
   Color get baseWebProfileEmail =>
       Color(isDark.value ? 0xFFBBBBBB : 0xFF555555);
   Color get baseWebCardContainer =>

@@ -226,55 +226,52 @@ Widget profileWebFeed(BuildContext context, bool isSmall) {
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
                       itemCount: snapshot.data.docs.length,
+                      reverse: true,
                       itemBuilder: (context, index) {
-                        return Container(
-                          height: 200,
-                          width: 300,
-                          child: TimelineTile(
-                            alignment: TimelineAlign.manual,
-                            axis: TimelineAxis.horizontal,
-                            isFirst: index == 0,
-                            isLast: index == snapshot.data.docs.length - 1,
-                            lineXY: 0.5,
-                            indicatorStyle: IndicatorStyle(
-                              width: 30,
-                              height: 30,
-                              indicator: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.fromBorderSide(
-                                    BorderSide(
-                                      color: Colors.white.withOpacity(0.2),
-                                      width: 4,
-                                    ),
+                        return TimelineTile(
+                          alignment: TimelineAlign.manual,
+                          axis: TimelineAxis.horizontal,
+                          isFirst: index == snapshot.data.docs.length - 1,
+                          isLast: index == 0,
+                          lineXY: 0.5,
+                          indicatorStyle: IndicatorStyle(
+                            width: 30,
+                            height: 30,
+                            indicator: Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.fromBorderSide(
+                                  BorderSide(
+                                    color: Colors.white.withOpacity(0.2),
+                                    width: 4,
                                   ),
                                 ),
                               ),
-                              drawGap: true,
                             ),
-                            startChild: index % 2 == 0
-                                ? FeedCard(
-                                    post: Post.fromMap(
-                                        snapshot.data.docs[index].data()),
-                                    borderRadius: 10,
-                                    height: 200,
-                                    width: 300,
-                                    index: 1,
-                                  )
-                                : Container(),
-                            endChild: index % 2 != 0
-                                ? FeedCard(
-                                    post: Post.fromMap(
-                                        snapshot.data.docs[index].data()),
-                                    borderRadius: 10,
-                                    height: 200,
-                                    width: 300,
-                                    index: 1,
-                                  )
-                                : Container(),
-                            beforeLineStyle: LineStyle(
-                              color: Colors.white.withOpacity(0.2),
-                            ),
+                            drawGap: true,
+                          ),
+                          startChild: index % 2 != 0
+                              ? FeedCard(
+                                  post: Post.fromMap(
+                                      snapshot.data.docs[index].data()),
+                                  borderRadius: 10,
+                                  height: 200,
+                                  width: 300,
+                                  index: 1,
+                                )
+                              : Container(),
+                          endChild: index % 2 == 0
+                              ? FeedCard(
+                                  post: Post.fromMap(
+                                      snapshot.data.docs[index].data()),
+                                  borderRadius: 10,
+                                  height: 200,
+                                  width: 300,
+                                  index: 1,
+                                )
+                              : Container(),
+                          beforeLineStyle: LineStyle(
+                            color: Colors.white.withOpacity(0.2),
                           ),
                         );
                       });

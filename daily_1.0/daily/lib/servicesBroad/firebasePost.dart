@@ -95,8 +95,8 @@ class FirebasePost {
     userStructure.User.fromSnap(user).following.forEach((element) async {
       await _firestore
           .collection("Posts")
-          .where("uid", isEqualTo: element)
           .where("timePosted", isLessThan: now, isGreaterThan: yesterday)
+          .where("uid", isEqualTo: element)
           .get()
           .then((value) {
         value.docs.forEach((document) => {list.add(document)});
