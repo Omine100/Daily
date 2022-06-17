@@ -33,26 +33,10 @@ class SearchBar extends StatefulWidget {
 
 class _SearchBarState extends State<SearchBar> {
   FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
-  final FocusNode _focusNode = FocusNode();
   GlobalKey _searchBarKey = new GlobalKey();
   String _searchText = "";
   OverlayEntry _overlayBackground;
   OverlayEntry _overlayEntry;
-
-  @override
-  void initState() {
-    super.initState();
-    if (_focusNode.hasFocus) {
-      _setupOverlay(context);
-      Overlay.of(context).insert(_overlayBackground);
-      Overlay.of(context).insert(_overlayEntry);
-    } else {
-      _searchText = "";
-      _overlayBackground?.remove();
-      _overlayEntry?.remove();
-    }
-    setState(() {});
-  }
 
   void _setupOverlay(BuildContext context) {
     _overlayBackground = OverlayEntry(builder: (context) {
@@ -110,29 +94,16 @@ class _SearchBarState extends State<SearchBar> {
                                         //Go to profile and dismiss
                                       },
                                     ),
-                                  ListTile(
-                                    title: Text(
-                                      "Has data",
-                                      style: TextStyle(
-                                          color: Colors.black, fontSize: 30),
-                                    ),
-                                    onTap: () {
-                                      //Go to profile and dismiss
-                                    },
-                                  )
                                 ],
                               ),
                             )
-                          : Container(
-                              child: Text(
-                                "No data",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 24),
-                              ),
-                            );
+                          : Container();
                     }),
               ),
             ));
+
+    Overlay.of(context).insert(_overlayBackground);
+    Overlay.of(context).insert(_overlayEntry);
   }
 
   @override
@@ -145,10 +116,9 @@ class _SearchBarState extends State<SearchBar> {
         color: widget.background,
       ),
       child: TextFormField(
-        focusNode: _focusNode,
         onChanged: (searchText) {
           _searchText = searchText;
-          _setupOverlay(context);
+          if (_overlayBackground == null) _setupOverlay(context);
         },
         onSaved: (searchText) => {_searchText = searchText},
         key: _searchBarKey,
