@@ -32,59 +32,71 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchBarState extends State<SearchBar> {
-  final FocusNode focusNode = FocusNode();
-  final TextEditingController controller = TextEditingController();
   FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
   GlobalKey _searchBarKey = new GlobalKey();
   String _searchText = "";
   OverlayEntry _overlayEntry;
 
-  @override
-  void initState() {
-    super.initState();
-
-    controller.addListener(() {
-      if (!focusNode.hasFocus) {
-        controller.text = '';
-      }
-    });
-
-    // OPTIMIZE THIS
-    focusNode.addListener(() {
-      if (focusNode.hasFocus) {
-        _overlayEntry = _showOverlay(context);
-        Overlay.of(context).insert(_overlayEntry);
-      } else {
-        _overlayEntry?.remove();
-      }
-      setState(() {});
-    });
-  }
-
-  OverlayEntry _showOverlay(BuildContext context) {
-    return OverlayEntry(
+  void _setupOverlay(BuildContext context) {
+    _overlayEntry = OverlayEntry(
         builder: (_) => Positioned(
               width: (context.findRenderObject() as RenderBox).size.width,
               child: Material(
                 child: FutureBuilder(
-                    future: _firebaseAccounts.searchUsers("c"),
+                    future: _firebaseAccounts.searchUsers(_searchText),
                     builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                      List<userStructure.User> users;
-                      for (var item in snapshot.data.docs)
-                        users.add(userStructure.User.fromSnap(item));
+                      List<userStructure.User> users = [];
+                      snapshot.hasData
+                          ? snapshot.data.docs.forEach((element) {
+                              users.add(userStructure.User.fromSnap(element));
+                            })
+                          : null;
                       return snapshot.hasData
-                          ? ListView(
-                              children: [
-                                for (var item in users)
+                          ? Container(
+                              height: 100,
+                              child: ListView(
+                                children: [
                                   ListTile(
-                                    title: Text(item.displayName),
+                                    title: Text(
+                                      "${users.length} - ${_searchText}",
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 30),
+                                    ),
+                                    onTap: () {
+                                      //Go to profile and dismiss
+                                    },
+                                  ),
+                                  for (var item in users)
+                                    ListTile(
+                                      title: Text(
+                                        "Test ${item.displayName}",
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 30),
+                                      ),
+                                      onTap: () {
+                                        //Go to profile and dismiss
+                                      },
+                                    ),
+                                  ListTile(
+                                    title: Text(
+                                      "Has data",
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 30),
+                                    ),
                                     onTap: () {
                                       //Go to profile and dismiss
                                     },
                                   )
-                              ],
+                                ],
+                              ),
                             )
-                          : Container();
+                          : Container(
+                              child: Text(
+                                "No data",
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 24),
+                              ),
+                            );
                     }),
               ),
             ));
@@ -102,9 +114,10 @@ class _SearchBarState extends State<SearchBar> {
       child: TextFormField(
         onChanged: (searchText) {
           _searchText = searchText;
+          _overlayEntry?.remove();
+          _setupOverlay(context);
+          Overlay.of(context).insert(_overlayEntry);
         },
-        controller: controller,
-        focusNode: focusNode,
         onSaved: (searchText) => {_searchText = searchText},
         key: _searchBarKey,
         decoration: InputDecoration(

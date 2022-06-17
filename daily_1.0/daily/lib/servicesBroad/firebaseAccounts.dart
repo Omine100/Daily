@@ -240,9 +240,10 @@ class FirebaseAccounts {
   }
 
   Future<QuerySnapshot> searchUsers(String searchText) async {
-    return await _firestore
+    var docs = await _firestore
         .collection("Users")
         .where("displayName", isGreaterThanOrEqualTo: searchText)
         .get();
+    return docs;
   }
 }
