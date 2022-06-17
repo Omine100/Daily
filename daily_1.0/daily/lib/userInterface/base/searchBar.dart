@@ -38,6 +38,7 @@ class _SearchBarState extends State<SearchBar> {
   OverlayEntry _overlayEntry;
 
   void _setupOverlay(BuildContext context) {
+    _overlayEntry?.remove();
     _overlayEntry = OverlayEntry(
         builder: (_) => Positioned(
               width: (context.findRenderObject() as RenderBox).size.width,
@@ -100,6 +101,7 @@ class _SearchBarState extends State<SearchBar> {
                     }),
               ),
             ));
+    Overlay.of(context).insert(_overlayEntry);
   }
 
   @override
@@ -116,9 +118,7 @@ class _SearchBarState extends State<SearchBar> {
           _searchText = searchText;
           if (_searchText.length < 2) _overlayEntry?.remove();
           if (_searchText.length > 1) {
-            _overlayEntry?.remove();
             _setupOverlay(context);
-            Overlay.of(context).insert(_overlayEntry);
           }
         },
         onSaved: (searchText) => {_searchText = searchText},
