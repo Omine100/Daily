@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:daily/datastructures/user.dart' as userStructure;
+import 'package:daily/servicesBroad/firebaseAccounts.dart';
 
 class SearchBar extends StatefulWidget {
   final double height;
@@ -10,7 +13,6 @@ class SearchBar extends StatefulWidget {
   final FontWeight fontWeight;
   final double fontSize;
   final String hint;
-  final Function onChanged;
 
   SearchBar(
       {Key key,
@@ -22,8 +24,7 @@ class SearchBar extends StatefulWidget {
       @required this.iconSize,
       @required this.fontWeight,
       @required this.fontSize,
-      @required this.hint,
-      @required this.onChanged})
+      @required this.hint})
       : super(key: key);
 
   @override
@@ -31,7 +32,63 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchBarState extends State<SearchBar> {
+  final FocusNode focusNode = FocusNode();
+  final TextEditingController controller = TextEditingController();
+  FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
   GlobalKey _searchBarKey = new GlobalKey();
+  String _searchText = "";
+  OverlayEntry _overlayEntry;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller.addListener(() {
+      if (!focusNode.hasFocus) {
+        controller.text = '';
+      }
+    });
+
+    // OPTIMIZE THIS
+    focusNode.addListener(() {
+      if (focusNode.hasFocus) {
+        _overlayEntry = _showOverlay(context);
+        Overlay.of(context).insert(_overlayEntry);
+      } else {
+        _overlayEntry?.remove();
+      }
+      setState(() {});
+    });
+  }
+
+  OverlayEntry _showOverlay(BuildContext context) {
+    return OverlayEntry(
+        builder: (_) => Positioned(
+              width: (context.findRenderObject() as RenderBox).size.width,
+              child: Material(
+                child: FutureBuilder(
+                    future: _firebaseAccounts.searchUsers("c"),
+                    builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                      List<userStructure.User> users;
+                      for (var item in snapshot.data.docs)
+                        users.add(userStructure.User.fromSnap(item));
+                      return snapshot.hasData
+                          ? ListView(
+                              children: [
+                                for (var item in users)
+                                  ListTile(
+                                    title: Text(item.displayName),
+                                    onTap: () {
+                                      //Go to profile and dismiss
+                                    },
+                                  )
+                              ],
+                            )
+                          : Container();
+                    }),
+              ),
+            ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +100,12 @@ class _SearchBarState extends State<SearchBar> {
         color: widget.background,
       ),
       child: TextFormField(
-        onChanged: widget.onChanged,
+        onChanged: (searchText) {
+          _searchText = searchText;
+        },
+        controller: controller,
+        focusNode: focusNode,
+        onSaved: (searchText) => {_searchText = searchText},
         key: _searchBarKey,
         decoration: InputDecoration(
           border: InputBorder.none,

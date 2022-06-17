@@ -238,4 +238,11 @@ class FirebaseAccounts {
       });
     }
   }
+
+  Future<QuerySnapshot> searchUsers(String searchText) async {
+    return await _firestore
+        .collection("Users")
+        .where("displayName", isGreaterThanOrEqualTo: searchText)
+        .get();
+  }
 }

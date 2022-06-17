@@ -151,8 +151,7 @@ Widget _baseWebHeaderSearchBar(BuildContext context) {
       iconSize: 25,
       fontWeight: FontWeight.w300,
       fontSize: 16,
-      hint: "Search",
-      onChanged: null);
+      hint: "Search");
 }
 
 Widget _baseWebPostButton(BuildContext context) {
