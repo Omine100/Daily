@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:daily/themesLocal/colorSchemes.dart';
-import 'package:daily/themesLocal/typography.dart';
+import 'package:daily/themesLocal/themeData/colorSchemes.dart';
+import 'package:daily/themesLocal/themeData/textThemes.dart';
 
 ThemeData lightThemeData = ThemeData(
   colorScheme: lightColorScheme,
-  typography: typography,
-  textTheme: ,
+  textTheme: lightTextTheme,
 );
 
 ThemeData lightThemeDataExtension = lightThemeData.copyWith(
@@ -17,7 +16,7 @@ ThemeData lightThemeDataExtension = lightThemeData.copyWith(
 
 ThemeData darkThemeData = ThemeData(
   colorScheme: darkColorScheme,
-  typography: typography,
+  textTheme: darkTextTheme,
 );
 
 ThemeData darkThemeDataExtension = darkThemeData.copyWith(
