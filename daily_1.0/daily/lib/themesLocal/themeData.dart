@@ -5,6 +5,7 @@ import 'package:daily/themesLocal/typography.dart';
 ThemeData lightThemeData = ThemeData(
   colorScheme: lightColorScheme,
   typography: typography,
+  textTheme: ,
 );
 
 ThemeData lightThemeDataExtension = lightThemeData.copyWith(
