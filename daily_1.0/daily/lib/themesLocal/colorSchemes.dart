@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-ColorScheme myLightColorScheme = ColorScheme(
+ColorScheme lightColorScheme = ColorScheme(
   primary: myLightPrimaryColor,
   secondary: myLightSecondaryColor,
   surface: myLightSurfaceColor,
@@ -14,7 +14,7 @@ ColorScheme myLightColorScheme = ColorScheme(
   brightness: Brightness.light,
 );
 
-ColorScheme myDarkColorScheme = ColorScheme(
+ColorScheme darkColorScheme = ColorScheme(
   primary: myDarkPrimaryColor,
   secondary: myDarkSecondaryColor,
   surface: myDarkSurfaceColor,
