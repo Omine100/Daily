@@ -25,7 +25,7 @@ ColorScheme darkColorScheme = ColorScheme(
   onSurface: myDarkOnSurfaceColor,
   onBackground: myDarkOnBackgroundColor,
   onError: myDarkOnErrorColor,
-  brightness: Brightness.light,
+  brightness: Brightness.dark,
 );
 
 @immutable
