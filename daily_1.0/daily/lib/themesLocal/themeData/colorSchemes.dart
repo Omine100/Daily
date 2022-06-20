@@ -1,12 +1,44 @@
 import 'package:flutter/material.dart';
 
 ColorScheme lightColorScheme = ColorScheme(
-  primary: Color(0xff28a745),
+  primary: Color(0xFFFFFFFF),
+  onPrimary: Color(0xFF333333), //Title
+  secondary: Color(0xFFFF4350), //Accent
+  onSecondary: Color(0xFF999999), //Subtitle
+  background: Color(0xFFFBFAF5),
+  onBackground: Color(0xFF333333), //TextOnBackground
+  primaryContainer: Color(0xFFFFFFFF),
+  onPrimaryContainer: Color(0xFF9E9E9E), //TextOnContainer
+  secondaryContainer: Color(0xFFFBFAF5),
+  onSecondaryContainer: Color(0xFF9E9E9E), //TextOnContainer
+  surface: Color(0xFFFF4350), //Button
+  onSurface: Color(0xFFCCCCCC), //TextOnButton
+  surfaceTint: Color(0xFFFF9999), //Inkwell
+  surfaceVariant: Color(0xFF202020), //ButtonDeactivated
+  onSurfaceVariant: Color(0xFFFFFFFF), //TextOnButton
+  error: Color(0xFFFF4350),
+  onError: Color(0xFFFFFFFF), //TextOnError
   brightness: Brightness.light,
 );
 
 ColorScheme darkColorScheme = ColorScheme(
-  primary: Color(0xff28a745),
+  primary: Color(0xFF000000),
+  onPrimary: Color(0xFFCCCCCC), //Title
+  secondary: Color(0xFFFF4350), //Accent
+  onSecondary: Color(0xFF999999), //Subtitle
+  background: Color(0xFF121212),
+  onBackground: Color(0xFFCCCCCC), //TextOnBackground
+  primaryContainer: Color(0xFF202020),
+  onPrimaryContainer: Color(0xFF9E9E9E), //TextOnContainer
+  secondaryContainer: Color(0xFF121212),
+  onSecondaryContainer: Color(0xFF9E9E9E), //TextOnContainer
+  surface: Color(0xFFEF5350), //Button
+  onSurface: Color(0xFFCCCCCC), //TextOnButton
+  surfaceTint: Color(0xFFFF5350), //Inkwell
+  surfaceVariant: Color(0xFF323232), //ButtonDeactivated
+  onSurfaceVariant: Color(0xFFCCCCCC), //TextOnButton
+  error: Color(0xFFFF4350),
+  onError: Color(0xFFFFFFFF), //TextOnError
   brightness: Brightness.dark,
 );
 
@@ -14,28 +46,20 @@ ColorScheme darkColorScheme = ColorScheme(
 class CustomColors extends ThemeExtension<CustomColors> {
   const CustomColors({
     @required this.success,
-    @required this.info,
-    @required this.warning,
-    @required this.danger,
+    @required this.icon,
   });
 
   final Color success;
-  final Color info;
-  final Color warning;
-  final Color danger;
+  final Color icon;
 
   @override
   CustomColors copyWith({
     Color success,
-    Color info,
-    Color warning,
-    Color danger,
+    Color icon,
   }) {
     return CustomColors(
       success: success ?? this.success,
-      info: info ?? this.info,
-      warning: warning ?? this.warning,
-      danger: danger ?? this.danger,
+      icon: icon ?? this.icon,
     );
   }
 
@@ -47,32 +71,17 @@ class CustomColors extends ThemeExtension<CustomColors> {
     }
     return CustomColors(
       success: Color.lerp(success, (other as CustomColors).success, t),
-      info: Color.lerp(info, (other as CustomColors).info, t),
-      warning: Color.lerp(warning, (other as CustomColors).warning, t),
-      danger: Color.lerp(danger, (other as CustomColors).danger, t),
+      icon: Color.lerp(icon, (other as CustomColors).icon, t),
     );
   }
 
-  // Controls how it displays when the instance is being passed
-  // to the `print()` method.
-  @override
-  String toString() => 'CustomColors('
-      'success: $success, info: $info, warning: $info, danger: $danger'
-      ')';
-
-  // the light theme
   static const light = CustomColors(
-    success: Color(0xff28a745),
-    info: Color(0xff17a2b8),
-    warning: Color(0xffffc107),
-    danger: Color(0xffdc3545),
+    success: Color(0xFF66BB6A),
+    icon: Color(0xFF888888),
   );
 
-  // the dark theme
   static const dark = CustomColors(
-    success: Color(0xff00bc8c),
-    info: Color(0xff17a2b8),
-    warning: Color(0xfff39c12),
-    danger: Color(0xffe74c3c),
+    success: Color(0xFF66BB6A),
+    icon: Color(0xFF555555),
   );
 }

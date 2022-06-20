@@ -64,7 +64,9 @@ Widget homeWebPrompt(BuildContext context) {
               child: AdaptiveText(
             snapshot.hasData ? snapshot.data : "Prompt Unavailable....",
             style: TextStyle(
-                color: Colors.grey, fontSize: 18, fontWeight: FontWeight.w400),
+                color: Color(0xFF9E9E9E),
+                fontSize: 18,
+                fontWeight: FontWeight.w400),
           )),
         ),
       );
