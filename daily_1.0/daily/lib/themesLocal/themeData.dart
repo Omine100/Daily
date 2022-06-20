@@ -11,6 +11,7 @@ ThemeData lightThemeData = ThemeData(
 ThemeData lightThemeDataExtension = lightThemeData.copyWith(
   extensions: <ThemeExtension<dynamic>>[
     CustomColors.light,
+    CustomTextTheme.light,
   ],
 );
 
@@ -22,5 +23,6 @@ ThemeData darkThemeData = ThemeData(
 ThemeData darkThemeDataExtension = darkThemeData.copyWith(
   extensions: <ThemeExtension<dynamic>>[
     CustomColors.dark,
+    CustomTextTheme.dark,
   ],
 );

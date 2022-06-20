@@ -12,6 +12,52 @@ Typography typography = Typography(
   dense: DenseTextTheme,
   tall: TallTextTheme,
 );
+//Can I extend textTheme?
+
+@immutable
+class CustomTextTheme extends ThemeExtension<CustomTextTheme> {
+  const CustomTextTheme({
+    @required this.success,
+  });
+
+  final TextStyle success;
+
+  @override
+  CustomTextTheme copyWith({
+    TextStyle success,
+  }) {
+    return CustomTextTheme(
+      success: success ?? this.success,
+    );
+  }
+
+  // Controls how the properties change on theme changes
+  @override
+  CustomTextTheme lerp(ThemeExtension<CustomTextTheme> other, double t) {
+    if (other is! CustomTextTheme) {
+      return this;
+    }
+    return CustomTextTheme(
+      success: TextStyle(),
+    );
+  }
+
+  // Controls how it displays when the instance is being passed
+  // to the `print()` method.
+  @override
+  String toString() => 'CustomTextTheme('
+      'success: $success';
+
+  // the light theme
+  static const light = CustomTextTheme(
+    success: TextStyle(),
+  );
+
+  // the dark theme
+  static const dark = CustomTextTheme(
+    success: TextStyle(),
+  );
+}
 
 TextTheme BlackTextTheme = TextTheme(
   headline1: TextStyle(
