@@ -1,8 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 TextTheme lightTextTheme = TextTheme(
   headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
