@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
-import 'package:daily/themesLocal/fontSizes.dart';
-import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
@@ -18,27 +15,15 @@ Widget forgotPasswordMobileTitle(BuildContext context) {
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      Text(
-        getTranslated(context, "forgotPasswordTitle"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordMobileTitle,
-          fontSize: Theme.of(context).textTheme.forgotPasswordMobileTitle,
-          fontWeight: Theme.of(context).typography.forgotPasswordMobileTitle,
-        ),
-      ),
+      Text(getTranslated(context, "forgotPasswordTitle"),
+          style: Theme.of(context).textTheme.titleSmall),
       Padding(
         padding: EdgeInsets.all(10),
       ),
-      Text(
-        getTranslated(context, "forgotPasswordSubtitle"),
-        softWrap: true,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordMobileSubtitle,
-          fontSize: Theme.of(context).textTheme.forgotPasswordMobileSubtitle,
-          fontWeight: Theme.of(context).typography.forgotPasswordMobileSubtitle,
-        ),
-      ),
+      Text(getTranslated(context, "forgotPasswordSubtitle"),
+          softWrap: true,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.subtitle1),
     ],
   );
 }
@@ -104,33 +89,11 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
           ),
         ),
         hintText: getTranslated(context, "forgotPasswordFormEmail"),
-        labelStyle: TextStyle(
-          color: Theme.of(context)
-              .colorScheme
-              .forgotPasswordMobileUserInputFieldDecoration,
-          fontSize: Theme.of(context)
-              .textTheme
-              .forgotPasswordMobileUserInputFieldDecoration,
-          fontWeight: Theme.of(context)
-              .typography
-              .forgotPasswordMobileUserInputFieldDecoration,
-        ),
-        hintStyle: TextStyle(
-          color: Theme.of(context)
-              .colorScheme
-              .forgotPasswordMobileUserInputFieldDecoration,
-          fontSize: Theme.of(context)
-              .textTheme
-              .forgotPasswordMobileUserInputFieldDecoration,
-          fontWeight: Theme.of(context)
-              .typography
-              .forgotPasswordMobileUserInputFieldDecoration,
-        ),
+        labelStyle: customTextThemes.inputField,
+        hintStyle: customTextThemes.inputField,
         prefixIcon: Icon(
           Icons.email,
-          color: Theme.of(context)
-              .colorScheme
-              .forgotPasswordMobileUserInputFieldIconDecoration,
+          color: customColors.icon,
         ),
       ),
     ),

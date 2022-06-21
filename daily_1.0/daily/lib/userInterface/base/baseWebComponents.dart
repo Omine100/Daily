@@ -1,9 +1,9 @@
+import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/base/alertsDropdown.dart';
 import 'package:daily/userInterface/base/upload.dart';
 import 'package:daily/userInterface/base/home/home.dart';
@@ -52,7 +52,7 @@ Widget baseWebCardContainer(BuildContext context, State state, bool isSmall,
   return Container(
       height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.baseWebCardContainer,
+          color: Theme.of(context).colorScheme.primaryContainer,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(isSmall ? 0 : 50),
               bottomLeft: _pageIndex == 4
@@ -146,11 +146,10 @@ Widget _baseWebHeaderSearchBar(BuildContext context) {
       height: 40,
       width: MediaQuery.of(context).size.width * 0.5,
       borderRadius: 10,
-      background: Theme.of(context).colorScheme.baseWebDrawerItem,
-      foreground: Theme.of(context).colorScheme.baseBackground,
+      background: Theme.of(context).colorScheme.background,
       iconSize: 25,
-      fontWeight: FontWeight.w300,
-      fontSize: 16,
+      iconColor: customColors.icon,
+      textStyle: customTextThemes.inputField,
       hint: "Search");
 }
 
@@ -167,7 +166,7 @@ Widget _baseWebHeaderNotifications(BuildContext context) {
     message: "Notifications",
     waitDuration: Duration(seconds: 1),
     child: AlertsDropdown(
-      backgroundColor: Theme.of(context).colorScheme.baseBackground,
+      backgroundColor: Theme.of(context).colorScheme.background,
       iconColor: Colors.grey,
       icons: [
         Icon(Icons.person),

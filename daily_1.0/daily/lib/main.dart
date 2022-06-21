@@ -1,4 +1,5 @@
 import 'package:daily/firebase_options.dart';
+import 'package:daily/themesLocal/themeData/themeData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,7 +12,6 @@ import 'package:daily/servicesLocal/systemLocalizations.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
-import 'package:daily/themesLocal/colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,6 +62,9 @@ class _DailyState extends State<Daily> {
 
   @override
   Widget build(BuildContext context) {
+    setColorSchemeExtension(context);
+    setTextThemeExtension(context);
+
     return MaterialApp.router(
       scrollBehavior: CustomScrollBehavior(),
       routerDelegate: _appRouter.delegate(),
@@ -72,7 +75,8 @@ class _DailyState extends State<Daily> {
       locale: locale.value != null
           ? Locale(locale.value.split("_").first, locale.value.split("_").last)
           : locale.defaultValue,
-      theme: materialThemeData(),
+      theme: lightThemeDataExtension,
+      darkTheme: darkThemeDataExtension,
       supportedLocales: [
         Locale('zh'),
         Locale('en'),

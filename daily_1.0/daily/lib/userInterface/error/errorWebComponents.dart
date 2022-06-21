@@ -4,11 +4,8 @@ import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/themesLocal/positions.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/constraints.dart';
-import 'package:daily/themesLocal/fontSizes.dart';
-import 'package:daily/themesLocal/fontWeights.dart';
 
 Widget errorWebCardContainer(BuildContext context) {
   return SingleChildScrollView(
@@ -20,7 +17,7 @@ Widget errorWebCardContainer(BuildContext context) {
       width: getDimension(context, true,
           Theme.of(context).visualDensity.errorWebCardContainerWidth),
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.errorWebCardContainer,
+          color: Theme.of(context).colorScheme.primaryContainer,
           borderRadius: BorderRadius.all(Radius.circular(50))),
       child: errorWebCard(context),
     ),
@@ -46,26 +43,14 @@ Widget errorTitle(BuildContext context) {
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      Text(
-        getTranslated(context, "errorTitle"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.errorWebTitle,
-          fontSize: Theme.of(context).textTheme.errorWebTitle,
-          fontWeight: Theme.of(context).typography.errorWebTitle,
-        ),
-      ),
+      Text(getTranslated(context, "errorTitle"),
+          style: Theme.of(context).textTheme.titleSmall),
       Padding(
         padding: EdgeInsets.all(5),
       ),
-      Text(
-        getTranslated(context, "errorSubtitle"),
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.errorWebSubtitle,
-          fontSize: Theme.of(context).textTheme.errorWebSubtitle,
-          fontWeight: Theme.of(context).typography.errorWebSubtitle,
-        ),
-      ),
+      Text(getTranslated(context, "errorSubtitle"),
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.subtitle1),
     ],
   );
 }

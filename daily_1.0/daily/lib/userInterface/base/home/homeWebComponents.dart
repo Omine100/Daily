@@ -6,7 +6,6 @@ import 'package:daily/servicesBroad/firebasePost.dart';
 import 'package:daily/servicesBroad/firebasePrompt.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/hover.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/base/feedCard.dart';
 
 FirebasePrompt _firebasePrompt = new FirebasePrompt();
@@ -58,7 +57,7 @@ Widget homeWebPrompt(BuildContext context) {
           height: 60,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Theme.of(context).colorScheme.baseBackground,
+            color: Theme.of(context).colorScheme.background,
           ),
           child: Center(
               child: AdaptiveText(

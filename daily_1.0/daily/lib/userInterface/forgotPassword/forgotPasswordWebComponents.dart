@@ -3,10 +3,7 @@ import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
-import 'package:daily/themesLocal/fontSizes.dart';
-import 'package:daily/themesLocal/fontWeights.dart';
 import 'package:daily/userInterface/auth/authWebComponents.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
@@ -48,27 +45,15 @@ Widget forgotPasswordWebTitle(BuildContext context) {
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      AdaptiveText(
-        getTranslated(context, "forgotPasswordTitle"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordWebTitle,
-          fontSize: Theme.of(context).textTheme.forgotPasswordWebTitle,
-          fontWeight: Theme.of(context).typography.forgotPasswordWebTitle,
-        ),
-      ),
+      AdaptiveText(getTranslated(context, "forgotPasswordTitle"),
+          style: Theme.of(context).textTheme.titleSmall),
       Padding(
         padding: EdgeInsets.all(10),
       ),
-      Text(
-        getTranslated(context, "forgotPasswordSubtitle"),
-        softWrap: true,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordWebSubtitle,
-          fontSize: Theme.of(context).textTheme.forgotPasswordWebSubtitle,
-          fontWeight: Theme.of(context).typography.forgotPasswordWebSubtitle,
-        ),
-      ),
+      Text(getTranslated(context, "forgotPasswordSubtitle"),
+          softWrap: true,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.subtitle1),
     ],
   );
 }
@@ -122,33 +107,11 @@ Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: getTranslated(context, "forgotPasswordFormEmail"),
-          labelStyle: TextStyle(
-            color: Theme.of(context)
-                .colorScheme
-                .forgotPasswordWebUserInputFieldDecoration,
-            fontSize: Theme.of(context)
-                .textTheme
-                .forgotPasswordWebUserInputFieldDecoration,
-            fontWeight: Theme.of(context)
-                .typography
-                .forgotPasswordWebUserInputFieldDecoration,
-          ),
-          hintStyle: TextStyle(
-            color: Theme.of(context)
-                .colorScheme
-                .forgotPasswordWebUserInputFieldDecoration,
-            fontSize: Theme.of(context)
-                .textTheme
-                .forgotPasswordWebUserInputFieldDecoration,
-            fontWeight: Theme.of(context)
-                .typography
-                .forgotPasswordWebUserInputFieldDecoration,
-          ),
+          labelStyle: customTextThemes.inputField,
+          hintStyle: customTextThemes.inputField,
           prefixIcon: Icon(
             Icons.email,
-            color: Theme.of(context)
-                .colorScheme
-                .forgotPasswordWebUserInputFieldIconDecoration,
+            color: customColors.icon,
           ),
         ),
       ),

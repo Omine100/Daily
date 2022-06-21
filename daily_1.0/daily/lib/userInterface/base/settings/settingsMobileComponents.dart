@@ -9,10 +9,7 @@ import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/standards/userXStandards.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
-import 'package:daily/themesLocal/fontSizes.dart';
-import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
@@ -21,14 +18,8 @@ Widget settingsTitle(BuildContext context) {
     alignment: Alignment.center,
     width: getDimension(
         context, false, Theme.of(context).visualDensity.settingsTitleWidth),
-    child: Text(
-      getTranslated(context, "settingsTitle"),
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.settingsMobileTitle,
-        fontSize: Theme.of(context).textTheme.settingsTitle,
-        fontWeight: Theme.of(context).typography.settingsTitle,
-      ),
-    ),
+    child: Text(getTranslated(context, "settingsTitle"),
+        style: Theme.of(context).textTheme.titleSmall),
   );
 }
 
@@ -62,9 +53,7 @@ Widget settingsProfile(BuildContext context, State state) {
                             .settingsProfileIconWidth),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Theme.of(context)
-                          .colorScheme
-                          .settingsMobileProfileBackground,
+                      color: Theme.of(context).colorScheme.background,
                     ),
                     child: CachedNetworkImage(
                       imageUrl: profileURL.value,
@@ -79,9 +68,7 @@ Widget settingsProfile(BuildContext context, State state) {
                       errorWidget: (context, url, error) => Icon(
                         Icons.person_outline_rounded,
                         size: 55,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .settingsMobileProfileIcon,
+                        color: customColors.icon,
                       ),
                     ),
                   ),

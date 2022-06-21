@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/userInterface/forgotPassword/forgotPasswordWebComponents.dart';
@@ -129,7 +128,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         child: Scaffold(
       body: SingleChildScrollView(
         child: Container(
-            color: Theme.of(context).colorScheme.forgotPasswordBackground,
+            color: Theme.of(context).colorScheme.background,
             constraints: BoxConstraints(
                 maxHeight: textFieldFocus.hasFocus
                     ? getDimension(

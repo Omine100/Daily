@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:daily/datastructures/user.dart' as userStructure;
@@ -8,10 +10,9 @@ class SearchBar extends StatefulWidget {
   final double width;
   final double borderRadius;
   final Color background;
-  final Color foreground;
   final double iconSize;
-  final FontWeight fontWeight;
-  final double fontSize;
+  final Color iconColor;
+  final TextStyle textStyle;
   final String hint;
 
   SearchBar(
@@ -20,10 +21,9 @@ class SearchBar extends StatefulWidget {
       @required this.width,
       @required this.borderRadius,
       @required this.background,
-      @required this.foreground,
       @required this.iconSize,
-      @required this.fontWeight,
-      @required this.fontSize,
+      @required this.iconColor,
+      @required this.textStyle,
       @required this.hint})
       : super(key: key);
 
@@ -154,21 +154,13 @@ class _SearchBarState extends State<SearchBar> {
             disabledBorder: InputBorder.none,
             focusedErrorBorder: InputBorder.none,
             errorBorder: InputBorder.none,
-            labelStyle: TextStyle(
-              color: widget.foreground,
-              fontSize: widget.fontSize,
-              fontWeight: widget.fontWeight,
-            ),
+            labelStyle: widget.textStyle,
             hintText: widget.hint,
-            hintStyle: TextStyle(
-              color: widget.foreground,
-              fontSize: widget.fontSize,
-              fontWeight: widget.fontWeight,
-            ),
+            hintStyle: widget.textStyle,
             prefixIcon: Icon(
               Icons.search_outlined,
               size: widget.iconSize,
-              color: widget.foreground,
+              color: widget.iconColor,
             ),
           ),
         ),

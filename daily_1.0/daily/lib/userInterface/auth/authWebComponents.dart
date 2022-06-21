@@ -11,11 +11,8 @@ import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/themesLocal/positions.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/constraints.dart';
-import 'package:daily/themesLocal/fontSizes.dart';
-import 'package:daily/themesLocal/fontWeights.dart';
 import 'package:daily/userInterface/forgotPassword/forgotPasswordWebComponents.dart';
 import 'package:daily/userInterface/verify/verifyWebComponents.dart';
 
@@ -45,7 +42,7 @@ Widget authWebCardContainer(BuildContext context, State state, bool isSmall) {
           width: getDimension(context, false,
               Theme.of(context).visualDensity.authWebCardContainerWidth),
           decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.authWebCardContainer,
+              color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: isSmall
                   ? BorderRadius.all(Radius.circular(50))
                   : BorderRadius.only(
@@ -115,11 +112,7 @@ Widget authWebTitle(BuildContext context) {
           _authControls == AuthControls.signIn
               ? "authTitleSignIn"
               : "authTitleSignUp"),
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.authWebTitle,
-        fontSize: Theme.of(context).textTheme.authWebTitle,
-        fontWeight: Theme.of(context).typography.authWebTitle,
-      ),
+      style: Theme.of(context).textTheme.titleSmall,
     ),
   );
 }
@@ -202,22 +195,8 @@ Widget authWebUserInputField(BuildContext context, State state,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: getTranslated(context, authForm),
-          labelStyle: TextStyle(
-            color:
-                Theme.of(context).colorScheme.authWebUserInputFieldDecoration,
-            fontSize:
-                Theme.of(context).textTheme.authWebUserInputFieldDecoration,
-            fontWeight:
-                Theme.of(context).typography.authWebUserInputFieldDecoration,
-          ),
-          hintStyle: TextStyle(
-            color:
-                Theme.of(context).colorScheme.authWebUserInputFieldDecoration,
-            fontSize:
-                Theme.of(context).textTheme.authWebUserInputFieldDecoration,
-            fontWeight:
-                Theme.of(context).typography.authWebUserInputFieldDecoration,
-          ),
+          labelStyle: customTextThemes.inputField,
+          hintStyle: customTextThemes.inputField,
           prefixIcon: Icon(
             authForm != "authFormEmail"
                 ? (authForm == "authFormPass" ||
@@ -225,14 +204,11 @@ Widget authWebUserInputField(BuildContext context, State state,
                     ? Icons.lock
                     : Icons.person)
                 : Icons.email,
-            color: Theme.of(context)
-                .colorScheme
-                .authWebUserInputFieldIconDecoration,
+            color: customColors.icon,
           ),
           suffixIcon: isVariable
               ? IconButton(
-                  splashColor:
-                      Theme.of(context).colorScheme.materialTransparent,
+                  splashColor: Colors.transparent,
                   onPressed: () {
                     FocusScopeNode currentFocus = FocusScope.of(context);
                     currentFocus.unfocus();
@@ -246,9 +222,7 @@ Widget authWebUserInputField(BuildContext context, State state,
                     _isVisible
                         ? Icons.visibility_outlined
                         : Icons.visibility_off_outlined,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .authWebUserInputFieldIconDecoration,
+                    color: customColors.icon,
                   ),
                 )
               : null,
@@ -346,21 +320,19 @@ Widget authWebGetStarted(BuildContext context, State state, bool isSmall) {
       decoration: BoxDecoration(
           color: _authControls != AuthControls.welcome
               ? (_formComplete
-                  ? Theme.of(context).colorScheme.authWebGetStarted
-                  : Theme.of(context).colorScheme.authWebGetStartedDeactived)
-              : Theme.of(context).colorScheme.authWebGetStarted,
+                  ? Theme.of(context).colorScheme.surface
+                  : Theme.of(context).colorScheme.surfaceVariant)
+              : Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(30)),
       child: Material(
-        color: Theme.of(context).colorScheme.materialTransparent,
+        color: Colors.transparent,
         child: _formComplete
             ? InkWell(
                 splashColor: _authControls != AuthControls.welcome
                     ? (_formComplete
-                        ? Theme.of(context).colorScheme.authWebGetStartedInkWell
-                        : Theme.of(context)
-                            .colorScheme
-                            .authWebGetStartedInkWellDeactivated)
-                    : Theme.of(context).colorScheme.authWebGetStartedInkWell,
+                        ? Theme.of(context).colorScheme.surfaceTint
+                        : Colors.transparent)
+                    : Theme.of(context).colorScheme.surfaceTint,
                 customBorder: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 onTap: () {

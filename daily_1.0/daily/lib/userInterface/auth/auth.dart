@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/userInterface/auth/authWebComponents.dart';
@@ -136,7 +135,7 @@ class _AuthScreenState extends State<AuthScreen> {
     FocusNode _textFieldFocus = new FocusNode();
     return Material(
         child: Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.authBackground,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
         child: Container(
             constraints: BoxConstraints(

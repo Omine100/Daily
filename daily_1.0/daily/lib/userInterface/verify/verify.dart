@@ -2,7 +2,6 @@ import 'package:daily/themesLocal/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/userInterface/verify/verifyWebComponents.dart';
@@ -74,7 +73,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
       onWillPop: () async => true,
       child: Material(
         child: Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.verifyBackground,
+          backgroundColor: Theme.of(context).colorScheme.background,
           body: Responsive(
             small: _verifyScreenSmall(),
             large: _verifyScreenLarge(),

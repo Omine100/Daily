@@ -8,25 +8,16 @@ import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/constraints.dart';
-import 'package:daily/themesLocal/fontSizes.dart';
-import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 RouteNavigation _routeNavigation = new RouteNavigation();
 AuthControls _authControls = AuthControls.welcome;
 
 Widget authMobileTitle(BuildContext context) {
-  return Text(
-    getTranslated(context, "authTitle"),
-    style: TextStyle(
-      color: Theme.of(context).colorScheme.authMobileTitle,
-      fontSize: Theme.of(context).textTheme.authMobileTitle,
-      fontWeight: Theme.of(context).typography.authMobileTitle,
-    ),
-  );
+  return Text(getTranslated(context, "authTitle"),
+      style: Theme.of(context).textTheme.titleSmall);
 }
 
 Widget authMobileCenterPiece(BuildContext context, State state) {
@@ -80,7 +71,7 @@ Widget authMobileCardContainer(
                   .visualDensity
                   .authMobileCardContainerInputWidth),
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.authMobileCarContainer,
+          color: Theme.of(context).colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(20)),
       duration: const Duration(milliseconds: 1350),
       curve: Curves.fastOutSlowIn,
@@ -247,40 +238,23 @@ Widget authMobileUserInputField(BuildContext context, Function onChanged,
         obscureText: isVariable ? !_isVisible : false,
         onChanged: onChanged,
         autofocus: false,
-        style: TextStyle(
-            color: Theme.of(context).colorScheme.authMobileUserInputFieldText),
+        style: Theme.of(context).textTheme.labelSmall,
         decoration: InputDecoration(
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
               color:
-                  Theme.of(context).colorScheme.authMobileUserInputFieldBorder,
+                  Theme.of(context).colorScheme.
             ),
           ),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(
               color:
-                  Theme.of(context).colorScheme.authMobileUserInputFieldBorder,
+                  Theme.of(context).colorScheme.success,
             ),
           ),
           hintText: getTranslated(context, authForm),
-          labelStyle: TextStyle(
-            color: Theme.of(context)
-                .colorScheme
-                .authMobileUserInputFieldDecoration,
-            fontSize:
-                Theme.of(context).textTheme.authMobileUserInputFieldDecoration,
-            fontWeight:
-                Theme.of(context).typography.authMobileUserInputFieldDecoration,
-          ),
-          hintStyle: TextStyle(
-            color: Theme.of(context)
-                .colorScheme
-                .authMobileUserInputFieldDecoration,
-            fontSize:
-                Theme.of(context).textTheme.authMobileUserInputFieldDecoration,
-            fontWeight:
-                Theme.of(context).typography.authMobileUserInputFieldDecoration,
-          ),
+          labelStyle: Theme.of(context).textTheme.labelSmall,
+          hintStyle: Theme.of(context).textTheme.labelSmall,
           prefixIcon: Icon(
             authForm != "authFormEmail"
                 ? (authForm == "authFormPass" ||

@@ -1,8 +1,8 @@
+import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:daily/servicesLocal/cameraManagement.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
-import 'package:daily/themesLocal/colors.dart';
 
 RouteNavigation _routeNavigation = new RouteNavigation();
 
@@ -66,7 +66,7 @@ Widget homeFocusCircle(BuildContext context) {
 Widget homeCameraComponentCard(BuildContext context, State state) {
   return Container(
     decoration: BoxDecoration(
-      color: Theme.of(context).colorScheme.homeMobileCard,
+      color: Theme.of(context).colorScheme.primaryContainer,
       borderRadius: BorderRadius.circular(45),
     ),
     child: Column(
@@ -92,8 +92,7 @@ Widget homeSwitchCameraButton(BuildContext context, State state) {
       icon: Icon(
         Icons.flip_camera_android,
         size: 30,
-        color:
-            Theme.of(context).colorScheme.baseMobileNavigationBarSelectedIcon,
+        color: customColors.icon,
       ));
 }
 
@@ -105,8 +104,7 @@ Widget homeSwitchFlashButton(BuildContext context, State state) {
       icon: Icon(
         flashMode == FlashMode.off ? Icons.flash_off : Icons.flash_on,
         size: 30,
-        color:
-            Theme.of(context).colorScheme.baseMobileNavigationBarSelectedIcon,
+        color: customColors.icon,
       ));
 }
 

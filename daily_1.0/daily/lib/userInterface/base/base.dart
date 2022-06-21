@@ -6,7 +6,6 @@ import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/cameraManagement.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/constraints.dart';
 import 'package:daily/userInterface/base/baseWebComponents.dart';
 import 'package:daily/userInterface/base/baseMobileComponents.dart';
@@ -105,7 +104,7 @@ class _BaseScreenState extends State<BaseScreen> with WidgetsBindingObserver {
           ),
           extendBody: true,
           body: Container(
-            color: Theme.of(context).colorScheme.baseBackground,
+            color: Theme.of(context).colorScheme.background,
             constraints: Theme.of(context).bottomAppBarTheme.baseConstraints,
             child: Responsive(
               small: _baseScreenSmall(),

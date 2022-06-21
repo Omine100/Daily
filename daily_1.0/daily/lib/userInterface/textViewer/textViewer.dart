@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/textViewer/textViewerWebComponents.dart';
 import 'package:daily/userInterface/textViewer/textViewerMobileComponents.dart';
 
@@ -50,7 +49,7 @@ class _TextViewerScreenState extends State<TextViewerScreen> {
       onWillPop: () async => true,
       child: Material(
         child: Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.textViewerBackground,
+          backgroundColor: Theme.of(context).colorScheme.background,
           body: SingleChildScrollView(
             child: Expanded(
               child: Responsive(

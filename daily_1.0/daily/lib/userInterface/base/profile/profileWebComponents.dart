@@ -12,10 +12,7 @@ import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/standards/userXStandards.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
-import 'package:daily/themesLocal/fontSizes.dart';
-import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 FirebasePost _firebasePost = new FirebasePost();
@@ -51,7 +48,7 @@ Widget profileWebInfo(BuildContext context, State state) {
           height: 100,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Theme.of(context).colorScheme.baseBackground,
+            color: Theme.of(context).colorScheme.background,
           ),
           child: FutureBuilder(
             future: _firebaseAccounts.getUserInfoDoc(_uid),
@@ -159,7 +156,7 @@ Widget profileImage(BuildContext context, userStructure.User user) {
       errorWidget: (context, url, error) => Icon(
         Icons.person_outline_rounded,
         size: 55,
-        color: Theme.of(context).colorScheme.baseWebProfileIcon,
+        color: customColors.icon,
       ),
     ),
   );

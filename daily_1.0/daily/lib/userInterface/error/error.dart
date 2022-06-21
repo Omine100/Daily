@@ -2,7 +2,6 @@ import 'package:daily/themesLocal/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/error/errorWebComponents.dart';
 import 'package:daily/userInterface/error/errorMobileComponents.dart';
 
@@ -75,7 +74,7 @@ class _ErrorScreenState extends State<ErrorScreen> {
       onWillPop: () async => true,
       child: Material(
         child: Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.errorBackground,
+          backgroundColor: Theme.of(context).colorScheme.background,
           body: SingleChildScrollView(
             child: Responsive(
               small: _errorScreenSmall(),

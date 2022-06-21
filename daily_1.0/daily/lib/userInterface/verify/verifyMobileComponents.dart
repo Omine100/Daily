@@ -4,10 +4,7 @@ import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/standards/userIStandards.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
-import 'package:daily/themesLocal/fontSizes.dart';
-import 'package:daily/themesLocal/fontWeights.dart';
 import 'package:daily/userInterface/auth/authMobileComponents.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
@@ -20,26 +17,14 @@ Widget verifyMobileTitle(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          getTranslated(context, "verifyTitle"),
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.verifyMobileTitle,
-            fontSize: Theme.of(context).textTheme.verifyMobileTitle,
-            fontWeight: Theme.of(context).typography.verifyMobileTitle,
-          ),
-        ),
+        Text(getTranslated(context, "verifyTitle"),
+            style: Theme.of(context).textTheme.titleSmall),
         Padding(
           padding: EdgeInsets.all(10),
         ),
-        Text(
-          getTranslated(context, "verifySubtitle"),
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.verifyMobileSubtitle,
-            fontSize: Theme.of(context).textTheme.verifyMobileSubtitle,
-            fontWeight: Theme.of(context).typography.verifyMobileSubtitle,
-          ),
-        ),
+        Text(getTranslated(context, "verifySubtitle"),
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.subtitle1),
       ],
     ),
   );

@@ -7,7 +7,6 @@ import 'package:daily/standards/userXStandards.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/datastructures/post.dart';
 import 'package:daily/servicesLocal/hover.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/base/baseWebComponents.dart';
 
 class FeedCard extends StatefulWidget {
@@ -62,7 +61,7 @@ class _FeedCardState extends State<FeedCard> {
           width: MediaQuery.of(context).size.width * 0.8,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(widget.borderRadius),
-              color: Theme.of(context).colorScheme.baseBackground),
+              color: Theme.of(context).colorScheme.background),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -84,7 +83,7 @@ class _FeedCardState extends State<FeedCard> {
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Material(
-                    color: Theme.of(context).colorScheme.baseBackground,
+                    color: Theme.of(context).colorScheme.background,
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

@@ -1,3 +1,4 @@
+import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/themesLocal/themeData/colorSchemes.dart';
 import 'package:daily/themesLocal/themeData/textThemes.dart';
@@ -10,7 +11,7 @@ ThemeData lightThemeData = ThemeData(
 ThemeData lightThemeDataExtension = lightThemeData.copyWith(
   extensions: <ThemeExtension<dynamic>>[
     CustomColors.light,
-    CustomTextTheme.light,
+    CustomTextThemes.light,
   ],
 );
 
@@ -22,6 +23,6 @@ ThemeData darkThemeData = ThemeData(
 ThemeData darkThemeDataExtension = darkThemeData.copyWith(
   extensions: <ThemeExtension<dynamic>>[
     CustomColors.dark,
-    CustomTextTheme.dark,
+    CustomTextThemes.dark,
   ],
 );

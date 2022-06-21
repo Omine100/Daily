@@ -1,58 +1,58 @@
 import 'package:flutter/material.dart';
 
 TextTheme lightTextTheme = TextTheme(
-  headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-  headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+  titleSmall: TextStyle(
+      color: Color(0xFF333333), fontSize: 48.0, fontWeight: FontWeight.w500),
+  subtitle1: TextStyle(
+      color: Color(0xFF999999), fontSize: 18.0, fontWeight: FontWeight.w300),
+  subtitle2: TextStyle(),
   bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
 );
 
 TextTheme darkTextTheme = TextTheme(
-  headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-  headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+  titleSmall: TextStyle(
+      color: Color(0xFFCCCCCC), fontSize: 48.0, fontWeight: FontWeight.w500),
+  subtitle1: TextStyle(
+      color: Color(0xFF999999), fontSize: 18.0, fontWeight: FontWeight.w300),
+  subtitle2: TextStyle(),
   bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
 );
 
 @immutable
-class CustomTextTheme extends ThemeExtension<CustomTextTheme> {
-  const CustomTextTheme({
-    @required this.success,
+class CustomTextThemes extends ThemeExtension<CustomTextThemes> {
+  const CustomTextThemes({
+    @required this.inputField,
   });
 
-  final TextStyle success;
+  final TextStyle inputField;
 
   @override
-  CustomTextTheme copyWith({
-    TextStyle success,
+  CustomTextThemes copyWith({
+    TextStyle inputField,
   }) {
-    return CustomTextTheme(
-      success: success ?? this.success,
+    return CustomTextThemes(
+      inputField: inputField ?? this.inputField,
     );
   }
 
   // Controls how the properties change on theme changes
   @override
-  CustomTextTheme lerp(ThemeExtension<CustomTextTheme> other, double t) {
-    if (other is! CustomTextTheme) {
+  CustomTextThemes lerp(ThemeExtension<CustomTextThemes> other, double t) {
+    if (other is! CustomTextThemes) {
       return this;
     }
-    return CustomTextTheme(
-      success: TextStyle(),
+    return CustomTextThemes(
+      inputField: TextStyle(),
     );
   }
 
-  // Controls how it displays when the instance is being passed
-  // to the `print()` method.
-  @override
-  String toString() => 'CustomTextTheme('
-      'success: $success';
-
-  // the light theme
-  static const light = CustomTextTheme(
-    success: TextStyle(),
+  static const light = CustomTextThemes(
+    inputField: TextStyle(
+        color: Color(0xFFCCCCCC), fontSize: 20, fontWeight: FontWeight.w300),
   );
 
-  // the dark theme
-  static const dark = CustomTextTheme(
-    success: TextStyle(),
+  static const dark = CustomTextThemes(
+    inputField: TextStyle(
+        color: Color(0xFF000000), fontSize: 20, fontWeight: FontWeight.w300),
   );
 }
