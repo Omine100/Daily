@@ -1,24 +1,18 @@
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:daily/datastructures/user.dart' as userStructure;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:image_picker_for_web/image_picker_for_web.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/servicesBroad/contact.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
-import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/standards/userXStandards.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
-import 'package:daily/themesLocal/fontSizes.dart';
-import 'package:daily/themesLocal/fontWeights.dart';
 import 'package:daily/userInterface/base/baseWebComponents.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();

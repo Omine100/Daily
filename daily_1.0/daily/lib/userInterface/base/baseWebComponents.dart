@@ -1,6 +1,5 @@
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:flutter/material.dart';
-import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
@@ -14,7 +13,6 @@ import 'package:daily/userInterface/base/profile/profile.dart';
 import 'package:daily/userInterface/base/sideMenu.dart';
 import 'package:daily/userInterface/base/searchBar.dart';
 
-FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 int _pageIndex = 0;
 PageController _pageController;
 String uid;

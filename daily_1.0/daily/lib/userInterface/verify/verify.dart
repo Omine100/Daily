@@ -1,10 +1,7 @@
-import 'package:daily/themesLocal/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
-import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/positions.dart';
-import 'package:daily/userInterface/verify/verifyWebComponents.dart';
 import 'package:daily/userInterface/verify/verifyMobileComponents.dart';
 
 class VerifyScreen extends StatefulWidget {

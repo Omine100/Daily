@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/userInterface/base/home/home.dart';
 import 'package:daily/userInterface/base/search/search.dart';
 import 'package:daily/userInterface/base/global/global.dart';

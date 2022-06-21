@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/error/errorWebComponents.dart';
-import 'package:daily/userInterface/error/errorMobileComponents.dart';
 
 class ErrorScreen extends StatefulWidget {
   final String filePath;

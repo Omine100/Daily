@@ -2,18 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:typed_data';
-import 'dart:io';
 import 'package:daily/datastructures/post.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesBroad/firebasePost.dart';
 import 'package:daily/servicesBroad/firebasePrompt.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
-import 'package:daily/themesLocal/fontSizes.dart';
-import 'package:daily/themesLocal/fontWeights.dart';
-import 'package:intl/intl.dart';
 
 class Upload extends StatefulWidget {
   @override

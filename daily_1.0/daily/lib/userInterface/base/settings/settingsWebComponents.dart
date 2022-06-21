@@ -1,21 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:daily/datastructures/settingState.dart';
-import 'package:daily/servicesBroad/contact.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:daily/servicesLocal/hover.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
-import 'package:daily/servicesLocal/routeManagement.gr.dart';
-import 'package:daily/standards/userIStandards.dart';
-import 'package:daily/standards/userXStandards.dart';
-import 'package:daily/themesLocal/colors.dart';
 import 'package:daily/themesLocal/dimensions.dart';
-import 'package:daily/themesLocal/fontSizes.dart';
-import 'package:daily/themesLocal/fontWeights.dart';
 
 FirebaseAccounts _firebaseAccounts = new FirebaseAccounts();
 
@@ -54,14 +45,8 @@ Column settingsBreakdown(BuildContext context, State state) {
 Row settingsGroupTitle(BuildContext context, String key) {
   return Row(
     children: [
-      AdaptiveText(
-        getTranslated(context, key),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.settingsMobileGroupTitle,
-          fontSize: Theme.of(context).textTheme.settingsGroupTitle,
-          fontWeight: Theme.of(context).typography.settingsGroupTitle,
-        ),
-      ),
+      AdaptiveText(getTranslated(context, key),
+          style: Theme.of(context).textTheme.headline1),
     ],
   );
 }
@@ -89,11 +74,7 @@ Row settingRow(BuildContext context, Setting setting, State state) {
         ? [settingClick(context, setting, state)]
         : [
             AdaptiveText(getTranslated(context, setting.key),
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.settingsMobileRowText,
-                  fontSize: Theme.of(context).textTheme.settingsRowText,
-                  fontWeight: Theme.of(context).typography.settingsRowText,
-                )),
+                style: Theme.of(context).textTheme.bodyText1),
             formPick()
           ],
   );

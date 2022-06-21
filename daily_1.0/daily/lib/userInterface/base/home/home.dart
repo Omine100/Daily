@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:daily/servicesLocal/adaptive.dart';
-import 'package:daily/servicesLocal/responsive.dart';
 import 'package:daily/userInterface/base/home/homeWebComponents.dart';
 import 'package:daily/userInterface/base/home/homeMobileComponents.dart';
 

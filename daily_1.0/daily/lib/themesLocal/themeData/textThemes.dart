@@ -5,7 +5,10 @@ TextTheme lightTextTheme = TextTheme(
       color: Color(0xFF333333), fontSize: 48.0, fontWeight: FontWeight.w500),
   subtitle1: TextStyle(
       color: Color(0xFF999999), fontSize: 18.0, fontWeight: FontWeight.w300),
-  subtitle2: TextStyle(),
+  headline1: TextStyle(
+      color: Color(0xFF444444), fontSize: 22, fontWeight: FontWeight.w500),
+  bodyText1: TextStyle(
+      color: Color(0xFF555555), fontSize: 18, fontWeight: FontWeight.w300),
   bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
 );
 
@@ -14,7 +17,10 @@ TextTheme darkTextTheme = TextTheme(
       color: Color(0xFFCCCCCC), fontSize: 48.0, fontWeight: FontWeight.w500),
   subtitle1: TextStyle(
       color: Color(0xFF999999), fontSize: 18.0, fontWeight: FontWeight.w300),
-  subtitle2: TextStyle(),
+  headline1: TextStyle(
+      color: Color(0xFFCCCCCC), fontSize: 22, fontWeight: FontWeight.w500),
+  bodyText1: TextStyle(
+      color: Color(0xFF888888), fontSize: 18, fontWeight: FontWeight.w300),
   bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
 );
 

@@ -1,9 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:daily/datastructures/user.dart' as dataStructure;
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesBroad/firebasePost.dart';
-import 'package:daily/standards/userXStandards.dart';
 import 'package:flutter/material.dart';
 import 'package:daily/datastructures/post.dart';
 import 'package:daily/servicesLocal/hover.dart';

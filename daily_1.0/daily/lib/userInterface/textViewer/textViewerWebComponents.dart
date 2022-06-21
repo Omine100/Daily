@@ -1,8 +1,5 @@
 import 'package:daily/servicesLocal/adaptive.dart';
 import 'package:flutter/material.dart';
-import 'package:daily/themesLocal/colors.dart';
-import 'package:daily/themesLocal/fontSizes.dart';
-import 'package:daily/themesLocal/fontWeights.dart';
 
 Widget textViewerWebText(BuildContext context, String filePath) {
   return SafeArea(

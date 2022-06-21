@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
 
 Widget imageViewerMobileImage(BuildContext context, Widget image) {
   return Center(

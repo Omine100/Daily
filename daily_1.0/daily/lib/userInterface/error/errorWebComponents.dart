@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
-import 'package:daily/servicesLocal/routeManagement.gr.dart';
-import 'package:daily/servicesLocal/routeNavigation.dart';
-import 'package:daily/themesLocal/positions.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 import 'package:daily/themesLocal/constraints.dart';
 
