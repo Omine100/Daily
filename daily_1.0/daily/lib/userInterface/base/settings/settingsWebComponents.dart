@@ -112,11 +112,8 @@ Widget settingDropdown(BuildContext context, Setting setting, State state) {
             Theme.of(context).visualDensity.settingDropdownHeight),
         items: setting.items(context),
         value: setting.value,
-        style: TextStyle(
-            color: Theme.of(context).colorScheme.settingsMobileDropdownText,
-            fontSize: Theme.of(context).textTheme.settingDropdownText),
-        dropdownColor:
-            Theme.of(context).colorScheme.settingsMobileDropdownBackground,
+        style: Theme.of(context).textTheme.bodyText1,
+        dropdownColor: Theme.of(context).colorScheme.background,
         onChanged: (value) {
           state.setState(() {
             setting.value = value;
@@ -146,11 +143,7 @@ Widget settingClick(BuildContext context, Setting setting, State state) {
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0),
         child: Text(getTranslated(context, setting.key),
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.settingsMobileRowText,
-              fontSize: Theme.of(context).textTheme.settingsRowText,
-              fontWeight: Theme.of(context).typography.settingsRowText,
-            )),
+            style: Theme.of(context).textTheme.bodyText1),
       ),
     ),
   ).showClickOnHover;
@@ -162,8 +155,7 @@ void showAboutBox(BuildContext context) {
     builder: (BuildContext context) {
       return Theme(
         data: ThemeData(
-          dialogBackgroundColor:
-              Theme.of(context).colorScheme.settingsMobileBoxBackground,
+          dialogBackgroundColor: Theme.of(context).colorScheme.background,
           textTheme: TextTheme(
               headline5: TextStyle(
                   color: Theme.of(context).colorScheme.settingsMobileBoxText),
