@@ -7,7 +7,6 @@ import 'package:daily/servicesBroad/firebaseAccounts.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/routeManagement.gr.dart';
-import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/standards/userXStandards.dart';
 import 'package:daily/themesLocal/dimensions.dart';
 

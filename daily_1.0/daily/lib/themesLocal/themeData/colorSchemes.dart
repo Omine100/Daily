@@ -70,7 +70,6 @@ class CustomColors extends ThemeExtension<CustomColors> {
     );
   }
 
-  // Controls how the properties change on theme changes
   @override
   CustomColors lerp(ThemeExtension<CustomColors> other, double t) {
     if (other is! CustomColors) {

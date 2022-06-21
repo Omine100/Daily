@@ -35,7 +35,6 @@ class CustomTextThemes extends ThemeExtension<CustomTextThemes> {
     );
   }
 
-  // Controls how the properties change on theme changes
   @override
   CustomTextThemes lerp(ThemeExtension<CustomTextThemes> other, double t) {
     if (other is! CustomTextThemes) {
