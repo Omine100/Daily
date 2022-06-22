@@ -58,7 +58,7 @@ class _UploadState extends State<Upload> {
               (_step == 0 ? 0.6 : _aspectRatio),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Theme.of(context).colorScheme.baseBackground),
+              color: Theme.of(context).colorScheme.background),
           child: _step == 0
               ? Center(
                   child: step1(),
@@ -74,7 +74,7 @@ class _UploadState extends State<Upload> {
 
   Widget step1() {
     return Material(
-      color: Theme.of(context).colorScheme.baseBackground,
+      color: Theme.of(context).colorScheme.background,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -114,7 +114,7 @@ class _UploadState extends State<Upload> {
       children: [
         ClipRRect(borderRadius: BorderRadius.circular(10), child: image),
         Material(
-            color: Theme.of(context).colorScheme.baseBackground,
+            color: Theme.of(context).colorScheme.background,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -136,9 +136,7 @@ class _UploadState extends State<Upload> {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Theme.of(context)
-                          .colorScheme
-                          .forgotPasswordWebUserInputField,
+                      color: Theme.of(context).colorScheme.surface,
                     ),
                     child: TextFormField(
                       textAlignVertical: TextAlignVertical.center,
