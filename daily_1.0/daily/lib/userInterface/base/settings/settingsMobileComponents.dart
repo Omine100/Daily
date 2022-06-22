@@ -82,33 +82,15 @@ Widget settingsProfile(BuildContext context, State state) {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 5.0),
                       child: Text(
-                        _firebaseAccounts.getCurrentUserDisplayName() ??
-                            getTranslated(context, "settingsNullName"),
-                        style: TextStyle(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .settingsMobileProfileName,
-                          fontSize:
-                              Theme.of(context).textTheme.settingsProfileName,
-                          fontWeight:
-                              Theme.of(context).typography.settingsProfileName,
-                        ),
-                      ),
+                          _firebaseAccounts.getCurrentUserDisplayName() ??
+                              getTranslated(context, "settingsNullName"),
+                          style: Theme.of(context).textTheme.headline1),
                     ),
                     Text(
-                      _firebaseAccounts.getCurrentUserEmail() ??
-                          getTranslated(context, "settingsNullEmail"),
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .settingsMobileProfileEmail,
-                        fontSize:
-                            Theme.of(context).textTheme.settingsProfileEmail,
-                        fontWeight:
-                            Theme.of(context).typography.settingsProfileEmail,
-                      ),
-                    ),
+                        _firebaseAccounts.getCurrentUserEmail() ??
+                            getTranslated(context, "settingsNullEmail"),
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.headline1),
                   ],
                 ),
               ),
@@ -150,7 +132,7 @@ Container settingsCard(BuildContext context, State state) {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(35),
                       topRight: Radius.circular(35)),
-                  color: Theme.of(context).colorScheme.settingsMobileCard,
+                  color: Theme.of(context).colorScheme.primaryContainer,
                 ),
                 child: Padding(
                     padding: EdgeInsets.only(left: 15, right: 15, top: 25),
@@ -190,14 +172,8 @@ Column settingsBreakdown(BuildContext context, State state) {
 Row settingsGroupTitle(BuildContext context, String key) {
   return Row(
     children: [
-      Text(
-        getTranslated(context, key),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.settingsMobileGroupTitle,
-          fontSize: Theme.of(context).textTheme.settingsGroupTitle,
-          fontWeight: Theme.of(context).typography.settingsGroupTitle,
-        ),
-      ),
+      Text(getTranslated(context, key),
+          style: Theme.of(context).textTheme.headline1),
     ],
   );
 }
@@ -225,11 +201,7 @@ Row settingRow(BuildContext context, Setting setting, State state) {
         ? [settingClick(context, setting, state)]
         : [
             Text(getTranslated(context, setting.key),
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.settingsMobileRowText,
-                  fontSize: Theme.of(context).textTheme.settingsRowText,
-                  fontWeight: Theme.of(context).typography.settingsRowText,
-                )),
+                style: Theme.of(context).textTheme.bodyText1),
             formPick()
           ],
   );
@@ -301,11 +273,7 @@ Widget settingClick(BuildContext context, Setting setting, State state) {
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0),
         child: Text(getTranslated(context, setting.key),
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.settingsMobileRowText,
-              fontSize: Theme.of(context).textTheme.settingsRowText,
-              fontWeight: Theme.of(context).typography.settingsRowText,
-            )),
+            style: Theme.of(context).textTheme.bodyText1),
       ),
     ),
   );
@@ -316,20 +284,11 @@ void showHelpSupportBox(BuildContext context) {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor:
-              Theme.of(context).colorScheme.settingsMobileBoxBackground,
+          backgroundColor: Theme.of(context).colorScheme.background,
           title: Text(getTranslated(context, "settingsHelpSupportBox"),
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.settingsMobileBoxText,
-                fontSize: Theme.of(context).textTheme.settingsBoxTextTitle,
-                fontWeight: Theme.of(context).typography.settingsBoxTextTitle,
-              )),
+              style: Theme.of(context).textTheme.bodyText1),
           content: Text(getContactEmail(),
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.settingsMobileBoxText,
-                fontSize: Theme.of(context).textTheme.settingsBoxText,
-                fontWeight: Theme.of(context).typography.settingsBoxText,
-              )),
+              style: Theme.of(context).textTheme.bodyText1),
         );
       });
 }
@@ -340,8 +299,7 @@ void showAboutBox(BuildContext context) {
     builder: (BuildContext context) {
       return Theme(
         data: ThemeData(
-          dialogBackgroundColor:
-              Theme.of(context).colorScheme.settingsMobileBoxBackground,
+          dialogBackgroundColor: Theme.of(context).colorScheme.background,
           textTheme: TextTheme(
               headline5: TextStyle(
                   color: Theme.of(context).colorScheme.settingsMobileBoxText),
@@ -375,13 +333,7 @@ Widget settingsSignOut(BuildContext context) {
       _firebaseAccounts.signOut();
       context.router.replaceAll([AuthScreen()]);
     },
-    child: Text(
-      getTranslated(context, "settingsSignOut"),
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.settingsMobileSignOut,
-        fontSize: Theme.of(context).textTheme.settingsSignOut,
-        fontWeight: Theme.of(context).typography.settingsSignOut,
-      ),
-    ),
+    child: Text(getTranslated(context, "settingsSignOut"),
+        style: Theme.of(context).textTheme.bodyText1),
   );
 }

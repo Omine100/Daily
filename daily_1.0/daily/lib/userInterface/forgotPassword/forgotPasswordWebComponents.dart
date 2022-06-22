@@ -100,10 +100,7 @@ Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
           _forgotPasswordValidateSubmit(context, state);
         },
         autofocus: false,
-        style: TextStyle(
-            color: Theme.of(context)
-                .colorScheme
-                .forgotPasswordWebUserInputFieldText),
+        style: customTextThemes.inputField,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: getTranslated(context, "forgotPasswordFormEmail"),
@@ -127,14 +124,8 @@ Widget forgotPasswordWebSwitchBack(BuildContext context, State state) {
       onTap: () {
         authWebForgotPasswordSwitchBack(context, state);
       },
-      child: Text(
-        getTranslated(context, "forgotPasswordAuthCallback"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordWebRemembered,
-          fontSize: Theme.of(context).textTheme.forgotPasswordWebRemembered,
-          fontWeight: Theme.of(context).typography.forgotPasswordWebRemembered,
-        ),
-      ),
+      child: Text(getTranslated(context, "forgotPasswordAuthCallback"),
+          style: Theme.of(context).textTheme.bodyText1),
     ),
   ).showClickOnHover;
 }
@@ -148,18 +139,16 @@ Widget forgotPasswordWebSend(BuildContext context, State state) {
         Theme.of(context).visualDensity.forgotPasswordWebSendWidth),
     decoration: BoxDecoration(
         color: _formComplete
-            ? Theme.of(context).colorScheme.forgotPasswordWebSend
-            : Theme.of(context).colorScheme.forgotPasswordWebSendDeactived,
+            ? Theme.of(context).colorScheme.surface
+            : Theme.of(context).colorScheme.surfaceVariant,
         borderRadius: BorderRadius.circular(30)),
     child: Material(
-        color: Theme.of(context).colorScheme.materialTransparent,
+        color: Colors.transparent,
         child: _formComplete
             ? InkWell(
                 splashColor: _formComplete
-                    ? Theme.of(context).colorScheme.forgotPasswordWebSendInkWell
-                    : Theme.of(context)
-                        .colorScheme
-                        .forgotPasswordWebSendInkWellDeactivated,
+                    ? Theme.of(context).colorScheme.surfaceTint
+                    : Colors.transparent,
                 customBorder: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 onTap: () {
@@ -168,36 +157,14 @@ Widget forgotPasswordWebSend(BuildContext context, State state) {
                       : null;
                 },
                 child: Center(
-                  child: Text(
-                    getTranslated(context, "forgotPasswordSend"),
-                    style: TextStyle(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .forgotPasswordWebSendText,
-                      fontSize:
-                          Theme.of(context).textTheme.forgotPasswordWebSendText,
-                      fontWeight: Theme.of(context)
-                          .typography
-                          .forgotPasswordWebSendText,
-                    ),
-                  ),
+                  child: Text(getTranslated(context, "forgotPasswordSend"),
+                      style: Theme.of(context).textTheme.button),
                 ),
               )
             : Container(
                 child: Center(
-                  child: Text(
-                    getTranslated(context, "forgotPasswordSend"),
-                    style: TextStyle(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .forgotPasswordWebSendText,
-                      fontSize:
-                          Theme.of(context).textTheme.forgotPasswordWebSendText,
-                      fontWeight: Theme.of(context)
-                          .typography
-                          .forgotPasswordWebSendText,
-                    ),
-                  ),
+                  child: Text(getTranslated(context, "forgotPasswordSend"),
+                      style: Theme.of(context).textTheme.button),
                 ),
               )),
   );

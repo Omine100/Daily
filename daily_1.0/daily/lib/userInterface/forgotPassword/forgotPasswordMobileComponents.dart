@@ -109,20 +109,16 @@ Widget forgotPasswordMobileSend(BuildContext context, State state) {
         Theme.of(context).visualDensity.forgotPasswordMobileSendWidth),
     decoration: BoxDecoration(
         color: _formComplete
-            ? Theme.of(context).colorScheme.forgotPasswordMobileSend
-            : Theme.of(context).colorScheme.forgotPasswordMobileSendDeactived,
+            ? Theme.of(context).colorScheme.surface
+            : Theme.of(context).colorScheme.surfaceVariant,
         borderRadius: BorderRadius.circular(30)),
     child: Material(
-        color: Theme.of(context).colorScheme.materialTransparent,
+        color: Colors.transparent,
         child: _formComplete
             ? InkWell(
                 splashColor: _formComplete
-                    ? Theme.of(context)
-                        .colorScheme
-                        .forgotPasswordMobileSendInkWell
-                    : Theme.of(context)
-                        .colorScheme
-                        .forgotPasswordMobileSendInkWellDeactivated,
+                    ? Theme.of(context).colorScheme.surfaceTint
+                    : Colors.transparent,
                 customBorder: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 onTap: () {
@@ -131,38 +127,14 @@ Widget forgotPasswordMobileSend(BuildContext context, State state) {
                       : null;
                 },
                 child: Center(
-                  child: Text(
-                    getTranslated(context, "forgotPasswordSend"),
-                    style: TextStyle(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .forgotPasswordMobileSendText,
-                      fontSize: Theme.of(context)
-                          .textTheme
-                          .forgotPasswordMobileSendText,
-                      fontWeight: Theme.of(context)
-                          .typography
-                          .forgotPasswordMobileSendText,
-                    ),
-                  ),
+                  child: Text(getTranslated(context, "forgotPasswordSend"),
+                      style: Theme.of(context).textTheme.button),
                 ),
               )
             : Container(
                 child: Center(
-                  child: Text(
-                    getTranslated(context, "forgotPasswordSend"),
-                    style: TextStyle(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .forgotPasswordMobileSendText,
-                      fontSize: Theme.of(context)
-                          .textTheme
-                          .forgotPasswordMobileSendText,
-                      fontWeight: Theme.of(context)
-                          .typography
-                          .forgotPasswordMobileSendText,
-                    ),
-                  ),
+                  child: Text(getTranslated(context, "forgotPasswordSend"),
+                      style: Theme.of(context).textTheme.button),
                 ),
               )),
   );

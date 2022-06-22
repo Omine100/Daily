@@ -80,14 +80,8 @@ Widget verifyWebLogin(
           });
         },
         child: Center(
-          child: Text(
-            getTranslated(context, "verifyLogin"),
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.verifyWebLoginText,
-              fontSize: Theme.of(context).textTheme.verifyWebLoginText,
-              fontWeight: Theme.of(context).typography.verifyWebLoginText,
-            ),
-          ),
+          child: Text(getTranslated(context, "verifyLogin"),
+              style: Theme.of(context).textTheme.button),
         ),
       ),
     ),
@@ -99,13 +93,8 @@ Widget verifyWebSwitchBack(BuildContext context, State state) {
     onTap: () {
       authWebVerifySwitchBack(context, state);
     },
-    child: Text(
-      getTranslated(context, "verifyAuthCallback"),
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.verifyWebSwitchBack,
-        fontSize: Theme.of(context).textTheme.verifyWebSwitchBack,
-        fontWeight: Theme.of(context).typography.verifyWebSwitchBack,
-      ),
-    ).showClickOnHover,
+    child: Text(getTranslated(context, "verifyAuthCallback"),
+            style: Theme.of(context).textTheme.bodyText1)
+        .showClickOnHover,
   );
 }

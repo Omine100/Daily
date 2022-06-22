@@ -8,14 +8,8 @@ Widget textViewerMobileText(BuildContext context, String filePath) {
       child: FutureBuilder(
           future: DefaultAssetBundle.of(context).loadString(filePath),
           builder: (context, snapshot) {
-            return AdaptiveText(
-              snapshot.data ?? '',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.textViewerMobileText,
-                fontSize: Theme.of(context).textTheme.textViewerMobileText,
-                fontWeight: Theme.of(context).typography.textViewerMobileText,
-              ),
-            );
+            return AdaptiveText(snapshot.data ?? '',
+                style: Theme.of(context).textTheme.bodyText1);
           }),
     ),
   );

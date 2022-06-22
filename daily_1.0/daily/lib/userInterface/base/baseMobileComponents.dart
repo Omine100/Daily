@@ -1,3 +1,4 @@
+import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:flutter/material.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
@@ -55,13 +56,11 @@ Widget baseMobileNavigationBar(BuildContext context, State state) {
         ? Theme.of(context)
             .colorScheme
             .baseMobileNavigationBarBackgroundSettings
-        : Theme.of(context).colorScheme.baseMobileNavigationBarBackground,
-    dotIndicatorColor: Theme.of(context).colorScheme.baseMobileNavigationBarDot,
+        : Theme.of(context).colorScheme.primaryContainer,
+    dotIndicatorColor: Theme.of(context).colorScheme.onPrimaryContainer,
     duration: Duration(milliseconds: 1250),
-    unselectedItemColor:
-        Theme.of(context).colorScheme.baseMobileNavigationBarUnselectedIcon,
-    selectedItemColor:
-        Theme.of(context).colorScheme.baseMobileNavigationBarSelectedIcon,
+    unselectedItemColor: Theme.of(context).colorScheme.onPrimaryContainer,
+    selectedItemColor: customColors.icon,
     enableFloatingNavBar: true,
     curve: Curves.easeOutQuint,
     onTap: (pageIndex) {

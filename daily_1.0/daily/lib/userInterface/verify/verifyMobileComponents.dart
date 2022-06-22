@@ -38,12 +38,12 @@ Widget verifyMobileLogin(
     width: getDimension(
         context, false, Theme.of(context).visualDensity.verifyMobileLoginWidth),
     decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.verifyMobileLogin,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(30)),
     child: Material(
-      color: Theme.of(context).colorScheme.materialTransparent,
+      color: Colors.transparent,
       child: InkWell(
-        splashColor: Theme.of(context).colorScheme.verifyMobileLoginInkWell,
+        splashColor: Theme.of(context).colorScheme.surfaceTint,
         customBorder:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         onTap: () {
@@ -61,11 +61,7 @@ Widget verifyMobileLogin(
         child: Center(
           child: Text(
             getTranslated(context, "verifyLogin"),
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.verifyMobileLoginText,
-              fontSize: Theme.of(context).textTheme.verifyMobileLoginText,
-              fontWeight: Theme.of(context).typography.verifyMobileLoginText,
-            ),
+            style: Theme.of(context).textTheme.button,
           ),
         ),
       ),
