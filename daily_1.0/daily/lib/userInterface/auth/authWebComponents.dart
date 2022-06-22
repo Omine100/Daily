@@ -190,8 +190,7 @@ Widget authWebUserInputField(BuildContext context, State state,
           _authWebValidateSubmit(context, state);
         },
         autofocus: false,
-        style: TextStyle(
-            color: Theme.of(context).colorScheme.authWebUserInputFieldText),
+        style: Theme.of(context).textTheme.bodyText1,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: getTranslated(context, authForm),
@@ -243,14 +242,8 @@ Widget authWebForgotPassword(BuildContext context, State state, bool isSmall) {
           _authControls = AuthControls.forgotPassword;
         });
       },
-      child: Text(
-        getTranslated(context, "authForgotPassword"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.authWebForgotPassword,
-          fontSize: Theme.of(context).textTheme.authWebForgotPassword,
-          fontWeight: Theme.of(context).typography.authWebForgotPassword,
-        ),
-      ),
+      child: Text(getTranslated(context, "authForgotPassword"),
+          style: Theme.of(context).textTheme.bodyText1),
     ),
   ).showClickOnHover;
 }

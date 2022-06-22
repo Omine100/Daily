@@ -239,11 +239,8 @@ Widget settingDropdown(BuildContext context, Setting setting, State state) {
             Theme.of(context).visualDensity.settingDropdownHeight),
         items: setting.items(context),
         value: setting.value,
-        style: TextStyle(
-            color: Theme.of(context).colorScheme.settingsMobileDropdownText,
-            fontSize: Theme.of(context).textTheme.settingDropdownText),
-        dropdownColor:
-            Theme.of(context).colorScheme.settingsMobileDropdownBackground,
+        style: Theme.of(context).textTheme.bodyText1,
+        dropdownColor: Theme.of(context).colorScheme.background,
         onChanged: (value) {
           state.setState(() {
             setting.value = value;
@@ -301,15 +298,12 @@ void showAboutBox(BuildContext context) {
         data: ThemeData(
           dialogBackgroundColor: Theme.of(context).colorScheme.background,
           textTheme: TextTheme(
-              headline5: TextStyle(
-                  color: Theme.of(context).colorScheme.settingsMobileBoxText),
-              bodyText2: TextStyle(
-                  color: Theme.of(context).colorScheme.settingsMobileBoxText),
-              caption: TextStyle(
-                  color: Theme.of(context).colorScheme.settingsMobileBoxText)),
+              headline5: Theme.of(context).textTheme.headline1,
+              bodyText2: Theme.of(context).textTheme.bodyText1,
+              caption: Theme.of(context).textTheme.bodyText1),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
-                primary: Theme.of(context).colorScheme.settingsMobileBoxText),
+                primary: Theme.of(context).colorScheme.onBackground),
           ),
         ),
         child: AboutDialog(

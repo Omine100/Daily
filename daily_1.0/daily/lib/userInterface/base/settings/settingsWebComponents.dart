@@ -157,15 +157,12 @@ void showAboutBox(BuildContext context) {
         data: ThemeData(
           dialogBackgroundColor: Theme.of(context).colorScheme.background,
           textTheme: TextTheme(
-              headline5: TextStyle(
-                  color: Theme.of(context).colorScheme.settingsMobileBoxText),
-              bodyText2: TextStyle(
-                  color: Theme.of(context).colorScheme.settingsMobileBoxText),
-              caption: TextStyle(
-                  color: Theme.of(context).colorScheme.settingsMobileBoxText)),
+              headline5: Theme.of(context).textTheme.headline1,
+              bodyText2: Theme.of(context).textTheme.bodyText1,
+              caption: Theme.of(context).textTheme.bodyText1),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
-                primary: Theme.of(context).colorScheme.settingsMobileBoxText),
+                primary: Theme.of(context).colorScheme.onBackground),
           ),
         ),
         child: AboutDialog(
