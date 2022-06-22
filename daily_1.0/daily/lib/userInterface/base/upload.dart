@@ -150,41 +150,16 @@ class _UploadState extends State<Upload> {
                       onSaved: (description) => {_description = description},
                       onFieldSubmitted: (value) {},
                       autofocus: false,
-                      style: TextStyle(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .forgotPasswordWebUserInputFieldText),
+                      style: customTextThemes.inputField,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText:
                             getTranslated(context, "forgotPasswordFormEmail"),
-                        labelStyle: TextStyle(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .forgotPasswordWebUserInputFieldDecoration,
-                          fontSize: Theme.of(context)
-                              .textTheme
-                              .forgotPasswordWebUserInputFieldDecoration,
-                          fontWeight: Theme.of(context)
-                              .typography
-                              .forgotPasswordWebUserInputFieldDecoration,
-                        ),
-                        hintStyle: TextStyle(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .forgotPasswordWebUserInputFieldDecoration,
-                          fontSize: Theme.of(context)
-                              .textTheme
-                              .forgotPasswordWebUserInputFieldDecoration,
-                          fontWeight: Theme.of(context)
-                              .typography
-                              .forgotPasswordWebUserInputFieldDecoration,
-                        ),
+                        labelStyle: customTextThemes.inputField,
+                        hintStyle: customTextThemes.inputField,
                         prefixIcon: Icon(
                           Icons.email,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .forgotPasswordWebUserInputFieldIconDecoration,
+                          color: customColors.icon,
                         ),
                       ),
                     ),
@@ -245,20 +220,17 @@ class _UploadState extends State<Upload> {
             decoration: BoxDecoration(
                 color: hasPosted.hasData
                     ? !(hasPosted.data as bool)
-                        ? Theme.of(context).colorScheme.authWebGetStarted
-                        : Theme.of(context)
-                            .colorScheme
-                            .authWebGetStartedDeactived
-                    : Theme.of(context).colorScheme.authWebGetStartedDeactived,
+                        ? Theme.of(context).colorScheme.surface
+                        : Theme.of(context).colorScheme.surfaceVariant
+                    : Theme.of(context).colorScheme.surfaceVariant,
                 borderRadius: BorderRadius.circular(10)),
             child: Material(
-              color: Theme.of(context).colorScheme.materialTransparent,
+              color: Colors.transparent,
               child: hasPosted.hasData
                   ? !(hasPosted.data as bool)
                       ? InkWell(
-                          splashColor: Theme.of(context)
-                              .colorScheme
-                              .authWebGetStartedInkWell,
+                          splashColor:
+                              Theme.of(context).colorScheme.surfaceTint,
                           customBorder: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)),
                           onTap: () {
@@ -285,15 +257,8 @@ class _UploadState extends State<Upload> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: Text(
-              "Post",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600),
-            ),
-          )
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Text("Post", style: Theme.of(context).textTheme.button))
         ],
       ),
     );

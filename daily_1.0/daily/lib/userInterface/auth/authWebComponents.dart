@@ -263,19 +263,11 @@ Widget authWebPolicyAndTaC(BuildContext context) {
     child: Center(
         child: Text.rich(TextSpan(
             text: getTranslated(context, "authPolicyAndTaCPrimary") + " ",
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.authWebPolicyAndTaC,
-              fontSize: Theme.of(context).textTheme.authWebPolicyAndTaC,
-              fontWeight: Theme.of(context).typography.authWebPolicyAndTaC,
-            ),
+            style: Theme.of(context).textTheme.subtitle2,
             children: <TextSpan>[
           TextSpan(
               text: getTranslated(context, "authPolicyAndTaCPrivacy") + " ",
-              style: TextStyle(
-                  color: Theme.of(context).colorScheme.authWebPolicyAndTaC,
-                  fontSize: Theme.of(context).textTheme.authWebPolicyAndTaC,
-                  fontWeight: Theme.of(context).typography.authWebPolicyAndTaC,
-                  decoration: TextDecoration.underline),
+              style: customTextThemes.subtitle2Underlined,
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   _routeNavigation.routeTextViewer(
@@ -283,22 +275,11 @@ Widget authWebPolicyAndTaC(BuildContext context) {
                 }),
           TextSpan(
               text: getTranslated(context, "authPolicyAndTaCSeconday") + " ",
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.authWebPolicyAndTaC,
-                fontSize: Theme.of(context).textTheme.authWebPolicyAndTaC,
-                fontWeight: Theme.of(context).typography.authWebPolicyAndTaC,
-              ),
+              style: Theme.of(context).textTheme.subtitle2,
               children: <TextSpan>[
                 TextSpan(
                     text: getTranslated(context, "authPolicyAndTaCConditions"),
-                    style: TextStyle(
-                        color:
-                            Theme.of(context).colorScheme.authWebPolicyAndTaC,
-                        fontSize:
-                            Theme.of(context).textTheme.authWebPolicyAndTaC,
-                        fontWeight:
-                            Theme.of(context).typography.authWebPolicyAndTaC,
-                        decoration: TextDecoration.underline),
+                    style: customTextThemes.subtitle2Underlined,
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         _routeNavigation.routeTextViewer(
@@ -341,40 +322,24 @@ Widget authWebGetStarted(BuildContext context, State state, bool isSmall) {
                 child: Container(
                   child: Center(
                     child: Text(
-                      getTranslated(
-                          context,
-                          _authControls == AuthControls.signIn
-                              ? "authSignIn"
-                              : "authSignUp"),
-                      style: TextStyle(
-                        color:
-                            Theme.of(context).colorScheme.authWebGetStartedText,
-                        fontSize:
-                            Theme.of(context).textTheme.authWebGetStartedText,
-                        fontWeight:
-                            Theme.of(context).typography.authWebGetStartedText,
-                      ),
-                    ),
+                        getTranslated(
+                            context,
+                            _authControls == AuthControls.signIn
+                                ? "authSignIn"
+                                : "authSignUp"),
+                        style: Theme.of(context).textTheme.button),
                   ),
                 ),
               )
             : Container(
                 child: Center(
                   child: Text(
-                    getTranslated(
-                        context,
-                        _authControls == AuthControls.signIn
-                            ? "authSignIn"
-                            : "authSignUp"),
-                    style: TextStyle(
-                      color:
-                          Theme.of(context).colorScheme.authWebGetStartedText,
-                      fontSize:
-                          Theme.of(context).textTheme.authWebGetStartedText,
-                      fontWeight:
-                          Theme.of(context).typography.authWebGetStartedText,
-                    ),
-                  ),
+                      getTranslated(
+                          context,
+                          _authControls == AuthControls.signIn
+                              ? "authSignIn"
+                              : "authSignUp"),
+                      style: Theme.of(context).textTheme.button),
                 ),
               ),
       ),

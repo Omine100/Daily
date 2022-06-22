@@ -262,14 +262,12 @@ Widget authMobileUserInputField(BuildContext context, Function onChanged,
                     ? Icons.lock
                     : Icons.person)
                 : Icons.email,
-            color: Theme.of(context)
-                .colorScheme
-                .authMobileUserInputFieldIconDecoration,
+            color: customColors.icon,
           ),
           suffixIcon: isVariable
               ? IconButton(
                   splashColor:
-                      Theme.of(context).colorScheme.materialTransparent,
+                     Colors.transparent,
                   onPressed: () {
                     FocusScopeNode currentFocus = FocusScope.of(context);
                     currentFocus.unfocus();
@@ -306,11 +304,7 @@ Widget authMobileForgotPassword(BuildContext context) {
       },
       child: Text(
         getTranslated(context, "authForgotPassword"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.authMobileForgotPassword,
-          fontSize: Theme.of(context).textTheme.authMobileForgotPassword,
-          fontWeight: Theme.of(context).typography.authMobileForgotPassword,
-        ),
+        style:Theme.of(context).textTheme.subtitle2,
       ),
     ),
   );
@@ -322,20 +316,11 @@ Widget authMobilePolicyAndTaC(BuildContext context) {
     child: Center(
         child: Text.rich(TextSpan(
             text: getTranslated(context, "authPolicyAndTaCPrimary") + " ",
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.authMobilePolicyAndTaC,
-              fontSize: Theme.of(context).textTheme.authMobilePolicyAndTaC,
-              fontWeight: Theme.of(context).typography.authMobilePolicyAndTaC,
-            ),
+            style: Theme.of(context).textTheme.subtitle2,
             children: <TextSpan>[
           TextSpan(
               text: getTranslated(context, "authPolicyAndTaCPrivacy"),
-              style: TextStyle(
-                  color: Theme.of(context).colorScheme.authMobilePolicyAndTaC,
-                  fontSize: Theme.of(context).textTheme.authMobilePolicyAndTaC,
-                  fontWeight:
-                      Theme.of(context).typography.authMobilePolicyAndTaC,
-                  decoration: TextDecoration.underline),
+              style: Theme.of(context).textTheme.subtitle2,
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   _routeNavigation.routeTextViewer(
@@ -345,23 +330,11 @@ Widget authMobilePolicyAndTaC(BuildContext context) {
               text: "\n" +
                   getTranslated(context, "authPolicyAndTaCSeconday") +
                   " ",
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.authMobilePolicyAndTaC,
-                fontSize: Theme.of(context).textTheme.authMobilePolicyAndTaC,
-                fontWeight: Theme.of(context).typography.authMobilePolicyAndTaC,
-              ),
+              style:  Theme.of(context).textTheme.subtitle2,
               children: <TextSpan>[
                 TextSpan(
                     text: getTranslated(context, "authPolicyAndTaCConditions"),
-                    style: TextStyle(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .authMobilePolicyAndTaC,
-                        fontSize:
-                            Theme.of(context).textTheme.authMobilePolicyAndTaC,
-                        fontWeight:
-                            Theme.of(context).typography.authMobilePolicyAndTaC,
-                        decoration: TextDecoration.underline),
+                    style: customTextThemes.subtitle2Underlined,
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         _routeNavigation.routeTextViewer(
@@ -382,23 +355,21 @@ Widget authMobileGetStarted(BuildContext context, State state) {
       decoration: BoxDecoration(
           color: _authControls != AuthControls.welcome
               ? (_formComplete
-                  ? Theme.of(context).colorScheme.authMobileGetStarted
-                  : Theme.of(context).colorScheme.authMobileGetStartedDeactived)
-              : Theme.of(context).colorScheme.authMobileGetStarted,
+                  ? Theme.of(context).colorScheme.surface
+                  : Theme.of(context).colorScheme.surfaceVariant)
+              : Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(30)),
       child: Material(
-        color: Theme.of(context).colorScheme.materialTransparent,
+        color: Colors.transparent,
         child: _formComplete
             ? InkWell(
                 splashColor: _authControls != AuthControls.welcome
                     ? (_formComplete
                         ? Theme.of(context)
                             .colorScheme
-                            .authMobileGetStartedInkWell
-                        : Theme.of(context)
-                            .colorScheme
-                            .authMobileGetStartedInkWellDeactivated)
-                    : Theme.of(context).colorScheme.authMobileGetStartedInkWell,
+                            .surfaceTint
+                        : Colors.transparent)
+                    : Theme.of(context).colorScheme.surfaceTint,
                 customBorder: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 onTap: () {
@@ -412,17 +383,7 @@ Widget authMobileGetStarted(BuildContext context, State state) {
                           _authControls == AuthControls.signIn
                               ? "authSignIn"
                               : "authSignUp"),
-                      style: TextStyle(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .authMobileGetStartedText,
-                        fontSize: Theme.of(context)
-                            .textTheme
-                            .authMobileGetStartedText,
-                        fontWeight: Theme.of(context)
-                            .typography
-                            .authMobileGetStartedText,
-                      ),
+                      style:Theme.of(context).textTheme.button,
                     ),
                   ),
                 ),
@@ -435,15 +396,7 @@ Widget authMobileGetStarted(BuildContext context, State state) {
                         _authControls == AuthControls.signIn
                             ? "authSignIn"
                             : "authSignUp"),
-                    style: TextStyle(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .authMobileGetStartedText,
-                      fontSize:
-                          Theme.of(context).textTheme.authMobileGetStartedText,
-                      fontWeight:
-                          Theme.of(context).typography.authMobileGetStartedText,
-                    ),
+                    style:Theme.of(context).textTheme.button,
                   ),
                 ),
               ),
