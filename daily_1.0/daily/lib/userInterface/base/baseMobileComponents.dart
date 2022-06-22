@@ -53,9 +53,7 @@ Widget baseMobileNavigationBar(BuildContext context, State state) {
   return DotNavigationBar(
     currentIndex: _pageIndex,
     backgroundColor: _pageIndex == 3
-        ? Theme.of(context)
-            .colorScheme
-            .baseMobileNavigationBarBackgroundSettings
+        ? Theme.of(context).colorScheme.primaryContainer
         : Theme.of(context).colorScheme.primaryContainer,
     dotIndicatorColor: Theme.of(context).colorScheme.onPrimaryContainer,
     duration: Duration(milliseconds: 1250),

@@ -69,10 +69,7 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
         _forgotPasswordValidateSubmit(context, state);
       },
       autofocus: false,
-      style: TextStyle(
-          color: Theme.of(context)
-              .colorScheme
-              .forgotPasswordMobileUserInputFieldText),
+      style: customTextThemes.inputField,
       decoration: InputDecoration(
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
