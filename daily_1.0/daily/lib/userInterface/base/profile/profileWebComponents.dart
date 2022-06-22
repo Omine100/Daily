@@ -87,21 +87,13 @@ Widget profileInfo(BuildContext context, userStructure.User user) {
                 getTranslated(context, "settingsNullName"),
             softWrap: false,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.baseWebProfileName,
-              fontSize: Theme.of(context).textTheme.baseWebProfileName,
-              fontWeight: Theme.of(context).typography.baseWebProfileName,
-            ),
+            style: Theme.of(context).textTheme.headline1,
           ),
         ),
         Text(
           user.email ?? getTranslated(context, "settingsNullEmail"),
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.baseWebProfileEmail,
-            fontSize: Theme.of(context).textTheme.baseWebProfileEmail,
-            fontWeight: Theme.of(context).typography.baseWebProfileEmail,
-          ),
+          style: Theme.of(context).textTheme.headline1,
         ),
         Row(
           children: [
@@ -109,21 +101,13 @@ Widget profileInfo(BuildContext context, userStructure.User user) {
               "Following ${user.following.length}" ??
                   getTranslated(context, "settingsNullEmail"),
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.baseWebProfileEmail,
-                fontSize: Theme.of(context).textTheme.baseWebProfileEmail,
-                fontWeight: Theme.of(context).typography.baseWebProfileEmail,
-              ),
+              style: Theme.of(context).textTheme.headline1,
             ),
             Text(
               "Followers ${user.followers.length}" ??
                   getTranslated(context, "settingsNullEmail"),
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.baseWebProfileEmail,
-                fontSize: Theme.of(context).textTheme.baseWebProfileEmail,
-                fontWeight: Theme.of(context).typography.baseWebProfileEmail,
-              ),
+              style: Theme.of(context).textTheme.headline1,
             )
           ],
         )
@@ -140,7 +124,7 @@ Widget profileImage(BuildContext context, userStructure.User user) {
         context, true, Theme.of(context).visualDensity.baseWebProfileIconWidth),
     decoration: BoxDecoration(
       shape: BoxShape.circle,
-      color: Theme.of(context).colorScheme.baseWebProfileBackground,
+      color: Theme.of(context).colorScheme.primaryContainer,
     ),
     child: CachedNetworkImage(
       imageUrl: user.profilePicURL,

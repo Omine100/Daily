@@ -78,7 +78,7 @@ class _SideMenuState extends State<SideMenu> {
             Theme.of(context).visualDensity.baseWebProfileIconWidth),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Theme.of(context).colorScheme.baseWebProfileBackground,
+          color: Theme.of(context).colorScheme.onBackground,
         ),
         child: CachedNetworkImage(
           imageUrl: _firebaseAccounts.getCurrentUserProfilePic(),
@@ -92,7 +92,7 @@ class _SideMenuState extends State<SideMenu> {
           errorWidget: (context, url, error) => Icon(
             Icons.person_outline_rounded,
             size: 55,
-            color: Theme.of(context).colorScheme.baseWebProfileIcon,
+            color: customColors.icon,
           ),
         ),
       ).showClickOnHover,
@@ -120,11 +120,7 @@ class _SideMenuState extends State<SideMenu> {
                     getTranslated(context, "settingsNullName"),
                 softWrap: false,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.baseWebProfileName,
-                  fontSize: Theme.of(context).textTheme.baseWebProfileName,
-                  fontWeight: Theme.of(context).typography.baseWebProfileName,
-                ),
+                style: Theme.of(context).textTheme.headline1,
               ),
             ).showClickOnHover,
           ),
@@ -135,11 +131,7 @@ class _SideMenuState extends State<SideMenu> {
               _firebaseAccounts.getCurrentUserEmail() ??
                   getTranslated(context, "settingsNullEmail"),
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.baseWebProfileEmail,
-                fontSize: Theme.of(context).textTheme.baseWebProfileEmail,
-                fontWeight: Theme.of(context).typography.baseWebProfileEmail,
-              ),
+              style: Theme.of(context).textTheme.headline1,
             ),
           ),
         ],
@@ -208,17 +200,11 @@ class _SideMenuState extends State<SideMenu> {
       child: ListTile(
           onTap: onTap,
           title: Row(children: <Widget>[
-            Icon(icon, color: Theme.of(context).colorScheme.baseWebDrawerItem),
+            Icon(icon, color: customColors.icon),
             Padding(
                 padding: EdgeInsets.only(left: 8.0),
-                child: Text(
-                  text,
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.baseWebDrawerItem,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                  ),
-                )),
+                child:
+                    Text(text, style: Theme.of(context).textTheme.headline1)),
           ])),
     );
   }
@@ -237,7 +223,7 @@ class _SideMenuState extends State<SideMenu> {
     return Container(
       height: double.infinity,
       padding: EdgeInsets.only(top: kIsWeb ? 5 : 0),
-      color: Theme.of(context).colorScheme.baseWebDrawerBackground,
+      color: Theme.of(context).colorScheme.background,
       child: SafeArea(
           child: Column(children: [
         _createHeader(context),
@@ -268,7 +254,7 @@ class _SideMenuState extends State<SideMenu> {
               width: MediaQuery.of(context).size.width / 8,
               child: Divider(
                 thickness: 2,
-                color: Theme.of(context).colorScheme.baseWebCardContainer,
+                color: Theme.of(context).colorScheme.onBackground,
               ),
             ),
             _createItem(

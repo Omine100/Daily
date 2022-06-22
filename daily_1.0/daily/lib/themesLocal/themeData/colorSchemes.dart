@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
+//Divider can just be 'onPrimary, etc.'
+
 ColorScheme lightColorScheme = ColorScheme(
   primary: Color(0xFFFFFFFF),
   onPrimary: Color(0xFF333333), //Title
   secondary: Color(0xFFFF4350), //Accent
   onSecondary: Color(0xFF999999), //Subtitle
   background: Color(0xFFFBFAF5),
-  onBackground: Color(0xFF333333), //TextOnBackground
+  onBackground: Color(0xFFFFFFFF),
   primaryContainer: Color(0xFFFFFFFF),
-  onPrimaryContainer: Color(0xFF9E9E9E), //TextOnContainer
+  onPrimaryContainer: Color(0xFFFFFFFF),
   secondaryContainer: Color(0xFFFBFAF5),
-  onSecondaryContainer: Color(0xFF9E9E9E), //TextOnContainer
+  onSecondaryContainer: Color(0xFF9E9E9E),
   surface: Color(0xFFFF4350), //Button
   onSurface: Color(0xFFCCCCCC), //TextOnButton
   surfaceTint: Color(0xFFFF9999), //Inkwell
@@ -27,11 +29,11 @@ ColorScheme darkColorScheme = ColorScheme(
   secondary: Color(0xFFFF4350), //Accent
   onSecondary: Color(0xFF999999), //Subtitle
   background: Color(0xFF121212),
-  onBackground: Color(0xFFCCCCCC), //TextOnBackground
+  onBackground: Color(0xFF202020),
   primaryContainer: Color(0xFF202020),
-  onPrimaryContainer: Color(0xFF9E9E9E), //TextOnContainer
+  onPrimaryContainer: Color(0xFF202020),
   secondaryContainer: Color(0xFF121212),
-  onSecondaryContainer: Color(0xFF9E9E9E), //TextOnContainer
+  onSecondaryContainer: Color(0xFF9E9E9E),
   surface: Color(0xFFEF5350), //Button
   onSurface: Color(0xFFCCCCCC), //TextOnButton
   surfaceTint: Color(0xFFFF5350), //Inkwell
@@ -41,13 +43,6 @@ ColorScheme darkColorScheme = ColorScheme(
   onError: Color(0xFFFFFFFF), //TextOnError
   brightness: Brightness.dark,
 );
-
-extension CustomColorScheme on ColorScheme {
-  Color get success => const Color(0xFF28a745);
-  Color get info => const Color(0xFF17a2b8);
-  Color get warning => const Color(0xFFffc107);
-  Color get danger => const Color(0xFFdc3545);
-}
 
 @immutable
 class CustomColors extends ThemeExtension<CustomColors> {

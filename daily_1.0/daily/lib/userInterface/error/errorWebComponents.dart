@@ -60,10 +60,7 @@ Widget errorText(BuildContext context) {
       getTranslated(context, "errorText"),
       softWrap: true,
       textAlign: TextAlign.center,
-      style: TextStyle(
-          color: Theme.of(context).colorScheme.errorWebText,
-          fontSize: Theme.of(context).textTheme.errorWebText,
-          fontWeight: Theme.of(context).typography.errorWebText),
+      style: Theme.of(context).textTheme.bodyText1,
     ),
   );
 }

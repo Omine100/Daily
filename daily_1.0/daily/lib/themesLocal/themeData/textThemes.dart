@@ -11,7 +11,8 @@ TextTheme lightTextTheme = TextTheme(
         color: Color(0xFF444444), fontSize: 22, fontWeight: FontWeight.w500),
     bodyText1: TextStyle(
         color: Color(0xFF555555), fontSize: 18, fontWeight: FontWeight.w300),
-    bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+    bodyText2: TextStyle(
+        color: Color(0xFFBBBBBB), fontSize: 14.0, fontWeight: FontWeight.w300),
     button: TextStyle(
         color: Color(0xFFFFFFFF), fontSize: 20, fontWeight: FontWeight.w500));
 
@@ -26,7 +27,8 @@ TextTheme darkTextTheme = TextTheme(
         color: Color(0xFFCCCCCC), fontSize: 22, fontWeight: FontWeight.w500),
     bodyText1: TextStyle(
         color: Color(0xFF888888), fontSize: 18, fontWeight: FontWeight.w300),
-    bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+    bodyText2: TextStyle(
+        color: Color(0xFF555555), fontSize: 14.0, fontWeight: FontWeight.w300),
     button: TextStyle(
         color: Color(0xFFCCCCCC), fontSize: 20, fontWeight: FontWeight.w500));
 
