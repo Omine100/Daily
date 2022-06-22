@@ -151,11 +151,7 @@ Widget authMobileCardText(BuildContext context) {
     children: [
       Text(
         getTranslated(context, "authCardText"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.authMobileCardText,
-          fontSize: Theme.of(context).textTheme.authMobileCardText,
-          fontWeight: Theme.of(context).typography.authMobileCardText,
-        ),
+        style: Theme.of(context).textTheme.headline1
       ),
       Padding(
         padding: const EdgeInsets.only(top: 10.0),
@@ -163,11 +159,7 @@ Widget authMobileCardText(BuildContext context) {
           getTranslated(context, "authCardSubText"),
           softWrap: true,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.authMobileCardSubText,
-            fontSize: Theme.of(context).textTheme.authMobileCardSubText,
-            fontWeight: Theme.of(context).typography.authMobileCardSubText,
-          ),
+          style: Theme.of(context).textTheme.bodyText1
         ),
       ),
     ],
