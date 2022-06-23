@@ -73,16 +73,12 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
       decoration: InputDecoration(
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context)
-                .colorScheme
-                .forgotPasswordMobileUserInputFieldBorder,
+            color: Theme.of(context).colorScheme.secondaryContainer,
           ),
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context)
-                .colorScheme
-                .forgotPasswordMobileUserInputFieldBorder,
+            color: Theme.of(context).colorScheme.onSecondaryContainer,
           ),
         ),
         hintText: getTranslated(context, "forgotPasswordFormEmail"),
@@ -147,31 +143,11 @@ Widget forgotPasswordMobileResend(BuildContext context) {
           child: RichText(
             text: TextSpan(
               text: getTranslated(context, "forgotPasswordResendPrimary"),
-              style: TextStyle(
-                color: Theme.of(context)
-                    .colorScheme
-                    .forgotPasswordMobileResendPrimary,
-                fontSize: Theme.of(context)
-                    .textTheme
-                    .forgotPasswordMobileResendPrimary,
-                fontWeight: Theme.of(context)
-                    .typography
-                    .forgotPasswordMobileResendPrimary,
-              ),
+              style: Theme.of(context).textTheme.headlineSmall,
               children: <TextSpan>[
                 TextSpan(
                   text: getTranslated(context, "forgotPasswordResendSecondary"),
-                  style: TextStyle(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .forgotPasswordMobileResendSecondary,
-                    fontSize: Theme.of(context)
-                        .textTheme
-                        .forgotPasswordMobileResendSecondary,
-                    fontWeight: Theme.of(context)
-                        .typography
-                        .forgotPasswordMobileResendSecondary,
-                  ),
+                  style: Theme.of(context).textTheme.labelSmall,
                 ),
               ],
             ),

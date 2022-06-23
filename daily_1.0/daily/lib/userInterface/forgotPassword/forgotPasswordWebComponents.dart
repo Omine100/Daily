@@ -85,7 +85,7 @@ Widget forgotPasswordWebUserInputField(BuildContext context, State state) {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).colorScheme.forgotPasswordWebUserInputField,
+        color: Theme.of(context).colorScheme.secondaryContainer,
       ),
       child: TextFormField(
         textAlignVertical: TextAlignVertical.center,
@@ -179,24 +179,11 @@ Widget forgotPasswordWebResend(BuildContext context) {
     child: RichText(
       text: TextSpan(
         text: getTranslated(context, "forgotPasswordResendPrimary"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordWebResendPrimary,
-          fontSize: Theme.of(context).textTheme.forgotPasswordWebResendPrimary,
-          fontWeight:
-              Theme.of(context).typography.forgotPasswordWebResendPrimary,
-        ),
+        style: Theme.of(context).textTheme.headlineSmall,
         children: <TextSpan>[
           TextSpan(
             text: getTranslated(context, "forgotPasswordResendSecondary"),
-            style: TextStyle(
-              color: Theme.of(context)
-                  .colorScheme
-                  .forgotPasswordWebResendSecondary,
-              fontSize:
-                  Theme.of(context).textTheme.forgotPasswordWebResendSecondary,
-              fontWeight:
-                  Theme.of(context).typography.forgotPasswordWebResendSecondary,
-            ),
+            style: Theme.of(context).textTheme.labelSmall,
           ),
         ],
       ),

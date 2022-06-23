@@ -90,13 +90,10 @@ Widget settingSwitch(BuildContext context, Setting setting, State state) {
           setting.onChanged.call(context, setting.value);
       });
     },
-    activeColor: Theme.of(context).colorScheme.settingsMobileSwitchActiveThumb,
-    activeTrackColor:
-        Theme.of(context).colorScheme.settingsMobileSwitchActiveTrack,
-    inactiveThumbColor:
-        Theme.of(context).colorScheme.settingsMobileSwitchInactiveThumb,
-    inactiveTrackColor:
-        Theme.of(context).colorScheme.settingsMobileSwitchInactiveTrack,
+    activeColor: Theme.of(context).colorScheme.surface,
+    activeTrackColor: Theme.of(context).colorScheme.onSurface,
+    inactiveThumbColor: Theme.of(context).colorScheme.inverseSurface,
+    inactiveTrackColor: Theme.of(context).colorScheme.onInverseSurface,
   );
 }
 

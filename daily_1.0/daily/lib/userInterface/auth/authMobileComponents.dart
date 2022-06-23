@@ -149,18 +149,14 @@ Widget authMobileCardInput(BuildContext context, State state, bool isSmall) {
 Widget authMobileCardText(BuildContext context) {
   return Column(
     children: [
-      Text(
-        getTranslated(context, "authCardText"),
-        style: Theme.of(context).textTheme.headline1
-      ),
+      Text(getTranslated(context, "authCardText"),
+          style: Theme.of(context).textTheme.headline1),
       Padding(
         padding: const EdgeInsets.only(top: 10.0),
-        child: Text(
-          getTranslated(context, "authCardSubText"),
-          softWrap: true,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyText1
-        ),
+        child: Text(getTranslated(context, "authCardSubText"),
+            softWrap: true,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyText1),
       ),
     ],
   );
@@ -233,15 +229,12 @@ Widget authMobileUserInputField(BuildContext context, Function onChanged,
         style: Theme.of(context).textTheme.labelSmall,
         decoration: InputDecoration(
           enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color:
-                  Theme.of(context).colorScheme.
-            ),
+            borderSide:
+                BorderSide(color: Theme.of(context).colorScheme.secondary),
           ),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              color:
-                  Theme.of(context).colorScheme.success,
+              color: Theme.of(context).colorScheme.onSecondaryContainer,
             ),
           ),
           hintText: getTranslated(context, authForm),
@@ -258,8 +251,7 @@ Widget authMobileUserInputField(BuildContext context, Function onChanged,
           ),
           suffixIcon: isVariable
               ? IconButton(
-                  splashColor:
-                     Colors.transparent,
+                  splashColor: Colors.transparent,
                   onPressed: () {
                     FocusScopeNode currentFocus = FocusScope.of(context);
                     currentFocus.unfocus();
@@ -273,9 +265,7 @@ Widget authMobileUserInputField(BuildContext context, Function onChanged,
                     _isVisible
                         ? Icons.visibility_outlined
                         : Icons.visibility_off_outlined,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .authMobileUserInputFieldIconDecoration,
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
                   ),
                 )
               : null,
@@ -296,7 +286,7 @@ Widget authMobileForgotPassword(BuildContext context) {
       },
       child: Text(
         getTranslated(context, "authForgotPassword"),
-        style:Theme.of(context).textTheme.subtitle2,
+        style: Theme.of(context).textTheme.subtitle2,
       ),
     ),
   );
@@ -322,7 +312,7 @@ Widget authMobilePolicyAndTaC(BuildContext context) {
               text: "\n" +
                   getTranslated(context, "authPolicyAndTaCSeconday") +
                   " ",
-              style:  Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.subtitle2,
               children: <TextSpan>[
                 TextSpan(
                     text: getTranslated(context, "authPolicyAndTaCConditions"),
@@ -357,9 +347,7 @@ Widget authMobileGetStarted(BuildContext context, State state) {
             ? InkWell(
                 splashColor: _authControls != AuthControls.welcome
                     ? (_formComplete
-                        ? Theme.of(context)
-                            .colorScheme
-                            .surfaceTint
+                        ? Theme.of(context).colorScheme.surfaceTint
                         : Colors.transparent)
                     : Theme.of(context).colorScheme.surfaceTint,
                 customBorder: RoundedRectangleBorder(
@@ -375,7 +363,7 @@ Widget authMobileGetStarted(BuildContext context, State state) {
                           _authControls == AuthControls.signIn
                               ? "authSignIn"
                               : "authSignUp"),
-                      style:Theme.of(context).textTheme.button,
+                      style: Theme.of(context).textTheme.button,
                     ),
                   ),
                 ),
@@ -388,7 +376,7 @@ Widget authMobileGetStarted(BuildContext context, State state) {
                         _authControls == AuthControls.signIn
                             ? "authSignIn"
                             : "authSignUp"),
-                    style:Theme.of(context).textTheme.button,
+                    style: Theme.of(context).textTheme.button,
                   ),
                 ),
               ),
@@ -419,11 +407,7 @@ Widget authMobileSwitch(BuildContext context, State state) {
                 : (_authControls == AuthControls.signIn
                     ? "authSwitchSignUpPrimary"
                     : "authSwitchSignInPrimary")),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.authMobileSwitchPrimary,
-          fontSize: Theme.of(context).textTheme.authMobileSwitchPrimary,
-          fontWeight: Theme.of(context).typography.authMobileSwitchPrimary,
-        ),
+        style: Theme.of(context).textTheme.headlineSmall,
         children: <TextSpan>[
           TextSpan(
             text: getTranslated(
@@ -433,12 +417,7 @@ Widget authMobileSwitch(BuildContext context, State state) {
                     : (_authControls == AuthControls.signIn
                         ? "authSwitchSignUpSecondary"
                         : "authSwitchSignInSecondary")),
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.authMobileSwitchSecondary,
-              fontSize: Theme.of(context).textTheme.authMobileSwitchSecondary,
-              fontWeight:
-                  Theme.of(context).typography.authMobileSwitchSecondary,
-            ),
+            style: Theme.of(context).textTheme.labelSmall,
           ),
         ],
       ),

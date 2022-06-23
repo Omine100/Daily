@@ -180,7 +180,7 @@ Widget authWebUserInputField(BuildContext context, State state,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).colorScheme.authWebUserInputField,
+        color: Theme.of(context).colorScheme.secondaryContainer,
       ),
       child: TextFormField(
         textAlignVertical: TextAlignVertical.center,
@@ -355,11 +355,7 @@ Widget authWebSwitch(BuildContext context, State state) {
             _authControls == AuthControls.signIn
                 ? "authSwitchSignUpPrimary"
                 : "authSwitchSignInPrimary"),
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.authWebSwitchPrimary,
-          fontSize: Theme.of(context).textTheme.authWebSwitchPrimary,
-          fontWeight: Theme.of(context).typography.authWebSwitchPrimary,
-        ),
+        style: Theme.of(context).textTheme.headlineSmall,
         children: <TextSpan>[
           TextSpan(
             text: getTranslated(
@@ -367,11 +363,7 @@ Widget authWebSwitch(BuildContext context, State state) {
                 _authControls == AuthControls.signIn
                     ? "authSwitchSignUpSecondary"
                     : "authSwitchSignInSecondary"),
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.authWebSwitchSecondary,
-              fontSize: Theme.of(context).textTheme.authWebSwitchSecondary,
-              fontWeight: Theme.of(context).typography.authWebSwitchSecondary,
-            ),
+            style: Theme.of(context).textTheme.labelSmall,
           ),
         ],
       ),

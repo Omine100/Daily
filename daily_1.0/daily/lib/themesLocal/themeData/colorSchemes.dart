@@ -16,6 +16,8 @@ ColorScheme lightColorScheme = ColorScheme(
   surface: Color(0xFFFF4350), //Button
   onSurface: Color(0xFFCCCCCC), //TextOnButton
   surfaceTint: Color(0xFFFF9999), //Inkwell
+  inverseSurface: Color(0xFF939393),
+  onInverseSurface: Color(0xFFD3D3D3),
   surfaceVariant: Color(0xFF202020), //ButtonDeactivated
   onSurfaceVariant: Color(0xFFFFFFFF), //TextOnButton
   error: Color(0xFFFF4350),
@@ -37,6 +39,8 @@ ColorScheme darkColorScheme = ColorScheme(
   surface: Color(0xFFEF5350), //Button
   onSurface: Color(0xFFCCCCCC), //TextOnButton
   surfaceTint: Color(0xFFFF5350), //Inkwell
+  inverseSurface: Color(0xFF939393),
+  onInverseSurface: Color(0xFFD3D3D3),
   surfaceVariant: Color(0xFF323232), //ButtonDeactivated
   onSurfaceVariant: Color(0xFFCCCCCC), //TextOnButton
   error: Color(0xFFFF4350),
