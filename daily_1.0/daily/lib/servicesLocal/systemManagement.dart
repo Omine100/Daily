@@ -34,16 +34,6 @@ void setTheme(BuildContext context) {
   }
   isDark.value = false;
 }
-
-CustomColors customColors;
-void setColorSchemeExtension(BuildContext context) {
-  customColors = Theme.of(context).extension<CustomColors>();
-}
-
-CustomTextThemes customTextThemes;
-void setTextThemeExtension(BuildContext context) {
-  customTextThemes = Theme.of(context).extension<CustomTextThemes>();
-}
 // #endregion
 
 // #region legal

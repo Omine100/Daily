@@ -58,7 +58,7 @@ Widget baseMobileNavigationBar(BuildContext context, State state) {
     dotIndicatorColor: Theme.of(context).colorScheme.onPrimaryContainer,
     duration: Duration(milliseconds: 1250),
     unselectedItemColor: Theme.of(context).colorScheme.onPrimaryContainer,
-    selectedItemColor: customColors.icon,
+    selectedItemColor: Theme.of(context).colorScheme.onPrimaryContainer,
     enableFloatingNavBar: true,
     curve: Curves.easeOutQuint,
     onTap: (pageIndex) {

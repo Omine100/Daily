@@ -17,7 +17,7 @@ AuthControls _authControls = AuthControls.welcome;
 
 Widget authMobileTitle(BuildContext context) {
   return Text(getTranslated(context, "authTitle"),
-      style: Theme.of(context).textTheme.titleSmall);
+      style: Theme.of(context).textTheme.titleLarge);
 }
 
 Widget authMobileCenterPiece(BuildContext context, State state) {
@@ -150,13 +150,13 @@ Widget authMobileCardText(BuildContext context) {
   return Column(
     children: [
       Text(getTranslated(context, "authCardText"),
-          style: Theme.of(context).textTheme.headline1),
+          style: Theme.of(context).textTheme.headlineMedium),
       Padding(
         padding: const EdgeInsets.only(top: 10.0),
         child: Text(getTranslated(context, "authCardSubText"),
             softWrap: true,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyText1),
+            style: Theme.of(context).textTheme.bodyMedium),
       ),
     ],
   );
@@ -247,7 +247,7 @@ Widget authMobileUserInputField(BuildContext context, Function onChanged,
                     ? Icons.lock
                     : Icons.person)
                 : Icons.email,
-            color: customColors.icon,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
           suffixIcon: isVariable
               ? IconButton(
@@ -286,7 +286,7 @@ Widget authMobileForgotPassword(BuildContext context) {
       },
       child: Text(
         getTranslated(context, "authForgotPassword"),
-        style: Theme.of(context).textTheme.subtitle2,
+        style: Theme.of(context).textTheme.titleSmall,
       ),
     ),
   );
@@ -298,11 +298,11 @@ Widget authMobilePolicyAndTaC(BuildContext context) {
     child: Center(
         child: Text.rich(TextSpan(
             text: getTranslated(context, "authPolicyAndTaCPrimary") + " ",
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
             children: <TextSpan>[
           TextSpan(
               text: getTranslated(context, "authPolicyAndTaCPrivacy"),
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   _routeNavigation.routeTextViewer(
@@ -312,11 +312,11 @@ Widget authMobilePolicyAndTaC(BuildContext context) {
               text: "\n" +
                   getTranslated(context, "authPolicyAndTaCSeconday") +
                   " ",
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
               children: <TextSpan>[
                 TextSpan(
                     text: getTranslated(context, "authPolicyAndTaCConditions"),
-                    style: customTextThemes.subtitle2Underlined,
+                    style: Theme.of(context).textTheme.labelMedium,
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         _routeNavigation.routeTextViewer(
@@ -363,7 +363,7 @@ Widget authMobileGetStarted(BuildContext context, State state) {
                           _authControls == AuthControls.signIn
                               ? "authSignIn"
                               : "authSignUp"),
-                      style: Theme.of(context).textTheme.button,
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
                   ),
                 ),
@@ -376,7 +376,7 @@ Widget authMobileGetStarted(BuildContext context, State state) {
                         _authControls == AuthControls.signIn
                             ? "authSignIn"
                             : "authSignUp"),
-                    style: Theme.of(context).textTheme.button,
+                    style: Theme.of(context).textTheme.displaySmall,
                   ),
                 ),
               ),

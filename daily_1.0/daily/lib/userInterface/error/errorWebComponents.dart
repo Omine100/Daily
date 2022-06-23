@@ -40,13 +40,13 @@ Widget errorTitle(BuildContext context) {
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       Text(getTranslated(context, "errorTitle"),
-          style: Theme.of(context).textTheme.titleSmall),
+          style: Theme.of(context).textTheme.titleLarge),
       Padding(
         padding: EdgeInsets.all(5),
       ),
       Text(getTranslated(context, "errorSubtitle"),
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.subtitle1),
+          style: Theme.of(context).textTheme.titleMedium),
     ],
   );
 }
@@ -60,7 +60,7 @@ Widget errorText(BuildContext context) {
       getTranslated(context, "errorText"),
       softWrap: true,
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.bodyText1,
+      style: Theme.of(context).textTheme.bodyMedium,
     ),
   );
 }

@@ -9,7 +9,7 @@ Widget textViewerMobileText(BuildContext context, String filePath) {
           future: DefaultAssetBundle.of(context).loadString(filePath),
           builder: (context, snapshot) {
             return AdaptiveText(snapshot.data ?? '',
-                style: Theme.of(context).textTheme.bodyText1);
+                style: Theme.of(context).textTheme.bodyMedium);
           }),
     ),
   );

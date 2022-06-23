@@ -92,7 +92,7 @@ class _SideMenuState extends State<SideMenu> {
           errorWidget: (context, url, error) => Icon(
             Icons.person_outline_rounded,
             size: 55,
-            color: customColors.icon,
+            color: Theme.of(context).colorScheme.onBackground,
           ),
         ),
       ).showClickOnHover,
@@ -120,7 +120,7 @@ class _SideMenuState extends State<SideMenu> {
                     getTranslated(context, "settingsNullName"),
                 softWrap: false,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.headline1,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
             ).showClickOnHover,
           ),
@@ -131,7 +131,7 @@ class _SideMenuState extends State<SideMenu> {
               _firebaseAccounts.getCurrentUserEmail() ??
                   getTranslated(context, "settingsNullEmail"),
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.headline1,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
         ],
@@ -200,11 +200,14 @@ class _SideMenuState extends State<SideMenu> {
       child: ListTile(
           onTap: onTap,
           title: Row(children: <Widget>[
-            Icon(icon, color: customColors.icon),
+            Icon(
+              icon,
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
+            ),
             Padding(
                 padding: EdgeInsets.only(left: 8.0),
-                child:
-                    Text(text, style: Theme.of(context).textTheme.headline1)),
+                child: Text(text,
+                    style: Theme.of(context).textTheme.headlineMedium)),
           ])),
     );
   }

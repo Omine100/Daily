@@ -87,13 +87,13 @@ Widget profileInfo(BuildContext context, userStructure.User user) {
                 getTranslated(context, "settingsNullName"),
             softWrap: false,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.headline1,
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
         ),
         Text(
           user.email ?? getTranslated(context, "settingsNullEmail"),
           overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.headline1,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         Row(
           children: [
@@ -101,13 +101,13 @@ Widget profileInfo(BuildContext context, userStructure.User user) {
               "Following ${user.following.length}" ??
                   getTranslated(context, "settingsNullEmail"),
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.headline1,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             Text(
               "Followers ${user.followers.length}" ??
                   getTranslated(context, "settingsNullEmail"),
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.headline1,
+              style: Theme.of(context).textTheme.headlineMedium,
             )
           ],
         )
@@ -138,7 +138,7 @@ Widget profileImage(BuildContext context, userStructure.User user) {
       errorWidget: (context, url, error) => Icon(
         Icons.person_outline_rounded,
         size: 55,
-        color: customColors.icon,
+        color: Theme.of(context).colorScheme.onPrimaryContainer,
       ),
     ),
   );

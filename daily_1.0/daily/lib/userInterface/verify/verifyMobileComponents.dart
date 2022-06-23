@@ -18,13 +18,13 @@ Widget verifyMobileTitle(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(getTranslated(context, "verifyTitle"),
-            style: Theme.of(context).textTheme.titleSmall),
+            style: Theme.of(context).textTheme.titleLarge),
         Padding(
           padding: EdgeInsets.all(10),
         ),
         Text(getTranslated(context, "verifySubtitle"),
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.subtitle1),
+            style: Theme.of(context).textTheme.titleMedium),
       ],
     ),
   );
@@ -61,7 +61,7 @@ Widget verifyMobileLogin(
         child: Center(
           child: Text(
             getTranslated(context, "verifyLogin"),
-            style: Theme.of(context).textTheme.button,
+            style: Theme.of(context).textTheme.displaySmall,
           ),
         ),
       ),

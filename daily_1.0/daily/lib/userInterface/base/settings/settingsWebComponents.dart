@@ -46,7 +46,7 @@ Row settingsGroupTitle(BuildContext context, String key) {
   return Row(
     children: [
       AdaptiveText(getTranslated(context, key),
-          style: Theme.of(context).textTheme.headline1),
+          style: Theme.of(context).textTheme.headlineMedium),
     ],
   );
 }
@@ -74,7 +74,7 @@ Row settingRow(BuildContext context, Setting setting, State state) {
         ? [settingClick(context, setting, state)]
         : [
             AdaptiveText(getTranslated(context, setting.key),
-                style: Theme.of(context).textTheme.bodyText1),
+                style: Theme.of(context).textTheme.bodyMedium),
             formPick()
           ],
   );
@@ -109,7 +109,7 @@ Widget settingDropdown(BuildContext context, Setting setting, State state) {
             Theme.of(context).visualDensity.settingDropdownHeight),
         items: setting.items(context),
         value: setting.value,
-        style: Theme.of(context).textTheme.bodyText1,
+        style: Theme.of(context).textTheme.bodyMedium,
         dropdownColor: Theme.of(context).colorScheme.background,
         onChanged: (value) {
           state.setState(() {
@@ -140,7 +140,7 @@ Widget settingClick(BuildContext context, Setting setting, State state) {
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0),
         child: Text(getTranslated(context, setting.key),
-            style: Theme.of(context).textTheme.bodyText1),
+            style: Theme.of(context).textTheme.bodyMedium),
       ),
     ),
   ).showClickOnHover;
@@ -154,9 +154,9 @@ void showAboutBox(BuildContext context) {
         data: ThemeData(
           dialogBackgroundColor: Theme.of(context).colorScheme.background,
           textTheme: TextTheme(
-              headline5: Theme.of(context).textTheme.headline1,
-              bodyText2: Theme.of(context).textTheme.bodyText1,
-              caption: Theme.of(context).textTheme.bodyText1),
+              headline5: Theme.of(context).textTheme.headlineMedium,
+              bodyText2: Theme.of(context).textTheme.bodyMedium,
+              caption: Theme.of(context).textTheme.bodyMedium),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
                 primary: Theme.of(context).colorScheme.onBackground),

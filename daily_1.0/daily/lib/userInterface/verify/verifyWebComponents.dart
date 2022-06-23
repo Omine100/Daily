@@ -38,14 +38,14 @@ Widget verifyWebTitle(BuildContext context) {
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       Text(getTranslated(context, "verifyTitle"),
-          style: Theme.of(context).textTheme.titleSmall),
+          style: Theme.of(context).textTheme.titleLarge),
       Padding(
         padding: EdgeInsets.all(10),
       ),
       Text(getTranslated(context, "verifySubtitle"),
           textAlign: TextAlign.center,
           softWrap: true,
-          style: Theme.of(context).textTheme.subtitle1),
+          style: Theme.of(context).textTheme.titleMedium),
     ],
   );
 }
@@ -81,7 +81,7 @@ Widget verifyWebLogin(
         },
         child: Center(
           child: Text(getTranslated(context, "verifyLogin"),
-              style: Theme.of(context).textTheme.button),
+              style: Theme.of(context).textTheme.displaySmall),
         ),
       ),
     ),
@@ -94,7 +94,7 @@ Widget verifyWebSwitchBack(BuildContext context, State state) {
       authWebVerifySwitchBack(context, state);
     },
     child: Text(getTranslated(context, "verifyAuthCallback"),
-            style: Theme.of(context).textTheme.bodyText1)
+            style: Theme.of(context).textTheme.bodyMedium)
         .showClickOnHover,
   );
 }

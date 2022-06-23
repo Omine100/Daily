@@ -112,7 +112,7 @@ Widget authWebTitle(BuildContext context) {
           _authControls == AuthControls.signIn
               ? "authTitleSignIn"
               : "authTitleSignUp"),
-      style: Theme.of(context).textTheme.titleSmall,
+      style: Theme.of(context).textTheme.titleLarge,
     ),
   );
 }
@@ -190,12 +190,12 @@ Widget authWebUserInputField(BuildContext context, State state,
           _authWebValidateSubmit(context, state);
         },
         autofocus: false,
-        style: Theme.of(context).textTheme.bodyText1,
+        style: Theme.of(context).textTheme.bodyMedium,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: getTranslated(context, authForm),
-          labelStyle: customTextThemes.inputField,
-          hintStyle: customTextThemes.inputField,
+          labelStyle: Theme.of(context).textTheme.labelMedium,
+          hintStyle: Theme.of(context).textTheme.labelMedium,
           prefixIcon: Icon(
             authForm != "authFormEmail"
                 ? (authForm == "authFormPass" ||
@@ -203,7 +203,7 @@ Widget authWebUserInputField(BuildContext context, State state,
                     ? Icons.lock
                     : Icons.person)
                 : Icons.email,
-            color: customColors.icon,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
           suffixIcon: isVariable
               ? IconButton(
@@ -221,7 +221,7 @@ Widget authWebUserInputField(BuildContext context, State state,
                     _isVisible
                         ? Icons.visibility_outlined
                         : Icons.visibility_off_outlined,
-                    color: customColors.icon,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
                   ),
                 )
               : null,
@@ -243,7 +243,7 @@ Widget authWebForgotPassword(BuildContext context, State state, bool isSmall) {
         });
       },
       child: Text(getTranslated(context, "authForgotPassword"),
-          style: Theme.of(context).textTheme.bodyText1),
+          style: Theme.of(context).textTheme.bodyMedium),
     ),
   ).showClickOnHover;
 }
@@ -256,11 +256,11 @@ Widget authWebPolicyAndTaC(BuildContext context) {
     child: Center(
         child: Text.rich(TextSpan(
             text: getTranslated(context, "authPolicyAndTaCPrimary") + " ",
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
             children: <TextSpan>[
           TextSpan(
               text: getTranslated(context, "authPolicyAndTaCPrivacy") + " ",
-              style: customTextThemes.subtitle2Underlined,
+              style: Theme.of(context).textTheme.titleSmall,
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   _routeNavigation.routeTextViewer(
@@ -268,11 +268,11 @@ Widget authWebPolicyAndTaC(BuildContext context) {
                 }),
           TextSpan(
               text: getTranslated(context, "authPolicyAndTaCSeconday") + " ",
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
               children: <TextSpan>[
                 TextSpan(
                     text: getTranslated(context, "authPolicyAndTaCConditions"),
-                    style: customTextThemes.subtitle2Underlined,
+                    style: Theme.of(context).textTheme.titleSmall,
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         _routeNavigation.routeTextViewer(
@@ -320,7 +320,7 @@ Widget authWebGetStarted(BuildContext context, State state, bool isSmall) {
                             _authControls == AuthControls.signIn
                                 ? "authSignIn"
                                 : "authSignUp"),
-                        style: Theme.of(context).textTheme.button),
+                        style: Theme.of(context).textTheme.displaySmall),
                   ),
                 ),
               )
@@ -332,7 +332,7 @@ Widget authWebGetStarted(BuildContext context, State state, bool isSmall) {
                           _authControls == AuthControls.signIn
                               ? "authSignIn"
                               : "authSignUp"),
-                      style: Theme.of(context).textTheme.button),
+                      style: Theme.of(context).textTheme.displaySmall),
                 ),
               ),
       ),

@@ -45,6 +45,7 @@ ColorScheme darkColorScheme = ColorScheme(
   onSurfaceVariant: Color(0xFFCCCCCC), //TextOnButton
   error: Color(0xFFFF4350),
   onError: Color(0xFFFFFFFF), //TextOnError
+  tertiary: Color(0xFF66BB6A),
   brightness: Brightness.dark,
 );
 

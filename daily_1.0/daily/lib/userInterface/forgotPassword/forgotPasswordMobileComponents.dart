@@ -16,14 +16,14 @@ Widget forgotPasswordMobileTitle(BuildContext context) {
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       Text(getTranslated(context, "forgotPasswordTitle"),
-          style: Theme.of(context).textTheme.titleSmall),
+          style: Theme.of(context).textTheme.titleLarge),
       Padding(
         padding: EdgeInsets.all(10),
       ),
       Text(getTranslated(context, "forgotPasswordSubtitle"),
           softWrap: true,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.subtitle1),
+          style: Theme.of(context).textTheme.titleMedium),
     ],
   );
 }
@@ -69,7 +69,7 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
         _forgotPasswordValidateSubmit(context, state);
       },
       autofocus: false,
-      style: customTextThemes.inputField,
+      style: Theme.of(context).textTheme.labelMedium,
       decoration: InputDecoration(
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
@@ -82,11 +82,11 @@ Widget forgotPasswordMobileUserInputField(BuildContext context, State state) {
           ),
         ),
         hintText: getTranslated(context, "forgotPasswordFormEmail"),
-        labelStyle: customTextThemes.inputField,
-        hintStyle: customTextThemes.inputField,
+        labelStyle: Theme.of(context).textTheme.labelMedium,
+        hintStyle: Theme.of(context).textTheme.labelMedium,
         prefixIcon: Icon(
           Icons.email,
-          color: customColors.icon,
+          color: Theme.of(context).colorScheme.onSecondaryContainer,
         ),
       ),
     ),
@@ -121,13 +121,13 @@ Widget forgotPasswordMobileSend(BuildContext context, State state) {
                 },
                 child: Center(
                   child: Text(getTranslated(context, "forgotPasswordSend"),
-                      style: Theme.of(context).textTheme.button),
+                      style: Theme.of(context).textTheme.displaySmall),
                 ),
               )
             : Container(
                 child: Center(
                   child: Text(getTranslated(context, "forgotPasswordSend"),
-                      style: Theme.of(context).textTheme.button),
+                      style: Theme.of(context).textTheme.displaySmall),
                 ),
               )),
   );

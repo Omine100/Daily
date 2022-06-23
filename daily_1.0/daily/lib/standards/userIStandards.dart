@@ -9,7 +9,7 @@ Future<Widget> showMediaSelection(
         return AlertDialog(
             title: Text(
               getTranslated(context, "mediaSelectionTitle"),
-              style: Theme.of(context).textTheme.bodyText1,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             backgroundColor: Theme.of(context).colorScheme.background,
             content: SingleChildScrollView(
@@ -28,7 +28,7 @@ Future<Widget> showMediaSelection(
                         ),
                         Text(
                           getTranslated(context, "mediaSelectionGallery"),
-                          style: Theme.of(context).textTheme.bodyText1,
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ],
                     ),
@@ -52,7 +52,7 @@ Future<Widget> showMediaSelection(
                         ),
                         Text(
                           getTranslated(context, "mediaSelectionCamera"),
-                          style: Theme.of(context).textTheme.bodyText1,
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ],
                     ),
@@ -74,8 +74,8 @@ void showDialogBox(BuildContext context, String title, String content) {
       builder: (BuildContext context) {
         return AlertDialog(
           backgroundColor: Theme.of(context).colorScheme.background,
-          title: Text(title, style: Theme.of(context).textTheme.headline1),
-          content: Text(content, style: Theme.of(context).textTheme.bodyText1),
+          title: Text(title, style: Theme.of(context).textTheme.headlineMedium),
+          content: Text(content, style: Theme.of(context).textTheme.bodyMedium),
         );
       });
 }
@@ -84,10 +84,11 @@ void showToastMessage(BuildContext context, String key, bool isError) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     content: Text(
       getTranslated(context, key),
-      style: Theme.of(context).textTheme.bodyText1,
+      style: Theme.of(context).textTheme.bodyMedium,
     ),
     duration: const Duration(seconds: 3),
-    backgroundColor:
-        isError ? Theme.of(context).colorScheme.error : customColors.success,
+    backgroundColor: isError
+        ? Theme.of(context).colorScheme.error
+        : Theme.of(context).colorScheme.tertiary,
   ));
 }

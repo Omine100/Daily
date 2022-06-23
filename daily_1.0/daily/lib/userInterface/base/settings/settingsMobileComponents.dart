@@ -18,7 +18,7 @@ Widget settingsTitle(BuildContext context) {
     width: getDimension(
         context, false, Theme.of(context).visualDensity.settingsTitleWidth),
     child: Text(getTranslated(context, "settingsTitle"),
-        style: Theme.of(context).textTheme.titleSmall),
+        style: Theme.of(context).textTheme.titleLarge),
   );
 }
 
@@ -67,7 +67,7 @@ Widget settingsProfile(BuildContext context, State state) {
                       errorWidget: (context, url, error) => Icon(
                         Icons.person_outline_rounded,
                         size: 55,
-                        color: customColors.icon,
+                        color: Theme.of(context).colorScheme.onBackground,
                       ),
                     ),
                   ),
@@ -84,13 +84,13 @@ Widget settingsProfile(BuildContext context, State state) {
                       child: Text(
                           _firebaseAccounts.getCurrentUserDisplayName() ??
                               getTranslated(context, "settingsNullName"),
-                          style: Theme.of(context).textTheme.headline1),
+                          style: Theme.of(context).textTheme.headlineMedium),
                     ),
                     Text(
                         _firebaseAccounts.getCurrentUserEmail() ??
                             getTranslated(context, "settingsNullEmail"),
                         overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.headline1),
+                        style: Theme.of(context).textTheme.headlineMedium),
                   ],
                 ),
               ),
@@ -173,7 +173,7 @@ Row settingsGroupTitle(BuildContext context, String key) {
   return Row(
     children: [
       Text(getTranslated(context, key),
-          style: Theme.of(context).textTheme.headline1),
+          style: Theme.of(context).textTheme.headlineMedium),
     ],
   );
 }
@@ -201,7 +201,7 @@ Row settingRow(BuildContext context, Setting setting, State state) {
         ? [settingClick(context, setting, state)]
         : [
             Text(getTranslated(context, setting.key),
-                style: Theme.of(context).textTheme.bodyText1),
+                style: Theme.of(context).textTheme.bodyMedium),
             formPick()
           ],
   );
@@ -236,7 +236,7 @@ Widget settingDropdown(BuildContext context, Setting setting, State state) {
             Theme.of(context).visualDensity.settingDropdownHeight),
         items: setting.items(context),
         value: setting.value,
-        style: Theme.of(context).textTheme.bodyText1,
+        style: Theme.of(context).textTheme.bodyMedium,
         dropdownColor: Theme.of(context).colorScheme.background,
         onChanged: (value) {
           state.setState(() {
@@ -267,7 +267,7 @@ Widget settingClick(BuildContext context, Setting setting, State state) {
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0),
         child: Text(getTranslated(context, setting.key),
-            style: Theme.of(context).textTheme.bodyText1),
+            style: Theme.of(context).textTheme.bodyMedium),
       ),
     ),
   );
@@ -280,9 +280,9 @@ void showHelpSupportBox(BuildContext context) {
         return AlertDialog(
           backgroundColor: Theme.of(context).colorScheme.background,
           title: Text(getTranslated(context, "settingsHelpSupportBox"),
-              style: Theme.of(context).textTheme.bodyText1),
+              style: Theme.of(context).textTheme.bodyMedium),
           content: Text(getContactEmail(),
-              style: Theme.of(context).textTheme.bodyText1),
+              style: Theme.of(context).textTheme.bodyMedium),
         );
       });
 }
@@ -295,9 +295,9 @@ void showAboutBox(BuildContext context) {
         data: ThemeData(
           dialogBackgroundColor: Theme.of(context).colorScheme.background,
           textTheme: TextTheme(
-              headline5: Theme.of(context).textTheme.headline1,
-              bodyText2: Theme.of(context).textTheme.bodyText1,
-              caption: Theme.of(context).textTheme.bodyText1),
+              headline5: Theme.of(context).textTheme.headlineMedium,
+              bodyText2: Theme.of(context).textTheme.bodyMedium,
+              caption: Theme.of(context).textTheme.bodyMedium),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
                 primary: Theme.of(context).colorScheme.onBackground),
@@ -325,6 +325,6 @@ Widget settingsSignOut(BuildContext context) {
       context.router.replaceAll([AuthScreen()]);
     },
     child: Text(getTranslated(context, "settingsSignOut"),
-        style: Theme.of(context).textTheme.bodyText1),
+        style: Theme.of(context).textTheme.bodyMedium),
   );
 }

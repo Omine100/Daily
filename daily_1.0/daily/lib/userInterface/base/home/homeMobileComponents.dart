@@ -92,7 +92,7 @@ Widget homeSwitchCameraButton(BuildContext context, State state) {
       icon: Icon(
         Icons.flip_camera_android,
         size: 30,
-        color: customColors.icon,
+        color: Theme.of(context).colorScheme.onBackground,
       ));
 }
 
@@ -104,7 +104,7 @@ Widget homeSwitchFlashButton(BuildContext context, State state) {
       icon: Icon(
         flashMode == FlashMode.off ? Icons.flash_off : Icons.flash_on,
         size: 30,
-        color: customColors.icon,
+        color: Theme.of(context).colorScheme.onBackground,
       ));
 }
 

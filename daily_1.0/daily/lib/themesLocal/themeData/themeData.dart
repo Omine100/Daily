@@ -7,21 +7,7 @@ ThemeData lightThemeData = ThemeData(
   textTheme: lightTextTheme,
 );
 
-ThemeData lightThemeDataExtension = lightThemeData.copyWith(
-  extensions: <ThemeExtension<dynamic>>[
-    CustomColors.light,
-    CustomTextThemes.light,
-  ],
-);
-
 ThemeData darkThemeData = ThemeData(
   colorScheme: darkColorScheme,
   textTheme: darkTextTheme,
-);
-
-ThemeData darkThemeDataExtension = darkThemeData.copyWith(
-  extensions: <ThemeExtension<dynamic>>[
-    CustomColors.dark,
-    CustomTextThemes.dark,
-  ],
 );

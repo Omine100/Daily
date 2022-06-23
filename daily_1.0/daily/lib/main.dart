@@ -62,9 +62,6 @@ class _DailyState extends State<Daily> {
 
   @override
   Widget build(BuildContext context) {
-    setColorSchemeExtension(context);
-    setTextThemeExtension(context);
-
     return MaterialApp.router(
       scrollBehavior: CustomScrollBehavior(),
       routerDelegate: _appRouter.delegate(),
@@ -75,8 +72,8 @@ class _DailyState extends State<Daily> {
       locale: locale.value != null
           ? Locale(locale.value.split("_").first, locale.value.split("_").last)
           : locale.defaultValue,
-      theme: lightThemeDataExtension,
-      darkTheme: darkThemeDataExtension,
+      theme: lightThemeData,
+      darkTheme: darkThemeData,
       supportedLocales: [
         Locale('zh'),
         Locale('en'),

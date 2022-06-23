@@ -148,16 +148,16 @@ class _UploadState extends State<Upload> {
                       onSaved: (description) => {_description = description},
                       onFieldSubmitted: (value) {},
                       autofocus: false,
-                      style: customTextThemes.inputField,
+                      style: Theme.of(context).textTheme.labelMedium,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText:
                             getTranslated(context, "forgotPasswordFormEmail"),
-                        labelStyle: customTextThemes.inputField,
-                        hintStyle: customTextThemes.inputField,
+                        labelStyle: Theme.of(context).textTheme.labelMedium,
+                        hintStyle: Theme.of(context).textTheme.labelMedium,
                         prefixIcon: Icon(
                           Icons.email,
-                          color: customColors.icon,
+                          color: Theme.of(context).colorScheme.onBackground,
                         ),
                       ),
                     ),
@@ -256,7 +256,8 @@ class _UploadState extends State<Upload> {
           ),
           Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: Text("Post", style: Theme.of(context).textTheme.button))
+              child:
+                  Text("Post", style: Theme.of(context).textTheme.displaySmall))
         ],
       ),
     );
