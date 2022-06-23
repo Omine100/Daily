@@ -1,43 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+bool isSmall = false;
+
+void setResponsiveState(BuildContext context) {
+  if (MediaQuery.of(context).size.width >= 900)
+    isSmall = false;
+  else
+    isSmall = true;
+}
+
+bool getIsSmall(BuildContext context) {
+  return MediaQuery.of(context).size.width < 900 ? true : false;
+}
 
 class Responsive extends StatelessWidget {
-  final Widget mobile;
-  final Widget tablet;
-  final Widget desktop;
+  final Widget small;
+  final Widget large;
 
   const Responsive({
     Key key,
-    @required this.mobile,
-    @required this.tablet,
-    @required this.desktop,
+    @required this.small,
+    @required this.large,
   }) : super(key: key);
-
-  static bool isMobile(BuildContext context) =>
-      MediaQuery.of(context).size.width < 650;
-
-  static bool isTablet(BuildContext context) =>
-      MediaQuery.of(context).size.width < 1300 &&
-      MediaQuery.of(context).size.width >= 650;
-
-  static bool isDesktop(BuildContext context) =>
-      MediaQuery.of(context).size.width >= 1300;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth >= 1300) {
-          SystemChrome.setPreferredOrientations(
-              [DeviceOrientation.landscapeLeft]);
-          return desktop;
-        } else if (constraints.maxWidth >= 650) {
-          SystemChrome.setPreferredOrientations(
-              [DeviceOrientation.landscapeLeft]);
-          return tablet;
+        if (constraints.maxWidth >= 900) {
+          isSmall = false;
+          return large;
         } else {
-          SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-          return mobile;
+          isSmall = true;
+          return small;
         }
       },
     );

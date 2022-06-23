@@ -5,20 +5,20 @@ import 'dart:convert';
 import 'package:daily/servicesLocal/systemManagement.dart';
 
 class AppLocalizations {
-  AppLocalizations(this.locale);
+  AppLocalizations(this._locale);
 
   static AppLocalizations of(BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  final Locale locale;
+  final Locale _locale;
   static const LocalizationsDelegate<AppLocalizations> delegate =
       _AppLocalizationsDelegate();
   Map<String, String> _localizedStrings;
 
   Future load() async {
     String jsonString = await rootBundle
-        .loadString('lib/localizations/${locale.languageCode}.json');
+        .loadString('lib/localizations/${_locale.languageCode}.json');
     Map<String, dynamic> jsonMap = json.decode(jsonString);
 
     _localizedStrings =

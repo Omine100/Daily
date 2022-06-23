@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/systemLocalizations.dart';
+import 'package:daily/themesLocal/themeData/colorSchemes.dart';
+import 'package:daily/themesLocal/themeData/textThemes.dart';
 import 'package:daily/main.dart';
 
 //Install extension '#region folding for VS Code'

@@ -1,9 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'package:daily/firebase_options.dart';
+import 'package:daily/themesLocal/themeData/themeData.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:daily/servicesBroad/firebaseAccounts.dart';
+import 'package:daily/servicesLocal/customScrollBehavior.dart';
 import 'package:daily/servicesLocal/routeNavigation.dart';
+import 'package:daily/servicesLocal/routeManagement.gr.dart';
 import 'package:daily/servicesLocal/systemLocalizations.dart';
 import 'package:daily/servicesLocal/systemManagement.dart';
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
@@ -11,8 +15,14 @@ import 'package:daily/servicesLocal/settingsManagement.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  prefsToSettings();
+  if (Firebase.apps.isEmpty) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } else {
+    Firebase.app();
+  }
+  await prefsToSettings();
   runApp(new Daily());
 }
 
@@ -33,6 +43,7 @@ class _DailyState extends State<Daily> {
   @override
   void initState() {
     super.initState();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     setTheme(context);
     var window = WidgetsBinding.instance.window;
     window.onPlatformBrightnessChanged = () {
@@ -47,17 +58,22 @@ class _DailyState extends State<Daily> {
     });
   }
 
+  final _appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      scrollBehavior: CustomScrollBehavior(),
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
       title: "Daily",
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
-      home: routeNavigation.routeInitial(
-          context, firebaseAccounts.getSignedInStatus()),
       locale: locale.value != null
           ? Locale(locale.value.split("_").first, locale.value.split("_").last)
           : locale.defaultValue,
+      theme: lightThemeData,
+      darkTheme: darkThemeData,
       supportedLocales: [
         Locale('zh'),
         Locale('en'),

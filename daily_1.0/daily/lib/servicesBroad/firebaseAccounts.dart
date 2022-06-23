@@ -2,43 +2,59 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:typed_data';
 import 'dart:async';
-import 'dart:io';
+import 'package:daily/datastructures/user.dart' as dataStructure;
 import 'package:daily/servicesLocal/settingsDeclaration.dart';
 import 'package:daily/servicesLocal/settingsManagement.dart';
 import 'package:daily/standards/userIStandards.dart';
 import 'package:daily/utilities/managementUtil/validation.dart';
 
 class FirebaseAccounts {
-  FirebaseAuth auth = FirebaseAuth.instance;
-  FirebaseStorage storage = FirebaseStorage.instance;
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseStorage _storage = FirebaseStorage.instance;
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<dataStructure.User> getUserInfo(String uid) async {
+    DocumentSnapshot snap = await _firestore.collection("Users").doc(uid).get();
+    return dataStructure.User.fromSnap(snap);
+  }
+
+  Future<DocumentSnapshot> getUserInfoDoc(String uid) {
+    return _firestore.collection("Users").doc(uid).get();
+  }
+
+  Stream<DocumentSnapshot> getUserInfoStream(String uid) {
+    return _firestore.collection("Users").doc(uid).snapshots();
+  }
 
   bool getSignedInStatus() {
-    if (auth.currentUser?.uid == null) return false;
+    if (_auth.currentUser?.uid == null) return false;
     return true;
   }
 
   String getCurrentUserId() {
-    return auth.currentUser.uid;
+    return _auth.currentUser.uid;
   }
 
   Future<void> setCurrentUserDisplayName(String displayName) async {
-    auth.currentUser.updateDisplayName(displayName);
+    _auth.currentUser.updateDisplayName(displayName);
   }
 
   String getCurrentUserDisplayName() {
-    return auth.currentUser.displayName;
+    return _auth.currentUser.displayName;
   }
 
   String getCurrentUserEmail() {
-    return auth.currentUser.email;
+    return _auth.currentUser.email;
   }
 
-  Future<void> setCurrentUserProfilePicImage(File image, State state) async {
-    var storageRef = storage.ref(auth.currentUser.uid + '/profilePicture');
-    await storageRef.putFile(image);
-    auth.currentUser
+  Future<void> setCurrentUserProfilePicData(
+      Uint8List bytes, State state) async {
+    var storageRef =
+        _storage.ref('ProfilePictures' + '/${_auth.currentUser.uid}');
+    await storageRef.putData(bytes);
+    _auth.currentUser
         .updatePhotoURL(await storageRef.getDownloadURL())
         .then((value) {
       setCurrentUserProfilePicURL(state);
@@ -46,29 +62,35 @@ class FirebaseAccounts {
   }
 
   void setCurrentUserProfilePicURL(State state) async {
-    profileURL.value = auth.currentUser.photoURL;
+    await _firestore
+        .collection("Users")
+        .doc(_auth.currentUser.uid)
+        .update({'profilePicURL': _auth.currentUser?.photoURL});
+    profileURL.value = _auth.currentUser?.photoURL;
     settingsToPrefs(settingsList);
     state.setState(() {});
   }
 
   String getCurrentUserProfilePic() {
-    return auth.currentUser.photoURL;
+    return _auth.currentUser.photoURL;
   }
 
-  Future<void> sendEmailVerification() async {
-    auth.currentUser.sendEmailVerification();
+  Future<void> sendEmailVerification(BuildContext context) async {
+    _auth.currentUser.sendEmailVerification().catchError((onError) =>
+        showToastMessage(context, "_errorVerificationSentFailed", true));
   }
 
-  Future<bool> getEmailVerified() async {
-    return auth.currentUser.emailVerified;
+  bool getEmailVerified(BuildContext context) {
+    if (!_auth.currentUser.emailVerified) sendEmailVerification(context);
+    return _auth.currentUser.emailVerified;
   }
 
   Future<bool> sendPasswordReset(BuildContext context, String email) async {
     if (email == "" || email == null || !isEmail(email)) {
-      showToastMessage(context, "errorInvalidEmail", true);
+      showToastMessage(context, "_errorInvalidEmail", true);
       return false;
     }
-    auth.sendPasswordResetEmail(email: email);
+    _auth.sendPasswordResetEmail(email: email);
     showToastMessage(context, "settingsResetPasswordSent", false);
     return true;
   }
@@ -83,50 +105,57 @@ class FirebaseAccounts {
         passwordVerify == "" ||
         name == null ||
         name == "") {
-      showToastMessage(context, "errorBlankField", true);
+      showToastMessage(context, "_errorBlankField", true);
       return false;
     }
     if (!isName(name)) {
-      showToastMessage(context, "errorInvalidName", true);
+      showToastMessage(context, "_errorInvalidName", true);
       return false;
     }
     if (!isEmail(email)) {
-      showToastMessage(context, "errorInvalidEmail", true);
+      showToastMessage(context, "_errorInvalidEmail", true);
       return false;
     }
     if (!isPassword(password)) {
-      showToastMessage(context, "errorPasswordRequirements", true);
+      showToastMessage(context, "_errorPasswordRequirements", true);
       return false;
     }
     if (password != passwordVerify) {
-      showToastMessage(context, "errorPasswordMatch", true);
+      showToastMessage(context, "_errorPasswordMatch", true);
       return false;
     }
     try {
-      await auth.createUserWithEmailAndPassword(
+      UserCredential cred = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       await setCurrentUserDisplayName(name);
-      sendEmailVerification();
+      dataStructure.User user = new dataStructure.User(
+          uid: cred.user.uid,
+          email: email,
+          displayName: name,
+          profilePicURL: "",
+          followers: [],
+          following: []);
+      await _firestore.collection("Users").doc(cred.user.uid).set(user.toMap());
       return true;
     } on FirebaseAuthException catch (e) {
       String key;
       switch (e.code) {
         case "invalid-password":
-          key = "errorInvalidPassword";
+          key = "_errorInvalidPassword";
           break;
         case "invalid-email":
-          key = "errorInvalidEmail";
+          key = "_errorInvalidEmail";
           break;
         case "email-already-in-use":
-          key = "errorEmailAlreadyExists";
+          key = "_errorEmailAlreadyExists";
           break;
         case "invalid-credential":
-          key = "errorInvalidEmail";
+          key = "_errorInvalidEmail";
           break;
         default:
-          key = "errorDefault";
+          key = "_errorDefault";
       }
-      showToastMessage(context, key, false);
+      showToastMessage(context, key, true);
     }
     return false;
   }
@@ -134,45 +163,45 @@ class FirebaseAccounts {
   Future<bool> signInEmailAndPassword(
       BuildContext context, String email, String password) async {
     if (email == "" || password == "") {
-      showToastMessage(context, "errorBlankField", true);
+      showToastMessage(context, "_errorBlankField", true);
       return false;
     }
     try {
-      await auth.signInWithEmailAndPassword(email: email, password: password);
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
       return true;
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseException catch (e) {
       String key;
       switch (e.code) {
         case "invalid-email":
-          key = "errorInvalidEmail";
+          key = "_errorInvalidEmail";
           break;
         case "wrong-password":
-          key = "errorWrongPassword";
+          key = "_errorWrongPassword";
           break;
         case "user-not-found":
-          key = "errorUserNotFound";
+          key = "_errorUserNotFound";
           break;
         case "user-disabled":
-          key = "errorUserDisabled";
+          key = "_errorUserDisabled";
           break;
         case "unknown":
-          key = "errorUserNotFound";
+          key = "_errorUserNotFound";
           break;
         default:
-          key = "errorDefault";
+          key = "_errorDefault";
       }
-      showToastMessage(context, key, false);
+      showToastMessage(context, key, true);
       return false;
     }
   }
 
   Future<void> signOut() async {
-    return auth.signOut();
+    return _auth.signOut();
   }
 
   Future<void> deleteUserData() async {
-    var userId = auth.currentUser.uid;
-    await firestore.collection(userId).get().then((snapshot) {
+    var userId = _auth.currentUser.uid;
+    await _firestore.collection(userId).get().then((snapshot) {
       for (DocumentSnapshot ds in snapshot.docs) {
         ds.reference.delete();
       }
@@ -181,6 +210,40 @@ class FirebaseAccounts {
 
   Future<void> deleteUser() async {
     deleteUserData();
-    auth.currentUser.delete();
+    _auth.currentUser.delete();
+  }
+
+  Future<bool> isFollowing(String currentUid, String uid) async {
+    DocumentSnapshot snap =
+        await _firestore.collection("Users").doc(currentUid).get();
+    return ((snap.data() as dynamic)['following'] as List).contains(uid);
+  }
+
+  void followUser(String currentUid, String uid) async {
+    if (await isFollowing(currentUid, uid)) {
+      await _firestore.collection("Users").doc(currentUid).update({
+        'following': FieldValue.arrayRemove([uid])
+      });
+      await _firestore.collection("Users").doc(uid).update({
+        'followers': FieldValue.arrayRemove([currentUid])
+      });
+    } else {
+      await _firestore.collection("Users").doc(currentUid).update({
+        'following': FieldValue.arrayUnion([uid])
+      });
+      await _firestore.collection("Users").doc(uid).update({
+        'followers': FieldValue.arrayUnion([currentUid])
+      });
+    }
+  }
+
+  Future<QuerySnapshot> searchUsers(String searchText) async {
+    if (searchText.length < 2) return null;
+    var docs = await _firestore
+        .collection("Users")
+        .where("displayName", isEqualTo: searchText)
+        .where("displayName", isLessThanOrEqualTo: "al\uf7ff")
+        .get();
+    return docs;
   }
 }

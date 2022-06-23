@@ -5,7 +5,6 @@ RegExp _email = RegExp(
 RegExp _password =
     RegExp(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,16}$");
 
-RegExp _alpha = RegExp(r'^[a-zA-Z]+$');
 RegExp _alphanumeric = RegExp(r'^[a-zA-Z0-9]+$');
 RegExp _numeric = RegExp(r'^-?[0-9]+$');
 
@@ -56,14 +55,14 @@ bool isDateAfter(String str, [date]) {
     return false;
   }
 
-  DateTime str_date;
+  DateTime strDate;
   try {
-    str_date = DateTime.parse(str);
+    strDate = DateTime.parse(str);
   } catch (e) {
     return false;
   }
 
-  return str_date.isAfter(date);
+  return strDate.isAfter(date);
 }
 
 //If `date` is not passed, it defaults to now.
@@ -76,12 +75,12 @@ bool isDateBefore(String str, [date]) {
     return false;
   }
 
-  DateTime str_date;
+  DateTime strDate;
   try {
-    str_date = DateTime.parse(str);
+    strDate = DateTime.parse(str);
   } catch (e) {
     return false;
   }
 
-  return str_date.isBefore(date);
+  return strDate.isBefore(date);
 }

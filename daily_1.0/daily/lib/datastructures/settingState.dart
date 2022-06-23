@@ -13,6 +13,7 @@ class Setting {
   String key;
   Group group;
   Format format;
+  bool isMobile;
   bool isSignInRequired;
   dynamic value;
   dynamic defaultValue;
@@ -25,6 +26,7 @@ class Setting {
       {@required this.key,
       @required this.group,
       @required this.format,
+      @required this.isMobile,
       @required this.isSignInRequired,
       this.value,
       this.defaultValue,

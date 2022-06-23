@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "904462045883",
+    "firebase_url": "https://daily-2a5a6-default-rtdb.firebaseio.com",
     "project_id": "daily-2a5a6",
     "storage_bucket": "daily-2a5a6.appspot.com"
   },
@@ -29,6 +30,13 @@
             {
               "client_id": "904462045883-ahfpgg0tc3lh0kbf2qvkl1tpadfomi4o.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "904462045883-svs7lp0h1v10k7e7udrbob9s09e22hso.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.phoenix.daily"
+              }
             }
           ]
         }
