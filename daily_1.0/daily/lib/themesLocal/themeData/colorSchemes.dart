@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-//Divider can just be 'onPrimary, etc.'
-
 ColorScheme lightColorScheme = ColorScheme(
   primary: Color(0xFFFFFFFF),
   onPrimary: Color(0xFF333333), //Title
@@ -48,46 +46,3 @@ ColorScheme darkColorScheme = ColorScheme(
   tertiary: Color(0xFF66BB6A),
   brightness: Brightness.dark,
 );
-
-@immutable
-class CustomColors extends ThemeExtension<CustomColors> {
-  const CustomColors({
-    @required this.success,
-    @required this.icon,
-  });
-
-  final Color success;
-  final Color icon;
-
-  @override
-  CustomColors copyWith({
-    Color success,
-    Color icon,
-  }) {
-    return CustomColors(
-      success: success ?? this.success,
-      icon: icon ?? this.icon,
-    );
-  }
-
-  @override
-  CustomColors lerp(ThemeExtension<CustomColors> other, double t) {
-    if (other is! CustomColors) {
-      return this;
-    }
-    return CustomColors(
-      success: Color.lerp(success, (other as CustomColors).success, t),
-      icon: Color.lerp(icon, (other as CustomColors).icon, t),
-    );
-  }
-
-  static const light = CustomColors(
-    success: Color(0xFF66BB6A),
-    icon: Color(0xFF888888),
-  );
-
-  static const dark = CustomColors(
-    success: Color(0xFF66BB6A),
-    icon: Color(0xFF555555),
-  );
-}
