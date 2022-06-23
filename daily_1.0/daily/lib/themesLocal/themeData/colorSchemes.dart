@@ -12,7 +12,7 @@ ColorScheme lightColorScheme = ColorScheme(
   primaryContainer: Color(0xFFFFFFFF),
   onPrimaryContainer: Color(0xFFFFFFFF),
   secondaryContainer: Color(0xFFFBFAF5),
-  onSecondaryContainer: Color(0xFF9E9E9E),
+  onSecondaryContainer: Color(0xFF888888),
   surface: Color(0xFFFF4350), //Button
   onSurface: Color(0xFFCCCCCC), //TextOnButton
   surfaceTint: Color(0xFFFF9999), //Inkwell
@@ -34,8 +34,8 @@ ColorScheme darkColorScheme = ColorScheme(
   onBackground: Color(0xFF202020),
   primaryContainer: Color(0xFF202020),
   onPrimaryContainer: Color(0xFF202020),
-  secondaryContainer: Color(0xFF121212),
-  onSecondaryContainer: Color(0xFF9E9E9E),
+  secondaryContainer: Color(0xFF333333),
+  onSecondaryContainer: Color(0xFF555555),
   surface: Color(0xFFEF5350), //Button
   onSurface: Color(0xFFCCCCCC), //TextOnButton
   surfaceTint: Color(0xFFFF5350), //Inkwell

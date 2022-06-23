@@ -20,7 +20,7 @@ TextTheme lightTextTheme = TextTheme(
   headlineSmall: TextStyle(
       color: Color(0xFF333333), fontSize: 16.0, fontWeight: FontWeight.w400),
   labelMedium: TextStyle(
-      color: Color(0xFFCCCCCC), fontSize: 20.0, fontWeight: FontWeight.w300),
+      color: Color(0xFF000000), fontSize: 20.0, fontWeight: FontWeight.w300),
   labelSmall: TextStyle(
       color: Color(0xFFFF4350), fontSize: 16.0, fontWeight: FontWeight.w500),
 );
@@ -43,7 +43,7 @@ TextTheme darkTextTheme = TextTheme(
   headlineSmall: TextStyle(
       color: Color(0xFFCCCCCC), fontSize: 16.0, fontWeight: FontWeight.w400),
   labelMedium: TextStyle(
-      color: Color(0xFF000000), fontSize: 20.0, fontWeight: FontWeight.w300),
+      color: Color(0xFFCCCCCC), fontSize: 20.0, fontWeight: FontWeight.w300),
   labelSmall: TextStyle(
       color: Color(0xFFEF5350), fontSize: 16.0, fontWeight: FontWeight.w500),
 );

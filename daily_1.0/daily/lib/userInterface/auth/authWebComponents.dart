@@ -190,7 +190,7 @@ Widget authWebUserInputField(BuildContext context, State state,
           _authWebValidateSubmit(context, state);
         },
         autofocus: false,
-        style: Theme.of(context).textTheme.bodyMedium,
+        style: Theme.of(context).textTheme.labelMedium,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: getTranslated(context, authForm),
@@ -203,7 +203,7 @@ Widget authWebUserInputField(BuildContext context, State state,
                     ? Icons.lock
                     : Icons.person)
                 : Icons.email,
-            color: Theme.of(context).colorScheme.onPrimaryContainer,
+            color: Theme.of(context).colorScheme.onSecondaryContainer,
           ),
           suffixIcon: isVariable
               ? IconButton(
@@ -221,7 +221,7 @@ Widget authWebUserInputField(BuildContext context, State state,
                     _isVisible
                         ? Icons.visibility_outlined
                         : Icons.visibility_off_outlined,
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
                   ),
                 )
               : null,
@@ -243,7 +243,7 @@ Widget authWebForgotPassword(BuildContext context, State state, bool isSmall) {
         });
       },
       child: Text(getTranslated(context, "authForgotPassword"),
-          style: Theme.of(context).textTheme.bodyMedium),
+          style: Theme.of(context).textTheme.titleSmall),
     ),
   ).showClickOnHover;
 }
