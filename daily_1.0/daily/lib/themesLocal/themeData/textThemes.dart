@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//Need to great rid of subtitle*, *1, *2, etc., can't have those in 2021
+
 TextTheme lightTextTheme = TextTheme(
   titleSmall: TextStyle(
       color: Color(0xFF333333), fontSize: 48.0, fontWeight: FontWeight.w500),
