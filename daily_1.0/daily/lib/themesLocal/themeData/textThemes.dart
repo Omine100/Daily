@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 TextTheme lightTextTheme = TextTheme(
   titleLarge: TextStyle(
-      color: Color(0xFF333333), fontSize: 48.0, fontWeight: FontWeight.w500),
+      color: Color(0xFFFFFFFF), fontSize: 48.0, fontWeight: FontWeight.w500),
   titleMedium: TextStyle(
       color: Color(0xFF999999), fontSize: 18.0, fontWeight: FontWeight.w300),
   titleSmall: TextStyle(

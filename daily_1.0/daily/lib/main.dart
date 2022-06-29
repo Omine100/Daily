@@ -1,4 +1,3 @@
-import 'package:daily/firebase_options.dart';
 import 'package:daily/themesLocal/themeData/themeData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,10 +14,8 @@ import 'package:daily/servicesLocal/settingsManagement.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (Firebase.apps.isEmpty) {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+  if (Firebase.apps.length == 0) {
+    await Firebase.initializeApp();
   } else {
     Firebase.app();
   }
