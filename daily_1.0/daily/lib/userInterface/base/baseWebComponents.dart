@@ -147,7 +147,7 @@ Widget _baseWebHeaderSearchBar(BuildContext context) {
       background: Theme.of(context).colorScheme.background,
       iconSize: 25,
       iconColor: Theme.of(context).colorScheme.onBackground,
-      textStyle: Theme.of(context).textTheme.labelMedium,
+      textStyle: Theme.of(context).textTheme.headlineSmall,
       hint: "Search");
 }
 

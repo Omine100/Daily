@@ -74,8 +74,7 @@ Widget profileWebInfo(BuildContext context, State state) {
 Widget profileInfo(BuildContext context, userStructure.User user) {
   return Container(
     padding: EdgeInsets.only(top: 15),
-    width: getDimension(context, false,
-        Theme.of(context).visualDensity.baseWebProfileInfoWidth),
+    width: 500,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -87,13 +86,13 @@ Widget profileInfo(BuildContext context, userStructure.User user) {
                 getTranslated(context, "settingsNullName"),
             softWrap: false,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.headlineMedium,
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
         ),
         Text(
           user.email ?? getTranslated(context, "settingsNullEmail"),
           overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.headlineMedium,
+          style: Theme.of(context).textTheme.headlineSmall,
         ),
         Row(
           children: [
@@ -101,13 +100,13 @@ Widget profileInfo(BuildContext context, userStructure.User user) {
               "Following ${user.following.length}" ??
                   getTranslated(context, "settingsNullEmail"),
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
             Text(
               "Followers ${user.followers.length}" ??
                   getTranslated(context, "settingsNullEmail"),
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headlineSmall,
             )
           ],
         )

@@ -6,7 +6,7 @@ ColorScheme lightColorScheme = ColorScheme(
   secondary: Color(0xFFFF4350), //Accent
   onSecondary: Color(0xFF999999), //Subtitle
   background: Color(0xFFFBFAF5),
-  onBackground: Color(0xFFFFFFFF),
+  onBackground: Color(0xFF555555),
   primaryContainer: Color(0xFFFFFFFF),
   onPrimaryContainer: Color(0xFF555555),
   secondaryContainer: Color(0xFFFBFAF5),
@@ -29,7 +29,7 @@ ColorScheme darkColorScheme = ColorScheme(
   secondary: Color(0xFFFF4350), //Accent
   onSecondary: Color(0xFF999999), //Subtitle
   background: Color(0xFF121212),
-  onBackground: Color(0xFF202020),
+  onBackground: Color(0xFFCCCCCC),
   primaryContainer: Color(0xFF202020),
   onPrimaryContainer: Color(0xFFCCCCCC),
   secondaryContainer: Color(0xFF333333),
