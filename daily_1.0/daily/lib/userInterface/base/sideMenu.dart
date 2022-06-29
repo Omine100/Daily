@@ -120,7 +120,7 @@ class _SideMenuState extends State<SideMenu> {
                     getTranslated(context, "settingsNullName"),
                 softWrap: false,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
             ).showClickOnHover,
           ),
@@ -131,7 +131,7 @@ class _SideMenuState extends State<SideMenu> {
               _firebaseAccounts.getCurrentUserEmail() ??
                   getTranslated(context, "settingsNullEmail"),
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
         ],
@@ -157,12 +157,10 @@ class _SideMenuState extends State<SideMenu> {
                         children: [
                           Text(
                             user.followers.length.toString(),
-                            style: TextStyle(color: Colors.white),
+                            style: Theme.of(context).textTheme.displaySmall,
                           ),
-                          Text(
-                            "Followers",
-                            style: TextStyle(color: Colors.grey),
-                          )
+                          Text("Followers",
+                              style: Theme.of(context).textTheme.headlineSmall)
                         ],
                       ),
                       const VerticalDivider(
@@ -174,12 +172,10 @@ class _SideMenuState extends State<SideMenu> {
                         children: [
                           Text(
                             user.following.length.toString(),
-                            style: TextStyle(color: Colors.white),
+                            style: Theme.of(context).textTheme.displaySmall,
                           ),
-                          Text(
-                            "Following",
-                            style: TextStyle(color: Colors.grey),
-                          )
+                          Text("Following",
+                              style: Theme.of(context).textTheme.headlineSmall)
                         ],
                       )
                     ],
@@ -207,7 +203,7 @@ class _SideMenuState extends State<SideMenu> {
             Padding(
                 padding: EdgeInsets.only(left: 8.0),
                 child: Text(text,
-                    style: Theme.of(context).textTheme.headlineMedium)),
+                    style: Theme.of(context).textTheme.headlineSmall)),
           ])),
     );
   }

@@ -37,7 +37,7 @@ TextTheme darkTextTheme = TextTheme(
   bodySmall: TextStyle(
       color: Color(0xFF555555), fontSize: 14.0, fontWeight: FontWeight.w300),
   displaySmall: TextStyle(
-      color: Color(0xFFCCCCCC), fontSize: 20.0, fontWeight: FontWeight.w500),
+      color: Color(0xFFFFFFFF), fontSize: 20.0, fontWeight: FontWeight.w500),
   headlineSmall: TextStyle(
       color: Color(0xFFCCCCCC), fontSize: 16.0, fontWeight: FontWeight.w400),
   labelMedium: TextStyle(
